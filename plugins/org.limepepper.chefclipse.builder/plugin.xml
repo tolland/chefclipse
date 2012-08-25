@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="chefclipseBuilder"
+         name="Chefclipse Project Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="org.limepepper.chefclipse.builder.ChefclipseBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="chefclipseNature"
+         name="Chefclipse Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.limepepper.chefclipse.builder.ChefclipseNature">
+         </run>
+      </runtime>
+      <builder
+            id="org.limepepper.chefclipse.builder.chefclipseBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="org.limepepper.chefclipse.builder.contribution1">
+         <action
+               label="Add/Remove Sample Nature"
+               class="org.limepepper.chefclipse.builder.ToggleNatureAction"
+               menubarPath="additions"
+               enablesFor="+"
+               id="org.limepepper.chefclipse.builder.addRemoveNatureAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         id="xmlProblem"
+         name="XML Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+
+</plugin>
