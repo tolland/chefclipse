@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="chef-eclipse-navigator.category1"
+            class="org.eclipse.ui.navigator.CommonNavigator"
+            icon="icons/exit.png"
+            id="org.limepepper.chefeclipse.navigator"
+            name="Chef Navigator">
+      </view>
+      <category
+            id="chef-eclipse-navigator.category1"
+            name="Chef Projects">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            contentProvider="org.limepepper.navigator.ContentProvider"
+            id="chef-eclipse-navigator.navigatorContent1"
+            labelProvider="org.limepepper.navigator.LabelProvider"
+            name="Chef Content">
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="org.eclipse.core.resources.IWorkspaceRoot">
+               </instanceof>
+            </or>
+         </triggerPoints>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="org.limepepper.chefeclipse.navigator">
+         <includes>
+            <contentExtension
+                  pattern="chef-eclipse-navigator.navigatorContent1">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resourceContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+
+</plugin>

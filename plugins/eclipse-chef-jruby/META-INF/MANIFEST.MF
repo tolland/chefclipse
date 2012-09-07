@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Chef-eclipse-jruby
+Bundle-SymbolicName: chef-eclipse-jruby
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: chef_eclipse_jruby.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.limepepper.jruby
+Bundle-ClassPath: libs/jruby-complete-1.6.7.jar,
+ .

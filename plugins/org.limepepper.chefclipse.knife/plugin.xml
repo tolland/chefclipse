@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="org.limepepper.chefclipse.knifeBuilder"
+         name="Knife Project Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="org.limepepper.chefclipse.knife.builder.KnifeBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="knifeNature"
+         name="Knife Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.limepepper.chefclipse.knife.builder.knifeNature">
+         </run>
+      </runtime>
+      <builder
+            id="org.limepepper.chefclipse.knife.org.limepepper.chefclipse.knifeBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="org.limepepper.chefclipse.knife.contribution1">
+         <action
+               label="Add/Remove Sample Nature"
+               class="org.limepepper.chefclipse.knife.builder.ToggleNatureAction"
+               menubarPath="additions"
+               enablesFor="+"
+               id="org.limepepper.chefclipse.knife.addRemoveNatureAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         id="xmlProblem"
+         name="XML Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Knife Wizards"
+            id="org.limepepper.chefclipse.knife">
+      </category>
+      <wizard
+            name="Multi-page Knife Editor file"
+            icon="icons/sample.gif"
+            category="org.limepepper.chefclipse.knife"
+            class="org.limepepper.chefclipse.knife.wizards.NewKnifeWizard"
+            id="org.limepepper.chefclipse.knife.wizards.NewKnifeWizard">
+      </wizard>
+   </extension>
+
+</plugin>

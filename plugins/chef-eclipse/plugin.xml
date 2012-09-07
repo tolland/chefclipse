@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="chefeclipse.category.wizards"
+            name="Chef">
+      </category>
+      <wizard
+            category="chefeclipse.category.wizards"
+            class="org.limepepper.chef.ChefProjectWizard"
+            finalPerspective="chef-eclipse.perspective"
+            icon="icons/32px-A.svg.png"
+            id="chef-eclipse.wizard.new.chef-eclipse"
+            name="Chef Repository"
+            project="true">
+      </wizard>
+      <wizard
+            category="chefeclipse.category.wizards"
+            class="org.limepepper.knife.NewKnifePluginProjectWizard"
+            finalPerspective="chef-eclipse.perspective"
+            icon="icons/1333260501_knife.png"
+            id="chefeclipse.knife.wizard"
+            name="Knife Plugin"
+            project="true">
+      </wizard>
+      <wizard
+            category="chefeclipse.category.wizards"
+            class="org.limepepper.chef.CookbookWizard"
+            icon="icons/1333260459_first_aid_kit.png"
+            id="org.limepepper.chefeclipse.cookbook.wizard"
+            name="Cookbook">
+      </wizard>
+      <wizard
+            category="chefeclipse.category.wizards"
+            class="org.limepepper.chef.NewRecipeWizard"
+            descriptionImage="icons/knewstuff.png"
+            finalPerspective="chef-eclipse.perspective"
+            icon="icons/1333260867_Rules of Fight Club.png"
+            id="org.limepepper.chefeclipse.recipe.wizard"
+            name="Recipe">
+      </wizard>
+      <wizard
+            class="org.limepepper.chef.NewAttributeFileWizard"
+            icon="icons/1333260459_first_aid_kit.png"
+            id="org.limepepper.chefeclipse.attribute.wizard"
+            name="Attribute File">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.limepepper.chefeclipse.perspectives.Perspective"
+            icon="icons/clicknrun.png"
+            id="chef-eclipse.perspective"
+            name="Chef">
+      </perspective>
+   </extension>
+   <extension
+         id="org.limepepper.chefeclipse.natures.chef"
+         name="Chef Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.limepepper.chef.ChefProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         id="org.limepepper.chefeclipse.recipe.content-type"
+         name="Recipe"
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.dltk.rubyContentType"
+            id="org.limepepper.chefeclipse.contenttype.knife"
+            name="Knife Plugin Definition"
+            priority="normal">
+         <describer
+               class="org.limepepper.knife.KnifeContentDescriber">
+            <parameter
+                  name="ruby-mixin"
+                  value="Chef::Knife">
+            </parameter>
+         </describer>
+      </content-type>
+      <content-type
+            base-type="org.eclipse.dltk.rubyContentType"
+            id="org.limepepper.chefeclipse.contenttype.recipe"
+            name="Chef Recipe"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.dltk.rubyContentType"
+            id="org.limepepper.chefeclipse.contenttype.attributes"
+            name="Chef Attributes"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.dltk.rubyContentType"
+            file-names="metadata.rb"
+            id="org.limepepper.chefeclipse.contenttype.metadata"
+            name="Cookbook metadata"
+            priority="normal">
+      </content-type>
+   </extension>
+   <extension
+         id="org.limepepper.chefeclipse.natures.knife"
+         name="Knife Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.limepepper.knife.KnifeProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="chef-eclipse.perspective">
+         <view
+               id="org.limepepper.chefeclipse.navigator"
+               minimized="false"
+               ratio="0.25"
+               relationship="left"
+               relative="org.eclipse.ui.editorss">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/32px-A.svg.png"
+            id="chef-eclipse.project.image1"
+            natureId="org.limepepper.chefeclipse.natures.knife">
+      </image>
+      <image
+            icon="icons/1333260498_knife.png"
+            id="chef-eclipse.knife.image12"
+            natureId="org.limepepper.chefeclipse.natures.knife">
+      </image>
+   </extension>
+
+</plugin>
