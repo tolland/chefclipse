@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Workstation
+Bundle-SymbolicName: org.limepepper.chefclipse.workstation; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.limepepper.chefclipse.workstation.Activator
+Bundle-Vendor: Lime Pepper Ltd
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

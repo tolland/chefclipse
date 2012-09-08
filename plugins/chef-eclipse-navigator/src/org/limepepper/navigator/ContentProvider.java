@@ -9,7 +9,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.limepepper.knife.KnifeProjectNature;
+import org.limepepper.chefclipse.knife.builder.KnifeNature;
 
 public class ContentProvider implements ITreeContentProvider {
 
@@ -119,7 +119,7 @@ public class ContentProvider implements ITreeContentProvider {
         List<KnifeProjectParent> list = new Vector<KnifeProjectParent>();
         for (int i = 0; i < projects.length; i++) {
             try {
-                if (projects[i].getNature(KnifeProjectNature.NATURE_ID) != null) {
+                if (projects[i].getNature(KnifeNature.NATURE_ID) != null) {
                     list.add(new KnifeProjectParent(projects[i]));
                 }
             } catch (CoreException e) {

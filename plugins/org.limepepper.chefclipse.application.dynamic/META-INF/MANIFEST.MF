@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ChefClipse Dynamic
+Bundle-SymbolicName: org.limepepper.chefclipse.application.dynamic; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.limepepper.chefclipse.application.dynamic.Activator
+Bundle-Vendor: Lime Pepper Ltd
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.intro,
+ org.eclipse.ui.forms,
+ org.eclipse.swt,
+ org.eclipse.core.resources,
+ org.eclipse.ui.navigator,
+ org.eclipse.ui.navigator.resources,
+ org.eclipse.ui.ide,
+ org.limepepper.chefclipse;bundle-version="1.0.0",
+ org.limepepper.chefclipse.edit;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

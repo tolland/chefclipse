@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cookbook" nsURI="http://limepepper.org/chefclipse/cookbook"
+    nsPrefix="org.limepepper.chefclipse">
+  <eClassifiers xsi:type="ecore:EClass" name="Cookbook">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="depends" eType="#//DependencyRelation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Definition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Library"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Recipe"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Version"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Resource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DependencyRelation"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="supports">
+    <eLiterals name="Centos"/>
+    <eLiterals name="Windows"/>
+    <eLiterals name="debian"/>
+  </eClassifiers>
+</ecore:EPackage>

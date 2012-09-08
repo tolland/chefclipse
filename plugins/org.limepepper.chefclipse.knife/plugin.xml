@@ -19,7 +19,7 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.limepepper.chefclipse.knife.builder.knifeNature">
+               class="org.limepepper.chefclipse.knife.builder.KnifeNature">
          </run>
       </runtime>
       <builder
