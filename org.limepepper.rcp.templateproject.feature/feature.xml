@@ -17,7 +17,7 @@
    </license>
 
    <plugin
-         id="org.limepepper.rcp.templateproject.product"
+         id="org.limepepper.rcp.templateproject.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

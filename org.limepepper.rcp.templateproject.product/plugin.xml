@@ -12,14 +12,14 @@
       </application>
    </extension>
    <extension
-         id="org.limepepper.rcp.templateproject.product"
+         id="product"
          point="org.eclipse.core.runtime.products">
       <product
             application="org.limepepper.rcp.templateproject.product.application"
             name="Template Project Product">
          <property
                name="appName"
-               value="Template Project Application">
+               value="Template Project Product">
          </property>
          <property
                name="applicationXMI"

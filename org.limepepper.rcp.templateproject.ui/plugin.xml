@@ -4,19 +4,6 @@
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
-         <menu
-               id="org.limepepper.rcp.templateproject.ui.menus.exampleMenu"
-               label="Example Menu"
-               mnemonic="M">
-            <command
-                  commandId="org.limepepper.rcp.templateproject.ui.commands.exampleCommand"
-                  id="org.limepepper.rcp.templateproject.ui.menus.exampleCommand"
-                  mnemonic="S">
-            </command>
-         </menu>
-      </menuContribution>
-      <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
                id="org.limepepper.rcp.templateproject.ui.toolbars.exampleToolbar">
@@ -56,6 +43,20 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+6">
       </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.limepepper.rcp.templateproject.ui"
+            name="Sample Wizards">
+      </category>
+      <wizard
+            category="org.limepepper.rcp.templateproject.ui"
+            class="org.limepepper.rcp.templateproject.ui.wizards.SampleNewWizard"
+            icon="icons/sample.gif"
+            id="org.limepepper.rcp.templateproject.ui.wizards.SampleNewWizard"
+            name="Multi-page Editor file">
+      </wizard>
    </extension>
 
 </plugin>
