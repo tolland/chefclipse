@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="org.limepepper.rcp.templateproject.product.application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.limepepper.rcp.templateproject.product.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="org.limepepper.rcp.templateproject.product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.limepepper.rcp.templateproject.product.application"
+            name="Template Project Product">
+         <property
+               name="appName"
+               value="Template Project Application">
+         </property>
+         <property
+               name="applicationXMI"
+               value="org.limepepper.rcp.templateproject.product/Application.e4xmi">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
