@@ -2,49 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
-         <toolbar
-               id="org.limepepper.rcp.templateproject.ui.toolbars.exampleToolbar">
-            <command
-                  commandId="org.limepepper.rcp.templateproject.ui.commands.exampleCommand"
-                  icon="icons/sample.gif"
-                  id="org.limepepper.rcp.templateproject.ui.toolbars.exampleCommand"
-                  tooltip="Example toolbar">
-            </command>
-         </toolbar>
-      </menuContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.commands">
-      <category
-            id="org.limepepper.rcp.templateproject.ui.commands.exampleCategory"
-            name="Example Category">
-      </category>
-      <command
-            categoryId="org.limepepper.rcp.templateproject.ui.commands.category"
-            id="org.limepepper.rcp.templateproject.ui.commands.exampleCommand"
-            name="Example Command">
-      </command>
-   </extension>
-   <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="org.limepepper.rcp.templateproject.ui.handlers.ExampleHandler"
-            commandId="org.limepepper.rcp.templateproject.ui.commands.exampleCommand">
-      </handler>
-   </extension>
-   <extension
-         point="org.eclipse.ui.bindings">
-      <key
-            commandId="org.limepepper.rcp.templateproject.ui.commands.exampleCommand"
-            contextId="org.eclipse.ui.contexts.window"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+6">
-      </key>
-   </extension>
-   <extension
          point="org.eclipse.ui.newWizards">
       <category
             id="org.limepepper.rcp.templateproject.ui"

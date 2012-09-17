@@ -21,11 +21,21 @@
                name="appName"
                value="Template Project Product">
          </property>
-         <property
-               name="applicationXMI"
-               value="org.limepepper.rcp.templateproject.product/Application.e4xmi">
-         </property>
       </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.limepepper.rcp.templateproject.product.TemplatePerspectiveFactory"
+            id="org.limepepper.rcp.templateproject.product.perspective"
+            name="Template Perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+      </perspectiveExtension>
    </extension>
 
 </plugin>
