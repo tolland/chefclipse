@@ -1,4 +1,4 @@
-package org.limepepper.rcp.templateproject.product;
+package org.limepepper.rcp.templateproject.app;
 
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;

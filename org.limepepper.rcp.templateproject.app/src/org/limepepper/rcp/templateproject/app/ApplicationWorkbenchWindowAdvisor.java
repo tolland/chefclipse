@@ -1,4 +1,4 @@
-package org.limepepper.rcp.templateproject.product;
+package org.limepepper.rcp.templateproject.app;
 
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.ui.application.ActionBarAdvisor;

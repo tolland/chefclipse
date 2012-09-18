@@ -1,4 +1,4 @@
-package org.limepepper.rcp.templateproject.product;
+package org.limepepper.rcp.templateproject.app;
 
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchAdvisor;

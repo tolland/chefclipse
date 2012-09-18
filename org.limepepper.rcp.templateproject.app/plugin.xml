@@ -3,11 +3,11 @@
 <plugin>
 
    <extension
-         id="org.limepepper.rcp.templateproject.product.application"
+         id="org.limepepper.rcp.templateproject.app"
          point="org.eclipse.core.runtime.applications">
       <application>
          <run
-               class="org.limepepper.rcp.templateproject.product.Application">
+               class="org.limepepper.rcp.templateproject.app.Application">
          </run>
       </application>
    </extension>
@@ -15,7 +15,7 @@
          id="product"
          point="org.eclipse.core.runtime.products">
       <product
-            application="org.limepepper.rcp.templateproject.product.application"
+            application="org.limepepper.rcp.templateproject.app"
             name="Template Project Product">
          <property
                name="appName"
@@ -26,7 +26,7 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            class="org.limepepper.rcp.templateproject.product.TemplatePerspectiveFactory"
+            class="org.limepepper.rcp.templateproject.app.TemplatePerspectiveFactory"
             id="org.limepepper.rcp.templateproject.product.perspective"
             name="Template Perspective">
       </perspective>

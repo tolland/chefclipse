@@ -1,4 +1,4 @@
-package org.limepepper.rcp.templateproject.product;
+package org.limepepper.rcp.templateproject.app;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;

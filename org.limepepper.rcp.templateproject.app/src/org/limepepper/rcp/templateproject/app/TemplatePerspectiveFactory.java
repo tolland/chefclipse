@@ -1,4 +1,4 @@
-package org.limepepper.rcp.templateproject.product;
+package org.limepepper.rcp.templateproject.app;
 
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
