@@ -26,14 +26,14 @@ import org.eclipse.ui.ide.IDE;
  * be able to open it.
  */
 
-public class SampleNewWizard extends Wizard implements INewWizard {
-	private SampleNewWizardPage page;
+public class NewModuleWizard extends Wizard implements INewWizard {
+	private NewModuleWizardPage page;
 	private ISelection selection;
 
 	/**
 	 * Constructor for SampleNewWizard.
 	 */
-	public SampleNewWizard() {
+	public NewModuleWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
@@ -43,7 +43,7 @@ public class SampleNewWizard extends Wizard implements INewWizard {
 	 */
 
 	public void addPages() {
-		page = new SampleNewWizardPage(selection);
+		page = new NewModuleWizardPage(selection);
 		addPage(page);
 	}
 

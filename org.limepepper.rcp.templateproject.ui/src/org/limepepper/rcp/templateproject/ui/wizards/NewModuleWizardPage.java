@@ -26,7 +26,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
  * OR with the extension that matches the expected one (mpe).
  */
 
-public class SampleNewWizardPage extends WizardPage {
+public class NewModuleWizardPage extends WizardPage {
 	private Text containerText;
 
 	private Text fileText;
@@ -38,7 +38,7 @@ public class SampleNewWizardPage extends WizardPage {
 	 * 
 	 * @param pageName
 	 */
-	public SampleNewWizardPage(ISelection selection) {
+	public NewModuleWizardPage(ISelection selection) {
 		super("wizardPage");
 		setTitle("Multi-page Editor File");
 		setDescription("This wizard creates a new file with *.mpe extension that can be opened by a multi-page editor.");

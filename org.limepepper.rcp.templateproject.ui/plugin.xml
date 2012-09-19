@@ -5,14 +5,22 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="org.limepepper.rcp.templateproject.ui"
-            name="Sample Wizards">
+            name="Template Project">
       </category>
       <wizard
             category="org.limepepper.rcp.templateproject.ui"
-            class="org.limepepper.rcp.templateproject.ui.wizards.SampleNewWizard"
+            class="org.limepepper.rcp.templateproject.ui.wizards.NewProjectWizard"
             icon="icons/sample.gif"
-            id="org.limepepper.rcp.templateproject.ui.wizards.SampleNewWizard"
-            name="Multi-page Editor file">
+            id="org.limepepper.rcp.templateproject.ui.wizards.NewProjectWizard"
+            name="New Template Project"
+            project="true">
+      </wizard>
+      <wizard
+            category="org.limepepper.rcp.templateproject.ui"
+            class="org.limepepper.rcp.templateproject.ui.wizards.NewModuleWizard"
+            icon="icons/sample.gif"
+            id="org.limepepper.rcp.templateproject.ui.wizards.NewModuleWizard"
+            name="New Template Module">
       </wizard>
    </extension>
 

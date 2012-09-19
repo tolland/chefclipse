@@ -134,6 +134,8 @@
       <plugin id="org.eclipse.ui.workbench"/>
       <plugin id="org.eclipse.ui.workbench.texteditor"/>
       <plugin id="org.limepepper.rcp.templateproject.app"/>
+      <plugin id="org.limepepper.rcp.templateproject.common"/>
+      <plugin id="org.limepepper.rcp.templateproject.ui"/>
       <plugin id="org.sat4j.core"/>
       <plugin id="org.sat4j.pb"/>
       <plugin id="org.w3c.css.sac"/>
