@@ -23,5 +23,36 @@
             name="New Template Module">
       </wizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.limepepper.rcp.templateproject.ui.perspective.TemplatePerspectiveFactory"
+            id="org.limepepper.rcp.templateproject.ui.TemplatePerspective"
+            name="Template">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.limepepper.rcp.templateproject.ui.TemplatePerspective">
+         <showInPart
+               id="org.eclipse.ui.navigator.ProjectExplorer">
+         </showInPart>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.limepepper.rcp.templateproject.ui.preferences.TemplateProjectPreferencePage"
+            id="org.limepepper.rcp.templateproject.ui.preferences.TemplateProjectPreferencePage"
+            name="Template Project Preferences">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.limepepper.rcp.templateproject.ui.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

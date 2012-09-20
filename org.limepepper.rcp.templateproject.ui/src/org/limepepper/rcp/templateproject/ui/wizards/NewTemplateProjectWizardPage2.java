@@ -4,9 +4,9 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
-public class NewProjectWizardEmptyPage extends WizardPage{
+public class NewTemplateProjectWizardPage2 extends WizardPage{
 
-	protected NewProjectWizardEmptyPage(String pageName) {
+	protected NewTemplateProjectWizardPage2(String pageName) {
 		super(pageName);
 		this.setTitle("New Template Project");
 		this.setDescription(pageName);

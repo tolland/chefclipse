@@ -18,12 +18,10 @@ import org.eclipse.ui.IWorkbench;
 
 
 public class NewProjectWizard extends Wizard implements INewWizard {
-		
-	private WizardNewProjectCreationPage projPage;	
-	
-	private NewProjectWizardEmptyPage emptyPage1;
-	private NewProjectWizardEmptyPage emptyPage2;
-	
+					
+	private NewTemplateProjectWizardPage1 page1;
+	private NewTemplateProjectWizardPage2 page2;
+	private NewTemplateProjectWizardPageConfirm pageConfirm;
 
 	
 	public NewProjectWizard() {
@@ -33,23 +31,19 @@ public class NewProjectWizard extends Wizard implements INewWizard {
 	
 
 
-	public void addPages() {		
-		projPage = new WizardNewProjectCreationPage("New Template Project");
-		projPage.setTitle("New Template Project");
-		projPage.setDescription("");
+	public void addPages() {						
+		page1 = new NewTemplateProjectWizardPage1("New Template Project Page 1");
+		page2 = new NewTemplateProjectWizardPage2("Nwe Template Project Page 2");
+		pageConfirm = new NewTemplateProjectWizardPageConfirm("New Template Project");
 		
-		emptyPage1 = new NewProjectWizardEmptyPage("Empty Page 1");
-		emptyPage2 = new NewProjectWizardEmptyPage("Empty Page 2");
-								
-		addPage(emptyPage1);
-		addPage(emptyPage2);
-		
-		addPage(projPage);
+		addPage(page1);
+		addPage(page2);		
+		addPage(pageConfirm);
 	}
 
 
 	public boolean performFinish() {				
-		final IProject proj = projPage.getProjectHandle();		
+		final IProject proj = pageConfirm.getProjectHandle();		
 		final IProjectDescription desc = 
 				proj.getWorkspace().newProjectDescription(proj.getName());
 		
@@ -72,7 +66,7 @@ public class NewProjectWizard extends Wizard implements INewWizard {
 		
 		
 		try {
-			getContainer().run(true, false, op);
+			this.getContainer().run(true, false, op);
 		} catch (InterruptedException e) {
 			return false;
 		} catch (InvocationTargetException e) {

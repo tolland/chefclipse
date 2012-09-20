@@ -1,8 +1,11 @@
 package org.limepepper.rcp.templateproject.ui.wizards;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -20,34 +23,23 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
-/**
- * The "New" wizard page allows setting the container for the new file as well
- * as the file name. The page will only accept file name without the extension
- * OR with the extension that matches the expected one (mpe).
- */
 
-public class NewModuleWizardPage extends WizardPage {
+
+public class NewModuleWizardPageConfirm extends WizardPage {
 	private Text containerText;
-
-	private Text fileText;
+	private Text moduleText;
 
 	private ISelection selection;
 
-	/**
-	 * Constructor for SampleNewWizardPage.
-	 * 
-	 * @param pageName
-	 */
-	public NewModuleWizardPage(ISelection selection) {
-		super("wizardPage");
-		setTitle("Multi-page Editor File");
-		setDescription("This wizard creates a new file with *.mpe extension that can be opened by a multi-page editor.");
+	
+	public NewModuleWizardPageConfirm(ISelection selection) {
+		super("moduleWizardPage");
+		setTitle("New Template Module");
+		setDescription("This wizard creates a new module");
 		this.selection = selection;
 	}
 
-	/**
-	 * @see IDialogPage#createControl(Composite)
-	 */
+	
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
 		GridLayout layout = new GridLayout();
@@ -74,12 +66,12 @@ public class NewModuleWizardPage extends WizardPage {
 			}
 		});
 		label = new Label(container, SWT.NULL);
-		label.setText("&File name:");
+		label.setText("&Module name:");
 
-		fileText = new Text(container, SWT.BORDER | SWT.SINGLE);
+		moduleText = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gd = new GridData(GridData.FILL_HORIZONTAL);
-		fileText.setLayoutData(gd);
-		fileText.addModifyListener(new ModifyListener() {
+		moduleText.setLayoutData(gd);
+		moduleText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
 			}
@@ -96,9 +88,11 @@ public class NewModuleWizardPage extends WizardPage {
 	private void initialize() {
 		if (selection != null && selection.isEmpty() == false
 				&& selection instanceof IStructuredSelection) {
+			
 			IStructuredSelection ssel = (IStructuredSelection) selection;
 			if (ssel.size() > 1)
 				return;
+			
 			Object obj = ssel.getFirstElement();
 			if (obj instanceof IResource) {
 				IContainer container;
@@ -106,10 +100,21 @@ public class NewModuleWizardPage extends WizardPage {
 					container = (IContainer) obj;
 				else
 					container = ((IResource) obj).getParent();
-				containerText.setText(container.getFullPath().toString());
+				
+				// Check if the container is our template project
+				if(container instanceof IProject){
+					try{						
+						if(((IProject)container).getNature("") != null){
+							containerText.setText(container.getFullPath().toString());
+						}
+					}catch(CoreException e){
+						e.printStackTrace();
+					}
+				}				
 			}
 		}
-		fileText.setText("new_file.mpe");
+		
+		moduleText.setText("new_module");
 	}
 
 	/**
@@ -120,7 +125,7 @@ public class NewModuleWizardPage extends WizardPage {
 	private void handleBrowse() {
 		ContainerSelectionDialog dialog = new ContainerSelectionDialog(
 				getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
-				"Select new file container");
+				"Select new module container");
 		if (dialog.open() == ContainerSelectionDialog.OK) {
 			Object[] result = dialog.getResult();
 			if (result.length == 1) {
@@ -136,37 +141,47 @@ public class NewModuleWizardPage extends WizardPage {
 	private void dialogChanged() {
 		IResource container = ResourcesPlugin.getWorkspace().getRoot()
 				.findMember(new Path(getContainerName()));
-		String fileName = getFileName();
+		
+		String fileName = getModuleName();
 
 		if (getContainerName().length() == 0) {
 			updateStatus("File container must be specified");
 			return;
 		}
 		if (container == null
-				|| (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0) {
-			updateStatus("File container must exist");
+				|| (container.getType() & IResource.PROJECT) == 0) {
+			updateStatus("Module container must exist");
 			return;
 		}
+						
+		if (container instanceof IProject){
+			
+			try {
+				if(((IProject)container).getNature("org.limepepper.rcp.templateproject.common.resources.ProjectNature") == null){
+					updateStatus("Template Project container must be specified");
+					return;
+				}
+			} catch (CoreException e) {				
+				e.printStackTrace();
+				return;
+			}						
+		}
+		
 		if (!container.isAccessible()) {
 			updateStatus("Project must be writable");
 			return;
-		}
+		}		
 		if (fileName.length() == 0) {
-			updateStatus("File name must be specified");
+			updateStatus("Module name must be specified");
 			return;
 		}
 		if (fileName.replace('\\', '/').indexOf('/', 1) > 0) {
-			updateStatus("File name must be valid");
+			updateStatus("Module name must be valid");
 			return;
 		}
-		int dotLoc = fileName.lastIndexOf('.');
-		if (dotLoc != -1) {
-			String ext = fileName.substring(dotLoc + 1);
-			if (ext.equalsIgnoreCase("mpe") == false) {
-				updateStatus("File extension must be \"mpe\"");
-				return;
-			}
-		}
+		
+		
+		
 		updateStatus(null);
 	}
 
@@ -178,8 +193,18 @@ public class NewModuleWizardPage extends WizardPage {
 	public String getContainerName() {
 		return containerText.getText();
 	}
-
-	public String getFileName() {
-		return fileText.getText();
+	
+	public IProject getContainerHandle(){
+		return ResourcesPlugin.getWorkspace().getRoot().getProject(
+                getContainerName());
 	}
+	
+	public String getModuleName() {
+		return moduleText.getText();
+	}
+			
+	public IFolder getModuleHandle(){
+		return getContainerHandle().getFolder(getModuleName());
+	}
+	
 }
