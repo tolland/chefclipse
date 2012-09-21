@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+import org.limepepper.rcp.templateproject.common.resources.TemplateProject;
 import org.limepepper.rcp.templateproject.common.resources.TemplateResources;
 
 
@@ -150,14 +151,7 @@ public class NewModuleWizardPageConfirm extends WizardPage {
 			updateStatus("Module container must exist");
 			return;
 		}
-						
-		if (container instanceof IProject){
-			if(TemplateResources.getProject((IProject)container) == null){
-				updateStatus("Template Project container must be specified");
-				return;
-			}								
-		}
-		
+												
 		if (!container.isAccessible()) {
 			updateStatus("Project must be writable");
 			return;
@@ -171,7 +165,18 @@ public class NewModuleWizardPageConfirm extends WizardPage {
 			return;
 		}
 		
-		
+		if (container instanceof IProject){
+			TemplateProject project = TemplateResources.getProject((IProject)container);
+			if(project == null){
+				updateStatus("Template Project container must be specified");
+				return;
+			}
+			
+			if(project.getModule(fileName) != null){
+				updateStatus("A module with that name already exists in the project.");
+				return;
+			}				
+		}
 		
 		updateStatus(null);
 	}

@@ -9,6 +9,10 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 
+/*
+ * Helper routines to access and create resources with respect to structure
+ * of the template project.
+ */
 public class TemplateResources {
 	
 	public static String MODULES_FOLDER_NAME = ".modules";
