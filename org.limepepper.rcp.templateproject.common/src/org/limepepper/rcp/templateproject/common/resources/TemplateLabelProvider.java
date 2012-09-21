@@ -31,11 +31,8 @@ public class TemplateLabelProvider implements ILabelProvider {
 	}
 
 	@Override
-	public String getText(Object element) {
-		if (element instanceof TemplateProject){
-			return ((TemplateProject)element).getProject().getName();
-		}
-		else if (element instanceof TemplateModule){
+	public String getText(Object element) {		
+		if (element instanceof TemplateModule){
 			return ((TemplateModule)element).getName();
 		}
 		return null;

@@ -44,8 +44,7 @@ public class NewModuleWizard extends Wizard implements INewWizard {
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {					
-					TemplateResources.createTemplateModule(moduleName, container , monitor);
-					
+					TemplateResources.createTemplateModule(moduleName, container , monitor);					
 				} catch (CoreException e) {
 					throw new InvocationTargetException(e);
 				} finally {

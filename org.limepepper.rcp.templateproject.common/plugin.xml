@@ -29,7 +29,7 @@
                      value="org.limepepper.rcp.templateproject.common.resources.TemplateModule">
                </instanceof>
                <instanceof
-                     value="org.limepepper.rcp.templateproject.common.resources.TemplateProject">
+                     value="org.eclipse.core.resources.IProject">
                </instanceof>
             </or>
          </triggerPoints>
