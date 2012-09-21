@@ -2,14 +2,49 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="org.limepepper.rcp.templateproject.common.resources.ProjectNature"
+         id="org.limepepper.rcp.templateproject.common.resources.TemplateProjectNature"
          name="Template Project Nature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.limepepper.rcp.templateproject.common.resources.ProjectNature">
+               class="org.limepepper.rcp.templateproject.common.resources.TemplateProjectNature">
          </run>
       </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.limepepper.rcp.templateproject.common.resources.TemplateContentProvider"
+            id="org.limepepper.rcp.templateproject.common.templateContent"
+            labelProvider="org.limepepper.rcp.templateproject.common.resources.TemplateLabelProvider"
+            name="Template Content Provider"
+            priority="high">
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="org.eclipse.core.resources.IWorkspaceRoot">
+               </instanceof>
+               <instanceof
+                     value="org.limepepper.rcp.templateproject.common.resources.TemplateModule">
+               </instanceof>
+               <instanceof
+                     value="org.limepepper.rcp.templateproject.common.resources.TemplateProject">
+               </instanceof>
+            </or>
+         </triggerPoints>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="org.limepepper.rcp.templateproject.common.templateContent">
+            </contentExtension></includes>
+      </viewerContentBinding>
    </extension>
 
 </plugin>

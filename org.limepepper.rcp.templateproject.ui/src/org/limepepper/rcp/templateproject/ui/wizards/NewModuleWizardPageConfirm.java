@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+import org.limepepper.rcp.templateproject.common.resources.TemplateResources;
 
 
 
@@ -101,14 +102,10 @@ public class NewModuleWizardPageConfirm extends WizardPage {
 				else
 					container = ((IResource) obj).getParent();
 				
-				// Check if the container is our template project
+				// Check if the container is the template project
 				if(container instanceof IProject){
-					try{						
-						if(((IProject)container).getNature("") != null){
-							containerText.setText(container.getFullPath().toString());
-						}
-					}catch(CoreException e){
-						e.printStackTrace();
+					if(TemplateResources.getProject((IProject)container) != null){
+						containerText.setText(container.getFullPath().toString());
 					}
 				}				
 			}
@@ -155,16 +152,10 @@ public class NewModuleWizardPageConfirm extends WizardPage {
 		}
 						
 		if (container instanceof IProject){
-			
-			try {
-				if(((IProject)container).getNature("org.limepepper.rcp.templateproject.common.resources.ProjectNature") == null){
-					updateStatus("Template Project container must be specified");
-					return;
-				}
-			} catch (CoreException e) {				
-				e.printStackTrace();
+			if(TemplateResources.getProject((IProject)container) == null){
+				updateStatus("Template Project container must be specified");
 				return;
-			}						
+			}								
 		}
 		
 		if (!container.isAccessible()) {
@@ -202,9 +193,5 @@ public class NewModuleWizardPageConfirm extends WizardPage {
 	public String getModuleName() {
 		return moduleText.getText();
 	}
-			
-	public IFolder getModuleHandle(){
-		return getContainerHandle().getFolder(getModuleName());
-	}
-	
+					
 }

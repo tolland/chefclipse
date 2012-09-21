@@ -4,7 +4,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 
-public class ProjectNature implements IProjectNature{
+/**
+ * @author markin
+ * A project nature for the template project
+ */
+public class TemplateProjectNature implements IProjectNature{
 	
 	private IProject project;
 	

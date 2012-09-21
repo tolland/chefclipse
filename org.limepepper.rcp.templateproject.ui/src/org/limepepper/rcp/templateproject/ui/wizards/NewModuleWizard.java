@@ -2,7 +2,7 @@ package org.limepepper.rcp.templateproject.ui.wizards;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -12,6 +12,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
+import org.limepepper.rcp.templateproject.common.resources.TemplateResources;
 
 
 public class NewModuleWizard extends Wizard implements INewWizard {
@@ -37,12 +38,14 @@ public class NewModuleWizard extends Wizard implements INewWizard {
 
 	
 	public boolean performFinish() {
-		final IFolder module = pageConfirm.getModuleHandle();
+		final String moduleName = pageConfirm.getModuleName();
+		final IProject container = pageConfirm.getContainerHandle(); 
 		
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
-				try {
-					module.create(true, true, monitor);					
+				try {					
+					TemplateResources.createTemplateModule(moduleName, container , monitor);
+					
 				} catch (CoreException e) {
 					throw new InvocationTargetException(e);
 				} finally {

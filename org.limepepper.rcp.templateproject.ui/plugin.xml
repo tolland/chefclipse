@@ -54,5 +54,8 @@
             class="org.limepepper.rcp.templateproject.ui.preferences.PreferenceInitializer">
       </initializer>
    </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+   </extension>
 
 </plugin>
