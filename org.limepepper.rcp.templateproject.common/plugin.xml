@@ -41,7 +41,7 @@
             viewerId="org.eclipse.ui.navigator.ProjectExplorer">
          <includes>
             <contentExtension
-                  isRoot="false"
+                  isRoot="true"
                   pattern="org.limepepper.rcp.templateproject.common.templateContent">
             </contentExtension></includes>
       </viewerContentBinding>
