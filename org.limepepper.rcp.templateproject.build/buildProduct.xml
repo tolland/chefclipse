@@ -24,6 +24,8 @@
 			<fileset dir="${basedir}/..">
 				<include name="org.limepepper.rcp.templateproject.product/**/*"/>
 				<include name="org.limepepper.rcp.templateproject.app/**/*"/>
+				<include name="org.limepepper.rcp.templateproject.ui/**/*"/>
+				<include name="org.limepepper.rcp.templateproject.common/**/*"/>			
 				<exclude name="**/bin/**"/>
 			</fileset>
 		</copy>
