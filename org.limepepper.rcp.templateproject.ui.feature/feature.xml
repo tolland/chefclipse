@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.limepepper.rcp.templateproject.feature"
-      label="templateproject"
+      id="org.limepepper.rcp.templateproject.ui.feature"
+      label="Template Project UI"
       version="1.0.0.qualifier">
 
    <description url="http://www.example.com/description">
@@ -21,6 +21,9 @@
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.limepepper.rcp.templateproject.common" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.navigator" version="3.5.200" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.8.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

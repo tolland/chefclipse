@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.limepepper.rcp.templateproject.feature_1.0.0.201209241847.jar" id="org.limepepper.rcp.templateproject.feature" version="1.0.0.201209241847">
-      <category name="org.limepepper.rcp.templateproject.p2.category"/>
+   <feature url="features/org.limepepper.rcp.templateproject.app.feature_1.0.0.qualifier.jar" id="org.limepepper.rcp.templateproject.app.feature" version="1.0.0.qualifier">
+      <category name="org.limepepper.rcp.templateproject.p2.app.category"/>
    </feature>
-   <category-def name="org.limepepper.rcp.templateproject.p2.category" label="Template Project Category"/>
+   <feature url="features/org.limepepper.rcp.templateproject.ui.feature_1.0.0.qualifier.jar" id="org.limepepper.rcp.templateproject.ui.feature" version="1.0.0.qualifier">
+      <category name="org.limepepper.rcp.templateproject.p2.ui.category"/>
+   </feature>
+   <category-def name="org.limepepper.rcp.templateproject.p2.app.category" label="Template Project RCP"/>
+   <category-def name="org.limepepper.rcp.templateproject.p2.ui.category" label="Template Project UI"/>
 </site>
