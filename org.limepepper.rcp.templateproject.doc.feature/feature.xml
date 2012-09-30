@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.limepepper.rcp.remplateproject.doc.feature"
+      id="org.limepepper.rcp.templateproject.doc.feature"
       label="Template Project Doc"
       version="1.0.0.qualifier">
 
@@ -17,7 +17,7 @@
    </license>
 
    <plugin
-         id="org.limepepper.tenplateproject.doc"
+         id="org.limepepper.rcp.templateproject.doc"
          download-size="0"
          install-size="0"
          version="0.0.0"

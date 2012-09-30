@@ -22,6 +22,8 @@
   
   	
   <modules>
+  	<module>../org.limepepper.rcp.templateproject.doc</module>
+  	<module>../org.limepepper.rcp.templateproject.doc.feature</module>
     <module>../org.limepepper.rcp.templateproject.app</module>
 	<module>../org.limepepper.rcp.templateproject.app.feature</module>
 	<module>../org.limepepper.rcp.templateproject.common</module>

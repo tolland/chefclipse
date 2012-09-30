@@ -6,7 +6,7 @@
    <feature url="features/org.limepepper.rcp.templateproject.ui.feature_1.0.0.qualifier.jar" id="org.limepepper.rcp.templateproject.ui.feature" version="1.0.0.qualifier">
       <category name="org.limepepper.rcp.templateproject.p2.ui.category"/>
    </feature>
-   <feature url="features/org.limepepper.rcp.remplateproject.doc.feature_1.0.0.qualifier.jar" id="org.limepepper.rcp.remplateproject.doc.feature" version="1.0.0.qualifier">
+   <feature url="features/org.limepepper.rcp.templateproject.doc.feature_1.0.0.qualifier.jar" id="org.limepepper.rcp.templateproject.doc.feature" version="1.0.0.qualifier">
       <category name="org.limepepper.rcp.templateproject.p2.ui.category"/>
    </feature>
    <category-def name="org.limepepper.rcp.templateproject.p2.app.category" label="Template Project RCP"/>
