@@ -9,7 +9,7 @@
   <packaging>pom</packaging>
   
   <properties>
-    <tycho-version>0.15.0</tycho-version>
+    <tycho-version>0.15.0</tycho-version>    
   </properties>
   
   <repositories>
@@ -19,6 +19,15 @@
    		<layout>p2</layout>
   	</repository>
   </repositories>
+  
+  
+  <distributionManagement>
+  	<repository>
+  		<id>p2.repo</id>
+  		<name>p2 Update site</name>
+  		<url>file://repository</url>
+  	</repository>
+  </distributionManagement>
   
   	
   <modules>
@@ -30,8 +39,10 @@
 	<module>../org.limepepper.rcp.templateproject.ui</module>
  	<module>../org.limepepper.rcp.templateproject.ui.feature</module>
  	<module>../org.limepepper.rcp.templateproject.p2</module>
- 	<module>../org.limepepper.rcp.templateproject</module>
+<!--  	<module>../org.limepepper.rcp.templateproject</module> -->
   </modules>
+  
+  
   
   <build>
     <plugins>
@@ -42,29 +53,28 @@
 		<version>${tycho-version}</version>
         <extensions>true</extensions>        
       </plugin>
-      
-      
-<!--       <plugin> -->
-<!--         <groupId>org.eclipse.tycho</groupId> -->
-<!--         <artifactId>tycho-p2-director-plugin</artifactId> -->
-<!--         <version>${tycho-version}</version> -->
-<!--         <executions> -->
-<!--           <execution> -->
-<!--             <id>materialize-products</id> -->
-<!--             <goals> -->
-<!--               <goal>materialize-products</goal> -->
-<!--             </goals> -->
-<!--           </execution> -->
-<!--           <execution> -->
-<!--             <id>archive-products</id> -->
-<!--             <goals> -->
-<!--               <goal>archive-products</goal> -->
-<!--             </goals> -->
-<!--           </execution> -->
-<!--         </executions> -->
-<!--       </plugin> -->
-      
-      
+                             
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-director-plugin</artifactId>
+        <version>${tycho-version}</version>
+        
+        <executions>        
+          <execution>
+            <id>materialize-products</id>            
+            <goals>
+              <goal>materialize-products</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>archive-products</id>
+            <goals>
+              <goal>archive-products</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+            
       <plugin>
   		<groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
@@ -102,5 +112,5 @@
   	  
     </plugins>
   </build>
-  
+      
 </project>

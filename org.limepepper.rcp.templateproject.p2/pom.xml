@@ -11,5 +11,46 @@
   <groupId>org.limepepper.rcp.templateproject.build</groupId>
   <artifactId>org.limepepper.rcp.templateproject.p2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>eclipse-update-site</packaging>
+  
+  <packaging>eclipse-repository</packaging>
+  
+  <scm>
+  	<connection>scm:git:https://github.com/tolland/jenkins-users.git</connection>
+  	<developerConnection>scm:git:https://github.com/tolland/jenkins-users.git</developerConnection>
+  </scm>
+  
+  <build>
+  	<plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.8</version>                
+        <executions>
+        	<execution>
+        		<id>git.push</id>
+        		<configuration>
+        			<workingDirectory>target/repository</workingDirectory>
+        			<message>${project.version}</message>
+        			<branch>update-site</branch>
+        		</configuration>
+        		<goals>
+        			<goal>checkin</goal>
+        		</goals>
+        		<phase>package</phase>        		
+        	</execution>
+        	<execution>
+        		<id>git.fetch</id>
+        		<configuration>
+        			<checkoutDirectory>target/repository</checkoutDirectory>        			
+        		</configuration>
+        		<goals>
+        			<goal>checkout</goal>
+        		</goals>
+        		<phase>validate</phase>        		
+        	</execution>
+        </executions>        
+      </plugin>
+  	</plugins>    
+  </build>
+          
 </project>
