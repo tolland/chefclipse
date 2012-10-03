@@ -14,42 +14,74 @@
   
   <packaging>eclipse-repository</packaging>
   
+  <properties>
+  	<repo.path>${project.build.directory}/repository</repo.path>
+    <checkout.path>${project.build.directory}/checkout</checkout.path>
+    <checkout.dir>templateproject/update-site</checkout.dir>
+  </properties>
+  
   <scm>
   	<connection>scm:git:https://github.com/tolland/jenkins-users.git</connection>
-  	<developerConnection>scm:git:https://github.com/tolland/jenkins-users.git</developerConnection>
+  	<developerConnection>scm:git:https://github.com/tolland/jenkins-users.git</developerConnection>  
   </scm>
   
   <build>
   	<plugins>
+  	
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-plugin</artifactId>
         <version>1.8</version>                
         <executions>
         	<execution>
-        		<id>git.push</id>
-        		<configuration>
-        			<workingDirectory>target/repository</workingDirectory>
-        			<message>${project.version}</message>
-        			<branch>update-site</branch>
-        		</configuration>
-        		<goals>
-        			<goal>checkin</goal>
-        		</goals>
-        		<phase>package</phase>        		
-        	</execution>
-        	<execution>
-        		<id>git.fetch</id>
-        		<configuration>
-        			<checkoutDirectory>target/repository</checkoutDirectory>        			
-        		</configuration>
+        		<id>git-fetch</id>
+        		<phase>package</phase>
         		<goals>
         			<goal>checkout</goal>
         		</goals>
-        		<phase>validate</phase>        		
+        		<configuration>
+        			<checkoutDirectory>${checkout.path}</checkoutDirectory>        			
+        		</configuration>        		        		
+        	</execution>
+        	
+        	<execution>
+        		<id>git-push</id>        		
+        		<phase>install</phase>
+        		<goals>        			
+        			<goal>checkin</goal>
+        		</goals>
+        		<configuration>
+        			<workingDirectory>${checkout.path}</workingDirectory>
+        			<includes>**</includes>
+        			<message>${project.version}</message>
+        			<tag>tamplateproject.p2.${project.version}</tag>        			
+        			<username></username>
+        			<password></password>
+        		</configuration>         		
         	</execution>
         </executions>        
       </plugin>
+
+	  <plugin>
+      	<groupId>org.codehaus.mojo</groupId>
+      	<artifactId>wagon-maven-plugin</artifactId>
+      	<version>1.0-beta-4</version>
+      	<executions>
+       		<execution>
+        		<id>copy-repo</id>
+        		<phase>package</phase>
+        		<goals>
+         			<goal>upload</goal>
+        		</goals>
+        		<configuration>
+         			<fromDir>${repo.path}</fromDir>
+         			<includes>**</includes>
+         			<toDir>${checkout.dir}</toDir>
+         			<url>file://${checkout.path}</url>         
+        		</configuration>
+       		</execution>
+      	</executions>
+     </plugin>                      	
   	</plugins>    
   </build>
           

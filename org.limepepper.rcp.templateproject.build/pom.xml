@@ -20,15 +20,7 @@
   	</repository>
   </repositories>
   
-  
-  <distributionManagement>
-  	<repository>
-  		<id>p2.repo</id>
-  		<name>p2 Update site</name>
-  		<url>file://repository</url>
-  	</repository>
-  </distributionManagement>
-  
+      
   	
   <modules>
   	<module>../org.limepepper.rcp.templateproject.doc</module>
@@ -39,7 +31,7 @@
 	<module>../org.limepepper.rcp.templateproject.ui</module>
  	<module>../org.limepepper.rcp.templateproject.ui.feature</module>
  	<module>../org.limepepper.rcp.templateproject.p2</module>
-<!--  	<module>../org.limepepper.rcp.templateproject</module> -->
+ 	<module>../org.limepepper.rcp.templateproject</module>
   </modules>
   
   
