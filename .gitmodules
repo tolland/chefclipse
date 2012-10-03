@@ -1,3 +1,0 @@
-[submodule "jenkin-users"]
-	path = jenkin-users
-	url = https://github.com/tolland/jenkins-users.git
