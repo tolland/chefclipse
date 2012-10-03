@@ -2,7 +2,10 @@
  */
 package org.limepepper.chefclipse.cookbook;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,8 +14,27 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getDefinition()
- * @model
+ * @model kind="class"
  * @generated
  */
-public interface Definition extends EObject {
+public class Definition extends EObjectImpl implements EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Definition() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return CookbookPackage.Literals.DEFINITION;
+	}
+
 } // Definition

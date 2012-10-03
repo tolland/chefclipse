@@ -187,29 +187,6 @@ public class ChefItemProviderAdapterFactory extends ChefAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.chefserver.Ohai} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OhaiItemProvider ohaiItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.chefserver.Ohai}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOhaiAdapter() {
-		if (ohaiItemProvider == null) {
-			ohaiItemProvider = new OhaiItemProvider(this);
-		}
-
-		return ohaiItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.chefserver.Platform} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -256,49 +233,26 @@ public class ChefItemProviderAdapterFactory extends ChefAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.chefserver.ChefConfig} instances.
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.chefserver.Config} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChefConfigItemProvider chefConfigItemProvider;
+	protected ConfigItemProvider configItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.chefserver.ChefConfig}.
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.chefserver.Config}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createChefConfigAdapter() {
-		if (chefConfigItemProvider == null) {
-			chefConfigItemProvider = new ChefConfigItemProvider(this);
+	public Adapter createConfigAdapter() {
+		if (configItemProvider == null) {
+			configItemProvider = new ConfigItemProvider(this);
 		}
 
-		return chefConfigItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.chefserver.Search} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SearchItemProvider searchItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.chefserver.Search}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSearchAdapter() {
-		if (searchItemProvider == null) {
-			searchItemProvider = new SearchItemProvider(this);
-		}
-
-		return searchItemProvider;
+		return configItemProvider;
 	}
 
 	/**
@@ -405,11 +359,9 @@ public class ChefItemProviderAdapterFactory extends ChefAdapterFactory implement
 		if (roleItemProvider != null) roleItemProvider.dispose();
 		if (nodeItemProvider != null) nodeItemProvider.dispose();
 		if (serverItemProvider != null) serverItemProvider.dispose();
-		if (ohaiItemProvider != null) ohaiItemProvider.dispose();
 		if (platformItemProvider != null) platformItemProvider.dispose();
 		if (runListItemProvider != null) runListItemProvider.dispose();
-		if (chefConfigItemProvider != null) chefConfigItemProvider.dispose();
-		if (searchItemProvider != null) searchItemProvider.dispose();
+		if (configItemProvider != null) configItemProvider.dispose();
 	}
 
 }

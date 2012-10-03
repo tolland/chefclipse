@@ -95,6 +95,52 @@ public class ChefClientItemProviderAdapterFactory extends ChefClientAdapterFacto
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.chefclient.Ohai} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OhaiItemProvider ohaiItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.chefclient.Ohai}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOhaiAdapter() {
+		if (ohaiItemProvider == null) {
+			ohaiItemProvider = new OhaiItemProvider(this);
+		}
+
+		return ohaiItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.chefclient.Search} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SearchItemProvider searchItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.chefclient.Search}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSearchAdapter() {
+		if (searchItemProvider == null) {
+			searchItemProvider = new SearchItemProvider(this);
+		}
+
+		return searchItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -194,6 +240,8 @@ public class ChefClientItemProviderAdapterFactory extends ChefClientAdapterFacto
 	 */
 	public void dispose() {
 		if (clientItemProvider != null) clientItemProvider.dispose();
+		if (ohaiItemProvider != null) ohaiItemProvider.dispose();
+		if (searchItemProvider != null) searchItemProvider.dispose();
 	}
 
 }

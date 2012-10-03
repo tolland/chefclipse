@@ -66,9 +66,9 @@ public class KnifeSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case KnifePackage.CONFIGURATION: {
-				Configuration configuration = (Configuration)theEObject;
-				T result = caseConfiguration(configuration);
+			case KnifePackage.CONFIG: {
+				Config config = (Config)theEObject;
+				T result = caseConfig(config);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -89,17 +89,17 @@ public class KnifeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Configuration</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Configuration</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Config</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConfiguration(Configuration object) {
+	public T caseConfig(Config object) {
 		return null;
 	}
 

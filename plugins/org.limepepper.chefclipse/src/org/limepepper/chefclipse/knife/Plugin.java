@@ -2,7 +2,10 @@
  */
 package org.limepepper.chefclipse.knife;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,8 +14,27 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see org.limepepper.chefclipse.knife.KnifePackage#getPlugin()
- * @model
+ * @model kind="class"
  * @generated
  */
-public interface Plugin extends EObject {
+public class Plugin extends EObjectImpl implements EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Plugin() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return KnifePackage.Literals.PLUGIN;
+	}
+
 } // Plugin

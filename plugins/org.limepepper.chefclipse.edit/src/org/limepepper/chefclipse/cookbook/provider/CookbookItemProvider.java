@@ -60,6 +60,8 @@ public class CookbookItemProvider
 			super.getPropertyDescriptors(object);
 
 			addDependsPropertyDescriptor(object);
+			addEnvironmentPropertyDescriptor(object);
+			addRecipesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -84,6 +86,60 @@ public class CookbookItemProvider
 				 null,
 				 null,
 				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Environment feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnvironmentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cookbook_environment_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cookbook_environment_feature", "_UI_Cookbook_type"),
+				 CookbookPackage.Literals.COOKBOOK__ENVIRONMENT,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Recipes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRecipesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Cookbook_recipes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Cookbook_recipes_feature", "_UI_Cookbook_type"),
+				 CookbookPackage.Literals.COOKBOOK__RECIPES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean hasChildren(Object object) {
+		return hasChildren(object, true);
 	}
 
 	/**

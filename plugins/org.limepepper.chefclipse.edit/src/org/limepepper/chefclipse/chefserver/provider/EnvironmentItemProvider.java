@@ -61,6 +61,16 @@ public class EnvironmentItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean hasChildren(Object object) {
+		return hasChildren(object, true);
+	}
+
+	/**
 	 * This returns Environment.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -88,10 +88,6 @@ public class ChefAdapterFactory extends AdapterFactoryImpl {
 				return createServerAdapter();
 			}
 			@Override
-			public Adapter caseOhai(Ohai object) {
-				return createOhaiAdapter();
-			}
-			@Override
 			public Adapter casePlatform(Platform object) {
 				return createPlatformAdapter();
 			}
@@ -100,12 +96,8 @@ public class ChefAdapterFactory extends AdapterFactoryImpl {
 				return createRunListAdapter();
 			}
 			@Override
-			public Adapter caseChefConfig(ChefConfig object) {
-				return createChefConfigAdapter();
-			}
-			@Override
-			public Adapter caseSearch(Search object) {
-				return createSearchAdapter();
+			public Adapter caseConfig(Config object) {
+				return createConfigAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -198,20 +190,6 @@ public class ChefAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.chefserver.Ohai <em>Ohai</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.chefserver.Ohai
-	 * @generated
-	 */
-	public Adapter createOhaiAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.chefserver.Platform <em>Platform</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -240,30 +218,16 @@ public class ChefAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.chefserver.ChefConfig <em>Config</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.chefserver.Config <em>Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.chefserver.ChefConfig
+	 * @see org.limepepper.chefclipse.chefserver.Config
 	 * @generated
 	 */
-	public Adapter createChefConfigAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.chefserver.Search <em>Search</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.chefserver.Search
-	 * @generated
-	 */
-	public Adapter createSearchAdapter() {
+	public Adapter createConfigAdapter() {
 		return null;
 	}
 

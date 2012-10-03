@@ -13,12 +13,14 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -65,8 +67,54 @@ public class RepositoryItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addOSPropertyDescriptor(object);
+			addBasepathPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the OS feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addOSPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Repository_OS_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Repository_OS_feature", "_UI_Repository_type"),
+				 WorkstationPackage.Literals.REPOSITORY__OS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Basepath feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBasepathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Repository_basepath_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Repository_basepath_feature", "_UI_Repository_type"),
+				 WorkstationPackage.Literals.REPOSITORY__BASEPATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -101,6 +149,16 @@ public class RepositoryItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean hasChildren(Object object) {
+		return hasChildren(object, true);
+	}
+
+	/**
 	 * This returns Repository.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,7 +177,10 @@ public class RepositoryItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Repository_type");
+		String label = ((Repository)object).getOS();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Repository_type") :
+			getString("_UI_Repository_type") + " " + label;
 	}
 
 	/**
@@ -134,6 +195,10 @@ public class RepositoryItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Repository.class)) {
+			case WorkstationPackage.REPOSITORY__OS:
+			case WorkstationPackage.REPOSITORY__BASEPATH:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case WorkstationPackage.REPOSITORY__COOKBOOKS:
 			case WorkstationPackage.REPOSITORY__CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

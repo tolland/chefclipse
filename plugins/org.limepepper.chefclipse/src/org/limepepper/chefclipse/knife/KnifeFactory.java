@@ -2,7 +2,13 @@
  */
 package org.limepepper.chefclipse.knife;
 
-import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,49 +18,108 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.limepepper.chefclipse.knife.KnifePackage
  * @generated
  */
-public interface KnifeFactory extends EFactory {
+public class KnifeFactory extends EFactoryImpl {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	KnifeFactory eINSTANCE = org.limepepper.chefclipse.knife.impl.KnifeFactoryImpl.init();
+	public static final KnifeFactory eINSTANCE = init();
 
 	/**
-	 * Returns a new object of class '<em>Configuration</em>'.
+	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Configuration</em>'.
 	 * @generated
 	 */
-	Configuration createConfiguration();
+	public static KnifeFactory init() {
+		try {
+			KnifeFactory theKnifeFactory = (KnifeFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/knife"); 
+			if (theKnifeFactory != null) {
+				return theKnifeFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new KnifeFactory();
+	}
 
 	/**
-	 * Returns a new object of class '<em>Plugin</em>'.
+	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Plugin</em>'.
 	 * @generated
 	 */
-	Plugin createPlugin();
+	public KnifeFactory() {
+		super();
+	}
 
 	/**
-	 * Returns a new object of class '<em>Search</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Search</em>'.
 	 * @generated
 	 */
-	KnifeSearch createKnifeSearch();
+	@Override
+	public EObject create(EClass eClass) {
+		switch (eClass.getClassifierID()) {
+			case KnifePackage.CONFIG: return createConfig();
+			case KnifePackage.PLUGIN: return createPlugin();
+			case KnifePackage.KNIFE_SEARCH: return createKnifeSearch();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	KnifePackage getKnifePackage();
+	public Config createConfig() {
+		Config config = new Config();
+		return config;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Plugin createPlugin() {
+		Plugin plugin = new Plugin();
+		return plugin;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public KnifeSearch createKnifeSearch() {
+		KnifeSearch knifeSearch = new KnifeSearch();
+		return knifeSearch;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public KnifePackage getKnifePackage() {
+		return (KnifePackage)getEPackage();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @deprecated
+	 * @generated
+	 */
+	@Deprecated
+	public static KnifePackage getPackage() {
+		return KnifePackage.eINSTANCE;
+	}
 
 } //KnifeFactory

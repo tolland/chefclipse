@@ -1,6 +1,6 @@
 /**
  */
-package org.limepepper.chefclipse.workstation.provider;
+package org.limepepper.chefclipse.chefclient.provider;
 
 
 import java.util.Collection;
@@ -19,15 +19,13 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
-import org.limepepper.chefclipse.chefclient.provider.ChefclipseEditPlugin;
-
 /**
- * This is the item provider adapter for a {@link org.limepepper.chefclipse.workstation.Config} object.
+ * This is the item provider adapter for a {@link org.limepepper.chefclipse.chefclient.Search} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConfigItemProvider
+public class SearchItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -41,7 +39,7 @@ public class ConfigItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConfigItemProvider(AdapterFactory adapterFactory) {
+	public SearchItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -71,14 +69,14 @@ public class ConfigItemProvider
 	}
 
 	/**
-	 * This returns Config.gif.
+	 * This returns Search.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Config"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Search"));
 	}
 
 	/**
@@ -89,7 +87,7 @@ public class ConfigItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Config_type");
+		return getString("_UI_Search_type");
 	}
 
 	/**

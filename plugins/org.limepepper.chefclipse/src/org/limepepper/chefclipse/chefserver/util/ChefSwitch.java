@@ -96,12 +96,6 @@ public class ChefSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ChefPackage.OHAI: {
-				Ohai ohai = (Ohai)theEObject;
-				T result = caseOhai(ohai);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ChefPackage.PLATFORM: {
 				Platform platform = (Platform)theEObject;
 				T result = casePlatform(platform);
@@ -114,15 +108,9 @@ public class ChefSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ChefPackage.CHEF_CONFIG: {
-				ChefConfig chefConfig = (ChefConfig)theEObject;
-				T result = caseChefConfig(chefConfig);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ChefPackage.SEARCH: {
-				Search search = (Search)theEObject;
-				T result = caseSearch(search);
+			case ChefPackage.CONFIG: {
+				Config config = (Config)theEObject;
+				T result = caseConfig(config);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -206,21 +194,6 @@ public class ChefSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Ohai</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Ohai</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOhai(Ohai object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Platform</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -261,22 +234,7 @@ public class ChefSwitch<T> extends Switch<T> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseChefConfig(ChefConfig object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Search</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Search</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSearch(Search object) {
+	public T caseConfig(Config object) {
 		return null;
 	}
 

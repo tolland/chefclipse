@@ -1,6 +1,6 @@
 /**
  */
-package org.limepepper.chefclipse.chefserver;
+package org.limepepper.chefclipse.chefclient;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -9,21 +9,21 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Environment</b></em>'.
+ * A representation of the model object '<em><b>Search</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.limepepper.chefclipse.chefserver.ChefPackage#getEnvironment()
+ * @see org.limepepper.chefclipse.chefclient.ChefClientPackage#getSearch()
  * @model kind="class"
  * @generated
  */
-public class Environment extends EObjectImpl implements EObject {
+public class Search extends EObjectImpl implements EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Environment() {
+	protected Search() {
 		super();
 	}
 
@@ -34,7 +34,7 @@ public class Environment extends EObjectImpl implements EObject {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ChefPackage.Literals.ENVIRONMENT;
+		return ChefClientPackage.Literals.SEARCH;
 	}
 
-} // Environment
+} // Search

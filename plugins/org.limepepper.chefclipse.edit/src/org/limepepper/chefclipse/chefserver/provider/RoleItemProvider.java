@@ -61,6 +61,16 @@ public class RoleItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean hasChildren(Object object) {
+		return hasChildren(object, true);
+	}
+
+	/**
 	 * This returns Role.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

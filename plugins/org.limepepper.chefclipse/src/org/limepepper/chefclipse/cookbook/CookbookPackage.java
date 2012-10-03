@@ -7,6 +7,16 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.limepepper.chefclipse.chefclient.ChefClientPackage;
+
+import org.limepepper.chefclipse.chefserver.ChefPackage;
+
+import org.limepepper.chefclipse.knife.KnifePackage;
+
+import org.limepepper.chefclipse.workstation.WorkstationPackage;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -22,14 +32,14 @@ import org.eclipse.emf.ecore.EReference;
  * @model kind="package"
  * @generated
  */
-public interface CookbookPackage extends EPackage {
+public class CookbookPackage extends EPackageImpl {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "cookbook";
+	public static final String eNAME = "cookbook";
 
 	/**
 	 * The package namespace URI.
@@ -37,7 +47,7 @@ public interface CookbookPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://limepepper.org/chefclipse/cookbook";
+	public static final String eNS_URI = "http://limepepper.org/chefclipse/cookbook";
 
 	/**
 	 * The package namespace name.
@@ -45,7 +55,7 @@ public interface CookbookPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.limepepper.chefclipse";
+	public static final String eNS_PREFIX = "org.limepepper.chefclipse";
 
 	/**
 	 * The singleton instance of the package.
@@ -53,17 +63,17 @@ public interface CookbookPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	CookbookPackage eINSTANCE = org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl.init();
+	public static final CookbookPackage eINSTANCE = org.limepepper.chefclipse.cookbook.CookbookPackage.init();
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.impl.CookbookImpl <em>Cookbook</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.Cookbook <em>Cookbook</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookImpl
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getCookbook()
+	 * @see org.limepepper.chefclipse.cookbook.Cookbook
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getCookbook()
 	 * @generated
 	 */
-	int COOKBOOK = 0;
+	public static final int COOKBOOK = 0;
 
 	/**
 	 * The feature id for the '<em><b>Depends</b></em>' reference.
@@ -72,7 +82,25 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK__DEPENDS = 0;
+	public static final int COOKBOOK__DEPENDS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Environment</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COOKBOOK__ENVIRONMENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Recipes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int COOKBOOK__RECIPES = 2;
 
 	/**
 	 * The number of structural features of the '<em>Cookbook</em>' class.
@@ -81,17 +109,17 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK_FEATURE_COUNT = 1;
+	public static final int COOKBOOK_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.impl.DefinitionImpl <em>Definition</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.Definition <em>Definition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.cookbook.impl.DefinitionImpl
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getDefinition()
+	 * @see org.limepepper.chefclipse.cookbook.Definition
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getDefinition()
 	 * @generated
 	 */
-	int DEFINITION = 1;
+	public static final int DEFINITION = 1;
 
 	/**
 	 * The number of structural features of the '<em>Definition</em>' class.
@@ -100,17 +128,17 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINITION_FEATURE_COUNT = 0;
+	public static final int DEFINITION_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.impl.LibraryImpl <em>Library</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.Library <em>Library</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.cookbook.impl.LibraryImpl
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getLibrary()
+	 * @see org.limepepper.chefclipse.cookbook.Library
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getLibrary()
 	 * @generated
 	 */
-	int LIBRARY = 2;
+	public static final int LIBRARY = 2;
 
 	/**
 	 * The number of structural features of the '<em>Library</em>' class.
@@ -119,17 +147,17 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_FEATURE_COUNT = 0;
+	public static final int LIBRARY_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.impl.AttributeImpl <em>Attribute</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.Attribute <em>Attribute</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.cookbook.impl.AttributeImpl
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getAttribute()
+	 * @see org.limepepper.chefclipse.cookbook.Attribute
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getAttribute()
 	 * @generated
 	 */
-	int ATTRIBUTE = 3;
+	public static final int ATTRIBUTE = 3;
 
 	/**
 	 * The number of structural features of the '<em>Attribute</em>' class.
@@ -138,17 +166,53 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE_FEATURE_COUNT = 0;
+	public static final int ATTRIBUTE_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.impl.RecipeImpl <em>Recipe</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.Recipe <em>Recipe</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.cookbook.impl.RecipeImpl
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getRecipe()
+	 * @see org.limepepper.chefclipse.cookbook.Recipe
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getRecipe()
 	 * @generated
 	 */
-	int RECIPE = 4;
+	public static final int RECIPE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Runlist</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RECIPE__RUNLIST = 0;
+
+	/**
+	 * The feature id for the '<em><b>Role</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RECIPE__ROLE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RECIPE__RESOURCES = 2;
+
+	/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RECIPE__COOKBOOK = 3;
 
 	/**
 	 * The number of structural features of the '<em>Recipe</em>' class.
@@ -157,17 +221,17 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECIPE_FEATURE_COUNT = 0;
+	public static final int RECIPE_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.impl.VersionImpl <em>Version</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.Version <em>Version</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.cookbook.impl.VersionImpl
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getVersion()
+	 * @see org.limepepper.chefclipse.cookbook.Version
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getVersion()
 	 * @generated
 	 */
-	int VERSION = 5;
+	public static final int VERSION = 5;
 
 	/**
 	 * The number of structural features of the '<em>Version</em>' class.
@@ -176,17 +240,26 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION_FEATURE_COUNT = 0;
+	public static final int VERSION_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.impl.ResourceImpl <em>Resource</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.Resource <em>Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.cookbook.impl.ResourceImpl
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getResource()
+	 * @see org.limepepper.chefclipse.cookbook.Resource
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getResource()
 	 * @generated
 	 */
-	int RESOURCE = 6;
+	public static final int RESOURCE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Recipe</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int RESOURCE__RECIPE = 0;
 
 	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -195,17 +268,17 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = 0;
+	public static final int RESOURCE_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.impl.DependencyRelationImpl <em>Dependency Relation</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.DependencyRelation <em>Dependency Relation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.cookbook.impl.DependencyRelationImpl
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getDependencyRelation()
+	 * @see org.limepepper.chefclipse.cookbook.DependencyRelation
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getDependencyRelation()
 	 * @generated
 	 */
-	int DEPENDENCY_RELATION = 7;
+	public static final int DEPENDENCY_RELATION = 7;
 
 	/**
 	 * The number of structural features of the '<em>Dependency Relation</em>' class.
@@ -214,17 +287,155 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DEPENDENCY_RELATION_FEATURE_COUNT = 0;
+	public static final int DEPENDENCY_RELATION_FEATURE_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.cookbook.supports <em>supports</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.limepepper.chefclipse.cookbook.supports
-	 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getsupports()
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getsupports()
 	 * @generated
 	 */
-	int SUPPORTS = 8;
+	public static final int SUPPORTS = 8;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass cookbookEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass definitionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass libraryEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass attributeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass recipeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass versionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass resourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass dependencyRelationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum supportsEEnum = null;
+
+	/**
+	 * Creates an instance of the model <b>Package</b>, registered with
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+	 * package URI value.
+	 * <p>Note: the correct way to create the package is via the static
+	 * factory method {@link #init init()}, which also performs
+	 * initialization of the package, or returns the registered package,
+	 * if one already exists.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.ecore.EPackage.Registry
+	 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#eNS_URI
+	 * @see #init()
+	 * @generated
+	 */
+	private CookbookPackage() {
+		super(eNS_URI, CookbookFactory.eINSTANCE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static boolean isInited = false;
+
+	/**
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link CookbookPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #eNS_URI
+	 * @see #createPackageContents()
+	 * @see #initializePackageContents()
+	 * @generated
+	 */
+	public static CookbookPackage init() {
+		if (isInited) return (CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI);
+
+		// Obtain or create and register package
+		CookbookPackage theCookbookPackage = (CookbookPackage)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CookbookPackage ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CookbookPackage());
+
+		isInited = true;
+
+		// Obtain or create and register interdependencies
+		ChefClientPackage theChefClientPackage = (ChefClientPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefClientPackage.eNS_URI) instanceof ChefClientPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefClientPackage.eNS_URI) : ChefClientPackage.eINSTANCE);
+		ChefPackage theChefPackage = (ChefPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefPackage.eNS_URI) instanceof ChefPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefPackage.eNS_URI) : ChefPackage.eINSTANCE);
+		KnifePackage theKnifePackage = (KnifePackage)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackage ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
+		WorkstationPackage theWorkstationPackage = (WorkstationPackage)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackage ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
+
+		// Create package meta-data objects
+		theCookbookPackage.createPackageContents();
+		theChefClientPackage.createPackageContents();
+		theChefPackage.createPackageContents();
+		theKnifePackage.createPackageContents();
+		theWorkstationPackage.createPackageContents();
+
+		// Initialize created meta-data
+		theCookbookPackage.initializePackageContents();
+		theChefClientPackage.initializePackageContents();
+		theChefPackage.initializePackageContents();
+		theKnifePackage.initializePackageContents();
+		theWorkstationPackage.initializePackageContents();
+
+		// Mark meta-data to indicate it can't be changed
+		theCookbookPackage.freeze();
+
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(CookbookPackage.eNS_URI, theCookbookPackage);
+		return theCookbookPackage;
+	}
 
 
 	/**
@@ -235,7 +446,9 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.Cookbook
 	 * @generated
 	 */
-	EClass getCookbook();
+	public EClass getCookbook() {
+		return cookbookEClass;
+	}
 
 	/**
 	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.cookbook.Cookbook#getDepends <em>Depends</em>}'.
@@ -246,7 +459,35 @@ public interface CookbookPackage extends EPackage {
 	 * @see #getCookbook()
 	 * @generated
 	 */
-	EReference getCookbook_Depends();
+	public EReference getCookbook_Depends() {
+		return (EReference)cookbookEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.cookbook.Cookbook#getEnvironment <em>Environment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Environment</em>'.
+	 * @see org.limepepper.chefclipse.cookbook.Cookbook#getEnvironment()
+	 * @see #getCookbook()
+	 * @generated
+	 */
+	public EReference getCookbook_Environment() {
+		return (EReference)cookbookEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.cookbook.Cookbook#getRecipes <em>Recipes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Recipes</em>'.
+	 * @see org.limepepper.chefclipse.cookbook.Cookbook#getRecipes()
+	 * @see #getCookbook()
+	 * @generated
+	 */
+	public EReference getCookbook_Recipes() {
+		return (EReference)cookbookEClass.getEStructuralFeatures().get(2);
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.cookbook.Definition <em>Definition</em>}'.
@@ -256,7 +497,9 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.Definition
 	 * @generated
 	 */
-	EClass getDefinition();
+	public EClass getDefinition() {
+		return definitionEClass;
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.cookbook.Library <em>Library</em>}'.
@@ -266,7 +509,9 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.Library
 	 * @generated
 	 */
-	EClass getLibrary();
+	public EClass getLibrary() {
+		return libraryEClass;
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.cookbook.Attribute <em>Attribute</em>}'.
@@ -276,7 +521,9 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.Attribute
 	 * @generated
 	 */
-	EClass getAttribute();
+	public EClass getAttribute() {
+		return attributeEClass;
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.cookbook.Recipe <em>Recipe</em>}'.
@@ -286,7 +533,61 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.Recipe
 	 * @generated
 	 */
-	EClass getRecipe();
+	public EClass getRecipe() {
+		return recipeEClass;
+	}
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.cookbook.Recipe#getRunlist <em>Runlist</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Runlist</em>'.
+	 * @see org.limepepper.chefclipse.cookbook.Recipe#getRunlist()
+	 * @see #getRecipe()
+	 * @generated
+	 */
+	public EReference getRecipe_Runlist() {
+		return (EReference)recipeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.cookbook.Recipe#getRole <em>Role</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Role</em>'.
+	 * @see org.limepepper.chefclipse.cookbook.Recipe#getRole()
+	 * @see #getRecipe()
+	 * @generated
+	 */
+	public EReference getRecipe_Role() {
+		return (EReference)recipeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.cookbook.Recipe#getResources <em>Resources</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Resources</em>'.
+	 * @see org.limepepper.chefclipse.cookbook.Recipe#getResources()
+	 * @see #getRecipe()
+	 * @generated
+	 */
+	public EReference getRecipe_Resources() {
+		return (EReference)recipeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.cookbook.Recipe#getCookbook <em>Cookbook</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Cookbook</em>'.
+	 * @see org.limepepper.chefclipse.cookbook.Recipe#getCookbook()
+	 * @see #getRecipe()
+	 * @generated
+	 */
+	public EReference getRecipe_Cookbook() {
+		return (EReference)recipeEClass.getEStructuralFeatures().get(3);
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.cookbook.Version <em>Version</em>}'.
@@ -296,7 +597,9 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.Version
 	 * @generated
 	 */
-	EClass getVersion();
+	public EClass getVersion() {
+		return versionEClass;
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.cookbook.Resource <em>Resource</em>}'.
@@ -306,7 +609,22 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.Resource
 	 * @generated
 	 */
-	EClass getResource();
+	public EClass getResource() {
+		return resourceEClass;
+	}
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.limepepper.chefclipse.cookbook.Resource#getRecipe <em>Recipe</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Recipe</em>'.
+	 * @see org.limepepper.chefclipse.cookbook.Resource#getRecipe()
+	 * @see #getResource()
+	 * @generated
+	 */
+	public EReference getResource_Recipe() {
+		return (EReference)resourceEClass.getEStructuralFeatures().get(0);
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.cookbook.DependencyRelation <em>Dependency Relation</em>}'.
@@ -316,7 +634,9 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.DependencyRelation
 	 * @generated
 	 */
-	EClass getDependencyRelation();
+	public EClass getDependencyRelation() {
+		return dependencyRelationEClass;
+	}
 
 	/**
 	 * Returns the meta object for enum '{@link org.limepepper.chefclipse.cookbook.supports <em>supports</em>}'.
@@ -326,7 +646,9 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.cookbook.supports
 	 * @generated
 	 */
-	EEnum getsupports();
+	public EEnum getsupports() {
+		return supportsEEnum;
+	}
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -335,7 +657,123 @@ public interface CookbookPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	CookbookFactory getCookbookFactory();
+	public CookbookFactory getCookbookFactory() {
+		return (CookbookFactory)getEFactoryInstance();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isCreated = false;
+
+	/**
+	 * Creates the meta-model objects for the package.  This method is
+	 * guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void createPackageContents() {
+		if (isCreated) return;
+		isCreated = true;
+
+		// Create classes and their features
+		cookbookEClass = createEClass(COOKBOOK);
+		createEReference(cookbookEClass, COOKBOOK__DEPENDS);
+		createEReference(cookbookEClass, COOKBOOK__ENVIRONMENT);
+		createEReference(cookbookEClass, COOKBOOK__RECIPES);
+
+		definitionEClass = createEClass(DEFINITION);
+
+		libraryEClass = createEClass(LIBRARY);
+
+		attributeEClass = createEClass(ATTRIBUTE);
+
+		recipeEClass = createEClass(RECIPE);
+		createEReference(recipeEClass, RECIPE__RUNLIST);
+		createEReference(recipeEClass, RECIPE__ROLE);
+		createEReference(recipeEClass, RECIPE__RESOURCES);
+		createEReference(recipeEClass, RECIPE__COOKBOOK);
+
+		versionEClass = createEClass(VERSION);
+
+		resourceEClass = createEClass(RESOURCE);
+		createEReference(resourceEClass, RESOURCE__RECIPE);
+
+		dependencyRelationEClass = createEClass(DEPENDENCY_RELATION);
+
+		// Create enums
+		supportsEEnum = createEEnum(SUPPORTS);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isInitialized = false;
+
+	/**
+	 * Complete the initialization of the package and its meta-model.  This
+	 * method is guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void initializePackageContents() {
+		if (isInitialized) return;
+		isInitialized = true;
+
+		// Initialize package
+		setName(eNAME);
+		setNsPrefix(eNS_PREFIX);
+		setNsURI(eNS_URI);
+
+		// Obtain other dependent packages
+		ChefPackage theChefPackage = (ChefPackage)EPackage.Registry.INSTANCE.getEPackage(ChefPackage.eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
+
+		// Add supertypes to classes
+
+		// Initialize classes and features; add operations and parameters
+		initEClass(cookbookEClass, Cookbook.class, "Cookbook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCookbook_Depends(), this.getDependencyRelation(), null, "depends", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCookbook_Environment(), theChefPackage.getEnvironment(), null, "environment", null, 1, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCookbook_Recipes(), this.getRecipe(), this.getRecipe_Cookbook(), "recipes", null, 0, -1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(definitionEClass, Definition.class, "Definition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(libraryEClass, Library.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(recipeEClass, Recipe.class, "Recipe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRecipe_Runlist(), theChefPackage.getRunList(), null, "runlist", null, 0, -1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecipe_Role(), theChefPackage.getRole(), null, "role", null, 0, 1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecipe_Resources(), this.getResource(), this.getResource_Recipe(), "resources", null, 0, -1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRecipe_Cookbook(), this.getCookbook(), this.getCookbook_Recipes(), "cookbook", null, 0, -1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(resourceEClass, Resource.class, "Resource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResource_Recipe(), this.getRecipe(), this.getRecipe_Resources(), "recipe", null, 1, 1, Resource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(dependencyRelationEClass, DependencyRelation.class, "DependencyRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize enums and add enum literals
+		initEEnum(supportsEEnum, supports.class, "supports");
+		addEEnumLiteral(supportsEEnum, supports.CENTOS);
+		addEEnumLiteral(supportsEEnum, supports.WINDOWS);
+		addEEnumLiteral(supportsEEnum, supports.DEBIAN);
+
+		// Create resource
+		createResource(eNS_URI);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -349,16 +787,16 @@ public interface CookbookPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	public interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.impl.CookbookImpl <em>Cookbook</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.Cookbook <em>Cookbook</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookImpl
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getCookbook()
+		 * @see org.limepepper.chefclipse.cookbook.Cookbook
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getCookbook()
 		 * @generated
 		 */
-		EClass COOKBOOK = eINSTANCE.getCookbook();
+		public static final EClass COOKBOOK = eINSTANCE.getCookbook();
 
 		/**
 		 * The meta object literal for the '<em><b>Depends</b></em>' reference feature.
@@ -366,87 +804,143 @@ public interface CookbookPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COOKBOOK__DEPENDS = eINSTANCE.getCookbook_Depends();
+		public static final EReference COOKBOOK__DEPENDS = eINSTANCE.getCookbook_Depends();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.impl.DefinitionImpl <em>Definition</em>}' class.
+		 * The meta object literal for the '<em><b>Environment</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.cookbook.impl.DefinitionImpl
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getDefinition()
 		 * @generated
 		 */
-		EClass DEFINITION = eINSTANCE.getDefinition();
+		public static final EReference COOKBOOK__ENVIRONMENT = eINSTANCE.getCookbook_Environment();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.impl.LibraryImpl <em>Library</em>}' class.
+		 * The meta object literal for the '<em><b>Recipes</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.cookbook.impl.LibraryImpl
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getLibrary()
 		 * @generated
 		 */
-		EClass LIBRARY = eINSTANCE.getLibrary();
+		public static final EReference COOKBOOK__RECIPES = eINSTANCE.getCookbook_Recipes();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.impl.AttributeImpl <em>Attribute</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.Definition <em>Definition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.cookbook.impl.AttributeImpl
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getAttribute()
+		 * @see org.limepepper.chefclipse.cookbook.Definition
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getDefinition()
 		 * @generated
 		 */
-		EClass ATTRIBUTE = eINSTANCE.getAttribute();
+		public static final EClass DEFINITION = eINSTANCE.getDefinition();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.impl.RecipeImpl <em>Recipe</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.Library <em>Library</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.cookbook.impl.RecipeImpl
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getRecipe()
+		 * @see org.limepepper.chefclipse.cookbook.Library
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getLibrary()
 		 * @generated
 		 */
-		EClass RECIPE = eINSTANCE.getRecipe();
+		public static final EClass LIBRARY = eINSTANCE.getLibrary();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.impl.VersionImpl <em>Version</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.Attribute <em>Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.cookbook.impl.VersionImpl
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getVersion()
+		 * @see org.limepepper.chefclipse.cookbook.Attribute
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getAttribute()
 		 * @generated
 		 */
-		EClass VERSION = eINSTANCE.getVersion();
+		public static final EClass ATTRIBUTE = eINSTANCE.getAttribute();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.impl.ResourceImpl <em>Resource</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.Recipe <em>Recipe</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.cookbook.impl.ResourceImpl
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getResource()
+		 * @see org.limepepper.chefclipse.cookbook.Recipe
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getRecipe()
 		 * @generated
 		 */
-		EClass RESOURCE = eINSTANCE.getResource();
+		public static final EClass RECIPE = eINSTANCE.getRecipe();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.impl.DependencyRelationImpl <em>Dependency Relation</em>}' class.
+		 * The meta object literal for the '<em><b>Runlist</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.cookbook.impl.DependencyRelationImpl
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getDependencyRelation()
 		 * @generated
 		 */
-		EClass DEPENDENCY_RELATION = eINSTANCE.getDependencyRelation();
+		public static final EReference RECIPE__RUNLIST = eINSTANCE.getRecipe_Runlist();
+
+		/**
+		 * The meta object literal for the '<em><b>Role</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference RECIPE__ROLE = eINSTANCE.getRecipe_Role();
+
+		/**
+		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference RECIPE__RESOURCES = eINSTANCE.getRecipe_Resources();
+
+		/**
+		 * The meta object literal for the '<em><b>Cookbook</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference RECIPE__COOKBOOK = eINSTANCE.getRecipe_Cookbook();
+
+		/**
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.Version <em>Version</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.cookbook.Version
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getVersion()
+		 * @generated
+		 */
+		public static final EClass VERSION = eINSTANCE.getVersion();
+
+		/**
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.Resource <em>Resource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.cookbook.Resource
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getResource()
+		 * @generated
+		 */
+		public static final EClass RESOURCE = eINSTANCE.getResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Recipe</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference RESOURCE__RECIPE = eINSTANCE.getResource_Recipe();
+
+		/**
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.DependencyRelation <em>Dependency Relation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.cookbook.DependencyRelation
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getDependencyRelation()
+		 * @generated
+		 */
+		public static final EClass DEPENDENCY_RELATION = eINSTANCE.getDependencyRelation();
 
 		/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.cookbook.supports <em>supports</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.limepepper.chefclipse.cookbook.supports
-		 * @see org.limepepper.chefclipse.cookbook.impl.CookbookPackageImpl#getsupports()
+		 * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getsupports()
 		 * @generated
 		 */
-		EEnum SUPPORTS = eINSTANCE.getsupports();
+		public static final EEnum SUPPORTS = eINSTANCE.getsupports();
 
 	}
 

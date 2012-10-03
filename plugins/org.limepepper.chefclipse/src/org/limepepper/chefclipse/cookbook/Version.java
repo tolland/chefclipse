@@ -2,7 +2,10 @@
  */
 package org.limepepper.chefclipse.cookbook;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,8 +14,27 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see org.limepepper.chefclipse.cookbook.CookbookPackage#getVersion()
- * @model
+ * @model kind="class"
  * @generated
  */
-public interface Version extends EObject {
+public class Version extends EObjectImpl implements EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Version() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return CookbookPackage.Literals.VERSION;
+	}
+
 } // Version

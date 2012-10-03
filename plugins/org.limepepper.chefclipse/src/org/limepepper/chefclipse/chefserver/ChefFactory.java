@@ -2,7 +2,13 @@
  */
 package org.limepepper.chefclipse.chefserver;
 
-import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,112 +18,163 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.limepepper.chefclipse.chefserver.ChefPackage
  * @generated
  */
-public interface ChefFactory extends EFactory {
+public class ChefFactory extends EFactoryImpl {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ChefFactory eINSTANCE = org.limepepper.chefclipse.chefserver.impl.ChefFactoryImpl.init();
+	public static final ChefFactory eINSTANCE = init();
 
 	/**
-	 * Returns a new object of class '<em>Environment</em>'.
+	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Environment</em>'.
 	 * @generated
 	 */
-	Environment createEnvironment();
+	public static ChefFactory init() {
+		try {
+			ChefFactory theChefFactory = (ChefFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/0.0.1/chefserver"); 
+			if (theChefFactory != null) {
+				return theChefFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ChefFactory();
+	}
 
 	/**
-	 * Returns a new object of class '<em>Data Bag</em>'.
+	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Data Bag</em>'.
 	 * @generated
 	 */
-	DataBag createDataBag();
+	public ChefFactory() {
+		super();
+	}
 
 	/**
-	 * Returns a new object of class '<em>Role</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Role</em>'.
 	 * @generated
 	 */
-	Role createRole();
+	@Override
+	public EObject create(EClass eClass) {
+		switch (eClass.getClassifierID()) {
+			case ChefPackage.ENVIRONMENT: return createEnvironment();
+			case ChefPackage.DATA_BAG: return createDataBag();
+			case ChefPackage.ROLE: return createRole();
+			case ChefPackage.NODE: return createNode();
+			case ChefPackage.SERVER: return createServer();
+			case ChefPackage.PLATFORM: return createPlatform();
+			case ChefPackage.RUN_LIST: return createRunList();
+			case ChefPackage.CONFIG: return createConfig();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-	 * Returns a new object of class '<em>Node</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Node</em>'.
 	 * @generated
 	 */
-	Node createNode();
+	public Environment createEnvironment() {
+		Environment environment = new Environment();
+		return environment;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Server</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Server</em>'.
 	 * @generated
 	 */
-	Server createServer();
+	public DataBag createDataBag() {
+		DataBag dataBag = new DataBag();
+		return dataBag;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Ohai</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Ohai</em>'.
 	 * @generated
 	 */
-	Ohai createOhai();
+	public Role createRole() {
+		Role role = new Role();
+		return role;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Platform</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Platform</em>'.
 	 * @generated
 	 */
-	Platform createPlatform();
+	public Node createNode() {
+		Node node = new Node();
+		return node;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Run List</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Run List</em>'.
 	 * @generated
 	 */
-	RunList createRunList();
+	public Server createServer() {
+		Server server = new Server();
+		return server;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Config</em>'.
 	 * @generated
 	 */
-	ChefConfig createChefConfig();
+	public Platform createPlatform() {
+		Platform platform = new Platform();
+		return platform;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Search</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Search</em>'.
 	 * @generated
 	 */
-	Search createSearch();
+	public RunList createRunList() {
+		RunList runList = new RunList();
+		return runList;
+	}
 
 	/**
-	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	ChefPackage getChefPackage();
+	public Config createConfig() {
+		Config config = new Config();
+		return config;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ChefPackage getChefPackage() {
+		return (ChefPackage)getEPackage();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @deprecated
+	 * @generated
+	 */
+	@Deprecated
+	public static ChefPackage getPackage() {
+		return ChefPackage.eINSTANCE;
+	}
 
 } //ChefFactory

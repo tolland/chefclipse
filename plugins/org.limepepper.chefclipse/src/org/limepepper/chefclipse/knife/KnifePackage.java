@@ -6,6 +6,16 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.limepepper.chefclipse.chefclient.ChefClientPackage;
+
+import org.limepepper.chefclipse.chefserver.ChefPackage;
+
+import org.limepepper.chefclipse.cookbook.CookbookPackage;
+
+import org.limepepper.chefclipse.workstation.WorkstationPackage;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -21,14 +31,14 @@ import org.eclipse.emf.ecore.EReference;
  * @model kind="package"
  * @generated
  */
-public interface KnifePackage extends EPackage {
+public class KnifePackage extends EPackageImpl {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "knife";
+	public static final String eNAME = "knife";
 
 	/**
 	 * The package namespace URI.
@@ -36,7 +46,7 @@ public interface KnifePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://limepepper.org/chefclipse/knife";
+	public static final String eNS_URI = "http://limepepper.org/chefclipse/knife";
 
 	/**
 	 * The package namespace name.
@@ -44,7 +54,7 @@ public interface KnifePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "org.limepepper.chefclipse";
+	public static final String eNS_PREFIX = "org.limepepper.chefclipse";
 
 	/**
 	 * The singleton instance of the package.
@@ -52,17 +62,17 @@ public interface KnifePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	KnifePackage eINSTANCE = org.limepepper.chefclipse.knife.impl.KnifePackageImpl.init();
+	public static final KnifePackage eINSTANCE = org.limepepper.chefclipse.knife.KnifePackage.init();
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.knife.impl.ConfigurationImpl <em>Configuration</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.knife.Config <em>Config</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.knife.impl.ConfigurationImpl
-	 * @see org.limepepper.chefclipse.knife.impl.KnifePackageImpl#getConfiguration()
+	 * @see org.limepepper.chefclipse.knife.Config
+	 * @see org.limepepper.chefclipse.knife.KnifePackage#getConfig()
 	 * @generated
 	 */
-	int CONFIGURATION = 0;
+	public static final int CONFIG = 0;
 
 	/**
 	 * The feature id for the '<em><b>Plugins</b></em>' containment reference list.
@@ -71,26 +81,26 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION__PLUGINS = 0;
+	public static final int CONFIG__PLUGINS = 0;
 
 	/**
-	 * The number of structural features of the '<em>Configuration</em>' class.
+	 * The number of structural features of the '<em>Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONFIGURATION_FEATURE_COUNT = 1;
+	public static final int CONFIG_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.knife.impl.PluginImpl <em>Plugin</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.knife.Plugin <em>Plugin</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.knife.impl.PluginImpl
-	 * @see org.limepepper.chefclipse.knife.impl.KnifePackageImpl#getPlugin()
+	 * @see org.limepepper.chefclipse.knife.Plugin
+	 * @see org.limepepper.chefclipse.knife.KnifePackage#getPlugin()
 	 * @generated
 	 */
-	int PLUGIN = 1;
+	public static final int PLUGIN = 1;
 
 	/**
 	 * The number of structural features of the '<em>Plugin</em>' class.
@@ -99,17 +109,17 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLUGIN_FEATURE_COUNT = 0;
+	public static final int PLUGIN_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.knife.impl.KnifeSearchImpl <em>Search</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.knife.KnifeSearch <em>Search</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.knife.impl.KnifeSearchImpl
-	 * @see org.limepepper.chefclipse.knife.impl.KnifePackageImpl#getKnifeSearch()
+	 * @see org.limepepper.chefclipse.knife.KnifeSearch
+	 * @see org.limepepper.chefclipse.knife.KnifePackage#getKnifeSearch()
 	 * @generated
 	 */
-	int KNIFE_SEARCH = 2;
+	public static final int KNIFE_SEARCH = 2;
 
 	/**
 	 * The number of structural features of the '<em>Search</em>' class.
@@ -118,29 +128,129 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int KNIFE_SEARCH_FEATURE_COUNT = 0;
-
+	public static final int KNIFE_SEARCH_FEATURE_COUNT = 0;
 
 	/**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.knife.Configuration <em>Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Configuration</em>'.
-	 * @see org.limepepper.chefclipse.knife.Configuration
 	 * @generated
 	 */
-	EClass getConfiguration();
+	private EClass configEClass = null;
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.knife.Configuration#getPlugins <em>Plugins</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pluginEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass knifeSearchEClass = null;
+
+	/**
+	 * Creates an instance of the model <b>Package</b>, registered with
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+	 * package URI value.
+	 * <p>Note: the correct way to create the package is via the static
+	 * factory method {@link #init init()}, which also performs
+	 * initialization of the package, or returns the registered package,
+	 * if one already exists.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.ecore.EPackage.Registry
+	 * @see org.limepepper.chefclipse.knife.KnifePackage#eNS_URI
+	 * @see #init()
+	 * @generated
+	 */
+	private KnifePackage() {
+		super(eNS_URI, KnifeFactory.eINSTANCE);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static boolean isInited = false;
+
+	/**
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link KnifePackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #eNS_URI
+	 * @see #createPackageContents()
+	 * @see #initializePackageContents()
+	 * @generated
+	 */
+	public static KnifePackage init() {
+		if (isInited) return (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
+
+		// Obtain or create and register package
+		KnifePackage theKnifePackage = (KnifePackage)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof KnifePackage ? EPackage.Registry.INSTANCE.get(eNS_URI) : new KnifePackage());
+
+		isInited = true;
+
+		// Obtain or create and register interdependencies
+		ChefClientPackage theChefClientPackage = (ChefClientPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefClientPackage.eNS_URI) instanceof ChefClientPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefClientPackage.eNS_URI) : ChefClientPackage.eINSTANCE);
+		ChefPackage theChefPackage = (ChefPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefPackage.eNS_URI) instanceof ChefPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefPackage.eNS_URI) : ChefPackage.eINSTANCE);
+		CookbookPackage theCookbookPackage = (CookbookPackage)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackage ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
+		WorkstationPackage theWorkstationPackage = (WorkstationPackage)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackage ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
+
+		// Create package meta-data objects
+		theKnifePackage.createPackageContents();
+		theChefClientPackage.createPackageContents();
+		theChefPackage.createPackageContents();
+		theCookbookPackage.createPackageContents();
+		theWorkstationPackage.createPackageContents();
+
+		// Initialize created meta-data
+		theKnifePackage.initializePackageContents();
+		theChefClientPackage.initializePackageContents();
+		theChefPackage.initializePackageContents();
+		theCookbookPackage.initializePackageContents();
+		theWorkstationPackage.initializePackageContents();
+
+		// Mark meta-data to indicate it can't be changed
+		theKnifePackage.freeze();
+
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(KnifePackage.eNS_URI, theKnifePackage);
+		return theKnifePackage;
+	}
+
+
+	/**
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.knife.Config <em>Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Config</em>'.
+	 * @see org.limepepper.chefclipse.knife.Config
+	 * @generated
+	 */
+	public EClass getConfig() {
+		return configEClass;
+	}
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.knife.Config#getPlugins <em>Plugins</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Plugins</em>'.
-	 * @see org.limepepper.chefclipse.knife.Configuration#getPlugins()
-	 * @see #getConfiguration()
+	 * @see org.limepepper.chefclipse.knife.Config#getPlugins()
+	 * @see #getConfig()
 	 * @generated
 	 */
-	EReference getConfiguration_Plugins();
+	public EReference getConfig_Plugins() {
+		return (EReference)configEClass.getEStructuralFeatures().get(0);
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.knife.Plugin <em>Plugin</em>}'.
@@ -150,7 +260,9 @@ public interface KnifePackage extends EPackage {
 	 * @see org.limepepper.chefclipse.knife.Plugin
 	 * @generated
 	 */
-	EClass getPlugin();
+	public EClass getPlugin() {
+		return pluginEClass;
+	}
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.knife.KnifeSearch <em>Search</em>}'.
@@ -160,7 +272,9 @@ public interface KnifePackage extends EPackage {
 	 * @see org.limepepper.chefclipse.knife.KnifeSearch
 	 * @generated
 	 */
-	EClass getKnifeSearch();
+	public EClass getKnifeSearch() {
+		return knifeSearchEClass;
+	}
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -169,7 +283,77 @@ public interface KnifePackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	KnifeFactory getKnifeFactory();
+	public KnifeFactory getKnifeFactory() {
+		return (KnifeFactory)getEFactoryInstance();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isCreated = false;
+
+	/**
+	 * Creates the meta-model objects for the package.  This method is
+	 * guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void createPackageContents() {
+		if (isCreated) return;
+		isCreated = true;
+
+		// Create classes and their features
+		configEClass = createEClass(CONFIG);
+		createEReference(configEClass, CONFIG__PLUGINS);
+
+		pluginEClass = createEClass(PLUGIN);
+
+		knifeSearchEClass = createEClass(KNIFE_SEARCH);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private boolean isInitialized = false;
+
+	/**
+	 * Complete the initialization of the package and its meta-model.  This
+	 * method is guarded to have no affect on any invocation but its first.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void initializePackageContents() {
+		if (isInitialized) return;
+		isInitialized = true;
+
+		// Initialize package
+		setName(eNAME);
+		setNsPrefix(eNS_PREFIX);
+		setNsURI(eNS_URI);
+
+		// Create type parameters
+
+		// Set bounds for type parameters
+
+		// Add supertypes to classes
+
+		// Initialize classes and features; add operations and parameters
+		initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConfig_Plugins(), this.getPlugin(), null, "plugins", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(knifeSearchEClass, KnifeSearch.class, "KnifeSearch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Create resource
+		createResource(eNS_URI);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -183,16 +367,16 @@ public interface KnifePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	public interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.knife.impl.ConfigurationImpl <em>Configuration</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.knife.Config <em>Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.knife.impl.ConfigurationImpl
-		 * @see org.limepepper.chefclipse.knife.impl.KnifePackageImpl#getConfiguration()
+		 * @see org.limepepper.chefclipse.knife.Config
+		 * @see org.limepepper.chefclipse.knife.KnifePackage#getConfig()
 		 * @generated
 		 */
-		EClass CONFIGURATION = eINSTANCE.getConfiguration();
+		public static final EClass CONFIG = eINSTANCE.getConfig();
 
 		/**
 		 * The meta object literal for the '<em><b>Plugins</b></em>' containment reference list feature.
@@ -200,27 +384,27 @@ public interface KnifePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONFIGURATION__PLUGINS = eINSTANCE.getConfiguration_Plugins();
+		public static final EReference CONFIG__PLUGINS = eINSTANCE.getConfig_Plugins();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.knife.impl.PluginImpl <em>Plugin</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.knife.Plugin <em>Plugin</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.knife.impl.PluginImpl
-		 * @see org.limepepper.chefclipse.knife.impl.KnifePackageImpl#getPlugin()
+		 * @see org.limepepper.chefclipse.knife.Plugin
+		 * @see org.limepepper.chefclipse.knife.KnifePackage#getPlugin()
 		 * @generated
 		 */
-		EClass PLUGIN = eINSTANCE.getPlugin();
+		public static final EClass PLUGIN = eINSTANCE.getPlugin();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.knife.impl.KnifeSearchImpl <em>Search</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.knife.KnifeSearch <em>Search</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.knife.impl.KnifeSearchImpl
-		 * @see org.limepepper.chefclipse.knife.impl.KnifePackageImpl#getKnifeSearch()
+		 * @see org.limepepper.chefclipse.knife.KnifeSearch
+		 * @see org.limepepper.chefclipse.knife.KnifePackage#getKnifeSearch()
 		 * @generated
 		 */
-		EClass KNIFE_SEARCH = eINSTANCE.getKnifeSearch();
+		public static final EClass KNIFE_SEARCH = eINSTANCE.getKnifeSearch();
 
 	}
 

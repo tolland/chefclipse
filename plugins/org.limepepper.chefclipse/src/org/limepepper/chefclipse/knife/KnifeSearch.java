@@ -2,7 +2,10 @@
  */
 package org.limepepper.chefclipse.knife;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,8 +14,27 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see org.limepepper.chefclipse.knife.KnifePackage#getKnifeSearch()
- * @model
+ * @model kind="class"
  * @generated
  */
-public interface KnifeSearch extends EObject {
+public class KnifeSearch extends EObjectImpl implements EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected KnifeSearch() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return KnifePackage.Literals.KNIFE_SEARCH;
+	}
+
 } // KnifeSearch

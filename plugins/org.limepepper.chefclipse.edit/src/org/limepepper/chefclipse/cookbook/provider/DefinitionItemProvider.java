@@ -61,6 +61,16 @@ public class DefinitionItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean hasChildren(Object object) {
+		return hasChildren(object, true);
+	}
+
+	/**
 	 * This returns Definition.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -9,21 +9,21 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Environment</b></em>'.
+ * A representation of the model object '<em><b>Config</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.limepepper.chefclipse.chefserver.ChefPackage#getEnvironment()
+ * @see org.limepepper.chefclipse.chefserver.ChefPackage#getConfig()
  * @model kind="class"
  * @generated
  */
-public class Environment extends EObjectImpl implements EObject {
+public class Config extends EObjectImpl implements EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Environment() {
+	protected Config() {
 		super();
 	}
 
@@ -34,7 +34,7 @@ public class Environment extends EObjectImpl implements EObject {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ChefPackage.Literals.ENVIRONMENT;
+		return ChefPackage.Literals.CONFIG;
 	}
 
-} // Environment
+} // Config

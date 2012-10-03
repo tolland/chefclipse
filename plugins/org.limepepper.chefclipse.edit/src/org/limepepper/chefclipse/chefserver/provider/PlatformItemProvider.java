@@ -61,6 +61,16 @@ public class PlatformItemProvider
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean hasChildren(Object object) {
+		return hasChildren(object, true);
+	}
+
+	/**
 	 * This returns Platform.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

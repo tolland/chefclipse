@@ -72,6 +72,14 @@ public class ChefClientAdapterFactory extends AdapterFactoryImpl {
 				return createClientAdapter();
 			}
 			@Override
+			public Adapter caseOhai(Ohai object) {
+				return createOhaiAdapter();
+			}
+			@Override
+			public Adapter caseSearch(Search object) {
+				return createSearchAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -102,6 +110,34 @@ public class ChefClientAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClientAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.chefclient.Ohai <em>Ohai</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.chefclient.Ohai
+	 * @generated
+	 */
+	public Adapter createOhaiAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.chefclient.Search <em>Search</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.chefclient.Search
+	 * @generated
+	 */
+	public Adapter createSearchAdapter() {
 		return null;
 	}
 

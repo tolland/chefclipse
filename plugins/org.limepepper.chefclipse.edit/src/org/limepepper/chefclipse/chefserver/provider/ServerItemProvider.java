@@ -65,6 +65,7 @@ public class ServerItemProvider
 			super.getPropertyDescriptors(object);
 
 			addCookbooksPropertyDescriptor(object);
+			addClientsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -92,6 +93,28 @@ public class ServerItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Clients feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClientsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Server_clients_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Server_clients_feature", "_UI_Server_type"),
+				 ChefPackage.Literals.SERVER__CLIENTS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -104,6 +127,9 @@ public class ServerItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ChefPackage.Literals.SERVER__ROLES);
+			childrenFeatures.add(ChefPackage.Literals.SERVER__NODES);
+			childrenFeatures.add(ChefPackage.Literals.SERVER__DATABAGS);
+			childrenFeatures.add(ChefPackage.Literals.SERVER__ENVIRONMENTS);
 		}
 		return childrenFeatures;
 	}
@@ -119,6 +145,16 @@ public class ServerItemProvider
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean hasChildren(Object object) {
+		return hasChildren(object, true);
 	}
 
 	/**
@@ -156,6 +192,9 @@ public class ServerItemProvider
 
 		switch (notification.getFeatureID(Server.class)) {
 			case ChefPackage.SERVER__ROLES:
+			case ChefPackage.SERVER__NODES:
+			case ChefPackage.SERVER__DATABAGS:
+			case ChefPackage.SERVER__ENVIRONMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -177,6 +216,21 @@ public class ServerItemProvider
 			(createChildParameter
 				(ChefPackage.Literals.SERVER__ROLES,
 				 ChefFactory.eINSTANCE.createRole()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ChefPackage.Literals.SERVER__NODES,
+				 ChefFactory.eINSTANCE.createNode()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ChefPackage.Literals.SERVER__DATABAGS,
+				 ChefFactory.eINSTANCE.createDataBag()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ChefPackage.Literals.SERVER__ENVIRONMENTS,
+				 ChefFactory.eINSTANCE.createEnvironment()));
 	}
 
 	/**

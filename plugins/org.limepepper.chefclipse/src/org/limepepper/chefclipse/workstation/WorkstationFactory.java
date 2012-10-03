@@ -2,7 +2,13 @@
  */
 package org.limepepper.chefclipse.workstation;
 
-import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,40 +18,97 @@ import org.eclipse.emf.ecore.EFactory;
  * @see org.limepepper.chefclipse.workstation.WorkstationPackage
  * @generated
  */
-public interface WorkstationFactory extends EFactory {
+public class WorkstationFactory extends EFactoryImpl {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	WorkstationFactory eINSTANCE = org.limepepper.chefclipse.workstation.impl.WorkstationFactoryImpl.init();
+	public static final WorkstationFactory eINSTANCE = init();
 
 	/**
-	 * Returns a new object of class '<em>Repository</em>'.
+	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Repository</em>'.
 	 * @generated
 	 */
-	Repository createRepository();
+	public static WorkstationFactory init() {
+		try {
+			WorkstationFactory theWorkstationFactory = (WorkstationFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/workstation"); 
+			if (theWorkstationFactory != null) {
+				return theWorkstationFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new WorkstationFactory();
+	}
 
 	/**
-	 * Returns a new object of class '<em>Config</em>'.
+	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Config</em>'.
 	 * @generated
 	 */
-	Config createConfig();
+	public WorkstationFactory() {
+		super();
+	}
 
 	/**
-	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	WorkstationPackage getWorkstationPackage();
+	@Override
+	public EObject create(EClass eClass) {
+		switch (eClass.getClassifierID()) {
+			case WorkstationPackage.REPOSITORY: return createRepository();
+			case WorkstationPackage.CONFIG: return createConfig();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Repository createRepository() {
+		Repository repository = new Repository();
+		return repository;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Config createConfig() {
+		Config config = new Config();
+		return config;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WorkstationPackage getWorkstationPackage() {
+		return (WorkstationPackage)getEPackage();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @deprecated
+	 * @generated
+	 */
+	@Deprecated
+	public static WorkstationPackage getPackage() {
+		return WorkstationPackage.eINSTANCE;
+	}
 
 } //WorkstationFactory

@@ -68,8 +68,8 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 	protected KnifeSwitch<Adapter> modelSwitch =
 		new KnifeSwitch<Adapter>() {
 			@Override
-			public Adapter caseConfiguration(Configuration object) {
-				return createConfigurationAdapter();
+			public Adapter caseConfig(Config object) {
+				return createConfigAdapter();
 			}
 			@Override
 			public Adapter casePlugin(Plugin object) {
@@ -100,16 +100,16 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.knife.Configuration <em>Configuration</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.knife.Config <em>Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.knife.Configuration
+	 * @see org.limepepper.chefclipse.knife.Config
 	 * @generated
 	 */
-	public Adapter createConfigurationAdapter() {
+	public Adapter createConfigAdapter() {
 		return null;
 	}
 

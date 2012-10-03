@@ -1,6 +1,6 @@
 /**
  */
-package org.limepepper.chefclipse.chefserver;
+package org.limepepper.chefclipse.chefclient;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -9,21 +9,21 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Environment</b></em>'.
+ * A representation of the model object '<em><b>Ohai</b></em>'.
  * <!-- end-user-doc -->
  *
  *
- * @see org.limepepper.chefclipse.chefserver.ChefPackage#getEnvironment()
+ * @see org.limepepper.chefclipse.chefclient.ChefClientPackage#getOhai()
  * @model kind="class"
  * @generated
  */
-public class Environment extends EObjectImpl implements EObject {
+public class Ohai extends EObjectImpl implements EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Environment() {
+	protected Ohai() {
 		super();
 	}
 
@@ -34,7 +34,7 @@ public class Environment extends EObjectImpl implements EObject {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ChefPackage.Literals.ENVIRONMENT;
+		return ChefClientPackage.Literals.OHAI;
 	}
 
-} // Environment
+} // Ohai

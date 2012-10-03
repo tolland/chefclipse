@@ -1,6 +1,6 @@
 /**
  */
-package org.limepepper.chefclipse.workstation.provider;
+package org.limepepper.chefclipse.chefserver.provider;
 
 
 import java.util.Collection;
@@ -22,7 +22,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.limepepper.chefclipse.chefclient.provider.ChefclipseEditPlugin;
 
 /**
- * This is the item provider adapter for a {@link org.limepepper.chefclipse.workstation.Config} object.
+ * This is the item provider adapter for a {@link org.limepepper.chefclipse.chefserver.Config} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
