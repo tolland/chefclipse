@@ -4,7 +4,7 @@
   
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.limepepper</groupId>
-  <artifactId>org.limepepper.rcp.templateproject</artifactId>
+  <artifactId>org.limepepper.templateproject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   
@@ -23,15 +23,15 @@
       
   	
   <modules>
-  	<module>org.limepepper.rcp.templateproject.doc</module>
-  	<module>org.limepepper.rcp.templateproject.doc.feature</module>
-    <module>org.limepepper.rcp.templateproject.app</module>
-    <module>org.limepepper.rcp.templateproject.app.feature</module>
-	  <module>org.limepepper.rcp.templateproject.common</module>
-    <module>org.limepepper.rcp.templateproject.ui</module>
- 	  <module>org.limepepper.rcp.templateproject.ui.feature</module>
- 	  <module>org.limepepper.rcp.templateproject.p2</module>
- 	  <module>org.limepepper.rcp.templateproject.product</module>
+  	<module>org.limepepper.templateproject.doc</module>
+  	<module>org.limepepper.templateproject.doc.feature</module>
+    <module>org.limepepper.templateproject.app</module>
+    <module>org.limepepper.templateproject.app.feature</module>
+	  <module>org.limepepper.templateproject.common</module>
+    <module>org.limepepper.templateproject.ui</module>
+ 	  <module>org.limepepper.templateproject.ui.feature</module>
+ 	  <module>org.limepepper.templateproject.p2</module>
+ 	  <module>org.limepepper.templateproject.product</module>
   </modules>
   
   
