@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Common
+Bundle-SymbolicName: org.limepepper.chefclipse.common;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.limepepper.chefclipse.common.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources;bundle-version="3.8.0",
+ org.eclipse.ui.navigator;bundle-version="3.5.200"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.limepepper.chefclipse.common.resources
