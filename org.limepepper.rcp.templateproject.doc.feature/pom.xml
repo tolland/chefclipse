@@ -3,12 +3,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.limepepper.rcp.templateproject.build</groupId>
-    <artifactId>org.limepepper.rcp.templateproject.build</artifactId>
+    <groupId>org.limepepper</groupId>
+    <artifactId>org.limepepper.rcp.templateproject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../org.limepepper.rcp.templateproject.build/</relativePath>
+    <relativePath>../</relativePath>
   </parent>
-  <groupId>org.limepepper.rcp.templateproject.build</groupId>
+  <groupId>org.limepepper</groupId>
   <artifactId>org.limepepper.rcp.templateproject.doc.feature</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-feature</packaging>

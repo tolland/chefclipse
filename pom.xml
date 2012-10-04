@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.limepepper.rcp.templateproject.build</groupId>
-  <artifactId>org.limepepper.rcp.templateproject.build</artifactId>
+  <groupId>org.limepepper</groupId>
+  <artifactId>org.limepepper.rcp.templateproject</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   
@@ -23,15 +23,15 @@
       
   	
   <modules>
-  	<module>../org.limepepper.rcp.templateproject.doc</module>
-  	<module>../org.limepepper.rcp.templateproject.doc.feature</module>
-    <module>../org.limepepper.rcp.templateproject.app</module>
-	<module>../org.limepepper.rcp.templateproject.app.feature</module>
-	<module>../org.limepepper.rcp.templateproject.common</module>
-	<module>../org.limepepper.rcp.templateproject.ui</module>
- 	<module>../org.limepepper.rcp.templateproject.ui.feature</module>
- 	<module>../org.limepepper.rcp.templateproject.p2</module>
- 	<module>../org.limepepper.rcp.templateproject</module>
+  	<module>org.limepepper.rcp.templateproject.doc</module>
+  	<module>org.limepepper.rcp.templateproject.doc.feature</module>
+    <module>org.limepepper.rcp.templateproject.app</module>
+    <module>org.limepepper.rcp.templateproject.app.feature</module>
+	  <module>org.limepepper.rcp.templateproject.common</module>
+    <module>org.limepepper.rcp.templateproject.ui</module>
+ 	  <module>org.limepepper.rcp.templateproject.ui.feature</module>
+ 	  <module>org.limepepper.rcp.templateproject.p2</module>
+ 	  <module>org.limepepper.rcp.templateproject.product</module>
   </modules>
   
   

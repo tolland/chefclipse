@@ -3,31 +3,34 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.limepepper.rcp.templateproject.build</groupId>
-    <artifactId>org.limepepper.rcp.templateproject.build</artifactId>
+    <groupId>org.limepepper</groupId>
+    <artifactId>org.limepepper.rcp.templateproject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../org.limepepper.rcp.templateproject.build/</relativePath>
+    <relativePath>../</relativePath>
   </parent>
-  <groupId>org.limepepper.rcp.templateproject.build</groupId>
+  <groupId>org.limepepper</groupId>
   <artifactId>org.limepepper.rcp.templateproject.p2</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
   <packaging>eclipse-repository</packaging>
-  
-  <properties>
-  	<repo.path>${project.build.directory}/repository</repo.path>
-    <checkout.path>${project.build.directory}/checkout</checkout.path>
-    <checkout.dir>templateproject/update-site</checkout.dir>
-  </properties>
-  
+      
   <scm>
   	<connection>scm:git:https://github.com/tolland/jenkins-users.git</connection>
   	<developerConnection>scm:git:https://github.com/tolland/jenkins-users.git</developerConnection>  
   </scm>
   
-  <build>
-  	<plugins>
+  <profiles>
+  	<profile>
+  	<id>deploy-update-site</id>
   	
+  	<properties>
+  		<repo.path>${project.build.directory}/repository</repo.path>
+    	<checkout.path>${project.build.directory}/checkout</checkout.path>
+    	<checkout.dir>templateproject/update-site</checkout.dir>
+  	</properties>
+  	
+  	<build>
+  	<plugins>	
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-plugin</artifactId>
@@ -83,6 +86,10 @@
       	</executions>
      </plugin>                      	
   	</plugins>    
-  </build>
+  	</build>
+  	</profile>
+  </profiles>
+  
+  
           
 </project>
