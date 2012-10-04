@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://limepepper.org/chefclipse/v0.0.1/chefclipse"
+            class="org.limepepper.chefclipse.chefclient.ChefClientPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://limepepper.org/chefclipse/v0.0.1/chefserver"
+            class="org.limepepper.chefclipse.chefserver.ChefPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://limepepper.org/chefclipse/v0.0.1/cookbook"
+            class="org.limepepper.chefclipse.cookbook.CookbookPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://limepepper.org/chefclipse/v0.0.1//knife"
+            class="org.limepepper.chefclipse.knife.KnifePackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://limepepper.org/chefclipse/v0.0.1/workstation"
+            class="org.limepepper.chefclipse.workstation.WorkstationPackage"/>
+   </extension>
+
+</plugin>
