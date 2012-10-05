@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.limepepper.chefclipse/src" editDirectory="/org.limepepper.chefclipse.edit/src"
+    editorDirectory="/org.limepepper.chefclipse.edit/src" modelPluginID="org.limepepper.chefclipse"
+    modelName="Chefclipse" suppressInterfaces="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="org.limepepper.chefclipse.edit"
+    editorPluginID="org.limepepper.chefclipse.edit" optimizedHasChildren="true" interfaceNamePattern="">
+  <foreignModel>chefclient.ecore</foreignModel>
+  <foreignModel>chefserver.ecore</foreignModel>
+  <foreignModel>cookbook.ecore</foreignModel>
+  <foreignModel>knife.ecore</foreignModel>
+  <foreignModel>workstation.ecore</foreignModel>
+  <genPackages prefix="ChefClient" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
+      ecorePackage="chefclient.ecore#/">
+    <genClasses ecoreClass="chefclient.ecore#//Client">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefclient.ecore#//Client/server"/>
+    </genClasses>
+    <genClasses ecoreClass="chefclient.ecore#//Ohai"/>
+    <genClasses ecoreClass="chefclient.ecore#//Search"/>
+  </genPackages>
+  <genPackages prefix="Chef" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
+      ecorePackage="chefserver.ecore#/">
+    <genClasses ecoreClass="chefserver.ecore#//Environment"/>
+    <genClasses ecoreClass="chefserver.ecore#//DataBag">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference chefserver.ecore#//DataBag/server"/>
+    </genClasses>
+    <genClasses ecoreClass="chefserver.ecore#//Role"/>
+    <genClasses ecoreClass="chefserver.ecore#//Node">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefserver.ecore#//Node/run_list"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//Node/environment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//Node/server"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//Node/client"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//Node/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="chefserver.ecore#//Server">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//Server/cookbooks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefserver.ecore#//Server/roles"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefserver.ecore#//Server/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefserver.ecore#//Server/databags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefserver.ecore#//Server/environments"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//Server/clients"/>
+    </genClasses>
+    <genClasses ecoreClass="chefserver.ecore#//Platform"/>
+    <genClasses ecoreClass="chefserver.ecore#//RunList">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//RunList/node"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//RunList/environment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//RunList/role"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefserver.ecore#//RunList/recipes"/>
+    </genClasses>
+    <genClasses ecoreClass="chefserver.ecore#//Config"/>
+  </genPackages>
+  <genPackages prefix="Cookbook" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
+      ecorePackage="cookbook.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="cookbook.ecore#//supports">
+      <genEnumLiterals ecoreEnumLiteral="cookbook.ecore#//supports/Centos"/>
+      <genEnumLiterals ecoreEnumLiteral="cookbook.ecore#//supports/Windows"/>
+      <genEnumLiterals ecoreEnumLiteral="cookbook.ecore#//supports/debian"/>
+    </genEnums>
+    <genClasses ecoreClass="cookbook.ecore#//Cookbook">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Cookbook/depends"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Cookbook/environment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Cookbook/recipes"/>
+    </genClasses>
+    <genClasses ecoreClass="cookbook.ecore#//Definition"/>
+    <genClasses ecoreClass="cookbook.ecore#//Library"/>
+    <genClasses ecoreClass="cookbook.ecore#//Attribute"/>
+    <genClasses ecoreClass="cookbook.ecore#//Recipe">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Recipe/runlist"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Recipe/role"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cookbook.ecore#//Recipe/resources"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Recipe/cookbook"/>
+    </genClasses>
+    <genClasses ecoreClass="cookbook.ecore#//Version"/>
+    <genClasses ecoreClass="cookbook.ecore#//Resource">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference cookbook.ecore#//Resource/recipe"/>
+    </genClasses>
+    <genClasses ecoreClass="cookbook.ecore#//DependencyRelation"/>
+  </genPackages>
+  <genPackages prefix="Knife" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
+      ecorePackage="knife.ecore#/">
+    <genClasses ecoreClass="knife.ecore#//Config">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference knife.ecore#//Config/plugins"/>
+    </genClasses>
+    <genClasses ecoreClass="knife.ecore#//Plugin"/>
+    <genClasses ecoreClass="knife.ecore#//KnifeSearch"/>
+  </genPackages>
+  <genPackages prefix="Workstation" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
+      ecorePackage="workstation.ecore#/">
+    <genClasses ecoreClass="workstation.ecore#//Repository">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workstation.ecore#//Repository/cookbooks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference workstation.ecore#//Repository/configuration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workstation.ecore#//Repository/OS"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute workstation.ecore#//Repository/basepath"/>
+    </genClasses>
+    <genClasses ecoreClass="workstation.ecore#//Config"/>
+  </genPackages>
+</genmodel:GenModel>

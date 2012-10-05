@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://limepepper.org/chefclipse/chefclipse"
+            class="org.limepepper.chefclipse.chefclient.provider.ChefClientItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://limepepper.org/chefclipse/0.0.1/chefserver"
+            class="org.limepepper.chefclipse.chefserver.provider.ChefItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://limepepper.org/chefclipse/cookbook"
+            class="org.limepepper.chefclipse.cookbook.provider.CookbookItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://limepepper.org/chefclipse/knife"
+            class="org.limepepper.chefclipse.knife.provider.KnifeItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://limepepper.org/chefclipse/workstation"
+            class="org.limepepper.chefclipse.workstation.provider.WorkstationItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.chefclient.presentation.ChefClientModelWizardID"
+            name="%_UI_ChefClientModelWizard_label"
+            class="org.limepepper.chefclipse.chefclient.presentation.ChefClientModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ChefClientModelFile.gif">
+         <description>%_UI_ChefClientModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.limepepper.chefclipse.chefclient.presentation.ChefClientEditorID"
+            name="%_UI_ChefClientEditor_label"
+            icon="icons/full/obj16/ChefClientModelFile.gif"
+            extensions="chefclient"
+            class="org.limepepper.chefclipse.chefclient.presentation.ChefClientEditor"
+            contributorClass="org.limepepper.chefclipse.chefclient.presentation.ChefClientActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.chefserver.presentation.ChefModelWizardID"
+            name="%_UI_ChefModelWizard_label"
+            class="org.limepepper.chefclipse.chefserver.presentation.ChefModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ChefModelFile.gif">
+         <description>%_UI_ChefModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.limepepper.chefclipse.chefserver.presentation.ChefEditorID"
+            name="%_UI_ChefEditor_label"
+            icon="icons/full/obj16/ChefModelFile.gif"
+            extensions="chef"
+            class="org.limepepper.chefclipse.chefserver.presentation.ChefEditor"
+            contributorClass="org.limepepper.chefclipse.chefserver.presentation.ChefActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.cookbook.presentation.CookbookModelWizardID"
+            name="%_UI_CookbookModelWizard_label"
+            class="org.limepepper.chefclipse.cookbook.presentation.CookbookModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CookbookModelFile.gif">
+         <description>%_UI_CookbookModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.limepepper.chefclipse.cookbook.presentation.CookbookEditorID"
+            name="%_UI_CookbookEditor_label"
+            icon="icons/full/obj16/CookbookModelFile.gif"
+            extensions="cookbook"
+            class="org.limepepper.chefclipse.cookbook.presentation.CookbookEditor"
+            contributorClass="org.limepepper.chefclipse.cookbook.presentation.CookbookActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.knife.presentation.KnifeModelWizardID"
+            name="%_UI_KnifeModelWizard_label"
+            class="org.limepepper.chefclipse.knife.presentation.KnifeModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/KnifeModelFile.gif">
+         <description>%_UI_KnifeModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.limepepper.chefclipse.knife.presentation.KnifeEditorID"
+            name="%_UI_KnifeEditor_label"
+            icon="icons/full/obj16/KnifeModelFile.gif"
+            extensions="knife"
+            class="org.limepepper.chefclipse.knife.presentation.KnifeEditor"
+            contributorClass="org.limepepper.chefclipse.knife.presentation.KnifeActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.workstation.presentation.WorkstationModelWizardID"
+            name="%_UI_WorkstationModelWizard_label"
+            class="org.limepepper.chefclipse.workstation.presentation.WorkstationModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/WorkstationModelFile.gif">
+         <description>%_UI_WorkstationModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.limepepper.chefclipse.workstation.presentation.WorkstationEditorID"
+            name="%_UI_WorkstationEditor_label"
+            icon="icons/full/obj16/WorkstationModelFile.gif"
+            extensions="workstation"
+            class="org.limepepper.chefclipse.workstation.presentation.WorkstationEditor"
+            contributorClass="org.limepepper.chefclipse.workstation.presentation.WorkstationActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
