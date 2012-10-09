@@ -12,39 +12,39 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
-import org.limepepper.chefclipse.common.resources.TemplateResources;
+import org.limepepper.chefclipse.adapters.ChefProjectAdapter;
 
 
-public class NewModuleWizard extends Wizard implements INewWizard {
-	private NewModuleWizardPage1 page1;
-	private NewModuleWizardPageConfirm pageConfirm;
-	private IStructuredSelection selection;
+public class NewChefProjectWizard extends Wizard implements INewWizard {
+						
+	private NewChefProjectWizardPageConfirm pageConfirm;
 
-
-	public NewModuleWizard() {
+	
+	public NewChefProjectWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
 	
-	
 
-	public void addPages() {
-		page1 = new NewModuleWizardPage1("New Module Page 1");
-		pageConfirm = new NewModuleWizardPageConfirm(selection);
-		
-		addPage(page1);
+
+	public void addPages() {								
+		pageConfirm = new NewChefProjectWizardPageConfirm("New Chef Project");
+						
 		addPage(pageConfirm);
 	}
 
-	
-	public boolean performFinish() {
-		final String moduleName = pageConfirm.getModuleName();
-		final IProject container = pageConfirm.getContainerHandle(); 
-		
+
+	public boolean performFinish() {				
+		final IProject proj = pageConfirm.getProjectHandle();		
+								
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
-				try {					
-					TemplateResources.createTemplateModule(moduleName, container , monitor);					
+				try {
+					ChefProjectAdapter.createChefProject(proj, monitor);
+					
+					if(!proj.isOpen()){
+						proj.open(monitor);
+					}
 				} catch (CoreException e) {
 					throw new InvocationTargetException(e);
 				} finally {
@@ -63,13 +63,12 @@ public class NewModuleWizard extends Wizard implements INewWizard {
 			MessageDialog.openError(getShell(), "Error", realException.getMessage());
 			return false;
 		}
-				
-		return true;
+		return true;		
 	}
-			
-	
 
-	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		this.selection = selection;
+	
+	@Override
+	public void init(IWorkbench workbench, IStructuredSelection selection) {				
 	}
+		
 }

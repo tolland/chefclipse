@@ -5,22 +5,22 @@
          point="org.eclipse.ui.newWizards">
       <category
             id="org.limepepper.chefclipse.ui"
-            name="Template Project">
+            name="Chef Project">
       </category>
       <wizard
             category="org.limepepper.chefclipse.ui"
-            class="org.limepepper.chefclipse.ui.wizards.NewProjectWizard"
+            class="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
             icon="icons/sample.gif"
-            id="org.limepepper.chefclipse.ui.wizards.NewProjectWizard"
-            name="New Template Project"
+            id="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
+            name="New Chef Project"
             project="true">
       </wizard>
       <wizard
             category="org.limepepper.chefclipse.ui"
-            class="org.limepepper.chefclipse.ui.wizards.NewModuleWizard"
+            class="org.limepepper.chefclipse.ui.wizards.NewRepositoryWizard"
             icon="icons/sample.gif"
-            id="org.limepepper.chefclipse.ui.wizards.NewModuleWizard"
-            name="New Template Module">
+            id="org.limepepper.chefclipse.ui.wizards.NewChefWizard"
+            name="New Chef Repository">
       </wizard>
    </extension>
    <extension

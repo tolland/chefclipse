@@ -3,7 +3,6 @@ package org.limepepper.chefclipse.ui.wizards;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -11,47 +10,37 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.limepepper.chefclipse.adapters.ChefRepositoryAdapter;
 
-import org.limepepper.chefclipse.common.resources.TemplateResources;
+
+public class NewRepositoryWizard extends Wizard implements INewWizard {	
+	private NewRepositoryWizardPageConfirm pageConfirm;
+	private IStructuredSelection selection;
 
 
-public class NewProjectWizard extends Wizard implements INewWizard {
-					
-	private NewTemplateProjectWizardPage1 page1;
-	private NewTemplateProjectWizardPage2 page2;
-	private NewTemplateProjectWizardPageConfirm pageConfirm;
-
-	
-	public NewProjectWizard() {
+	public NewRepositoryWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
 	
+	
 
-
-	public void addPages() {						
-		page1 = new NewTemplateProjectWizardPage1("New Template Project Page 1");
-		page2 = new NewTemplateProjectWizardPage2("Nwe Template Project Page 2");
-		pageConfirm = new NewTemplateProjectWizardPageConfirm("New Template Project");
-		
-		addPage(page1);
-		addPage(page2);		
+	public void addPages() {		
+		pageConfirm = new NewRepositoryWizardPageConfirm(selection);				
 		addPage(pageConfirm);
 	}
 
-
-	public boolean performFinish() {				
-		final IProject proj = pageConfirm.getProjectHandle();		
-								
+	
+	public boolean performFinish() {
+		final String repoName = pageConfirm.getRepoName();
+		final String location = pageConfirm.getLocationName();
+		final IProject container = pageConfirm.getContainerHandle(); 
+		
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
-				try {
-					TemplateResources.createchefclipse(proj, monitor);
-					
-					if(!proj.isOpen()){
-						proj.open(monitor);
-					}
-				} catch (CoreException e) {
+				try {										
+					ChefRepositoryAdapter.createChefRepository(repoName, location, container, monitor);															
+				} catch (Exception e) {
 					throw new InvocationTargetException(e);
 				} finally {
 					monitor.done();
@@ -69,12 +58,13 @@ public class NewProjectWizard extends Wizard implements INewWizard {
 			MessageDialog.openError(getShell(), "Error", realException.getMessage());
 			return false;
 		}
-		return true;		
+				
+		return true;
 	}
-
+			
 	
-	@Override
-	public void init(IWorkbench workbench, IStructuredSelection selection) {				
+
+	public void init(IWorkbench workbench, IStructuredSelection selection) {
+		this.selection = selection;
 	}
-		
 }

@@ -2,9 +2,9 @@ package org.limepepper.chefclipse.ui.wizards;
 
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
-public class NewTemplateProjectWizardPageConfirm extends WizardNewProjectCreationPage{
+public class NewChefProjectWizardPageConfirm extends WizardNewProjectCreationPage{
 
-	public NewTemplateProjectWizardPageConfirm(String pageName) {
+	public NewChefProjectWizardPageConfirm(String pageName) {
 		super(pageName);
 		this.setTitle(pageName);
 	}

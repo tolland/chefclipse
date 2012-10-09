@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.CoreException;
  * @author markin
  * A project nature for the template project
  */
-public class TemplateProjectNature implements IProjectNature{
+public class ChefProjectNature implements IProjectNature{
 	
 	private IProject project;
 	
