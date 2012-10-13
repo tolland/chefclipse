@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Sample Wizards"
+            id="org.limepepper.chefclipse.remotepicker.ui">
+      </category>
+      <wizard
+            name="Multi-page Editor file"
+            icon="icons/sample.gif"
+            category="org.limepepper.chefclipse.remotepicker.ui"
+            class="org.limepepper.chefclipse.remotepicker.ui.wizards.SampleNewWizard"
+            id="org.limepepper.chefclipse.remotepicker.ui.wizards.SampleNewWizard">
+      </wizard>
+   </extension>
+
+</plugin>
