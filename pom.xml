@@ -34,6 +34,7 @@
  	  <module>org.limepepper.chefclipse.product</module>
     <module>org.limepepper.chefclipse.remotepicker.api</module>
     <module>org.limepepper.chefclipse.remotepicker.ui</module>
+    <module>org.limepepper.chefclipse.remotepicker.test</module>
   </modules>
   
   
