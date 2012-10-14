@@ -7,3 +7,5 @@ Bundle-Activator: org.limepepper.chefclipse.remotepicker.api.Activator
 Require-Bundle: org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: javax.ws.rs,
+ javax.ws.rs.core
