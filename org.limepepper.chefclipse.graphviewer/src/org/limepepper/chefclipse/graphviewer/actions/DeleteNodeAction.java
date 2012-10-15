@@ -1,14 +1,13 @@
 package org.limepepper.chefclipse.graphviewer.actions;
 
 import org.eclipse.jface.action.Action;
-
-import org.limepepper.chefclipse.graphviewer.common.ChefElement;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
+
 
 public class DeleteNodeAction extends Action {
 
-	private ChefElement selectedElement;
-	public DeleteNodeAction(ChefElement selectedNode)
+	private Object selectedElement;
+	public DeleteNodeAction(Object selectedNode)
 	{
 		this.setText("Delete Node");
 		selectedElement=selectedNode;
@@ -16,7 +15,7 @@ public class DeleteNodeAction extends Action {
 	
 	@Override
 	public void run() {
-		DependencyController.getController().removeNode(selectedElement);
+		//DependencyController.getController().removeNode(selectedElement);
 	}
 
 	@Override

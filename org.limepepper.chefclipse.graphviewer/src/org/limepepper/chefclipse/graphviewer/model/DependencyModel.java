@@ -2,7 +2,7 @@ package org.limepepper.chefclipse.graphviewer.model;
 
 import java.util.ArrayList;
 
-import org.limepepper.chefclipse.graphviewer.common.Cookbook;
+import org.limepepper.chefclipse.model.cookbook.Cookbook;
 
 public class DependencyModel {
 	private static DependencyModel sModel=null;

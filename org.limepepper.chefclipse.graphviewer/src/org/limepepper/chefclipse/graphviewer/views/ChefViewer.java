@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
@@ -17,6 +18,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.zest.core.viewers.GraphViewer;
 import org.eclipse.zest.core.viewers.IGraphContentProvider;
+import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
+import org.eclipse.zest.core.viewers.IGraphEntityRelationshipContentProvider;
 import org.eclipse.zest.core.widgets.Graph;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.LayoutAlgorithm;
@@ -29,11 +32,13 @@ import org.eclipse.zest.layouts.algorithms.HorizontalTreeLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.SpringLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
+import org.limepepper.chefclipse.model.cookbook.Cookbook;
+import org.limepepper.chefclipse.model.cookbook.Recipe;
 import org.limepepper.chefclipse.graphviewer.actions.DeleteDependencyAction;
 import org.limepepper.chefclipse.graphviewer.actions.DeleteNodeAction;
-import org.limepepper.chefclipse.graphviewer.common.ChefElement;
-import org.limepepper.chefclipse.graphviewer.common.ChefRelation;
-import org.limepepper.chefclipse.graphviewer.common.Cookbook;
+import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
+import org.limepepper.chefclipse.graphviewer.common.MockDependencyRelation;
+import org.limepepper.chefclipse.graphviewer.common.MockRecipeImpl;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
@@ -48,8 +53,8 @@ public class ChefViewer implements IDependencyChangeListener {
 		DependencyModel.getModel().addDependencyChangeListener(this);
 		graphViewer = new GraphViewer(parent, SWT.NONE);
 		
-		graphViewer.setContentProvider(new ChefGraphContentProvider());
-		graphViewer.setLabelProvider(new ChefLabelProvider());
+		graphViewer.setContentProvider(new GraphViewerContentProvider());
+		graphViewer.setLabelProvider(new GraphViewerLabelProvider());
 		graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
 		TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING);
 		HorizontalShift horizontalShift =new HorizontalShift(LayoutStyles.NO_LAYOUT_NODE_RESIZING);
@@ -61,62 +66,64 @@ public class ChefViewer implements IDependencyChangeListener {
 		hookMenu(graph);
 	}
 	
-	static class ChefGraphContentProvider implements IGraphContentProvider {
+	static class GraphViewerContentProvider  implements IGraphEntityContentProvider {
 
-		public Object getDestination(Object rel) {
-			ChefRelation relation = (ChefRelation) rel;
-			return relation.target;
-		}
-
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * org.eclipse.zest.core.viewers.IGraphContentProvider#getElements(java
-		 * .lang.Object)
-		 */
-		public Object[] getElements(Object input) {
-			List<ChefRelation> relations = new ArrayList<ChefRelation>();
-			List<ChefElement> nodes = new ArrayList<ChefElement>();
-			ChefElement root = (ChefElement) input;
-			nodes.add(root);
-			for (int i = 0; i < nodes.size(); i++) {
-				ChefElement node = nodes.get(i);
-				List<ChefElement> children = node.getChildren();
-				if (children == null)
-					continue;
-				for (ChefElement child : children) {
-					if (!nodes.contains(child))
-						nodes.add(child);
-				}
-
-				for (ChefElement child : children) {
-					relations.add(new ChefRelation(node, child));
-				}
-			}
-
-			return relations.toArray();
-		}
-
-		public Object getSource(Object rel) {
-			ChefRelation relation = (ChefRelation) rel;
-			return relation.source;
-		}
-
-		public double getWeight(Object connection) {
-			return 0;
-		}
+		public Object[] getConnectedTo(Object entity) {
+		    if (entity instanceof Recipe) {
+		    	Recipe node = (Recipe) entity;
+		      return node.getCookbook().toArray();
+		    }
+		    else if (entity instanceof Cookbook)
+		    {
+		    	Cookbook node = (Cookbook) entity;
+			      return node.getRecipes().toArray();
+		    }
+		    throw new RuntimeException("Type not supported");
+		  }
 
 		public void dispose() {
-
+			// TODO Auto-generated method stub
+			
 		}
 
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			// TODO Auto-generated method stub
+			
 		}
 
+		public Object[] getElements(Object inputElement) {
+			Cookbook cookbook = (Cookbook)inputElement;
+			List<Object> elements =new ArrayList<Object>();
+			elements.add(cookbook);
+			for(int i=0; i<elements.size();i++)
+			{
+				Object current = elements.get(i);
+				List<? extends Object> children=null;
+				if(current instanceof Cookbook)
+				{
+					children = ((Cookbook)current).getRecipes();
+				}
+				else if(current instanceof Recipe)
+				{
+					children = ((Recipe)current).getCookbook();
+				}
+				if(children==null)
+				{
+					continue;
+				}
+				for(Object child:children)
+				{
+					if(!elements.contains(child))
+					{
+						elements.add(child);
+					}
+				}
+			}
+			return elements.toArray();
+		}
 	}
 
-	static class ChefLabelProvider extends LabelProvider {
+	static class GraphViewerLabelProvider extends LabelProvider {
 		final Image image = Display.getDefault().getSystemImage(
 				SWT.ICON_WARNING);
 
@@ -125,26 +132,27 @@ public class ChefViewer implements IDependencyChangeListener {
 		Image recipeImage = new Image(Display.getDefault(),
 				ChefViewer.class.getResourceAsStream("methpub_obj.gif"));
 
-		public ChefLabelProvider() {
+		public GraphViewerLabelProvider() {
 
 		}
 
 		public String getText(Object element) {
-			if (element instanceof ChefElement) {
-				return ((ChefElement) element).getName();
+			if (element instanceof Recipe) {
+				return ((MockRecipeImpl) element).getName();
+			}
+			else if(element instanceof Cookbook)
+			{
+				return ((MockCookbookImpl) element).getName();
 			}
 			return null;
 		}
 
 		public Image getImage(Object element) {
-			if (element instanceof ChefElement) {
-				String type = ((ChefElement) element).getType();
-				if (type.equals("Cookbook")) {
+			if (element instanceof Cookbook) {
 					return cookbookImage;
-				}
-				if (type.equals("Recipe")) {
-					return recipeImage;
-				}
+			}
+			else if (element instanceof Recipe) {
+				return recipeImage;
 			}
 			return null;
 		}
@@ -193,18 +201,18 @@ public class ChefViewer implements IDependencyChangeListener {
 	}
 	
 	private void fillContextMenu(IMenuManager menuMgr) {
-		ChefElement selectedNode=null;
-		ChefRelation selectedRelation=null;
+		Object selectedNode=null;
+		Object selectedRelation=null;
 		IStructuredSelection selection = (IStructuredSelection)graphViewer.getSelection(); 
 		if (selection != null) { 
 			Object selected = selection.getFirstElement();
-			if(selected instanceof ChefElement)
+			if(selectedNode instanceof Recipe|| selectedNode instanceof Cookbook)
 			{
-				selectedNode=(ChefElement)selected;
+				selectedNode=selected;
 			}
-			else if(selected instanceof ChefRelation)
+			else if(selected instanceof MockDependencyRelation)
 			{
-				selectedRelation=(ChefRelation)selected;
+				selectedRelation= selected;
 			}
 		}
 		menuMgr.add(new DeleteDependencyAction(selectedRelation));

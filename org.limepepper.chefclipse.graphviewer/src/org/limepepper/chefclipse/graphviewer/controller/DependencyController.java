@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.limepepper.chefclipse.graphviewer.common.ChefElement;
-import org.limepepper.chefclipse.graphviewer.common.ChefRelation;
-import org.limepepper.chefclipse.graphviewer.common.Cookbook;
-import org.limepepper.chefclipse.graphviewer.common.Recipe;
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
+import org.limepepper.chefclipse.graphviewer.common.MockRecipeImpl;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
+import org.limepepper.chefclipse.model.cookbook.Cookbook;
+import org.limepepper.chefclipse.model.cookbook.Recipe;
 
 public class DependencyController {
 	static private DependencyController sController=null;
@@ -22,79 +24,52 @@ public class DependencyController {
 		return sController;
 	}
 	
-	public void removeDependency(ChefRelation chefRelation)
+	public void removeDependency(Object dependencyRelation)
 	{
-		ChefElement source = chefRelation.getSource();
-		ChefElement target = chefRelation.getTarget();
-		
-		source.remvoeChild(target);
-		target.removeParent(source);
-		DependencyModel.getModel().notifyDependencyChanged();
 	}
 	
-	public void removeNode(ChefElement chefElement)
+	public void removeNode(Object chefElement)
 	{
-		//remove chefElement from all its parent nodes.
-		List<ChefElement> parent = chefElement.getParent();
-		if(parent!=null)
-		{
-			for(ChefElement p:parent)
-			{
-				p.remvoeChild(chefElement);
-			}
-		}
-		
-		//remove chefElement from all its children nodes.
-		List<ChefElement> children1 = chefElement.getChildren();
-		if(children1!=null)
-		{
-			for(ChefElement child:children1)
-			{
-				child.removeParent(chefElement);
-			}
-		}
-		
-		DependencyModel.getModel().notifyDependencyChanged();
 	}
 	
 	public Cookbook getRootCookbook() {
-		Recipe mysql_R1 = new Recipe("default.rb", null);
-		Recipe mysql_R2 = new Recipe("client.rb", null);
-		Recipe mysql_R3 = new Recipe("server.rb", null);
-		Cookbook mysqlCb = new Cookbook("mysql v1.3.0 (Databases)",
-				new ArrayList<Recipe>(Arrays.asList(new Recipe[] { mysql_R1, mysql_R2, mysql_R3 })));
+		MockRecipeImpl mysql_R1 = new MockRecipeImpl("default.rb", null);
+		MockRecipeImpl mysql_R2 = new MockRecipeImpl("client.rb", null);
+		MockRecipeImpl mysql_R3 = new MockRecipeImpl("server.rb", null);
+		MockCookbookImpl mysqlCb =new MockCookbookImpl("mysql v1.3.0 (Databases)",
+				new BasicEList<Recipe>(Arrays.asList(new MockRecipeImpl[] { mysql_R1, mysql_R2, mysql_R3 })));
 
-		Recipe apt_R1 = new Recipe("default.rb", null);
-		Recipe apt_R2 = new Recipe("cacher-client.rb", null);
-		Recipe apt_R3 = new Recipe("cacher-ng.rb", null);
-		Cookbook aptCb = new Cookbook("mysql v1.1.16 (Web Servers)",
-				new ArrayList<Recipe>(Arrays.asList(new Recipe[] { apt_R1, apt_R2, apt_R3 })));
+		MockRecipeImpl apt_R1 = new MockRecipeImpl("default.rb", null);
+		MockRecipeImpl apt_R2 = new MockRecipeImpl("cacher-client.rb", null);
+		MockRecipeImpl apt_R3 = new MockRecipeImpl("cacher-ng.rb", null);
+		MockCookbookImpl aptCb = new MockCookbookImpl("mysql v1.1.16 (Web Servers)",
+				new BasicEList<Recipe>(Arrays.asList(new MockRecipeImpl[] { apt_R1, apt_R2, apt_R3 })));
 
-		Recipe apache2_R1 = new Recipe("mod_auth_basic.rb",
-				new ArrayList<Cookbook>(Arrays.asList(new Cookbook[] { mysqlCb, aptCb })));
-		Recipe apache2_R2 = new Recipe("mod_authz_groupfile.rb", null);
-		Recipe apache2_R3 = new Recipe("mod_authz_host.rb", null);
-		Recipe apache2_R4 = new Recipe("mod_proxy_balancer.rb",
-				new ArrayList<Cookbook>(Arrays.asList(new Cookbook[] { aptCb })));
-		Cookbook apache2Cb = new Cookbook("apt v1.4.8 (Package Management)",
-				new ArrayList<Recipe>(Arrays.asList(new Recipe[] { apache2_R1, apache2_R2,
+		MockRecipeImpl apache2_R1 = new MockRecipeImpl("mod_auth_basic.rb",
+				new BasicEList<Cookbook>(Arrays.asList(new Cookbook[] { mysqlCb, aptCb })));
+		MockRecipeImpl apache2_R2 = new MockRecipeImpl("mod_authz_groupfile.rb", null);
+		MockRecipeImpl apache2_R3 = new MockRecipeImpl("mod_authz_host.rb", null);
+		MockRecipeImpl apache2_R4 = new MockRecipeImpl("mod_proxy_balancer.rb",
+				new BasicEList<Cookbook>(Arrays.asList(new Cookbook[] { aptCb })));
+		MockCookbookImpl apache2Cb = new MockCookbookImpl("apt v1.4.8 (Package Management)",
+				new BasicEList<Recipe>(Arrays.asList(new Recipe[] { apache2_R1, apache2_R2,
 						apache2_R3, apache2_R4 })));
 
-		Recipe yum_R1 = new Recipe("default.rb", null);
-		Recipe yum_R2 = new Recipe("epel.rb", null);
-		Recipe yum_R3 = new Recipe("ius.rb", null);
-		Cookbook yumCb = new Cookbook("yum v1.0.0 (Package Management)",
-				new ArrayList<Recipe>(Arrays.asList(new Recipe[] { yum_R1, yum_R2, yum_R3 })));
+		Recipe yum_R1 = new MockRecipeImpl("default.rb", null);
+		Recipe yum_R2 = new MockRecipeImpl("epel.rb", null);
+		Recipe yum_R3 = new MockRecipeImpl("ius.rb", null);
+		MockCookbookImpl yumCb = new MockCookbookImpl("yum v1.0.0 (Package Management)",
+				new BasicEList<Recipe>(Arrays.asList(new Recipe[] { yum_R1, yum_R2, yum_R3 })));
 
-		Recipe php_R1 = new Recipe("default.rb",
-				new ArrayList<Cookbook>(Arrays.asList(new Cookbook[] { apache2Cb })));
-		Recipe php_R2 = new Recipe("module_apc.rb", null);
-		Recipe php_R3 = new Recipe("module_curl.rb",
-				new ArrayList<Cookbook>(Arrays.asList(new Cookbook[] { mysqlCb, yumCb })));
-		Recipe php_R4 = new Recipe("module_module_mysql.rb",
-				new ArrayList<Cookbook>(Arrays.asList(new Cookbook[] { mysqlCb, aptCb })));
-		Cookbook phpCb = new Cookbook("php v1.1.0 (Programming Languages)",
-				new ArrayList<Recipe>(Arrays.asList(new Recipe[] { php_R1, php_R2, php_R3, php_R4 })));
+		MockRecipeImpl php_R1 = new MockRecipeImpl("default.rb",
+				new BasicEList<Cookbook>(Arrays.asList(new Cookbook[] { apache2Cb })));
+		MockRecipeImpl php_R2 = new MockRecipeImpl("module_apc.rb", null);
+		MockRecipeImpl php_R3 = new MockRecipeImpl("module_curl.rb",
+				new BasicEList<Cookbook>(Arrays.asList(new Cookbook[] { mysqlCb, yumCb })));
+		MockRecipeImpl php_R4 = new MockRecipeImpl("module_module_mysql.rb",
+				new BasicEList<Cookbook>(Arrays.asList(new Cookbook[] { mysqlCb, aptCb })));
+		MockCookbookImpl phpCb = new MockCookbookImpl("php v1.1.0 (Programming Languages)",
+				new BasicEList<Recipe>(Arrays.asList(new MockRecipeImpl[] { php_R1, php_R2, php_R3, php_R4 })));
 
 		return phpCb;
 	}
