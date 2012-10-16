@@ -7,5 +7,9 @@ Bundle-Activator: org.limepepper.chefclipse.remotepicker.api.Activator
 Require-Bundle: org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: javax.ws.rs,
- javax.ws.rs.core
+Bundle-ClassPath: lib/jersey-client-1.14.jar,
+ lib/jersey-core-1.14.jar,
+ lib/jersey-json-1.14.jar,
+ lib/jettison-1.1.jar,
+ .
+Export-Package: org.limepepper.chefclipse.remotepicker.api

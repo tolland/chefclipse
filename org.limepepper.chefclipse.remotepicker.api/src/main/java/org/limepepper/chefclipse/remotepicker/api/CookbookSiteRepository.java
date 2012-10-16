@@ -143,9 +143,11 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 				versions[i] = versionsJson.getString(i);
 			}
 			cookbook.setVersions(versions);
-		} catch (JSONException | ParseException e) {
+		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ParseException e1){
+			e1.printStackTrace();
 		}
 		return cookbook;
 	}
