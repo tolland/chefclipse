@@ -15,7 +15,7 @@ public class DeleteNodeAction extends Action {
 	
 	@Override
 	public void run() {
-		//DependencyController.getController().removeNode(selectedElement);
+		DependencyController.getController().removeNode(selectedElement);
 	}
 
 	@Override

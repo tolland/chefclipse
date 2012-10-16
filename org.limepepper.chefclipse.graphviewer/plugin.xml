@@ -9,24 +9,12 @@
             id="org.limepepper.chefclipse.graphviewer">
       </category>
       <view
-            name="Sample View"
+            name="Graph View"
             icon="icons/sample.gif"
             category="org.limepepper.chefclipse.graphviewer"
-            class="org.limepepper.chefclipse.graphviewer.views.SampleView"
-            id="org.limepepper.chefclipse.graphviewer.views.SampleView">
+            class="org.limepepper.chefclipse.graphviewer.views.GraphView"
+            id="org.limepepper.chefclipse.graphviewer.views.GraphView">
       </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="org.eclipse.jdt.ui.JavaPerspective">
-         <view
-               ratio="0.5"
-               relative="org.eclipse.ui.views.ProblemView"
-               relationship="right"
-               id="org.limepepper.chefclipse.graphviewer.views.SampleView">
-         </view>
-      </perspectiveExtension>
    </extension>
    <extension
          point="org.eclipse.help.contexts">
@@ -35,4 +23,18 @@
       </contexts>
    </extension>
 
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="org.limepepper.chefclipse.contribution1">
+         <action
+               label="Open Graph Viewer"
+               class="org.limepepper.chefclipse.graphviewer.actions.OpenGraphViewerAction"
+               enablesFor="1"
+               id="org.limepepper.chefclipse.graphviewer.actions.OpenGraphViewerAction">
+         </action>
+      </objectContribution>
+   </extension>
 </plugin>

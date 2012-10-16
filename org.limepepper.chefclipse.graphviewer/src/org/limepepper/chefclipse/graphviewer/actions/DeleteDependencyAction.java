@@ -14,7 +14,7 @@ public class DeleteDependencyAction extends Action {
 	
 	@Override
 	public void run() {
-		//DependencyController.getController().removeDependency(selectedRelation);
+		DependencyController.getController().removeDependency(selectedRelation);
 	}
 
 	@Override
