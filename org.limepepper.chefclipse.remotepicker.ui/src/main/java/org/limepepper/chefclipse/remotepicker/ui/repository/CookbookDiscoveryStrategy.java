@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.equinox.internal.p2.discovery.AbstractCatalogSource;
 import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogCategory;
@@ -40,7 +41,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 	public void performDiscovery(IProgressMonitor monitor) throws CoreException {
 		
 		ICookbooksRepository cookbooksSiteRepository= new CookbookSiteRepository();
-		List<CookbookInfo> cookbooks = cookbooksSiteRepository.getCookbooks(null);
+		List<CookbookInfo> cookbooks = cookbooksSiteRepository.getCookbooks(monitor);
 		for (CookbookInfo cookBookInfo : cookbooks){
 			items.add(createItem(cookBookInfo));
 		}

@@ -50,12 +50,12 @@ public class RemotePickerHandler extends AbstractHandler {
 
 		DiscoveryWizard wizard = new DiscoveryWizard(catalog, configuration);
 		WizardDialog dialog = new WizardDialog(WorkbenchUtil.getShell(), wizard);
-		try {
-			cookbookDiscoveryStrategy.performDiscovery(null);
-		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			cookbookDiscoveryStrategy.performDiscovery(null);
+//		} catch (CoreException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		dialog.open();
 		return null;
 	}

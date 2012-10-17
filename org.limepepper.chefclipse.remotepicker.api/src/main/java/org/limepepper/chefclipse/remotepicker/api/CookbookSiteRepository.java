@@ -6,6 +6,7 @@ package org.limepepper.chefclipse.remotepicker.api;
 import java.net.URI;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +52,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 */
 	private JSONObject getRestCookbooks(int start, int items) {
 	    return getService().path("cookbooks")
+	    		.queryParam("items", String.valueOf(items))
 	    		.accept(MediaType.APPLICATION_JSON_TYPE)
 	    		.get(JSONObject.class);
 	}
@@ -61,18 +63,23 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	@Override
 	public List<CookbookInfo> getCookbooks(IProgressMonitor monitor) {
 		List<CookbookInfo> cookbooks = new ArrayList<CookbookInfo>();
-		JSONObject json = getRestCookbooks(0, 1000);
+		JSONObject json = getRestCookbooks(0, 30);
 		try {
 			JSONArray items = json.getJSONArray("items");
+			monitor.beginTask("Retrieving cookbooks", items.length()+1);
+			monitor.worked(1);
 			for (int i = 0; i < items.length(); i++) {
 				try {
 					JSONObject cookbookJson = items.getJSONObject(i);
-					cookbooks.add(createCookbook(cookbookJson));
+					String name = createCookbook(cookbookJson).getName();
+					cookbooks.add(getCookbook(name, monitor));
+					monitor.worked(1);
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
+			monitor.done();
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -115,7 +122,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 		JSONObject cookbookJson = restCookbook(name);
 		
 		String url = UriBuilder.fromUri(getRepositoryURI())
-				.path("cookbook").path(name)
+				.path("cookbooks").path(name)
 				.build().toString();
 		
 		CookbookInfo cookbook = createCookbookDetail(cookbookJson, url);
@@ -124,13 +131,14 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 	private CookbookInfo createCookbookDetail(JSONObject cookbookJson, String url) {
 		CookbookInfo cookbook = new CookbookInfo();
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		try {
 			cookbook.setName(cookbookJson.getString("name"));
 			cookbook.setUrl(url);
 			cookbook.setDescription(cookbookJson.getString("description"));
 			cookbook.setCategory(cookbookJson.getString("category"));
-			cookbook.setCreatedAt(DateFormat.getInstance().parse(cookbookJson.getString("created_at")));
-			cookbook.setUpdatedAt(DateFormat.getInstance().parse(cookbookJson.getString("updated_at")));
+			cookbook.setUpdatedAt(format.parse(cookbookJson.getString("updated_at")));
+			cookbook.setCreatedAt(format.parse(cookbookJson.getString("created_at")));
 			cookbook.setDeprecated(cookbookJson.optBoolean("deprecated"));
 			cookbook.setExternalUrl(cookbookJson.optString("external_url"));
 			cookbook.setLatestVersion(cookbookJson.getString("latest_version"));
