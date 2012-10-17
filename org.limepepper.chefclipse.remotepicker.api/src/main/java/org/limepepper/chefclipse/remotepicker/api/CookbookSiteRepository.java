@@ -4,6 +4,7 @@
 package org.limepepper.chefclipse.remotepicker.api;
 
 import java.net.URI;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -162,6 +163,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 	@Override
 	public URI getRepositoryURI() {
+	
 		return UriBuilder.fromUri("http://cookbooks.opscode.com/api/v1/")
 				.build();
 	}

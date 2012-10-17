@@ -2,20 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.newWizards">
-      <category
-            name="Sample Wizards"
-            id="org.limepepper.chefclipse.remotepicker.ui">
-      </category>
-      <wizard
-            name="Multi-page Editor file"
-            icon="icons/sample.gif"
-            category="org.limepepper.chefclipse.remotepicker.ui"
-            class="org.limepepper.chefclipse.remotepicker.ui.wizards.SampleNewWizard"
-            id="org.limepepper.chefclipse.remotepicker.ui.wizards.SampleNewWizard">
-      </wizard>
-   </extension>
-   <extension
          point="org.eclipse.ui.commands">
 	  <category
             name="Remote Picker Command Category"
@@ -37,7 +23,7 @@
    <extension
          point="org.eclipse.ui.menus">
          <menuContribution
-            locationURI="menu:file?after=additions">
+            locationURI="menu:help?after=additions">
            		<command
 	              	commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
 	              	mnemonic="S"
