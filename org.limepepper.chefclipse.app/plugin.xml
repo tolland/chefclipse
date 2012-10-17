@@ -16,10 +16,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="org.limepepper.chefclipse.app"
-            name="Template Project Product">
+            name="Chefclipse">
          <property
                name="appName"
-               value="Template Project Product">
+               value="Chefclipse">
          </property>
       </product>
    </extension>

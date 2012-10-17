@@ -2,6 +2,7 @@ package org.limepepper.chefclipse.adapters;
 
 import java.io.File;
 import java.util.Collections;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -19,7 +20,7 @@ import org.limepepper.chefclipse.model.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.model.workstation.WorkstationPackage;
 
 public class ChefRepositoryAdapter {
-	
+		
 	
 	/*
 	 * Create a repository ecore object containing  a reference to the on-disk repository.
@@ -36,25 +37,27 @@ public class ChefRepositoryAdapter {
 		
 		Repository repo = WorkstationFactory.eINSTANCE.createRepository();		
 		repo.setBasepath(location);
-		
-		synchronize(repo);
+						
 		
 		resource.getContents().add(repo);
 		resource.save(Collections.EMPTY_MAP);
 	}
 	
 	public static Repository openChefRepository(IFile file){
-		ResourceSet resourceSet = new ResourceSetImpl();
-		URI fileURI = URI.createPlatformResourceURI(file.getLocationURI().toString() , true);
+		ResourceSet resourceSet = new ResourceSetImpl();		
+		URI fileURI = URI.createPlatformResourceURI(file.getFullPath().toString() , true);		
 		Resource resource = resourceSet.getResource(fileURI, true);
 		
-		return (Repository)resource.getContents().toArray()[0];		
+		Repository repo = (Repository)resource.getContents().toArray()[0];		
+		synchronize(repo);
+				
+		return repo;		
 	}
 	
 	/*
 	 * Synchronizes the content of the repository object with the on-disk structure
 	 */
-	public static void synchronize(Repository repo){
+	private static void synchronize(Repository repo){
 		File loc = new File(repo.getBasepath());
 		
 		for(File f: loc.listFiles()){
@@ -67,14 +70,12 @@ public class ChefRepositoryAdapter {
 	/*
 	 * Creates cookbook objects from the on-disk structure
 	 */
-	public static void synchronizeCookbooks(Repository repo, File location){
+	private static void synchronizeCookbooks(Repository repo, File location){
 		for(File f: location.listFiles()){
 			if(f.isDirectory()){
 				Cookbook cookbook = CookbookFactory.eINSTANCE.createCookbook();
 				synchronizeCookbook(cookbook, f);
-				repo.getCookbooks().add(cookbook);
-				
-				
+				repo.getCookbooks().add(cookbook);								
 			}
 		}
 	}
@@ -83,10 +84,10 @@ public class ChefRepositoryAdapter {
 	 * Creates a cookbook object from the on-disk structure
 	 * ToDo: implement the creation of recipes. Now only one dummy recipe is created
 	 */
-	public static void synchronizeCookbook(Cookbook cookbook, File location){
+	private static void synchronizeCookbook(Cookbook cookbook, File location){
 		for(File f: location.listFiles()){
 			if(f.isDirectory() && f.getName().equals("recipes")){
-				Recipe recipe = CookbookFactory.eINSTANCE.createRecipe();
+				Recipe recipe = CookbookFactory.eINSTANCE.createRecipe();				
 				recipe.getCookbook().add(cookbook);
 				cookbook.getRecipes().add(recipe);				
 			}

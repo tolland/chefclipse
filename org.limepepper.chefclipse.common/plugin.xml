@@ -12,39 +12,11 @@
       </runtime>
    </extension>
    <extension
-         point="org.eclipse.ui.navigator.navigatorContent">
-      <navigatorContent
-            activeByDefault="true"
-            contentProvider="org.limepepper.chefclipse.common.resources.TemplateContentProvider"
-            id="org.limepepper.chefclipse.common.templateContent"
-            labelProvider="org.limepepper.chefclipse.common.resources.TemplateLabelProvider"
-            name="Template Content Provider"
-            priority="high">
-         <triggerPoints>
-            <or>
-               <instanceof
-                     value="org.eclipse.core.resources.IWorkspaceRoot">
-               </instanceof>
-               <instanceof
-                     value="org.limepepper.chefclipse.common.resources.TemplateModule">
-               </instanceof>
-               <instanceof
-                     value="org.eclipse.core.resources.IProject">
-               </instanceof>
-            </or>
-         </triggerPoints>
-      </navigatorContent>
-   </extension>
-   <extension
-         point="org.eclipse.ui.navigator.viewer">
-      <viewerContentBinding
-            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
-         <includes>
-            <contentExtension
-                  isRoot="true"
-                  pattern="org.limepepper.chefclipse.common.templateContent">
-            </contentExtension></includes>
-      </viewerContentBinding>
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="org.limepepper.chefclipse.model.workstation.WorkstationPackage"
+            uri="http://limepepper.org/chefclipse/workstation">
+      </package>
    </extension>
 
 </plugin>
