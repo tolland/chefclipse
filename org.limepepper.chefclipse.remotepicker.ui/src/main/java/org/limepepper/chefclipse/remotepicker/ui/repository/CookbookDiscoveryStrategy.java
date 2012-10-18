@@ -5,20 +5,25 @@ package org.limepepper.chefclipse.remotepicker.ui.repository;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.equinox.internal.p2.discovery.AbstractCatalogSource;
 import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogCategory;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.discovery.model.Icon;
+import org.eclipse.ui.internal.util.BundleUtility;
 import org.limepepper.chefclipse.remotepicker.api.CookbookInfo;
 import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
+import org.limepepper.chefclipse.remotepicker.ui.Activator;
+import org.osgi.framework.Bundle;
 
 /**
  * @author Sebastian Sampaoli
@@ -29,6 +34,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 
 	private static final String COOKBOOK_ICON = "icons/opscode.png";
 	private HashMap<String, CatalogCategory> categoriesMap;
+	private DateFormat dateFormat;
 
 	/**
 	 * 
@@ -37,6 +43,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		categories = new ArrayList<CatalogCategory>();
 		setCategoriesMap(new HashMap<String, CatalogCategory>());
 		items = new ArrayList<CatalogItem>();
+		dateFormat = DateFormat.getDateTimeInstance();
 	}
 
 	/* (non-Javadoc)
@@ -70,7 +77,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		final CatalogItem item = new CatalogItem();
 		item.setId(cookBookInfo.getName());
 		item.setDescription(cookBookInfo.getDescription());
-		item.setName(cookBookInfo.getName());
+		item.setName("\n"+cookBookInfo.getName());
 		item.setProvider(cookBookInfo.getMaintainer());
 		item.setSiteUrl(cookBookInfo.getUrl());
 		item.setCategoryId(cookBookInfo.getCategory());
@@ -78,16 +85,24 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		item.getInstallableUnits().add(item.getId());
 		Icon icon = new Icon();
 		icon.setImage32(COOKBOOK_ICON);
-		
+		item.setIcon(icon);
+		item.setLicense("updated at " + dateFormat.format(cookBookInfo.getUpdatedAt()));
+//		item.setCertificationId("cert");
 		item.setSource(new AbstractCatalogSource() {
 			@Override
 			public URL getResource(String resourceName) {
-				try {
-					return new URL(resourceName);
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
+				Bundle bundle = Platform.getBundle(Activator.PLUGIN_ID);
+				// look for the image (this will check both the plugin and
+				// fragment folders
+				URL fullPathString = BundleUtility.find(bundle, resourceName);
+				if (fullPathString == null) {
+					try {
+						fullPathString = new URL(resourceName);
+					} catch (MalformedURLException e) {
+						return null;
+					}
 				}
-				return null;
+				return fullPathString;
 			}
 			
 			@Override
@@ -95,6 +110,12 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 				return item.getId();
 			}
 		});
+//		Certification cert = new Certification();
+//		cert.setName("cert");
+//		cert.setDescription("la description");
+//		cert.setSource(item.getSource());
+//		cert.setIcon(icon);
+//		item.setCertification(cert);
 		return item;
 	}
 
