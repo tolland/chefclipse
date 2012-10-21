@@ -18,6 +18,7 @@ import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogCategory;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.discovery.model.Icon;
+import org.eclipse.equinox.internal.p2.discovery.model.Overview;
 import org.eclipse.ui.internal.util.BundleUtility;
 import org.limepepper.chefclipse.remotepicker.api.CookbookInfo;
 import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
@@ -110,6 +111,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 				return item.getId();
 			}
 		});
+		item.setOverview(createOverview(item));
 //		Certification cert = new Certification();
 //		cert.setName("cert");
 //		cert.setDescription("la description");
@@ -117,6 +119,16 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 //		cert.setIcon(icon);
 //		item.setCertification(cert);
 		return item;
+	}
+
+	private Overview createOverview(CatalogItem item) {
+		
+		Overview overview = new Overview();
+		overview.setCategory(item.getCategory());
+		overview.setSummary(item.getDescription());
+		overview.setItem(item);
+		overview.setUrl(item.getSiteUrl());
+		return overview;
 	}
 
 	public HashMap<String, CatalogCategory> getCategoriesMap() {
