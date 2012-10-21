@@ -74,8 +74,11 @@ public class ChefRepositoryAdapter {
 		for(File f: location.listFiles()){
 			if(f.isDirectory()){
 				Cookbook cookbook = CookbookFactory.eINSTANCE.createCookbook();
-				synchronizeCookbook(cookbook, f);
-				repo.getCookbooks().add(cookbook);								
+				cookbook.setName(f.getName());
+				cookbook.setRepository(repo);
+				
+				synchronizeRecipes(cookbook, f);
+				repo.getCookbooks().add(cookbook);				
 			}
 		}
 	}
@@ -84,7 +87,7 @@ public class ChefRepositoryAdapter {
 	 * Creates a cookbook object from the on-disk structure
 	 * ToDo: implement the creation of recipes. Now only one dummy recipe is created
 	 */
-	private static void synchronizeCookbook(Cookbook cookbook, File location){
+	private static void synchronizeRecipes(Cookbook cookbook, File location){
 		for(File f: location.listFiles()){
 			if(f.isDirectory() && f.getName().equals("recipes")){
 				Recipe recipe = CookbookFactory.eINSTANCE.createRecipe();				

@@ -8,6 +8,8 @@
         eType="ecore:EClass chefserver.ecore#//Environment"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="recipes" upperBound="-1"
         eType="#//Recipe" eOpposite="#//Recipe/cookbook"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" eType="ecore:EClass workstation.ecore#//Repository"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Definition"/>
   <eClassifiers xsi:type="ecore:EClass" name="Library"/>
@@ -20,6 +22,7 @@
         eType="#//Resource" containment="true" eOpposite="#//Resource/recipe"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cookbook" upperBound="-1"
         eType="#//Cookbook" eOpposite="#//Cookbook/recipes"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Version"/>
   <eClassifiers xsi:type="ecore:EClass" name="Resource">

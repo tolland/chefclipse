@@ -39,6 +39,7 @@ import org.limepepper.chefclipse.model.cookbook.Resource;
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.RecipeImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.RecipeImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.RecipeImpl#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.RecipeImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,6 +85,26 @@ public class RecipeImpl extends EObjectImpl implements Recipe {
 	 * @ordered
 	 */
 	protected EList<Cookbook> cookbook;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -183,6 +204,27 @@ public class RecipeImpl extends EObjectImpl implements Recipe {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CookbookPackage.RECIPE__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -228,6 +270,8 @@ public class RecipeImpl extends EObjectImpl implements Recipe {
 				return getResources();
 			case CookbookPackage.RECIPE__COOKBOOK:
 				return getCookbook();
+			case CookbookPackage.RECIPE__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -256,6 +300,9 @@ public class RecipeImpl extends EObjectImpl implements Recipe {
 				getCookbook().clear();
 				getCookbook().addAll((Collection<? extends Cookbook>)newValue);
 				return;
+			case CookbookPackage.RECIPE__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -280,6 +327,9 @@ public class RecipeImpl extends EObjectImpl implements Recipe {
 			case CookbookPackage.RECIPE__COOKBOOK:
 				getCookbook().clear();
 				return;
+			case CookbookPackage.RECIPE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -300,8 +350,26 @@ public class RecipeImpl extends EObjectImpl implements Recipe {
 				return resources != null && !resources.isEmpty();
 			case CookbookPackage.RECIPE__COOKBOOK:
 				return cookbook != null && !cookbook.isEmpty();
+			case CookbookPackage.RECIPE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //RecipeImpl

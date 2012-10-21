@@ -24,6 +24,7 @@ import org.limepepper.chefclipse.model.cookbook.Cookbook;
 import org.limepepper.chefclipse.model.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.model.cookbook.DependencyRelation;
 import org.limepepper.chefclipse.model.cookbook.Recipe;
+import org.limepepper.chefclipse.model.workstation.Repository;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,6 +36,8 @@ import org.limepepper.chefclipse.model.cookbook.Recipe;
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.CookbookImpl#getDepends <em>Depends</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.CookbookImpl#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.CookbookImpl#getRecipes <em>Recipes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.CookbookImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.model.cookbook.impl.CookbookImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +73,36 @@ public class CookbookImpl extends EObjectImpl implements Cookbook {
 	 * @ordered
 	 */
 	protected EList<Recipe> recipes;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRepository() <em>Repository</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRepository()
+	 * @generated
+	 * @ordered
+	 */
+	protected Repository repository;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -183,6 +216,65 @@ public class CookbookImpl extends EObjectImpl implements Cookbook {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CookbookPackage.COOKBOOK__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Repository getRepository() {
+		if (repository != null && repository.eIsProxy()) {
+			InternalEObject oldRepository = (InternalEObject)repository;
+			repository = (Repository)eResolveProxy(oldRepository);
+			if (repository != oldRepository) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CookbookPackage.COOKBOOK__REPOSITORY, oldRepository, repository));
+			}
+		}
+		return repository;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Repository basicGetRepository() {
+		return repository;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRepository(Repository newRepository) {
+		Repository oldRepository = repository;
+		repository = newRepository;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CookbookPackage.COOKBOOK__REPOSITORY, oldRepository, repository));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -223,6 +315,11 @@ public class CookbookImpl extends EObjectImpl implements Cookbook {
 				return basicGetEnvironment();
 			case CookbookPackage.COOKBOOK__RECIPES:
 				return getRecipes();
+			case CookbookPackage.COOKBOOK__NAME:
+				return getName();
+			case CookbookPackage.COOKBOOK__REPOSITORY:
+				if (resolve) return getRepository();
+				return basicGetRepository();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -246,6 +343,12 @@ public class CookbookImpl extends EObjectImpl implements Cookbook {
 				getRecipes().clear();
 				getRecipes().addAll((Collection<? extends Recipe>)newValue);
 				return;
+			case CookbookPackage.COOKBOOK__NAME:
+				setName((String)newValue);
+				return;
+			case CookbookPackage.COOKBOOK__REPOSITORY:
+				setRepository((Repository)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -267,6 +370,12 @@ public class CookbookImpl extends EObjectImpl implements Cookbook {
 			case CookbookPackage.COOKBOOK__RECIPES:
 				getRecipes().clear();
 				return;
+			case CookbookPackage.COOKBOOK__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case CookbookPackage.COOKBOOK__REPOSITORY:
+				setRepository((Repository)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -285,8 +394,28 @@ public class CookbookImpl extends EObjectImpl implements Cookbook {
 				return environment != null;
 			case CookbookPackage.COOKBOOK__RECIPES:
 				return recipes != null && !recipes.isEmpty();
+			case CookbookPackage.COOKBOOK__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case CookbookPackage.COOKBOOK__REPOSITORY:
+				return repository != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //CookbookImpl

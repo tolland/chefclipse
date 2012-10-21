@@ -2,6 +2,7 @@
  */
 package org.limepepper.chefclipse.model.cookbook.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
@@ -223,6 +224,24 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCookbook_Name() {
+		return (EAttribute)cookbookEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCookbook_Repository() {
+		return (EReference)cookbookEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDefinition() {
 		return definitionEClass;
 	}
@@ -288,6 +307,15 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 */
 	public EReference getRecipe_Cookbook() {
 		return (EReference)recipeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRecipe_Name() {
+		return (EAttribute)recipeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -367,6 +395,8 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		createEReference(cookbookEClass, COOKBOOK__DEPENDS);
 		createEReference(cookbookEClass, COOKBOOK__ENVIRONMENT);
 		createEReference(cookbookEClass, COOKBOOK__RECIPES);
+		createEAttribute(cookbookEClass, COOKBOOK__NAME);
+		createEReference(cookbookEClass, COOKBOOK__REPOSITORY);
 
 		definitionEClass = createEClass(DEFINITION);
 
@@ -379,6 +409,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		createEReference(recipeEClass, RECIPE__ROLE);
 		createEReference(recipeEClass, RECIPE__RESOURCES);
 		createEReference(recipeEClass, RECIPE__COOKBOOK);
+		createEAttribute(recipeEClass, RECIPE__NAME);
 
 		versionEClass = createEClass(VERSION);
 
@@ -416,6 +447,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 
 		// Obtain other dependent packages
 		ChefserverPackage theChefserverPackage = (ChefserverPackage)EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI);
+		WorkstationPackage theWorkstationPackage = (WorkstationPackage)EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -428,6 +460,8 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		initEReference(getCookbook_Depends(), this.getDependencyRelation(), null, "depends", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCookbook_Environment(), theChefserverPackage.getEnvironment(), null, "environment", null, 1, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCookbook_Recipes(), this.getRecipe(), this.getRecipe_Cookbook(), "recipes", null, 0, -1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCookbook_Name(), ecorePackage.getEString(), "name", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCookbook_Repository(), theWorkstationPackage.getRepository(), null, "repository", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(definitionEClass, Definition.class, "Definition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -440,6 +474,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		initEReference(getRecipe_Role(), theChefserverPackage.getRole(), null, "role", null, 0, 1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRecipe_Resources(), this.getResource(), this.getResource_Recipe(), "resources", null, 0, -1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRecipe_Cookbook(), this.getCookbook(), this.getCookbook_Recipes(), "cookbook", null, 0, -1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRecipe_Name(), ecorePackage.getEString(), "name", null, 0, 1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

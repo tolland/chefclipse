@@ -4,13 +4,17 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
+import org.limepepper.chefclipse.model.cookbook.Recipe;
 
 
 public class ChefCookbookLabelProvider 
 	extends LabelProvider implements ICommonLabelProvider{
 	
 	@Override
-	public String getText(Object element){				
+	public String getText(Object element){
+		if(element instanceof Recipe){			
+			return ((Recipe)element).getName();
+		}
 		return super.getText(element);
 	}
 	

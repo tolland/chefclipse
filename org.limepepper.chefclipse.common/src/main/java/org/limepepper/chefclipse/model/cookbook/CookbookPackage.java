@@ -2,6 +2,7 @@
  */
 package org.limepepper.chefclipse.model.cookbook;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
@@ -93,13 +94,31 @@ public interface CookbookPackage extends EPackage {
 	int COOKBOOK__RECIPES = 2;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK__NAME = 3;
+
+	/**
+	 * The feature id for the '<em><b>Repository</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK__REPOSITORY = 4;
+
+	/**
 	 * The number of structural features of the '<em>Cookbook</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK_FEATURE_COUNT = 3;
+	int COOKBOOK_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.model.cookbook.impl.DefinitionImpl <em>Definition</em>}' class.
@@ -205,13 +224,22 @@ public interface CookbookPackage extends EPackage {
 	int RECIPE__COOKBOOK = 3;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECIPE__NAME = 4;
+
+	/**
 	 * The number of structural features of the '<em>Recipe</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECIPE_FEATURE_COUNT = 4;
+	int RECIPE_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.model.cookbook.impl.VersionImpl <em>Version</em>}' class.
@@ -334,6 +362,28 @@ public interface CookbookPackage extends EPackage {
 	EReference getCookbook_Recipes();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.model.cookbook.Cookbook#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.limepepper.chefclipse.model.cookbook.Cookbook#getName()
+	 * @see #getCookbook()
+	 * @generated
+	 */
+	EAttribute getCookbook_Name();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.model.cookbook.Cookbook#getRepository <em>Repository</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Repository</em>'.
+	 * @see org.limepepper.chefclipse.model.cookbook.Cookbook#getRepository()
+	 * @see #getCookbook()
+	 * @generated
+	 */
+	EReference getCookbook_Repository();
+
+	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.model.cookbook.Definition <em>Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -416,6 +466,17 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRecipe_Cookbook();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.model.cookbook.Recipe#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.limepepper.chefclipse.model.cookbook.Recipe#getName()
+	 * @see #getRecipe()
+	 * @generated
+	 */
+	EAttribute getRecipe_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.model.cookbook.Version <em>Version</em>}'.
@@ -525,6 +586,22 @@ public interface CookbookPackage extends EPackage {
 		EReference COOKBOOK__RECIPES = eINSTANCE.getCookbook_Recipes();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COOKBOOK__NAME = eINSTANCE.getCookbook_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Repository</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COOKBOOK__REPOSITORY = eINSTANCE.getCookbook_Repository();
+
+		/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.model.cookbook.impl.DefinitionImpl <em>Definition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -595,6 +672,14 @@ public interface CookbookPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RECIPE__COOKBOOK = eINSTANCE.getRecipe_Cookbook();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RECIPE__NAME = eINSTANCE.getRecipe_Name();
 
 		/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.model.cookbook.impl.VersionImpl <em>Version</em>}' class.
