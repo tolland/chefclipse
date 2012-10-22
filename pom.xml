@@ -1,111 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.limepepper</groupId>
-  <artifactId>org.limepepper.chefclipse</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  
-  <properties>
-    <tycho-version>0.15.0</tycho-version>    
-  </properties>
-  
-  <repositories>
-  	<repository>
-   		<id>eclipse-juno</id>
-   		<url>http://download.eclipse.org/releases/juno</url>
-   		<layout>p2</layout>
-  	</repository>
-  </repositories>
-  
-      
-  	
-  <modules>
-  	<module>org.limepepper.chefclipse.doc</module>
-  	<module>org.limepepper.chefclipse.doc.feature</module>
-    <module>org.limepepper.chefclipse.app</module>
-    <module>org.limepepper.chefclipse.app.feature</module>
-	  <module>org.limepepper.chefclipse.common</module>
-    <module>org.limepepper.chefclipse.navigator</module>
-    <module>org.limepepper.chefclipse.ui</module>
- 	  <module>org.limepepper.chefclipse.ui.feature</module>
- 	  <module>org.limepepper.chefclipse.p2</module>
- 	  <module>org.limepepper.chefclipse.product</module>
-    <module>org.limepepper.chefclipse.remotepicker.api</module>
-    <module>org.limepepper.chefclipse.remotepicker.ui</module>
-  </modules>
-  
-  
-  
-  <build>
-    <plugins>
-      
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-maven-plugin</artifactId>
-		<version>${tycho-version}</version>
-        <extensions>true</extensions>        
-      </plugin>
-                             
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-p2-director-plugin</artifactId>
-        <version>${tycho-version}</version>
-        
-        <executions>        
-          <execution>
-            <id>materialize-products</id>            
-            <goals>
-              <goal>materialize-products</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>archive-products</id>
-            <goals>
-              <goal>archive-products</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-            
-      <plugin>
-  		<groupId>org.eclipse.tycho</groupId>
-        <artifactId>target-platform-configuration</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <environments>
-			<environment>
-				<os>win32</os>
-                <ws>win32</ws>
-                <arch>x86</arch>
-			</environment>
-			<environment>
-				<os>win32</os>
-                <ws>win32</ws>
-                <arch>x86_64</arch>
-			</environment>
-			<environment>
-                <os>linux</os>
-                <ws>gtk</ws>
-                <arch>x86</arch>
-            </environment>
-			<environment>
-                <os>linux</os>
-                <ws>gtk</ws>
-                <arch>x86_64</arch>
-            </environment>
-            <environment>
-                <os>macosx</os>
-                <ws>cocoa</ws>
-                <arch>x86_64</arch>
-            </environment>
-          </environments>
-        </configuration>
-  	  </plugin>	  	  
-  	  
-    </plugins>
-  </build>
-      
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.limepepper.chefclipse</groupId>
+	<artifactId>org.limepepper.chefclipse</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<tycho-version>0.15.0</tycho-version>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>eclipse-juno</id>
+			<url>http://download.eclipse.org/releases/juno</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+
+
+
+	<modules>
+		<module>org.limepepper.chefclipse.doc</module>
+		<module>org.limepepper.chefclipse.doc.feature</module>
+		<module>org.limepepper.chefclipse.app</module>
+		<module>org.limepepper.chefclipse.app.feature</module>
+		<module>org.limepepper.chefclipse.common</module>
+		<module>org.limepepper.chefclipse.navigator</module>
+		<module>org.limepepper.chefclipse.ui</module>
+		<module>org.limepepper.chefclipse.ui.feature</module>
+		<module>org.limepepper.chefclipse.p2</module>
+		<module>org.limepepper.chefclipse.product</module>
+		<module>org.limepepper.chefclipse.remotepicker.api</module>
+		<module>org.limepepper.chefclipse.remotepicker.ui</module>
+	</modules>
+
+
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${tycho-version}</version>
+
+				<executions>
+					<execution>
+						<id>materialize-products</id>
+						<goals>
+							<goal>materialize-products</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>archive-products</id>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
 </project>
