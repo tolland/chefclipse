@@ -4,17 +4,6 @@
 
    <extension
          point="org.eclipse.ui.views">
-      <category
-            name="Sample Category"
-            id="org.limepepper.chefclipse.graphviewer">
-      </category>
-      <view
-            name="Graph View"
-            icon="icons/sample.gif"
-            category="org.limepepper.chefclipse.graphviewer"
-            class="org.limepepper.chefclipse.graphviewer.views.GraphView"
-            id="org.limepepper.chefclipse.graphviewer.views.GraphView">
-      </view>
    </extension>
    <extension
          point="org.eclipse.help.contexts">
@@ -31,10 +20,19 @@
             id="org.limepepper.chefclipse.contribution1">
          <action
                label="Open Graph Viewer"
-               class="org.limepepper.chefclipse.graphviewer.actions.OpenGraphViewerAction"
+               class="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction"
                enablesFor="1"
-               id="org.limepepper.chefclipse.graphviewer.actions.OpenGraphViewerAction">
+               id="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction">
          </action>
       </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
+            default="false"
+            id="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
+            name="Dependency Graph Editor">
+      </editor>
    </extension>
 </plugin>
