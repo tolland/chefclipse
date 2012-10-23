@@ -19,7 +19,7 @@
             nameFilter="*"
             id="org.limepepper.chefclipse.contribution1">
          <action
-               label="Open Graph Viewer"
+               label="Open Graph Editor"
                class="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction"
                enablesFor="1"
                id="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction">
