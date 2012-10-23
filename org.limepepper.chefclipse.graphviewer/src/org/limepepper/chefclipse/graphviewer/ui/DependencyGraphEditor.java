@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.ConnectionAnchor;
+import org.eclipse.draw2d.ManhattanConnectionRouter;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -21,7 +24,10 @@ import org.eclipse.ui.part.EditorPart;
 import org.eclipse.zest.core.viewers.EntityConnectionData;
 import org.eclipse.zest.core.viewers.GraphViewer;
 import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
+import org.eclipse.zest.core.viewers.ISelfStyleProvider;
 import org.eclipse.zest.core.widgets.Graph;
+import org.eclipse.zest.core.widgets.GraphConnection;
+import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.LayoutAlgorithm;
 import org.eclipse.zest.layouts.LayoutStyles;
@@ -33,18 +39,20 @@ import org.limepepper.chefclipse.graphviewer.actions.DeleteNodeAction;
 import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
 import org.limepepper.chefclipse.graphviewer.common.MockRecipeImpl;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
+import org.limepepper.chefclipse.graphviewer.figure.ChefclipseConnectionAnchor;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
 import org.limepepper.chefclipse.model.cookbook.Cookbook;
 import org.limepepper.chefclipse.model.cookbook.Recipe;
 
-public class DependencyGraphEditor extends EditorPart implements IDependencyChangeListener {
+public class DependencyGraphEditor extends EditorPart implements
+		IDependencyChangeListener {
 
 	private GraphViewer graphViewer;
 	private Graph graph;
 	private DependencyGraphEditorInput input;
 	public static final String ID = "org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor";
-	
+
 	@Override
 	public void doSave(IProgressMonitor monitor) {
 		// TODO Auto-generated method stub
@@ -61,11 +69,11 @@ public class DependencyGraphEditor extends EditorPart implements IDependencyChan
 	public void init(IEditorSite site, IEditorInput input)
 			throws PartInitException {
 		if (!(input instanceof DependencyGraphEditorInput)) {
-		      throw new RuntimeException("Wrong input");
-		    }
+			throw new RuntimeException("Wrong input");
+		}
 		setSite(site);
 		setInput(input);
-		this.input=(DependencyGraphEditorInput)input;
+		this.input = (DependencyGraphEditorInput) input;
 	}
 
 	@Override
@@ -83,16 +91,23 @@ public class DependencyGraphEditor extends EditorPart implements IDependencyChan
 	public void createPartControl(Composite parent) {
 		DependencyModel.getModel().addDependencyChangeListener(this);
 		graphViewer = new GraphViewer(parent, SWT.NONE);
-		
+
 		graphViewer.setContentProvider(new GraphViewerContentProvider());
 		graphViewer.setLabelProvider(new GraphViewerLabelProvider());
 		graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
-		TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING);
-		HorizontalShift horizontalShift =new HorizontalShift(LayoutStyles.NO_LAYOUT_NODE_RESIZING);
-		CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING, new LayoutAlgorithm[] { treeLayoutAlgorithm, horizontalShift });
-		//g.setLayoutAlgorithm(new GridLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
+		TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(
+				LayoutStyles.NO_LAYOUT_NODE_RESIZING);
+		HorizontalShift horizontalShift = new HorizontalShift(
+				LayoutStyles.NO_LAYOUT_NODE_RESIZING);
+		CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
+				LayoutStyles.NO_LAYOUT_NODE_RESIZING, new LayoutAlgorithm[] {
+						treeLayoutAlgorithm, horizontalShift });
+		compositeLayoutAlgorithm.setLayoutArea(0, 0, 500, 1500);
+		// g.setLayoutAlgorithm(new
+		// GridLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
 		graphViewer.setLayoutAlgorithm(compositeLayoutAlgorithm, true);
-		DependencyModel.getModel().setCookbook(DependencyController.getController().getRootCookbook());
+		DependencyModel.getModel().setCookbook(
+				DependencyController.getController().getRootCookbook());
 		graph = graphViewer.getGraphControl();
 		hookMenu(graph);
 
@@ -103,7 +118,7 @@ public class DependencyGraphEditor extends EditorPart implements IDependencyChan
 		// TODO Auto-generated method stub
 
 	}
-	
+
 	private void hookMenu(final Graph g) {
 
 		MenuManager menuMgr = new MenuManager("#PopupMenu");
@@ -122,87 +137,78 @@ public class DependencyGraphEditor extends EditorPart implements IDependencyChan
 		g.setMenu(menuMgr.createContextMenu(g));
 
 	}
-	
+
 	private void fillContextMenu(IMenuManager menuMgr) {
-		Object selectedNode=null;
-		Object selectedRelation=null;
-		IStructuredSelection selection = (IStructuredSelection)graphViewer.getSelection(); 
-		if (selection != null) { 
+		Object selectedNode = null;
+		Object selectedRelation = null;
+		IStructuredSelection selection = (IStructuredSelection) graphViewer
+				.getSelection();
+		if (selection != null) {
 			Object selected = selection.getFirstElement();
-			if(selected instanceof Recipe|| selected instanceof Cookbook)
-			{
-				selectedNode=selected;
-			}
-			else if(selected instanceof EntityConnectionData)
-			{
-				selectedRelation= selected;
+			if (selected instanceof Recipe || selected instanceof Cookbook) {
+				selectedNode = selected;
+			} else if (selected instanceof EntityConnectionData) {
+				selectedRelation = selected;
 			}
 		}
 		menuMgr.add(new DeleteDependencyAction(selectedRelation));
 		menuMgr.add(new DeleteNodeAction(selectedNode));
 	}
-	
+
 	@Override
 	public void dependencyChanged() {
 		Display.getDefault().syncExec(new Runnable() {
-            public void run() {
-                synchronized (this) {
-                   Cookbook rootCookbook = DependencyModel.getModel().getCookbook();
-                   graphViewer.setInput(rootCookbook); 
-                }
-            }
-        });
+			public void run() {
+				synchronized (this) {
+					Cookbook rootCookbook = DependencyModel.getModel()
+							.getCookbook();
+					graphViewer.setInput(rootCookbook);
+				}
+			}
+		});
 	}
 
-	static class GraphViewerContentProvider  implements IGraphEntityContentProvider {
+	static class GraphViewerContentProvider implements
+			IGraphEntityContentProvider {
 
 		public Object[] getConnectedTo(Object entity) {
-		    if (entity instanceof Recipe) {
-		    	Recipe node = (Recipe) entity;
-		      return node.getCookbook().toArray();
-		    }
-		    else if (entity instanceof Cookbook)
-		    {
-		    	Cookbook node = (Cookbook) entity;
-			      return node.getRecipes().toArray();
-		    }
-		    throw new RuntimeException("Type not supported");
-		  }
+			if (entity instanceof Recipe) {
+				Recipe node = (Recipe) entity;
+				return node.getCookbook().toArray();
+			} else if (entity instanceof Cookbook) {
+				Cookbook node = (Cookbook) entity;
+				return node.getRecipes().toArray();
+			}
+			throw new RuntimeException("Type not supported");
+		}
 
 		public void dispose() {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		public Object[] getElements(Object inputElement) {
-			Cookbook cookbook = (Cookbook)inputElement;
-			List<Object> elements =new ArrayList<Object>();
+			Cookbook cookbook = (Cookbook) inputElement;
+			List<Object> elements = new ArrayList<Object>();
 			elements.add(cookbook);
-			for(int i=0; i<elements.size();i++)
-			{
+			for (int i = 0; i < elements.size(); i++) {
 				Object current = elements.get(i);
-				List<? extends Object> children=null;
-				if(current instanceof Cookbook)
-				{
-					children = ((Cookbook)current).getRecipes();
+				List<? extends Object> children = null;
+				if (current instanceof Cookbook) {
+					children = ((Cookbook) current).getRecipes();
+				} else if (current instanceof Recipe) {
+					children = ((Recipe) current).getCookbook();
 				}
-				else if(current instanceof Recipe)
-				{
-					children = ((Recipe)current).getCookbook();
-				}
-				if(children==null)
-				{
+				if (children == null) {
 					continue;
 				}
-				for(Object child:children)
-				{
-					if(!elements.contains(child))
-					{
+				for (Object child : children) {
+					if (!elements.contains(child)) {
 						elements.add(child);
 					}
 				}
@@ -211,14 +217,17 @@ public class DependencyGraphEditor extends EditorPart implements IDependencyChan
 		}
 	}
 
-	static class GraphViewerLabelProvider extends LabelProvider {
+	static class GraphViewerLabelProvider extends LabelProvider implements
+			ISelfStyleProvider {
 		final Image image = Display.getDefault().getSystemImage(
 				SWT.ICON_WARNING);
 
 		Image cookbookImage = new Image(Display.getDefault(),
-				DependencyGraphEditor.class.getResourceAsStream("class_obj.gif"));
+				DependencyGraphEditor.class
+						.getResourceAsStream("class_obj.gif"));
 		Image recipeImage = new Image(Display.getDefault(),
-				DependencyGraphEditor.class.getResourceAsStream("methpub_obj.gif"));
+				DependencyGraphEditor.class
+						.getResourceAsStream("methpub_obj.gif"));
 
 		public GraphViewerLabelProvider() {
 
@@ -227,9 +236,7 @@ public class DependencyGraphEditor extends EditorPart implements IDependencyChan
 		public String getText(Object element) {
 			if (element instanceof Recipe) {
 				return ((MockRecipeImpl) element).getName();
-			}
-			else if(element instanceof Cookbook)
-			{
+			} else if (element instanceof Cookbook) {
 				return ((MockCookbookImpl) element).getName();
 			}
 			return null;
@@ -237,12 +244,31 @@ public class DependencyGraphEditor extends EditorPart implements IDependencyChan
 
 		public Image getImage(Object element) {
 			if (element instanceof Cookbook) {
-					return cookbookImage;
-			}
-			else if (element instanceof Recipe) {
+				return cookbookImage;
+			} else if (element instanceof Recipe) {
 				return recipeImage;
 			}
 			return null;
+		}
+
+		@Override
+		public void selfStyleConnection(Object element,
+				GraphConnection connection) {
+			connection.setLineColor(Display.getDefault().getSystemColor(SWT.COLOR_DARK_BLUE));
+			ManhattanConnectionRouter router = new ManhattanConnectionRouter();
+			Connection c = connection.getConnectionFigure();
+			c.setConnectionRouter(router);
+			
+			//ConnectionAnchor s= new ChefclipseConnectionAnchor(c.getSourceAnchor().getOwner());
+			//ConnectionAnchor t= new ChefclipseConnectionAnchor(c.getTargetAnchor().getOwner());
+			//c.setSourceAnchor(s);
+			//c.setTargetAnchor(t);
+		}
+
+		@Override
+		public void selfStyleNode(Object element, GraphNode node) {
+			// TODO Auto-generated method stub
+
 		}
 	}
 }
