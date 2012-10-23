@@ -102,7 +102,6 @@ public class DependencyGraphEditor extends EditorPart implements
 		CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
 				LayoutStyles.NO_LAYOUT_NODE_RESIZING, new LayoutAlgorithm[] {
 						treeLayoutAlgorithm, horizontalShift });
-		compositeLayoutAlgorithm.setLayoutArea(0, 0, 500, 1500);
 		// g.setLayoutAlgorithm(new
 		// GridLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
 		graphViewer.setLayoutAlgorithm(compositeLayoutAlgorithm, true);
