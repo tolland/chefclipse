@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="org.limepepper.chefclipse.contribution1">
+         <action
+               label="Open Graph Editor"
+               class="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction"
+               enablesFor="1"
+               id="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
+            default="false"
+            id="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
+            name="Dependency Graph Editor">
+      </editor>
+   </extension>
+</plugin>
