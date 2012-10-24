@@ -10,8 +10,8 @@ import org.eclipse.zest.core.viewers.EntityConnectionData;
 import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
 import org.limepepper.chefclipse.graphviewer.common.MockRecipeImpl;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
-import org.limepepper.chefclipse.model.cookbook.Cookbook;
-import org.limepepper.chefclipse.model.cookbook.Recipe;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
 
 public class DependencyController {
 	static private DependencyController sController=null;

@@ -1,9 +1,9 @@
 package org.limepepper.chefclipse.graphviewer.common;
 
-import org.limepepper.chefclipse.model.cookbook.impl.DependencyRelationImpl;
+import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
 
 
-public class MockDependencyRelation extends DependencyRelationImpl {
+public class MockDependencyRelation extends DependencyRelation {
 	public Object source;
 	public Object target;
 }

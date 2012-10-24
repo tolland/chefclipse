@@ -42,8 +42,8 @@ import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.figure.ChefclipseConnectionAnchor;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
-import org.limepepper.chefclipse.model.cookbook.Cookbook;
-import org.limepepper.chefclipse.model.cookbook.Recipe;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
 
 public class DependencyGraphEditor extends EditorPart implements
 		IDependencyChangeListener {

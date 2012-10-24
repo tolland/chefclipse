@@ -1,10 +1,10 @@
 package org.limepepper.chefclipse.graphviewer.common;
 
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.model.cookbook.Recipe;
-import org.limepepper.chefclipse.model.cookbook.impl.CookbookImpl;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
 
-public class MockCookbookImpl extends CookbookImpl {
+public class MockCookbookImpl extends Cookbook {
 	protected String name;
 	
 	public MockCookbookImpl(String name, EList<Recipe> recipes )
