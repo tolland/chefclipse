@@ -10,7 +10,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.limepepper.chefclipse.adapters.ChefRepositoryAdapter;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 
 
 public class NewRepositoryWizard extends Wizard implements INewWizard {	
@@ -39,7 +39,7 @@ public class NewRepositoryWizard extends Wizard implements INewWizard {
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {										
-					ChefRepositoryAdapter.createChefRepository(repoName, location, container, monitor);															
+					//ChefRepositoryManager.instance().createChefRepository(repoName, location, container, monitor);															
 				} catch (Exception e) {
 					throw new InvocationTargetException(e);
 				} finally {

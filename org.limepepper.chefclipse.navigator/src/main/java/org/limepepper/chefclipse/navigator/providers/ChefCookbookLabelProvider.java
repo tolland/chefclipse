@@ -1,10 +1,13 @@
 package org.limepepper.chefclipse.navigator.providers;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
-import org.limepepper.chefclipse.model.cookbook.Recipe;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
 
 
 public class ChefCookbookLabelProvider 
@@ -12,9 +15,18 @@ public class ChefCookbookLabelProvider
 	
 	@Override
 	public String getText(Object element){
-		if(element instanceof Recipe){			
-			return ((Recipe)element).getName();
+		if(element instanceof Cookbook){
+			return ((Cookbook)element).getName();
 		}
+		
+		if(element instanceof IFile){
+			return ((IFile)element).getName();
+		}
+		
+		if(element instanceof IFolder){			
+			return ((IFolder)element).getName();
+		}
+		
 		return super.getText(element);
 	}
 	

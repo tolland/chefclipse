@@ -21,7 +21,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
-import org.limepepper.chefclipse.adapters.ChefProjectAdapter;
+import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
 
 
 
@@ -138,11 +138,11 @@ public class NewRepositoryWizardPageConfirm extends WizardPage {
 					container = ((IResource) obj).getParent();
 				
 				// Check if the container is the template project
-				if(container instanceof IProject){
-					if(ChefProjectAdapter.openChefProject((IProject)container) != null){
-						containerText.setText(container.getFullPath().toString());
-					}
-				}				
+//				if(container instanceof IProject){
+//					if(ChefProjectManager.openChefProject((IProject)container) != null){
+//						containerText.setText(container.getFullPath().toString());
+//					}
+//				}				
 			}
 		}
 		
@@ -216,13 +216,13 @@ public class NewRepositoryWizardPageConfirm extends WizardPage {
 			return;
 		}
 		
-		if (container instanceof IProject){
-			ChefProjectAdapter project = ChefProjectAdapter.openChefProject((IProject)container);
-			if(project == null){
-				updateStatus("Chef Project container must be specified");
-				return;
-			}										
-		}
+//		if (container instanceof IProject){
+//			ChefProjectManager project = ChefProjectManager.openChefProject((IProject)container);
+//			if(project == null){
+//				updateStatus("Chef Project container must be specified");
+//				return;
+//			}										
+//		}
 		
 		updateStatus(null);
 	}
