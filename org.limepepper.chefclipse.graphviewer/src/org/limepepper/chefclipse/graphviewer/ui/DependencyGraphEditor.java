@@ -7,6 +7,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.ManhattanConnectionRouter;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -33,6 +34,7 @@ import org.eclipse.zest.layouts.LayoutAlgorithm;
 import org.eclipse.zest.layouts.LayoutStyles;
 import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.HorizontalShift;
+import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.graphviewer.actions.DeleteDependencyAction;
 import org.limepepper.chefclipse.graphviewer.actions.DeleteNodeAction;
@@ -95,14 +97,10 @@ public class DependencyGraphEditor extends EditorPart implements
 		graphViewer.setContentProvider(new GraphViewerContentProvider());
 		graphViewer.setLabelProvider(new GraphViewerLabelProvider());
 		graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
-		TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(
-				LayoutStyles.NO_LAYOUT_NODE_RESIZING);
-		HorizontalShift horizontalShift = new HorizontalShift(
-				LayoutStyles.NO_LAYOUT_NODE_RESIZING);
-		CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
-				LayoutStyles.NO_LAYOUT_NODE_RESIZING, new LayoutAlgorithm[] {
-						treeLayoutAlgorithm, horizontalShift });
-		compositeLayoutAlgorithm.setLayoutArea(0, 0, 500, 1500);
+		TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(TreeLayoutAlgorithm.TOP_DOWN,new Dimension(100,100));
+		HorizontalShiftAlgorithm horizontalShift = new HorizontalShiftAlgorithm();
+		CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm( new LayoutAlgorithm[] {
+				horizontalShift,treeLayoutAlgorithm });
 		// g.setLayoutAlgorithm(new
 		// GridLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
 		graphViewer.setLayoutAlgorithm(compositeLayoutAlgorithm, true);
