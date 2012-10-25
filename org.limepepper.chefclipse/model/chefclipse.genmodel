@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.limepepper.chefclipse.common/src" modelPluginID="org.limepepper.chefclipse.common"
-    modelName="Chefclipse" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
-    copyrightFields="false">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.limepepper.chefclipse.common/src/main/java"
+    editDirectory="/org.limepepper.chefclipse.common.edit/src/main/java" editorDirectory="/org.limepepper.chefclipse.common.editor/src/main/java"
+    modelPluginID="org.limepepper.chefclipse.common" modelName="Chefclipse" testsDirectory="/org.limepepper.chefclipse.common.tests/src/main/java"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false">
   <foreignModel>chefclient.ecore</foreignModel>
   <foreignModel>chefserver.ecore</foreignModel>
   <foreignModel>cookbook.ecore</foreignModel>
@@ -59,6 +60,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Cookbook/depends"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Cookbook/environment"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Cookbook/recipes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cookbook.ecore#//Cookbook/name"/>
     </genClasses>
     <genClasses ecoreClass="cookbook.ecore#//Definition"/>
     <genClasses ecoreClass="cookbook.ecore#//Library"/>
@@ -68,6 +70,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Recipe/role"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cookbook.ecore#//Recipe/resources"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cookbook.ecore#//Recipe/cookbook"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cookbook.ecore#//Recipe/name"/>
     </genClasses>
     <genClasses ecoreClass="cookbook.ecore#//Version"/>
     <genClasses ecoreClass="cookbook.ecore#//Resource">

@@ -26,15 +26,15 @@
    <extension
          point="org.eclipse.ui.perspectives">
       <perspective
-            class="org.limepepper.chefclipse.ui.perspective.TemplatePerspectiveFactory"
-            id="org.limepepper.chefclipse.ui.TemplatePerspective"
-            name="Template">
+            class="org.limepepper.chefclipse.ui.perspective.ChefPerspectiveFactory"
+            id="org.limepepper.chefclipse.ui.ChefPerspective"
+            name="Chef">
       </perspective>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
-            targetID="org.limepepper.chefclipse.ui.TemplatePerspective">
+            targetID="org.limepepper.chefclipse.ui.ChefPerspective">
          <showInPart
                id="org.eclipse.ui.navigator.ProjectExplorer">
          </showInPart>

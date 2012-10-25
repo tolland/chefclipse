@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.limepepper.chefclipse.navigator.providers.ChefRepositoryContentProvider"
+            id="org.limepepper.chefclipse.navigator.ChefRepositoryNavigator"
+            labelProvider="org.limepepper.chefclipse.navigator.providers.ChefRepositoryLabelProvider"
+            name="Chef Repository Navigator"
+            priority="higher"
+            providesSaveables="false">
+         <triggerPoints>
+            <and>
+               <instanceof
+                     value="org.eclipse.core.resources.IFile">
+               </instanceof>
+               <test
+                     forcePluginActivation="true"
+                     property="org.eclipse.core.resources.extension"
+                     value="repo">
+               </test>
+            </and></triggerPoints>
+      </navigatorContent>
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.limepepper.chefclipse.navigator.providers.ChefCookbookContentProvider"
+            id="org.limepepper.chefclipse.navigator.ChefCookbookNavigator"
+            labelProvider="org.limepepper.chefclipse.navigator.providers.ChefCookbookLabelProvider"
+            name="Chef Cookbook Navigator"
+            priority="higher"
+            providesSaveables="false">
+         <triggerPoints>
+            <instanceof
+                  value="org.eclipse.emf.ecore.EObject">
+            </instanceof>
+         </triggerPoints>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="org.limepepper.chefclipse.navigator.ChefRepositoryNavigator">
+            </contentExtension>
+            <contentExtension
+                  isRoot="false"
+                  pattern="org.limepepper.chefclipse.navigator.ChefCookbookNavigator">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+
+</plugin>

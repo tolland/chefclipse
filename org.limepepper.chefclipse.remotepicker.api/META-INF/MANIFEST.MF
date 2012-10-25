@@ -4,9 +4,12 @@ Bundle-Name: org.limepepper.chefclipse.remotepicker.api
 Bundle-SymbolicName: org.limepepper.chefclipse.remotepicker.api
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.remotepicker.api.Activator
-Require-Bundle: org.eclipse.core.runtime,
- javax.ws.rs.jsr311-api,
- org.codehaus.jettison.jettison,
- com.sun.jersey.client
+Require-Bundle: org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: .,
+ lib/jersey-client.jar,
+ lib/jersey-core.jar,
+ lib/jersey-json.jar,
+ lib/jettison.jar
+Export-Package: org.limepepper.chefclipse.remotepicker.api

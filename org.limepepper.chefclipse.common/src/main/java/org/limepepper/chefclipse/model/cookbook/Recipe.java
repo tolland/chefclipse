@@ -21,6 +21,7 @@ import org.limepepper.chefclipse.model.chefserver.RunList;
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.Recipe#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.Recipe#getResources <em>Resources</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.model.cookbook.Recipe#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.model.cookbook.Recipe#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -106,5 +107,31 @@ public interface Recipe extends EObject {
 	 * @generated
 	 */
 	EList<Cookbook> getCookbook();
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see org.limepepper.chefclipse.model.cookbook.CookbookPackage#getRecipe_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.model.cookbook.Recipe#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // Recipe
