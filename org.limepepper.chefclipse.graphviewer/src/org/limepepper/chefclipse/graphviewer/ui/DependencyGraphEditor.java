@@ -258,4 +258,10 @@ public class DependencyGraphEditor extends EditorPart implements
 			return null;
 		}
 	}
+
+	@Override
+	public void dispose() {
+		DependencyModel.getModel().removeDependencyChangeListener(this);
+		super.dispose();
+	}
 }
