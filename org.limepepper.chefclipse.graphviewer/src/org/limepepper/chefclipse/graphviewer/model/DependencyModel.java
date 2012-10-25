@@ -5,21 +5,10 @@ import java.util.ArrayList;
 import org.limepepper.chefclipse.model.cookbook.Cookbook;
 
 public class DependencyModel {
-	private static DependencyModel sModel=null;
 	private Cookbook mCookbook;
 	
 	private final ArrayList<IDependencyChangeListener> mDependencyChangeListeners =
             new ArrayList<IDependencyChangeListener>();
-	
-	
-	static public DependencyModel getModel()
-	{
-		if(sModel==null)
-		{
-			sModel=new DependencyModel();
-		}
-		return sModel;
-	}
 	
 	public void setCookbook(Cookbook cookbook)
 	{

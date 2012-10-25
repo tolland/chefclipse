@@ -1,28 +1,22 @@
 package org.limepepper.chefclipse.graphviewer.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.zest.core.viewers.EntityConnectionData;
 import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
-import org.limepepper.chefclipse.graphviewer.common.MockRecipeImpl;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.model.cookbook.Cookbook;
 import org.limepepper.chefclipse.model.cookbook.Recipe;
 
 public class DependencyController {
-	static private DependencyController sController=null;
+
+	private DependencyModel dependencyModel;
 	
-	static public DependencyController getController()
+	public DependencyController(DependencyModel dependencyModel)
 	{
-		if(sController==null)
-		{
-			sController=new DependencyController();
-		}
-		return sController;
+		this.dependencyModel=dependencyModel;
 	}
 	
 	public void removeDependency(Object dependencyRelation)
@@ -32,39 +26,32 @@ public class DependencyController {
 			EntityConnectionData entityConnectionData= (EntityConnectionData)dependencyRelation;
 			Object source= entityConnectionData.source;
 			Object target = entityConnectionData.dest;
-			if(source instanceof Recipe)
-			{
-				Recipe recipe= (Recipe)source;
-				if(recipe.getCookbook().contains(target))
-				{
-					recipe.getCookbook().remove(target);
-				}
-			}
-			
+
 			if(source instanceof Cookbook)
 			{
-				Cookbook cookbook = (Cookbook) source;
-				if(cookbook.getRecipes().contains(target))
+				MockCookbookImpl cookbook = (MockCookbookImpl) source;
+				if(cookbook.getDependency().cookbooks!=null&&
+						cookbook.getDependency().cookbooks.contains(target))
 				{
-					cookbook.getRecipes().remove(target);
+					cookbook.getDependency().cookbooks.remove(target);
 				}
 			}
-			DependencyModel.getModel().notifyDependencyChanged();
+			dependencyModel.notifyDependencyChanged();
 		}
 	}
 	
 	public void removeNode(Object node)
 	{
-		removeNodeRecursively(DependencyModel.getModel().getCookbook(),node);
-		DependencyModel.getModel().notifyDependencyChanged();
+		removeNodeRecursively(dependencyModel.getCookbook(),node);
+		dependencyModel.notifyDependencyChanged();
 	}
 	
 	private void removeNodeRecursively(Object parent,Object node)
 	{
-		if(parent instanceof Recipe)
+		if (parent instanceof Cookbook)
 		{
-			Recipe recipe = (Recipe)parent;
-			List<Cookbook> cookbooks = recipe.getCookbook();
+			MockCookbookImpl cookbook = (MockCookbookImpl)parent;
+			List<Cookbook> cookbooks = cookbook.getDependency().cookbooks;
 			if(cookbooks!=null)
 			{
 				if(cookbooks.contains(node))
@@ -74,22 +61,6 @@ public class DependencyController {
 				for(int i=0;i<cookbooks.size();i++)
 				{
 					removeNodeRecursively(cookbooks.get(i),node);
-				}
-			}
-		}
-		else if (parent instanceof Cookbook)
-		{
-			Cookbook cookbook = (Cookbook)parent;
-			List<Recipe> recipes = cookbook.getRecipes();
-			if(recipes!=null)
-			{
-				if(recipes.contains(node))
-				{
-					recipes.remove(node);
-				}
-				for(int i=0;i<recipes.size();i++)
-				{
-					removeNodeRecursively(recipes.get(i),node);
 				}
 			}
 		}

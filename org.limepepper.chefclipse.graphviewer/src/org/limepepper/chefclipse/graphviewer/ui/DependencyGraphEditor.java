@@ -8,6 +8,7 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ManhattanConnectionRouter;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -35,8 +36,6 @@ import org.eclipse.zest.layouts.LayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
-import org.limepepper.chefclipse.graphviewer.actions.DeleteDependencyAction;
-import org.limepepper.chefclipse.graphviewer.actions.DeleteNodeAction;
 import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.figure.ChefclipseConnectionAnchor;
@@ -52,6 +51,9 @@ public class DependencyGraphEditor extends EditorPart implements
 	private GraphViewer graphViewer;
 	private Graph graph;
 	private DependencyGraphEditorInput input;
+	private DependencyController dependencyController;
+	private DependencyModel dependencyModel;
+	
 	public static final String ID = "org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor";
 
 	@Override
@@ -75,6 +77,9 @@ public class DependencyGraphEditor extends EditorPart implements
 		setSite(site);
 		setInput(input);
 		this.input = (DependencyGraphEditorInput) input;
+		
+		dependencyModel=new DependencyModel();
+		dependencyController = new DependencyController(dependencyModel);
 	}
 
 	@Override
@@ -90,7 +95,7 @@ public class DependencyGraphEditor extends EditorPart implements
 
 	@Override
 	public void createPartControl(Composite parent) {
-		DependencyModel.getModel().addDependencyChangeListener(this);
+		dependencyModel.addDependencyChangeListener(this);
 		graphViewer = new GraphViewer(parent, SWT.NONE);
 
 		graphViewer.setContentProvider(new GraphViewerContentProvider());
@@ -103,8 +108,8 @@ public class DependencyGraphEditor extends EditorPart implements
 		// g.setLayoutAlgorithm(new
 		// GridLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
 		graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
-		DependencyModel.getModel().setCookbook(
-				DependencyController.getController().getRootCookbook());
+		dependencyModel.setCookbook(
+				dependencyController.getRootCookbook());
 		graph = graphViewer.getGraphControl();
 		hookMenu(graph);
 
@@ -157,8 +162,7 @@ public class DependencyGraphEditor extends EditorPart implements
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				synchronized (this) {
-					Cookbook rootCookbook = DependencyModel.getModel()
-							.getCookbook();
+					Cookbook rootCookbook = dependencyModel.getCookbook();
 					graphViewer.setInput(rootCookbook);
 				}
 			}
@@ -261,7 +265,47 @@ public class DependencyGraphEditor extends EditorPart implements
 
 	@Override
 	public void dispose() {
-		DependencyModel.getModel().removeDependencyChangeListener(this);
+		dependencyModel.removeDependencyChangeListener(this);
 		super.dispose();
 	}
+	
+	public class DeleteDependencyAction extends Action {
+		private Object selectedRelation;
+		public DeleteDependencyAction(Object selectedRelation)
+		{
+			this.setText("Delete Dependency");
+			this.selectedRelation=selectedRelation;
+		}
+		
+		@Override
+		public void run() {
+			dependencyController.removeDependency(selectedRelation);
+		}
+
+		@Override
+		public boolean isEnabled() {
+			return selectedRelation!=null;
+		}
+	}
+	
+	public class DeleteNodeAction extends Action {
+
+		private Object selectedElement;
+		public DeleteNodeAction(Object selectedNode)
+		{
+			this.setText("Delete Node");
+			selectedElement=selectedNode;
+		}
+		
+		@Override
+		public void run() {
+			dependencyController.removeNode(selectedElement);
+		}
+
+		@Override
+		public boolean isEnabled() {
+			return selectedElement!=null;
+		}
+	}
+	
 }
