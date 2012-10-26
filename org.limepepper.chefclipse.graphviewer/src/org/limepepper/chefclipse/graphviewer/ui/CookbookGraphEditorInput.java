@@ -6,6 +6,13 @@ import org.eclipse.ui.IPersistableElement;
 
 public class CookbookGraphEditorInput implements IEditorInput {
 
+	private final String projectPath;
+	
+	public CookbookGraphEditorInput(String projectPath)
+	{
+		this.projectPath=projectPath;
+	}
+	
 	@Override
 	public Object getAdapter(Class adapter) {
 		// TODO Auto-generated method stub
@@ -26,8 +33,7 @@ public class CookbookGraphEditorInput implements IEditorInput {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Cookbook Structure Graph Editor";
 	}
 
 	@Override
@@ -38,8 +44,22 @@ public class CookbookGraphEditorInput implements IEditorInput {
 
 	@Override
 	public String getToolTipText() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Cookbook Structure Graph Editor";
 	}
 
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        DependencyGraphEditorInput other = (DependencyGraphEditorInput) obj;
+        if (!projectPath.equals(other.getProjectPath()))
+        {
+            return false;
+        }
+        return true;
+    }
 }

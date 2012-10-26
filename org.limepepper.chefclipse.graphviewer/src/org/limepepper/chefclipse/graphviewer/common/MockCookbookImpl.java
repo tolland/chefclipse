@@ -10,6 +10,7 @@ public class MockCookbookImpl extends CookbookImpl {
 	protected String catalog;
 	protected MockDependencyRelation dependency;
 	
+	private 
 	
 	public MockCookbookImpl(String name, String version, String catalog, EList<Cookbook> cookbookDependencies)
 	{

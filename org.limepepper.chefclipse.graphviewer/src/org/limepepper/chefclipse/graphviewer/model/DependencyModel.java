@@ -55,7 +55,7 @@ public class DependencyModel {
         }
     }
     
-	public static interface IDependencyChangeListener {
+	public interface IDependencyChangeListener {
         public void dependencyChanged();
     }
 	
