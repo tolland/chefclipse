@@ -12,9 +12,11 @@ public class CookbookModel {
 	private final ArrayList<ICookbookChangeListener> mCookbookChangeListeners =
             new ArrayList<ICookbookChangeListener>();
 	
+	
 	public void setDrawableCookbook(DrawableCookbook drawableCookbook)
 	{
 		this.drawableCookbook=drawableCookbook;
+		notifyCookbookChanged();
 	}
 	
 	public DrawableCookbook getDrawableCookbook()

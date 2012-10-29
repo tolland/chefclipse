@@ -56,6 +56,7 @@ public class DependencyGraphEditorInput implements IEditorInput {
             return false;
         if (getClass() != obj.getClass())
             return false;
+        
         DependencyGraphEditorInput other = (DependencyGraphEditorInput) obj;
         if (!projectPath.equals(other.getProjectPath()))
         {

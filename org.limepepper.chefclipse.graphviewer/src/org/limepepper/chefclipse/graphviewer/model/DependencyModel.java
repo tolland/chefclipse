@@ -6,6 +6,7 @@ import org.limepepper.chefclipse.model.cookbook.Cookbook;
 
 public class DependencyModel {
 	private Cookbook mCookbook;
+	private Object selectedObject;
 	
 	private final ArrayList<IDependencyChangeListener> mDependencyChangeListeners =
             new ArrayList<IDependencyChangeListener>();
@@ -13,12 +14,28 @@ public class DependencyModel {
 	public void setCookbook(Cookbook cookbook)
 	{
 		mCookbook=cookbook;
+		selectedObject=null;
 		notifyDependencyChanged();
 	}
 	
 	public Cookbook getCookbook()
 	{
 		return mCookbook;
+	}
+	
+	public Object getSelected()
+	{
+		return selectedObject;
+	}
+	
+	public void setSelected(Object selected)
+	{
+		if(selected==selectedObject)
+		{
+			return;
+		}
+		selectedObject=selected;
+		notifyDependencyChanged();
 	}
 	
 	private IDependencyChangeListener[] getDependencyChangeListenerList() {

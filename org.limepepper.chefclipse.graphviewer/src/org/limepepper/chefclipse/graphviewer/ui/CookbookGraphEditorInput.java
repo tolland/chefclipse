@@ -13,6 +13,12 @@ public class CookbookGraphEditorInput implements IEditorInput {
 		this.projectPath=projectPath;
 	}
 	
+	public String getProjectPath()
+	{
+		return projectPath;
+	}
+	
+	
 	@Override
 	public Object getAdapter(Class adapter) {
 		// TODO Auto-generated method stub
@@ -55,7 +61,11 @@ public class CookbookGraphEditorInput implements IEditorInput {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DependencyGraphEditorInput other = (DependencyGraphEditorInput) obj;
+        if(!(obj instanceof CookbookGraphEditorInput))
+        {
+        	return false;
+        }
+        CookbookGraphEditorInput other = (CookbookGraphEditorInput) obj;
         if (!projectPath.equals(other.getProjectPath()))
         {
             return false;

@@ -26,11 +26,27 @@ public class CookbookFigure extends Figure {
 			DependencyGraphEditor.class
 					.getResourceAsStream("methpub_obj.gif"));
 	
-	public CookbookFigure(String name,String version,String catalog) {
+	public CookbookFigure(String name,String version,String catalog)
+	{
+		this(name,version,catalog,false);
+	}
+	
+	public CookbookFigure(String name,String version,String catalog,boolean selected) {
 		ToolbarLayout layout = new ToolbarLayout();
 		setLayoutManager(layout);
 		setBorder(new LineBorder(ColorConstants.black, 1));
-		setBackgroundColor(new Color(null, 255, 255, 206));
+		
+		Color backgroundColor;
+		if(selected)
+		{
+			backgroundColor=new Color(null, 206, 206, 255);
+		}
+		else
+		{
+			backgroundColor=new Color(null, 255, 255, 206);
+		}
+		
+		setBackgroundColor(backgroundColor);
 		setOpaque(true);
 
 		Label titleLabel = new Label(name, cookbookImage);

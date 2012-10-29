@@ -22,10 +22,10 @@ public class ChefclipseConnectionAnchor extends AbstractConnectionAnchor {
 	public Point getLocation(Point reference) {
 		Point point = getOwner().getBounds().getCenter();
 		getOwner().translateToAbsolute(point);
-		if (reference.y < point.y)
-			point = getOwner().getBounds().getTop();
+		if (reference.x < point.x)
+			point = getOwner().getBounds().getLeft();
 		else
-			point = getOwner().getBounds().getBottom();
+			point = getOwner().getBounds().getRight();
 		getOwner().translateToAbsolute(point);
 		return point;
 	}

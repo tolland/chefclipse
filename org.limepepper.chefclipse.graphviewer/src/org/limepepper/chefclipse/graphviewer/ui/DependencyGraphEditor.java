@@ -12,16 +12,22 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.zest.core.viewers.EntityConnectionData;
 import org.eclipse.zest.core.viewers.GraphViewer;
@@ -53,6 +59,7 @@ public class DependencyGraphEditor extends EditorPart implements
 	private DependencyGraphEditorInput input;
 	private DependencyController dependencyController;
 	private DependencyModel dependencyModel;
+	private GraphNode selectedGraphNode;
 	
 	public static final String ID = "org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor";
 
@@ -97,9 +104,11 @@ public class DependencyGraphEditor extends EditorPart implements
 	public void createPartControl(Composite parent) {
 		dependencyModel.addDependencyChangeListener(this);
 		graphViewer = new GraphViewer(parent, SWT.NONE);
-
+		graph=graphViewer.getGraphControl();
 		graphViewer.setContentProvider(new GraphViewerContentProvider());
 		graphViewer.setLabelProvider(new GraphViewerLabelProvider());
+		//graphViewer.addSelectionChangedListener(graghviewer_SelectionChangedListener);
+		graph.addSelectionListener(gragh_SelectionChangedListener);
 		graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
 		TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(TreeLayoutAlgorithm.TOP_DOWN,new Dimension(200,150));
 		HorizontalShiftAlgorithm horizontalShift = new HorizontalShiftAlgorithm();
@@ -155,7 +164,42 @@ public class DependencyGraphEditor extends EditorPart implements
 		}
 		menuMgr.add(new DeleteDependencyAction(selectedRelation));
 		menuMgr.add(new DeleteNodeAction(selectedNode));
+		menuMgr.add(new LinkToStructureViewerAction(selectedNode));
 	}
+	
+	SelectionListener gragh_SelectionChangedListener =new SelectionListener()
+	{
+
+
+		@Override
+		public void widgetSelected(SelectionEvent e) {
+			List graphNodes = graph.getSelection();
+			if(graphNodes!=null&&graphNodes.size()>0)
+			{
+				if(selectedGraphNode!=null)
+				{
+					selectedGraphNode.getFigure().setBackgroundColor(new Color(null, 255, 255, 206));
+				}
+				GraphNode selectedNode=(GraphNode)graphNodes.get(0);
+				selectedNode.getFigure().setBackgroundColor(new Color(null, 206, 206, 255));
+				selectedGraphNode=selectedNode;
+			}
+			// TODO Auto-generated method stub
+			//IStructuredSelection selection = (IStructuredSelection) graph
+			//		.getSelection();
+			//Object selected =null;
+			//if (selection != null) {
+			//	selected = selection.getFirstElement();
+			//}
+		}
+
+		@Override
+		public void widgetDefaultSelected(SelectionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	};
 
 	@Override
 	public void dependencyChanged() {
@@ -217,7 +261,7 @@ public class DependencyGraphEditor extends EditorPart implements
 		}
 	}
 
-	static class GraphViewerLabelProvider extends LabelProvider implements
+	class GraphViewerLabelProvider extends LabelProvider implements
 			ISelfStyleProvider,IFigureProvider {
 
 		public GraphViewerLabelProvider() {
@@ -257,7 +301,7 @@ public class DependencyGraphEditor extends EditorPart implements
 			if(element instanceof Cookbook)
 			{
 				MockCookbookImpl c = (MockCookbookImpl)element;
-				return new CookbookFigure(c.getName(),c.getVersion(),c.getCatalog());
+				return new CookbookFigure(c.getName(),c.getVersion(),c.getCatalog(),c.equals(dependencyModel.getSelected()));
 			}
 			return null;
 		}
@@ -300,6 +344,31 @@ public class DependencyGraphEditor extends EditorPart implements
 		@Override
 		public void run() {
 			dependencyController.removeNode(selectedElement);
+		}
+
+		@Override
+		public boolean isEnabled() {
+			return selectedElement!=null;
+		}
+	}
+	
+	public class LinkToStructureViewerAction extends Action {
+
+		private Object selectedElement;
+		public LinkToStructureViewerAction(Object selectedNode)
+		{
+			this.setText("Structure Viewer");
+			selectedElement=selectedNode;
+		}
+		
+		@Override
+		public void run() {
+			try {
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().openEditor(new CookbookGraphEditorInput(input.getProjectPath()), CookbookGraphEditor.ID);
+			} catch (PartInitException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		@Override

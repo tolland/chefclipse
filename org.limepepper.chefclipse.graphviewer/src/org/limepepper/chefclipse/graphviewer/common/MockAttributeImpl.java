@@ -2,7 +2,7 @@ package org.limepepper.chefclipse.graphviewer.common;
 
 import org.limepepper.chefclipse.model.cookbook.impl.AttributeImpl;
 
-public class MockAttributeImpl extends AttributeImpl{
+public class MockAttributeImpl extends AttributeImpl implements ICookbookElement{
 
 	public String name;
 	
