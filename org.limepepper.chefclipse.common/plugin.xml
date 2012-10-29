@@ -2,19 +2,9 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="org.limepepper.rcp.chefclipse.common.resources.ChefProjectNature"
-         name="Chef Project Nature"
-         point="org.eclipse.core.resources.natures">
-      <runtime>
-         <run
-               class="org.limepepper.chefclipse.common.resources.ChefProjectNature">
-         </run>
-      </runtime>
-   </extension>
-   <extension
          point="org.eclipse.emf.ecore.generated_package">
       <package
-            class="org.limepepper.chefclipse.model.workstation.WorkstationPackage"
+            class="org.limepepper.chefclipse.common.workstation.WorkstationPackage"
             uri="http://limepepper.org/chefclipse/workstation">
       </package>
    </extension>
