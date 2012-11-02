@@ -24,6 +24,7 @@ import org.limepepper.chefclipse.remotepicker.api.CookbookInfo;
 import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
+import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.osgi.framework.Bundle;
 
 /**
@@ -36,6 +37,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 	private static final String COOKBOOK_ICON = "icons/opscode.png";
 	private HashMap<String, CatalogCategory> categoriesMap;
 	private DateFormat dateFormat;
+	private CatalogDescriptor catalogDescriptor;
 
 	/**
 	 * 
@@ -45,6 +47,17 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		setCategoriesMap(new HashMap<String, CatalogCategory>());
 		items = new ArrayList<CatalogItem>();
 		dateFormat = DateFormat.getDateTimeInstance();
+	}
+
+	public CookbookDiscoveryStrategy(CatalogDescriptor catalogDescriptor) {
+		this();
+		if (catalogDescriptor == null) {
+			throw new IllegalArgumentException();
+		}
+		this.catalogDescriptor = catalogDescriptor;
+//		marketplaceService = createMarketplaceService();
+//		source = new MarketplaceCatalogSource(marketplaceService);
+//		marketplaceInfo = MarketplaceInfo.getInstance();
 	}
 
 	/* (non-Javadoc)
