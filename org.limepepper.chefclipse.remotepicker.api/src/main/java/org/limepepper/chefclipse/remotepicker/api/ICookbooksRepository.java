@@ -1,9 +1,10 @@
 package org.limepepper.chefclipse.remotepicker.api;
 
 import java.net.URI;
-import java.util.List;
+import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
 
 public interface ICookbooksRepository {
 	
@@ -11,8 +12,10 @@ public interface ICookbooksRepository {
 	
 	URI getRepositoryURI();
 
-	List<CookbookInfo> getCookbooks(IProgressMonitor monitor);
+	Collection<RemoteCookbook> getCookbooks(IProgressMonitor monitor);
 
-	CookbookInfo getCookbook(String name, IProgressMonitor monitor);
+	RemoteCookbook getCookbook(String name, IProgressMonitor monitor);
+	
+	boolean isUpdated();
 
 }

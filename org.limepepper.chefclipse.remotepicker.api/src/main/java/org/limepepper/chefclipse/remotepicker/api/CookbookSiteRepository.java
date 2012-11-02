@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.core.MediaType;
@@ -18,6 +19,8 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryFactory;
+import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -62,8 +65,8 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbooks(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
-	public List<CookbookInfo> getCookbooks(IProgressMonitor monitor) {
-		List<CookbookInfo> cookbooks = new ArrayList<CookbookInfo>();
+	public List<RemoteCookbook> getCookbooks(IProgressMonitor monitor) {
+		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
 		JSONObject json = getRestCookbooks(0, 30);
 		try {
 			JSONArray items = json.getJSONArray("items");
@@ -88,8 +91,8 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 		return cookbooks;
 	}
 
-	private CookbookInfo createCookbook(JSONObject cookbookJson) {
-		CookbookInfo cookbook = new CookbookInfo();
+	private RemoteCookbook createCookbook(JSONObject cookbookJson) {
+		RemoteCookbook cookbook = CookbookrepositoryFactory.eINSTANCE.createRemoteCookbook();
 		try {
 			cookbook.setName(cookbookJson.getString("cookbook_name"));
 			cookbook.setUrl(cookbookJson.getString("cookbook"));
@@ -119,19 +122,19 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbook(java.lang.String, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
-	public CookbookInfo getCookbook(String name, IProgressMonitor monitor) {
+	public RemoteCookbook getCookbook(String name, IProgressMonitor monitor) {
 		JSONObject cookbookJson = restCookbook(name);
 		
 		String url = UriBuilder.fromUri(getRepositoryURI())
 				.path("cookbooks").path(name)
 				.build().toString();
 		
-		CookbookInfo cookbook = createCookbookDetail(cookbookJson, url);
+		RemoteCookbook cookbook = createCookbookDetail(cookbookJson, url);
 		return cookbook;
 	}
 
-	private CookbookInfo createCookbookDetail(JSONObject cookbookJson, String url) {
-		CookbookInfo cookbook = new CookbookInfo();
+	private RemoteCookbook createCookbookDetail(JSONObject cookbookJson, String url) {
+		RemoteCookbook cookbook = CookbookrepositoryFactory.eINSTANCE.createRemoteCookbook();
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		try {
 			cookbook.setName(cookbookJson.getString("name"));
@@ -151,7 +154,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			for (int i = 0; i < versionsJson.length(); i++) {
 				versions[i] = versionsJson.getString(i);
 			}
-			cookbook.setVersions(versions);
+			cookbook.getVersions().addAll(Arrays.asList(versions));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -171,6 +174,12 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	@Override
 	public String getRepositoryId() {
 		return "cookbooks.opscode.com";
+	}
+
+	@Override
+	public boolean isUpdated() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
