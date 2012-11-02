@@ -7,8 +7,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -20,7 +20,7 @@ import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.discovery.model.Icon;
 import org.eclipse.equinox.internal.p2.discovery.model.Overview;
 import org.eclipse.ui.internal.util.BundleUtility;
-import org.limepepper.chefclipse.remotepicker.api.CookbookInfo;
+import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
@@ -67,15 +67,15 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 	public void performDiscovery(IProgressMonitor monitor) throws CoreException {
 		
 		ICookbooksRepository cookbooksSiteRepository= new CookbookSiteRepository();
-		List<CookbookInfo> cookbooks = cookbooksSiteRepository.getCookbooks(monitor);
-		for (CookbookInfo cookBookInfo : cookbooks){
+		Collection<RemoteCookbook> cookbooks = cookbooksSiteRepository.getCookbooks(monitor);
+		for (RemoteCookbook cookBookInfo : cookbooks){
 			addCategoryFromCookbook(cookBookInfo);
 			items.add(createItem(cookBookInfo));
 		}
 		
 	}
 
-	private void addCategoryFromCookbook(CookbookInfo cookBookInfo) {
+	private void addCategoryFromCookbook(RemoteCookbook cookBookInfo) {
 		String category = cookBookInfo.getCategory();
 		if (!getCategoriesMap().containsKey(category)){
 			CatalogCategory catalogCategory = new CatalogCategory();
@@ -86,7 +86,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		}
 	}
 
-	private CatalogItem createItem(CookbookInfo cookBookInfo) {
+	private CatalogItem createItem(RemoteCookbook cookBookInfo) {
 
 		final CatalogItem item = new CatalogItem();
 		item.setId(cookBookInfo.getName());
