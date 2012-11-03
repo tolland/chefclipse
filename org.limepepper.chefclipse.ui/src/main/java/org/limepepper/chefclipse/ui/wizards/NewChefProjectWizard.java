@@ -12,13 +12,13 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
-import org.limepepper.chefclipse.adapters.ChefProjectAdapter;
+import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
 
 
 public class NewChefProjectWizard extends Wizard implements INewWizard {
 						
-	private NewChefProjectWizardPageConfirm pageConfirm;
-
+	private ChefProjectWizardPage projectPage;
+	private ChefRepositoryWizardPage repoPage;
 	
 	public NewChefProjectWizard() {
 		super();
@@ -26,21 +26,23 @@ public class NewChefProjectWizard extends Wizard implements INewWizard {
 	}
 	
 
-
 	public void addPages() {								
-		pageConfirm = new NewChefProjectWizardPageConfirm("New Chef Project");
-						
-		addPage(pageConfirm);
+		projectPage = new ChefProjectWizardPage();
+		repoPage = new ChefRepositoryWizardPage();
+		
+		addPage(projectPage);
+		addPage(repoPage);
 	}
 
 
 	public boolean performFinish() {				
-		final IProject proj = pageConfirm.getProjectHandle();		
-								
+		final IProject proj = projectPage.getProjectHandle();		
+		final String repoPath = repoPage.getLocationPath();
+		
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {
-					ChefProjectAdapter.createChefProject(proj, monitor);
+					ChefProjectManager.instance().createChefProject(proj, repoPath, monitor);
 					
 					if(!proj.isOpen()){
 						proj.open(monitor);

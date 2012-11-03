@@ -5,35 +5,33 @@
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
             activeByDefault="true"
-            contentProvider="org.limepepper.chefclipse.navigator.providers.ChefRepositoryContentProvider"
-            id="org.limepepper.chefclipse.navigator.ChefRepositoryNavigator"
-            labelProvider="org.limepepper.chefclipse.navigator.providers.ChefRepositoryLabelProvider"
-            name="Chef Repository Navigator"
+            contentProvider="org.limepepper.chefclipse.navigator.providers.ChefProjectContentProvider"
+            id="org.limepepper.chefclipse.navigator.ChefProjectNavigator"
+            labelProvider="org.limepepper.chefclipse.navigator.providers.ChefProjectLabelProvider"
+            name="Chef Project Navigator"
             priority="higher"
             providesSaveables="false">
          <triggerPoints>
             <and>
                <instanceof
-                     value="org.eclipse.core.resources.IFile">
+                     value="org.eclipse.core.resources.IProject">
                </instanceof>
                <test
                      forcePluginActivation="true"
-                     property="org.eclipse.core.resources.extension"
-                     value="repo">
+                     property="org.eclipse.core.resources.projectNature"
+                     value="org.limepepper.chefclipse.common.ui.resources.ChefProjectNature">
                </test>
             </and></triggerPoints>
       </navigatorContent>
       <navigatorContent
-            activeByDefault="true"
             contentProvider="org.limepepper.chefclipse.navigator.providers.ChefCookbookContentProvider"
             id="org.limepepper.chefclipse.navigator.ChefCookbookNavigator"
             labelProvider="org.limepepper.chefclipse.navigator.providers.ChefCookbookLabelProvider"
             name="Chef Cookbook Navigator"
-            priority="higher"
-            providesSaveables="false">
+            priority="higher">
          <triggerPoints>
             <instanceof
-                  value="org.eclipse.emf.ecore.EObject">
+                  value="org.limepepper.chefclipse.common.cookbook.Cookbook">
             </instanceof>
          </triggerPoints>
       </navigatorContent>
@@ -45,7 +43,7 @@
          <includes>
             <contentExtension
                   isRoot="false"
-                  pattern="org.limepepper.chefclipse.navigator.ChefRepositoryNavigator">
+                  pattern="org.limepepper.chefclipse.navigator.ChefProjectNavigator">
             </contentExtension>
             <contentExtension
                   isRoot="false"
@@ -53,6 +51,16 @@
             </contentExtension>
          </includes>
       </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.limepepper.chefclipse.navigator.testers.ChefResourcesPropertyTester"
+            id="org.limepepper.chefclipse.navigator.ChefResourcesPropertyTester"
+            namespace="org.limepepper.chefclipse.navigator"
+            properties="isWorkstationFolder"
+            type="org.eclipse.core.resources.IResource">
+      </propertyTester>
    </extension>
 
 </plugin>
