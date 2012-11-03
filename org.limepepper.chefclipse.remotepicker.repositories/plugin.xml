@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.limepepper.chefclipse.cookbook.repository">
+      <repositoryDescriptor
+            class="org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository"
+            description="This site contains all the cookbooks authored by Opscode, as well as many cookbooks from other members of the community."
+            id="org.limepepper.chefclipse.remotepicker.repository.opscode"
+            name="Opscode Cookbook Site"
+            uri="http://community.opscode.com/cookbooks">
+         <icon
+               image32="icons/opscode.png">
+         </icon>
+      </repositoryDescriptor>
+   </extension>
+
+</plugin>

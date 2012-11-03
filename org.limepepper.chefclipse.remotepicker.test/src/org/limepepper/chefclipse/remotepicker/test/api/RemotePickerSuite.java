@@ -3,16 +3,8 @@
  */
 package org.limepepper.chefclipse.remotepicker.test.api;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-//import static org.junit.matchers.JUnitMatchers.*;
-
-import java.util.List;
-
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.junit.Test;
-import org.limepepper.chefclipse.remotepicker.api.CookbookInfo;
 import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
+//import static org.junit.matchers.JUnitMatchers.*;
 
 /**
  * @author Guillermo Zunino
