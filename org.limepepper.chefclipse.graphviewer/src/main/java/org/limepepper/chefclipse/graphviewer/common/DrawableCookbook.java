@@ -50,9 +50,7 @@ public class DrawableCookbook {
 	
 	public abstract class DrawableContainer
 	{
-		private Image containerImage = new Image(Display.getDefault(),
-				DependencyGraphEditor.class
-						.getResourceAsStream("FolderOpen_24x24_72.png"));
+		private Image containerImage = ImageLoader.Load("FolderOpen_24x24_72.png");
 		
 		abstract public String getName();
 		

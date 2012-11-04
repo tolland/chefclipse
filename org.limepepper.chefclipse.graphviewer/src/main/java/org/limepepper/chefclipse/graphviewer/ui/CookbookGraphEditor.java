@@ -36,6 +36,7 @@ import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 import org.limepepper.chefclipse.graphviewer.common.ICookbookElement;
+import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
 import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
 import org.limepepper.chefclipse.graphviewer.controller.CookbookController;
 import org.limepepper.chefclipse.graphviewer.figure.ChefclipseConnectionAnchor;
@@ -203,9 +204,7 @@ public void dispose() {
 static class CookbookViewerLabelProvider extends LabelProvider implements
 	ISelfStyleProvider,IFigureProvider {
 
-	Image attributeImage = new Image(Display.getDefault(),
-			DependencyGraphEditor.class
-					.getResourceAsStream("methpub_obj.gif"));
+	Image attributeImage = ImageLoader.Load("methpub_obj.gif");
 	
 public CookbookViewerLabelProvider() {
 

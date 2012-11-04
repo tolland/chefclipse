@@ -12,14 +12,13 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
 import org.limepepper.chefclipse.graphviewer.common.ICookbookElement;
+import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
 import org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor;
 
 
 public class CookbookElementFigure extends Figure {
 	
-	private Image cookbookElementImage = new Image(Display.getDefault(),
-			DependencyGraphEditor.class
-					.getResourceAsStream("bulleted_list_options.png"));
+	private Image cookbookElementImage = ImageLoader.Load("bulleted_list_options.png");
 	
 	private ICookbookElement cookbookElement;
 	private Font titleFont = new Font(null, "Arial", 11, SWT.BOLD);
