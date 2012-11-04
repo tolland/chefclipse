@@ -4,7 +4,6 @@
 package org.limepepper.chefclipse.remotepicker.api;
 
 import java.net.URI;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

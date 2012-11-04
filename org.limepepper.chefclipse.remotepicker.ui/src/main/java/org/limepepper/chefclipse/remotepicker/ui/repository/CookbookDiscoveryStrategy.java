@@ -21,7 +21,7 @@ import org.eclipse.equinox.internal.p2.discovery.model.Icon;
 import org.eclipse.equinox.internal.p2.discovery.model.Overview;
 import org.eclipse.ui.internal.util.BundleUtility;
 import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
-import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
+import org.limepepper.chefclipse.remotepicker.api.MultipleVendorCookbookRepository;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
@@ -66,7 +66,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 	@Override
 	public void performDiscovery(IProgressMonitor monitor) throws CoreException {
 		
-		ICookbooksRepository cookbooksSiteRepository= new CookbookSiteRepository();
+		ICookbooksRepository cookbooksSiteRepository= new MultipleVendorCookbookRepository();
 		Collection<RemoteCookbook> cookbooks = cookbooksSiteRepository.getCookbooks(monitor);
 		for (RemoteCookbook cookBookInfo : cookbooks){
 			addCategoryFromCookbook(cookBookInfo);

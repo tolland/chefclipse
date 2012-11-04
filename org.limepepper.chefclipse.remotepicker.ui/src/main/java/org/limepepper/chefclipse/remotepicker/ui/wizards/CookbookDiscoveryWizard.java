@@ -8,6 +8,7 @@ import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryWizard;
+import org.limepepper.chefclipse.remotepicker.api.MultipleVendorCookbookRepository;
 import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
@@ -50,10 +51,11 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	}
 
 	private void doDefaultCatalogSelection() {
+		
 		if (getConfiguration().getCatalogDescriptor() == null) {
 			ICookbooksRepository cookbooksSiteRepository= new CookbookSiteRepository();
 			CatalogDescriptor defaultCatalogDescriptor = new CatalogDescriptor();
-			defaultCatalogDescriptor.setDescription("Mock catalog descriptor");
+			defaultCatalogDescriptor.setDescription("Opscode catalog descriptor");
 			defaultCatalogDescriptor.setLabel(cookbooksSiteRepository.getRepositoryId());
 			try {
 				defaultCatalogDescriptor.setUrl(cookbooksSiteRepository.getRepositoryURI().toURL());
@@ -61,12 +63,12 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 				System.out.println("no se pudo crear la url del repo...");
 				e.printStackTrace();
 			}
-			ICookbooksRepository cookbooksSiteRepository1= new CookbookSiteRepository();
+			ICookbooksRepository communityCookbookRepository = new MultipleVendorCookbookRepository();
 			CatalogDescriptor catalogDescriptor = new CatalogDescriptor();
-			catalogDescriptor.setDescription("Seba catalog descriptor");
-			catalogDescriptor.setLabel("Seba id catalog descriptor");
+			catalogDescriptor.setDescription("Community catalog descriptor");
+			catalogDescriptor.setLabel(communityCookbookRepository.getRepositoryId());
 			try {
-				catalogDescriptor.setUrl(cookbooksSiteRepository1.getRepositoryURI().toURL());
+				catalogDescriptor.setUrl(communityCookbookRepository.getRepositoryURI().toURL());
 			} catch (MalformedURLException e) {
 				System.out.println("no se pudo crear la url del repo...");
 				e.printStackTrace();

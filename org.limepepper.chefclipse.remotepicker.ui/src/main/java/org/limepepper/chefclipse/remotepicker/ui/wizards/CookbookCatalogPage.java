@@ -243,6 +243,7 @@ public class CookbookCatalogPage extends CatalogPage {
 				configuration.setCatalogDescriptor(descriptor);
 				getWizard().initializeCatalog();
 				getViewer().updateCatalog();
+				updateTitle();
 //				updateBranding();
 			}
 		});

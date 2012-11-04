@@ -60,6 +60,7 @@ public class RemotePickerHandler extends AbstractHandler {
 		configuration.setShowInstalledFilter(false);
 		configuration.setShowTagFilter(false);
 		configuration.setVerifyUpdateSiteAvailability(false);
+		configuration.setShowCategories(true);
 		
 //		if (catalogDescriptors == null || catalogDescriptors.isEmpty()) {
 //			installRemoteCatalogs();
@@ -118,9 +119,8 @@ public class RemotePickerHandler extends AbstractHandler {
 //		} catch (InterruptedException ie) {
 //			return;
 //		} catch (Exception e) {
-//			IStatus status = MarketplaceClientUi.computeStatus(new InvocationTargetException(e),
-//					Messages.MarketplaceWizardCommand_CannotInstallRemoteLocations);
-//			StatusManager.getManager().handle(status, StatusManager.LOG);
+//			System.out.println("Cannot install remote locations");
+//			e.printStackTrace();
 //		}
 	}
 	
