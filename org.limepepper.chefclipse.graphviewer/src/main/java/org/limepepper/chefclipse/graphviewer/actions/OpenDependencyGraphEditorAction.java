@@ -40,6 +40,10 @@ public class OpenDependencyGraphEditorAction implements IObjectActionDelegate {
 			
 			//PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(GraphView.ID);
 			IStructuredSelection selection = (IStructuredSelection)targetPart.getSite().getWorkbenchWindow().getSelectionService().getSelection();
+			if(selection==null)
+			{
+				return;
+			}
 			Object firstElement = selection.getFirstElement();
 	        if (firstElement instanceof IAdaptable)
 	        {

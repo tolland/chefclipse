@@ -5,31 +5,37 @@ import java.util.ArrayList;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
 
 public class DependencyModel {
-	private static DependencyModel sModel=null;
 	private Cookbook mCookbook;
+	private Object selectedObject;
 	
 	private final ArrayList<IDependencyChangeListener> mDependencyChangeListeners =
             new ArrayList<IDependencyChangeListener>();
 	
-	
-	static public DependencyModel getModel()
-	{
-		if(sModel==null)
-		{
-			sModel=new DependencyModel();
-		}
-		return sModel;
-	}
-	
 	public void setCookbook(Cookbook cookbook)
 	{
 		mCookbook=cookbook;
+		selectedObject=null;
 		notifyDependencyChanged();
 	}
 	
 	public Cookbook getCookbook()
 	{
 		return mCookbook;
+	}
+	
+	public Object getSelected()
+	{
+		return selectedObject;
+	}
+	
+	public void setSelected(Object selected)
+	{
+		if(selected==selectedObject)
+		{
+			return;
+		}
+		selectedObject=selected;
+		notifyDependencyChanged();
 	}
 	
 	private IDependencyChangeListener[] getDependencyChangeListenerList() {
@@ -66,7 +72,7 @@ public class DependencyModel {
         }
     }
     
-	public static interface IDependencyChangeListener {
+	public interface IDependencyChangeListener {
         public void dependencyChanged();
     }
 	

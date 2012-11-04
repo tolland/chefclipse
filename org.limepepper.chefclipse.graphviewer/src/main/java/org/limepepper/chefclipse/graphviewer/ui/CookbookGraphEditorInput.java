@@ -4,50 +4,55 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 
-public class DependencyGraphEditorInput implements IEditorInput {
+public class CookbookGraphEditorInput implements IEditorInput {
 
 	private final String projectPath;
+	
+	public CookbookGraphEditorInput(String projectPath)
+	{
+		this.projectPath=projectPath;
+	}
 	
 	public String getProjectPath()
 	{
 		return projectPath;
 	}
 	
-	public DependencyGraphEditorInput(String projectPath)
-	{
-		this.projectPath=projectPath;
-	}
 	
 	@Override
 	public Object getAdapter(Class adapter) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean exists() {
-		return true;
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public ImageDescriptor getImageDescriptor() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getName() {
-		return "Dependency Graph Editor";
+		return "Cookbook Structure Graph Editor";
 	}
 
 	@Override
 	public IPersistableElement getPersistable() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String getToolTipText() {
-		return "Dependency Graph Editor";
+		return "Cookbook Structure Graph Editor";
 	}
-	
+
 	@Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -56,13 +61,15 @@ public class DependencyGraphEditorInput implements IEditorInput {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        
-        DependencyGraphEditorInput other = (DependencyGraphEditorInput) obj;
+        if(!(obj instanceof CookbookGraphEditorInput))
+        {
+        	return false;
+        }
+        CookbookGraphEditorInput other = (CookbookGraphEditorInput) obj;
         if (!projectPath.equals(other.getProjectPath()))
         {
             return false;
         }
         return true;
     }
-
 }

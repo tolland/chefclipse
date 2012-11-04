@@ -19,10 +19,16 @@
             nameFilter="*"
             id="org.limepepper.chefclipse.contribution1">
          <action
-               label="Open Graph Editor"
+               label="Open Cookbook Dependency Viewer"
                class="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction"
                enablesFor="1"
                id="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction">
+         </action>
+         <action
+               label="Open Cookbook Structure Viewer"
+               class="org.limepepper.chefclipse.graphviewer.actions.OpenCookbookGraphEditorAction"
+               enablesFor="1"
+               id="org.limepepper.chefclipse.graphviewer.actions.OpenCookbookGraphEditorAction">
          </action>
       </objectContribution>
    </extension>
@@ -33,6 +39,12 @@
             default="false"
             id="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
             name="Dependency Graph Editor">
+      </editor>
+      <editor
+            class="org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor"
+            default="false"
+            id="org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor"
+            name="Structure Graph Editor">
       </editor>
    </extension>
 </plugin>
