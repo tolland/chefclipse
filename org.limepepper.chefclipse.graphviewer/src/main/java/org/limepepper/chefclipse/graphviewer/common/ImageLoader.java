@@ -16,7 +16,11 @@ public class ImageLoader {
 		try
 		{
 			Bundle bundle = Platform.getBundle("org.limepepper.chefclipse.graphviewer"); 
-			URL url = bundle.getResource("image/"+imageName);
+			URL url = bundle.getResource("main/java/image/"+imageName);
+			if(url==null)
+			{
+				url = bundle.getResource("image/"+imageName);
+			}
 			URL fileURL =FileLocator.toFileURL(url);
 			return new Image(Display.getDefault(),
 					fileURL.getPath());
@@ -27,5 +31,4 @@ public class ImageLoader {
 		}
         
 	}
-
 }
