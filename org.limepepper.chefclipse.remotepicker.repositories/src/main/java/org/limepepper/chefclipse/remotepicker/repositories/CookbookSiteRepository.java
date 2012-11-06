@@ -3,8 +3,15 @@
  */
 package org.limepepper.chefclipse.remotepicker.repositories;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +42,11 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 public class CookbookSiteRepository implements ICookbooksRepository {
 	
 	private WebResource service;
+	
+	private static final String REPOSITORY_URI = "http://cookbooks.opscode.com";
+	
+	private static final String REPOSITORY_ID = "cookbooks.opscode.com";
+
 
 	protected WebResource getService() {
 		return service;
@@ -56,7 +68,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 * @return List of cookbooks
 	 */
 	private JSONObject getRestCookbooks(int start, int items) {
-	    return getService().path("cookbooks")
+	    return getService().path("api").path("v1").path("cookbooks")
 	    		.queryParam("items", String.valueOf(items))
 	    		.accept(MediaType.APPLICATION_JSON_TYPE)
 	    		.get(JSONObject.class);
@@ -113,7 +125,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 * @return
 	 */
 	private JSONObject restCookbook(String cookbook) {
-	    return getService().path("cookbooks")
+	    return getService().path("api").path("v1").path("cookbooks")
 	    		.path(cookbook)
 	    		.accept(MediaType.APPLICATION_JSON_TYPE)
 	    		.get(JSONObject.class);
@@ -126,7 +138,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	public RemoteCookbook getCookbook(String name, IProgressMonitor monitor) {
 		JSONObject cookbookJson = restCookbook(name);
 		
-		String url = UriBuilder.fromUri(getRepositoryURI())
+		String url = UriBuilder.fromUri(getRepositoryURI()).path("api").path("v1")
 				.path("cookbooks").path(name)
 				.build().toString();
 		
@@ -168,19 +180,51 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	@Override
 	public URI getRepositoryURI() {
 	
-		return UriBuilder.fromUri("http://cookbooks.opscode.com/api/v1/")
+		return UriBuilder.fromUri(REPOSITORY_URI)
 				.build();
 	}
 
 	@Override
 	public String getRepositoryId() {
-		return "cookbooks.opscode.com";
+		return REPOSITORY_ID;
 	}
 
 	@Override
 	public boolean isUpdated() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public File downloadCookbook(String cookbookName) {
+
+		URLConnection connection;
+		try {
+			RemoteCookbook cookbook = getCookbook(cookbookName, null);
+			String latestVersion = cookbook.getLatestVersion();
+			String lastVersion = latestVersion
+					.substring(latestVersion.length() - 5);
+			URL cookbookURL = new URL(REPOSITORY_URI + File.separator
+					+ "cookbooks" + File.separator + cookbookName
+					+ File.separator + "versions" + File.separator
+					+ lastVersion + File.separator + "downloads");
+			connection = cookbookURL.openConnection();
+			InputStream stream = connection.getInputStream();
+			BufferedInputStream in = new BufferedInputStream(stream);
+			File tempZipFile = File.createTempFile("temp", Long.toString(System.nanoTime()) + ".gz");
+			FileOutputStream fileOutputStream = new FileOutputStream(tempZipFile);
+			BufferedOutputStream out = new BufferedOutputStream(fileOutputStream);
+			int i;
+			while ((i = in.read()) != -1) {
+				out.write(i);
+			}
+			out.flush();
+			out.close();
+			return tempZipFile;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

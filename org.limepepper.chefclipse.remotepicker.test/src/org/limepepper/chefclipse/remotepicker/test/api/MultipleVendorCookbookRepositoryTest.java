@@ -9,12 +9,13 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 
+import java.io.File;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.junit.Test;
 import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
-import org.limepepper.chefclipse.remotepicker.api.MultipleVendorCookbookRepository;
+import org.limepepper.chefclipse.remotepicker.repositories.MultipleVendorCookbookRepository;
 
 /**
  * @author Sebastian Sampaoli
@@ -50,6 +51,12 @@ public class MultipleVendorCookbookRepositoryTest {
 		assertThat(result.getUrl(), equalTo("https://github.com/cookbooks/ap-cookbook-oracle"));
 		assertThat(result.getMaintainer(), equalTo("cookbooks"));
 		assertThat(String.valueOf(result.getRating()), equalTo("0.0"));
+	}
+	
+	@Test
+	public void testDownloadCookbook(){
+		File downloadCookbook = repo.downloadCookbook("ap-cookbook-oracle");
+		System.out.println(downloadCookbook.getPath());
 	}
 
 }

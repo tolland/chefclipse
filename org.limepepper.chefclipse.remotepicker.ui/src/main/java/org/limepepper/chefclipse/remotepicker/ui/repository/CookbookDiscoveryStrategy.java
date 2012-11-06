@@ -7,12 +7,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.equinox.internal.p2.discovery.AbstractCatalogSource;
 import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogCategory;
@@ -21,10 +21,10 @@ import org.eclipse.equinox.internal.p2.discovery.model.Icon;
 import org.eclipse.equinox.internal.p2.discovery.model.Overview;
 import org.eclipse.ui.internal.util.BundleUtility;
 import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
-import org.limepepper.chefclipse.remotepicker.api.MultipleVendorCookbookRepository;
-import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
+import org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
+import org.limepepper.chefclipse.remotepicker.ui.CatalogRegistry;
 import org.osgi.framework.Bundle;
 
 /**
@@ -66,8 +66,10 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 	@Override
 	public void performDiscovery(IProgressMonitor monitor) throws CoreException {
 		
-		ICookbooksRepository cookbooksSiteRepository= new MultipleVendorCookbookRepository();
-		Collection<RemoteCookbook> cookbooks = cookbooksSiteRepository.getCookbooks(monitor);
+		RemoteRepository repository = CatalogRegistry.getInstance().getRepoManager().getRepository(catalogDescriptor.getLabel());
+		//ICookbooksRepository cookbooksSiteRepository= new MultipleVendorCookbookRepository();
+		//Collection<RemoteCookbook> cookbooks = cookbooksSiteRepository.getCookbooks(monitor);
+		EList<RemoteCookbook> cookbooks = repository.getCookbooks();
 		for (RemoteCookbook cookBookInfo : cookbooks){
 			addCategoryFromCookbook(cookBookInfo);
 			items.add(createItem(cookBookInfo));

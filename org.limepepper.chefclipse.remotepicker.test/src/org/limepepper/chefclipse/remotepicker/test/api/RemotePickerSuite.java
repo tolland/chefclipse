@@ -3,7 +3,11 @@
  */
 package org.limepepper.chefclipse.remotepicker.test.api;
 
-import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
+import java.io.File;
+
+import org.junit.Test;
+import org.limepepper.chefclipse.remotepicker.repositories.CookbookSiteRepository;
+
 //import static org.junit.matchers.JUnitMatchers.*;
 
 /**
@@ -37,4 +41,10 @@ public class RemotePickerSuite {
 //		assertThat(result.getLatestVersion(), equalTo("http://cookbooks.opscode.com/api/v1/cookbooks/apache/versions/0_0_5"));
 ////		,"updated_at":"2012-03-13T13:46:24Z","created_at":"2011-11-08T13:52:21Z",
 //	}
+	
+	@Test
+	public void testDownloadCookbook(){
+		File downloadCookbook = repo.downloadCookbook("ad-auth");
+		System.out.println(downloadCookbook.getPath());
+	}
 }

@@ -1,5 +1,6 @@
 package org.limepepper.chefclipse.remotepicker.api;
 
+import java.io.File;
 import java.net.URI;
 import java.util.Collection;
 
@@ -17,5 +18,7 @@ public interface ICookbooksRepository {
 	RemoteCookbook getCookbook(String name, IProgressMonitor monitor);
 	
 	boolean isUpdated();
+	
+	File downloadCookbook(String cookbookName);
 
 }

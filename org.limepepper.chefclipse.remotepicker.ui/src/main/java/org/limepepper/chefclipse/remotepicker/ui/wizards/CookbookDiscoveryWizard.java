@@ -1,6 +1,5 @@
 package org.limepepper.chefclipse.remotepicker.ui.wizards;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.Set;
 
@@ -8,9 +7,6 @@ import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryWizard;
-import org.limepepper.chefclipse.remotepicker.api.MultipleVendorCookbookRepository;
-import org.limepepper.chefclipse.remotepicker.api.CookbookSiteRepository;
-import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStrategy;
 
@@ -53,29 +49,30 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	private void doDefaultCatalogSelection() {
 		
 		if (getConfiguration().getCatalogDescriptor() == null) {
-			ICookbooksRepository cookbooksSiteRepository= new CookbookSiteRepository();
-			CatalogDescriptor defaultCatalogDescriptor = new CatalogDescriptor();
-			defaultCatalogDescriptor.setDescription("Opscode catalog descriptor");
-			defaultCatalogDescriptor.setLabel(cookbooksSiteRepository.getRepositoryId());
-			try {
-				defaultCatalogDescriptor.setUrl(cookbooksSiteRepository.getRepositoryURI().toURL());
-			} catch (MalformedURLException e) {
-				System.out.println("no se pudo crear la url del repo...");
-				e.printStackTrace();
-			}
-			ICookbooksRepository communityCookbookRepository = new MultipleVendorCookbookRepository();
-			CatalogDescriptor catalogDescriptor = new CatalogDescriptor();
-			catalogDescriptor.setDescription("Community catalog descriptor");
-			catalogDescriptor.setLabel(communityCookbookRepository.getRepositoryId());
-			try {
-				catalogDescriptor.setUrl(communityCookbookRepository.getRepositoryURI().toURL());
-			} catch (MalformedURLException e) {
-				System.out.println("no se pudo crear la url del repo...");
-				e.printStackTrace();
-			}
-			getConfiguration().getCatalogDescriptors().add(defaultCatalogDescriptor);
-			getConfiguration().getCatalogDescriptors().add(catalogDescriptor);
-			getConfiguration().setCatalogDescriptor(defaultCatalogDescriptor);
+			getConfiguration().setCatalogDescriptor(getConfiguration().getCatalogDescriptors().get(0));
+//			ICookbooksRepository cookbooksSiteRepository= new CookbookSiteRepository();
+//			CatalogDescriptor defaultCatalogDescriptor = new CatalogDescriptor();
+//			defaultCatalogDescriptor.setDescription("Opscode catalog descriptor");
+//			defaultCatalogDescriptor.setLabel(cookbooksSiteRepository.getRepositoryId());
+//			try {
+//				defaultCatalogDescriptor.setUrl(cookbooksSiteRepository.getRepositoryURI().toURL());
+//			} catch (MalformedURLException e) {
+//				System.out.println("no se pudo crear la url del repo...");
+//				e.printStackTrace();
+//			}
+//			ICookbooksRepository communityCookbookRepository = new MultipleVendorCookbookRepository();
+//			CatalogDescriptor catalogDescriptor = new CatalogDescriptor();
+//			catalogDescriptor.setDescription("Community catalog descriptor");
+//			catalogDescriptor.setLabel(communityCookbookRepository.getRepositoryId());
+//			try {
+//				catalogDescriptor.setUrl(communityCookbookRepository.getRepositoryURI().toURL());
+//			} catch (MalformedURLException e) {
+//				System.out.println("no se pudo crear la url del repo...");
+//				e.printStackTrace();
+//			}
+//			getConfiguration().getCatalogDescriptors().add(defaultCatalogDescriptor);
+//			getConfiguration().getCatalogDescriptors().add(catalogDescriptor);
+//			getConfiguration().setCatalogDescriptor(defaultCatalogDescriptor);
 //			String defaultCatalogUrl = MarketplaceClientUiPlugin.getInstance()
 //			.getPreferenceStore()
 //			.getString(PREF_DEFAULT_CATALOG);

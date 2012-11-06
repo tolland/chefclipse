@@ -1,8 +1,17 @@
 package org.limepepper.chefclipse.remotepicker.ui;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import javax.inject.Inject;
+
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository;
+import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 
 
 /**
@@ -11,6 +20,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CatalogRegistry {
 
 	private static CatalogRegistry instance;
+	
+	@Inject
+	private CookbookRepositoryManager repoManager;
 	
 	private final List<CatalogDescriptor> catalogDescriptors = new CopyOnWriteArrayList<CatalogDescriptor>();
 
@@ -23,7 +35,21 @@ public class CatalogRegistry {
 	}
 	
 	public CatalogRegistry() {
-		catalogDescriptors.addAll(new CatalogExtensionPointReader().getCatalogDescriptors());
+		
+		CookbookRepositoryManager repoManager = new CookbookRepositoryManager();
+		Collection<RemoteRepository> repositories = repoManager.getRepositories();
+		for (RemoteRepository remoteRepository : repositories) {
+			CatalogDescriptor descriptor = new CatalogDescriptor();
+			descriptor.setLabel(remoteRepository.getId());
+			try {
+				descriptor.setUrl(new URL(remoteRepository.getUri()));
+				descriptor.setIcon(ImageDescriptor.createFromURL(new URL(remoteRepository.getIcon())));
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			}
+			descriptor.setDescription(remoteRepository.getDescription());
+			catalogDescriptors.add(descriptor);
+		}
 	}
 
 	public void register(CatalogDescriptor catalogDescriptor) {
@@ -48,5 +74,19 @@ public class CatalogRegistry {
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * @return the repoManager
+	 */
+	public CookbookRepositoryManager getRepoManager() {
+		return repoManager;
+	}
+	
+	/**
+	 * @param repoManager the repoManager to set
+	 */
+	public void setRepoManager(CookbookRepositoryManager repoManager) {
+		this.repoManager = repoManager;
 	}
 }
