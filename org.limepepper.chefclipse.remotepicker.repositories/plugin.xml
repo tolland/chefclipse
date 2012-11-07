@@ -4,7 +4,7 @@
    <extension
          point="org.limepepper.chefclipse.cookbook.repository">
       <repositoryDescriptor
-            class="org.limepepper.chefclipse.remotepicker.CookbookSiteRepository"
+            class="org.limepepper.chefclipse.remotepicker.repositories.CookbookSiteRepository"
             description="This site contains all the cookbooks authored by Opscode, as well as many cookbooks from other members of the community."
             id="org.limepepper.chefclipse.remotepicker.repository.opscode"
             name="Opscode Cookbook Site"
@@ -14,7 +14,7 @@
          </icon>
       </repositoryDescriptor>
       <repositoryDescriptor
-            class="org.limepepper.chefclipse.remotepicker.MultipleVendorCookbookRepository"
+            class="org.limepepper.chefclipse.remotepicker.repositories.MultipleVendorCookbookRepository"
             description="This repository contains a collection of cookbooks from vendors and individuals. The repositories under this organization are not affiliated with Opscode."
             id="org.limepepper.chefclipse.remotepicker.repository.multipleVendor"
             name="Multiple Vendor Cookbook Site"

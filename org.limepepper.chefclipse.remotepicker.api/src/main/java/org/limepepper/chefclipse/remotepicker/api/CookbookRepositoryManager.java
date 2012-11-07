@@ -9,9 +9,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.e4.core.di.annotations.Creatable;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -25,26 +27,45 @@ import org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository;
  * @author Guillermo Zunino
  *
  */
-@Creatable
 public class CookbookRepositoryManager {
+	
+	private static CookbookRepositoryManager instance;
+
+	CookbookRepositoryManager() {
+		instance = this;
+	}
+	
+	public static CookbookRepositoryManager getInstance() {
+		if (instance == null) {
+			instance = new CookbookRepositoryManager();
+		}
+		return instance;
+	}
 	
 	private static final String CACHE_EXT = "cookbookrepo";
 	private Map<String, RemoteRepository> repositories = new HashMap<String, RemoteRepository>();
 	private Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
 	private boolean loaded = false;
+	private Lock lock = new ReentrantLock();
+	private IPath cacheFolder;
 
 	public Collection<RemoteRepository> getRepositories() {
-		if (!loaded) {
-			loadRepositories();
+		lock.lock(); // block until condition holds
+		try {
+			if (!loaded) {
+				loadRepositories();
+			}
+			return Collections.unmodifiableCollection(repositories.values());
+		} finally {
+			lock.unlock();
 		}
-		return Collections.unmodifiableCollection(repositories.values());
 	}
 	
 	private void loadRepositories() {
 		// TODO load repositories on demand by EMF lazy support
 		// Initialize the model
 		CookbookrepositoryPackage.eINSTANCE.eClass();
-		// Register the XMI resource factory for the .website extension
+		// Register the XMI resource factory for the .cookbookrepo extension
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put(CACHE_EXT, new XMIResourceFactoryImpl());
@@ -56,7 +77,7 @@ public class CookbookRepositoryManager {
 			
 			// Get the resource
 			Resource resource = resSet.getResource(URI
-					.createURI(getCacheFile(repo)), true);
+					.createFileURI(getCacheFile(repo)), true);
 			if (resource != null) {
 			// Get the first model element and cast it to the right type, in my
 			// example everything is hierarchical included in this first node
@@ -75,16 +96,23 @@ public class CookbookRepositoryManager {
 	}
 
 	public void registerRepository(RemoteRepository repo, ICookbooksRepository retriever) {
-		repositories.put(repo.getId(), repo);
-		retrievers.put(repo.getId(), retriever);
-		
-		if (!isCached(repo)) {
-			cacheRepository(repo);
+		lock.lock(); // block until condition holds
+		try {
+			repositories.put(repo.getId(), repo);
+			retrievers.put(repo.getId(), retriever);
+
+			if (!isCached(repo)) {
+				cacheRepository(repo);
+			}
+		} finally {
+			lock.unlock();
 		}
 	}
 	
 	public void evictCache() {
-		new File("cache").delete();
+		for (RemoteRepository repo : repositories.values()) {
+			new File(getCacheFile(repo)).delete();
+		}
 	}
 
 	private void cacheRepository(RemoteRepository repo) {
@@ -106,7 +134,7 @@ public class CookbookRepositoryManager {
 
 	    // Create a resource
 	    Resource resource = resSet.createResource(URI
-	        .createURI(getCacheFile(repo)));
+	        .createFileURI(getCacheFile(repo)));
 	    // Get the first model element and cast it to the right type, in my
 	    // example everything is hierarchical included in this first node
 	    resource.getContents().add(repo);
@@ -126,13 +154,17 @@ public class CookbookRepositoryManager {
 	 * @return
 	 */
 	private String getCacheFile(RemoteRepository repo) {
-		// TODO save on plugin folder
-		return "cache/cache_"+repo.getId()+".cookbookrepo";
+		return cacheFolder.append(repo.getId()).addFileExtension(CACHE_EXT).toOSString();
+	}
+
+	public void setCacheFolder(IPath stateLocation) {
+		cacheFolder = stateLocation;
 	}
 
 	private boolean isCached(RemoteRepository repo) {
 		File file = new File(getCacheFile(repo));
 		return file.exists() && file.canRead();
 	}
+
 	
 }

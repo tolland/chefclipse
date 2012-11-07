@@ -34,9 +34,9 @@ public class CatalogRegistry {
 		return instance;
 	}
 	
-	public CatalogRegistry() {
-		
-		CookbookRepositoryManager repoManager = new CookbookRepositoryManager();
+	private CatalogRegistry() {
+		CookbookRepositoryManager repoManager = CookbookRepositoryManager.getInstance();
+		setRepoManager(repoManager);
 		Collection<RemoteRepository> repositories = repoManager.getRepositories();
 		for (RemoteRepository remoteRepository : repositories) {
 			CatalogDescriptor descriptor = new CatalogDescriptor();

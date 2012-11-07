@@ -37,7 +37,7 @@ public class CookbookRepositoryManagerTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		manager = new CookbookRepositoryManager();
+		manager = CookbookRepositoryManager.getInstance();
 		manager.evictCache();
 	}
 
