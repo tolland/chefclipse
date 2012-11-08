@@ -13,7 +13,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -42,7 +42,7 @@ public class CookbookRepositoryManager {
 		return instance;
 	}
 	
-	private static final String CACHE_EXT = "cookbookrepo";
+	private static final String CACHE_EXT = "cache";
 	private Map<String, RemoteRepository> repositories = new HashMap<String, RemoteRepository>();
 	private Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
 	private boolean loaded = false;
@@ -53,7 +53,7 @@ public class CookbookRepositoryManager {
 		lock.lock(); // block until condition holds
 		try {
 			if (!loaded) {
-				loadRepositories();
+				readCache();
 			}
 			return Collections.unmodifiableCollection(repositories.values());
 		} finally {
@@ -61,7 +61,7 @@ public class CookbookRepositoryManager {
 		}
 	}
 	
-	private void loadRepositories() {
+	private void readCache() {
 		// TODO load repositories on demand by EMF lazy support
 		// Initialize the model
 		CookbookrepositoryPackage.eINSTANCE.eClass();
@@ -71,18 +71,19 @@ public class CookbookRepositoryManager {
 		m.put(CACHE_EXT, new XMIResourceFactoryImpl());
 		
 		for (RemoteRepository repo : repositories.values()) {
-			
-			// Obtain a new resource set
-			ResourceSet resSet = new ResourceSetImpl();
-			
-			// Get the resource
-			Resource resource = resSet.getResource(URI
-					.createFileURI(getCacheFile(repo)), true);
-			if (resource != null) {
-			// Get the first model element and cast it to the right type, in my
-			// example everything is hierarchical included in this first node
-				RemoteRepository cachedRepo = (RemoteRepository) resource.getContents().get(0);
-				repo.getCookbooks().addAll(cachedRepo.getCookbooks());
+			if (isCached(repo)) {
+				// Obtain a new resource set
+				ResourceSet resSet = new ResourceSetImpl();
+				
+				// Get the resource
+				Resource resource = resSet.getResource(URI
+						.createFileURI(getCacheFile(repo)), true);
+				if (resource != null) {
+				// Get the first model element and cast it to the right type, in my
+				// example everything is hierarchical included in this first node
+					RemoteRepository cachedRepo = (RemoteRepository) resource.getContents().get(0);
+					repo.getCookbooks().addAll(cachedRepo.getCookbooks());
+				}
 			}
 		}
 		loaded = true;
@@ -90,7 +91,7 @@ public class CookbookRepositoryManager {
 
 	public RemoteRepository getRepository(String id) {
 		if (!loaded) {
-			loadRepositories();
+			readCache();
 		}
 		return repositories.get(id);
 	}
@@ -100,10 +101,6 @@ public class CookbookRepositoryManager {
 		try {
 			repositories.put(repo.getId(), repo);
 			retrievers.put(repo.getId(), retriever);
-
-			if (!isCached(repo)) {
-				cacheRepository(repo);
-			}
 		} finally {
 			lock.unlock();
 		}
@@ -115,9 +112,9 @@ public class CookbookRepositoryManager {
 		}
 	}
 
-	private void cacheRepository(RemoteRepository repo) {
+	private void cacheRepository(RemoteRepository repo, IProgressMonitor monitor) {
 		ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
-		Collection<RemoteCookbook> cookbooks = cookbookRepository.getCookbooks(new NullProgressMonitor());
+		Collection<RemoteCookbook> cookbooks = cookbookRepository.getCookbooks(monitor);
 		repo.getCookbooks().addAll(cookbooks);
 		
 		saveCacheModel(repo);
@@ -164,6 +161,14 @@ public class CookbookRepositoryManager {
 	private boolean isCached(RemoteRepository repo) {
 		File file = new File(getCacheFile(repo));
 		return file.exists() && file.canRead();
+	}
+
+	public void loadRepository(RemoteRepository repo, IProgressMonitor monitor) {
+		ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
+		
+		if (!isCached(repo) || cookbookRepository.isUpdated()) {
+			cacheRepository(repo, monitor);
+		}
 	}
 
 	

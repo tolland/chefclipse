@@ -87,7 +87,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	public Collection<RemoteCookbook> getCookbooks(IProgressMonitor monitor) {
 		
 		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
-		JSONArray jsonArray = getRestCookbooks(0, 30);
+		JSONArray jsonArray = getRestCookbooks(0, 100);
 		monitor.beginTask("Retrieving cookbooks", jsonArray.length()+1);
 		monitor.worked(1);
 		for (int i = 0; i < jsonArray.length(); i++) {

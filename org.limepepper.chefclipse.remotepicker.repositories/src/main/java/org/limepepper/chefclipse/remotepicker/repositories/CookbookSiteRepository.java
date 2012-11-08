@@ -80,7 +80,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	@Override
 	public List<RemoteCookbook> getCookbooks(IProgressMonitor monitor) {
 		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
-		JSONObject json = getRestCookbooks(0, 30);
+		JSONObject json = getRestCookbooks(0, 100);
 		try {
 			JSONArray items = json.getJSONArray("items");
 			monitor.beginTask("Retrieving cookbooks", items.length()+1);
