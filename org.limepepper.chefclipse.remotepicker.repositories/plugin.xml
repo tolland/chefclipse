@@ -10,7 +10,7 @@
             name="Opscode Cookbook Site"
             uri="http://community.opscode.com/cookbooks">
          <icon
-               image32="icons/opscode.png">
+               image32="icons/opscode_32.png">
          </icon>
       </repositoryDescriptor>
    </extension>
@@ -23,7 +23,7 @@
             name="Multiple Vendor Cookbook Site"
             uri="https://github.com/cookbooks">
          <icon
-               image32="icons/opscode.png">
+               image32="icons/multiple_vendor_32.png">
          </icon>
       </repositoryDescriptor>
    </extension>

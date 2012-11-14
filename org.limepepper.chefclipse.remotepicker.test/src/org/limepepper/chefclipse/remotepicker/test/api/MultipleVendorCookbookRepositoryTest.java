@@ -9,7 +9,6 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 
-import java.io.File;
 import java.util.List;
 
 import org.junit.Test;
@@ -54,8 +53,8 @@ public class MultipleVendorCookbookRepositoryTest {
 	
 	@Test
 	public void testDownloadCookbook(){
-		File downloadCookbook = repo.downloadCookbook("ap-cookbook-oracle");
-		System.out.println(downloadCookbook.getPath());
+//		File downloadCookbook = repo.downloadCookbook("ap-cookbook-oracle");
+//		System.out.println(downloadCookbook.getPath());
 	}
 
 }

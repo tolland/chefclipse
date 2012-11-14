@@ -3,8 +3,6 @@
  */
 package org.limepepper.chefclipse.remotepicker.test.api;
 
-import java.io.File;
-
 import org.junit.Test;
 import org.limepepper.chefclipse.remotepicker.repositories.CookbookSiteRepository;
 
@@ -44,7 +42,7 @@ public class RemotePickerSuite {
 	
 	@Test
 	public void testDownloadCookbook(){
-		File downloadCookbook = repo.downloadCookbook("ad-auth");
-		System.out.println(downloadCookbook.getPath());
+//		File downloadCookbook = repo.downloadCookbook("ad-auth");
+//		System.out.println(downloadCookbook.getPath());
 	}
 }

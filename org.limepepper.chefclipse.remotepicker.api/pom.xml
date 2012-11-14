@@ -32,30 +32,10 @@
 							<stripVersion>true</stripVersion>
 							<artifactItems>
 								<artifactItem>
-									<groupId>com.sun.jersey</groupId>
-    								<artifactId>jersey-json</artifactId>
-    								<version>1.14</version>
-								</artifactItem>
-								<artifactItem>
-									<groupId>com.sun.jersey</groupId>
-    								<artifactId>jersey-client</artifactId>
-    								<version>1.14</version>
-								</artifactItem>
-								<artifactItem>
-									<groupId>com.sun.jersey</groupId>
-    								<artifactId>jersey-client</artifactId>
-    								<version>1.14</version>
-								</artifactItem>
-								<artifactItem>
-									<groupId>com.sun.jersey</groupId>
-    								<artifactId>jersey-core</artifactId>
-    								<version>1.14</version>
-								</artifactItem>
-								<artifactItem>
-									<groupId>org.codehaus.jettison</groupId>
-    								<artifactId>jettison</artifactId>
-    								<version>1.3.2</version>
-								</artifactItem>
+									<groupId>org.apache.commons</groupId>
+									<artifactId>commons-io</artifactId>
+									<version>1.3.2</version>
+								</artifactItem>		
 							</artifactItems>
 						</configuration>
 					</execution>

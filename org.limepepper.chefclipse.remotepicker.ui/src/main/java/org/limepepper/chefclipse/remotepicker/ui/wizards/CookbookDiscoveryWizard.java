@@ -1,13 +1,32 @@
 package org.limepepper.chefclipse.remotepicker.ui.wizards;
 
-import java.net.URI;
-import java.util.Set;
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
+import javax.inject.Inject;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryWizard;
-import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.IProgressService;
+import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
+import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
+import org.limepepper.chefclipse.remotepicker.ui.Activator;
+import org.limepepper.chefclipse.remotepicker.ui.InstallCookbookDialog;
 import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStrategy;
 
 /**
@@ -16,23 +35,19 @@ import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStr
  * @author Sebastian Sampaoli
  */
 public class CookbookDiscoveryWizard extends DiscoveryWizard{
-
-	private static final String PREF_DEFAULT_CATALOG = CatalogDescriptor.class.getSimpleName();
 	
 	private static final String INSTALL_COOKBOOKS = "Install Cookbooks";
-
-	private Set<CatalogItem> operationNewInstallItems;
-
-	private boolean initialSelectionInitialized;
-
-	private Set<URI> addedRepositoryLocations;
 	
-
-//	private final MarketplaceService marketplaceService;
-
+	private boolean performFinishStatus;
+	
+	@Inject
+	private CookbookRepositoryManager repoManager;
+	
 	public CookbookDiscoveryWizard(Catalog catalog, CookbookCatalogConfiguration configuration) {
 		super(catalog, configuration);
 		setWindowTitle(INSTALL_COOKBOOKS);
+		CookbookRepositoryManager repoManager = CookbookRepositoryManager.getInstance();
+		setRepoManager(repoManager);
 	}
 
 	@Override
@@ -50,52 +65,6 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 		
 		if (getConfiguration().getCatalogDescriptor() == null) {
 			getConfiguration().setCatalogDescriptor(getConfiguration().getCatalogDescriptors().get(0));
-//			ICookbooksRepository cookbooksSiteRepository= new CookbookSiteRepository();
-//			CatalogDescriptor defaultCatalogDescriptor = new CatalogDescriptor();
-//			defaultCatalogDescriptor.setDescription("Opscode catalog descriptor");
-//			defaultCatalogDescriptor.setLabel(cookbooksSiteRepository.getRepositoryId());
-//			try {
-//				defaultCatalogDescriptor.setUrl(cookbooksSiteRepository.getRepositoryURI().toURL());
-//			} catch (MalformedURLException e) {
-//				System.out.println("no se pudo crear la url del repo...");
-//				e.printStackTrace();
-//			}
-//			ICookbooksRepository communityCookbookRepository = new MultipleVendorCookbookRepository();
-//			CatalogDescriptor catalogDescriptor = new CatalogDescriptor();
-//			catalogDescriptor.setDescription("Community catalog descriptor");
-//			catalogDescriptor.setLabel(communityCookbookRepository.getRepositoryId());
-//			try {
-//				catalogDescriptor.setUrl(communityCookbookRepository.getRepositoryURI().toURL());
-//			} catch (MalformedURLException e) {
-//				System.out.println("no se pudo crear la url del repo...");
-//				e.printStackTrace();
-//			}
-//			getConfiguration().getCatalogDescriptors().add(defaultCatalogDescriptor);
-//			getConfiguration().getCatalogDescriptors().add(catalogDescriptor);
-//			getConfiguration().setCatalogDescriptor(defaultCatalogDescriptor);
-//			String defaultCatalogUrl = MarketplaceClientUiPlugin.getInstance()
-//			.getPreferenceStore()
-//			.getString(PREF_DEFAULT_CATALOG);
-//			// if a preferences was set, we default to that catalog descriptor
-//			if (defaultCatalogUrl != null && defaultCatalogUrl.length() > 0) {
-//				for (CatalogDescriptor descriptor : getConfiguration().getCatalogDescriptors()) {
-//					URL url = descriptor.getUrl();
-//					try {
-//						if (url.toURI().toString().equals(defaultCatalogUrl)) {
-//							getConfiguration().setCatalogDescriptor(descriptor);
-//							break;
-//						}
-//					} catch (URISyntaxException e) {
-//						// ignore
-//					}
-//				}
-//			}
-//			// if no catalog is selected, pick one
-//			if (getConfiguration().getCatalogDescriptor() == null
-//					&& getConfiguration().getCatalogDescriptors().size() > 0) {
-//				// fall back to first catalog
-//				getConfiguration().setCatalogDescriptor(getConfiguration().getCatalogDescriptors().get(0));
-//			}
 		}
 	}
 	
@@ -106,18 +75,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 
 	@Override
 	public void dispose() {
-//		removeAddedRepositoryLocations();
-//		if (getConfiguration().getCatalogDescriptor() != null) {
-//			// remember the catalog for next time.
-//			try {
-//				Activator.getDefault()
-//				.getPreferenceStore()
-//				.setValue(PREF_DEFAULT_CATALOG,
-//						getConfiguration().getCatalogDescriptor().getUrl().toURI().toString());
-//			} catch (URISyntaxException e) {
-//				// ignore
-//			}
-//		}
+
 		if (getCatalog() != null) {
 			getCatalog().dispose();
 		}
@@ -126,57 +84,78 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 
 	@Override
 	public boolean performFinish() {
-//		if (profileChangeOperation != null
-//				&& profileChangeOperation.getResolutionResult().getSeverity() != IStatus.ERROR) {
-//			if (computeMustCheckLicenseAcceptance()) {
-//				if (acceptLicensesPage != null && acceptLicensesPage.isPageComplete()) {
-//					acceptLicensesPage.performFinish();
-//				}
-//			}
-//			ProvisioningJob provisioningJob = profileChangeOperation.getProvisioningJob(null);
-//			if (!operationNewInstallItems.isEmpty()) {
-//				provisioningJob.addJobChangeListener(new ProvisioningJobListener(operationNewInstallItems));
-//			}
-//			ProvisioningUI.getDefaultUI().schedule(provisioningJob, StatusManager.SHOW | StatusManager.LOG);
-//			addedRepositoryLocations = null;
-//			return true;
-//		}
-//		return false;
-		return super.performFinish();
+		
+		final Shell activeShell = Display.getCurrent().getActiveShell();
+		InstallCookbookDialog installCookbookDialog = new InstallCookbookDialog(activeShell);
+		final int id = installCookbookDialog.open();
+		if (IDialogConstants.OK_ID != id){
+			return false;
+		}
+		final List<IProject> selectedProjects = installCookbookDialog.getSelectedProjects();
+		
+		IProgressService progressService = PlatformUI.getWorkbench().getProgressService();
+		try {
+			progressService.busyCursorWhile(new IRunnableWithProgress() {
+				public void run(IProgressMonitor monitor) {
+					
+					String repositoryId = getConfiguration().getCatalogDescriptor().getId();
+					List<CatalogItem> installableCookbooks = getCatalogPage().getInstallableCookbooks();
+					
+					for (CatalogItem catalogItem : installableCookbooks) {
+						try {
+							File downloadCookbook = repoManager.downloadCookbook(catalogItem.getName(), repositoryId);
+							for (IProject iProject : selectedProjects) {
+								repoManager.installCookbook(catalogItem.getName(), downloadCookbook, iProject.getLocation().toString());
+							}
+							refreshProjects(selectedProjects);
+						} catch (InstallCookbookException e) {
+							showAndLogErrorMessage(activeShell, e);
+						} 
+					}	
+					setPerformFinishStatus(true);
+				}
+			});
+		} catch (InvocationTargetException e1) {
+			e1.printStackTrace();
+			Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, Status.ERROR, e1.getMessage(), e1));
+			return false;
+		} catch (InterruptedException e1) {
+			e1.printStackTrace();
+			Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, Status.ERROR, e1.getMessage(), e1));
+			return false;
+		} finally {
+		}
+		return isPerformFinishStatus();
+	}
+	
+	private void refreshProjects(List<IProject> selectedProjects) {
+		for (IProject iProject : selectedProjects) {
+			try {
+				iProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+			} catch (CoreException e) {
+				e.printStackTrace();
+				Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, Status.ERROR, e.getMessage(), e));
+			}
+		}
+	}
+
+	private void showAndLogErrorMessage(final Shell activeShell,
+			final InstallCookbookException e) {
+		Display.getDefault().syncExec(new Runnable() {
+			
+			@Override
+			public void run() {
+				MessageDialog.openError(activeShell, "Error while trying to install cookbook.", e.getMessage());
+				Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, Status.ERROR, e.getMessage(), e));
+				setPerformFinishStatus(false);
+			}
+		});
 	}
 
 	@Override
 	public CookbookCatalogPage getCatalogPage() {
 		return (CookbookCatalogPage) super.getCatalogPage();
 	}
-
-//	public synchronized Set<String> getInstalledFeatures() {
-//		if (installedFeatures == null) {
-//			try {
-//				if (Display.getCurrent() != null) {
-//					getContainer().run(true, false, new IRunnableWithProgress() {
-//						public void run(IProgressMonitor monitor) throws InvocationTargetException,
-//						InterruptedException {
-//							installedFeatures = MarketplaceClientUi.computeInstalledFeatures(monitor);
-//						}
-//					});
-//				} else {
-//					installedFeatures = MarketplaceClientUi.computeInstalledFeatures(new NullProgressMonitor());
-//				}
-//			} catch (InvocationTargetException e) {
-//				MarketplaceClientUi.error(e.getCause());
-//				installedFeatures = Collections.emptySet();
-//			} catch (InterruptedException e) {
-//				// should never happen (not cancelable)
-//				throw new IllegalStateException(e);
-//			}
-//		}
-//		return installedFeatures;
-//	}
-
-//	public SelectionModel getSelectionModel() {
-//		return selectionModel;
-//	}
 
 	void initializeCatalog() {
 		for (AbstractDiscoveryStrategy strategy : getCatalog().getDiscoveryStrategies()) {
@@ -188,5 +167,27 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 					new CookbookDiscoveryStrategy(getConfiguration().getCatalogDescriptor()));
 		}
 	}
+	
+	/**
+	 * @return the repoManager
+	 */
+	public CookbookRepositoryManager getRepoManager() {
+		return repoManager;
+	}
+	
+	/**
+	 * @param repoManager the repoManager to set
+	 */
+	public void setRepoManager(CookbookRepositoryManager repoManager) {
+		this.repoManager = repoManager;
+	}
 
+	public boolean isPerformFinishStatus() {
+		return performFinishStatus;
+	}
+
+	public void setPerformFinishStatus(boolean performFinishStatus) {
+		this.performFinishStatus = performFinishStatus;
+	}
+	
 }

@@ -9,6 +9,8 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
@@ -22,22 +24,26 @@ import org.eclipse.equinox.internal.p2.discovery.model.Overview;
 import org.eclipse.ui.internal.util.BundleUtility;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
-import org.limepepper.chefclipse.remotepicker.ui.CatalogRegistry;
 import org.osgi.framework.Bundle;
 
 /**
+ * Strategy for discovering cookbooks. Strategy design pattern.
+ * 
  * @author Sebastian Sampaoli
  *
  */
 @SuppressWarnings("restriction")
 public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 
-	private static final String COOKBOOK_ICON = "icons/opscode.png";
 	private HashMap<String, CatalogCategory> categoriesMap;
 	private DateFormat dateFormat;
 	private CatalogDescriptor catalogDescriptor;
+	
+	@Inject
+	private CookbookRepositoryManager repoManager;
 
 	/**
 	 * 
@@ -55,9 +61,8 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 			throw new IllegalArgumentException();
 		}
 		this.catalogDescriptor = catalogDescriptor;
-//		marketplaceService = createMarketplaceService();
-//		source = new MarketplaceCatalogSource(marketplaceService);
-//		marketplaceInfo = MarketplaceInfo.getInstance();
+		CookbookRepositoryManager repoManager = CookbookRepositoryManager.getInstance();
+		setRepoManager(repoManager);
 	}
 
 	/* (non-Javadoc)
@@ -66,9 +71,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 	@Override
 	public void performDiscovery(IProgressMonitor monitor) throws CoreException {
 		
-		RemoteRepository repository = CatalogRegistry.getInstance().getRepoManager().getRepository(catalogDescriptor.getLabel());
-		//ICookbooksRepository cookbooksSiteRepository= new MultipleVendorCookbookRepository();
-		//Collection<RemoteCookbook> cookbooks = cookbooksSiteRepository.getCookbooks(monitor);
+		RemoteRepository repository = getRepoManager().getRepository(catalogDescriptor.getId());
 		EList<RemoteCookbook> cookbooks = repository.getCookbooks();
 		for (RemoteCookbook cookBookInfo : cookbooks){
 			addCategoryFromCookbook(cookBookInfo);
@@ -76,7 +79,12 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		}
 		
 	}
-
+	
+	/**
+	 * Add a new category gathered from a remote cookbook to the list of categories.
+	 * 
+	 * @param cookBookInfo
+	 */
 	private void addCategoryFromCookbook(RemoteCookbook cookBookInfo) {
 		String category = cookBookInfo.getCategory();
 		if (!getCategoriesMap().containsKey(category)){
@@ -87,23 +95,29 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 			getCategories().add(catalogCategory);
 		}
 	}
-
+	
+	/**
+	 * Create a catalog item from a remote cookbook element.
+	 * 
+	 * @param cookBookInfo
+	 * @return a catalog item
+	 */
 	private CatalogItem createItem(RemoteCookbook cookBookInfo) {
 
 		final CatalogItem item = new CatalogItem();
 		item.setId(cookBookInfo.getName());
 		item.setDescription(cookBookInfo.getDescription());
-		item.setName("\n"+cookBookInfo.getName());
+		item.setName(cookBookInfo.getName());
 		item.setProvider(cookBookInfo.getMaintainer());
 		item.setSiteUrl(cookBookInfo.getUrl());
 		item.setCategoryId(cookBookInfo.getCategory());
 		item.setCategory(categoriesMap.get(cookBookInfo.getCategory()));
 		item.getInstallableUnits().add(item.getId());
 		Icon icon = new Icon();
-		icon.setImage32(COOKBOOK_ICON);
+		RemoteRepository repository = repoManager.getRepository(catalogDescriptor.getId());
+		icon.setImage32(repository.getIcon());
 		item.setIcon(icon);
 		item.setLicense("updated at " + dateFormat.format(cookBookInfo.getUpdatedAt()));
-//		item.setCertificationId("cert");
 		item.setSource(new AbstractCatalogSource() {
 			@Override
 			public URL getResource(String resourceName) {
@@ -127,15 +141,15 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 			}
 		});
 		item.setOverview(createOverview(item));
-//		Certification cert = new Certification();
-//		cert.setName("cert");
-//		cert.setDescription("la description");
-//		cert.setSource(item.getSource());
-//		cert.setIcon(icon);
-//		item.setCertification(cert);
 		return item;
 	}
 
+	/**
+	 * Create an overview for a catalog item.
+	 * 
+	 * @param item
+	 * @return an overview object
+	 */
 	private Overview createOverview(CatalogItem item) {
 		
 		Overview overview = new Overview();
@@ -152,5 +166,19 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 
 	public void setCategoriesMap(HashMap<String, CatalogCategory> categoriesMap) {
 		this.categoriesMap = categoriesMap;
+	}
+	
+	/**
+	 * @return the repoManager
+	 */
+	public CookbookRepositoryManager getRepoManager() {
+		return repoManager;
+	}
+	
+	/**
+	 * @param repoManager the repoManager to set
+	 */
+	public void setRepoManager(CookbookRepositoryManager repoManager) {
+		this.repoManager = repoManager;
 	}
 }
