@@ -15,10 +15,6 @@ public class CookbookCatalogConfiguration extends CatalogConfiguration {
 
 	private CatalogDescriptor catalogDescriptor;
 
-	private String initialState;
-
-//	private Map<String, Operation> initialOperationByNodeId;
-
 	public CookbookCatalogConfiguration() {
 		setShowTagFilter(false);
 		setShowInstalled(true);
@@ -42,21 +38,5 @@ public class CookbookCatalogConfiguration extends CatalogConfiguration {
 	public void setCatalogDescriptor(CatalogDescriptor catalogDescriptor) {
 		this.catalogDescriptor = catalogDescriptor;
 	}
-
-	public void setInitialState(String initialState) {
-		this.initialState = initialState;
-	}
-
-	public String getInitialState() {
-		return initialState;
-	}
-
-//	public Map<String, Operation> getInitialOperationByNodeId() {
-//		return initialOperationByNodeId;
-//	}
-//
-//	public void setInitialOperationByNodeId(Map<String, Operation> initialOperationByNodeId) {
-//		this.initialOperationByNodeId = initialOperationByNodeId;
-//	}
 
 }

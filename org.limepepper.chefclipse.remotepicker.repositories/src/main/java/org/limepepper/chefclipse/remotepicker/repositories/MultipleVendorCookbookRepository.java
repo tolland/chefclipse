@@ -3,15 +3,8 @@
  */
 package org.limepepper.chefclipse.remotepicker.repositories;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
-import java.net.URL;
-import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,6 +22,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
+import org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy;
+import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -46,6 +41,8 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	private static final String REPOSITORY_URI = "https://api.github.com";
 	
 	private static final String REPOSITORY_ID = "Multiple vendor Chef cookbooks";
+	
+	private IDownloadCookbookStrategy downloadCookbookStrategy;
 
 	protected WebResource getService() {
 		return service;
@@ -57,10 +54,13 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	public MultipleVendorCookbookRepository() {
 		
 		ClientConfig config = new DefaultClientConfig();
+		
 //	    config.getClasses().add(JacksonJsonProvider.class);
 		
 		Client client = Client.create(config);
 		service = client.resource(getRepositoryURI());
+		
+		downloadCookbookStrategy = new MultipleVendorDownloadStrategy();
 	}
 
 	/* (non-Javadoc)
@@ -170,29 +170,10 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	}
 	
 	@Override
-	public File downloadCookbook(String cookbookName) {
-		
-		URLConnection connection;
-		try {
-			RemoteCookbook cookbook = getCookbook(cookbookName, null);
-			URL cookbookURL = new URL(cookbook.getUrl() + File.separator + "archive" + File.separator + "master.zip");
-			connection = cookbookURL.openConnection();
-			InputStream stream = connection.getInputStream();
-			BufferedInputStream in = new BufferedInputStream(stream);
-			File tempZipFile = File.createTempFile("temp", Long.toString(System.nanoTime()) + ".zip");
-			FileOutputStream fileOutputStream = new FileOutputStream(tempZipFile);
-			BufferedOutputStream out = new BufferedOutputStream(fileOutputStream);
-			int i;
-			while ((i = in.read()) != -1) {
-			    out.write(i);
-			}
-			out.flush();
-			out.close();
-			return tempZipFile;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public File downloadCookbook(String cookbookName) throws InstallCookbookException {
+		RemoteCookbook cookbook = getCookbook(cookbookName, null);
+		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(cookbook);
+		return downloadedCookbook;
 	}
 
 }

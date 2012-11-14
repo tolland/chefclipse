@@ -11,6 +11,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
  * @author Sebastian Sampaoli
  */
 public final class CatalogDescriptor {
+	
 	private URL url;
 
 	private String label;
@@ -22,6 +23,8 @@ public final class CatalogDescriptor {
 	private boolean installFromAllRepositories;
 
 	private URL dependenciesRepository;
+
+	private String id;
 
 	public CatalogDescriptor() {
 	}
@@ -50,8 +53,7 @@ public final class CatalogDescriptor {
 	}
 
 	/**
-	 * The URL of the catalog. The URL identifies the catalog location, which provides an API described by <a
-	 * href="http://FIXME">Marketplace REST</a>
+	 * The URL of the catalog.
 	 */
 	public URL getUrl() {
 		return url;
@@ -62,7 +64,7 @@ public final class CatalogDescriptor {
 	}
 
 	/**
-	 * A description of the catalog, presented to the user. Should be brief (ie: one or two sentences).
+	 * A description of the catalog.
 	 * 
 	 * @return the description or null if there is no description
 	 */
@@ -96,40 +98,6 @@ public final class CatalogDescriptor {
 		this.label = label;
 	}
 
-	/**
-	 * Indicate if install operations are resolved against all repositories registered in the current workspace
-	 * configuration. When false installation resolves only against repositories of the selected catalog items including
-	 * repositories considered as default for the catalog. Currently there is no way to define catalog default
-	 * repositories, however it is expected that this may change in the future. The default value is false.
-	 * 
-	 * @return true if installation occurs from all repositories, otherwise false.
-	 */
-	public boolean isInstallFromAllRepositories() {
-		return installFromAllRepositories;
-	}
-
-	/**
-	 * @see #isInstallFromAllRepositories()
-	 */
-	public void setInstallFromAllRepositories(boolean installFromAllRepositories) {
-		this.installFromAllRepositories = installFromAllRepositories;
-	}
-
-	/**
-	 * An URL that points to a a software repository that can be used to resolve dependencies for solutions installed
-	 * from this catalog. If multiple repositories are needed this URL can point to a composite repository.
-	 */
-	public URL getDependenciesRepository() {
-		return dependenciesRepository;
-	}
-
-	/**
-	 * @see #getDependenciesRepository()
-	 */
-	public void setDependenciesRepository(URL dependenciesRepository) {
-		this.dependenciesRepository = dependenciesRepository;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -160,7 +128,7 @@ public final class CatalogDescriptor {
 	}
 
 	private static boolean urlEquals(URL url1, URL url2) {
-		// bug 338399: test URL equality without doing DNS lookups
+	
 		if (url1 == url2) {
 			return true;
 		} else if (url1 == null) {
@@ -178,6 +146,14 @@ public final class CatalogDescriptor {
 	@Override
 	public String toString() {
 		return "CatalogDescriptor [url=" + url + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public String getId(){
+		return id;
 	}
 
 }

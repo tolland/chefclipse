@@ -17,6 +17,7 @@ Bundle-ClassPath: .,
  lib/jersey-client.jar,
  lib/jersey-core.jar,
  lib/jersey-json.jar,
- lib/jettison.jar
+ lib/jettison.jar,
+ lib/commons-io.jar
 Export-Package: org.limepepper.chefclipse.remotepicker.api
 Bundle-ActivationPolicy: lazy

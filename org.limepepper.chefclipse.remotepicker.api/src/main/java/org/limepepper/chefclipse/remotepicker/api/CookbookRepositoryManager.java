@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.apache.commons.io.FileUtils;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -29,6 +30,7 @@ import org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository;
  */
 public class CookbookRepositoryManager {
 	
+	private static final String COOKBOOKS_PROJECT_DIRECTORY = "cookbooks";
 	private static CookbookRepositoryManager instance;
 
 	CookbookRepositoryManager() {
@@ -171,5 +173,27 @@ public class CookbookRepositoryManager {
 		}
 	}
 
+	public File downloadCookbook(String cookbookName, String repositoryId) throws InstallCookbookException{
+		ICookbooksRepository cookbooksRepository = retrievers.get(repositoryId);
+		File downloadCookbook = cookbooksRepository.downloadCookbook(cookbookName);
+		return downloadCookbook;
+	}
 	
+	public void installCookbook(String cookbookName, File downloadCookbook, String projectPath) throws InstallCookbookException {
+		
+		File targetDirectory = new File(projectPath, COOKBOOKS_PROJECT_DIRECTORY);
+		if (!targetDirectory.exists()) {
+			boolean mkdirs = targetDirectory.mkdirs();
+			if (!mkdirs){
+				throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbookName);
+			}
+		}
+		try {					
+			FileUtils.copyDirectoryToDirectory(downloadCookbook, targetDirectory);
+		} catch (IOException e) {
+			throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbookName);
+		}
+		
+	}
+
 }
