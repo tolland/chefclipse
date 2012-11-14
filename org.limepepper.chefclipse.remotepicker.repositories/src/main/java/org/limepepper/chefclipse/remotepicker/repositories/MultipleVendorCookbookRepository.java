@@ -25,10 +25,9 @@ import javax.ws.rs.core.UriBuilder;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryFactory;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -84,22 +83,18 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbooks(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
-	public Collection<RemoteCookbook> getCookbooks(IProgressMonitor monitor) {
+	public Collection<RemoteCookbook> getCookbooks() {
 		
 		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
 		JSONArray jsonArray = getRestCookbooks(0, 100);
-		monitor.beginTask("Retrieving cookbooks", jsonArray.length()+1);
-		monitor.worked(1);
 		for (int i = 0; i < jsonArray.length(); i++) {
 			try {
 				JSONObject cookbookJson = jsonArray.getJSONObject(i);
 				cookbooks.add(createCookbook(cookbookJson));
-				monitor.worked(1);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
-		monitor.done();
 		return cookbooks;
 	}
 
@@ -150,7 +145,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	}
 
 	@Override
-	public RemoteCookbook getCookbook(String name, IProgressMonitor monitor) {
+	public RemoteCookbook getCookbook(String name) {
 		
 		JSONObject cookbookJson = restCookbook(name);
 		RemoteCookbook cookbook = createCookbook(cookbookJson);
@@ -174,7 +169,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 		
 		URLConnection connection;
 		try {
-			RemoteCookbook cookbook = getCookbook(cookbookName, null);
+			RemoteCookbook cookbook = getCookbook(cookbookName);
 			URL cookbookURL = new URL(cookbook.getUrl() + File.separator + "archive" + File.separator + "master.zip");
 			connection = cookbookURL.openConnection();
 			InputStream stream = connection.getInputStream();

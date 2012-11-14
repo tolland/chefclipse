@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.limepepper.chefclipse.remotepicker.api" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.limepepper.chefclipse.remotepicker.extpoint" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.limepepper.chefclipse.remotepicker.api" id="org.limepepper.chefclipse.cookbook.repository" name="Chefclipse Cookbook Repository Discovery"/>
+         <meta.schema plugin="org.limepepper.chefclipse.remotepicker.extpoint" id="org.limepepper.chefclipse.cookbook.repository" name="Chefclipse Cookbook Repository Discovery"/>
       </appinfo>
       <documentation>
          An extension point for contributing to the Chefclipse Cookbook Repositories.

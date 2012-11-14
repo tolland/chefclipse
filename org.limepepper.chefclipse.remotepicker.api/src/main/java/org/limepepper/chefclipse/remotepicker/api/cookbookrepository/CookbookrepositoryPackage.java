@@ -1,6 +1,6 @@
 /**
  */
-package org.limepepper.chefclipse.common.cookbookrepository;
+package org.limepepper.chefclipse.remotepicker.api.cookbookrepository;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -8,16 +8,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-
-import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-
-import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-
-import org.limepepper.chefclipse.common.knife.KnifePackage;
-
-import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,7 +20,7 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryFactory
+ * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory
  * @model kind="package"
  * @generated
  */
@@ -65,20 +55,20 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final CookbookrepositoryPackage eINSTANCE = org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage.init();
+	public static final CookbookrepositoryPackage eINSTANCE = org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage.init();
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository <em>Remote Repository</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository <em>Remote Repository</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository()
 	 * @generated
 	 */
 	public static final int REMOTE_REPOSITORY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Cookbooks</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Cookbooks</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -150,11 +140,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	public static final int REMOTE_REPOSITORY_FEATURE_COUNT = 7;
 
 	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteCookbook()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteCookbook()
 	 * @generated
 	 */
 	public static final int REMOTE_COOKBOOK = 1;
@@ -310,7 +300,7 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#eNS_URI
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -345,28 +335,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 
 		isInited = true;
 
-		// Obtain or create and register interdependencies
-		ChefclientPackage theChefclientPackage = (ChefclientPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
-		ChefserverPackage theChefserverPackage = (ChefserverPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) : ChefserverPackage.eINSTANCE);
-		CookbookPackage theCookbookPackage = (CookbookPackage)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackage ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
-		KnifePackage theKnifePackage = (KnifePackage)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackage ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
-		WorkstationPackage theWorkstationPackage = (WorkstationPackage)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackage ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		theCookbookrepositoryPackage.createPackageContents();
-		theChefclientPackage.createPackageContents();
-		theChefserverPackage.createPackageContents();
-		theCookbookPackage.createPackageContents();
-		theKnifePackage.createPackageContents();
-		theWorkstationPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCookbookrepositoryPackage.initializePackageContents();
-		theChefclientPackage.initializePackageContents();
-		theChefserverPackage.initializePackageContents();
-		theCookbookPackage.initializePackageContents();
-		theKnifePackage.initializePackageContents();
-		theWorkstationPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCookbookrepositoryPackage.freeze();
@@ -379,11 +352,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 
 
 	/**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository <em>Remote Repository</em>}'.
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository <em>Remote Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Remote Repository</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository
 	 * @generated
 	 */
 	public EClass getRemoteRepository() {
@@ -391,11 +364,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getCookbooks <em>Cookbooks</em>}'.
+	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getCookbooks <em>Cookbooks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Cookbooks</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getCookbooks()
+	 * @return the meta object for the reference list '<em>Cookbooks</em>'.
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getCookbooks()
 	 * @see #getRemoteRepository()
 	 * @generated
 	 */
@@ -404,11 +377,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getId <em>Id</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getId <em>Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Id</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getId()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getId()
 	 * @see #getRemoteRepository()
 	 * @generated
 	 */
@@ -417,11 +390,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getName()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getName()
 	 * @see #getRemoteRepository()
 	 * @generated
 	 */
@@ -430,11 +403,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getDescription()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getDescription()
 	 * @see #getRemoteRepository()
 	 * @generated
 	 */
@@ -443,11 +416,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getIcon <em>Icon</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getIcon <em>Icon</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Icon</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getIcon()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getIcon()
 	 * @see #getRemoteRepository()
 	 * @generated
 	 */
@@ -456,11 +429,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Retriever</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getRetriever()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever()
 	 * @see #getRemoteRepository()
 	 * @generated
 	 */
@@ -468,13 +441,12 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(5);
 	}
 
-
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getUri <em>Uri</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUri <em>Uri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Uri</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getUri()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUri()
 	 * @see #getRemoteRepository()
 	 * @generated
 	 */
@@ -482,13 +454,12 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(6);
 	}
 
-
 	/**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}'.
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Remote Cookbook</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook
 	 * @generated
 	 */
 	public EClass getRemoteCookbook() {
@@ -496,11 +467,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getName()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getName()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -509,11 +480,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getDescription()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getDescription()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -522,11 +493,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getUrl <em>Url</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getUrl <em>Url</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Url</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getUrl()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getUrl()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -535,11 +506,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getMaintainer <em>Maintainer</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getMaintainer <em>Maintainer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Maintainer</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getMaintainer()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getMaintainer()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -548,11 +519,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getCategory <em>Category</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getCategory <em>Category</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Category</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getCategory()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getCategory()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -561,11 +532,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getUpdatedAt <em>Updated At</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getUpdatedAt <em>Updated At</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Updated At</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getUpdatedAt()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getUpdatedAt()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -574,11 +545,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getCreatedAt <em>Created At</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getCreatedAt <em>Created At</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Created At</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getCreatedAt()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getCreatedAt()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -587,11 +558,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getLatestVersion <em>Latest Version</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getLatestVersion <em>Latest Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Latest Version</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getLatestVersion()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getLatestVersion()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -600,11 +571,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getVersions <em>Versions</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getVersions <em>Versions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute list '<em>Versions</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getVersions()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getVersions()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -613,11 +584,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getExternalUrl <em>External Url</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getExternalUrl <em>External Url</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>External Url</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getExternalUrl()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getExternalUrl()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -626,11 +597,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getRating <em>Rating</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getRating <em>Rating</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Rating</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getRating()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getRating()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -639,11 +610,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#isDeprecated <em>Deprecated</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#isDeprecated <em>Deprecated</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Deprecated</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#isDeprecated()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#isDeprecated()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -652,11 +623,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getReplacement <em>Replacement</em>}'.
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getReplacement <em>Replacement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Replacement</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook#getReplacement()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getReplacement()
 	 * @see #getRemoteCookbook()
 	 * @generated
 	 */
@@ -750,7 +721,7 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(remoteRepositoryEClass, RemoteRepository.class, "RemoteRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRemoteRepository_Cookbooks(), this.getRemoteCookbook(), null, "cookbooks", null, 0, -1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
+		initEReference(getRemoteRepository_Cookbooks(), this.getRemoteCookbook(), null, "cookbooks", null, 0, -1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
 		initEAttribute(getRemoteRepository_Id(), ecorePackage.getEString(), "id", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteRepository_Name(), ecorePackage.getEString(), "name", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteRepository_Description(), ecorePackage.getEString(), "description", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -791,17 +762,17 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	 */
 	public interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository <em>Remote Repository</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository <em>Remote Repository</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository
-		 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository()
+		 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository
+		 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository()
 		 * @generated
 		 */
 		public static final EClass REMOTE_REPOSITORY = eINSTANCE.getRemoteRepository();
 
 		/**
-		 * The meta object literal for the '<em><b>Cookbooks</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Cookbooks</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -857,11 +828,11 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		public static final EAttribute REMOTE_REPOSITORY__URI = eINSTANCE.getRemoteRepository_Uri();
 
 		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook
-		 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteCookbook()
+		 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook
+		 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteCookbook()
 		 * @generated
 		 */
 		public static final EClass REMOTE_COOKBOOK = eINSTANCE.getRemoteCookbook();

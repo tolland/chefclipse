@@ -1,13 +1,13 @@
 /**
  */
-package org.limepepper.chefclipse.common.cookbookrepository.util;
+package org.limepepper.chefclipse.remotepicker.api.cookbookrepository.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.limepepper.chefclipse.common.cookbookrepository.*;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +19,7 @@ import org.limepepper.chefclipse.common.cookbookrepository.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage
+ * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage
  * @generated
  */
 public class CookbookrepositorySwitch<T> extends Switch<T> {

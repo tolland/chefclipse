@@ -25,10 +25,9 @@ import javax.ws.rs.core.UriBuilder;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryFactory;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -78,25 +77,21 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbooks(org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
-	public List<RemoteCookbook> getCookbooks(IProgressMonitor monitor) {
+	public List<RemoteCookbook> getCookbooks() {
 		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
 		JSONObject json = getRestCookbooks(0, 100);
 		try {
 			JSONArray items = json.getJSONArray("items");
-			monitor.beginTask("Retrieving cookbooks", items.length()+1);
-			monitor.worked(1);
 			for (int i = 0; i < items.length(); i++) {
 				try {
 					JSONObject cookbookJson = items.getJSONObject(i);
 					String name = createCookbook(cookbookJson).getName();
-					cookbooks.add(getCookbook(name, monitor));
-					monitor.worked(1);
+					cookbooks.add(getCookbook(name));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			monitor.done();
 		} catch (JSONException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -135,7 +130,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbook(java.lang.String, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
-	public RemoteCookbook getCookbook(String name, IProgressMonitor monitor) {
+	public RemoteCookbook getCookbook(String name) {
 		JSONObject cookbookJson = restCookbook(name);
 		
 		String url = UriBuilder.fromUri(getRepositoryURI()).path("api").path("v1")
@@ -200,7 +195,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 		URLConnection connection;
 		try {
-			RemoteCookbook cookbook = getCookbook(cookbookName, null);
+			RemoteCookbook cookbook = getCookbook(cookbookName);
 			String latestVersion = cookbook.getLatestVersion();
 			String lastVersion = latestVersion
 					.substring(latestVersion.length() - 5);

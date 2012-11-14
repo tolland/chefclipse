@@ -5,7 +5,7 @@
    <extension
          point="org.eclipse.ui.startup">
       <startup
-            class="org.limepepper.chefclipse.remotepicker.definition.CookbooksEarlyFetcher">
+            class="org.limepepper.chefclipse.remotepicker.extpoint.CookbooksEarlyFetcher">
       </startup>
    </extension>
 

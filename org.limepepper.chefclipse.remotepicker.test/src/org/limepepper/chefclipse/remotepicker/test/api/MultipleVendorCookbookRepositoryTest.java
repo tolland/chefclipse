@@ -12,9 +12,8 @@ import static org.hamcrest.Matchers.notNullValue;
 import java.io.File;
 import java.util.List;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.junit.Test;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.repositories.MultipleVendorCookbookRepository;
 
 /**
@@ -33,7 +32,7 @@ public class MultipleVendorCookbookRepositoryTest {
 	
 	@Test
 	public void testGetCookbooks() {
-		List<RemoteCookbook> results = (List<RemoteCookbook>) repo.getCookbooks(new NullProgressMonitor());
+		List<RemoteCookbook> results = (List<RemoteCookbook>) repo.getCookbooks();
 		assertThat(results, notNullValue());
 		assertThat(results.size(), not(0));
 		assertThat(results.get(0).getName(), both(notNullValue(String.class)).and(not(equalTo(""))));
@@ -42,7 +41,7 @@ public class MultipleVendorCookbookRepositoryTest {
 	@Test
 	public void testGetCookbook() {
 		
-		RemoteCookbook result = repo.getCookbook("ap-cookbook-oracle", new NullProgressMonitor());
+		RemoteCookbook result = repo.getCookbook("ap-cookbook-oracle");
 	
 		assertThat(result, notNullValue());
 		assertThat(result.getName(), equalTo("ap-cookbook-oracle"));

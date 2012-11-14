@@ -6,22 +6,20 @@ package org.limepepper.chefclipse.remotepicker.test.api;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryFactory;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 
 /**
  * @author Guillermo Zunino
@@ -90,7 +88,7 @@ public class CookbookRepositoryManagerTest {
 		cookbooks.add(createCookbook("c1"));
 		cookbooks.add(createCookbook("c2"));
 		
-		when(remote.getCookbooks(any(IProgressMonitor.class)))
+		when(remote.getCookbooks())
 			.thenReturn(cookbooks);
 		
 		manager.registerRepository(repoMock, remote);

@@ -12,150 +12,192 @@ import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 
 /**
  * @author Guillermo Zunino
- *
+ * 
  */
 public class CookbookRepositoryManager {
-	
+
 	private static CookbookRepositoryManager instance;
+
+	private ResourceSet resSet = new ResourceSetImpl();
 
 	CookbookRepositoryManager() {
 		instance = this;
 	}
-	
+
 	public static CookbookRepositoryManager getInstance() {
 		if (instance == null) {
 			instance = new CookbookRepositoryManager();
 		}
 		return instance;
 	}
-	
-	private static final String CACHE_EXT = "cache";
+
+	private static final String CACHE_EXT = "cookbookrepository";
 	private Map<String, RemoteRepository> repositories = new HashMap<String, RemoteRepository>();
 	private Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
-	private boolean loaded = false;
 	private Lock lock = new ReentrantLock();
-	private IPath cacheFolder;
+	private String cacheFolder;
 
 	public Collection<RemoteRepository> getRepositories() {
 		lock.lock(); // block until condition holds
 		try {
-			if (!loaded) {
-				readCache();
-			}
+//			if (!loaded) {
+//				readCache();
+//			}
 			return Collections.unmodifiableCollection(repositories.values());
 		} finally {
 			lock.unlock();
 		}
 	}
-	
-	private void readCache() {
-		// TODO load repositories on demand by EMF lazy support
-		// Initialize the model
+
+	public RemoteRepository getRepository(String id) {
+//		if (!loaded) {
+//			readCache();
+//		}
+		return repositories.get(id);
+	}
+
+//	private void readCache() {
+//		// TODO load repositories on demand by EMF lazy support
+//		// Initialize the model
+//		CookbookrepositoryPackage.eINSTANCE.eClass();
+//		// Register the XMI resource factory for the .cookbookrepo extension
+//		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+//		Map<String, Object> m = reg.getExtensionToFactoryMap();
+//		m.put(CACHE_EXT, new XMIResourceFactoryImpl());
+//
+//		for (RemoteRepository repo : repositories.values()) {
+//			if (isCached(repo)) {
+//				// Obtain a new resource set
+//				ResourceSet resSet = new ResourceSetImpl();
+//
+//				// Get the resource
+//				Resource resource = resSet.getResource(
+//						URI.createFileURI(getCacheFile(repo)), true);
+//				if (resource != null) {
+//					// Get the first model element and cast it to the right
+//					// type, in my
+//					// example everything is hierarchical included in this first
+//					// node
+//					RemoteRepository cachedRepo = (RemoteRepository) resource
+//							.getContents().get(0);
+//					repo.getCookbooks().addAll(cachedRepo.getCookbooks());
+//				}
+//			}
+//		}
+//		loaded = true;
+//	}
+
+	public RemoteRepository registerRepository(RemoteRepository repo,
+			ICookbooksRepository retriever) {
+		lock.lock(); // block until condition holds
+		try {
+			if (repositories.isEmpty()) {
+				loadRepositoriesCache();
+			}
+			RemoteRepository cachedRepo = repositories.get(repo.getId());
+			if (cachedRepo == null) {
+				repositories.put(repo.getId(), repo);
+			}
+			retrievers.put(repo.getId(), retriever);
+			return cachedRepo;
+		} finally {
+			lock.unlock();
+		}
+	}
+
+	private void loadRepositoriesCache() {
 		CookbookrepositoryPackage.eINSTANCE.eClass();
 		// Register the XMI resource factory for the .cookbookrepo extension
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put(CACHE_EXT, new XMIResourceFactoryImpl());
-		
-		for (RemoteRepository repo : repositories.values()) {
-			if (isCached(repo)) {
-				// Obtain a new resource set
-				ResourceSet resSet = new ResourceSetImpl();
-				
-				// Get the resource
-				Resource resource = resSet.getResource(URI
-						.createFileURI(getCacheFile(repo)), true);
-				if (resource != null) {
-				// Get the first model element and cast it to the right type, in my
-				// example everything is hierarchical included in this first node
-					RemoteRepository cachedRepo = (RemoteRepository) resource.getContents().get(0);
-					repo.getCookbooks().addAll(cachedRepo.getCookbooks());
+
+		if (isCached()) {
+			// Get the resource
+			Resource resource = resSet.getResource(
+					URI.createFileURI(getCacheFile()), true);
+			if (resource != null) {
+				for (EObject eobject : resource.getContents()) {
+					RemoteRepository cachedRepo = (RemoteRepository) eobject;
+					repositories.put(cachedRepo.getId(), cachedRepo);
 				}
 			}
 		}
-		loaded = true;
 	}
 
-	public RemoteRepository getRepository(String id) {
-		if (!loaded) {
-			readCache();
-		}
-		return repositories.get(id);
-	}
-
-	public void registerRepository(RemoteRepository repo, ICookbooksRepository retriever) {
-		lock.lock(); // block until condition holds
-		try {
-			repositories.put(repo.getId(), repo);
-			retrievers.put(repo.getId(), retriever);
-		} finally {
-			lock.unlock();
-		}
-	}
-	
 	public void evictCache() {
+		new File(getCacheFile()).delete();
 		for (RemoteRepository repo : repositories.values()) {
 			new File(getCacheFile(repo)).delete();
 		}
 	}
 
-	private void cacheRepository(RemoteRepository repo, IProgressMonitor monitor) {
+	private void cacheRepository(RemoteRepository repo) {
 		ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
-		Collection<RemoteCookbook> cookbooks = cookbookRepository.getCookbooks(monitor);
+		Collection<RemoteCookbook> cookbooks = cookbookRepository
+				.getCookbooks();
 		repo.getCookbooks().addAll(cookbooks);
-		
+
 		saveCacheModel(repo);
 	}
 
 	private void saveCacheModel(RemoteRepository repo) {
-		//TODO save only cookbooks and info about lastupdate
-	    Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-	    Map<String, Object> m = reg.getExtensionToFactoryMap();
-	    m.put(CACHE_EXT, new XMIResourceFactoryImpl());
+		// TODO save only cookbooks and info about lastupdate
 
-	    // Obtain a new resource set
-	    ResourceSet resSet = new ResourceSetImpl();
+		// get or create the main cache resource
+		Resource cacheRes;
+		if (isCached()) {
+			cacheRes = resSet.getResource(URI.createFileURI(getCacheFile()), true);
+		} else {
+			cacheRes = resSet.createResource(URI.createFileURI(getCacheFile()));
+		}
+		if (repo.eResource() == null) {
+			cacheRes.getContents().add(repo);
+		}
+		
+		// Create a resource
+		Resource resource = resSet.createResource(URI
+				.createFileURI(getCacheFile(repo)));
+		resource.getContents().addAll(repo.getCookbooks());
 
-	    // Create a resource
-	    Resource resource = resSet.createResource(URI
-	        .createFileURI(getCacheFile(repo)));
-	    // Get the first model element and cast it to the right type, in my
-	    // example everything is hierarchical included in this first node
-	    resource.getContents().add(repo);
-
-	    // Now save the content.
-	    try {
-	      resource.save(Collections.EMPTY_MAP);
-	      loaded = true;
-	    } catch (IOException e) {
-	      // TODO Auto-generated catch block
-	      e.printStackTrace();
-	    }
+		// Now save the content.
+		try {
+			cacheRes.save(Collections.EMPTY_MAP);
+			resource.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	/**
-	 * @param repo
-	 * @return
-	 */
-	private String getCacheFile(RemoteRepository repo) {
-		return cacheFolder.append(repo.getId()).addFileExtension(CACHE_EXT).toOSString();
-	}
-
-	public void setCacheFolder(IPath stateLocation) {
+	public void setCacheFolder(String stateLocation) {
 		cacheFolder = stateLocation;
+	}
+
+	private String getCacheFile(RemoteRepository repo) {
+		return new StringBuilder(cacheFolder)
+			.append(File.separatorChar)
+			.append(repo.getId()).append(".")
+			.append(CACHE_EXT).toString();
+	}
+
+	private String getCacheFile() {
+		return new StringBuilder(cacheFolder)
+			.append(File.separatorChar)
+			.append("cache").append(".")
+			.append(CACHE_EXT).toString();
 	}
 
 	private boolean isCached(RemoteRepository repo) {
@@ -163,13 +205,22 @@ public class CookbookRepositoryManager {
 		return file.exists() && file.canRead();
 	}
 
-	public void loadRepository(RemoteRepository repo, IProgressMonitor monitor) {
-		ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
+	private boolean isCached() {
+		File file = new File(getCacheFile());
+		return file.exists() && file.canRead();
+	}
+
+	public void loadRepository(String repoId) {
+		RemoteRepository repo = repositories.get(repoId);
+		ICookbooksRepository cookbookRepository = retrievers.get(repoId);
 		
+		if (cookbookRepository == null || repo == null) {
+			throw new RuntimeException("Invalid repoId " + repoId);
+		}
+
 		if (!isCached(repo) || cookbookRepository.isUpdated()) {
-			cacheRepository(repo, monitor);
+			cacheRepository(repo);
 		}
 	}
 
-	
 }

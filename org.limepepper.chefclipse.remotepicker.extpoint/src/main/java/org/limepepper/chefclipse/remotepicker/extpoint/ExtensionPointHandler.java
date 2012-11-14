@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.remotepicker.definition;
+package org.limepepper.chefclipse.remotepicker.extpoint;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -15,10 +15,10 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.progress.IProgressConstants;
-import org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryFactory;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 import org.osgi.framework.Bundle;
 
 public class ExtensionPointHandler {
@@ -82,7 +82,7 @@ public class ExtensionPointHandler {
 				
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
-					getRepoManager().loadRepository(repo, monitor);
+					getRepoManager().loadRepository(repo.getId());
 					return Status.OK_STATUS;
 				}
 				

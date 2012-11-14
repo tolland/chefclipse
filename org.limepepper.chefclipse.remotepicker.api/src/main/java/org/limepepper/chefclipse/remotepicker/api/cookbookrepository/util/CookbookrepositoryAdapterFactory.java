@@ -1,6 +1,6 @@
 /**
  */
-package org.limepepper.chefclipse.common.cookbookrepository.util;
+package org.limepepper.chefclipse.remotepicker.api.cookbookrepository.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,14 +9,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.limepepper.chefclipse.common.cookbookrepository.*;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage
+ * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage
  * @generated
  */
 public class CookbookrepositoryAdapterFactory extends AdapterFactoryImpl {
@@ -96,13 +96,13 @@ public class CookbookrepositoryAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository <em>Remote Repository</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository <em>Remote Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository
 	 * @generated
 	 */
 	public Adapter createRemoteRepositoryAdapter() {
@@ -110,13 +110,13 @@ public class CookbookrepositoryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook
 	 * @generated
 	 */
 	public Adapter createRemoteCookbookAdapter() {

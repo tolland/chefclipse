@@ -1,23 +1,20 @@
 /**
  */
-package org.limepepper.chefclipse.common.cookbookrepository;
+package org.limepepper.chefclipse.remotepicker.api.cookbookrepository;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,23 +24,23 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getCookbooks <em>Cookbooks</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getId <em>Id</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getName <em>Name</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getDescription <em>Description</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getIcon <em>Icon</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getCookbooks <em>Cookbooks</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getId <em>Id</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getName <em>Name</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getIcon <em>Icon</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUri <em>Uri</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository()
+ * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository()
  * @model kind="class"
  * @generated
  */
 public class RemoteRepository extends EObjectImpl implements EObject {
 	/**
-	 * The cached value of the '{@link #getCookbooks() <em>Cookbooks</em>}' containment reference list.
+	 * The cached value of the '{@link #getCookbooks() <em>Cookbooks</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCookbooks()
@@ -192,22 +189,22 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Cookbooks</b></em>' containment reference list.
-	 * The list contents are of type {@link org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook}.
+	 * Returns the value of the '<em><b>Cookbooks</b></em>' reference list.
+	 * The list contents are of type {@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cookbooks</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Cookbooks</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cookbooks</em>' containment reference list.
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Cookbooks()
-	 * @model containment="true" ordered="false"
+	 * @return the value of the '<em>Cookbooks</em>' reference list.
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Cookbooks()
+	 * @model ordered="false"
 	 * @generated
 	 */
 	public EList<RemoteCookbook> getCookbooks() {
 		if (cookbooks == null) {
-			cookbooks = new EObjectContainmentEList<RemoteCookbook>(RemoteCookbook.class, this, CookbookrepositoryPackage.REMOTE_REPOSITORY__COOKBOOKS);
+			cookbooks = new EObjectResolvingEList<RemoteCookbook>(RemoteCookbook.class, this, CookbookrepositoryPackage.REMOTE_REPOSITORY__COOKBOOKS);
 		}
 		return cookbooks;
 	}
@@ -222,7 +219,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Id()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Id()
 	 * @model id="true"
 	 * @generated
 	 */
@@ -231,7 +228,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
@@ -255,7 +252,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Name()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Name()
 	 * @model
 	 * @generated
 	 */
@@ -264,7 +261,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
@@ -288,7 +285,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Description()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Description()
 	 * @model
 	 * @generated
 	 */
@@ -297,7 +294,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getDescription <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getDescription <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Description</em>' attribute.
@@ -321,7 +318,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Icon</em>' attribute.
 	 * @see #setIcon(String)
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Icon()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Icon()
 	 * @model
 	 * @generated
 	 */
@@ -330,7 +327,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getIcon <em>Icon</em>}' attribute.
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getIcon <em>Icon</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Icon</em>' attribute.
@@ -354,7 +351,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Retriever</em>' attribute.
 	 * @see #setRetriever(Object)
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Retriever()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Retriever()
 	 * @model
 	 * @generated
 	 */
@@ -363,7 +360,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}' attribute.
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Retriever</em>' attribute.
@@ -387,7 +384,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(String)
-	 * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Uri()
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Uri()
 	 * @model
 	 * @generated
 	 */
@@ -396,7 +393,7 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository#getUri <em>Uri</em>}' attribute.
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUri <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Uri</em>' attribute.
@@ -408,20 +405,6 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 		uri = newUri;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_REPOSITORY__URI, oldUri, uri));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CookbookrepositoryPackage.REMOTE_REPOSITORY__COOKBOOKS:
-				return ((InternalEList<?>)getCookbooks()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

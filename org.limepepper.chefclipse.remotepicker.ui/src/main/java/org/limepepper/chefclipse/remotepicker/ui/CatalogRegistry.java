@@ -10,9 +10,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.inject.Inject;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteRepository;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
-
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 
 /**
  * @author Sebastian Sampaoli

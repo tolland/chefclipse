@@ -4,8 +4,7 @@ import java.io.File;
 import java.net.URI;
 import java.util.Collection;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 
 public interface ICookbooksRepository {
 	
@@ -13,9 +12,9 @@ public interface ICookbooksRepository {
 	
 	URI getRepositoryURI();
 
-	Collection<RemoteCookbook> getCookbooks(IProgressMonitor monitor);
+	Collection<RemoteCookbook> getCookbooks();
 
-	RemoteCookbook getCookbook(String name, IProgressMonitor monitor);
+	RemoteCookbook getCookbook(String name);
 	
 	boolean isUpdated();
 	

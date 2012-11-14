@@ -1,6 +1,6 @@
 /**
  */
-package org.limepepper.chefclipse.common.cookbookrepository;
+package org.limepepper.chefclipse.remotepicker.api.cookbookrepository;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.limepepper.chefclipse.common.cookbookrepository.CookbookrepositoryPackage
+ * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage
  * @generated
  */
 public class CookbookrepositoryFactory extends EFactoryImpl {
