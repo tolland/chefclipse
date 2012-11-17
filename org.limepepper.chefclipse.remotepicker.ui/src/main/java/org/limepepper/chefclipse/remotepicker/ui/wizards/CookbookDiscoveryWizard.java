@@ -19,6 +19,7 @@ import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryWizard;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -26,7 +27,9 @@ import org.eclipse.ui.progress.IProgressService;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
+import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.limepepper.chefclipse.remotepicker.ui.InstallCookbookDialog;
+import org.limepepper.chefclipse.remotepicker.ui.preferences.IRemotePickerPreferences;
 import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStrategy;
 
 /**
@@ -64,7 +67,19 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	private void doDefaultCatalogSelection() {
 		
 		if (getConfiguration().getCatalogDescriptor() == null) {
-			getConfiguration().setCatalogDescriptor(getConfiguration().getCatalogDescriptors().get(0));
+			
+			IPreferenceStore preferenceStore = Activator.getDefault()
+			        .getPreferenceStore();
+			String repositoryId = preferenceStore.getString(IRemotePickerPreferences.DEFAULT_REPOSITORY);
+			
+			List<CatalogDescriptor> catalogDescriptors = getConfiguration().getCatalogDescriptors();
+	
+			for (CatalogDescriptor catalogDescriptor : catalogDescriptors) {
+				if (catalogDescriptor.getId().equals(repositoryId)){
+					getConfiguration().setCatalogDescriptor(catalogDescriptor);
+					return;
+				}
+			}
 		}
 	}
 	

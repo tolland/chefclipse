@@ -49,5 +49,18 @@
             </command>
         </menuContribution>
    </extension>
+	<extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.limepepper.chefclipse.ui.preferences.chefclipsePreferencePage"
+            class="org.limepepper.chefclipse.remotepicker.ui.preferences.RemotePickerPreferencePage"
+            id="org.limepepper.chefclipse.remotepicker.ui.remotePickerPreferencePage"
+            name="Cookbooks Remote Picker">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="org.limepepper.chefclipse.remotepicker.ui.preferences.RemotePickerPreferencesInitializer"/>
+   </extension>
 
 </plugin>

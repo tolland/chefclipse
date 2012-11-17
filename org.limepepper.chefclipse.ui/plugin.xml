@@ -38,13 +38,7 @@
       <page
             class="org.limepepper.chefclipse.ui.preferences.TemplateProjectPreferencePage"
             id="org.limepepper.chefclipse.ui.preferences.chefclipsePreferencePage"
-            name="Template Project Preferences">
-      </page>
-      <page
-            category="org.limepepper.chefclipse.ui.preferences.chefclipsePreferencePage"
-            class="org.limepepper.chefclipse.ui.preferences.RemotePickerPreferencePage"
-            id="org.limepepper.chefclipse.ui.remotePickerPreferencePage"
-            name="Cookbooks Remote Picker">
+            name="Chefclipse">
       </page>
    </extension>
    <extension

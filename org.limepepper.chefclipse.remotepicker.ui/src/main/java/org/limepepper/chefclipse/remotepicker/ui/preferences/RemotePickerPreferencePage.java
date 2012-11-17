@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.limepepper.chefclipse.ui.preferences;
+package org.limepepper.chefclipse.remotepicker.ui.preferences;
 
 import java.util.Collection;
 
@@ -11,7 +11,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
-import org.limepepper.chefclipse.ui.Activator;
+import org.limepepper.chefclipse.remotepicker.ui.Activator;
 
 /**
  * @author Sebastian Sampaoli
@@ -34,7 +34,7 @@ public class RemotePickerPreferencePage extends FieldEditorPreferencePage
 	protected void createFieldEditors() {
 		
 		String[][] nameAndIdOfRepositories = getRepositoriesInfo(); 
-		RadioGroupFieldEditor editor = new RadioGroupFieldEditor("REPOSITORY SELECTION",
+		RadioGroupFieldEditor editor = new RadioGroupFieldEditor(IRemotePickerPreferences.DEFAULT_REPOSITORY,
 		        "Select the default repository to be used in the remote picker", 1,
 		        nameAndIdOfRepositories, getFieldEditorParent(), true);
 		addField(editor);
@@ -46,7 +46,7 @@ public class RemotePickerPreferencePage extends FieldEditorPreferencePage
 		String[][] repositoriesInfo = new String[repositories.size()][2];
 		int i = 0;
 		for (RemoteRepository remoteRepository : repositories) {			
-			String[] repositoryInfo = {remoteRepository.getName(), remoteRepository.getId()};
+			String[] repositoryInfo = {"&" + remoteRepository.getName(), remoteRepository.getId()};
 			repositoriesInfo[i++] = repositoryInfo;
 		}
 		return repositoriesInfo;
