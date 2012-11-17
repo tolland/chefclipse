@@ -30,7 +30,24 @@
 	              	label="Cookbooks Remote Picker"
 	              	icon="icons/sample.gif">
             	</command>
-      </menuContribution>
+      	</menuContribution>
+      	<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command
+                label="Open Remote Picker Wizard"
+                commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
+                icon="icons/sample.gif">
+               	<visibleWhen>
+			   		<iterate operator="and" ifEmpty="false">
+			      			<adapt type="org.eclipse.core.resources.IProject">
+			      			<or>
+			                	<test property="org.eclipse.core.resources.projectNature" 
+			           	   			value="org.limepepper.chefclipse.common.ui.resources.ChefProjectNature"/>
+			               	</or>
+			      			</adapt>
+			   		</iterate>
+        		</visibleWhen>
+            </command>
+        </menuContribution>
    </extension>
 
 </plugin>
