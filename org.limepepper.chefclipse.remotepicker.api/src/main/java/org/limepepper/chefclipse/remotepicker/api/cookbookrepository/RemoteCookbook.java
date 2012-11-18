@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getRating <em>Rating</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#isDeprecated <em>Deprecated</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getReplacement <em>Replacement</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getInstalledAt <em>Installed At</em>}</li>
  * </ul>
  * </p>
  *
@@ -295,6 +296,26 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 	 * @ordered
 	 */
 	protected String replacement = REPLACEMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getInstalledAt() <em>Installed At</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstalledAt()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date INSTALLED_AT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getInstalledAt() <em>Installed At</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInstalledAt()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date installedAt = INSTALLED_AT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -733,6 +754,39 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Installed At</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Installed At</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Installed At</em>' attribute.
+	 * @see #setInstalledAt(Date)
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteCookbook_InstalledAt()
+	 * @model
+	 * @generated
+	 */
+	public Date getInstalledAt() {
+		return installedAt;
+	}
+
+	/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getInstalledAt <em>Installed At</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Installed At</em>' attribute.
+	 * @see #getInstalledAt()
+	 * @generated
+	 */
+	public void setInstalledAt(Date newInstalledAt) {
+		Date oldInstalledAt = installedAt;
+		installedAt = newInstalledAt;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT, oldInstalledAt, installedAt));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -766,6 +820,8 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 				return isDeprecated();
 			case CookbookrepositoryPackage.REMOTE_COOKBOOK__REPLACEMENT:
 				return getReplacement();
+			case CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT:
+				return getInstalledAt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -819,6 +875,9 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 			case CookbookrepositoryPackage.REMOTE_COOKBOOK__REPLACEMENT:
 				setReplacement((String)newValue);
 				return;
+			case CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT:
+				setInstalledAt((Date)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -870,6 +929,9 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 			case CookbookrepositoryPackage.REMOTE_COOKBOOK__REPLACEMENT:
 				setReplacement(REPLACEMENT_EDEFAULT);
 				return;
+			case CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT:
+				setInstalledAt(INSTALLED_AT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -908,6 +970,8 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 				return deprecated != DEPRECATED_EDEFAULT;
 			case CookbookrepositoryPackage.REMOTE_COOKBOOK__REPLACEMENT:
 				return REPLACEMENT_EDEFAULT == null ? replacement != null : !REPLACEMENT_EDEFAULT.equals(replacement);
+			case CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT:
+				return INSTALLED_AT_EDEFAULT == null ? installedAt != null : !INSTALLED_AT_EDEFAULT.equals(installedAt);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -948,6 +1012,8 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 		result.append(deprecated);
 		result.append(", replacement: ");
 		result.append(replacement);
+		result.append(", installedAt: ");
+		result.append(installedAt);
 		result.append(')');
 		return result.toString();
 	}

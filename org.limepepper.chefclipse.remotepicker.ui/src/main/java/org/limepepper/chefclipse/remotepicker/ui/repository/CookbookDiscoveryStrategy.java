@@ -22,9 +22,9 @@ import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.discovery.model.Icon;
 import org.eclipse.equinox.internal.p2.discovery.model.Overview;
 import org.eclipse.ui.internal.util.BundleUtility;
+import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
-import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.osgi.framework.Bundle;
@@ -113,6 +113,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		item.setCategoryId(cookBookInfo.getCategory());
 		item.setCategory(categoriesMap.get(cookBookInfo.getCategory()));
 		item.getInstallableUnits().add(item.getId());
+		item.setData(cookBookInfo);
 		Icon icon = new Icon();
 		RemoteRepository repository = repoManager.getRepository(catalogDescriptor.getId());
 		icon.setImage32(repository.getIcon());

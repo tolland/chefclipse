@@ -3,9 +3,13 @@ package org.limepepper.chefclipse.remotepicker.ui.wizards;
 import java.util.List;
 
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
+import org.eclipse.equinox.internal.p2.discovery.model.CatalogCategory;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
+import org.eclipse.equinox.internal.p2.ui.discovery.util.ControlListItem;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogPage;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogViewer;
+import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CategoryItem;
+import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryItem;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -105,7 +109,22 @@ public class CookbookCatalogPage extends CatalogPage {
 	}
 
 	protected CatalogViewer doCreateViewer(Composite parent) {
-		CatalogViewer viewer = new CatalogViewer(getCatalog(), this, getContainer(), getWizard().getConfiguration());
+		CatalogViewer viewer = new CatalogViewer(getCatalog(), this, getContainer(), getWizard().getConfiguration()){
+			
+			CookbookDiscoveryResources resources = new CookbookDiscoveryResources(getShell().getDisplay(), (CookbookCatalogConfiguration)getConfiguration());
+			@Override
+			protected ControlListItem<?> doCreateViewerItem(Composite parent,
+			Object element) {
+				if (element instanceof CatalogItem) {
+					resources.setCurrentCatalogItem((CatalogItem) element);
+					return new DiscoveryItem(parent, SWT.NONE, resources, shellProvider, (CatalogItem) element, this);
+				} else if (element instanceof CatalogCategory) {
+					resources.setCurrentCatalogItem((CatalogCategory) element);
+					return new CategoryItem(parent, SWT.NONE, resources, (CatalogCategory) element);
+				}
+				return null;
+			}
+		};
 		viewer.setMinimumHeight(MINIMUM_HEIGHT);
 		viewer.createControl(parent);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(viewer.getControl());

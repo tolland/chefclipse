@@ -11,21 +11,24 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	/**
-	 * image registry key
+	 * image registry keys
 	 */
 	public static final String IU_ICON_UPDATE = "IU_ICON_UPDATE"; //$NON-NLS-1$
 
-	/**
-	 * image registry key
-	 */
 	public static final String IU_ICON = "IU_ICON"; //$NON-NLS-1$
 
-	/**
-	 * image registry key
-	 */
 	public static final String NO_ICON_PROVIDED = "NO_ICON_PROVIDED"; //$NON-NLS-1$
 
 	public static final String NO_ICON_PROVIDED_CATALOG = "NO_ICON_PROVIDED_CATALOG"; //$NON-NLS-1$
+	
+	public static final String DEPRECATED_ICON_OVERLAY = "DEPRECATED_ICON";
+	
+	public static final String NEW_ICON_OVERLAY = "NEW_ICON_OVERLAY";
+	
+	public static final String INSTALLED_ICON_OVERLAY = "INSTALLED_ICON_OVERLAY";
+	
+	public static final String DIRTY_ICON_OVERLAY = "DIRTY_ICON_OVERLAY";
+	
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.limepepper.chefclipse.remotepicker.ui"; //$NON-NLS-1$
@@ -87,6 +90,10 @@ public class Activator extends AbstractUIPlugin {
 		imageRegistry.put(IU_ICON, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/iu_obj.gif")); //$NON-NLS-1$
 		imageRegistry.put(IU_ICON_UPDATE, imageDescriptorFromPlugin(getBundle().getSymbolicName(),
 		"icons/iu_update_obj.gif")); //$NON-NLS-1$
+		imageRegistry.put(DEPRECATED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/deprecated_decorator.gif")); //$NON-NLS-1$
+		imageRegistry.put(DIRTY_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/dirty_decorator.png")); //$NON-NLS-1$
+		imageRegistry.put(NEW_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/new_decorator.jpg")); //$NON-NLS-1$
+		imageRegistry.put(INSTALLED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/installed_decorator.png")); //$NON-NLS-1$
 		return imageRegistry;
 	}
 }

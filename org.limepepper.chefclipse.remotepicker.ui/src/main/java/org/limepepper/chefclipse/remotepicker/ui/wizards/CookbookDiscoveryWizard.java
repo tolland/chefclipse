@@ -26,6 +26,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.progress.IProgressService;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.limepepper.chefclipse.remotepicker.ui.InstallCookbookDialog;
@@ -118,7 +119,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 					
 					for (CatalogItem catalogItem : installableCookbooks) {
 						try {
-							File downloadCookbook = repoManager.downloadCookbook(catalogItem.getName(), repositoryId);
+							File downloadCookbook = repoManager.downloadCookbook((RemoteCookbook)catalogItem.getData(), repositoryId);
 							for (IProject iProject : selectedProjects) {
 								repoManager.installCookbook(catalogItem.getName(), downloadCookbook, iProject.getLocation().toString());
 							}
