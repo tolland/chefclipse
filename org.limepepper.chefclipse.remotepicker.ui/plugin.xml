@@ -28,14 +28,14 @@
 	              	commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
 	              	mnemonic="S"
 	              	label="Cookbooks Remote Picker"
-	              	icon="icons/sample.gif">
+	              	icon="icons/opscode_16.png">
             	</command>
       	</menuContribution>
       	<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
             <command
                 label="Open Remote Picker Wizard"
                 commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
-                icon="icons/sample.gif">
+                icon="icons/opscode_16.png">
                	<visibleWhen>
 			   		<iterate operator="and" ifEmpty="false">
 			      			<adapt type="org.eclipse.core.resources.IProject">
