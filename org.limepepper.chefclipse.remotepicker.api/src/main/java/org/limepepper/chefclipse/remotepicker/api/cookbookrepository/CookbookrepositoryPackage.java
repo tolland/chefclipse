@@ -131,13 +131,22 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	public static final int REMOTE_REPOSITORY__URI = 6;
 
 	/**
+	 * The feature id for the '<em><b>Updated At</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REMOTE_REPOSITORY__UPDATED_AT = 7;
+
+	/**
 	 * The number of structural features of the '<em>Remote Repository</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REMOTE_REPOSITORY_FEATURE_COUNT = 7;
+	public static final int REMOTE_REPOSITORY_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}' class.
@@ -267,13 +276,22 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	public static final int REMOTE_COOKBOOK__REPLACEMENT = 12;
 
 	/**
+	 * The feature id for the '<em><b>Installed At</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REMOTE_COOKBOOK__INSTALLED_AT = 13;
+
+	/**
 	 * The number of structural features of the '<em>Remote Cookbook</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REMOTE_COOKBOOK_FEATURE_COUNT = 13;
+	public static final int REMOTE_COOKBOOK_FEATURE_COUNT = 14;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -453,6 +471,20 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	public EAttribute getRemoteRepository_Uri() {
 		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(6);
 	}
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUpdatedAt <em>Updated At</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Updated At</em>'.
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUpdatedAt()
+	 * @see #getRemoteRepository()
+	 * @generated
+	 */
+	public EAttribute getRemoteRepository_UpdatedAt() {
+		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(7);
+	}
+
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}'.
@@ -636,6 +668,20 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getInstalledAt <em>Installed At</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Installed At</em>'.
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getInstalledAt()
+	 * @see #getRemoteCookbook()
+	 * @generated
+	 */
+	public EAttribute getRemoteCookbook_InstalledAt() {
+		return (EAttribute)remoteCookbookEClass.getEStructuralFeatures().get(13);
+	}
+
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -673,6 +719,7 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__ICON);
 		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__RETRIEVER);
 		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__URI);
+		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__UPDATED_AT);
 
 		remoteCookbookEClass = createEClass(REMOTE_COOKBOOK);
 		createEAttribute(remoteCookbookEClass, REMOTE_COOKBOOK__NAME);
@@ -688,6 +735,7 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		createEAttribute(remoteCookbookEClass, REMOTE_COOKBOOK__RATING);
 		createEAttribute(remoteCookbookEClass, REMOTE_COOKBOOK__DEPRECATED);
 		createEAttribute(remoteCookbookEClass, REMOTE_COOKBOOK__REPLACEMENT);
+		createEAttribute(remoteCookbookEClass, REMOTE_COOKBOOK__INSTALLED_AT);
 	}
 
 	/**
@@ -728,6 +776,7 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		initEAttribute(getRemoteRepository_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteRepository_Retriever(), ecorePackage.getEJavaObject(), "retriever", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteRepository_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemoteRepository_UpdatedAt(), ecorePackage.getEDate(), "updatedAt", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(remoteCookbookEClass, RemoteCookbook.class, "RemoteCookbook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRemoteCookbook_Name(), ecorePackage.getEString(), "name", null, 0, 1, RemoteCookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -743,6 +792,7 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		initEAttribute(getRemoteCookbook_Rating(), ecorePackage.getEDouble(), "rating", null, 0, 1, RemoteCookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteCookbook_Deprecated(), ecorePackage.getEBoolean(), "deprecated", null, 0, 1, RemoteCookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteCookbook_Replacement(), ecorePackage.getEString(), "replacement", null, 0, 1, RemoteCookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRemoteCookbook_InstalledAt(), ecorePackage.getEDate(), "installedAt", null, 0, 1, RemoteCookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -826,6 +876,14 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute REMOTE_REPOSITORY__URI = eINSTANCE.getRemoteRepository_Uri();
+
+		/**
+		 * The meta object literal for the '<em><b>Updated At</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute REMOTE_REPOSITORY__UPDATED_AT = eINSTANCE.getRemoteRepository_UpdatedAt();
 
 		/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}' class.
@@ -940,6 +998,14 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute REMOTE_COOKBOOK__REPLACEMENT = eINSTANCE.getRemoteCookbook_Replacement();
+
+		/**
+		 * The meta object literal for the '<em><b>Installed At</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute REMOTE_COOKBOOK__INSTALLED_AT = eINSTANCE.getRemoteCookbook_InstalledAt();
 
 	}
 

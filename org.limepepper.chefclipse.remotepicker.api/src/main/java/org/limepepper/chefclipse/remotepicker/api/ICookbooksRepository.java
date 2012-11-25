@@ -18,6 +18,6 @@ public interface ICookbooksRepository {
 	
 	boolean isUpdated();
 	
-	File downloadCookbook(String cookbookName) throws InstallCookbookException;
+	File downloadCookbook(RemoteCookbook remoteCookbook) throws InstallCookbookException;
 
 }

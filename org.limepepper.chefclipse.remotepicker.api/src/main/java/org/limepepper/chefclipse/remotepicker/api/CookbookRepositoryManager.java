@@ -8,6 +8,7 @@ import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -181,8 +182,8 @@ public class CookbookRepositoryManager {
 	}
 
 	private void saveCacheModel(RemoteRepository repo) {
-		// TODO save only cookbooks and info about lastupdate
-
+		Calendar cal = Calendar.getInstance();
+		repo.setUpdatedAt(cal.getTime());
 		// get or create the main cache resource
 		Resource cacheRes;
 		if (isCached()) {
@@ -250,9 +251,10 @@ public class CookbookRepositoryManager {
 		}
 	}
 
-	public File downloadCookbook(String cookbookName, String repositoryId) throws InstallCookbookException{
+	public File downloadCookbook(RemoteCookbook remoteCookbook, String repositoryId) throws InstallCookbookException{
 		ICookbooksRepository cookbooksRepository = retrievers.get(repositoryId);
-		File downloadCookbook = cookbooksRepository.downloadCookbook(cookbookName);
+		File downloadCookbook = cookbooksRepository.downloadCookbook(remoteCookbook);
+		updateInstalledDate(remoteCookbook);
 		return downloadCookbook;
 	}
 	
@@ -295,4 +297,9 @@ public class CookbookRepositoryManager {
 		}
 	}
 
+	private void updateInstalledDate(RemoteCookbook remoteCookbook) {
+	
+		Calendar cal = Calendar.getInstance();
+		remoteCookbook.setInstalledAt(cal.getTime());
+	}
 }

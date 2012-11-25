@@ -124,7 +124,6 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 //			}
 //			cookbook.getVersions().addAll(Arrays.asList(versions));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e1){
 			e1.printStackTrace();
@@ -170,8 +169,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	}
 	
 	@Override
-	public File downloadCookbook(String cookbookName) throws InstallCookbookException {
-		RemoteCookbook cookbook = getCookbook(cookbookName);
+	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
 		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(cookbook);
 		return downloadedCookbook;
 	}

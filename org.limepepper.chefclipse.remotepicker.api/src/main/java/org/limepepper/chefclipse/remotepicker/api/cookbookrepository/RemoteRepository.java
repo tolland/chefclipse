@@ -4,6 +4,7 @@ package org.limepepper.chefclipse.remotepicker.api.cookbookrepository;
 
 import java.util.Collection;
 
+import java.util.Date;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getIcon <em>Icon</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUpdatedAt <em>Updated At</em>}</li>
  * </ul>
  * </p>
  *
@@ -168,6 +170,26 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	 * @ordered
 	 */
 	protected String uri = URI_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUpdatedAt() <em>Updated At</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpdatedAt()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Date UPDATED_AT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUpdatedAt() <em>Updated At</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUpdatedAt()
+	 * @generated
+	 * @ordered
+	 */
+	protected Date updatedAt = UPDATED_AT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -408,6 +430,39 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Updated At</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Updated At</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Updated At</em>' attribute.
+	 * @see #setUpdatedAt(Date)
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_UpdatedAt()
+	 * @model
+	 * @generated
+	 */
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUpdatedAt <em>Updated At</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Updated At</em>' attribute.
+	 * @see #getUpdatedAt()
+	 * @generated
+	 */
+	public void setUpdatedAt(Date newUpdatedAt) {
+		Date oldUpdatedAt = updatedAt;
+		updatedAt = newUpdatedAt;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT, oldUpdatedAt, updatedAt));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -429,6 +484,8 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 				return getRetriever();
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__URI:
 				return getUri();
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT:
+				return getUpdatedAt();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -464,6 +521,9 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__URI:
 				setUri((String)newValue);
 				return;
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT:
+				setUpdatedAt((Date)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -497,6 +557,9 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__URI:
 				setUri(URI_EDEFAULT);
 				return;
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT:
+				setUpdatedAt(UPDATED_AT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -523,6 +586,8 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 				return RETRIEVER_EDEFAULT == null ? retriever != null : !RETRIEVER_EDEFAULT.equals(retriever);
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__URI:
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT:
+				return UPDATED_AT_EDEFAULT == null ? updatedAt != null : !UPDATED_AT_EDEFAULT.equals(updatedAt);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -549,6 +614,8 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 		result.append(retriever);
 		result.append(", uri: ");
 		result.append(uri);
+		result.append(", updatedAt: ");
+		result.append(updatedAt);
 		result.append(')');
 		return result.toString();
 	}

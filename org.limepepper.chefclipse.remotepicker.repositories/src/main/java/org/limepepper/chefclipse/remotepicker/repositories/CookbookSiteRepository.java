@@ -197,6 +197,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			cookbook.setRating(cookbookJson.optDouble("average_rating"));
 			cookbook.setReplacement(cookbookJson.optString("replacement"));
 			JSONArray versionsJson = cookbookJson.optJSONArray("versions");
+			
 			String[] versions = new String[versionsJson.length()];
 			for (int i = 0; i < versionsJson.length(); i++) {
 				versions[i] = versionsJson.getString(i);
@@ -230,8 +231,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	}
 
 	@Override
-	public File downloadCookbook(String cookbookName) throws InstallCookbookException {
-		RemoteCookbook cookbook = getCookbook(cookbookName);
+	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
 		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(cookbook);
 		return downloadedCookbook;
 	}

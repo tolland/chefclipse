@@ -172,6 +172,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		item.setCategoryId(cookBookInfo.getCategory());
 		item.setCategory(categoriesMap.get(cookBookInfo.getCategory()));
 		item.getInstallableUnits().add(item.getId());
+		item.setData(cookBookInfo);
 		Icon icon = new Icon();
 		RemoteRepository repository = repoManager.getRepository(catalogDescriptor.getId());
 		icon.setImage32(repository.getIcon());
