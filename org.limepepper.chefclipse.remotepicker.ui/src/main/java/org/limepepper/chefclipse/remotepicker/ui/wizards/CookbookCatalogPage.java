@@ -1,7 +1,10 @@
 package org.limepepper.chefclipse.remotepicker.ui.wizards;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogPage;
@@ -105,7 +108,12 @@ public class CookbookCatalogPage extends CatalogPage {
 	}
 
 	protected CatalogViewer doCreateViewer(Composite parent) {
-		CatalogViewer viewer = new CatalogViewer(getCatalog(), this, getContainer(), getWizard().getConfiguration());
+		CatalogViewer viewer = new CatalogViewer(getCatalog(), this, getContainer(), getWizard().getConfiguration()) {
+			@Override
+			protected Set<String> getInstalledFeatures(IProgressMonitor monitor) {
+				return Collections.emptySet();
+			}
+		};
 		viewer.setMinimumHeight(MINIMUM_HEIGHT);
 		viewer.createControl(parent);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(viewer.getControl());

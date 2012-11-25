@@ -10,7 +10,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
@@ -35,6 +39,37 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
  */
 public class CookbookSiteRepository implements ICookbooksRepository {
 	
+	private final class GetTaks implements Runnable {
+		private final int start;
+		private final List<RemoteCookbook> cookbooks;
+
+		private GetTaks(int start, List<RemoteCookbook> cookbooks) {
+			this.start = start;
+			this.cookbooks = cookbooks;
+		}
+
+		@Override
+		public void run() {
+			JSONObject json = getRestCookbooks(start, 100);
+			try {
+				JSONArray items = json.getJSONArray("items");
+				for (int i = 0; i < items.length(); i++) {
+					try {
+						JSONObject cookbookJson = items.getJSONObject(i);
+						String name = createCookbook(cookbookJson).getName();
+						cookbooks.add(getCookbook(name));
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} catch (JSONException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+
 	private WebResource service;
 
 	private IDownloadCookbookStrategy downloadCookbookStrategy;
@@ -67,6 +102,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 */
 	private JSONObject getRestCookbooks(int start, int items) {
 	    return getService().path("api").path("v1").path("cookbooks")
+	    		.queryParam("start", String.valueOf(start))
 	    		.queryParam("items", String.valueOf(items))
 	    		.accept(MediaType.APPLICATION_JSON_TYPE)
 	    		.get(JSONObject.class);
@@ -77,25 +113,29 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 */
 	@Override
 	public List<RemoteCookbook> getCookbooks() {
-		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
-		JSONObject json = getRestCookbooks(0, 100);
+		ExecutorService pool = Executors.newFixedThreadPool(100);
+		List<RemoteCookbook> list = new ArrayList<RemoteCookbook>();
+		final List<RemoteCookbook> cookbooks = Collections.synchronizedList(list);
+		int start = 0;
+		int total = 100;
+		JSONObject json = getRestCookbooks(0, 1);
 		try {
-			JSONArray items = json.getJSONArray("items");
-			for (int i = 0; i < items.length(); i++) {
-				try {
-					JSONObject cookbookJson = items.getJSONObject(i);
-					String name = createCookbook(cookbookJson).getName();
-					cookbooks.add(getCookbook(name));
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			total = json.getInt("total");
+		} catch (JSONException e2) {
+			e2.printStackTrace();
 		}
-		return cookbooks;
+		do {
+			pool.submit(new GetTaks(start, cookbooks));
+			start += 100;
+		} while (start < total);
+		
+		try {
+			pool.shutdown();
+			pool.awaitTermination(20, TimeUnit.MINUTES);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 	private RemoteCookbook createCookbook(JSONObject cookbookJson) {

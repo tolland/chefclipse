@@ -78,11 +78,12 @@ public class ExtensionPointHandler {
 
 	private void retrieveAndCacheCookbooks() {
 		for (final RemoteRepository repo : repoManager.getRepositories()) {
-			Job job = new Job("Retriving Cookbooks from respository " + repo.getName()) {
-				
+			Job job = new Job("Retriving Cookbooks from respository \"" + repo.getName()+ "\"") {
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
+					monitor.beginTask("Retriving cookbooks", IProgressMonitor.UNKNOWN);
 					getRepoManager().loadRepository(repo.getId());
+					monitor.done();
 					return Status.OK_STATUS;
 				}
 				
@@ -92,9 +93,8 @@ public class ExtensionPointHandler {
 				}
 			};
 			
-			ImageDescriptor image;
 			try {
-				image = ImageDescriptor.createFromURL(new URL(repo.getIcon()));
+				ImageDescriptor image = ImageDescriptor.createFromURL(new URL(repo.getIcon()));
 				job.setProperty(IProgressConstants.ICON_PROPERTY, image);
 			} catch (MalformedURLException e) {
 			}

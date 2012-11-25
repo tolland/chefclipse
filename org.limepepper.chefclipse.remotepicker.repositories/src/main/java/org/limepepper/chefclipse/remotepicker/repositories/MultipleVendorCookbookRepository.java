@@ -84,17 +84,21 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	 */
 	@Override
 	public Collection<RemoteCookbook> getCookbooks() {
-		
 		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
-		JSONArray jsonArray = getRestCookbooks(0, 100);
-		for (int i = 0; i < jsonArray.length(); i++) {
-			try {
-				JSONObject cookbookJson = jsonArray.getJSONObject(i);
-				cookbooks.add(createCookbook(cookbookJson));
-			} catch (JSONException e) {
-				e.printStackTrace();
+		int start = 1;
+		boolean more = true;
+		do {
+			JSONArray jsonArray = getRestCookbooks(start++, 100);
+			for (int i = 0; i < jsonArray.length(); i++) {
+				try {
+					JSONObject cookbookJson = jsonArray.getJSONObject(i);
+					cookbooks.add(createCookbook(cookbookJson));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 			}
-		}
+			more = jsonArray.length() > 0;
+		} while (more);
 		return cookbooks;
 	}
 
@@ -128,11 +132,12 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 		return cookbook;
 	}
 
-	private JSONArray getRestCookbooks(int start, int items) {
+	private JSONArray getRestCookbooks(int page, int items) {
 		
-		return getService().path("users").path("cookbooks").path("repos").queryParam("per_page", String.valueOf(items))
-		    		.accept(MediaType.APPLICATION_JSON_TYPE)
-		    		.get(JSONArray.class);
+		return getService().path("users").path("cookbooks").path("repos")
+				.queryParam("page", String.valueOf(page))
+				.queryParam("per_page", String.valueOf(items))
+				.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONArray.class);
 	}
 
 	/* (non-Javadoc)

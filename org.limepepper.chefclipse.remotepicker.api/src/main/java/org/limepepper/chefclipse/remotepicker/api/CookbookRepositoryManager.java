@@ -3,8 +3,11 @@
  */
 package org.limepepper.chefclipse.remotepicker.api;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,11 +32,17 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepos
  */
 public class CookbookRepositoryManager {
 	
+	private static final String CACHE_EXT = "cookbookrepository";
 	private static final String COOKBOOKS_PROJECT_DIRECTORY = "cookbooks";
 
 	private static CookbookRepositoryManager instance;
 
 	private ResourceSet resSet = new ResourceSetImpl();
+	private Map<String, RemoteRepository> repositories = new HashMap<String, RemoteRepository>();
+	private Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
+	private Map<String, PropertyChangeSupport> listeners = new HashMap<String, PropertyChangeSupport>();
+	private Lock lock = new ReentrantLock();
+	private String cacheFolder;
 
 	CookbookRepositoryManager() {
 		instance = this;
@@ -46,11 +55,6 @@ public class CookbookRepositoryManager {
 		return instance;
 	}
 
-	private static final String CACHE_EXT = "cookbookrepository";
-	private Map<String, RemoteRepository> repositories = new HashMap<String, RemoteRepository>();
-	private Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
-	private Lock lock = new ReentrantLock();
-	private String cacheFolder;
 
 	public Collection<RemoteRepository> getRepositories() {
 		lock.lock(); // block until condition holds
@@ -111,8 +115,10 @@ public class CookbookRepositoryManager {
 			}
 			RemoteRepository cachedRepo = repositories.get(repo.getId());
 			if (cachedRepo == null) {
+				cachedRepo = repo;
 				repositories.put(repo.getId(), repo);
 			}
+			listeners.put(repo.getId(), new PropertyChangeSupport(repo));
 			retrievers.put(repo.getId(), retriever);
 			return cachedRepo;
 		} finally {
@@ -132,10 +138,21 @@ public class CookbookRepositoryManager {
 			Resource resource = resSet.getResource(
 					URI.createFileURI(getCacheFile()), true);
 			if (resource != null) {
+				Collection<RemoteRepository> toDelete = new ArrayList<RemoteRepository>();
 				for (EObject eobject : resource.getContents()) {
 					RemoteRepository cachedRepo = (RemoteRepository) eobject;
-					repositories.put(cachedRepo.getId(), cachedRepo);
+					if (isCached(cachedRepo)) {
+						lock.lock();
+						try {
+							repositories.put(cachedRepo.getId(), cachedRepo);
+						} finally {
+							lock.unlock();
+						}
+					} else {
+						toDelete.add(cachedRepo);
+					}
 				}
+				resource.getContents().removeAll(toDelete);
 			}
 		}
 	}
@@ -143,7 +160,7 @@ public class CookbookRepositoryManager {
 	public void evictCache() {
 		new File(getCacheFile()).delete();
 		for (RemoteRepository repo : repositories.values()) {
-			new File(getCacheFile(repo)).delete();
+			new File(getCacheFile(repo.getId())).delete();
 		}
 	}
 
@@ -151,9 +168,16 @@ public class CookbookRepositoryManager {
 		ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
 		Collection<RemoteCookbook> cookbooks = cookbookRepository
 				.getCookbooks();
-		repo.getCookbooks().addAll(cookbooks);
+		lock.lock();
+		try {
+			repo.getCookbooks().addAll(cookbooks);
+		} finally {
+			lock.unlock();
+		}
 
 		saveCacheModel(repo);
+		if (listeners.containsKey(repo.getId()))
+			listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks);
 	}
 
 	private void saveCacheModel(RemoteRepository repo) {
@@ -172,7 +196,7 @@ public class CookbookRepositoryManager {
 		
 		// Create a resource
 		Resource resource = resSet.createResource(URI
-				.createFileURI(getCacheFile(repo)));
+				.createFileURI(getCacheFile(repo.getId())));
 		resource.getContents().addAll(repo.getCookbooks());
 
 		// Now save the content.
@@ -189,10 +213,10 @@ public class CookbookRepositoryManager {
 		cacheFolder = stateLocation;
 	}
 
-	private String getCacheFile(RemoteRepository repo) {
+	private String getCacheFile(String repoId) {
 		return new StringBuilder(cacheFolder)
 			.append(File.separatorChar)
-			.append(repo.getId()).append(".")
+			.append(repoId).append(".")
 			.append(CACHE_EXT).toString();
 	}
 
@@ -204,7 +228,7 @@ public class CookbookRepositoryManager {
 	}
 
 	private boolean isCached(RemoteRepository repo) {
-		File file = new File(getCacheFile(repo));
+		File file = new File(getCacheFile(repo.getId()));
 		return file.exists() && file.canRead();
 	}
 
@@ -248,4 +272,27 @@ public class CookbookRepositoryManager {
 		}
 		
 	}
+
+	public void addRepositoryListener(String repoId, PropertyChangeListener listener) {
+		listeners.get(repoId).addPropertyChangeListener(listener);
+		if (isRepositoryReady(repoId)) {
+			RemoteRepository repo = repositories.get(repoId);
+			listeners.get(repoId).firePropertyChange("cookbooks", null, repo.getCookbooks());
+		}
+	}
+
+	public void removeRepositoryListener(String repoId, 
+			PropertyChangeListener listener) {
+		listeners.get(repoId).removePropertyChangeListener(listener);
+	}
+
+	public boolean isRepositoryReady(String repoId) {
+		lock.lock();
+		try {
+			return !repositories.get(repoId).getCookbooks().isEmpty();
+		} finally {
+			lock.unlock();
+		}
+	}
+
 }
