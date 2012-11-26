@@ -13,4 +13,4 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.remotepicker.api;bundle-version="1.0.0",
  org.limepepper.chefclipse.remotepicker.repositories;bundle-version="1.0.0"
 Bundle-ClassPath: lib/hamcrest-all.jar,
-lib/mockito-all.jar
+ lib/mockito-all.jar
