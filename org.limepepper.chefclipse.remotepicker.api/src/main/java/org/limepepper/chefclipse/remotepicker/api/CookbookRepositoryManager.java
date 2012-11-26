@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.commons.io.FileUtils;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -28,8 +30,15 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookb
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 
 /**
- * @author Guillermo Zunino
+ * Manager for Cookbook Repositories.
+ * Handles registration, loading, installing and local cache of repositories.
+ * A common usage is to call #registerRepository(RemoteRepository, ICookbooksRepository)
+ * for each repository and then #loadRepository(String) to load and cache the cookbooks.
+ * {@link #setCacheFolder(String)} should be called prior to loading.
+ * This class is thread safe.
+ * This plugin can be used standalone, outside eclipse.
  * 
+ * @author Guillermo Zunino
  */
 public class CookbookRepositoryManager {
 	
@@ -49,6 +58,10 @@ public class CookbookRepositoryManager {
 		instance = this;
 	}
 
+	/**
+	 * Gets the singleton instance of this class.
+	 * @return the singleton instance
+	 */
 	public static CookbookRepositoryManager getInstance() {
 		if (instance == null) {
 			instance = new CookbookRepositoryManager();
@@ -56,57 +69,36 @@ public class CookbookRepositoryManager {
 		return instance;
 	}
 
-
+	/**
+	 * Returns the registered repositories.
+	 * @return a {@link Collection} of repositories
+	 */
 	public Collection<RemoteRepository> getRepositories() {
 		lock.lock(); // block until condition holds
 		try {
-//			if (!loaded) {
-//				readCache();
-//			}
 			return Collections.unmodifiableCollection(repositories.values());
 		} finally {
 			lock.unlock();
 		}
 	}
 
+	/**
+	 * Returns a {@link RemoteRepository} by it's unique id.
+	 * @param id the repository Id
+	 * @return a {@link RemoteCookbook}
+	 */
 	public RemoteRepository getRepository(String id) {
-//		if (!loaded) {
-//			readCache();
-//		}
 		return repositories.get(id);
 	}
 
-//	private void readCache() {
-//		// TODO load repositories on demand by EMF lazy support
-//		// Initialize the model
-//		CookbookrepositoryPackage.eINSTANCE.eClass();
-//		// Register the XMI resource factory for the .cookbookrepo extension
-//		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
-//		Map<String, Object> m = reg.getExtensionToFactoryMap();
-//		m.put(CACHE_EXT, new XMIResourceFactoryImpl());
-//
-//		for (RemoteRepository repo : repositories.values()) {
-//			if (isCached(repo)) {
-//				// Obtain a new resource set
-//				ResourceSet resSet = new ResourceSetImpl();
-//
-//				// Get the resource
-//				Resource resource = resSet.getResource(
-//						URI.createFileURI(getCacheFile(repo)), true);
-//				if (resource != null) {
-//					// Get the first model element and cast it to the right
-//					// type, in my
-//					// example everything is hierarchical included in this first
-//					// node
-//					RemoteRepository cachedRepo = (RemoteRepository) resource
-//							.getContents().get(0);
-//					repo.getCookbooks().addAll(cachedRepo.getCookbooks());
-//				}
-//			}
-//		}
-//		loaded = true;
-//	}
-
+	/**
+	 * Registers a repository of cookbooks to managed by this manager.
+	 * @param repo the {@link RemoteRepository} instance.
+	 * @param retriever an implementation of {@link ICookbooksRepository} to download 
+	 * cookbooks (eg. contacting a REST service)
+	 * @return a managed instance of {@link RemoteRepository}, possible different than the given if this 
+	 * was previously registered 
+	 */
 	public RemoteRepository registerRepository(RemoteRepository repo,
 			ICookbooksRepository retriever) {
 		lock.lock(); // block until condition holds
@@ -158,17 +150,39 @@ public class CookbookRepositoryManager {
 		}
 	}
 
+	/**
+	 * Deletes the cache and clears registered repositories.
+	 */
 	public void evictCache() {
 		new File(getCacheFile()).delete();
 		for (RemoteRepository repo : repositories.values()) {
 			new File(getCacheFile(repo.getId())).delete();
 		}
+		repositories.clear();
+		retrievers.clear();
+		listeners.clear();
 	}
 
 	private void cacheRepository(RemoteRepository repo) {
 		ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
 		Collection<RemoteCookbook> cookbooks = cookbookRepository
 				.getCookbooks();
+		Map<String, Date> installed = new HashMap<String, Date>();
+		EList<RemoteCookbook> old = repo.getCookbooks();
+		for (RemoteCookbook cookbook : old) {
+			if (cookbook.getInstalledAt() != null) {
+				installed.put(cookbook.getName(), cookbook.getInstalledAt());
+			}
+		}
+		repo.getCookbooks().clear();
+
+		// restore installed date
+		for (RemoteCookbook cookbook : cookbooks) {
+			Date installedAt = installed.get(cookbook.getName());
+			if (installedAt != null) {
+				cookbook.setInstalledAt(installedAt);
+			}
+		}
 		lock.lock();
 		try {
 			repo.getCookbooks().addAll(cookbooks);
@@ -176,9 +190,9 @@ public class CookbookRepositoryManager {
 			lock.unlock();
 		}
 
-		saveCacheModel(repo);
 		if (listeners.containsKey(repo.getId()))
 			listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks);
+		saveCacheModel(repo);
 	}
 
 	private void saveCacheModel(RemoteRepository repo) {
@@ -205,11 +219,14 @@ public class CookbookRepositoryManager {
 			cacheRes.save(Collections.EMPTY_MAP);
 			resource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * Sets the folder used as cache.
+	 * @param stateLocation the cache folder path
+	 */
 	public void setCacheFolder(String stateLocation) {
 		cacheFolder = stateLocation;
 	}
@@ -238,6 +255,12 @@ public class CookbookRepositoryManager {
 		return file.exists() && file.canRead();
 	}
 
+	/**
+	 * Loads an cache cookbooks from the given repository. This can be a blocking long time operation.
+	 * If the repository is already cached, it will return immediately. Cookbooks can be accesed with
+	 * {@link RemoteRepository#getCookbooks()} after this method returns.
+	 * @param repoId the repository Id to load.
+	 */
 	public void loadRepository(String repoId) {
 		RemoteRepository repo = repositories.get(repoId);
 		ICookbooksRepository cookbookRepository = retrievers.get(repoId);
@@ -246,11 +269,18 @@ public class CookbookRepositoryManager {
 			throw new RuntimeException("Invalid repoId " + repoId);
 		}
 
-		if (!isCached(repo) || cookbookRepository.isUpdated()) {
+		if (!isCached(repo) || cookbookRepository.isUpdated(repo)) {
 			cacheRepository(repo);
 		}
 	}
 
+	/**
+	 * Download and expand a chef cookbook tree structure from remote in a local tmp folder.
+	 * @param remoteCookbook
+	 * @param repositoryId
+	 * @return
+	 * @throws InstallCookbookException
+	 */
 	public File downloadCookbook(RemoteCookbook remoteCookbook, String repositoryId) throws InstallCookbookException{
 		ICookbooksRepository cookbooksRepository = retrievers.get(repositoryId);
 		File downloadCookbook = cookbooksRepository.downloadCookbook(remoteCookbook);
@@ -258,6 +288,13 @@ public class CookbookRepositoryManager {
 		return downloadCookbook;
 	}
 	
+	/**
+	 * Installs a chef cookbook under the given chef projectPath.
+	 * @param cookbookName the cookbook name to instakk
+	 * @param downloadCookbook previuos File given by {@link #downloadCookbook(RemoteCookbook, String)}
+	 * @param projectPath the path to install to
+	 * @throws InstallCookbookException if cannot be done.
+	 */
 	public void installCookbook(String cookbookName, File downloadCookbook, String projectPath) throws InstallCookbookException {
 		
 		File targetDirectory = new File(projectPath, COOKBOOKS_PROJECT_DIRECTORY);
@@ -275,6 +312,12 @@ public class CookbookRepositoryManager {
 		
 	}
 
+	/**
+	 * Add a listener to be called when the given repository finish loading cookbooks.
+	 * Useful method when putting the manager on a separate thread.
+	 * @param repoId the {@link RemoteRepository} id.
+	 * @param listener a {@link PropertyChangeListener}
+	 */
 	public void addRepositoryListener(String repoId, PropertyChangeListener listener) {
 		listeners.get(repoId).addPropertyChangeListener(listener);
 		if (isRepositoryReady(repoId)) {
@@ -283,11 +326,21 @@ public class CookbookRepositoryManager {
 		}
 	}
 
+	/**
+	 * Remove a previously registered listener for the given {@link RemoteRepository} id. 
+	 * @param repoId the repository id
+	 * @param listener the {@link PropertyChangeListener}
+	 */
 	public void removeRepositoryListener(String repoId, 
 			PropertyChangeListener listener) {
 		listeners.get(repoId).removePropertyChangeListener(listener);
 	}
 
+	/**
+	 * Returns true if the repository has loaded all cookbooks and it's ready.
+	 * @param repoId the {@link RemoteRepository} id.
+	 * @return true if repository is ready.
+	 */
 	public boolean isRepositoryReady(String repoId) {
 		lock.lock();
 		try {
@@ -301,5 +354,12 @@ public class CookbookRepositoryManager {
 	
 		Calendar cal = Calendar.getInstance();
 		remoteCookbook.setInstalledAt(cal.getTime());
+		
+		Resource resource = remoteCookbook.eResource();
+		try {
+			resource.save(Collections.EMPTY_MAP);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

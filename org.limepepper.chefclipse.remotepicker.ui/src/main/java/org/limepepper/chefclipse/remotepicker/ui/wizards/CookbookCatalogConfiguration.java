@@ -9,6 +9,7 @@ import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 /**
  * @author Sebastian Sampaoli
  */
+@SuppressWarnings("restriction")
 public class CookbookCatalogConfiguration extends CatalogConfiguration {
 	
 	private List<CatalogDescriptor> catalogDescriptors = new ArrayList<CatalogDescriptor>();

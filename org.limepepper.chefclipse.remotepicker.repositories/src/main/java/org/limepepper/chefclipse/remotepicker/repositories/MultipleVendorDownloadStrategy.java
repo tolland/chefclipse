@@ -52,6 +52,7 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 		}
 	}
 
+	@SuppressWarnings("resource")
 	@Override
 	public File decompressCookbook(File compressedFile)
 			throws IOException {

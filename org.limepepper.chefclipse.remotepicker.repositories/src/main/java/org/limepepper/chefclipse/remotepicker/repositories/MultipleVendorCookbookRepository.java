@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
@@ -23,9 +25,12 @@ import org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.ClientResponse.Status;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 
@@ -143,9 +148,19 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#isUpdated()
 	 */
 	@Override
-	public boolean isUpdated() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isUpdated(RemoteRepository repo) {
+		SimpleDateFormat fo = new SimpleDateFormat(
+			"EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
+		fo.setTimeZone(TimeZone.getTimeZone("GMT"));
+		if (repo.getUpdatedAt() == null)
+			return false;
+		String date = fo.format(repo.getUpdatedAt());
+		ClientResponse response = getService()
+			.path("users").path("cookbooks").path("repos")
+			.header("If-Modified-Since", date)
+			.get(ClientResponse.class);
+
+		return !Status.NOT_MODIFIED.equals(response.getClientResponseStatus());
 	}
 
 	@Override

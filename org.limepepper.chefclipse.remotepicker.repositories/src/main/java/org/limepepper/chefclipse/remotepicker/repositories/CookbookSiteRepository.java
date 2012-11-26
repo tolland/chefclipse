@@ -27,6 +27,7 @@ import org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
@@ -59,12 +60,10 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 						String name = createCookbook(cookbookJson).getName();
 						cookbooks.add(getCookbook(name));
 					} catch (JSONException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
 			} catch (JSONException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
@@ -113,7 +112,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 */
 	@Override
 	public List<RemoteCookbook> getCookbooks() {
-		ExecutorService pool = Executors.newFixedThreadPool(100);
+		ExecutorService pool = Executors.newFixedThreadPool(10);
 		List<RemoteCookbook> list = new ArrayList<RemoteCookbook>();
 		final List<RemoteCookbook> cookbooks = Collections.synchronizedList(list);
 		int start = 0;
@@ -146,7 +145,6 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			cookbook.setDescription(cookbookJson.getString("cookbook_description"));
 			cookbook.setMaintainer(cookbookJson.getString("cookbook_maintainer"));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return cookbook;
@@ -204,7 +202,6 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			}
 			cookbook.getVersions().addAll(Arrays.asList(versions));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e1){
 			e1.printStackTrace();
@@ -225,8 +222,14 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	}
 
 	@Override
-	public boolean isUpdated() {
-		// TODO Auto-generated method stub
+	public boolean isUpdated(RemoteRepository repo) {
+		JSONObject json = getRestCookbooks(0, 1);
+		try {
+			int total = json.getInt("total");
+			if (total != repo.getCookbooks().size())
+				return true;
+		} catch (JSONException e2) {
+		}
 		return false;
 	}
 

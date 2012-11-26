@@ -36,6 +36,7 @@ public class CookbookRepositoryManagerTest {
 	@Before
 	public void setUp() throws Exception {
 		manager = CookbookRepositoryManager.getInstance();
+		manager.setCacheFolder("cache");
 		manager.evictCache();
 	}
 
@@ -44,6 +45,7 @@ public class CookbookRepositoryManagerTest {
 	 */
 	@After
 	public void tearDown() throws Exception {
+		manager.evictCache();
 	}
 
 	@Test
@@ -92,6 +94,7 @@ public class CookbookRepositoryManagerTest {
 			.thenReturn(cookbooks);
 		
 		manager.registerRepository(repoMock, remote);
+		manager.loadRepository("repoCookbooks");
 		RemoteRepository repository = manager.getRepository("repoCookbooks");
 		
 		assertThat(repository.getCookbooks(), notNullValue());

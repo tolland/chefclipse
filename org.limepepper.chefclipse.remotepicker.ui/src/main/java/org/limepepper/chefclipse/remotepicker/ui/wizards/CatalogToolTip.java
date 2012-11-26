@@ -19,6 +19,7 @@ import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 /**
  * @author Sebastian Sampaoli
  */
+@SuppressWarnings("restriction")
 public class CatalogToolTip extends GradientToolTip {
 
 	private Image image;

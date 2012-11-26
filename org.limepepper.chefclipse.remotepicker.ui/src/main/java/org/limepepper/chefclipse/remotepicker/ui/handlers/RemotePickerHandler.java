@@ -5,17 +5,13 @@ package org.limepepper.chefclipse.remotepicker.ui.handlers;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
 import org.eclipse.equinox.internal.p2.discovery.DiscoveryCore;
-import org.eclipse.equinox.internal.p2.ui.discovery.util.WorkbenchUtil;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
-import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogRegistry;
 import org.limepepper.chefclipse.remotepicker.ui.wizards.CookbookCatalogConfiguration;
@@ -27,6 +23,7 @@ import org.limepepper.chefclipse.remotepicker.ui.wizards.CookbookDiscoveryWizard
  * @author Sebastian Sampaoli
  *
  */
+@SuppressWarnings("restriction")
 public class RemotePickerHandler extends AbstractHandler {
 
 	private List<CatalogDescriptor> catalogDescriptors;

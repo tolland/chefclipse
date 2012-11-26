@@ -9,9 +9,11 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 
+import java.io.File;
 import java.util.List;
 
 import org.junit.Test;
+import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.repositories.MultipleVendorCookbookRepository;
 
@@ -22,12 +24,6 @@ import org.limepepper.chefclipse.remotepicker.repositories.MultipleVendorCookboo
 public class MultipleVendorCookbookRepositoryTest {
 
 	private MultipleVendorCookbookRepository repo = new MultipleVendorCookbookRepository();
-	/**
-	 * 
-	 */
-	public MultipleVendorCookbookRepositoryTest() {
-		
-	}
 	
 	@Test
 	public void testGetCookbooks() {
@@ -52,9 +48,12 @@ public class MultipleVendorCookbookRepositoryTest {
 	}
 	
 	@Test
-	public void testDownloadCookbook(){
-//		File downloadCookbook = repo.downloadCookbook("ap-cookbook-oracle");
-//		System.out.println(downloadCookbook.getPath());
+	public void testDownloadCookbook() throws InstallCookbookException {
+		RemoteCookbook c = repo.getCookbook("ap-cookbook-oracle");
+		c.setName("ap-cookbook-oracle");
+		File downloadCookbook = repo.downloadCookbook(c);
+		
+		assertThat(downloadCookbook.getPath(), equalTo("/tmp/ap-cookbook-oracle-master"));
 	}
 
 }

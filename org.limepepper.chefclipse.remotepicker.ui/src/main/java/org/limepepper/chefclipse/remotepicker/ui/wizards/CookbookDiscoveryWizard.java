@@ -51,6 +51,7 @@ import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStr
  * 
  * @author Sebastian Sampaoli
  */
+@SuppressWarnings("restriction")
 public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	
 	private static final String INSTALL_COOKBOOKS = "Install Cookbooks";
@@ -89,6 +90,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 				super.createControl(parent);
 				Control[] children = ((Composite)getControl()).getChildren();
 				final Table checkboxTable = (Table) children[1];
+				setPageComplete(false);
 				checkboxTable.addSelectionListener(new SelectionListener() {
 					
 					@Override
@@ -275,13 +277,13 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 			return false;
 		}
 		if (projects.length == 1) {
-			setSelectedProjects(new ArrayList(Arrays.asList(projects)));
+			setSelectedProjects(Arrays.asList(projects));
 			return true;
 		}
 		IProject[] referencedProjects = secondPage.getReferencedProjects();
 		if (secondPage.isPageComplete()) { // the user selected projects in the
 											// page
-			setSelectedProjects(new ArrayList(Arrays.asList(referencedProjects)));
+			setSelectedProjects(Arrays.asList(referencedProjects));
 			return true;
 		}
 		// TODO fix, as it's not working when a project is selected on the

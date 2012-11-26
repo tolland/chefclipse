@@ -49,7 +49,6 @@ public class ExtensionPointHandler {
 	private void evaluate(IExtensionRegistry registry) {
 		IConfigurationElement[] config = registry
 				.getConfigurationElementsFor(POINT_ID);
-		System.out.println("Evaluate: "+config.length);
 		try {
 			for (IConfigurationElement e : config) {
 				RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
@@ -72,7 +71,8 @@ public class ExtensionPointHandler {
 			}
 			retrieveAndCacheCookbooks();
 		} catch (CoreException ex) {
-			System.out.println(ex.getMessage());
+			IStatus status = new Status(Status.ERROR, Activator.PLUGIN_ID, ex.getMessage(), ex);
+			Platform.getLog(Activator.getContext().getBundle()).log(status );
 		}
 	}
 

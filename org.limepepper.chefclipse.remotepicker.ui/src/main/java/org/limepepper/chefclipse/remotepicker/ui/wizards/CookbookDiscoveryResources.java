@@ -29,13 +29,13 @@ import org.limepepper.chefclipse.remotepicker.ui.Activator;
  * @author Sebastian Sampaoli
  *
  */
+@SuppressWarnings("restriction")
 public class CookbookDiscoveryResources extends DiscoveryResources {
 
 	@Inject
 	private CookbookRepositoryManager repoManager;
 	private CookbookCatalogConfiguration cookbookCatalogConfiguration;
 	private LocalResourceManager resourceManager;
-	@SuppressWarnings("restriction")
 	private AbstractCatalogItem currentCatalogItem;
 	
 	/**
@@ -53,11 +53,11 @@ public class CookbookDiscoveryResources extends DiscoveryResources {
 	public Image getIconImage(AbstractCatalogSource discoverySource, Icon icon, int dimension, boolean fallback) {
 		
 		Image baseIconImage = super.getIconImage(discoverySource, icon, dimension, fallback);
-		if (getCurrentCatalogItem() instanceof CatalogCategory){
+		if (getCurrentCatalogItem() instanceof CatalogCategory) {
 			return baseIconImage;
 		}
 		String repositoryId = cookbookCatalogConfiguration.getCatalogDescriptor().getId();
-		RemoteRepository remoteRepository = repoManager.getInstance().getRepository(repositoryId);
+		RemoteRepository remoteRepository = repoManager.getRepository(repositoryId);
 		RemoteCookbook cookbook = (RemoteCookbook) getCurrentCatalogItem().getData();
 		List<ImageDescriptor> imageOverlays = new ArrayList<ImageDescriptor>();
 		Date updatedAt = remoteRepository.getUpdatedAt();

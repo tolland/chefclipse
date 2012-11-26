@@ -108,7 +108,7 @@ public class CookbookSiteDownloadStrategy implements
 	 */
 	private List<File> unTar(final File inputFile, final File outputDir) throws FileNotFoundException, IOException, ArchiveException {
 
-	    System.out.println("Untaring %s to dir %s." + inputFile.getAbsolutePath() + outputDir.getAbsolutePath());
+//	    System.out.println("Untaring %s to dir %s." + inputFile.getAbsolutePath() + outputDir.getAbsolutePath());
 		//LOG.info(String.format("Untaring %s to dir %s.", inputFile.getAbsolutePath(), outputDir.getAbsolutePath()));
 
 	    final List<File> untaredFiles = new LinkedList<File>();
@@ -153,7 +153,7 @@ public class CookbookSiteDownloadStrategy implements
 	 */
 	private File unGzip(final File inputFile) throws FileNotFoundException, IOException {
 		
-		System.out.println("Ungzipping %s to dir %s." + inputFile.getParent() + inputFile.getName().substring(0, inputFile.getName().length() - 3));
+//		System.out.println("Ungzipping %s to dir %s." + inputFile.getParent() + inputFile.getName().substring(0, inputFile.getName().length() - 3));
 	    //LOG.info(String.format("Ungzipping %s to dir %s.", inputFile.getAbsolutePath(), outputDir.getAbsolutePath()));
 
 	    final File outputFile = new File(inputFile.getParent(), inputFile.getName().substring(0, inputFile.getName().length() - 3));

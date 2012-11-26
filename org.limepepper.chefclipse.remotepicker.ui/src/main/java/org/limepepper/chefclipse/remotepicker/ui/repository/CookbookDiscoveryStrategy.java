@@ -128,7 +128,6 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 				Thread.sleep(400);
 				mon.worked(20);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
