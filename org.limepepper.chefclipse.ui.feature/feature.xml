@@ -42,20 +42,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.limepepper.chefclipse.remotepicker.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.limepepper.chefclipse.remotepicker.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.limepepper.chefclipse.navigator"
          download-size="0"
          install-size="0"
@@ -75,6 +61,20 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   	<plugin
+         id="org.limepepper.chefclipse.remotepicker.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+         
+	<plugin
+         id="org.limepepper.chefclipse.remotepicker.repositories"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.limepepper.chefclipse.remotepicker.extpoint"
@@ -82,9 +82,9 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-   <plugin
-         id="org.limepepper.chefclipse.remotepicker.repositories"
+         
+    <plugin
+         id="org.limepepper.chefclipse.remotepicker.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
