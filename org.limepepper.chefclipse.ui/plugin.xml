@@ -20,6 +20,7 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="org.limepepper.chefclipse.ui.perspective.ChefPerspectiveFactory"
+            icon="icons/32x32.png"
             id="org.limepepper.chefclipse.perspective"
             name="Chef">
       </perspective>
