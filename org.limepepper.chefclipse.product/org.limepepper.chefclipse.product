@@ -3,6 +3,13 @@
 
 <product name="Chefclipse Product" uid="org.limepepper.chefclipse.product" id="org.limepepper.chefclipse.app.product" application="org.limepepper.chefclipse.app" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
+   <aboutInfo>
+      <image path="/org.limepepper.chefclipse.app/icons/about_vert.gif"/>
+      <text>
+         chefclipse is a plugin for working with opscode chef repositories and cookbooks
+      </text>
+   </aboutInfo>
+
    <configIni use="default">
    </configIni>
 
@@ -10,17 +17,28 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
-   <windowImages/>
+   <windowImages i16="/org.limepepper.chefclipse.app/icons/16x16.png" i32="/org.limepepper.chefclipse.app/icons/32x32.png" i48="/org.limepepper.chefclipse.app/icons/48x48.png" i64="/org.limepepper.chefclipse.app/icons/64x64.png" i128="/org.limepepper.chefclipse.app/icons/128x128.png"/>
 
-   <launcher>
+   <splash
+      location="org.limepepper.chefclipse.app" />
+   <launcher name="chefclipse">
+      <linux icon="/org.limepepper.chefclipse.app/icons/48x48.xpm"/>
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
 
+
    <vm>
    </vm>
+
+   <license>
+        <url>apache license version 2.0</url>
+        <text>
+   space for license text
+         </text>
+   </license>
 
    <plugins>
    </plugins>
