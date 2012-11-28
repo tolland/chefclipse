@@ -14,3 +14,7 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.remotepicker.api;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.limepepper.chefclipse.ui,
+ org.limepepper.chefclipse.ui.perspective,
+ org.limepepper.chefclipse.ui.preferences,
+ org.limepepper.chefclipse.ui.wizards

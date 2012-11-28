@@ -20,14 +20,14 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="org.limepepper.chefclipse.ui.perspective.ChefPerspectiveFactory"
-            id="org.limepepper.chefclipse.ui.ChefPerspective"
+            id="org.limepepper.chefclipse.perspective"
             name="Chef">
       </perspective>
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
-            targetID="org.limepepper.chefclipse.ui.ChefPerspective">
+            targetID="org.limepepper.chefclipse.perspective">
          <showInPart
                id="org.eclipse.ui.navigator.ProjectExplorer">
          </showInPart>

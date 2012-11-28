@@ -6,25 +6,33 @@ import org.eclipse.ui.IPerspectiveFactory;
 
 public class ChefPerspectiveFactory implements IPerspectiveFactory {
 
-	@Override
-	public void createInitialLayout(IPageLayout layout) {
-		String editorArea = layout.getEditorArea();
-        
-		// Add Project Explorer view
+    public static final  String ID = "org.limepepper.chefclipse.perspective"; //$NON-NLS-1$
+
+    @Override
+    public void createInitialLayout(IPageLayout layout) {
+        String editorArea = layout.getEditorArea();
+
+        // Add Project Explorer view
         IFolderLayout topLeft = layout.createFolder(
-                "topLeft", IPageLayout.LEFT, (float) 0.28, editorArea);		
+                "topLeft", IPageLayout.LEFT, (float) 0.28, editorArea);
         topLeft.addView(IPageLayout.ID_PROJECT_EXPLORER);
-        
-        // Add Outline view
-        IFolderLayout bottomLeft = layout.createFolder(
-                "bottomLeft", IPageLayout.BOTTOM, (float) 0.50, "topLeft");
-        bottomLeft.addView(IPageLayout.ID_OUTLINE);
 
         // Add Properties view
-		IFolderLayout bottomRight = layout.createFolder(
+        IFolderLayout bottomRight = layout.createFolder(
                 "bottomRight", IPageLayout.BOTTOM, (float) 0.65, editorArea);
-		
-		bottomRight.addView(IPageLayout.ID_PROP_SHEET);	
-	}
+
+        bottomRight.addView(IPageLayout.ID_PROP_SHEET);
+
+        // Add Outline view
+        IFolderLayout topRight = layout.createFolder(
+                "topRight", IPageLayout.RIGHT, (float) 0.70, editorArea);
+        topRight.addView(IPageLayout.ID_OUTLINE);
+
+
+
+
+
+
+    }
 
 }
