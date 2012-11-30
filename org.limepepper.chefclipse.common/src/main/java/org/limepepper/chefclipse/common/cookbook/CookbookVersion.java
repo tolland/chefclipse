@@ -84,7 +84,7 @@ public interface CookbookVersion extends NamedDescribedObject {
      * @return the value of the '<em>Templates</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Templates()
      * @see org.limepepper.chefclipse.common.cookbook.Template#getCookbook
-     * @model opposite="cookbook" containment="true" resolveProxies="true"
+     * @model opposite="cookbook" containment="true"
      * @generated
      */
     EList<Template> getTemplates();
@@ -92,7 +92,7 @@ public interface CookbookVersion extends NamedDescribedObject {
     /**
      * Returns the value of the '<em><b>Recipes</b></em>' containment reference list.
      * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Recipe}.
-     * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook <em>Cookbook</em>}'.
+     * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbookVersion <em>Cookbook Version</em>}'.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Recipes</em>' containment reference list isn't clear,
@@ -101,8 +101,8 @@ public interface CookbookVersion extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Recipes</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Recipes()
-     * @see org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook
-     * @model opposite="cookbook" containment="true" resolveProxies="true"
+     * @see org.limepepper.chefclipse.common.cookbook.Recipe#getCookbookVersion
+     * @model opposite="cookbookVersion" containment="true"
      * @generated
      */
     EList<Recipe> getRecipes();
@@ -118,7 +118,7 @@ public interface CookbookVersion extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Definitions</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Definitions()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<Definition> getDefinitions();
@@ -134,7 +134,7 @@ public interface CookbookVersion extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Files</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Files()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<File> getFiles();
@@ -150,7 +150,7 @@ public interface CookbookVersion extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Resources</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Resources()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<Resource> getResources();

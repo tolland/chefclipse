@@ -2,20 +2,12 @@
  */
 package org.limepepper.chefclipse.graphviewer.common;
 
-import java.lang.reflect.InvocationTargetException;
-import java.net.URL;
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
@@ -26,8 +18,6 @@ import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.Resource;
 
 /**
@@ -47,7 +37,7 @@ import org.limepepper.chefclipse.common.cookbook.Resource;
  *
  * @generated
  */
-public class RecipeImpl implements Recipe {
+public class RecipeImpl extends  org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl {
 	/**
 	 * The cached value of the '{@link #getRunlist() <em>Runlist</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -144,7 +134,7 @@ public class RecipeImpl implements Recipe {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Role getRole() {
+	public EList<Role> getRole() {
 		if (role != null && role.eIsProxy()) {
 			InternalEObject oldRole = (InternalEObject)role;
 			role = (Role)eResolveProxy(oldRole);
@@ -153,7 +143,7 @@ public class RecipeImpl implements Recipe {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CookbookPackage.RECIPE__ROLE, oldRole, role));
 			}
 		}
-		return role;
+		return (EList<Role>) role;
 	}
 
 	/**
@@ -374,149 +364,8 @@ public class RecipeImpl implements Recipe {
 		return result.toString();
 	}
 
-    @Override
-    public EClass eClass() {
-        return null;
-    }
 
-    @Override
-    public org.eclipse.emf.ecore.resource.Resource eResource() {
-        return null;
-    }
 
-    @Override
-    public EObject eContainer() {
-        return null;
-    }
 
-    @Override
-    public EStructuralFeature eContainingFeature() {
-        return null;
-    }
-
-    @Override
-    public EReference eContainmentFeature() {
-        return null;
-    }
-
-    @Override
-    public EList<EObject> eContents() {
-        return null;
-    }
-
-    @Override
-    public TreeIterator<EObject> eAllContents() {
-        return null;
-    }
-
-    @Override
-    public boolean eIsProxy() {
-        return false;
-    }
-
-    @Override
-    public EList<EObject> eCrossReferences() {
-        return null;
-    }
-
-    @Override
-    public Object eGet(EStructuralFeature feature) {
-        return null;
-    }
-
-    @Override
-    public Object eGet(EStructuralFeature feature, boolean resolve) {
-        return null;
-    }
-
-    @Override
-    public void eSet(EStructuralFeature feature, Object newValue) {
-    }
-
-    @Override
-    public boolean eIsSet(EStructuralFeature feature) {
-        return false;
-    }
-
-    @Override
-    public void eUnset(EStructuralFeature feature) {
-    }
-
-    @Override
-    public Object eInvoke(EOperation operation, EList<?> arguments)
-            throws InvocationTargetException {
-        return null;
-    }
-
-    @Override
-    public EList<Adapter> eAdapters() {
-        return null;
-    }
-
-    @Override
-    public boolean eDeliver() {
-        return false;
-    }
-
-    @Override
-    public void eSetDeliver(boolean deliver) {
-    }
-
-    @Override
-    public void eNotify(Notification notification) {
-    }
-
-    @Override
-    public String getExtension() {
-        return null;
-    }
-
-    @Override
-    public void setExtension(String value) {
-    }
-
-    @Override
-    public String getChecksum() {
-        return null;
-    }
-
-    @Override
-    public void setChecksum(String value) {
-    }
-
-    @Override
-    public String getPath() {
-        return null;
-    }
-
-    @Override
-    public void setPath(String value) {
-    }
-
-    @Override
-    public String getSpecificity() {
-        return null;
-    }
-
-    @Override
-    public void setSpecificity(String value) {
-    }
-
-    @Override
-    public URL getUrl() {
-        return null;
-    }
-
-    @Override
-    public void setUrl(URL value) {
-    }
-
-    @Override
-    public void setCookbook(CookbookVersion value) {
-    }
-
-    @Override
-    public void setResources(Resource value) {
-    }
 
 } //RecipeImpl

@@ -17,11 +17,11 @@ import org.limepepper.chefclipse.common.chefserver.RunList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbookVersion <em>Cookbook Version</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.Recipe#getResources <em>Resources</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.Recipe#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.Recipe#getRunlist <em>Runlist</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.Recipe#getOldCookbook <em>Old Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook <em>Cookbook</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,32 +31,32 @@ import org.limepepper.chefclipse.common.chefserver.RunList;
  */
 public interface Recipe extends SandboxedObject, RubyFile, ChecksumFile {
     /**
-     * Returns the value of the '<em><b>Cookbook</b></em>' container reference.
+     * Returns the value of the '<em><b>Cookbook Version</b></em>' container reference.
      * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getRecipes <em>Recipes</em>}'.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Cookbook</em>' container reference isn't clear,
+     * If the meaning of the '<em>Cookbook Version</em>' container reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Cookbook</em>' container reference.
-     * @see #setCookbook(CookbookVersion)
-     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_Cookbook()
+     * @return the value of the '<em>Cookbook Version</em>' container reference.
+     * @see #setCookbookVersion(CookbookVersion)
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_CookbookVersion()
      * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getRecipes
      * @model opposite="recipes" required="true" transient="false"
      * @generated
      */
-    CookbookVersion getCookbook();
+    CookbookVersion getCookbookVersion();
 
     /**
-     * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook <em>Cookbook</em>}' container reference.
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbookVersion <em>Cookbook Version</em>}' container reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Cookbook</em>' container reference.
-     * @see #getCookbook()
+     * @param value the new value of the '<em>Cookbook Version</em>' container reference.
+     * @see #getCookbookVersion()
      * @generated
      */
-    void setCookbook(CookbookVersion value);
+    void setCookbookVersion(CookbookVersion value);
 
     /**
      * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
@@ -69,7 +69,7 @@ public interface Recipe extends SandboxedObject, RubyFile, ChecksumFile {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Resources</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_Resources()
-     * @model containment="true" resolveProxies="true" required="true"
+     * @model containment="true" required="true"
      * @generated
      */
     EList<Resource> getResources();
@@ -107,29 +107,19 @@ public interface Recipe extends SandboxedObject, RubyFile, ChecksumFile {
     EList<RunList> getRunlist();
 
     /**
-     * Returns the value of the '<em><b>Old Cookbook</b></em>' reference.
+     * Returns the value of the '<em><b>Cookbook</b></em>' reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Cookbook}.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Old Cookbook</em>' reference isn't clear,
+     * If the meaning of the '<em>Cookbook</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Old Cookbook</em>' reference.
-     * @see #setOldCookbook(Cookbook)
-     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_OldCookbook()
+     * @return the value of the '<em>Cookbook</em>' reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_Cookbook()
      * @model required="true"
      * @generated
      */
-    Cookbook getOldCookbook();
-
-    /**
-     * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getOldCookbook <em>Old Cookbook</em>}' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Old Cookbook</em>' reference.
-     * @see #getOldCookbook()
-     * @generated
-     */
-    void setOldCookbook(Cookbook value);
+    EList<Cookbook> getCookbook();
 
 } // Recipe

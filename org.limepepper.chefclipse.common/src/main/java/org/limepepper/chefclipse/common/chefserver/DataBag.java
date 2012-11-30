@@ -62,7 +62,7 @@ public interface DataBag extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Items</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBag_Items()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<DataBagItem> getItems();

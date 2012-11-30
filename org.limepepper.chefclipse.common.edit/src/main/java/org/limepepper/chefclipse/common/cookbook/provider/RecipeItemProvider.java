@@ -74,7 +74,7 @@ public class RecipeItemProvider
             addUrlPropertyDescriptor(object);
             addRolePropertyDescriptor(object);
             addRunlistPropertyDescriptor(object);
-            addOldCookbookPropertyDescriptor(object);
+            addCookbookPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -256,19 +256,19 @@ public class RecipeItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Old Cookbook feature.
+     * This adds a property descriptor for the Cookbook feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addOldCookbookPropertyDescriptor(Object object) {
+    protected void addCookbookPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_Recipe_oldCookbook_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Recipe_oldCookbook_feature", "_UI_Recipe_type"),
-                 CookbookPackage.Literals.RECIPE__OLD_COOKBOOK,
+                 getString("_UI_Recipe_cookbook_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Recipe_cookbook_feature", "_UI_Recipe_type"),
+                 CookbookPackage.Literals.RECIPE__COOKBOOK,
                  true,
                  false,
                  true,

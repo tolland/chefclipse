@@ -39,7 +39,7 @@ public interface Node extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Run list</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getNode_Run_list()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<RunList> getRun_list();

@@ -332,13 +332,13 @@ public interface CookbookPackage extends EPackage {
     int RECIPE__URL = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Cookbook</b></em>' container reference.
+     * The feature id for the '<em><b>Cookbook Version</b></em>' container reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int RECIPE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+    int RECIPE__COOKBOOK_VERSION = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -368,13 +368,13 @@ public interface CookbookPackage extends EPackage {
     int RECIPE__RUNLIST = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 9;
 
     /**
-     * The feature id for the '<em><b>Old Cookbook</b></em>' reference.
+     * The feature id for the '<em><b>Cookbook</b></em>' reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int RECIPE__OLD_COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 10;
+    int RECIPE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 10;
 
     /**
      * The number of structural features of the '<em>Recipe</em>' class.
@@ -927,15 +927,15 @@ public interface CookbookPackage extends EPackage {
     EClass getRecipe();
 
     /**
-     * Returns the meta object for the container reference '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook <em>Cookbook</em>}'.
+     * Returns the meta object for the container reference '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbookVersion <em>Cookbook Version</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the container reference '<em>Cookbook</em>'.
-     * @see org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook()
+     * @return the meta object for the container reference '<em>Cookbook Version</em>'.
+     * @see org.limepepper.chefclipse.common.cookbook.Recipe#getCookbookVersion()
      * @see #getRecipe()
      * @generated
      */
-    EReference getRecipe_Cookbook();
+    EReference getRecipe_CookbookVersion();
 
     /**
      * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getResources <em>Resources</em>}'.
@@ -971,15 +971,15 @@ public interface CookbookPackage extends EPackage {
     EReference getRecipe_Runlist();
 
     /**
-     * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getOldCookbook <em>Old Cookbook</em>}'.
+     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook <em>Cookbook</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the reference '<em>Old Cookbook</em>'.
-     * @see org.limepepper.chefclipse.common.cookbook.Recipe#getOldCookbook()
+     * @return the meta object for the reference list '<em>Cookbook</em>'.
+     * @see org.limepepper.chefclipse.common.cookbook.Recipe#getCookbook()
      * @see #getRecipe()
      * @generated
      */
-    EReference getRecipe_OldCookbook();
+    EReference getRecipe_Cookbook();
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.Resource <em>Resource</em>}'.
@@ -1267,12 +1267,12 @@ public interface CookbookPackage extends EPackage {
         EClass RECIPE = eINSTANCE.getRecipe();
 
         /**
-         * The meta object literal for the '<em><b>Cookbook</b></em>' container reference feature.
+         * The meta object literal for the '<em><b>Cookbook Version</b></em>' container reference feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        EReference RECIPE__COOKBOOK = eINSTANCE.getRecipe_Cookbook();
+        EReference RECIPE__COOKBOOK_VERSION = eINSTANCE.getRecipe_CookbookVersion();
 
         /**
          * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
@@ -1299,12 +1299,12 @@ public interface CookbookPackage extends EPackage {
         EReference RECIPE__RUNLIST = eINSTANCE.getRecipe_Runlist();
 
         /**
-         * The meta object literal for the '<em><b>Old Cookbook</b></em>' reference feature.
+         * The meta object literal for the '<em><b>Cookbook</b></em>' reference list feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        EReference RECIPE__OLD_COOKBOOK = eINSTANCE.getRecipe_OldCookbook();
+        EReference RECIPE__COOKBOOK = eINSTANCE.getRecipe_Cookbook();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl <em>Resource</em>}' class.

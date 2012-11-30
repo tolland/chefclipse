@@ -48,7 +48,7 @@ public interface Config extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Plugins</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.knife.KnifePackage#getConfig_Plugins()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<Plugin> getPlugins();

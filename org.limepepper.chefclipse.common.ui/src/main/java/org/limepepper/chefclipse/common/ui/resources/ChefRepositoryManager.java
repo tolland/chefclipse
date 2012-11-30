@@ -103,7 +103,7 @@ public class ChefRepositoryManager {
 			if((res instanceof IFolder) && res.getName().equals("recipes")){
 				for(IResource r: ((IFolder)res).members()){
 					Recipe recipe = CookbookFactory.eINSTANCE.createRecipe();
-					recipe.setOldCookbook(cookbook);
+					recipe.getCookbook().add(cookbook);
 					cookbook.getRecipes().add(recipe);
 
 					addMapping(r, recipe);

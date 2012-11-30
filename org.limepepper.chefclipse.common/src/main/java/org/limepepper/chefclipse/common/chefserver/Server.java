@@ -44,7 +44,7 @@ public interface Server extends EObject {
      * @see #isSetCookbooks()
      * @see #unsetCookbooks()
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Cookbooks()
-     * @model containment="true" resolveProxies="true" unsettable="true"
+     * @model containment="true" unsettable="true"
      * @generated
      */
     EList<CookbookVersion> getCookbooks();
@@ -81,7 +81,7 @@ public interface Server extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Roles</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Roles()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<Role> getRoles();
@@ -97,7 +97,7 @@ public interface Server extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Nodes</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Nodes()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<Node> getNodes();
@@ -115,7 +115,7 @@ public interface Server extends EObject {
      * @return the value of the '<em>Databags</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Databags()
      * @see org.limepepper.chefclipse.common.chefserver.DataBag#getServer
-     * @model opposite="server" containment="true" resolveProxies="true"
+     * @model opposite="server" containment="true"
      * @generated
      */
     EList<DataBag> getDatabags();
@@ -131,7 +131,7 @@ public interface Server extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Environments</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Environments()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<Environment> getEnvironments();

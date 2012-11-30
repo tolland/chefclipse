@@ -107,7 +107,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
           eType="#//cookbook/Template" containment="true" eOpposite="#//cookbook/Template/cookbook"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="recipes" upperBound="-1"
-          eType="#//cookbook/Recipe" containment="true" eOpposite="#//cookbook/Recipe/cookbook"/>
+          eType="#//cookbook/Recipe" containment="true" eOpposite="#//cookbook/Recipe/cookbookVersion"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="definitions" upperBound="-1"
           eType="#//cookbook/Definition" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="files" upperBound="-1"
@@ -119,7 +119,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//SandboxedObject #//NamedDescribedObject"/>
     <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//NamedObject"/>
     <eClassifiers xsi:type="ecore:EClass" name="Recipe" eSuperTypes="#//SandboxedObject #//RubyFile #//ChecksumFile">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="cookbook" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cookbookVersion" lowerBound="1"
           eType="#//cookbook/CookbookVersion" eOpposite="#//cookbook/CookbookVersion/recipes"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="resources" lowerBound="1"
           upperBound="-1" eType="#//cookbook/Resource" containment="true"/>
@@ -127,8 +127,8 @@
           eType="#//chefserver/Role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="runlist" upperBound="-1"
           eType="#//chefserver/RunList"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="oldCookbook" lowerBound="1"
-          eType="#//cookbook/Cookbook"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cookbook" lowerBound="1"
+          upperBound="-1" eType="#//cookbook/Cookbook"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//RubyFile #//SandboxedObject #//ChecksumFile">
       <eStructuralFeatures xsi:type="ecore:EReference" name="recipe" lowerBound="1"

@@ -61,7 +61,7 @@ public interface CookbookListResp extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Versions</em>' containment reference list.
      * @see org.limepepper.chefclipse.REST.RESTPackage#getCookbookListResp_Versions()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true"
      * @generated
      */
     EList<CookbookListVersionResp> getVersions();

@@ -32,11 +32,11 @@ import org.limepepper.chefclipse.impl.SandboxedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getSpecificity <em>Specificity</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getUrl <em>Url</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getCookbookVersion <em>Cookbook Version</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getRunlist <em>Runlist</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getOldCookbook <em>Old Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getCookbook <em>Cookbook</em>}</li>
  * </ul>
  * </p>
  *
@@ -175,8 +175,8 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    public CookbookVersion getCookbook() {
-        return (CookbookVersion)eGet(CookbookPackage.Literals.RECIPE__COOKBOOK, true);
+    public CookbookVersion getCookbookVersion() {
+        return (CookbookVersion)eGet(CookbookPackage.Literals.RECIPE__COOKBOOK_VERSION, true);
     }
 
     /**
@@ -184,8 +184,8 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setCookbook(CookbookVersion newCookbook) {
-        eSet(CookbookPackage.Literals.RECIPE__COOKBOOK, newCookbook);
+    public void setCookbookVersion(CookbookVersion newCookbookVersion) {
+        eSet(CookbookPackage.Literals.RECIPE__COOKBOOK_VERSION, newCookbookVersion);
     }
 
     /**
@@ -223,17 +223,9 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    public Cookbook getOldCookbook() {
-        return (Cookbook)eGet(CookbookPackage.Literals.RECIPE__OLD_COOKBOOK, true);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void setOldCookbook(Cookbook newOldCookbook) {
-        eSet(CookbookPackage.Literals.RECIPE__OLD_COOKBOOK, newOldCookbook);
+    @SuppressWarnings("unchecked")
+    public EList<Cookbook> getCookbook() {
+        return (EList<Cookbook>)eGet(CookbookPackage.Literals.RECIPE__COOKBOOK, true);
     }
 
     /**

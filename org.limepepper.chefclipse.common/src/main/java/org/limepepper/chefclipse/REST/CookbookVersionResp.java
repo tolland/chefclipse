@@ -412,7 +412,7 @@ public interface CookbookVersionResp extends EObject {
      * @return the value of the '<em>Metadata</em>' containment reference.
      * @see #setMetadata(CookbookMetadata)
      * @see org.limepepper.chefclipse.REST.RESTPackage#getCookbookVersionResp_Metadata()
-     * @model containment="true" resolveProxies="true" required="true"
+     * @model containment="true" required="true"
      * @generated
      */
     CookbookMetadata getMetadata();
