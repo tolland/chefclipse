@@ -32,15 +32,15 @@ import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 /**
- * 
+ *
  * this script maps some calls between the opscode mixlib-authentication lib
  * structure and the java requirements
- * 
+ *
  * provides a mapping to the calls handled by ruby rest libs
- * 
+ *
  * @author tomhodder
- * 
- * 
+ *
+ *
  */
 
 public class JSONRestWrapper {
@@ -63,7 +63,7 @@ public class JSONRestWrapper {
         Client client = Client.create(cc);
         client.addFilter(new LoggingFilter(System.out));
         service = client.resource(url.toString());
-        
+
         default_headers.put("X-CHEF-VERSION", "10.8.0");
 
     }
@@ -78,7 +78,7 @@ public class JSONRestWrapper {
      *            into the querystring
      * @return
      * @throws MalformedURLException
-     * 
+     *
      */
     public JSONObject rest_get(String path, Map<String, List<String>> params)
             throws MalformedURLException {

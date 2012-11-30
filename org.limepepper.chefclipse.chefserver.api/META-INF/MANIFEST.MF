@@ -23,15 +23,7 @@ Require-Bundle: org.junit4;bundle-version="4.8.1",
  com.ibm.icu;bundle-version="4.4.2"
 Export-Package: org.limepepper.chefclipse.chefserver.api,
  org.limepepper.chefclipse.chefserver.api.tests
-Bundle-Classpath: jettison-1.3.2.jar,
- jersey-client-1.14.jar,
- jersey-core-1.14.jar,
- jersey-json-1.14.jar,
- bcprov-jdk16-1.46.jar,
- slf4j-api-1.7.2.jar,
- slf4j-log4j12-1.7.2.jar,
- log4j-1.2.17.jar,
- jackson-core-asl-1.9.2.jar,
- jackson-jaxrs-1.9.2.jar,
- jackson-mapper-asl-1.8.5.jar,
- jackson-xc-1.9.2.jar
+Bundle-Classpath: lib/jersey-client.jar,
+ lib/jersey-core.jar,
+ lib/jersey-json.jar,
+ lib/jettison.jar
