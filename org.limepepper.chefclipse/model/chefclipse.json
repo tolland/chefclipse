@@ -1,0 +1,1035 @@
+{
+  "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+  "name" : "chefclipse",
+  "nsURI" : "http://limepepper.org/chefclipse/1.0.0/",
+  "nsPrefix" : "org.limepepper.chefclipse",
+  "eClassifiers" : [ {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "NamedDescribedObject",
+    "abstract" : true,
+    "interface" : true,
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "name",
+      "lowerBound" : 1,
+      "defaultValueLiteral" : "",
+      "iD" : true,
+      "eType" : {
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+      }
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "description",
+      "eType" : {
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "VersionedObject",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "NUM_VERSIONS",
+      "lowerBound" : 1,
+      "changeable" : false,
+      "defaultValueLiteral" : "3",
+      "eType" : {
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "SandboxedObject"
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "RubyFile",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "extension",
+      "defaultValueLiteral" : "rb",
+      "eType" : {
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "NamedObject",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "name",
+      "lowerBound" : 1,
+      "iD" : true,
+      "eType" : {
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+    "name" : "DescribedObject",
+    "eStructuralFeatures" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+      "name" : "description",
+      "eType" : {
+        "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+      }
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+    "name" : "URL"
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType",
+    "name" : "File"
+  } ],
+  "eSubpackages" : [ {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+    "name" : "chefserver",
+    "nsURI" : "http://limepepper.org/chefclipse/0.0.1/chefserver",
+    "nsPrefix" : "org.limepepper.chefclipse.chefserver",
+    "eClassifiers" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Environment"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "DataBag",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "server",
+        "eType" : {
+          "$ref" : "//chefserver/Server",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        },
+        "eOpposite" : {
+          "$ref" : "//chefserver/Server/databags",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "items",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//chefserver/DataBagItem",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Role",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Node",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "run_list",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//chefserver/RunList",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "environment",
+        "eType" : {
+          "$ref" : "//chefserver/Environment",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "server",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//chefserver/Server",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "client",
+        "eType" : {
+          "$ref" : "//chefclient/Client",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "attributes",
+        "eType" : {
+          "$ref" : "//cookbook/Attribute",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Server",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "cookbooks",
+        "upperBound" : -1,
+        "unsettable" : true,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//cookbook/CookbookVersion",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "roles",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//chefserver/Role",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "nodes",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//chefserver/Node",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "databags",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//chefserver/DataBag",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        },
+        "eOpposite" : {
+          "$ref" : "//chefserver/DataBag/server",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "environments",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//chefserver/Environment",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "clients",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//chefclient/Client",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "webuiport",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EInt",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "sandboxes",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//chefserver/Sandbox",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Platform"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "RunList",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "node",
+        "eType" : {
+          "$ref" : "//chefserver/Node",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "environment",
+        "eType" : {
+          "$ref" : "//chefserver/Environment",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "role",
+        "eType" : {
+          "$ref" : "//chefserver/Role",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "recipes",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//cookbook/Recipe",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Config"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "DataBagItem",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "dataBag",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//chefserver/DataBag",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Sandbox",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "checksum",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "url",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//URL",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      } ]
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+    "name" : "chefclient",
+    "nsURI" : "http://limepepper.org/chefclipse/1.0.0/chefclient",
+    "nsPrefix" : "org.limepepper.chefclipse",
+    "eClassifiers" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Client",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "server",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//chefserver/Server",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Ohai"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Search"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+    "name" : "cookbook",
+    "nsURI" : "http://limepepper.org/chefclipse/1.0.0/cookbook",
+    "nsPrefix" : "org.limepepper.chefclipse",
+    "eClassifiers" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookVersion",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "depends",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//cookbook/CookbookVersion",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "environment",
+        "eType" : {
+          "$ref" : "//chefserver/Environment",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "templates",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//cookbook/Template",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        },
+        "eOpposite" : {
+          "$ref" : "//cookbook/Template/cookbook",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "recipes",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//cookbook/Recipe",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        },
+        "eOpposite" : {
+          "$ref" : "//cookbook/Recipe/cookbook",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "definitions",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//cookbook/Definition",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Definition",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//SandboxedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Library",
+      "eSuperTypes" : [ {
+        "$ref" : "//SandboxedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Attribute",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Recipe",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//SandboxedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//RubyFile",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "cookbook",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//cookbook/CookbookVersion",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        },
+        "eOpposite" : {
+          "$ref" : "//cookbook/CookbookVersion/recipes",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Resource",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "recipe",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//cookbook/Recipe",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnum",
+      "name" : "supports",
+      "eLiterals" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral",
+        "name" : "Centos"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral",
+        "name" : "Windows"
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral",
+        "name" : "debian"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Template",
+      "eSuperTypes" : [ {
+        "$ref" : "//SandboxedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//cookbook/Resource",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "cookbook",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//cookbook/CookbookVersion",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        },
+        "eOpposite" : {
+          "$ref" : "//cookbook/CookbookVersion/templates",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Attributes",
+      "eSuperTypes" : [ {
+        "$ref" : "//chefserver/Node",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//SandboxedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "File",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//cookbook/Resource",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      }, {
+        "$ref" : "//SandboxedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ]
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+    "name" : "workstation",
+    "nsURI" : "http://limepepper.org/chefclipse/1.0.0/workstation",
+    "nsPrefix" : "org.limepepepper.chefclipse",
+    "eClassifiers" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Repository",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "OS",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "basepath",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "cookbooks",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//cookbook/CookbookVersion",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "knife",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//knife/Config",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "ConfigFolder"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CertificatesFolder"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "DataBagsFolder"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "EnvironmentsFolder",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "RolesFolder"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Rakefile"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+    "name" : "knife",
+    "nsURI" : "http://limepepper.org/chefclipse/1.0.0/knife",
+    "nsPrefix" : "org.limepepper.chefclipse",
+    "eClassifiers" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Config",
+      "eSuperTypes" : [ {
+        "$ref" : "//NamedDescribedObject",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ],
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "plugins",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//knife/Plugin",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "node_name",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "client_key",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//File",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "chef_server_url",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//URL",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "cache_type",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "cache_option",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "validation_client_name",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "validation_key",
+        "eType" : {
+          "$ref" : "//File",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "cookbook_path",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//File",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "cookbook_copyright",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "cookbook_email",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "cookbook_license",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "path",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "//File",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "Plugin"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "KnifeSearch"
+    } ]
+  }, {
+    "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EPackage",
+    "name" : "REST",
+    "nsURI" : "http://limepepper.org/chefclipse/0.0.1/REST",
+    "nsPrefix" : "org.limepepepper.chefclipse",
+    "eClassifiers" : [ {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookListResp",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "name",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "versions",
+        "upperBound" : -1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//REST/CookbookListVersionResp",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "url",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookVersionResp",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "maintainer",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "category",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "updatedAt",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EDate",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "createdAt",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EDate",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "latestVersion",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "externalUrl",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "deprecated",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EBoolean",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "replacement",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "definitions",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//REST/CookbookDefinition",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "files",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//REST/CookbookFile",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "attributes",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "//REST/CookbookAttributes",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "cookbookName",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "version",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "JsonClass",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "ChefType",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EReference",
+        "name" : "metadata",
+        "lowerBound" : 1,
+        "containment" : true,
+        "eType" : {
+          "$ref" : "//REST/CookbookMetadata",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "name",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "description",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookMetadata",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "maintainer",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "platforms",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "version",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "dependencies",
+        "upperBound" : -1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookDefinition"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookFile"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookLibrary"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookTemplate"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookRootFile"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookRecipe",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "path",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookResource"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookProviders"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookAttributes"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookMaintainer"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "RoleResp"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "RoleListResp"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookListVersionResp",
+      "eStructuralFeatures" : [ {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "url",
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      }, {
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EAttribute",
+        "name" : "version",
+        "lowerBound" : 1,
+        "eType" : {
+          "$ref" : "http://www.eclipse.org/emf/2002/Ecore#//EString",
+          "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EDataType"
+        }
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "NodeResp"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "NodeListResp"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "SearchResultResp"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "SearchIndexResp"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "CookbookMetadataDependency"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "EnvironmentResp",
+      "eSuperTypes" : [ {
+        "$ref" : "//REST/JSONObjectResp",
+        "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass"
+      } ]
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "JSONObjectResp"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "ClientResp"
+    }, {
+      "eClass" : "http://www.eclipse.org/emf/2002/Ecore#//EClass",
+      "name" : "ClientListResp"
+    } ]
+  } ]
+}
