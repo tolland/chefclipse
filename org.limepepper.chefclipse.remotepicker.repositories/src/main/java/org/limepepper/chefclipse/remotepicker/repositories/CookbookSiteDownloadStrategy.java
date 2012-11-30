@@ -127,6 +127,11 @@ public class CookbookSiteDownloadStrategy implements
 	            }
 	        } else {
 	            //LOG.info(String.format("Creating output file %s.", outputFile.getAbsolutePath()));
+	        	if (!outputFile.getParentFile().exists()){
+	        		if (!outputFile.getParentFile().mkdirs()) {
+	                    throw new IllegalStateException(String.format("Couldn't create directory %s.", outputFile.getAbsolutePath()));
+	                }
+	        	}
 	            final OutputStream outputFileStream = new FileOutputStream(outputFile); 
 	            IOUtils.copy(debInputStream, outputFileStream);
 	            outputFileStream.close();
