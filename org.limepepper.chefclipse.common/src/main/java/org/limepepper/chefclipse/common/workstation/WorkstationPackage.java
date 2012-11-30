@@ -6,11 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-import org.limepepper.chefclipse.common.knife.KnifePackage;
+import org.limepepper.chefclipse.ChefclipsePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,428 +23,502 @@ import org.limepepper.chefclipse.common.knife.KnifePackage;
  * @model kind="package"
  * @generated
  */
-public class WorkstationPackage extends EPackageImpl {
-	/**
-	 * The package name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String eNAME = "workstation";
+public interface WorkstationPackage extends EPackage {
+    /**
+     * The package name.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String eNAME = "workstation";
 
-	/**
-	 * The package namespace URI.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String eNS_URI = "http://limepepper.org/chefclipse/workstation";
+    /**
+     * The package namespace URI.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String eNS_URI = "http://limepepper.org/chefclipse/1.0.0/workstation";
 
-	/**
-	 * The package namespace name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String eNS_PREFIX = "org.limepepepper.chefclipse";
+    /**
+     * The package namespace name.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String eNS_PREFIX = "org.limepepepper.chefclipse";
 
-	/**
-	 * The singleton instance of the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final WorkstationPackage eINSTANCE = org.limepepper.chefclipse.common.workstation.WorkstationPackage.init();
+    /**
+     * The singleton instance of the package.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    WorkstationPackage eINSTANCE = org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl.init();
 
-	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.Repository <em>Repository</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.workstation.Repository
-	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository()
-	 * @generated
-	 */
-	public static final int REPOSITORY = 0;
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl <em>Repository</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl
+     * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getRepository()
+     * @generated
+     */
+    int REPOSITORY = 0;
 
-	/**
-	 * The feature id for the '<em><b>Cookbooks</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REPOSITORY__COOKBOOKS = 0;
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
 
-	/**
-	 * The feature id for the '<em><b>Configuration</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REPOSITORY__CONFIGURATION = 1;
+    /**
+     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
 
-	/**
-	 * The feature id for the '<em><b>OS</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REPOSITORY__OS = 2;
+    /**
+     * The feature id for the '<em><b>OS</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__OS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
-	/**
-	 * The feature id for the '<em><b>Basepath</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REPOSITORY__BASEPATH = 3;
+    /**
+     * The feature id for the '<em><b>Basepath</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__BASEPATH = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
-	/**
-	 * The number of structural features of the '<em>Repository</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REPOSITORY_FEATURE_COUNT = 4;
+    /**
+     * The feature id for the '<em><b>Cookbooks</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__COOKBOOKS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
-	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.Config <em>Config</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.workstation.Config
-	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getConfig()
-	 * @generated
-	 */
-	public static final int CONFIG = 1;
+    /**
+     * The feature id for the '<em><b>Knife</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__KNIFE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
 
-	/**
-	 * The number of structural features of the '<em>Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CONFIG_FEATURE_COUNT = 0;
+    /**
+     * The feature id for the '<em><b>Old Cookbooks</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__OLD_COOKBOOKS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass repositoryEClass = null;
+    /**
+     * The number of structural features of the '<em>Repository</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass configEClass = null;
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl <em>Config Folder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl
+     * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getConfigFolder()
+     * @generated
+     */
+    int CONFIG_FOLDER = 1;
 
-	/**
-	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#eNS_URI
-	 * @see #init()
-	 * @generated
-	 */
-	private WorkstationPackage() {
-		super(eNS_URI, WorkstationFactory.eINSTANCE);
-	}
+    /**
+     * The number of structural features of the '<em>Config Folder</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CONFIG_FOLDER_FEATURE_COUNT = 0;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private static boolean isInited = false;
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.CertificatesFolderImpl <em>Certificates Folder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.workstation.impl.CertificatesFolderImpl
+     * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getCertificatesFolder()
+     * @generated
+     */
+    int CERTIFICATES_FOLDER = 2;
 
-	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
-	 * <p>This method is used to initialize {@link WorkstationPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #eNS_URI
-	 * @see #createPackageContents()
-	 * @see #initializePackageContents()
-	 * @generated
-	 */
-	public static WorkstationPackage init() {
-		if (isInited) return (WorkstationPackage)EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI);
+    /**
+     * The number of structural features of the '<em>Certificates Folder</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CERTIFICATES_FOLDER_FEATURE_COUNT = 0;
 
-		// Obtain or create and register package
-		WorkstationPackage theWorkstationPackage = (WorkstationPackage)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof WorkstationPackage ? EPackage.Registry.INSTANCE.get(eNS_URI) : new WorkstationPackage());
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.DataBagsFolderImpl <em>Data Bags Folder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.workstation.impl.DataBagsFolderImpl
+     * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getDataBagsFolder()
+     * @generated
+     */
+    int DATA_BAGS_FOLDER = 3;
 
-		isInited = true;
+    /**
+     * The number of structural features of the '<em>Data Bags Folder</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DATA_BAGS_FOLDER_FEATURE_COUNT = 0;
 
-		// Obtain or create and register interdependencies
-		ChefclientPackage theChefclientPackage = (ChefclientPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
-		ChefserverPackage theChefserverPackage = (ChefserverPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) : ChefserverPackage.eINSTANCE);
-		CookbookPackage theCookbookPackage = (CookbookPackage)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackage ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
-		KnifePackage theKnifePackage = (KnifePackage)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackage ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.EnvironmentsFolderImpl <em>Environments Folder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.workstation.impl.EnvironmentsFolderImpl
+     * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getEnvironmentsFolder()
+     * @generated
+     */
+    int ENVIRONMENTS_FOLDER = 4;
 
-		// Create package meta-data objects
-		theWorkstationPackage.createPackageContents();
-		theChefclientPackage.createPackageContents();
-		theChefserverPackage.createPackageContents();
-		theCookbookPackage.createPackageContents();
-		theKnifePackage.createPackageContents();
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ENVIRONMENTS_FOLDER__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
 
-		// Initialize created meta-data
-		theWorkstationPackage.initializePackageContents();
-		theChefclientPackage.initializePackageContents();
-		theChefserverPackage.initializePackageContents();
-		theCookbookPackage.initializePackageContents();
-		theKnifePackage.initializePackageContents();
+    /**
+     * The number of structural features of the '<em>Environments Folder</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ENVIRONMENTS_FOLDER_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 0;
 
-		// Mark meta-data to indicate it can't be changed
-		theWorkstationPackage.freeze();
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.RolesFolderImpl <em>Roles Folder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.workstation.impl.RolesFolderImpl
+     * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getRolesFolder()
+     * @generated
+     */
+    int ROLES_FOLDER = 5;
 
-  
-		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(WorkstationPackage.eNS_URI, theWorkstationPackage);
-		return theWorkstationPackage;
-	}
+    /**
+     * The number of structural features of the '<em>Roles Folder</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ROLES_FOLDER_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.RakefileImpl <em>Rakefile</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.workstation.impl.RakefileImpl
+     * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getRakefile()
+     * @generated
+     */
+    int RAKEFILE = 6;
+
+    /**
+     * The number of structural features of the '<em>Rakefile</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RAKEFILE_FEATURE_COUNT = 0;
 
 
-	/**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.Repository <em>Repository</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Repository</em>'.
-	 * @see org.limepepper.chefclipse.common.workstation.Repository
-	 * @generated
-	 */
-	public EClass getRepository() {
-		return repositoryEClass;
-	}
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.Repository <em>Repository</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Repository</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.Repository
+     * @generated
+     */
+    EClass getRepository();
 
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbooks <em>Cookbooks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Cookbooks</em>'.
-	 * @see org.limepepper.chefclipse.common.workstation.Repository#getCookbooks()
-	 * @see #getRepository()
-	 * @generated
-	 */
-	public EReference getRepository_Cookbooks() {
-		return (EReference)repositoryEClass.getEStructuralFeatures().get(0);
-	}
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.workstation.Repository#getOS <em>OS</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>OS</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.Repository#getOS()
+     * @see #getRepository()
+     * @generated
+     */
+    EAttribute getRepository_OS();
 
-	/**
-	 * Returns the meta object for the containment reference '{@link org.limepepper.chefclipse.common.workstation.Repository#getConfiguration <em>Configuration</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Configuration</em>'.
-	 * @see org.limepepper.chefclipse.common.workstation.Repository#getConfiguration()
-	 * @see #getRepository()
-	 * @generated
-	 */
-	public EReference getRepository_Configuration() {
-		return (EReference)repositoryEClass.getEStructuralFeatures().get(1);
-	}
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.workstation.Repository#getBasepath <em>Basepath</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Basepath</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.Repository#getBasepath()
+     * @see #getRepository()
+     * @generated
+     */
+    EAttribute getRepository_Basepath();
 
-	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.workstation.Repository#getOS <em>OS</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>OS</em>'.
-	 * @see org.limepepper.chefclipse.common.workstation.Repository#getOS()
-	 * @see #getRepository()
-	 * @generated
-	 */
-	public EAttribute getRepository_OS() {
-		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(2);
-	}
+    /**
+     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbooks <em>Cookbooks</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Cookbooks</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.Repository#getCookbooks()
+     * @see #getRepository()
+     * @generated
+     */
+    EReference getRepository_Cookbooks();
 
-	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.workstation.Repository#getBasepath <em>Basepath</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Basepath</em>'.
-	 * @see org.limepepper.chefclipse.common.workstation.Repository#getBasepath()
-	 * @see #getRepository()
-	 * @generated
-	 */
-	public EAttribute getRepository_Basepath() {
-		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(3);
-	}
+    /**
+     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getKnife <em>Knife</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Knife</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.Repository#getKnife()
+     * @see #getRepository()
+     * @generated
+     */
+    EReference getRepository_Knife();
 
-	/**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.Config <em>Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Config</em>'.
-	 * @see org.limepepper.chefclipse.common.workstation.Config
-	 * @generated
-	 */
-	public EClass getConfig() {
-		return configEClass;
-	}
+    /**
+     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getOldCookbooks <em>Old Cookbooks</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Old Cookbooks</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.Repository#getOldCookbooks()
+     * @see #getRepository()
+     * @generated
+     */
+    EReference getRepository_OldCookbooks();
 
-	/**
-	 * Returns the factory that creates the instances of the model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the factory that creates the instances of the model.
-	 * @generated
-	 */
-	public WorkstationFactory getWorkstationFactory() {
-		return (WorkstationFactory)getEFactoryInstance();
-	}
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.ConfigFolder <em>Config Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Config Folder</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.ConfigFolder
+     * @generated
+     */
+    EClass getConfigFolder();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private boolean isCreated = false;
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.CertificatesFolder <em>Certificates Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Certificates Folder</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.CertificatesFolder
+     * @generated
+     */
+    EClass getCertificatesFolder();
 
-	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void createPackageContents() {
-		if (isCreated) return;
-		isCreated = true;
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.DataBagsFolder <em>Data Bags Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Data Bags Folder</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.DataBagsFolder
+     * @generated
+     */
+    EClass getDataBagsFolder();
 
-		// Create classes and their features
-		repositoryEClass = createEClass(REPOSITORY);
-		createEReference(repositoryEClass, REPOSITORY__COOKBOOKS);
-		createEReference(repositoryEClass, REPOSITORY__CONFIGURATION);
-		createEAttribute(repositoryEClass, REPOSITORY__OS);
-		createEAttribute(repositoryEClass, REPOSITORY__BASEPATH);
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.EnvironmentsFolder <em>Environments Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Environments Folder</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.EnvironmentsFolder
+     * @generated
+     */
+    EClass getEnvironmentsFolder();
 
-		configEClass = createEClass(CONFIG);
-	}
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.RolesFolder <em>Roles Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Roles Folder</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.RolesFolder
+     * @generated
+     */
+    EClass getRolesFolder();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private boolean isInitialized = false;
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.Rakefile <em>Rakefile</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Rakefile</em>'.
+     * @see org.limepepper.chefclipse.common.workstation.Rakefile
+     * @generated
+     */
+    EClass getRakefile();
 
-	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void initializePackageContents() {
-		if (isInitialized) return;
-		isInitialized = true;
+    /**
+     * Returns the factory that creates the instances of the model.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the factory that creates the instances of the model.
+     * @generated
+     */
+    WorkstationFactory getWorkstationFactory();
 
-		// Initialize package
-		setName(eNAME);
-		setNsPrefix(eNS_PREFIX);
-		setNsURI(eNS_URI);
+    /**
+     * <!-- begin-user-doc -->
+     * Defines literals for the meta objects that represent
+     * <ul>
+     *   <li>each class,</li>
+     *   <li>each feature of each class,</li>
+     *   <li>each enum,</li>
+     *   <li>and each data type</li>
+     * </ul>
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    interface Literals {
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl <em>Repository</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl
+         * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getRepository()
+         * @generated
+         */
+        EClass REPOSITORY = eINSTANCE.getRepository();
 
-		// Obtain other dependent packages
-		CookbookPackage theCookbookPackage = (CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI);
+        /**
+         * The meta object literal for the '<em><b>OS</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute REPOSITORY__OS = eINSTANCE.getRepository_OS();
 
-		// Create type parameters
+        /**
+         * The meta object literal for the '<em><b>Basepath</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute REPOSITORY__BASEPATH = eINSTANCE.getRepository_Basepath();
 
-		// Set bounds for type parameters
+        /**
+         * The meta object literal for the '<em><b>Cookbooks</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference REPOSITORY__COOKBOOKS = eINSTANCE.getRepository_Cookbooks();
 
-		// Add supertypes to classes
+        /**
+         * The meta object literal for the '<em><b>Knife</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference REPOSITORY__KNIFE = eINSTANCE.getRepository_Knife();
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRepository_Cookbooks(), theCookbookPackage.getCookbook(), null, "cookbooks", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, !IS_ORDERED);
-		initEReference(getRepository_Configuration(), this.getConfig(), null, "configuration", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRepository_OS(), ecorePackage.getEString(), "OS", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRepository_Basepath(), ecorePackage.getEString(), "basepath", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        /**
+         * The meta object literal for the '<em><b>Old Cookbooks</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference REPOSITORY__OLD_COOKBOOKS = eINSTANCE.getRepository_OldCookbooks();
 
-		initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl <em>Config Folder</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl
+         * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getConfigFolder()
+         * @generated
+         */
+        EClass CONFIG_FOLDER = eINSTANCE.getConfigFolder();
 
-		// Create resource
-		createResource(eNS_URI);
-	}
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.CertificatesFolderImpl <em>Certificates Folder</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.workstation.impl.CertificatesFolderImpl
+         * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getCertificatesFolder()
+         * @generated
+         */
+        EClass CERTIFICATES_FOLDER = eINSTANCE.getCertificatesFolder();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * Defines literals for the meta objects that represent
-	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
-	 * </ul>
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public interface Literals {
-		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.Repository <em>Repository</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.workstation.Repository
-		 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository()
-		 * @generated
-		 */
-		public static final EClass REPOSITORY = eINSTANCE.getRepository();
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.DataBagsFolderImpl <em>Data Bags Folder</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.workstation.impl.DataBagsFolderImpl
+         * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getDataBagsFolder()
+         * @generated
+         */
+        EClass DATA_BAGS_FOLDER = eINSTANCE.getDataBagsFolder();
 
-		/**
-		 * The meta object literal for the '<em><b>Cookbooks</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EReference REPOSITORY__COOKBOOKS = eINSTANCE.getRepository_Cookbooks();
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.EnvironmentsFolderImpl <em>Environments Folder</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.workstation.impl.EnvironmentsFolderImpl
+         * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getEnvironmentsFolder()
+         * @generated
+         */
+        EClass ENVIRONMENTS_FOLDER = eINSTANCE.getEnvironmentsFolder();
 
-		/**
-		 * The meta object literal for the '<em><b>Configuration</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EReference REPOSITORY__CONFIGURATION = eINSTANCE.getRepository_Configuration();
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.RolesFolderImpl <em>Roles Folder</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.workstation.impl.RolesFolderImpl
+         * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getRolesFolder()
+         * @generated
+         */
+        EClass ROLES_FOLDER = eINSTANCE.getRolesFolder();
 
-		/**
-		 * The meta object literal for the '<em><b>OS</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute REPOSITORY__OS = eINSTANCE.getRepository_OS();
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.RakefileImpl <em>Rakefile</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.workstation.impl.RakefileImpl
+         * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getRakefile()
+         * @generated
+         */
+        EClass RAKEFILE = eINSTANCE.getRakefile();
 
-		/**
-		 * The meta object literal for the '<em><b>Basepath</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EAttribute REPOSITORY__BASEPATH = eINSTANCE.getRepository_Basepath();
-
-		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.Config <em>Config</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.workstation.Config
-		 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getConfig()
-		 * @generated
-		 */
-		public static final EClass CONFIG = eINSTANCE.getConfig();
-
-	}
+    }
 
 } //WorkstationPackage

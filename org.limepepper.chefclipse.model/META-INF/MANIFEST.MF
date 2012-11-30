@@ -8,8 +8,10 @@ Bundle-Activator: org.limepepper.chefclipse.model.presentation.ModelEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.limepepper.chefclipse.model.presentation,
- org.limepepper.chefclipse.model.provider
+Export-Package: org.limepepper.chefclipse.model,
+ org.limepepper.chefclipse.model.presentation,
+ org.limepepper.chefclipse.model.provider,
+ org.limepepper.chefclipse.model.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.limepepper.chefclipse.model;visibility:=reexport,

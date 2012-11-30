@@ -5,6 +5,8 @@ package org.limepepper.chefclipse.common.knife.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.common.knife.*;
 import org.limepepper.chefclipse.common.knife.Config;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
@@ -24,130 +26,146 @@ import org.limepepper.chefclipse.common.knife.Plugin;
  * @generated
  */
 public class KnifeSwitch<T> extends Switch<T> {
-	/**
-	 * The cached model package
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static KnifePackage modelPackage;
+    /**
+     * The cached model package
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected static KnifePackage modelPackage;
 
-	/**
-	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public KnifeSwitch() {
-		if (modelPackage == null) {
-			modelPackage = KnifePackage.eINSTANCE;
-		}
-	}
+    /**
+     * Creates an instance of the switch.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public KnifeSwitch() {
+        if (modelPackage == null) {
+            modelPackage = KnifePackage.eINSTANCE;
+        }
+    }
 
-	/**
-	 * Checks whether this is a switch for the given package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
-	 * @return whether this is a switch for the given package.
-	 * @generated
-	 */
-	@Override
-	protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
-	}
+    /**
+     * Checks whether this is a switch for the given package.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @parameter ePackage the package in question.
+     * @return whether this is a switch for the given package.
+     * @generated
+     */
+    @Override
+    protected boolean isSwitchFor(EPackage ePackage) {
+        return ePackage == modelPackage;
+    }
 
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	@Override
-	protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID) {
-			case KnifePackage.CONFIG: {
-				Config config = (Config)theEObject;
-				T result = caseConfig(config);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case KnifePackage.PLUGIN: {
-				Plugin plugin = (Plugin)theEObject;
-				T result = casePlugin(plugin);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case KnifePackage.KNIFE_SEARCH: {
-				KnifeSearch knifeSearch = (KnifeSearch)theEObject;
-				T result = caseKnifeSearch(knifeSearch);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
-		}
-	}
+    /**
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the first non-null result returned by a <code>caseXXX</code> call.
+     * @generated
+     */
+    @Override
+    protected T doSwitch(int classifierID, EObject theEObject) {
+        switch (classifierID) {
+            case KnifePackage.CONFIG: {
+                Config config = (Config)theEObject;
+                T result = caseConfig(config);
+                if (result == null) result = caseNamedDescribedObject(config);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case KnifePackage.PLUGIN: {
+                Plugin plugin = (Plugin)theEObject;
+                T result = casePlugin(plugin);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case KnifePackage.KNIFE_SEARCH: {
+                KnifeSearch knifeSearch = (KnifeSearch)theEObject;
+                T result = caseKnifeSearch(knifeSearch);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            default: return defaultCase(theEObject);
+        }
+    }
 
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Config</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Config</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseConfig(Config object) {
-		return null;
-	}
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Config</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Config</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseConfig(Config object) {
+        return null;
+    }
 
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Plugin</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Plugin</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePlugin(Plugin object) {
-		return null;
-	}
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Plugin</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Plugin</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T casePlugin(Plugin object) {
+        return null;
+    }
 
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Search</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Search</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseKnifeSearch(KnifeSearch object) {
-		return null;
-	}
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Search</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Search</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseKnifeSearch(KnifeSearch object) {
+        return null;
+    }
 
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch, but this is the last case anyway.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-	 * @generated
-	 */
-	@Override
-	public T defaultCase(EObject object) {
-		return null;
-	}
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNamedDescribedObject(NamedDescribedObject object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch, but this is the last case anyway.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+     * @generated
+     */
+    @Override
+    public T defaultCase(EObject object) {
+        return null;
+    }
 
 } //KnifeSwitch

@@ -2,9 +2,7 @@
  */
 package org.limepepper.chefclipse.common.chefclient;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,27 +11,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  *
  * @see org.limepepper.chefclipse.common.chefclient.ChefclientPackage#getOhai()
- * @model kind="class"
+ * @model
  * @generated
  */
-public class Ohai extends EObjectImpl implements EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Ohai() {
-		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return ChefclientPackage.Literals.OHAI;
-	}
-
+public interface Ohai extends EObject {
 } // Ohai

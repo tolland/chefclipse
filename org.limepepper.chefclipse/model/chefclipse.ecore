@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="chefclipse" nsURI="http://limepepper.org/chefclipse/1.0.0/"
-    nsPrefix="org.limepepper.chefclipse">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="chefclipse" nsURI="http://limepepper.org/v1/chefclipse/" nsPrefix="org.limepepper">
   <eClassifiers xsi:type="ecore:EClass" name="NamedDescribedObject" abstract="true"
       interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -122,8 +121,19 @@
     <eClassifiers xsi:type="ecore:EClass" name="Recipe" eSuperTypes="#//SandboxedObject #//RubyFile #//ChecksumFile">
       <eStructuralFeatures xsi:type="ecore:EReference" name="cookbook" lowerBound="1"
           eType="#//cookbook/CookbookVersion" eOpposite="#//cookbook/CookbookVersion/recipes"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="resources" lowerBound="1"
+          upperBound="-1" eType="#//cookbook/Resource" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="role" upperBound="-1"
+          eType="#//chefserver/Role"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="runlist" upperBound="-1"
+          eType="#//chefserver/RunList"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="oldCookbook" lowerBound="1"
+          eType="#//cookbook/Cookbook"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//RubyFile #//SandboxedObject #//ChecksumFile"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Resource" eSuperTypes="#//RubyFile #//SandboxedObject #//ChecksumFile">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="recipe" lowerBound="1"
+          eType="#//cookbook/Recipe"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="supports">
       <eLiterals name="Centos"/>
       <eLiterals name="Windows"/>
@@ -135,6 +145,17 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Attributes" eSuperTypes="#//SandboxedObject #//ChecksumFile"/>
     <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="#//cookbook/Resource #//SandboxedObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DependencyRelation"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Cookbook">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="depends" eType="#//cookbook/DependencyRelation"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environment" lowerBound="1"
+          eType="#//chefserver/Environment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="recipes" upperBound="-1"
+          eType="#//cookbook/Recipe"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="repository" eType="#//workstation/Repository"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Version"/>
   </eSubpackages>
   <eSubpackages name="workstation" nsURI="http://limepepper.org/chefclipse/1.0.0/workstation"
       nsPrefix="org.limepepepper.chefclipse">
@@ -145,6 +166,8 @@
           eType="#//cookbook/CookbookVersion"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="knife" upperBound="-1"
           eType="#//knife/Config"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="oldCookbooks" upperBound="-1"
+          eType="#//cookbook/Cookbook"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ConfigFolder"/>
     <eClassifiers xsi:type="ecore:EClass" name="CertificatesFolder"/>
@@ -180,7 +203,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Plugin"/>
     <eClassifiers xsi:type="ecore:EClass" name="KnifeSearch"/>
   </eSubpackages>
-  <eSubpackages name="REST" nsURI="http://limepepper.org/chefclipse/0.0.1/REST" nsPrefix="org.limepepepper.chefclipse">
+  <eSubpackages name="REST" nsURI="http://limepepper.org/v1/chefclipse/REST" nsPrefix="org.limepepepper.chefclipse">
     <eClassifiers xsi:type="ecore:EClass" name="CookbookListResp">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

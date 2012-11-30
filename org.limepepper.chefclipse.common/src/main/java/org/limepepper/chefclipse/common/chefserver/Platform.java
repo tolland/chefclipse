@@ -2,9 +2,7 @@
  */
 package org.limepepper.chefclipse.common.chefserver;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,27 +11,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  *
  * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getPlatform()
- * @model kind="class"
+ * @model
  * @generated
  */
-public class Platform extends EObjectImpl implements EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Platform() {
-		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return ChefserverPackage.Literals.PLATFORM;
-	}
-
+public interface Platform extends EObject {
 } // Platform

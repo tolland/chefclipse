@@ -2,12 +2,7 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.EFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,213 +12,130 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage
  * @generated
  */
-public class CookbookFactory extends EFactoryImpl {
-	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final CookbookFactory eINSTANCE = init();
+public interface CookbookFactory extends EFactory {
+    /**
+     * The singleton instance of the factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    CookbookFactory eINSTANCE = org.limepepper.chefclipse.common.cookbook.impl.CookbookFactoryImpl.init();
 
-	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static CookbookFactory init() {
-		try {
-			CookbookFactory theCookbookFactory = (CookbookFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/cookbook"); 
-			if (theCookbookFactory != null) {
-				return theCookbookFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new CookbookFactory();
-	}
+    /**
+     * Returns a new object of class '<em>Version</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Version</em>'.
+     * @generated
+     */
+    CookbookVersion createCookbookVersion();
 
-	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CookbookFactory() {
-		super();
-	}
+    /**
+     * Returns a new object of class '<em>Definition</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Definition</em>'.
+     * @generated
+     */
+    Definition createDefinition();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case CookbookPackage.COOKBOOK: return createCookbook();
-			case CookbookPackage.DEFINITION: return createDefinition();
-			case CookbookPackage.LIBRARY: return createLibrary();
-			case CookbookPackage.ATTRIBUTE: return createAttribute();
-			case CookbookPackage.RECIPE: return createRecipe();
-			case CookbookPackage.VERSION: return createVersion();
-			case CookbookPackage.RESOURCE: return createResource();
-			case CookbookPackage.DEPENDENCY_RELATION: return createDependencyRelation();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+    /**
+     * Returns a new object of class '<em>Library</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Library</em>'.
+     * @generated
+     */
+    Library createLibrary();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case CookbookPackage.SUPPORTS:
-				return createsupportsFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
+    /**
+     * Returns a new object of class '<em>Attribute</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Attribute</em>'.
+     * @generated
+     */
+    Attribute createAttribute();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case CookbookPackage.SUPPORTS:
-				return convertsupportsToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-		}
-	}
+    /**
+     * Returns a new object of class '<em>Recipe</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Recipe</em>'.
+     * @generated
+     */
+    Recipe createRecipe();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Cookbook createCookbook() {
-		Cookbook cookbook = new Cookbook();
-		return cookbook;
-	}
+    /**
+     * Returns a new object of class '<em>Resource</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Resource</em>'.
+     * @generated
+     */
+    Resource createResource();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Definition createDefinition() {
-		Definition definition = new Definition();
-		return definition;
-	}
+    /**
+     * Returns a new object of class '<em>Template</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Template</em>'.
+     * @generated
+     */
+    Template createTemplate();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Library createLibrary() {
-		Library library = new Library();
-		return library;
-	}
+    /**
+     * Returns a new object of class '<em>Attributes</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Attributes</em>'.
+     * @generated
+     */
+    Attributes createAttributes();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Attribute createAttribute() {
-		Attribute attribute = new Attribute();
-		return attribute;
-	}
+    /**
+     * Returns a new object of class '<em>File</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>File</em>'.
+     * @generated
+     */
+    File createFile();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Recipe createRecipe() {
-		Recipe recipe = new Recipe();
-		return recipe;
-	}
+    /**
+     * Returns a new object of class '<em>Dependency Relation</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Dependency Relation</em>'.
+     * @generated
+     */
+    DependencyRelation createDependencyRelation();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Version createVersion() {
-		Version version = new Version();
-		return version;
-	}
+    /**
+     * Returns a new object of class '<em>Cookbook</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Cookbook</em>'.
+     * @generated
+     */
+    Cookbook createCookbook();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Resource createResource() {
-		Resource resource = new Resource();
-		return resource;
-	}
+    /**
+     * Returns a new object of class '<em>Version</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Version</em>'.
+     * @generated
+     */
+    Version createVersion();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DependencyRelation createDependencyRelation() {
-		DependencyRelation dependencyRelation = new DependencyRelation();
-		return dependencyRelation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public supports createsupportsFromString(EDataType eDataType, String initialValue) {
-		supports result = supports.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertsupportsToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CookbookPackage getCookbookPackage() {
-		return (CookbookPackage)getEPackage();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
-	@Deprecated
-	public static CookbookPackage getPackage() {
-		return CookbookPackage.eINSTANCE;
-	}
+    /**
+     * Returns the package supported by this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the package supported by this factory.
+     * @generated
+     */
+    CookbookPackage getCookbookPackage();
 
 } //CookbookFactory

@@ -2,11 +2,7 @@
  */
 package org.limepepper.chefclipse.common.workstation;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.EFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,97 +12,85 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage
  * @generated
  */
-public class WorkstationFactory extends EFactoryImpl {
-	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final WorkstationFactory eINSTANCE = init();
+public interface WorkstationFactory extends EFactory {
+    /**
+     * The singleton instance of the factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    WorkstationFactory eINSTANCE = org.limepepper.chefclipse.common.workstation.impl.WorkstationFactoryImpl.init();
 
-	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static WorkstationFactory init() {
-		try {
-			WorkstationFactory theWorkstationFactory = (WorkstationFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/workstation"); 
-			if (theWorkstationFactory != null) {
-				return theWorkstationFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new WorkstationFactory();
-	}
+    /**
+     * Returns a new object of class '<em>Repository</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Repository</em>'.
+     * @generated
+     */
+    Repository createRepository();
 
-	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public WorkstationFactory() {
-		super();
-	}
+    /**
+     * Returns a new object of class '<em>Config Folder</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Config Folder</em>'.
+     * @generated
+     */
+    ConfigFolder createConfigFolder();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case WorkstationPackage.REPOSITORY: return createRepository();
-			case WorkstationPackage.CONFIG: return createConfig();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+    /**
+     * Returns a new object of class '<em>Certificates Folder</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Certificates Folder</em>'.
+     * @generated
+     */
+    CertificatesFolder createCertificatesFolder();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Repository createRepository() {
-		Repository repository = new Repository();
-		return repository;
-	}
+    /**
+     * Returns a new object of class '<em>Data Bags Folder</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Data Bags Folder</em>'.
+     * @generated
+     */
+    DataBagsFolder createDataBagsFolder();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Config createConfig() {
-		Config config = new Config();
-		return config;
-	}
+    /**
+     * Returns a new object of class '<em>Environments Folder</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Environments Folder</em>'.
+     * @generated
+     */
+    EnvironmentsFolder createEnvironmentsFolder();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public WorkstationPackage getWorkstationPackage() {
-		return (WorkstationPackage)getEPackage();
-	}
+    /**
+     * Returns a new object of class '<em>Roles Folder</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Roles Folder</em>'.
+     * @generated
+     */
+    RolesFolder createRolesFolder();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
-	@Deprecated
-	public static WorkstationPackage getPackage() {
-		return WorkstationPackage.eINSTANCE;
-	}
+    /**
+     * Returns a new object of class '<em>Rakefile</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Rakefile</em>'.
+     * @generated
+     */
+    Rakefile createRakefile();
+
+    /**
+     * Returns the package supported by this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the package supported by this factory.
+     * @generated
+     */
+    WorkstationPackage getWorkstationPackage();
 
 } //WorkstationFactory

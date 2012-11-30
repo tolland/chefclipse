@@ -12,14 +12,24 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore;bundle-version="2.8.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.limepepper.chefclipse.common,
+Export-Package: org.limepepper.chefclipse,
+ org.limepepper.chefclipse.REST,
+ org.limepepper.chefclipse.REST.impl,
+ org.limepepper.chefclipse.REST.util,
  org.limepepper.chefclipse.common.chefclient,
+ org.limepepper.chefclipse.common.chefclient.impl,
  org.limepepper.chefclipse.common.chefclient.util,
  org.limepepper.chefclipse.common.chefserver,
+ org.limepepper.chefclipse.common.chefserver.impl,
  org.limepepper.chefclipse.common.chefserver.util,
  org.limepepper.chefclipse.common.cookbook,
+ org.limepepper.chefclipse.common.cookbook.impl,
  org.limepepper.chefclipse.common.cookbook.util,
  org.limepepper.chefclipse.common.knife,
+ org.limepepper.chefclipse.common.knife.impl,
  org.limepepper.chefclipse.common.knife.util,
  org.limepepper.chefclipse.common.workstation,
- org.limepepper.chefclipse.common.workstation.util
+ org.limepepper.chefclipse.common.workstation.impl,
+ org.limepepper.chefclipse.common.workstation.util,
+ org.limepepper.chefclipse.impl,
+ org.limepepper.chefclipse.util

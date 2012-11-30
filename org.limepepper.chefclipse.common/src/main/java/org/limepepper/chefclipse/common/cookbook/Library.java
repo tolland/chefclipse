@@ -2,9 +2,8 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.SandboxedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,27 +12,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  *
  * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getLibrary()
- * @model kind="class"
+ * @model
  * @generated
  */
-public class Library extends EObjectImpl implements EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Library() {
-		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return CookbookPackage.Literals.LIBRARY;
-	}
-
+public interface Library extends SandboxedObject, NamedDescribedObject {
 } // Library

@@ -6,8 +6,16 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.limepepper.chefclipse.common.workstation.Config;
+import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.common.workstation.*;
+import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
+import org.limepepper.chefclipse.common.workstation.ConfigFolder;
+import org.limepepper.chefclipse.common.workstation.DataBagsFolder;
+import org.limepepper.chefclipse.common.workstation.EnvironmentsFolder;
+import org.limepepper.chefclipse.common.workstation.Rakefile;
 import org.limepepper.chefclipse.common.workstation.Repository;
+import org.limepepper.chefclipse.common.workstation.RolesFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
 /**
@@ -19,119 +27,245 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * @generated
  */
 public class WorkstationAdapterFactory extends AdapterFactoryImpl {
-	/**
-	 * The cached model package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected static WorkstationPackage modelPackage;
+    /**
+     * The cached model package.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected static WorkstationPackage modelPackage;
 
-	/**
-	 * Creates an instance of the adapter factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public WorkstationAdapterFactory() {
-		if (modelPackage == null) {
-			modelPackage = WorkstationPackage.eINSTANCE;
-		}
-	}
+    /**
+     * Creates an instance of the adapter factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public WorkstationAdapterFactory() {
+        if (modelPackage == null) {
+            modelPackage = WorkstationPackage.eINSTANCE;
+        }
+    }
 
-	/**
-	 * Returns whether this factory is applicable for the type of the object.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-	 * <!-- end-user-doc -->
-	 * @return whether this factory is applicable for the type of the object.
-	 * @generated
-	 */
-	@Override
-	public boolean isFactoryForType(Object object) {
-		if (object == modelPackage) {
-			return true;
-		}
-		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
-		}
-		return false;
-	}
+    /**
+     * Returns whether this factory is applicable for the type of the object.
+     * <!-- begin-user-doc -->
+     * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
+     * <!-- end-user-doc -->
+     * @return whether this factory is applicable for the type of the object.
+     * @generated
+     */
+    @Override
+    public boolean isFactoryForType(Object object) {
+        if (object == modelPackage) {
+            return true;
+        }
+        if (object instanceof EObject) {
+            return ((EObject)object).eClass().getEPackage() == modelPackage;
+        }
+        return false;
+    }
 
-	/**
-	 * The switch that delegates to the <code>createXXX</code> methods.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected WorkstationSwitch<Adapter> modelSwitch =
-		new WorkstationSwitch<Adapter>() {
-			@Override
-			public Adapter caseRepository(Repository object) {
-				return createRepositoryAdapter();
-			}
-			@Override
-			public Adapter caseConfig(Config object) {
-				return createConfigAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+    /**
+     * The switch that delegates to the <code>createXXX</code> methods.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected WorkstationSwitch<Adapter> modelSwitch =
+        new WorkstationSwitch<Adapter>() {
+            @Override
+            public Adapter caseRepository(Repository object) {
+                return createRepositoryAdapter();
+            }
+            @Override
+            public Adapter caseConfigFolder(ConfigFolder object) {
+                return createConfigFolderAdapter();
+            }
+            @Override
+            public Adapter caseCertificatesFolder(CertificatesFolder object) {
+                return createCertificatesFolderAdapter();
+            }
+            @Override
+            public Adapter caseDataBagsFolder(DataBagsFolder object) {
+                return createDataBagsFolderAdapter();
+            }
+            @Override
+            public Adapter caseEnvironmentsFolder(EnvironmentsFolder object) {
+                return createEnvironmentsFolderAdapter();
+            }
+            @Override
+            public Adapter caseRolesFolder(RolesFolder object) {
+                return createRolesFolderAdapter();
+            }
+            @Override
+            public Adapter caseRakefile(Rakefile object) {
+                return createRakefileAdapter();
+            }
+            @Override
+            public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
+                return createNamedDescribedObjectAdapter();
+            }
+            @Override
+            public Adapter caseNamedObject(NamedObject object) {
+                return createNamedObjectAdapter();
+            }
+            @Override
+            public Adapter defaultCase(EObject object) {
+                return createEObjectAdapter();
+            }
+        };
 
-	/**
-	 * Creates an adapter for the <code>target</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param target the object to adapt.
-	 * @return the adapter for the <code>target</code>.
-	 * @generated
-	 */
-	@Override
-	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
-	}
+    /**
+     * Creates an adapter for the <code>target</code>.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param target the object to adapt.
+     * @return the adapter for the <code>target</code>.
+     * @generated
+     */
+    @Override
+    public Adapter createAdapter(Notifier target) {
+        return modelSwitch.doSwitch((EObject)target);
+    }
 
 
-	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.Repository <em>Repository</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.common.workstation.Repository
-	 * @generated
-	 */
-	public Adapter createRepositoryAdapter() {
-		return null;
-	}
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.Repository <em>Repository</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.workstation.Repository
+     * @generated
+     */
+    public Adapter createRepositoryAdapter() {
+        return null;
+    }
 
-	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.Config <em>Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.common.workstation.Config
-	 * @generated
-	 */
-	public Adapter createConfigAdapter() {
-		return null;
-	}
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.ConfigFolder <em>Config Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.workstation.ConfigFolder
+     * @generated
+     */
+    public Adapter createConfigFolderAdapter() {
+        return null;
+    }
 
-	/**
-	 * Creates a new adapter for the default case.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @generated
-	 */
-	public Adapter createEObjectAdapter() {
-		return null;
-	}
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.CertificatesFolder <em>Certificates Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.workstation.CertificatesFolder
+     * @generated
+     */
+    public Adapter createCertificatesFolderAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.DataBagsFolder <em>Data Bags Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.workstation.DataBagsFolder
+     * @generated
+     */
+    public Adapter createDataBagsFolderAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.EnvironmentsFolder <em>Environments Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.workstation.EnvironmentsFolder
+     * @generated
+     */
+    public Adapter createEnvironmentsFolderAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.RolesFolder <em>Roles Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.workstation.RolesFolder
+     * @generated
+     */
+    public Adapter createRolesFolderAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.Rakefile <em>Rakefile</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.workstation.Rakefile
+     * @generated
+     */
+    public Adapter createRakefileAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.NamedDescribedObject
+     * @generated
+     */
+    public Adapter createNamedDescribedObjectAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedObject <em>Named Object</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.NamedObject
+     * @generated
+     */
+    public Adapter createNamedObjectAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for the default case.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @generated
+     */
+    public Adapter createEObjectAdapter() {
+        return null;
+    }
 
 } //WorkstationAdapterFactory

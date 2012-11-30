@@ -5,7 +5,6 @@ package org.limepepper.chefclipse.model.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.limepepper.chefclipse.model.*;
 import org.limepepper.chefclipse.model.ChangeTracker;
 import org.limepepper.chefclipse.model.ChefContainer;
 import org.limepepper.chefclipse.model.ChefFile;
