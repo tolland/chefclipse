@@ -1,6 +1,5 @@
 package org.limepepper.chefclipse.graphviewer.actions;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.action.IAction;

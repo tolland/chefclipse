@@ -6,7 +6,10 @@ package org.limepepper.chefclipse.graphviewer.controller;
 import java.util.Arrays;
 
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
+import org.limepepper.chefclipse.common.cookbook.Attribute;
+import org.limepepper.chefclipse.common.cookbook.Definition;
+import org.limepepper.chefclipse.common.cookbook.Library;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 import org.limepepper.chefclipse.graphviewer.common.MockAttributeImpl;
 import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
@@ -14,11 +17,6 @@ import org.limepepper.chefclipse.graphviewer.common.MockDefinitionImpl;
 import org.limepepper.chefclipse.graphviewer.common.MockLibraryImpl;
 import org.limepepper.chefclipse.graphviewer.common.MockRecipeImpl;
 import org.limepepper.chefclipse.graphviewer.model.CookbookModel;
-import org.limepepper.chefclipse.common.cookbook.Attribute;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
-import org.limepepper.chefclipse.common.cookbook.Definition;
-import org.limepepper.chefclipse.common.cookbook.Library;
-import org.limepepper.chefclipse.common.cookbook.Recipe;
 
 /**
  * @author Binhua2

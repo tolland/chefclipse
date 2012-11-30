@@ -3,12 +3,10 @@ package org.limepepper.chefclipse.common.ui.resources;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-
 import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;

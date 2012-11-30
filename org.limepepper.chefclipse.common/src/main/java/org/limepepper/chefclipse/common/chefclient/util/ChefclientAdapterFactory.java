@@ -4,12 +4,12 @@ package org.limepepper.chefclipse.common.chefclient.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.limepepper.chefclipse.common.chefclient.*;
+import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
+import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.Ohai;
+import org.limepepper.chefclipse.common.chefclient.Search;
 
 /**
  * <!-- begin-user-doc -->

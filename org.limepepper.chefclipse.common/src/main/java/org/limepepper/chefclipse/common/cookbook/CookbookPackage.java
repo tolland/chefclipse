@@ -7,15 +7,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-
 import org.limepepper.chefclipse.common.knife.KnifePackage;
-
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
 /**

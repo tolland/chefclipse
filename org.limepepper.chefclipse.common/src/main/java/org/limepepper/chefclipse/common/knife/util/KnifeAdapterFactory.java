@@ -4,12 +4,12 @@ package org.limepepper.chefclipse.common.knife.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.limepepper.chefclipse.common.knife.*;
+import org.limepepper.chefclipse.common.knife.Config;
+import org.limepepper.chefclipse.common.knife.KnifePackage;
+import org.limepepper.chefclipse.common.knife.KnifeSearch;
+import org.limepepper.chefclipse.common.knife.Plugin;
 
 /**
  * <!-- begin-user-doc -->

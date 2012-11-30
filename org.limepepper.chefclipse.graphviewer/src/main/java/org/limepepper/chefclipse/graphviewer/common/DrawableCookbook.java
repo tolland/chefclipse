@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
-import org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
 
 public class DrawableCookbook {

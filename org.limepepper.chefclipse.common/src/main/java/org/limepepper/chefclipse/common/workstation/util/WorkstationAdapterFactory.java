@@ -4,12 +4,11 @@ package org.limepepper.chefclipse.common.workstation.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.limepepper.chefclipse.common.workstation.*;
+import org.limepepper.chefclipse.common.workstation.Config;
+import org.limepepper.chefclipse.common.workstation.Repository;
+import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
 /**
  * <!-- begin-user-doc -->

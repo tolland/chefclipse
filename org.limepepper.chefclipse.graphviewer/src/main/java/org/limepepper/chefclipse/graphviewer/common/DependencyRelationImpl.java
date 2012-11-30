@@ -3,9 +3,6 @@
 package org.limepepper.chefclipse.graphviewer.common;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
 

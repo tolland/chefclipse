@@ -4,10 +4,16 @@ package org.limepepper.chefclipse.common.cookbook.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.limepepper.chefclipse.common.cookbook.*;
+import org.limepepper.chefclipse.common.cookbook.Attribute;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+import org.limepepper.chefclipse.common.cookbook.Definition;
+import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
+import org.limepepper.chefclipse.common.cookbook.Library;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
+import org.limepepper.chefclipse.common.cookbook.Resource;
+import org.limepepper.chefclipse.common.cookbook.Version;
 
 /**
  * <!-- begin-user-doc -->

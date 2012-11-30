@@ -1,8 +1,5 @@
 package org.limepepper.chefclipse.graphviewer.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -23,7 +20,6 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.EditorPart;
-import org.eclipse.zest.core.viewers.EntityConnectionData;
 import org.eclipse.zest.core.viewers.GraphViewer;
 import org.eclipse.zest.core.viewers.IFigureProvider;
 import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
@@ -33,8 +29,8 @@ import org.eclipse.zest.core.widgets.GraphConnection;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
-import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
+import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
 import org.limepepper.chefclipse.graphviewer.common.ICookbookElement;
 import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
 import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;

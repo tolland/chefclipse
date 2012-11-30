@@ -4,7 +4,6 @@ package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**

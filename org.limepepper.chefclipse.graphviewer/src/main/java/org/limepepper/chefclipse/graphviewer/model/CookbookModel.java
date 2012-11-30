@@ -3,7 +3,6 @@ package org.limepepper.chefclipse.graphviewer.model;
 import java.util.ArrayList;
 
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
-import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
 
 public class CookbookModel {
 

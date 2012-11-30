@@ -12,10 +12,8 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
@@ -42,14 +40,13 @@ import org.eclipse.zest.layouts.LayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
-import org.limepepper.chefclipse.graphviewer.figure.ChefclipseConnectionAnchor;
 import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
-import org.limepepper.chefclipse.common.cookbook.Recipe;
 
 public class DependencyGraphEditor extends EditorPart implements
 		IDependencyChangeListener {

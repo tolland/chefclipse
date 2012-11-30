@@ -4,10 +4,16 @@ package org.limepepper.chefclipse.common.chefserver.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.limepepper.chefclipse.common.chefserver.*;
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.Config;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Platform;
+import org.limepepper.chefclipse.common.chefserver.Role;
+import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.Server;
 
 /**
  * <!-- begin-user-doc -->

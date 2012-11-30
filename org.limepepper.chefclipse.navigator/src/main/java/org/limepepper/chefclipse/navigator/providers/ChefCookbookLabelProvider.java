@@ -7,7 +7,6 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
-import org.limepepper.chefclipse.common.cookbook.Recipe;
 
 
 public class ChefCookbookLabelProvider 
