@@ -71,7 +71,7 @@ public class CookbookSiteDownloadStrategy implements
 			return new File(decompressedCookbook, cookbook.getName());
 		} catch (FileNotFoundException e) {
 			if (connection != null){
-				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ". The file " + connection.getURL().toString() + " could not be found.", e);
+				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ".\nThe file " + connection.getURL().toString() + " could not be found.", e);
 			} else {
 				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ". The cookbook related file could not be found.", e);
 			}
