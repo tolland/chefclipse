@@ -307,7 +307,7 @@ public class CookbookRepositoryManager {
 		try {					
 			FileUtils.copyDirectoryToDirectory(downloadCookbook, targetDirectory);
 		} catch (IOException e) {
-			throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbookName);
+			throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbookName, e);
 		}
 		
 	}

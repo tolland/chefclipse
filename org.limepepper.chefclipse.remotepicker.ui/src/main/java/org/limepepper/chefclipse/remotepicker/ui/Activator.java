@@ -93,7 +93,7 @@ public class Activator extends AbstractUIPlugin {
 		imageRegistry.put(DEPRECATED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/deprecated_decorator.gif")); //$NON-NLS-1$
 		imageRegistry.put(DIRTY_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/dirty_decorator.png")); //$NON-NLS-1$
 		imageRegistry.put(NEW_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/new_decorator.jpg")); //$NON-NLS-1$
-		imageRegistry.put(INSTALLED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/installed_decorator.png")); //$NON-NLS-1$
+		imageRegistry.put(INSTALLED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/installed_decorator.gif")); //$NON-NLS-1$
 		return imageRegistry;
 	}
 }

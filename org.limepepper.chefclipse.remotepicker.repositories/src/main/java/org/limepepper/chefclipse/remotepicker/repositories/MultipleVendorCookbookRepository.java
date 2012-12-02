@@ -28,7 +28,9 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookb
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.ClientResponse.Status;
 import com.sun.jersey.api.client.config.ClientConfig;
@@ -155,12 +157,21 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 		if (repo.getUpdatedAt() == null)
 			return false;
 		String date = fo.format(repo.getUpdatedAt());
-		ClientResponse response = getService()
-			.path("users").path("cookbooks").path("repos")
-			.header("If-Modified-Since", date)
-			.get(ClientResponse.class);
-
-		return !Status.NOT_MODIFIED.equals(response.getClientResponseStatus());
+		ClientResponse response = null;
+		try {
+			response = getService()
+					.path("users").path("cookbooks").path("repos")
+					.header("If-Modified-Since", date)
+					.get(ClientResponse.class);
+		} catch (ClientHandlerException e2) {
+			return false;
+		} catch (UniformInterfaceException e3) {
+			return false;
+		}
+		if (response != null){
+			return !Status.NOT_MODIFIED.equals(response.getClientResponseStatus());
+		}
+		return false;
 	}
 
 	@Override

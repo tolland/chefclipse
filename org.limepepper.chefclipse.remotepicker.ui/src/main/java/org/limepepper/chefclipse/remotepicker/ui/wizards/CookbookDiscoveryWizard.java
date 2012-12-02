@@ -225,7 +225,6 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 			try {
 				iProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 			} catch (CoreException e) {
-				e.printStackTrace();
 				Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, Status.ERROR, e.getMessage(), e));
 			}
 		}

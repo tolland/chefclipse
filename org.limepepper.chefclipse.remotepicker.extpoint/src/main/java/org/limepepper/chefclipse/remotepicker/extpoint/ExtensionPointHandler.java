@@ -62,11 +62,10 @@ public class ExtensionPointHandler {
 				Bundle bundle = Platform.getBundle(e.getContributor().getName());
 				URL iconFile = FileLocator.find(bundle, Path.fromPortableString(icon.getAttribute("image32")), null);
 				
-				repo.setIcon(iconFile.toString());
-				
 				final Object o = e.createExecutableExtension("class");
 				if (o instanceof ICookbooksRepository) {
-					getRepoManager().registerRepository(repo, (ICookbooksRepository) o);
+					RemoteRepository registeredRepository = getRepoManager().registerRepository(repo, (ICookbooksRepository) o);
+					registeredRepository.setIcon(iconFile.toString());
 				}
 			}
 			retrieveAndCacheCookbooks();
@@ -78,10 +77,10 @@ public class ExtensionPointHandler {
 
 	private void retrieveAndCacheCookbooks() {
 		for (final RemoteRepository repo : repoManager.getRepositories()) {
-			Job job = new Job("Retriving Cookbooks from respository \"" + repo.getName()+ "\"") {
+			Job job = new Job("Retrieving Cookbooks from respository \"" + repo.getName()+ "\"") {
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
-					monitor.beginTask("Retriving cookbooks", IProgressMonitor.UNKNOWN);
+					monitor.beginTask("Retrieving cookbooks", IProgressMonitor.UNKNOWN);
 					getRepoManager().loadRepository(repo.getId());
 					monitor.done();
 					return Status.OK_STATUS;

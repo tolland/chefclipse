@@ -30,6 +30,8 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookb
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientHandlerException;
+import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -228,7 +230,9 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			int total = json.getInt("total");
 			if (total != repo.getCookbooks().size())
 				return true;
-		} catch (JSONException e2) {
+		} catch (JSONException e1) {
+		} catch (ClientHandlerException e2) {
+		} catch (UniformInterfaceException e3) {
 		}
 		return false;
 	}

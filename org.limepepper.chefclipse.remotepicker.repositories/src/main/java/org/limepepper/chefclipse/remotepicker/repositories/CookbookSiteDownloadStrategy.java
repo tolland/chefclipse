@@ -46,7 +46,7 @@ public class CookbookSiteDownloadStrategy implements
 	@Override
 	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
 		
-		URLConnection connection;
+		URLConnection connection = null;
 		try {
 			String latestVersion = cookbook.getLatestVersion();
 			String lastVersion = latestVersion
@@ -69,8 +69,14 @@ public class CookbookSiteDownloadStrategy implements
 			out.close();
 			File decompressedCookbook = decompressCookbook(tempZipFile);
 			return new File(decompressedCookbook, cookbook.getName());
+		} catch (FileNotFoundException e) {
+			if (connection != null){
+				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ". The file " + connection.getURL().toString() + " could not be found.", e);
+			} else {
+				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ". The cookbook related file could not be found.", e);
+			}
 		} catch (IOException e) {
-			throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName());
+			throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName(), e);
 		}
 	}
 
@@ -86,10 +92,8 @@ public class CookbookSiteDownloadStrategy implements
 			File outputDir = new File(absolutePath);
 			unTar(unGzip, outputDir);
 			return outputDir;
-		} catch (FileNotFoundException e) {
-			throw new IOException();
-		} catch (ArchiveException e) {
-			throw new IOException();
+		} catch (ArchiveException e1) {
+			throw new IOException(e1.getMessage(), e1);
 		} 
 	}
 	

@@ -48,7 +48,7 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 			decompressCookbook(tempZipFile);
 			return new File(tempZipFile.getParentFile(), cookbook.getName() + "-master");
 		} catch (IOException e) {
-			throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName());
+			throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName(), e);
 		}
 	}
 
