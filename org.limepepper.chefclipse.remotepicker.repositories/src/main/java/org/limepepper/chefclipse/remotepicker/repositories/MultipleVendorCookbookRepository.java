@@ -94,18 +94,22 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
 		int start = 1;
 		boolean more = true;
-		do {
-			JSONArray jsonArray = getRestCookbooks(start++, 100);
-			for (int i = 0; i < jsonArray.length(); i++) {
-				try {
-					JSONObject cookbookJson = jsonArray.getJSONObject(i);
-					cookbooks.add(createCookbook(cookbookJson));
-				} catch (JSONException e) {
-					e.printStackTrace();
+		try{
+			do {
+				JSONArray jsonArray = getRestCookbooks(start++, 100);
+				for (int i = 0; i < jsonArray.length(); i++) {
+					try {
+						JSONObject cookbookJson = jsonArray.getJSONObject(i);
+						cookbooks.add(createCookbook(cookbookJson));
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 				}
-			}
-			more = jsonArray.length() > 0;
-		} while (more);
+				more = jsonArray.length() > 0;
+			} while (more);
+		} catch (ClientHandlerException e2) {
+		} catch (UniformInterfaceException e3) {
+		}
 		return cookbooks;
 	}
 

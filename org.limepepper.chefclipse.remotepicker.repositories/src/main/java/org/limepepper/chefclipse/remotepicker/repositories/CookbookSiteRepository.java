@@ -53,8 +53,8 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 		@Override
 		public void run() {
-			JSONObject json = getRestCookbooks(start, 100);
 			try {
+				JSONObject json = getRestCookbooks(start, 100);
 				JSONArray items = json.getJSONArray("items");
 				for (int i = 0; i < items.length(); i++) {
 					try {
@@ -67,6 +67,8 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 				}
 			} catch (JSONException e1) {
 				e1.printStackTrace();
+			} catch (ClientHandlerException e2) {
+			} catch (UniformInterfaceException e3) {
 			}
 		}
 	}
@@ -119,11 +121,13 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 		final List<RemoteCookbook> cookbooks = Collections.synchronizedList(list);
 		int start = 0;
 		int total = 100;
-		JSONObject json = getRestCookbooks(0, 1);
 		try {
+			JSONObject json = getRestCookbooks(0, 1);
 			total = json.getInt("total");
 		} catch (JSONException e2) {
 			e2.printStackTrace();
+		} catch (ClientHandlerException e2) {
+		} catch (UniformInterfaceException e3) {
 		}
 		do {
 			pool.submit(new GetTaks(start, cookbooks));
@@ -225,8 +229,8 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 	@Override
 	public boolean isUpdated(RemoteRepository repo) {
-		JSONObject json = getRestCookbooks(0, 1);
 		try {
+			JSONObject json = getRestCookbooks(0, 1);
 			int total = json.getInt("total");
 			if (total != repo.getCookbooks().size())
 				return true;
