@@ -71,6 +71,7 @@ public class ServerItemProvider
             addClientsPropertyDescriptor(object);
             addWebuiportPropertyDescriptor(object);
             addSandboxesPropertyDescriptor(object);
+            addConfigPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -155,6 +156,28 @@ public class ServerItemProvider
                  getString("_UI_Server_sandboxes_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_Server_sandboxes_feature", "_UI_Server_type"),
                  ChefserverPackage.Literals.SERVER__SANDBOXES,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Config feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addConfigPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Server_config_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Server_config_feature", "_UI_Server_type"),
+                 ChefserverPackage.Literals.SERVER__CONFIG,
                  true,
                  false,
                  true,

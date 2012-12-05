@@ -67,6 +67,15 @@ public interface CookbookFactory extends EFactory {
     Recipe createRecipe();
 
     /**
+     * Returns a new object of class '<em>Recipe Description</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Recipe Description</em>'.
+     * @generated
+     */
+    RecipeDescription createRecipeDescription();
+
+    /**
      * Returns a new object of class '<em>Resource</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -112,22 +121,49 @@ public interface CookbookFactory extends EFactory {
     DependencyRelation createDependencyRelation();
 
     /**
-     * Returns a new object of class '<em>Cookbook</em>'.
+     * Returns a new object of class '<em>Metadata</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return a new object of class '<em>Cookbook</em>'.
+     * @return a new object of class '<em>Metadata</em>'.
      * @generated
      */
-    Cookbook createCookbook();
+    Metadata createMetadata();
 
     /**
-     * Returns a new object of class '<em>Version</em>'.
+     * Returns a new object of class '<em>Provider</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return a new object of class '<em>Version</em>'.
+     * @return a new object of class '<em>Provider</em>'.
      * @generated
      */
-    Version createVersion();
+    Provider createProvider();
+
+    /**
+     * Returns a new object of class '<em>Root file</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Root file</em>'.
+     * @generated
+     */
+    Root_file createRoot_file();
+
+    /**
+     * Returns a new object of class '<em>Minimal Metadata</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Minimal Metadata</em>'.
+     * @generated
+     */
+    MinimalMetadata createMinimalMetadata();
+
+    /**
+     * Returns a new object of class '<em>Name</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Name</em>'.
+     * @generated
+     */
+    Name createName();
 
     /**
      * Returns the package supported by this factory.

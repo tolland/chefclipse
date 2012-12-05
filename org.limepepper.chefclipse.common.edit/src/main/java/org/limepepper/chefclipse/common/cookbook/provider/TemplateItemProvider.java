@@ -64,36 +64,14 @@ public class TemplateItemProvider
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addNamePropertyDescriptor(object);
             addChecksumPropertyDescriptor(object);
             addPathPropertyDescriptor(object);
             addSpecificityPropertyDescriptor(object);
-            addUrlPropertyDescriptor(object);
+            addNamePropertyDescriptor(object);
+            addIDPropertyDescriptor(object);
             addCookbookPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
-    }
-
-    /**
-     * This adds a property descriptor for the Name feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addNamePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_NamedObject_name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
-                 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
     }
 
     /**
@@ -163,19 +141,41 @@ public class TemplateItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Url feature.
+     * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addUrlPropertyDescriptor(Object object) {
+    protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_ChecksumFile_url_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_url_feature", "_UI_ChecksumFile_type"),
-                 ChefclipsePackage.Literals.CHECKSUM_FILE__URL,
+                 getString("_UI_NamedObject_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the ID feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIDPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NamedObject_ID_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__ID,
                  true,
                  false,
                  false,
@@ -195,9 +195,9 @@ public class TemplateItemProvider
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_Template_cookbook_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Template_cookbook_feature", "_UI_Template_type"),
-                 CookbookPackage.Literals.TEMPLATE__COOKBOOK,
+                 getString("_UI_CookbookFile_cookbook_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_cookbook_feature", "_UI_CookbookFile_type"),
+                 CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK,
                  true,
                  false,
                  true,
@@ -243,11 +243,11 @@ public class TemplateItemProvider
         updateChildren(notification);
 
         switch (notification.getFeatureID(Template.class)) {
-            case CookbookPackage.TEMPLATE__NAME:
             case CookbookPackage.TEMPLATE__CHECKSUM:
             case CookbookPackage.TEMPLATE__PATH:
             case CookbookPackage.TEMPLATE__SPECIFICITY:
-            case CookbookPackage.TEMPLATE__URL:
+            case CookbookPackage.TEMPLATE__NAME:
+            case CookbookPackage.TEMPLATE__ID:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

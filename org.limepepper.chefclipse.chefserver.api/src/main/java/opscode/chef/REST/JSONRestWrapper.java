@@ -32,15 +32,15 @@ import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 /**
- *
+ * 
  * this script maps some calls between the opscode mixlib-authentication lib
  * structure and the java requirements
- *
+ * 
  * provides a mapping to the calls handled by ruby rest libs
- *
+ * 
  * @author tomhodder
- *
- *
+ * 
+ * 
  */
 
 public class JSONRestWrapper {
@@ -78,8 +78,9 @@ public class JSONRestWrapper {
      *            into the querystring
      * @return
      * @throws MalformedURLException
-     *
+     * 
      */
+    @SuppressWarnings("deprecation")
     public JSONObject rest_get(String path, Map<String, List<String>> params)
             throws MalformedURLException {
 
@@ -158,12 +159,14 @@ public class JSONRestWrapper {
         try {
             auth_headers = build_headers(method,
                     new URL(url.toString() + path), headers, null, false);
+            for (String key : auth_headers.keySet()) {
+                builder.header(key, auth_headers.get(key));
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        for (String key : auth_headers.keySet()) {
-            builder.header(key, auth_headers.get(key));
-        }
+
+        
 
         return builder.accept(MediaType.APPLICATION_JSON_TYPE).head();
 

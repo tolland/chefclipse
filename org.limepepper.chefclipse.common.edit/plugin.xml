@@ -7,6 +7,7 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated chefclipse -->
       <factory
             uri="http://limepepper.org/v1/chefclipse/"
             class="org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory"
@@ -19,8 +20,9 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated chefclipse -->
       <factory
-            uri="http://limepepper.org/chefclipse/0.0.1/chefserver"
+            uri="http://limepepper.org/v1/chefclipse/chefserver"
             class="org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
@@ -31,8 +33,9 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated chefclipse -->
       <factory
-            uri="http://limepepper.org/chefclipse/1.0.0/chefclient"
+            uri="http://limepepper.org/v1/chefclipse/chefclient"
             class="org.limepepper.chefclipse.common.chefclient.provider.ChefclientItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
@@ -43,8 +46,9 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated chefclipse -->
       <factory
-            uri="http://limepepper.org/chefclipse/1.0.0/cookbook"
+            uri="http://limepepper.org/v1/chefclipse/cookbook"
             class="org.limepepper.chefclipse.common.cookbook.provider.CookbookItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
@@ -55,8 +59,9 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated chefclipse -->
       <factory
-            uri="http://limepepper.org/chefclipse/1.0.0/workstation"
+            uri="http://limepepper.org/v1/chefclipse/workstation"
             class="org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
@@ -67,8 +72,9 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated chefclipse -->
       <factory
-            uri="http://limepepper.org/chefclipse/1.0.0/knife"
+            uri="http://limepepper.org/v1/chefclipse/knife"
             class="org.limepepper.chefclipse.common.knife.provider.KnifeItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
@@ -79,6 +85,7 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated chefclipse -->
       <factory
             uri="http://limepepper.org/v1/chefclipse/REST"
             class="org.limepepper.chefclipse.REST.provider.RESTItemProviderAdapterFactory"

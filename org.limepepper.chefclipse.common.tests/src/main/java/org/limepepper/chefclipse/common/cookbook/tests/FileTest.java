@@ -7,13 +7,15 @@ import junit.textui.TestRunner;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.File;
 
+import org.limepepper.chefclipse.tests.SandboxedObjectTest;
+
 /**
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>File</b></em>'.
  * <!-- end-user-doc -->
  * @generated
  */
-public class FileTest extends ResourceTest {
+public class FileTest extends SandboxedObjectTest {
 
     /**
      * <!-- begin-user-doc -->

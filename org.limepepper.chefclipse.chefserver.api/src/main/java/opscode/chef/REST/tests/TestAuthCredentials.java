@@ -21,7 +21,7 @@ import opscode.chef.REST.AuthCredentials;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.chefserver.api.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +30,7 @@ public class TestAuthCredentials {
     private Properties props  = new Properties();
     private String     client_name;
     private File       client_key;
-    Config             config;
+    KnifeConfig             config;
     AuthCredentials    auth;
 
     Logger             logger = LoggerFactory

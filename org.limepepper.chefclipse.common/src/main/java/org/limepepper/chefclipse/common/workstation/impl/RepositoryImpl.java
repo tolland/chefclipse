@@ -4,13 +4,13 @@ package org.limepepper.chefclipse.common.workstation.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.knife.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
+import org.limepepper.chefclipse.impl.DescribedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,18 +20,17 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getOS <em>OS</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getCookbooks <em>Cookbooks</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getKnife <em>Knife</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getOldCookbooks <em>Old Cookbooks</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RepositoryImpl extends EObjectImpl implements Repository {
+public class RepositoryImpl extends DescribedObjectImpl implements Repository {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -56,18 +55,8 @@ public class RepositoryImpl extends EObjectImpl implements Repository {
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
-    protected int eStaticFeatureCount() {
-        return 0;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public String getName() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__NAME, true);
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
     }
 
     /**
@@ -76,7 +65,7 @@ public class RepositoryImpl extends EObjectImpl implements Repository {
      * @generated
      */
     public void setName(String newName) {
-        eSet(ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__NAME, newName);
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
     }
 
     /**
@@ -84,8 +73,8 @@ public class RepositoryImpl extends EObjectImpl implements Repository {
      * <!-- end-user-doc -->
      * @generated
      */
-    public String getDescription() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__DESCRIPTION, true);
+    public String getID() {
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
     }
 
     /**
@@ -93,8 +82,8 @@ public class RepositoryImpl extends EObjectImpl implements Repository {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setDescription(String newDescription) {
-        eSet(ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__DESCRIPTION, newDescription);
+    public void setID(String newID) {
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
     }
 
     /**
@@ -149,8 +138,8 @@ public class RepositoryImpl extends EObjectImpl implements Repository {
      * @generated
      */
     @SuppressWarnings("unchecked")
-    public EList<Config> getKnife() {
-        return (EList<Config>)eGet(WorkstationPackage.Literals.REPOSITORY__KNIFE, true);
+    public EList<KnifeConfig> getKnife() {
+        return (EList<KnifeConfig>)eGet(WorkstationPackage.Literals.REPOSITORY__KNIFE, true);
     }
 
     /**
@@ -158,9 +147,33 @@ public class RepositoryImpl extends EObjectImpl implements Repository {
      * <!-- end-user-doc -->
      * @generated
      */
-    @SuppressWarnings("unchecked")
-    public EList<Cookbook> getOldCookbooks() {
-        return (EList<Cookbook>)eGet(WorkstationPackage.Literals.REPOSITORY__OLD_COOKBOOKS, true);
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == NamedObject.class) {
+            switch (derivedFeatureID) {
+                case WorkstationPackage.REPOSITORY__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+                case WorkstationPackage.REPOSITORY__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+                default: return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == NamedObject.class) {
+            switch (baseFeatureID) {
+                case ChefclipsePackage.NAMED_OBJECT__NAME: return WorkstationPackage.REPOSITORY__NAME;
+                case ChefclipsePackage.NAMED_OBJECT__ID: return WorkstationPackage.REPOSITORY__ID;
+                default: return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
 } //RepositoryImpl

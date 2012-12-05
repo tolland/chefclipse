@@ -38,7 +38,7 @@ public interface ChefserverPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    String eNS_URI = "http://limepepper.org/chefclipse/0.0.1/chefserver";
+    String eNS_URI = "http://limepepper.org/v1/chefclipse/chefserver";
 
     /**
      * The package namespace name.
@@ -123,6 +123,15 @@ public interface ChefserverPackage extends EPackage {
     int ROLE = 2;
 
     /**
+     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ROLE__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+
+    /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -132,13 +141,13 @@ public interface ChefserverPackage extends EPackage {
     int ROLE__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
-     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * The feature id for the '<em><b>ID</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int ROLE__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int ROLE__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
      * The number of structural features of the '<em>Role</em>' class.
@@ -160,6 +169,15 @@ public interface ChefserverPackage extends EPackage {
     int NODE = 3;
 
     /**
+     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NODE__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+
+    /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -169,13 +187,13 @@ public interface ChefserverPackage extends EPackage {
     int NODE__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
-     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * The feature id for the '<em><b>ID</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int NODE__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int NODE__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
      * The feature id for the '<em><b>Run list</b></em>' containment reference list.
@@ -314,13 +332,22 @@ public interface ChefserverPackage extends EPackage {
     int SERVER__SANDBOXES = 7;
 
     /**
+     * The feature id for the '<em><b>Config</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER__CONFIG = 8;
+
+    /**
      * The number of structural features of the '<em>Server</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int SERVER_FEATURE_COUNT = 8;
+    int SERVER_FEATURE_COUNT = 9;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.PlatformImpl <em>Platform</em>}' class.
@@ -333,13 +360,22 @@ public interface ChefserverPackage extends EPackage {
     int PLATFORM = 5;
 
     /**
+     * The feature id for the '<em><b>Test Val</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PLATFORM__TEST_VAL = 0;
+
+    /**
      * The number of structural features of the '<em>Platform</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int PLATFORM_FEATURE_COUNT = 0;
+    int PLATFORM_FEATURE_COUNT = 1;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl <em>Run List</em>}' class.
@@ -397,23 +433,23 @@ public interface ChefserverPackage extends EPackage {
     int RUN_LIST_FEATURE_COUNT = 4;
 
     /**
-     * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ConfigImpl <em>Config</em>}' class.
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerConfigImpl <em>Server Config</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.limepepper.chefclipse.common.chefserver.impl.ConfigImpl
-     * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getConfig()
+     * @see org.limepepper.chefclipse.common.chefserver.impl.ServerConfigImpl
+     * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerConfig()
      * @generated
      */
-    int CONFIG = 7;
+    int SERVER_CONFIG = 7;
 
     /**
-     * The number of structural features of the '<em>Config</em>' class.
+     * The number of structural features of the '<em>Server Config</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int CONFIG_FEATURE_COUNT = 0;
+    int SERVER_CONFIG_FEATURE_COUNT = 0;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagItemImpl <em>Data Bag Item</em>}' class.
@@ -433,6 +469,15 @@ public interface ChefserverPackage extends EPackage {
      * @ordered
      */
     int DATA_BAG_ITEM__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
+
+    /**
+     * The feature id for the '<em><b>ID</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DATA_BAG_ITEM__ID = ChefclipsePackage.NAMED_OBJECT__ID;
 
     /**
      * The feature id for the '<em><b>Data Bag</b></em>' reference.
@@ -706,6 +751,17 @@ public interface ChefserverPackage extends EPackage {
     EReference getServer_Sandboxes();
 
     /**
+     * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.chefserver.Server#getConfig <em>Config</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Config</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.Server#getConfig()
+     * @see #getServer()
+     * @generated
+     */
+    EReference getServer_Config();
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Platform <em>Platform</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -714,6 +770,17 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      */
     EClass getPlatform();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.Platform#getTestVal <em>Test Val</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Test Val</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.Platform#getTestVal()
+     * @see #getPlatform()
+     * @generated
+     */
+    EAttribute getPlatform_TestVal();
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.RunList <em>Run List</em>}'.
@@ -770,14 +837,14 @@ public interface ChefserverPackage extends EPackage {
     EReference getRunList_Recipes();
 
     /**
-     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Config <em>Config</em>}'.
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.ServerConfig <em>Server Config</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for class '<em>Config</em>'.
-     * @see org.limepepper.chefclipse.common.chefserver.Config
+     * @return the meta object for class '<em>Server Config</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerConfig
      * @generated
      */
-    EClass getConfig();
+    EClass getServerConfig();
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem <em>Data Bag Item</em>}'.
@@ -1025,6 +1092,14 @@ public interface ChefserverPackage extends EPackage {
         EReference SERVER__SANDBOXES = eINSTANCE.getServer_Sandboxes();
 
         /**
+         * The meta object literal for the '<em><b>Config</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER__CONFIG = eINSTANCE.getServer_Config();
+
+        /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.PlatformImpl <em>Platform</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1033,6 +1108,14 @@ public interface ChefserverPackage extends EPackage {
          * @generated
          */
         EClass PLATFORM = eINSTANCE.getPlatform();
+
+        /**
+         * The meta object literal for the '<em><b>Test Val</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute PLATFORM__TEST_VAL = eINSTANCE.getPlatform_TestVal();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl <em>Run List</em>}' class.
@@ -1077,14 +1160,14 @@ public interface ChefserverPackage extends EPackage {
         EReference RUN_LIST__RECIPES = eINSTANCE.getRunList_Recipes();
 
         /**
-         * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ConfigImpl <em>Config</em>}' class.
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerConfigImpl <em>Server Config</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
-         * @see org.limepepper.chefclipse.common.chefserver.impl.ConfigImpl
-         * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getConfig()
+         * @see org.limepepper.chefclipse.common.chefserver.impl.ServerConfigImpl
+         * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerConfig()
          * @generated
          */
-        EClass CONFIG = eINSTANCE.getConfig();
+        EClass SERVER_CONFIG = eINSTANCE.getServerConfig();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagItemImpl <em>Data Bag Item</em>}' class.

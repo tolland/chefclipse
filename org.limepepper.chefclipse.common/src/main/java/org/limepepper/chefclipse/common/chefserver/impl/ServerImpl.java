@@ -13,6 +13,7 @@ import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
@@ -30,6 +31,7 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl#getClients <em>Clients</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl#getWebuiport <em>Webuiport</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl#getSandboxes <em>Sandboxes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl#getConfig <em>Config</em>}</li>
  * </ul>
  * </p>
  *
@@ -169,6 +171,24 @@ public class ServerImpl extends EObjectImpl implements Server {
     @SuppressWarnings("unchecked")
     public EList<Sandbox> getSandboxes() {
         return (EList<Sandbox>)eGet(ChefserverPackage.Literals.SERVER__SANDBOXES, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ServerConfig getConfig() {
+        return (ServerConfig)eGet(ChefserverPackage.Literals.SERVER__CONFIG, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setConfig(ServerConfig newConfig) {
+        eSet(ChefserverPackage.Literals.SERVER__CONFIG, newConfig);
     }
 
 } //ServerImpl

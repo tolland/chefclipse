@@ -2,7 +2,8 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.ChecksumFile;
+import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
 
 /**
@@ -15,5 +16,5 @@ import org.limepepper.chefclipse.SandboxedObject;
  * @model
  * @generated
  */
-public interface Definition extends NamedDescribedObject, SandboxedObject {
+public interface Definition extends SandboxedObject, ChecksumFile, NamedObject, CookbookFile {
 } // Definition

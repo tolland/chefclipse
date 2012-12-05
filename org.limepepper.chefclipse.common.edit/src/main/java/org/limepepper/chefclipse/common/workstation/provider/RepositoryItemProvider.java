@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.limepepper.chefclipse.ChefclipsePackage;
@@ -35,6 +34,8 @@ import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
+import org.limepepper.chefclipse.provider.DescribedObjectItemProvider;
+
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.common.workstation.Repository} object.
  * <!-- begin-user-doc -->
@@ -42,7 +43,7 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * @generated
  */
 public class RepositoryItemProvider
-    extends ItemProviderAdapter
+    extends DescribedObjectItemProvider
     implements
         IEditingDomainItemProvider,
         IStructuredItemContentProvider,
@@ -71,12 +72,11 @@ public class RepositoryItemProvider
             super.getPropertyDescriptors(object);
 
             addNamePropertyDescriptor(object);
-            addDescriptionPropertyDescriptor(object);
+            addIDPropertyDescriptor(object);
             addOSPropertyDescriptor(object);
             addBasepathPropertyDescriptor(object);
             addCookbooksPropertyDescriptor(object);
             addKnifePropertyDescriptor(object);
-            addOldCookbooksPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -92,9 +92,9 @@ public class RepositoryItemProvider
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_NamedDescribedObject_name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_NamedDescribedObject_name_feature", "_UI_NamedDescribedObject_type"),
-                 ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__NAME,
+                 getString("_UI_NamedObject_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
                  true,
                  false,
                  false,
@@ -104,19 +104,19 @@ public class RepositoryItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Description feature.
+     * This adds a property descriptor for the ID feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addDescriptionPropertyDescriptor(Object object) {
+    protected void addIDPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_NamedDescribedObject_description_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_NamedDescribedObject_description_feature", "_UI_NamedDescribedObject_type"),
-                 ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__DESCRIPTION,
+                 getString("_UI_NamedObject_ID_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__ID,
                  true,
                  false,
                  false,
@@ -214,28 +214,6 @@ public class RepositoryItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Old Cookbooks feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addOldCookbooksPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Repository_oldCookbooks_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Repository_oldCookbooks_feature", "_UI_Repository_type"),
-                 WorkstationPackage.Literals.REPOSITORY__OLD_COOKBOOKS,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
-    }
-
-    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -303,7 +281,7 @@ public class RepositoryItemProvider
 
         switch (notification.getFeatureID(Repository.class)) {
             case WorkstationPackage.REPOSITORY__NAME:
-            case WorkstationPackage.REPOSITORY__DESCRIPTION:
+            case WorkstationPackage.REPOSITORY__ID:
             case WorkstationPackage.REPOSITORY__OS:
             case WorkstationPackage.REPOSITORY__BASEPATH:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
@@ -331,7 +309,7 @@ public class RepositoryItemProvider
         newChildDescriptors.add
             (createChildParameter
                 (WorkstationPackage.Literals.REPOSITORY__KNIFE,
-                 KnifeFactory.eINSTANCE.createConfig()));
+                 KnifeFactory.eINSTANCE.createKnifeConfig()));
     }
 
     /**

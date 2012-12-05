@@ -23,6 +23,7 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Server#getClients <em>Clients</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Server#getWebuiport <em>Webuiport</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Server#getSandboxes <em>Sandboxes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.Server#getConfig <em>Config</em>}</li>
  * </ul>
  * </p>
  *
@@ -193,5 +194,31 @@ public interface Server extends EObject {
      * @generated
      */
     EList<Sandbox> getSandboxes();
+
+    /**
+     * Returns the value of the '<em><b>Config</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Config</em>' reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Config</em>' reference.
+     * @see #setConfig(ServerConfig)
+     * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Config()
+     * @model
+     * @generated
+     */
+    ServerConfig getConfig();
+
+    /**
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.Server#getConfig <em>Config</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Config</em>' reference.
+     * @see #getConfig()
+     * @generated
+     */
+    void setConfig(ServerConfig value);
 
 } // Server

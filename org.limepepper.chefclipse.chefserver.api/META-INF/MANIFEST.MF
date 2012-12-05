@@ -20,10 +20,13 @@ Require-Bundle: org.junit4;bundle-version="4.8.1",
  org.eclipse.jface.text,
  org.eclipse.ui.editors,
  org.eclipse.jface.databinding;bundle-version="1.6.0",
- com.ibm.icu;bundle-version="4.4.2"
+ com.ibm.icu;bundle-version="4.4.2",
+ org.codehaus.jackson.core;bundle-version="1.9.5",
+ org.codehaus.jackson.mapper;bundle-version="1.9.5"
 Export-Package: org.limepepper.chefclipse.chefserver.api,
  org.limepepper.chefclipse.chefserver.api.tests
 Bundle-Classpath: lib/jersey-client.jar,
  lib/jersey-core.jar,
  lib/jersey-json.jar,
- lib/jettison.jar
+ lib/jettison.jar,
+ lib/bcprov-jdk16-1.46.jar

@@ -12,10 +12,26 @@
   </parent>
   <artifactId>org.limepepper.chefclipse.chefserver.api</artifactId>
   <packaging>eclipse-plugin</packaging>
+
+  <repositories>
+    <repository>
+      <id>emf2json</id>
+      <url>http://ghillairet.github.com/p2</url>
+      <layout>p2</layout>
+    </repository>
+  </repositories>
+
+
+
   <dependencies>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
       <version>1.6.1</version>
     </dependency>
     <dependency>
@@ -39,21 +55,24 @@
       <version>1.3.2</version>
     </dependency>
     <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-      <version>1.8.5</version>
-    </dependency>
-    <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk16</artifactId>
       <version>1.46</version>
       <type>jar</type>
     </dependency>
-
   </dependencies>
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <pomDependencies>consider</pomDependencies>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
@@ -84,18 +103,23 @@
                   <artifactId>jettison</artifactId>
                 </artifactItem>
                 <artifactItem>
-                  <groupId>org.codehaus.jackson</groupId>
-                  <artifactId>jackson-mapper-asl</artifactId>
-                </artifactItem>
-                <artifactItem>
                   <groupId>org.bouncycastle</groupId>
                   <artifactId>bcprov-jdk16</artifactId>
+                </artifactItem>
+                <artifact>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>slf4j-api</artifactId>
+                </artifact>
+                <artifactItem>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>slf4j-log4j12</artifactId>
                 </artifactItem>
               </artifactItems>
               <outputDirectory>lib</outputDirectory>
               <overWriteReleases>true</overWriteReleases>
               <overWriteSnapshots>true</overWriteSnapshots>
               <overWriteIfNewer>true</overWriteIfNewer>
+              <stripVersion>true</stripVersion>
             </configuration>
           </execution>
         </executions>

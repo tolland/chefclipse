@@ -15,6 +15,7 @@ import org.limepepper.chefclipse.NamedObject;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.impl.NamedObjectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.impl.NamedObjectImpl#getID <em>ID</em>}</li>
  * </ul>
  * </p>
  *
@@ -66,6 +67,24 @@ public class NamedObjectImpl extends EObjectImpl implements NamedObject {
      */
     public void setName(String newName) {
         eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getID() {
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setID(String newID) {
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
     }
 
 } //NamedObjectImpl

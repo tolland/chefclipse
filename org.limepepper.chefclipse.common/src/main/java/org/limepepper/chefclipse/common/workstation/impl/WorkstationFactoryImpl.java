@@ -33,7 +33,7 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationF
      */
     public static WorkstationFactory init() {
         try {
-            WorkstationFactory theWorkstationFactory = (WorkstationFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/1.0.0/workstation"); 
+            WorkstationFactory theWorkstationFactory = (WorkstationFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/workstation"); 
             if (theWorkstationFactory != null) {
                 return theWorkstationFactory;
             }

@@ -64,30 +64,31 @@ public class ResourceItemProvider
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addNamePropertyDescriptor(object);
+            addUrlPropertyDescriptor(object);
             addChecksumPropertyDescriptor(object);
             addPathPropertyDescriptor(object);
             addSpecificityPropertyDescriptor(object);
-            addUrlPropertyDescriptor(object);
-            addRecipePropertyDescriptor(object);
+            addNamePropertyDescriptor(object);
+            addIDPropertyDescriptor(object);
+            addCookbookPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Name feature.
+     * This adds a property descriptor for the Url feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addNamePropertyDescriptor(Object object) {
+    protected void addUrlPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_NamedObject_name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
-                 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
+                 getString("_UI_SandboxedObject_url_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_SandboxedObject_url_feature", "_UI_SandboxedObject_type"),
+                 ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL,
                  true,
                  false,
                  false,
@@ -163,19 +164,19 @@ public class ResourceItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Url feature.
+     * This adds a property descriptor for the Name feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addUrlPropertyDescriptor(Object object) {
+    protected void addNamePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_ChecksumFile_url_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_url_feature", "_UI_ChecksumFile_type"),
-                 ChefclipsePackage.Literals.CHECKSUM_FILE__URL,
+                 getString("_UI_NamedObject_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
                  true,
                  false,
                  false,
@@ -185,19 +186,41 @@ public class ResourceItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Recipe feature.
+     * This adds a property descriptor for the ID feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addRecipePropertyDescriptor(Object object) {
+    protected void addIDPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_Resource_recipe_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Resource_recipe_feature", "_UI_Resource_type"),
-                 CookbookPackage.Literals.RESOURCE__RECIPE,
+                 getString("_UI_NamedObject_ID_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__ID,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Cookbook feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addCookbookPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CookbookFile_cookbook_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_cookbook_feature", "_UI_CookbookFile_type"),
+                 CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK,
                  true,
                  false,
                  true,
@@ -243,11 +266,12 @@ public class ResourceItemProvider
         updateChildren(notification);
 
         switch (notification.getFeatureID(Resource.class)) {
-            case CookbookPackage.RESOURCE__NAME:
+            case CookbookPackage.RESOURCE__URL:
             case CookbookPackage.RESOURCE__CHECKSUM:
             case CookbookPackage.RESOURCE__PATH:
             case CookbookPackage.RESOURCE__SPECIFICITY:
-            case CookbookPackage.RESOURCE__URL:
+            case CookbookPackage.RESOURCE__NAME:
+            case CookbookPackage.RESOURCE__ID:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

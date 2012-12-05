@@ -141,6 +141,29 @@ public class ChefclientItemProviderAdapterFactory extends ChefclientAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefclient.ClientConfig} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ClientConfigItemProvider clientConfigItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefclient.ClientConfig}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createClientConfigAdapter() {
+        if (clientConfigItemProvider == null) {
+            clientConfigItemProvider = new ClientConfigItemProvider(this);
+        }
+
+        return clientConfigItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -242,6 +265,7 @@ public class ChefclientItemProviderAdapterFactory extends ChefclientAdapterFacto
         if (clientItemProvider != null) clientItemProvider.dispose();
         if (ohaiItemProvider != null) ohaiItemProvider.dispose();
         if (searchItemProvider != null) searchItemProvider.dispose();
+        if (clientConfigItemProvider != null) clientConfigItemProvider.dispose();
     }
 
 }

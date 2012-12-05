@@ -5,9 +5,9 @@ package org.limepepper.chefclipse.common.knife.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.*;
-import org.limepepper.chefclipse.common.knife.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
 import org.limepepper.chefclipse.common.knife.Plugin;
@@ -69,10 +69,10 @@ public class KnifeSwitch<T> extends Switch<T> {
     @Override
     protected T doSwitch(int classifierID, EObject theEObject) {
         switch (classifierID) {
-            case KnifePackage.CONFIG: {
-                Config config = (Config)theEObject;
-                T result = caseConfig(config);
-                if (result == null) result = caseNamedDescribedObject(config);
+            case KnifePackage.KNIFE_CONFIG: {
+                KnifeConfig knifeConfig = (KnifeConfig)theEObject;
+                T result = caseKnifeConfig(knifeConfig);
+                if (result == null) result = caseConfig(knifeConfig);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -103,7 +103,7 @@ public class KnifeSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseConfig(Config object) {
+    public T caseKnifeConfig(KnifeConfig object) {
         return null;
     }
 
@@ -138,17 +138,17 @@ public class KnifeSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
+     * Returns the result of interpreting the object as an instance of '<em>Config</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
      * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
+     * @return the result of interpreting the object as an instance of '<em>Config</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseNamedDescribedObject(NamedDescribedObject object) {
+    public T caseConfig(Config object) {
         return null;
     }
 

@@ -2,8 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook.impl;
 
-import java.net.URL;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.ChecksumFile;
@@ -12,11 +10,10 @@ import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
-import org.limepepper.chefclipse.common.cookbook.Resource;
 import org.limepepper.chefclipse.impl.SandboxedObjectImpl;
 
 /**
@@ -27,16 +24,14 @@ import org.limepepper.chefclipse.impl.SandboxedObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getExtension <em>Extension</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getChecksum <em>Checksum</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getSpecificity <em>Specificity</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getUrl <em>Url</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getCookbookVersion <em>Cookbook Version</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getID <em>ID</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getCookbook <em>Cookbook</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getRunlist <em>Runlist</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getCookbook <em>Cookbook</em>}</li>
  * </ul>
  * </p>
  *
@@ -78,24 +73,6 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      */
     public void setExtension(String newExtension) {
         eSet(ChefclipsePackage.Literals.RUBY_FILE__EXTENSION, newExtension);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public String getName() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void setName(String newName) {
-        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
     }
 
     /**
@@ -157,8 +134,8 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    public URL getUrl() {
-        return (URL)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__URL, true);
+    public String getName() {
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
     }
 
     /**
@@ -166,8 +143,8 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setUrl(URL newUrl) {
-        eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__URL, newUrl);
+    public void setName(String newName) {
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
     }
 
     /**
@@ -175,8 +152,8 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    public CookbookVersion getCookbookVersion() {
-        return (CookbookVersion)eGet(CookbookPackage.Literals.RECIPE__COOKBOOK_VERSION, true);
+    public String getID() {
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
     }
 
     /**
@@ -184,8 +161,8 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setCookbookVersion(CookbookVersion newCookbookVersion) {
-        eSet(CookbookPackage.Literals.RECIPE__COOKBOOK_VERSION, newCookbookVersion);
+    public void setID(String newID) {
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
     }
 
     /**
@@ -193,9 +170,17 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    @SuppressWarnings("unchecked")
-    public EList<Resource> getResources() {
-        return (EList<Resource>)eGet(CookbookPackage.Literals.RECIPE__RESOURCES, true);
+    public CookbookVersion getCookbook() {
+        return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setCookbook(CookbookVersion newCookbook) {
+        eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
     }
 
     /**
@@ -223,16 +208,6 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
      * <!-- end-user-doc -->
      * @generated
      */
-    @SuppressWarnings("unchecked")
-    public EList<Cookbook> getCookbook() {
-        return (EList<Cookbook>)eGet(CookbookPackage.Literals.RECIPE__COOKBOOK, true);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == RubyFile.class) {
@@ -241,18 +216,24 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
                 default: return -1;
             }
         }
-        if (baseClass == NamedObject.class) {
-            switch (derivedFeatureID) {
-                case CookbookPackage.RECIPE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-                default: return -1;
-            }
-        }
         if (baseClass == ChecksumFile.class) {
             switch (derivedFeatureID) {
                 case CookbookPackage.RECIPE__CHECKSUM: return ChefclipsePackage.CHECKSUM_FILE__CHECKSUM;
                 case CookbookPackage.RECIPE__PATH: return ChefclipsePackage.CHECKSUM_FILE__PATH;
                 case CookbookPackage.RECIPE__SPECIFICITY: return ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY;
-                case CookbookPackage.RECIPE__URL: return ChefclipsePackage.CHECKSUM_FILE__URL;
+                default: return -1;
+            }
+        }
+        if (baseClass == NamedObject.class) {
+            switch (derivedFeatureID) {
+                case CookbookPackage.RECIPE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+                case CookbookPackage.RECIPE__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+                default: return -1;
+            }
+        }
+        if (baseClass == CookbookFile.class) {
+            switch (derivedFeatureID) {
+                case CookbookPackage.RECIPE__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
                 default: return -1;
             }
         }
@@ -272,18 +253,24 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
                 default: return -1;
             }
         }
-        if (baseClass == NamedObject.class) {
-            switch (baseFeatureID) {
-                case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.RECIPE__NAME;
-                default: return -1;
-            }
-        }
         if (baseClass == ChecksumFile.class) {
             switch (baseFeatureID) {
                 case ChefclipsePackage.CHECKSUM_FILE__CHECKSUM: return CookbookPackage.RECIPE__CHECKSUM;
                 case ChefclipsePackage.CHECKSUM_FILE__PATH: return CookbookPackage.RECIPE__PATH;
                 case ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY: return CookbookPackage.RECIPE__SPECIFICITY;
-                case ChefclipsePackage.CHECKSUM_FILE__URL: return CookbookPackage.RECIPE__URL;
+                default: return -1;
+            }
+        }
+        if (baseClass == NamedObject.class) {
+            switch (baseFeatureID) {
+                case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.RECIPE__NAME;
+                case ChefclipsePackage.NAMED_OBJECT__ID: return CookbookPackage.RECIPE__ID;
+                default: return -1;
+            }
+        }
+        if (baseClass == CookbookFile.class) {
+            switch (baseFeatureID) {
+                case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return CookbookPackage.RECIPE__COOKBOOK;
                 default: return -1;
             }
         }

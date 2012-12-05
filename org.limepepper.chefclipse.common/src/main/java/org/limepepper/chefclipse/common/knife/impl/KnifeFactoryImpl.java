@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.limepepper.chefclipse.common.knife.*;
-import org.limepepper.chefclipse.common.knife.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
@@ -29,7 +29,7 @@ public class KnifeFactoryImpl extends EFactoryImpl implements KnifeFactory {
      */
     public static KnifeFactory init() {
         try {
-            KnifeFactory theKnifeFactory = (KnifeFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/1.0.0/knife"); 
+            KnifeFactory theKnifeFactory = (KnifeFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/knife"); 
             if (theKnifeFactory != null) {
                 return theKnifeFactory;
             }
@@ -58,7 +58,7 @@ public class KnifeFactoryImpl extends EFactoryImpl implements KnifeFactory {
     @Override
     public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
-            case KnifePackage.CONFIG: return createConfig();
+            case KnifePackage.KNIFE_CONFIG: return createKnifeConfig();
             case KnifePackage.PLUGIN: return createPlugin();
             case KnifePackage.KNIFE_SEARCH: return createKnifeSearch();
             default:
@@ -71,9 +71,9 @@ public class KnifeFactoryImpl extends EFactoryImpl implements KnifeFactory {
      * <!-- end-user-doc -->
      * @generated
      */
-    public Config createConfig() {
-        ConfigImpl config = new ConfigImpl();
-        return config;
+    public KnifeConfig createKnifeConfig() {
+        KnifeConfigImpl knifeConfig = new KnifeConfigImpl();
+        return knifeConfig;
     }
 
     /**

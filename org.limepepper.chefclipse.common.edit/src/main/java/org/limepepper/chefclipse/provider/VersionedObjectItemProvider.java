@@ -63,6 +63,7 @@ public class VersionedObjectItemProvider
             super.getPropertyDescriptors(object);
 
             addNUM_VERSIONSPropertyDescriptor(object);
+            addVersionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -82,6 +83,28 @@ public class VersionedObjectItemProvider
                  getString("_UI_PropertyDescriptor_description", "_UI_VersionedObject_NUM_VERSIONS_feature", "_UI_VersionedObject_type"),
                  ChefclipsePackage.Literals.VERSIONED_OBJECT__NUM_VERSIONS,
                  false,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Version feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addVersionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_VersionedObject_version_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_VersionedObject_version_feature", "_UI_VersionedObject_type"),
+                 ChefclipsePackage.Literals.VERSIONED_OBJECT__VERSION,
+                 true,
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
@@ -128,6 +151,7 @@ public class VersionedObjectItemProvider
 
         switch (notification.getFeatureID(VersionedObject.class)) {
             case ChefclipsePackage.VERSIONED_OBJECT__NUM_VERSIONS:
+            case ChefclipsePackage.VERSIONED_OBJECT__VERSION:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

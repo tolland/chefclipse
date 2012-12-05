@@ -12,6 +12,7 @@ import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
 import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.limepepper.chefclipse.common.chefclient.Ohai;
 import org.limepepper.chefclipse.common.chefclient.Search;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -51,6 +52,13 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
      * @generated
      */
     private EClass searchEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass clientConfigEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -174,6 +182,15 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getClientConfig() {
+        return clientConfigEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public ChefclientFactory getChefclientFactory() {
         return (ChefclientFactory)getEFactoryInstance();
     }
@@ -203,6 +220,8 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
         ohaiEClass = createEClass(OHAI);
 
         searchEClass = createEClass(SEARCH);
+
+        clientConfigEClass = createEClass(CLIENT_CONFIG);
     }
 
     /**
@@ -230,12 +249,14 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
 
         // Obtain other dependent packages
         ChefserverPackage theChefserverPackage = (ChefserverPackage)EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI);
+        ChefclipsePackage theChefclipsePackage = (ChefclipsePackage)EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI);
 
         // Create type parameters
 
         // Set bounds for type parameters
 
         // Add supertypes to classes
+        clientConfigEClass.getESuperTypes().add(theChefclipsePackage.getConfig());
 
         // Initialize classes and features; add operations and parameters
         initEClass(clientEClass, Client.class, "Client", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -244,6 +265,8 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
         initEClass(ohaiEClass, Ohai.class, "Ohai", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(searchEClass, Search.class, "Search", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(clientConfigEClass, ClientConfig.class, "ClientConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     }
 
 } //ChefclientPackageImpl

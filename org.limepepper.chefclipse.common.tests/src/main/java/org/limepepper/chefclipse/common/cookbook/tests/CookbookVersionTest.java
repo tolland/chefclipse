@@ -2,12 +2,12 @@
  */
 package org.limepepper.chefclipse.common.cookbook.tests;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+
+import org.limepepper.chefclipse.tests.DescribedObjectTest;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,15 +15,7 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CookbookVersionTest extends TestCase {
-
-    /**
-     * The fixture for this Version test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected CookbookVersion fixture = null;
+public class CookbookVersionTest extends DescribedObjectTest {
 
     /**
      * <!-- begin-user-doc -->
@@ -45,23 +37,14 @@ public class CookbookVersionTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Version test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void setFixture(CookbookVersion fixture) {
-        this.fixture = fixture;
-    }
-
-    /**
      * Returns the fixture for this Version test case.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     protected CookbookVersion getFixture() {
-        return fixture;
+        return (CookbookVersion)fixture;
     }
 
     /**

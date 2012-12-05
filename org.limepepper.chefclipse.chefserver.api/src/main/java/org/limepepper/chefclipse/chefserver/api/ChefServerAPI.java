@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.chefserver.api;
 
@@ -18,69 +18,70 @@ import opscode.chef.REST.JSONRestWrapper;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.limepepper.chefclipse.chefclipse.REST.ClientResp;
-import org.limepepper.chefclipse.chefclipse.REST.CookbookListResp;
-import org.limepepper.chefclipse.chefclipse.REST.CookbookListVersionResp;
-import org.limepepper.chefclipse.chefclipse.REST.CookbookMetadata;
-import org.limepepper.chefclipse.chefclipse.REST.CookbookVersionResp;
-import org.limepepper.chefclipse.chefclipse.REST.EnvironmentResp;
-import org.limepepper.chefclipse.chefclipse.REST.NodeListResp;
-import org.limepepper.chefclipse.chefclipse.REST.NodeResp;
-import org.limepepper.chefclipse.chefclipse.REST.RESTFactory;
-import org.limepepper.chefclipse.chefclipse.REST.RoleListResp;
-import org.limepepper.chefclipse.chefclipse.REST.RoleResp;
-import org.limepepper.chefclipse.chefclipse.REST.SearchIndexResp;
-import org.limepepper.chefclipse.chefclipse.REST.SearchResultResp;
+import org.eclipse.jdt.annotation.NonNull;
+import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.REST.ClientResp;
+import org.limepepper.chefclipse.REST.CookbookListResp;
+import org.limepepper.chefclipse.REST.CookbookListVersionResp;
+import org.limepepper.chefclipse.REST.CookbookMetadata;
+import org.limepepper.chefclipse.REST.CookbookVersionResp;
+import org.limepepper.chefclipse.REST.EnvironmentResp;
+import org.limepepper.chefclipse.REST.NodeListResp;
+import org.limepepper.chefclipse.REST.NodeResp;
+import org.limepepper.chefclipse.REST.RESTFactory;
+import org.limepepper.chefclipse.REST.RoleListResp;
+import org.limepepper.chefclipse.REST.RoleResp;
+import org.limepepper.chefclipse.REST.SearchIndexResp;
+import org.limepepper.chefclipse.REST.SearchResultResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
 import com.sun.jersey.api.client.ClientResponse;
 
 /**
  * 
  * @author tolland
- * 
  */
 public class ChefServerAPI implements IChefServerAPI {
 
-    JSONRestWrapper                        jSONRestWrapper;
-    Config                             config;
+    private JSONRestWrapper                        jSONRestWrapper;
 
-    private static List<ChefServerAPI> instances = new ArrayList<ChefServerAPI>();
+    private static Map<KnifeConfig, ChefServerAPI> instances = new HashMap<KnifeConfig, ChefServerAPI>(
+                                                                     1);
 
-    public static ChefServerAPI getInstance(Config config) throws IOException {
-        ChefServerAPI chefServerAPI = null;
-        if (instances.isEmpty()) {
-            chefServerAPI = new ChefServerAPI(config);
-            instances.add(chefServerAPI);
+    public static ChefServerAPI getInstance(@NonNull KnifeConfig knifeConfig) {
+
+        if (!instances.containsKey(knifeConfig)) {
+            ChefServerAPI chefServerAPI = new ChefServerAPI(knifeConfig);
+            instances.put(knifeConfig, chefServerAPI);
             return chefServerAPI;
         }
 
-        // @todo, the idea was to check for the existence
-        return instances.get(0);
+        return instances.get(knifeConfig);
     }
 
+    public ChefServerAPI(Config config) {
+        // @todo docs
+        try {
+            AuthCredentials auth = new AuthCredentials(config.getNode_name(),
+                    config.getClient_key());
+            jSONRestWrapper = new JSONRestWrapper(auth,
+                    config.getChef_server_url());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-
-    protected ChefServerAPI(Config config) throws IOException {
-        this.config = config;
-        AuthCredentials auth = new AuthCredentials(config.client_name,
-                config.client_key);
-
-        jSONRestWrapper = new JSONRestWrapper(auth, config.chef_server_url);
     }
-
-    /*
-     * default is to get them all
-     */
 
     private JSONObject getRestCookbooks() throws MalformedURLException {
         return getRestCookbooks(3, 0, -1);
     }
 
-    private JSONObject getRestCookbookVersion(String cookbook, int versions) throws MalformedURLException {
+    private JSONObject getRestCookbookVersion(String cookbook, int versions)
+            throws MalformedURLException {
 
         Map<String, List<String>> query_params = new HashMap<String, List<String>>();
         query_params.put("num_versions",
@@ -90,7 +91,8 @@ public class ChefServerAPI implements IChefServerAPI {
 
     }
 
-    private JSONObject getRestCookbooks(int versions, int start, int items) throws MalformedURLException {
+    private JSONObject getRestCookbooks(int versions, int start, int items)
+            throws MalformedURLException {
 
         Map<String, List<String>> query_params = new HashMap<String, List<String>>();
         query_params.put("num_versions",
@@ -103,7 +105,8 @@ public class ChefServerAPI implements IChefServerAPI {
         return createCookbookListRespList(json);
     }
 
-    public CookbookVersionResp getRestCookbookVersion(String cookbook) throws MalformedURLException {
+    public CookbookVersionResp getRestCookbookVersion(String cookbook)
+            throws MalformedURLException {
         JSONObject json = getRestCookbookVersion(cookbook, 3);
         return createCookbookVersionResp(cookbook, json);
     }
@@ -129,19 +132,6 @@ public class ChefServerAPI implements IChefServerAPI {
                 cookbookMetadata.getDependencies().add(dep);
             }
 
-            /*
-             * JSONArray versionsJSON = cookbookversionsJson
-             * .getJSONArray("versions");
-             */
-            /*
-             * for (int i = 0; i < versionsJSON.length(); i++) {
-             * CookbookListResp.getVersions().add(
-             * createCookbookInfoVersionResp(versionsJSON
-             * .getJSONObject(i)));
-             * 
-             * }
-             */
-
         } catch (JSONException e) {
             System.out.println(json);
             e.printStackTrace();
@@ -149,7 +139,8 @@ public class ChefServerAPI implements IChefServerAPI {
         return cookbookVersionResp;
     }
 
-    public CookbookVersionResp getCookbookVersion(String string) throws MalformedURLException {
+    public CookbookVersionResp getCookbookVersion(String string)
+            throws MalformedURLException {
         return getRestCookbookVersion(string);
     }
 
@@ -231,19 +222,22 @@ public class ChefServerAPI implements IChefServerAPI {
         return cookbook;
     }
 
-    private JSONObject getRestCookbook(String cookbook) throws MalformedURLException {
+    private JSONObject getRestCookbook(String cookbook)
+            throws MalformedURLException {
 
         return getRestCookbook(cookbook, 3);
     }
 
-    private JSONObject getRestCookbook(String cookbook, int versions) throws MalformedURLException {
+    private JSONObject getRestCookbook(String cookbook, int versions)
+            throws MalformedURLException {
         Map<String, List<String>> query_params = new HashMap<String, List<String>>();
         query_params.put("num_versions",
                 Arrays.asList(new String[] { Integer.toString(versions) }));
         return jSONRestWrapper.rest_get("/cookbooks/" + cookbook, query_params);
     }
 
-    public CookbookListResp getCookbookInfo(String cookbook) throws MalformedURLException {
+    public CookbookListResp getCookbookInfo(String cookbook)
+            throws MalformedURLException {
 
         JSONObject json = getRestCookbook(cookbook);
         System.out.println(json);

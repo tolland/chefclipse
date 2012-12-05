@@ -38,7 +38,7 @@ public interface WorkstationPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    String eNS_URI = "http://limepepper.org/chefclipse/1.0.0/workstation";
+    String eNS_URI = "http://limepepper.org/v1/chefclipse/workstation";
 
     /**
      * The package namespace name.
@@ -67,6 +67,15 @@ public interface WorkstationPackage extends EPackage {
     int REPOSITORY = 0;
 
     /**
+     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REPOSITORY__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+
+    /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -76,13 +85,13 @@ public interface WorkstationPackage extends EPackage {
     int REPOSITORY__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
-     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * The feature id for the '<em><b>ID</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int REPOSITORY__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int REPOSITORY__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
      * The feature id for the '<em><b>OS</b></em>' attribute.
@@ -103,7 +112,7 @@ public interface WorkstationPackage extends EPackage {
     int REPOSITORY__BASEPATH = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Cookbooks</b></em>' reference list.
+     * The feature id for the '<em><b>Cookbooks</b></em>' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -121,22 +130,13 @@ public interface WorkstationPackage extends EPackage {
     int REPOSITORY__KNIFE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Old Cookbooks</b></em>' reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int REPOSITORY__OLD_COOKBOOKS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
-
-    /**
      * The number of structural features of the '<em>Repository</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int REPOSITORY_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
+    int REPOSITORY_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl <em>Config Folder</em>}' class.
@@ -213,6 +213,15 @@ public interface WorkstationPackage extends EPackage {
      * @ordered
      */
     int ENVIRONMENTS_FOLDER__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
+
+    /**
+     * The feature id for the '<em><b>ID</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ENVIRONMENTS_FOLDER__ID = ChefclipsePackage.NAMED_OBJECT__ID;
 
     /**
      * The number of structural features of the '<em>Environments Folder</em>' class.
@@ -295,10 +304,10 @@ public interface WorkstationPackage extends EPackage {
     EAttribute getRepository_Basepath();
 
     /**
-     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbooks <em>Cookbooks</em>}'.
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbooks <em>Cookbooks</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the reference list '<em>Cookbooks</em>'.
+     * @return the meta object for the containment reference list '<em>Cookbooks</em>'.
      * @see org.limepepper.chefclipse.common.workstation.Repository#getCookbooks()
      * @see #getRepository()
      * @generated
@@ -315,17 +324,6 @@ public interface WorkstationPackage extends EPackage {
      * @generated
      */
     EReference getRepository_Knife();
-
-    /**
-     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getOldCookbooks <em>Old Cookbooks</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the reference list '<em>Old Cookbooks</em>'.
-     * @see org.limepepper.chefclipse.common.workstation.Repository#getOldCookbooks()
-     * @see #getRepository()
-     * @generated
-     */
-    EReference getRepository_OldCookbooks();
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.ConfigFolder <em>Config Folder</em>}'.
@@ -436,7 +434,7 @@ public interface WorkstationPackage extends EPackage {
         EAttribute REPOSITORY__BASEPATH = eINSTANCE.getRepository_Basepath();
 
         /**
-         * The meta object literal for the '<em><b>Cookbooks</b></em>' reference list feature.
+         * The meta object literal for the '<em><b>Cookbooks</b></em>' containment reference list feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -450,14 +448,6 @@ public interface WorkstationPackage extends EPackage {
          * @generated
          */
         EReference REPOSITORY__KNIFE = eINSTANCE.getRepository_Knife();
-
-        /**
-         * The meta object literal for the '<em><b>Old Cookbooks</b></em>' reference list feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EReference REPOSITORY__OLD_COOKBOOKS = eINSTANCE.getRepository_OldCookbooks();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl <em>Config Folder</em>}' class.

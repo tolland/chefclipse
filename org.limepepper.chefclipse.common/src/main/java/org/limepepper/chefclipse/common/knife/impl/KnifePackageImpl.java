@@ -16,7 +16,7 @@ import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl;
-import org.limepepper.chefclipse.common.knife.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
@@ -37,7 +37,7 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    private EClass configEClass = null;
+    private EClass knifeConfigEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -139,8 +139,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EClass getConfig() {
-        return configEClass;
+    public EClass getKnifeConfig() {
+        return knifeConfigEClass;
     }
 
     /**
@@ -148,8 +148,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EReference getConfig_Plugins() {
-        return (EReference)configEClass.getEStructuralFeatures().get(0);
+    public EReference getKnifeConfig_Plugins() {
+        return (EReference)knifeConfigEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -157,8 +157,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getConfig_Node_name() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(1);
+    public EAttribute getKnifeConfig_Cache_type() {
+        return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -166,8 +166,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getConfig_Client_key() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(2);
+    public EAttribute getKnifeConfig_Cache_option() {
+        return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -175,8 +175,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getConfig_Chef_server_url() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(3);
+    public EAttribute getKnifeConfig_Cookbook_path() {
+        return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -184,8 +184,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getConfig_Cache_type() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(4);
+    public EAttribute getKnifeConfig_Cookbook_copyright() {
+        return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -193,8 +193,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getConfig_Cache_option() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(5);
+    public EAttribute getKnifeConfig_Cookbook_email() {
+        return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -202,8 +202,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getConfig_Validation_client_name() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(6);
+    public EAttribute getKnifeConfig_Cookbook_license() {
+        return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -211,8 +211,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getConfig_Validation_key() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(7);
+    public EAttribute getKnifeConfig_Path() {
+        return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -220,44 +220,8 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getConfig_Cookbook_path() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(8);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getConfig_Cookbook_copyright() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(9);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getConfig_Cookbook_email() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(10);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getConfig_Cookbook_license() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(11);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getConfig_Path() {
-        return (EAttribute)configEClass.getEStructuralFeatures().get(12);
+    public EReference getKnifeConfig_Server() {
+        return (EReference)knifeConfigEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -306,20 +270,16 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
         isCreated = true;
 
         // Create classes and their features
-        configEClass = createEClass(CONFIG);
-        createEReference(configEClass, CONFIG__PLUGINS);
-        createEAttribute(configEClass, CONFIG__NODE_NAME);
-        createEAttribute(configEClass, CONFIG__CLIENT_KEY);
-        createEAttribute(configEClass, CONFIG__CHEF_SERVER_URL);
-        createEAttribute(configEClass, CONFIG__CACHE_TYPE);
-        createEAttribute(configEClass, CONFIG__CACHE_OPTION);
-        createEAttribute(configEClass, CONFIG__VALIDATION_CLIENT_NAME);
-        createEAttribute(configEClass, CONFIG__VALIDATION_KEY);
-        createEAttribute(configEClass, CONFIG__COOKBOOK_PATH);
-        createEAttribute(configEClass, CONFIG__COOKBOOK_COPYRIGHT);
-        createEAttribute(configEClass, CONFIG__COOKBOOK_EMAIL);
-        createEAttribute(configEClass, CONFIG__COOKBOOK_LICENSE);
-        createEAttribute(configEClass, CONFIG__PATH);
+        knifeConfigEClass = createEClass(KNIFE_CONFIG);
+        createEReference(knifeConfigEClass, KNIFE_CONFIG__PLUGINS);
+        createEAttribute(knifeConfigEClass, KNIFE_CONFIG__CACHE_TYPE);
+        createEAttribute(knifeConfigEClass, KNIFE_CONFIG__CACHE_OPTION);
+        createEAttribute(knifeConfigEClass, KNIFE_CONFIG__COOKBOOK_PATH);
+        createEAttribute(knifeConfigEClass, KNIFE_CONFIG__COOKBOOK_COPYRIGHT);
+        createEAttribute(knifeConfigEClass, KNIFE_CONFIG__COOKBOOK_EMAIL);
+        createEAttribute(knifeConfigEClass, KNIFE_CONFIG__COOKBOOK_LICENSE);
+        createEAttribute(knifeConfigEClass, KNIFE_CONFIG__PATH);
+        createEReference(knifeConfigEClass, KNIFE_CONFIG__SERVER);
 
         pluginEClass = createEClass(PLUGIN);
 
@@ -351,29 +311,26 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 
         // Obtain other dependent packages
         ChefclipsePackage theChefclipsePackage = (ChefclipsePackage)EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI);
+        ChefserverPackage theChefserverPackage = (ChefserverPackage)EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI);
 
         // Create type parameters
 
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        configEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
+        knifeConfigEClass.getESuperTypes().add(theChefclipsePackage.getConfig());
 
         // Initialize classes and features; add operations and parameters
-        initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getConfig_Plugins(), this.getPlugin(), null, "plugins", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Node_name(), ecorePackage.getEString(), "node_name", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Client_key(), theChefclipsePackage.getFile(), "client_key", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Chef_server_url(), theChefclipsePackage.getURL(), "chef_server_url", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Cache_type(), ecorePackage.getEString(), "cache_type", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Cache_option(), ecorePackage.getEString(), "cache_option", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Validation_client_name(), ecorePackage.getEString(), "validation_client_name", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Validation_key(), theChefclipsePackage.getFile(), "validation_key", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Cookbook_path(), theChefclipsePackage.getFile(), "cookbook_path", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Cookbook_copyright(), ecorePackage.getEString(), "cookbook_copyright", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Cookbook_email(), ecorePackage.getEString(), "cookbook_email", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Cookbook_license(), ecorePackage.getEString(), "cookbook_license", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getConfig_Path(), theChefclipsePackage.getFile(), "path", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEClass(knifeConfigEClass, KnifeConfig.class, "KnifeConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getKnifeConfig_Plugins(), this.getPlugin(), null, "plugins", null, 0, -1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getKnifeConfig_Cache_type(), ecorePackage.getEString(), "cache_type", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getKnifeConfig_Cache_option(), ecorePackage.getEString(), "cache_option", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getKnifeConfig_Cookbook_path(), theChefclipsePackage.getFile(), "cookbook_path", null, 1, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getKnifeConfig_Cookbook_copyright(), ecorePackage.getEString(), "cookbook_copyright", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getKnifeConfig_Cookbook_email(), ecorePackage.getEString(), "cookbook_email", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getKnifeConfig_Cookbook_license(), ecorePackage.getEString(), "cookbook_license", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getKnifeConfig_Path(), theChefclipsePackage.getFile(), "path", null, 1, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getKnifeConfig_Server(), theChefserverPackage.getServer(), null, "server", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

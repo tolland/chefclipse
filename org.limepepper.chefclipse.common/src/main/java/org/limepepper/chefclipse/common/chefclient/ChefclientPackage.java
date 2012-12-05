@@ -5,6 +5,7 @@ package org.limepepper.chefclipse.common.chefclient;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.limepepper.chefclipse.ChefclipsePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +37,7 @@ public interface ChefclientPackage extends EPackage {
      * <!-- end-user-doc -->
      * @generated
      */
-    String eNS_URI = "http://limepepper.org/chefclipse/1.0.0/chefclient";
+    String eNS_URI = "http://limepepper.org/v1/chefclipse/chefclient";
 
     /**
      * The package namespace name.
@@ -122,6 +123,89 @@ public interface ChefclientPackage extends EPackage {
 
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.chefclient.impl.ClientConfigImpl <em>Client Config</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.chefclient.impl.ClientConfigImpl
+     * @see org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl#getClientConfig()
+     * @generated
+     */
+    int CLIENT_CONFIG = 3;
+
+    /**
+     * The feature id for the '<em><b>Chef server url</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLIENT_CONFIG__CHEF_SERVER_URL = ChefclipsePackage.CONFIG__CHEF_SERVER_URL;
+
+    /**
+     * The feature id for the '<em><b>Client key</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLIENT_CONFIG__CLIENT_KEY = ChefclipsePackage.CONFIG__CLIENT_KEY;
+
+    /**
+     * The feature id for the '<em><b>Node name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLIENT_CONFIG__NODE_NAME = ChefclipsePackage.CONFIG__NODE_NAME;
+
+    /**
+     * The feature id for the '<em><b>Log level</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLIENT_CONFIG__LOG_LEVEL = ChefclipsePackage.CONFIG__LOG_LEVEL;
+
+    /**
+     * The feature id for the '<em><b>Validation key</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLIENT_CONFIG__VALIDATION_KEY = ChefclipsePackage.CONFIG__VALIDATION_KEY;
+
+    /**
+     * The feature id for the '<em><b>Version</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLIENT_CONFIG__VERSION = ChefclipsePackage.CONFIG__VERSION;
+
+    /**
+     * The feature id for the '<em><b>Validation client name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLIENT_CONFIG__VALIDATION_CLIENT_NAME = ChefclipsePackage.CONFIG__VALIDATION_CLIENT_NAME;
+
+    /**
+     * The number of structural features of the '<em>Client Config</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int CLIENT_CONFIG_FEATURE_COUNT = ChefclipsePackage.CONFIG_FEATURE_COUNT + 0;
+
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefclient.Client <em>Client</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -161,6 +245,16 @@ public interface ChefclientPackage extends EPackage {
      * @generated
      */
     EClass getSearch();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefclient.ClientConfig <em>Client Config</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Client Config</em>'.
+     * @see org.limepepper.chefclipse.common.chefclient.ClientConfig
+     * @generated
+     */
+    EClass getClientConfig();
 
     /**
      * Returns the factory that creates the instances of the model.
@@ -221,6 +315,16 @@ public interface ChefclientPackage extends EPackage {
          * @generated
          */
         EClass SEARCH = eINSTANCE.getSearch();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefclient.impl.ClientConfigImpl <em>Client Config</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.chefclient.impl.ClientConfigImpl
+         * @see org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl#getClientConfig()
+         * @generated
+         */
+        EClass CLIENT_CONFIG = eINSTANCE.getClientConfig();
 
     }
 

@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.common.cookbook.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -11,7 +10,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.limepepper.chefclipse.common.cookbook.*;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
 import org.limepepper.chefclipse.common.cookbook.Attributes;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
@@ -19,10 +17,15 @@ import org.limepepper.chefclipse.common.cookbook.Definition;
 import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
 import org.limepepper.chefclipse.common.cookbook.File;
 import org.limepepper.chefclipse.common.cookbook.Library;
+import org.limepepper.chefclipse.common.cookbook.Metadata;
+import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
+import org.limepepper.chefclipse.common.cookbook.Name;
+import org.limepepper.chefclipse.common.cookbook.Provider;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
+import org.limepepper.chefclipse.common.cookbook.RecipeDescription;
 import org.limepepper.chefclipse.common.cookbook.Resource;
+import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.cookbook.Template;
-import org.limepepper.chefclipse.common.cookbook.supports;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,7 +42,7 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
      */
     public static CookbookFactory init() {
         try {
-            CookbookFactory theCookbookFactory = (CookbookFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/1.0.0/cookbook"); 
+            CookbookFactory theCookbookFactory = (CookbookFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/cookbook"); 
             if (theCookbookFactory != null) {
                 return theCookbookFactory;
             }
@@ -73,45 +76,19 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
             case CookbookPackage.LIBRARY: return createLibrary();
             case CookbookPackage.ATTRIBUTE: return createAttribute();
             case CookbookPackage.RECIPE: return createRecipe();
+            case CookbookPackage.RECIPE_DESCRIPTION: return createRecipeDescription();
             case CookbookPackage.RESOURCE: return createResource();
             case CookbookPackage.TEMPLATE: return createTemplate();
             case CookbookPackage.ATTRIBUTES: return createAttributes();
             case CookbookPackage.FILE: return createFile();
             case CookbookPackage.DEPENDENCY_RELATION: return createDependencyRelation();
-            case CookbookPackage.COOKBOOK: return createCookbook();
-            case CookbookPackage.VERSION: return createVersion();
+            case CookbookPackage.METADATA: return createMetadata();
+            case CookbookPackage.PROVIDER: return createProvider();
+            case CookbookPackage.ROOT_FILE: return createRoot_file();
+            case CookbookPackage.MINIMAL_METADATA: return createMinimalMetadata();
+            case CookbookPackage.NAME: return createName();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Object createFromString(EDataType eDataType, String initialValue) {
-        switch (eDataType.getClassifierID()) {
-            case CookbookPackage.SUPPORTS:
-                return createsupportsFromString(eDataType, initialValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-        }
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public String convertToString(EDataType eDataType, Object instanceValue) {
-        switch (eDataType.getClassifierID()) {
-            case CookbookPackage.SUPPORTS:
-                return convertsupportsToString(eDataType, instanceValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
     }
 
@@ -170,6 +147,16 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
      * <!-- end-user-doc -->
      * @generated
      */
+    public RecipeDescription createRecipeDescription() {
+        RecipeDescriptionImpl recipeDescription = new RecipeDescriptionImpl();
+        return recipeDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public Resource createResource() {
         ResourceImpl resource = new ResourceImpl();
         return resource;
@@ -220,9 +207,9 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
      * <!-- end-user-doc -->
      * @generated
      */
-    public Cookbook createCookbook() {
-        CookbookImpl cookbook = new CookbookImpl();
-        return cookbook;
+    public Metadata createMetadata() {
+        MetadataImpl metadata = new MetadataImpl();
+        return metadata;
     }
 
     /**
@@ -230,9 +217,9 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
      * <!-- end-user-doc -->
      * @generated
      */
-    public Version createVersion() {
-        VersionImpl version = new VersionImpl();
-        return version;
+    public Provider createProvider() {
+        ProviderImpl provider = new ProviderImpl();
+        return provider;
     }
 
     /**
@@ -240,10 +227,9 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
      * <!-- end-user-doc -->
      * @generated
      */
-    public supports createsupportsFromString(EDataType eDataType, String initialValue) {
-        supports result = supports.get(initialValue);
-        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-        return result;
+    public Root_file createRoot_file() {
+        Root_fileImpl root_file = new Root_fileImpl();
+        return root_file;
     }
 
     /**
@@ -251,8 +237,19 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
      * <!-- end-user-doc -->
      * @generated
      */
-    public String convertsupportsToString(EDataType eDataType, Object instanceValue) {
-        return instanceValue == null ? null : instanceValue.toString();
+    public MinimalMetadata createMinimalMetadata() {
+        MinimalMetadataImpl minimalMetadata = new MinimalMetadataImpl();
+        return minimalMetadata;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Name createName() {
+        NameImpl name = new NameImpl();
+        return name;
     }
 
     /**

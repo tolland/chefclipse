@@ -6,6 +6,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.workstation.*;
@@ -103,12 +104,16 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
                 return createRakefileAdapter();
             }
             @Override
-            public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
-                return createNamedDescribedObjectAdapter();
+            public Adapter caseDescribedObject(DescribedObject object) {
+                return createDescribedObjectAdapter();
             }
             @Override
             public Adapter caseNamedObject(NamedObject object) {
                 return createNamedObjectAdapter();
+            }
+            @Override
+            public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
+                return createNamedDescribedObjectAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -225,6 +230,20 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createRakefileAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.DescribedObject <em>Described Object</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.DescribedObject
+     * @generated
+     */
+    public Adapter createDescribedObjectAdapter() {
         return null;
     }
 

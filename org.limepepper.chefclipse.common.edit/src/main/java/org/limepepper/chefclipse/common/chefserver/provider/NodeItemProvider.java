@@ -21,7 +21,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.limepepper.chefclipse.ChefclipsePackage;
@@ -32,6 +31,8 @@ import org.limepepper.chefclipse.common.chefserver.Node;
 
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 
+import org.limepepper.chefclipse.provider.DescribedObjectItemProvider;
+
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.common.chefserver.Node} object.
  * <!-- begin-user-doc -->
@@ -39,7 +40,7 @@ import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
  * @generated
  */
 public class NodeItemProvider
-    extends ItemProviderAdapter
+    extends DescribedObjectItemProvider
     implements
         IEditingDomainItemProvider,
         IStructuredItemContentProvider,
@@ -68,7 +69,7 @@ public class NodeItemProvider
             super.getPropertyDescriptors(object);
 
             addNamePropertyDescriptor(object);
-            addDescriptionPropertyDescriptor(object);
+            addIDPropertyDescriptor(object);
             addEnvironmentPropertyDescriptor(object);
             addServerPropertyDescriptor(object);
             addClientPropertyDescriptor(object);
@@ -88,9 +89,9 @@ public class NodeItemProvider
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_NamedDescribedObject_name_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_NamedDescribedObject_name_feature", "_UI_NamedDescribedObject_type"),
-                 ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__NAME,
+                 getString("_UI_NamedObject_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
                  true,
                  false,
                  false,
@@ -100,19 +101,19 @@ public class NodeItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Description feature.
+     * This adds a property descriptor for the ID feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addDescriptionPropertyDescriptor(Object object) {
+    protected void addIDPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_NamedDescribedObject_description_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_NamedDescribedObject_description_feature", "_UI_NamedDescribedObject_type"),
-                 ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__DESCRIPTION,
+                 getString("_UI_NamedObject_ID_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__ID,
                  true,
                  false,
                  false,
@@ -277,7 +278,7 @@ public class NodeItemProvider
 
         switch (notification.getFeatureID(Node.class)) {
             case ChefserverPackage.NODE__NAME:
-            case ChefserverPackage.NODE__DESCRIPTION:
+            case ChefserverPackage.NODE__ID:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case ChefserverPackage.NODE__RUN_LIST:

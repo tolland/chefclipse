@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-import org.limepepper.chefclipse.common.chefserver.Config;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -20,6 +19,7 @@ import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +36,7 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
      */
     public static ChefserverFactory init() {
         try {
-            ChefserverFactory theChefserverFactory = (ChefserverFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/0.0.1/chefserver"); 
+            ChefserverFactory theChefserverFactory = (ChefserverFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/chefserver"); 
             if (theChefserverFactory != null) {
                 return theChefserverFactory;
             }
@@ -72,7 +72,7 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
             case ChefserverPackage.SERVER: return createServer();
             case ChefserverPackage.PLATFORM: return createPlatform();
             case ChefserverPackage.RUN_LIST: return createRunList();
-            case ChefserverPackage.CONFIG: return createConfig();
+            case ChefserverPackage.SERVER_CONFIG: return createServerConfig();
             case ChefserverPackage.DATA_BAG_ITEM: return createDataBagItem();
             case ChefserverPackage.SANDBOX: return createSandbox();
             default:
@@ -155,9 +155,9 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
      * <!-- end-user-doc -->
      * @generated
      */
-    public Config createConfig() {
-        ConfigImpl config = new ConfigImpl();
-        return config;
+    public ServerConfig createServerConfig() {
+        ServerConfigImpl serverConfig = new ServerConfigImpl();
+        return serverConfig;
     }
 
     /**

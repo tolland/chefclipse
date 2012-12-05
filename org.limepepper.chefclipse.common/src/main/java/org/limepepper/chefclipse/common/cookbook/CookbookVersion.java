@@ -2,6 +2,8 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
+import java.util.Map;
+
 import org.eclipse.emf.common.util.EList;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -14,13 +16,21 @@ import org.limepepper.chefclipse.common.chefserver.Environment;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getDepends <em>Depends</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getTemplates <em>Templates</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getRecipes <em>Recipes</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getDefinitions <em>Definitions</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getFiles <em>Files</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getLibraries <em>Libraries</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMetadata <em>Metadata</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getProviders <em>Providers</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getRoot_files <em>Root files</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type <em>Chef type</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getCatalog <em>Catalog</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getDepends <em>Depends</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMissing <em>Missing</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,23 +38,7 @@ import org.limepepper.chefclipse.common.chefserver.Environment;
  * @model
  * @generated
  */
-public interface CookbookVersion extends NamedDescribedObject {
-    /**
-     * Returns the value of the '<em><b>Depends</b></em>' reference list.
-     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Depends</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * @return the value of the '<em>Depends</em>' reference list.
-     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Depends()
-     * @model
-     * @generated
-     */
-    EList<CookbookVersion> getDepends();
-
+public interface CookbookVersion extends NamedDescribedObject, CookbookFile {
     /**
      * Returns the value of the '<em><b>Environment</b></em>' reference.
      * <!-- begin-user-doc -->
@@ -74,7 +68,6 @@ public interface CookbookVersion extends NamedDescribedObject {
     /**
      * Returns the value of the '<em><b>Templates</b></em>' containment reference list.
      * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Template}.
-     * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.Template#getCookbook <em>Cookbook</em>}'.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Templates</em>' containment reference list isn't clear,
@@ -83,8 +76,7 @@ public interface CookbookVersion extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Templates</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Templates()
-     * @see org.limepepper.chefclipse.common.cookbook.Template#getCookbook
-     * @model opposite="cookbook" containment="true"
+     * @model containment="true"
      * @generated
      */
     EList<Template> getTemplates();
@@ -92,7 +84,6 @@ public interface CookbookVersion extends NamedDescribedObject {
     /**
      * Returns the value of the '<em><b>Recipes</b></em>' containment reference list.
      * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Recipe}.
-     * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.Recipe#getCookbookVersion <em>Cookbook Version</em>}'.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Recipes</em>' containment reference list isn't clear,
@@ -101,8 +92,7 @@ public interface CookbookVersion extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Recipes</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Recipes()
-     * @see org.limepepper.chefclipse.common.cookbook.Recipe#getCookbookVersion
-     * @model opposite="cookbookVersion" containment="true"
+     * @model containment="true"
      * @generated
      */
     EList<Recipe> getRecipes();
@@ -154,5 +144,182 @@ public interface CookbookVersion extends NamedDescribedObject {
      * @generated
      */
     EList<Resource> getResources();
+
+    /**
+     * Returns the value of the '<em><b>Libraries</b></em>' containment reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Library}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Libraries</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Libraries</em>' containment reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Libraries()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Library> getLibraries();
+
+    /**
+     * Returns the value of the '<em><b>Metadata</b></em>' containment reference.
+     * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion <em>Cookbook Version</em>}'.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Metadata</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Metadata</em>' containment reference.
+     * @see #setMetadata(Metadata)
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Metadata()
+     * @see org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion
+     * @model opposite="cookbookVersion" containment="true" required="true"
+     * @generated
+     */
+    Metadata getMetadata();
+
+    /**
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMetadata <em>Metadata</em>}' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Metadata</em>' containment reference.
+     * @see #getMetadata()
+     * @generated
+     */
+    void setMetadata(Metadata value);
+
+    /**
+     * Returns the value of the '<em><b>Providers</b></em>' containment reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Provider}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Providers</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Providers</em>' containment reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Providers()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Provider> getProviders();
+
+    /**
+     * Returns the value of the '<em><b>Root files</b></em>' reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Root_file}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Root files</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Root files</em>' reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Root_files()
+     * @model
+     * @generated
+     */
+    EList<Root_file> getRoot_files();
+
+    /**
+     * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Attributes}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Attributes</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Attributes</em>' containment reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Attributes()
+     * @model containment="true"
+     * @generated
+     */
+    EList<Attributes> getAttributes();
+
+    /**
+     * Returns the value of the '<em><b>Chef type</b></em>' attribute.
+     * The default value is <code>"cookbook_version"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Chef type</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Chef type</em>' attribute.
+     * @see #setChef_type(String)
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Chef_type()
+     * @model default="cookbook_version" dataType="org.limepepper.chefclipse.Chef_type" required="true"
+     * @generated
+     */
+    String getChef_type();
+
+    /**
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type <em>Chef type</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Chef type</em>' attribute.
+     * @see #getChef_type()
+     * @generated
+     */
+    void setChef_type(String value);
+
+    /**
+     * Returns the value of the '<em><b>Catalog</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Catalog</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Catalog</em>' attribute.
+     * @see #setCatalog(String)
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Catalog()
+     * @model
+     * @generated
+     */
+    String getCatalog();
+
+    /**
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getCatalog <em>Catalog</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Catalog</em>' attribute.
+     * @see #getCatalog()
+     * @generated
+     */
+    void setCatalog(String value);
+
+    /**
+     * Returns the value of the '<em><b>Depends</b></em>' reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Depends</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Depends</em>' reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Depends()
+     * @model
+     * @generated
+     */
+    EList<CookbookVersion> getDepends();
+
+    /**
+     * Returns the value of the '<em><b>Missing</b></em>' reference list.
+     * The list contents are of type {@link java.util.Map.Entry}&lt;java.lang.String, java.lang.String>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Missing</em>' reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Missing</em>' reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Missing()
+     * @model mapType="org.eclipse.emf.ecore.EStringToStringMapEntry<org.eclipse.emf.ecore.EString, org.eclipse.emf.ecore.EString>"
+     * @generated
+     */
+    EList<Map.Entry<String, String>> getMissing();
 
 } // CookbookVersion

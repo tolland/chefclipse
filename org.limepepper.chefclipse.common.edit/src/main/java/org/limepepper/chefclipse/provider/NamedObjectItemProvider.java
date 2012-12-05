@@ -63,6 +63,7 @@ public class NamedObjectItemProvider
             super.getPropertyDescriptors(object);
 
             addNamePropertyDescriptor(object);
+            addIDPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -81,6 +82,28 @@ public class NamedObjectItemProvider
                  getString("_UI_NamedObject_name_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
                  ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the ID feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addIDPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_NamedObject_ID_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
+                 ChefclipsePackage.Literals.NAMED_OBJECT__ID,
                  true,
                  false,
                  false,
@@ -127,6 +150,7 @@ public class NamedObjectItemProvider
 
         switch (notification.getFeatureID(NamedObject.class)) {
             case ChefclipsePackage.NAMED_OBJECT__NAME:
+            case ChefclipsePackage.NAMED_OBJECT__ID:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

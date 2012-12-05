@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import org.limepepper.chefclipse.common.knife.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 
@@ -60,7 +60,7 @@ public class KnifeExample {
             System.out.println("Enter a list of file paths or URIs that have content like this:");
             try {
                 Resource resource = resourceSet.createResource(URI.createURI("http:///My.knife"));
-                Config root = KnifeFactory.eINSTANCE.createConfig();
+                KnifeConfig root = KnifeFactory.eINSTANCE.createKnifeConfig();
                 resource.getContents().add(root);
                 resource.save(System.out, null);
             }

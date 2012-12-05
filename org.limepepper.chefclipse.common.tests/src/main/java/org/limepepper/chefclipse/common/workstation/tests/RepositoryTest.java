@@ -2,12 +2,12 @@
  */
 package org.limepepper.chefclipse.common.workstation.tests;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
+
+import org.limepepper.chefclipse.tests.DescribedObjectTest;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,15 +15,7 @@ import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RepositoryTest extends TestCase {
-
-    /**
-     * The fixture for this Repository test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected Repository fixture = null;
+public class RepositoryTest extends DescribedObjectTest {
 
     /**
      * <!-- begin-user-doc -->
@@ -45,23 +37,14 @@ public class RepositoryTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Repository test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void setFixture(Repository fixture) {
-        this.fixture = fixture;
-    }
-
-    /**
      * Returns the fixture for this Repository test case.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     protected Repository getFixture() {
-        return fixture;
+        return (Repository)fixture;
     }
 
     /**

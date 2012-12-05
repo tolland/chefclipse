@@ -2,9 +2,8 @@
  */
 package org.limepepper.chefclipse.impl;
 
-import java.net.URL;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
 
@@ -18,13 +17,12 @@ import org.limepepper.chefclipse.ChefclipsePackage;
  *   <li>{@link org.limepepper.chefclipse.impl.ChecksumFileImpl#getChecksum <em>Checksum</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.impl.ChecksumFileImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.impl.ChecksumFileImpl#getSpecificity <em>Specificity</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.impl.ChecksumFileImpl#getUrl <em>Url</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ChecksumFileImpl extends NamedObjectImpl implements ChecksumFile {
+public class ChecksumFileImpl extends EObjectImpl implements ChecksumFile {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -42,6 +40,16 @@ public class ChecksumFileImpl extends NamedObjectImpl implements ChecksumFile {
     @Override
     protected EClass eStaticClass() {
         return ChefclipsePackage.Literals.CHECKSUM_FILE;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    protected int eStaticFeatureCount() {
+        return 0;
     }
 
     /**
@@ -96,24 +104,6 @@ public class ChecksumFileImpl extends NamedObjectImpl implements ChecksumFile {
      */
     public void setSpecificity(String newSpecificity) {
         eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY, newSpecificity);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public URL getUrl() {
-        return (URL)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__URL, true);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public void setUrl(URL newUrl) {
-        eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__URL, newUrl);
     }
 
 } //ChecksumFileImpl

@@ -9,7 +9,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.*;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
@@ -99,6 +101,14 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
             @Override
             public Adapter caseChecksumFile(ChecksumFile object) {
                 return createChecksumFileAdapter();
+            }
+            @Override
+            public Adapter caseMaintainedObject(MaintainedObject object) {
+                return createMaintainedObjectAdapter();
+            }
+            @Override
+            public Adapter caseConfig(Config object) {
+                return createConfigAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -215,6 +225,34 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createChecksumFileAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.MaintainedObject <em>Maintained Object</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.MaintainedObject
+     * @generated
+     */
+    public Adapter createMaintainedObjectAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Config <em>Config</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.Config
+     * @generated
+     */
+    public Adapter createConfigAdapter() {
         return null;
     }
 

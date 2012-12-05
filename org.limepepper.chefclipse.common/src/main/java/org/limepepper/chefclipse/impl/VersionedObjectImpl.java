@@ -15,6 +15,7 @@ import org.limepepper.chefclipse.VersionedObject;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.impl.VersionedObjectImpl#getNUM_VERSIONS <em>NUM VERSIONS</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.impl.VersionedObjectImpl#getVersion <em>Version</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,6 +58,24 @@ public class VersionedObjectImpl extends EObjectImpl implements VersionedObject 
      */
     public Integer getNUM_VERSIONS() {
         return (Integer)eGet(ChefclipsePackage.Literals.VERSIONED_OBJECT__NUM_VERSIONS, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String getVersion() {
+        return (String)eGet(ChefclipsePackage.Literals.VERSIONED_OBJECT__VERSION, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setVersion(String newVersion) {
+        eSet(ChefclipsePackage.Literals.VERSIONED_OBJECT__VERSION, newVersion);
     }
 
 } //VersionedObjectImpl

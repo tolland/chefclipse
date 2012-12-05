@@ -5,9 +5,11 @@ package org.limepepper.chefclipse.common.chefclient.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.chefclient.*;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.limepepper.chefclipse.common.chefclient.Ohai;
 import org.limepepper.chefclipse.common.chefclient.Search;
 
@@ -86,6 +88,13 @@ public class ChefclientSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case ChefclientPackage.CLIENT_CONFIG: {
+                ClientConfig clientConfig = (ClientConfig)theEObject;
+                T result = caseClientConfig(clientConfig);
+                if (result == null) result = caseConfig(clientConfig);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -132,6 +141,36 @@ public class ChefclientSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseSearch(Search object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Client Config</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Client Config</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseClientConfig(ClientConfig object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Config</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Config</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseConfig(Config object) {
         return null;
     }
 

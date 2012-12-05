@@ -15,7 +15,9 @@ import org.limepepper.chefclipse.*;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipseFactory;
 import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
@@ -71,6 +73,8 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
             case ChefclipsePackage.NAMED_OBJECT: return createNamedObject();
             case ChefclipsePackage.DESCRIBED_OBJECT: return createDescribedObject();
             case ChefclipsePackage.CHECKSUM_FILE: return createChecksumFile();
+            case ChefclipsePackage.MAINTAINED_OBJECT: return createMaintainedObject();
+            case ChefclipsePackage.CONFIG: return createConfig();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -88,6 +92,20 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
                 return createURLFromString(eDataType, initialValue);
             case ChefclipsePackage.FILE:
                 return createFileFromString(eDataType, initialValue);
+            case ChefclipsePackage.CHEF_TYPE:
+                return createChef_typeFromString(eDataType, initialValue);
+            case ChefclipsePackage.EMAIL:
+                return createEmailFromString(eDataType, initialValue);
+            case ChefclipsePackage.TEXT:
+                return createTextFromString(eDataType, initialValue);
+            case ChefclipsePackage.VERSION:
+                return createVersionFromString(eDataType, initialValue);
+            case ChefclipsePackage.NAME:
+                return createNameFromString(eDataType, initialValue);
+            case ChefclipsePackage.DESCRIPTION:
+                return createDescriptionFromString(eDataType, initialValue);
+            case ChefclipsePackage.OBJECT:
+                return createObjectFromString(eDataType, initialValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -105,6 +123,20 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
                 return convertURLToString(eDataType, instanceValue);
             case ChefclipsePackage.FILE:
                 return convertFileToString(eDataType, instanceValue);
+            case ChefclipsePackage.CHEF_TYPE:
+                return convertChef_typeToString(eDataType, instanceValue);
+            case ChefclipsePackage.EMAIL:
+                return convertEmailToString(eDataType, instanceValue);
+            case ChefclipsePackage.TEXT:
+                return convertTextToString(eDataType, instanceValue);
+            case ChefclipsePackage.VERSION:
+                return convertVersionToString(eDataType, instanceValue);
+            case ChefclipsePackage.NAME:
+                return convertNameToString(eDataType, instanceValue);
+            case ChefclipsePackage.DESCRIPTION:
+                return convertDescriptionToString(eDataType, instanceValue);
+            case ChefclipsePackage.OBJECT:
+                return convertObjectToString(eDataType, instanceValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -175,6 +207,26 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
      * <!-- end-user-doc -->
      * @generated
      */
+    public MaintainedObject createMaintainedObject() {
+        MaintainedObjectImpl maintainedObject = new MaintainedObjectImpl();
+        return maintainedObject;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Config createConfig() {
+        ConfigImpl config = new ConfigImpl();
+        return config;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public URL createURLFromString(EDataType eDataType, String initialValue) {
         return (URL)super.createFromString(eDataType, initialValue);
     }
@@ -203,6 +255,132 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
      * @generated
      */
     public String convertFileToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String createChef_typeFromString(EDataType eDataType, String initialValue) {
+        return (String)super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertChef_typeToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String createEmailFromString(EDataType eDataType, String initialValue) {
+        return (String)super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertEmailToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String createTextFromString(EDataType eDataType, String initialValue) {
+        return (String)super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertTextToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String createVersionFromString(EDataType eDataType, String initialValue) {
+        return (String)super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertVersionToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Object createNameFromString(EDataType eDataType, String initialValue) {
+        return super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertNameToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Object createDescriptionFromString(EDataType eDataType, String initialValue) {
+        return super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertDescriptionToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Object createObjectFromString(EDataType eDataType, String initialValue) {
+        return super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertObjectToString(EDataType eDataType, Object instanceValue) {
         return super.convertToString(eDataType, instanceValue);
     }
 

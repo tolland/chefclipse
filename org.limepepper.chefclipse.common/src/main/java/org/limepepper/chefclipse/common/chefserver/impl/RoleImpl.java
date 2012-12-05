@@ -3,10 +3,11 @@
 package org.limepepper.chefclipse.common.chefserver.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Role;
+import org.limepepper.chefclipse.impl.DescribedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,13 +17,13 @@ import org.limepepper.chefclipse.common.chefserver.Role;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RoleImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RoleImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RoleImpl#getID <em>ID</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RoleImpl extends EObjectImpl implements Role {
+public class RoleImpl extends DescribedObjectImpl implements Role {
     /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -47,18 +48,8 @@ public class RoleImpl extends EObjectImpl implements Role {
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
-    protected int eStaticFeatureCount() {
-        return 0;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public String getName() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__NAME, true);
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
     }
 
     /**
@@ -67,7 +58,7 @@ public class RoleImpl extends EObjectImpl implements Role {
      * @generated
      */
     public void setName(String newName) {
-        eSet(ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__NAME, newName);
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
     }
 
     /**
@@ -75,8 +66,8 @@ public class RoleImpl extends EObjectImpl implements Role {
      * <!-- end-user-doc -->
      * @generated
      */
-    public String getDescription() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__DESCRIPTION, true);
+    public String getID() {
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
     }
 
     /**
@@ -84,8 +75,42 @@ public class RoleImpl extends EObjectImpl implements Role {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setDescription(String newDescription) {
-        eSet(ChefclipsePackage.Literals.NAMED_DESCRIBED_OBJECT__DESCRIPTION, newDescription);
+    public void setID(String newID) {
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == NamedObject.class) {
+            switch (derivedFeatureID) {
+                case ChefserverPackage.ROLE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+                case ChefserverPackage.ROLE__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+                default: return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == NamedObject.class) {
+            switch (baseFeatureID) {
+                case ChefclipsePackage.NAMED_OBJECT__NAME: return ChefserverPackage.ROLE__NAME;
+                case ChefclipsePackage.NAMED_OBJECT__ID: return ChefserverPackage.ROLE__ID;
+                default: return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
 } //RoleImpl

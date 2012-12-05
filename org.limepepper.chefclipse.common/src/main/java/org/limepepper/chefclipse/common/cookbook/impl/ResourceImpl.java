@@ -9,8 +9,9 @@ import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-import org.limepepper.chefclipse.common.cookbook.Recipe;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Resource;
 import org.limepepper.chefclipse.impl.RubyFileImpl;
 
@@ -21,12 +22,13 @@ import org.limepepper.chefclipse.impl.RubyFileImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getChecksum <em>Checksum</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getSpecificity <em>Specificity</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getUrl <em>Url</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getRecipe <em>Recipe</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getID <em>ID</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ResourceImpl#getCookbook <em>Cookbook</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,8 +59,8 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
      * <!-- end-user-doc -->
      * @generated
      */
-    public String getName() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+    public URL getUrl() {
+        return (URL)eGet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, true);
     }
 
     /**
@@ -66,8 +68,8 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setName(String newName) {
-        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+    public void setUrl(URL newUrl) {
+        eSet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, newUrl);
     }
 
     /**
@@ -129,8 +131,8 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
      * <!-- end-user-doc -->
      * @generated
      */
-    public URL getUrl() {
-        return (URL)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__URL, true);
+    public String getName() {
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
     }
 
     /**
@@ -138,8 +140,8 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setUrl(URL newUrl) {
-        eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__URL, newUrl);
+    public void setName(String newName) {
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
     }
 
     /**
@@ -147,8 +149,8 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
      * <!-- end-user-doc -->
      * @generated
      */
-    public Recipe getRecipe() {
-        return (Recipe)eGet(CookbookPackage.Literals.RESOURCE__RECIPE, true);
+    public String getID() {
+        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
     }
 
     /**
@@ -156,8 +158,26 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setRecipe(Recipe newRecipe) {
-        eSet(CookbookPackage.Literals.RESOURCE__RECIPE, newRecipe);
+    public void setID(String newID) {
+        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CookbookVersion getCookbook() {
+        return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setCookbook(CookbookVersion newCookbook) {
+        eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
     }
 
     /**
@@ -169,12 +189,7 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == SandboxedObject.class) {
             switch (derivedFeatureID) {
-                default: return -1;
-            }
-        }
-        if (baseClass == NamedObject.class) {
-            switch (derivedFeatureID) {
-                case CookbookPackage.RESOURCE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+                case CookbookPackage.RESOURCE__URL: return ChefclipsePackage.SANDBOXED_OBJECT__URL;
                 default: return -1;
             }
         }
@@ -183,7 +198,19 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
                 case CookbookPackage.RESOURCE__CHECKSUM: return ChefclipsePackage.CHECKSUM_FILE__CHECKSUM;
                 case CookbookPackage.RESOURCE__PATH: return ChefclipsePackage.CHECKSUM_FILE__PATH;
                 case CookbookPackage.RESOURCE__SPECIFICITY: return ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY;
-                case CookbookPackage.RESOURCE__URL: return ChefclipsePackage.CHECKSUM_FILE__URL;
+                default: return -1;
+            }
+        }
+        if (baseClass == NamedObject.class) {
+            switch (derivedFeatureID) {
+                case CookbookPackage.RESOURCE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+                case CookbookPackage.RESOURCE__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+                default: return -1;
+            }
+        }
+        if (baseClass == CookbookFile.class) {
+            switch (derivedFeatureID) {
+                case CookbookPackage.RESOURCE__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
                 default: return -1;
             }
         }
@@ -199,12 +226,7 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == SandboxedObject.class) {
             switch (baseFeatureID) {
-                default: return -1;
-            }
-        }
-        if (baseClass == NamedObject.class) {
-            switch (baseFeatureID) {
-                case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.RESOURCE__NAME;
+                case ChefclipsePackage.SANDBOXED_OBJECT__URL: return CookbookPackage.RESOURCE__URL;
                 default: return -1;
             }
         }
@@ -213,7 +235,19 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
                 case ChefclipsePackage.CHECKSUM_FILE__CHECKSUM: return CookbookPackage.RESOURCE__CHECKSUM;
                 case ChefclipsePackage.CHECKSUM_FILE__PATH: return CookbookPackage.RESOURCE__PATH;
                 case ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY: return CookbookPackage.RESOURCE__SPECIFICITY;
-                case ChefclipsePackage.CHECKSUM_FILE__URL: return CookbookPackage.RESOURCE__URL;
+                default: return -1;
+            }
+        }
+        if (baseClass == NamedObject.class) {
+            switch (baseFeatureID) {
+                case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.RESOURCE__NAME;
+                case ChefclipsePackage.NAMED_OBJECT__ID: return CookbookPackage.RESOURCE__ID;
+                default: return -1;
+            }
+        }
+        if (baseClass == CookbookFile.class) {
+            switch (baseFeatureID) {
+                case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return CookbookPackage.RESOURCE__COOKBOOK;
                 default: return -1;
             }
         }

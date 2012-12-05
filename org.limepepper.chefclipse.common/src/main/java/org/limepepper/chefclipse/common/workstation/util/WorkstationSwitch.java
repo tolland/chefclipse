@@ -5,6 +5,7 @@ package org.limepepper.chefclipse.common.workstation.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.workstation.*;
@@ -78,6 +79,8 @@ public class WorkstationSwitch<T> extends Switch<T> {
                 Repository repository = (Repository)theEObject;
                 T result = caseRepository(repository);
                 if (result == null) result = caseNamedDescribedObject(repository);
+                if (result == null) result = caseDescribedObject(repository);
+                if (result == null) result = caseNamedObject(repository);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -224,6 +227,21 @@ public class WorkstationSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseRakefile(Rakefile object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Described Object</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Described Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDescribedObject(DescribedObject object) {
         return null;
     }
 

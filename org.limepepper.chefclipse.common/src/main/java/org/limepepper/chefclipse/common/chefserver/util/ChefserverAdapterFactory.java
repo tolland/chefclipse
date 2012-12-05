@@ -6,11 +6,11 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-import org.limepepper.chefclipse.common.chefserver.Config;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -20,6 +20,7 @@ import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,8 +107,8 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
                 return createRunListAdapter();
             }
             @Override
-            public Adapter caseConfig(Config object) {
-                return createConfigAdapter();
+            public Adapter caseServerConfig(ServerConfig object) {
+                return createServerConfigAdapter();
             }
             @Override
             public Adapter caseDataBagItem(DataBagItem object) {
@@ -118,12 +119,16 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
                 return createSandboxAdapter();
             }
             @Override
-            public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
-                return createNamedDescribedObjectAdapter();
+            public Adapter caseDescribedObject(DescribedObject object) {
+                return createDescribedObjectAdapter();
             }
             @Override
             public Adapter caseNamedObject(NamedObject object) {
                 return createNamedObjectAdapter();
+            }
+            @Override
+            public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
+                return createNamedDescribedObjectAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -244,16 +249,16 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefserver.Config <em>Config</em>}'.
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefserver.ServerConfig <em>Server Config</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * @return the new adapter.
-     * @see org.limepepper.chefclipse.common.chefserver.Config
+     * @see org.limepepper.chefclipse.common.chefserver.ServerConfig
      * @generated
      */
-    public Adapter createConfigAdapter() {
+    public Adapter createServerConfigAdapter() {
         return null;
     }
 
@@ -282,6 +287,20 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createSandboxAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.DescribedObject <em>Described Object</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.DescribedObject
+     * @generated
+     */
+    public Adapter createDescribedObjectAdapter() {
         return null;
     }
 

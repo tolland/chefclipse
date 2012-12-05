@@ -2,8 +2,6 @@
  */
 package org.limepepper.chefclipse.tests;
 
-import junit.framework.TestCase;
-
 import org.limepepper.chefclipse.NamedDescribedObject;
 
 /**
@@ -12,15 +10,7 @@ import org.limepepper.chefclipse.NamedDescribedObject;
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class NamedDescribedObjectTest extends TestCase {
-
-    /**
-     * The fixture for this Named Described Object test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected NamedDescribedObject fixture = null;
+public abstract class NamedDescribedObjectTest extends DescribedObjectTest {
 
     /**
      * Constructs a new Named Described Object test case with the given name.
@@ -33,23 +23,14 @@ public abstract class NamedDescribedObjectTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Named Described Object test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void setFixture(NamedDescribedObject fixture) {
-        this.fixture = fixture;
-    }
-
-    /**
      * Returns the fixture for this Named Described Object test case.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     protected NamedDescribedObject getFixture() {
-        return fixture;
+        return (NamedDescribedObject)fixture;
     }
 
 } //NamedDescribedObjectTest

@@ -2,12 +2,12 @@
  */
 package org.limepepper.chefclipse.common.chefserver.tests;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.Role;
+
+import org.limepepper.chefclipse.tests.DescribedObjectTest;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,15 +15,7 @@ import org.limepepper.chefclipse.common.chefserver.Role;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RoleTest extends TestCase {
-
-    /**
-     * The fixture for this Role test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected Role fixture = null;
+public class RoleTest extends DescribedObjectTest {
 
     /**
      * <!-- begin-user-doc -->
@@ -45,23 +37,14 @@ public class RoleTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Role test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void setFixture(Role fixture) {
-        this.fixture = fixture;
-    }
-
-    /**
      * Returns the fixture for this Role test case.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     protected Role getFixture() {
-        return fixture;
+        return (Role)fixture;
     }
 
     /**

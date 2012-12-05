@@ -210,6 +210,52 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.MaintainedObject} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected MaintainedObjectItemProvider maintainedObjectItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.MaintainedObject}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createMaintainedObjectAdapter() {
+        if (maintainedObjectItemProvider == null) {
+            maintainedObjectItemProvider = new MaintainedObjectItemProvider(this);
+        }
+
+        return maintainedObjectItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.Config} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ConfigItemProvider configItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.Config}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createConfigAdapter() {
+        if (configItemProvider == null) {
+            configItemProvider = new ConfigItemProvider(this);
+        }
+
+        return configItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -314,6 +360,8 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
         if (namedObjectItemProvider != null) namedObjectItemProvider.dispose();
         if (describedObjectItemProvider != null) describedObjectItemProvider.dispose();
         if (checksumFileItemProvider != null) checksumFileItemProvider.dispose();
+        if (maintainedObjectItemProvider != null) maintainedObjectItemProvider.dispose();
+        if (configItemProvider != null) configItemProvider.dispose();
     }
 
 }

@@ -11,6 +11,7 @@ import org.limepepper.chefclipse.common.chefclient.*;
 import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.limepepper.chefclipse.common.chefclient.Ohai;
 import org.limepepper.chefclipse.common.chefclient.Search;
 
@@ -29,7 +30,7 @@ public class ChefclientFactoryImpl extends EFactoryImpl implements ChefclientFac
      */
     public static ChefclientFactory init() {
         try {
-            ChefclientFactory theChefclientFactory = (ChefclientFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/1.0.0/chefclient"); 
+            ChefclientFactory theChefclientFactory = (ChefclientFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/chefclient"); 
             if (theChefclientFactory != null) {
                 return theChefclientFactory;
             }
@@ -61,6 +62,7 @@ public class ChefclientFactoryImpl extends EFactoryImpl implements ChefclientFac
             case ChefclientPackage.CLIENT: return createClient();
             case ChefclientPackage.OHAI: return createOhai();
             case ChefclientPackage.SEARCH: return createSearch();
+            case ChefclientPackage.CLIENT_CONFIG: return createClientConfig();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -94,6 +96,16 @@ public class ChefclientFactoryImpl extends EFactoryImpl implements ChefclientFac
     public Search createSearch() {
         SearchImpl search = new SearchImpl();
         return search;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ClientConfig createClientConfig() {
+        ClientConfigImpl clientConfig = new ClientConfigImpl();
+        return clientConfig;
     }
 
     /**

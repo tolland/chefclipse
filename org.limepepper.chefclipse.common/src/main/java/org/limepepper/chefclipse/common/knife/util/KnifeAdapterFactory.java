@@ -6,9 +6,9 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.*;
-import org.limepepper.chefclipse.common.knife.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
 import org.limepepper.chefclipse.common.knife.Plugin;
@@ -70,8 +70,8 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
     protected KnifeSwitch<Adapter> modelSwitch =
         new KnifeSwitch<Adapter>() {
             @Override
-            public Adapter caseConfig(Config object) {
-                return createConfigAdapter();
+            public Adapter caseKnifeConfig(KnifeConfig object) {
+                return createKnifeConfigAdapter();
             }
             @Override
             public Adapter casePlugin(Plugin object) {
@@ -82,8 +82,8 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
                 return createKnifeSearchAdapter();
             }
             @Override
-            public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
-                return createNamedDescribedObjectAdapter();
+            public Adapter caseConfig(Config object) {
+                return createConfigAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -106,13 +106,27 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 
 
     /**
-     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.knife.Config <em>Config</em>}'.
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.knife.KnifeConfig <em>Config</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * @return the new adapter.
-     * @see org.limepepper.chefclipse.common.knife.Config
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig
+     * @generated
+     */
+    public Adapter createKnifeConfigAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Config <em>Config</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.Config
      * @generated
      */
     public Adapter createConfigAdapter() {
@@ -144,20 +158,6 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createKnifeSearchAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * @return the new adapter.
-     * @see org.limepepper.chefclipse.NamedDescribedObject
-     * @generated
-     */
-    public Adapter createNamedDescribedObjectAdapter() {
         return null;
     }
 

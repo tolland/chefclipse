@@ -72,26 +72,26 @@ public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory impleme
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.knife.Config} instances.
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.knife.KnifeConfig} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected ConfigItemProvider configItemProvider;
+    protected KnifeConfigItemProvider knifeConfigItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.limepepper.chefclipse.common.knife.Config}.
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
-    public Adapter createConfigAdapter() {
-        if (configItemProvider == null) {
-            configItemProvider = new ConfigItemProvider(this);
+    public Adapter createKnifeConfigAdapter() {
+        if (knifeConfigItemProvider == null) {
+            knifeConfigItemProvider = new KnifeConfigItemProvider(this);
         }
 
-        return configItemProvider;
+        return knifeConfigItemProvider;
     }
 
     /**
@@ -239,7 +239,7 @@ public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory impleme
      * @generated
      */
     public void dispose() {
-        if (configItemProvider != null) configItemProvider.dispose();
+        if (knifeConfigItemProvider != null) knifeConfigItemProvider.dispose();
         if (pluginItemProvider != null) pluginItemProvider.dispose();
         if (knifeSearchItemProvider != null) knifeSearchItemProvider.dispose();
     }

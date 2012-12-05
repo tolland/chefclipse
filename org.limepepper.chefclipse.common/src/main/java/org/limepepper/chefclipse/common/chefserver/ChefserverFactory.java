@@ -85,13 +85,13 @@ public interface ChefserverFactory extends EFactory {
     RunList createRunList();
 
     /**
-     * Returns a new object of class '<em>Config</em>'.
+     * Returns a new object of class '<em>Server Config</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return a new object of class '<em>Config</em>'.
+     * @return a new object of class '<em>Server Config</em>'.
      * @generated
      */
-    Config createConfig();
+    ServerConfig createServerConfig();
 
     /**
      * Returns a new object of class '<em>Data Bag Item</em>'.

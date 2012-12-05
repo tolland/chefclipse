@@ -4,9 +4,8 @@ package org.limepepper.chefclipse.common.workstation;
 
 import org.eclipse.emf.common.util.EList;
 import org.limepepper.chefclipse.NamedDescribedObject;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.knife.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +19,6 @@ import org.limepepper.chefclipse.common.knife.Config;
  *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbooks <em>Cookbooks</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getKnife <em>Knife</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getOldCookbooks <em>Old Cookbooks</em>}</li>
  * </ul>
  * </p>
  *
@@ -82,7 +80,7 @@ public interface Repository extends NamedDescribedObject {
     void setBasepath(String value);
 
     /**
-     * Returns the value of the '<em><b>Cookbooks</b></em>' reference list.
+     * Returns the value of the '<em><b>Cookbooks</b></em>' containment reference list.
      * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
      * <!-- begin-user-doc -->
      * <p>
@@ -90,16 +88,16 @@ public interface Repository extends NamedDescribedObject {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Cookbooks</em>' reference list.
+     * @return the value of the '<em>Cookbooks</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Cookbooks()
-     * @model
+     * @model containment="true"
      * @generated
      */
     EList<CookbookVersion> getCookbooks();
 
     /**
      * Returns the value of the '<em><b>Knife</b></em>' reference list.
-     * The list contents are of type {@link org.limepepper.chefclipse.common.knife.Config}.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Knife</em>' reference list isn't clear,
@@ -111,22 +109,6 @@ public interface Repository extends NamedDescribedObject {
      * @model
      * @generated
      */
-    EList<Config> getKnife();
-
-    /**
-     * Returns the value of the '<em><b>Old Cookbooks</b></em>' reference list.
-     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Cookbook}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Old Cookbooks</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * @return the value of the '<em>Old Cookbooks</em>' reference list.
-     * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_OldCookbooks()
-     * @model
-     * @generated
-     */
-    EList<Cookbook> getOldCookbooks();
+    EList<KnifeConfig> getKnife();
 
 } // Repository

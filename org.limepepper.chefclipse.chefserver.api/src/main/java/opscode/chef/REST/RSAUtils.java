@@ -40,26 +40,30 @@ public class RSAUtils {
     }
 
     public static PrivateKey readKeyFromFile(File keyFile) throws IOException {
-        BufferedReader br = null ;
+        BufferedReader br = null;
+        PEMReader pemReader = null;
         try {
             br = new BufferedReader(new FileReader(keyFile));
             Security.addProvider(new BouncyCastleProvider());
 
-            KeyPair kp = (KeyPair) new PEMReader(br).readObject();
+            pemReader = new PEMReader(br);
+            KeyPair kp = (KeyPair) pemReader.readObject();
             PrivateKey privateKey = kp.getPrivate();
 
-         //   System.out.println(((RSAKey) privateKey).getModulus());
-       //     System.out.println(((RSAPrivateKey) privateKey)
-         //           .getPrivateExponent());
+            // System.out.println(((RSAKey) privateKey).getModulus());
+            // System.out.println(((RSAPrivateKey) privateKey)
+            // .getPrivateExponent());
             return privateKey;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } finally {
-            br.close();
-            
+            if(pemReader!=null)
+            pemReader.close();
+            if(br!=null)
+                br.close();
+
         }
-        
+
         // samlResponse.sign(Signature.getInstance("SHA1withRSA").toString(),
         // kp.getPrivate(), certs)
         return null;

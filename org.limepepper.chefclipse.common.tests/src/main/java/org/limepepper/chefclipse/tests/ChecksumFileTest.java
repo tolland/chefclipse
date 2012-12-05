@@ -2,6 +2,8 @@
  */
 package org.limepepper.chefclipse.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.ChecksumFile;
@@ -13,7 +15,15 @@ import org.limepepper.chefclipse.ChefclipseFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChecksumFileTest extends NamedObjectTest {
+public class ChecksumFileTest extends TestCase {
+
+    /**
+     * The fixture for this Checksum File test case.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ChecksumFile fixture = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -35,14 +45,23 @@ public class ChecksumFileTest extends NamedObjectTest {
     }
 
     /**
+     * Sets the fixture for this Checksum File test case.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void setFixture(ChecksumFile fixture) {
+        this.fixture = fixture;
+    }
+
+    /**
      * Returns the fixture for this Checksum File test case.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    @Override
     protected ChecksumFile getFixture() {
-        return (ChecksumFile)fixture;
+        return fixture;
     }
 
     /**

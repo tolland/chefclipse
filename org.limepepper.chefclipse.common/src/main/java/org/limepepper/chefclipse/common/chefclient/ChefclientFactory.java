@@ -49,6 +49,15 @@ public interface ChefclientFactory extends EFactory {
     Search createSearch();
 
     /**
+     * Returns a new object of class '<em>Client Config</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Client Config</em>'.
+     * @generated
+     */
+    ClientConfig createClientConfig();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

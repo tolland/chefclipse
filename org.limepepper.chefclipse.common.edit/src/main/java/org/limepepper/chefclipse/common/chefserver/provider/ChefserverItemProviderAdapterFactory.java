@@ -233,26 +233,26 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Config} instances.
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.ServerConfig} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected ConfigItemProvider configItemProvider;
+    protected ServerConfigItemProvider serverConfigItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Config}.
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.ServerConfig}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
-    public Adapter createConfigAdapter() {
-        if (configItemProvider == null) {
-            configItemProvider = new ConfigItemProvider(this);
+    public Adapter createServerConfigAdapter() {
+        if (serverConfigItemProvider == null) {
+            serverConfigItemProvider = new ServerConfigItemProvider(this);
         }
 
-        return configItemProvider;
+        return serverConfigItemProvider;
     }
 
     /**
@@ -407,7 +407,7 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
         if (serverItemProvider != null) serverItemProvider.dispose();
         if (platformItemProvider != null) platformItemProvider.dispose();
         if (runListItemProvider != null) runListItemProvider.dispose();
-        if (configItemProvider != null) configItemProvider.dispose();
+        if (serverConfigItemProvider != null) serverConfigItemProvider.dispose();
         if (dataBagItemItemProvider != null) dataBagItemItemProvider.dispose();
         if (sandboxItemProvider != null) sandboxItemProvider.dispose();
     }

@@ -216,15 +216,6 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
      * <!-- end-user-doc -->
      * @generated
      */
-    public EReference getRepository_OldCookbooks() {
-        return (EReference)repositoryEClass.getEStructuralFeatures().get(4);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EClass getConfigFolder() {
         return configFolderEClass;
     }
@@ -307,7 +298,6 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
         createEAttribute(repositoryEClass, REPOSITORY__BASEPATH);
         createEReference(repositoryEClass, REPOSITORY__COOKBOOKS);
         createEReference(repositoryEClass, REPOSITORY__KNIFE);
-        createEReference(repositoryEClass, REPOSITORY__OLD_COOKBOOKS);
 
         configFolderEClass = createEClass(CONFIG_FOLDER);
 
@@ -362,9 +352,8 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
         initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getRepository_OS(), ecorePackage.getEString(), "OS", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getRepository_Basepath(), ecorePackage.getEString(), "basepath", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getRepository_Cookbooks(), theCookbookPackage.getCookbookVersion(), null, "cookbooks", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getRepository_Knife(), theKnifePackage.getConfig(), null, "knife", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getRepository_OldCookbooks(), theCookbookPackage.getCookbook(), null, "oldCookbooks", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getRepository_Cookbooks(), theCookbookPackage.getCookbookVersion(), null, "cookbooks", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getRepository_Knife(), theKnifePackage.getKnifeConfig(), null, "knife", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(configFolderEClass, ConfigFolder.class, "ConfigFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

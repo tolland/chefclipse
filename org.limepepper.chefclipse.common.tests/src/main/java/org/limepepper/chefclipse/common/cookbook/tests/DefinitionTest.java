@@ -2,12 +2,12 @@
  */
 package org.limepepper.chefclipse.common.cookbook.tests;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.Definition;
+
+import org.limepepper.chefclipse.tests.SandboxedObjectTest;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,15 +15,7 @@ import org.limepepper.chefclipse.common.cookbook.Definition;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DefinitionTest extends TestCase {
-
-    /**
-     * The fixture for this Definition test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected Definition fixture = null;
+public class DefinitionTest extends SandboxedObjectTest {
 
     /**
      * <!-- begin-user-doc -->
@@ -45,23 +37,14 @@ public class DefinitionTest extends TestCase {
     }
 
     /**
-     * Sets the fixture for this Definition test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void setFixture(Definition fixture) {
-        this.fixture = fixture;
-    }
-
-    /**
      * Returns the fixture for this Definition test case.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
+    @Override
     protected Definition getFixture() {
-        return fixture;
+        return (Definition)fixture;
     }
 
     /**

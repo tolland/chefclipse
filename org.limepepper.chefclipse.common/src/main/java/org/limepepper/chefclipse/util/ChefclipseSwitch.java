@@ -8,7 +8,9 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.limepepper.chefclipse.*;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
@@ -75,6 +77,8 @@ public class ChefclipseSwitch<T> extends Switch<T> {
             case ChefclipsePackage.NAMED_DESCRIBED_OBJECT: {
                 NamedDescribedObject namedDescribedObject = (NamedDescribedObject)theEObject;
                 T result = caseNamedDescribedObject(namedDescribedObject);
+                if (result == null) result = caseDescribedObject(namedDescribedObject);
+                if (result == null) result = caseNamedObject(namedDescribedObject);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -111,7 +115,18 @@ public class ChefclipseSwitch<T> extends Switch<T> {
             case ChefclipsePackage.CHECKSUM_FILE: {
                 ChecksumFile checksumFile = (ChecksumFile)theEObject;
                 T result = caseChecksumFile(checksumFile);
-                if (result == null) result = caseNamedObject(checksumFile);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ChefclipsePackage.MAINTAINED_OBJECT: {
+                MaintainedObject maintainedObject = (MaintainedObject)theEObject;
+                T result = caseMaintainedObject(maintainedObject);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ChefclipsePackage.CONFIG: {
+                Config config = (Config)theEObject;
+                T result = caseConfig(config);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -221,6 +236,36 @@ public class ChefclipseSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseChecksumFile(ChecksumFile object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Maintained Object</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Maintained Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseMaintainedObject(MaintainedObject object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Config</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Config</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseConfig(Config object) {
         return null;
     }
 

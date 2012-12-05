@@ -12,7 +12,9 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipseFactory;
 import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
@@ -92,6 +94,20 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    private EClass maintainedObjectEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass configEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EDataType urlEDataType = null;
 
     /**
@@ -100,6 +116,55 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * @generated
      */
     private EDataType fileEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType chef_typeEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType emailEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType textEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType versionEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType nameEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType descriptionEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType objectEDataType = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -196,24 +261,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getNamedDescribedObject_Name() {
-        return (EAttribute)namedDescribedObjectEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public EAttribute getNamedDescribedObject_Description() {
-        return (EAttribute)namedDescribedObjectEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EClass getVersionedObject() {
         return versionedObjectEClass;
     }
@@ -232,8 +279,26 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getVersionedObject_Version() {
+        return (EAttribute)versionedObjectEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getSandboxedObject() {
         return sandboxedObjectEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getSandboxedObject_Url() {
+        return (EAttribute)sandboxedObjectEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -270,6 +335,15 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      */
     public EAttribute getNamedObject_Name() {
         return (EAttribute)namedObjectEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getNamedObject_ID() {
+        return (EAttribute)namedObjectEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -331,8 +405,107 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
-    public EAttribute getChecksumFile_Url() {
-        return (EAttribute)checksumFileEClass.getEStructuralFeatures().get(3);
+    public EClass getMaintainedObject() {
+        return maintainedObjectEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getMaintainedObject_Maintainer() {
+        return (EAttribute)maintainedObjectEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getMaintainedObject_Maintainer_email() {
+        return (EAttribute)maintainedObjectEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getMaintainedObject_License() {
+        return (EAttribute)maintainedObjectEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getConfig() {
+        return configEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getConfig_Chef_server_url() {
+        return (EAttribute)configEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getConfig_Client_key() {
+        return (EAttribute)configEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getConfig_Node_name() {
+        return (EAttribute)configEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getConfig_Log_level() {
+        return (EAttribute)configEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getConfig_Validation_key() {
+        return (EAttribute)configEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getConfig_Version() {
+        return (EAttribute)configEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getConfig_Validation_client_name() {
+        return (EAttribute)configEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -351,6 +524,69 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      */
     public EDataType getFile() {
         return fileEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EDataType getChef_type() {
+        return chef_typeEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EDataType getEmail() {
+        return emailEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EDataType getText() {
+        return textEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EDataType getVersion() {
+        return versionEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EDataType getName_() {
+        return nameEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EDataType getDescription() {
+        return descriptionEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EDataType getObject() {
+        return objectEDataType;
     }
 
     /**
@@ -382,19 +618,20 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 
         // Create classes and their features
         namedDescribedObjectEClass = createEClass(NAMED_DESCRIBED_OBJECT);
-        createEAttribute(namedDescribedObjectEClass, NAMED_DESCRIBED_OBJECT__NAME);
-        createEAttribute(namedDescribedObjectEClass, NAMED_DESCRIBED_OBJECT__DESCRIPTION);
 
         versionedObjectEClass = createEClass(VERSIONED_OBJECT);
         createEAttribute(versionedObjectEClass, VERSIONED_OBJECT__NUM_VERSIONS);
+        createEAttribute(versionedObjectEClass, VERSIONED_OBJECT__VERSION);
 
         sandboxedObjectEClass = createEClass(SANDBOXED_OBJECT);
+        createEAttribute(sandboxedObjectEClass, SANDBOXED_OBJECT__URL);
 
         rubyFileEClass = createEClass(RUBY_FILE);
         createEAttribute(rubyFileEClass, RUBY_FILE__EXTENSION);
 
         namedObjectEClass = createEClass(NAMED_OBJECT);
         createEAttribute(namedObjectEClass, NAMED_OBJECT__NAME);
+        createEAttribute(namedObjectEClass, NAMED_OBJECT__ID);
 
         describedObjectEClass = createEClass(DESCRIBED_OBJECT);
         createEAttribute(describedObjectEClass, DESCRIBED_OBJECT__DESCRIPTION);
@@ -403,11 +640,31 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         createEAttribute(checksumFileEClass, CHECKSUM_FILE__CHECKSUM);
         createEAttribute(checksumFileEClass, CHECKSUM_FILE__PATH);
         createEAttribute(checksumFileEClass, CHECKSUM_FILE__SPECIFICITY);
-        createEAttribute(checksumFileEClass, CHECKSUM_FILE__URL);
+
+        maintainedObjectEClass = createEClass(MAINTAINED_OBJECT);
+        createEAttribute(maintainedObjectEClass, MAINTAINED_OBJECT__MAINTAINER);
+        createEAttribute(maintainedObjectEClass, MAINTAINED_OBJECT__MAINTAINER_EMAIL);
+        createEAttribute(maintainedObjectEClass, MAINTAINED_OBJECT__LICENSE);
+
+        configEClass = createEClass(CONFIG);
+        createEAttribute(configEClass, CONFIG__CHEF_SERVER_URL);
+        createEAttribute(configEClass, CONFIG__CLIENT_KEY);
+        createEAttribute(configEClass, CONFIG__NODE_NAME);
+        createEAttribute(configEClass, CONFIG__LOG_LEVEL);
+        createEAttribute(configEClass, CONFIG__VALIDATION_KEY);
+        createEAttribute(configEClass, CONFIG__VERSION);
+        createEAttribute(configEClass, CONFIG__VALIDATION_CLIENT_NAME);
 
         // Create data types
         urlEDataType = createEDataType(URL);
         fileEDataType = createEDataType(FILE);
+        chef_typeEDataType = createEDataType(CHEF_TYPE);
+        emailEDataType = createEDataType(EMAIL);
+        textEDataType = createEDataType(TEXT);
+        versionEDataType = createEDataType(VERSION);
+        nameEDataType = createEDataType(NAME);
+        descriptionEDataType = createEDataType(DESCRIPTION);
+        objectEDataType = createEDataType(OBJECT);
     }
 
     /**
@@ -454,23 +711,25 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        checksumFileEClass.getESuperTypes().add(this.getNamedObject());
+        namedDescribedObjectEClass.getESuperTypes().add(this.getDescribedObject());
+        namedDescribedObjectEClass.getESuperTypes().add(this.getNamedObject());
 
         // Initialize classes and features; add operations and parameters
         initEClass(namedDescribedObjectEClass, NamedDescribedObject.class, "NamedDescribedObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getNamedDescribedObject_Name(), ecorePackage.getEString(), "name", "", 1, 1, NamedDescribedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getNamedDescribedObject_Description(), ecorePackage.getEString(), "description", null, 0, 1, NamedDescribedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(versionedObjectEClass, VersionedObject.class, "VersionedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getVersionedObject_NUM_VERSIONS(), ecorePackage.getEIntegerObject(), "NUM_VERSIONS", "3", 1, 1, VersionedObject.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getVersionedObject_Version(), this.getVersion(), "version", "0.0.0", 1, 1, VersionedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(sandboxedObjectEClass, SandboxedObject.class, "SandboxedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSandboxedObject_Url(), this.getURL(), "url", null, 0, 1, SandboxedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(rubyFileEClass, RubyFile.class, "RubyFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getRubyFile_Extension(), ecorePackage.getEString(), "extension", "rb", 0, 1, RubyFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(namedObjectEClass, NamedObject.class, "NamedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getNamedObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNamedObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNamedObject_ID(), ecorePackage.getEString(), "ID", null, 1, 1, NamedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(describedObjectEClass, DescribedObject.class, "DescribedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDescribedObject_Description(), ecorePackage.getEString(), "description", null, 0, 1, DescribedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -479,11 +738,31 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         initEAttribute(getChecksumFile_Checksum(), ecorePackage.getEString(), "checksum", null, 1, 1, ChecksumFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getChecksumFile_Path(), ecorePackage.getEString(), "path", null, 1, 1, ChecksumFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getChecksumFile_Specificity(), ecorePackage.getEString(), "specificity", "default", 1, 1, ChecksumFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getChecksumFile_Url(), this.getURL(), "url", null, 1, 1, ChecksumFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(maintainedObjectEClass, MaintainedObject.class, "MaintainedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getMaintainedObject_Maintainer(), ecorePackage.getEString(), "maintainer", null, 1, 1, MaintainedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getMaintainedObject_Maintainer_email(), this.getEmail(), "maintainer_email", null, 1, 1, MaintainedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getMaintainedObject_License(), this.getText(), "license", null, 0, 1, MaintainedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getConfig_Chef_server_url(), this.getURL(), "chef_server_url", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getConfig_Client_key(), this.getFile(), "client_key", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getConfig_Node_name(), ecorePackage.getEString(), "node_name", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getConfig_Log_level(), ecorePackage.getEString(), "log_level", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getConfig_Validation_key(), this.getFile(), "validation_key", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getConfig_Version(), this.getVersion(), "version", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getConfig_Validation_client_name(), ecorePackage.getEString(), "validation_client_name", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize data types
         initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(chef_typeEDataType, String.class, "Chef_type", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(emailEDataType, String.class, "Email", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(textEDataType, String.class, "Text", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(versionEDataType, String.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(nameEDataType, Object.class, "Name", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(descriptionEDataType, Object.class, "Description", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(eNS_URI);

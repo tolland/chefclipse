@@ -179,6 +179,29 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.RecipeDescription} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected RecipeDescriptionItemProvider recipeDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.RecipeDescription}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRecipeDescriptionAdapter() {
+        if (recipeDescriptionItemProvider == null) {
+            recipeDescriptionItemProvider = new RecipeDescriptionItemProvider(this);
+        }
+
+        return recipeDescriptionItemProvider;
+    }
+
+    /**
      * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Resource} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -282,49 +305,118 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Cookbook} instances.
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Metadata} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected CookbookItemProvider cookbookItemProvider;
+    protected MetadataItemProvider metadataItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Cookbook}.
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Metadata}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
-    public Adapter createCookbookAdapter() {
-        if (cookbookItemProvider == null) {
-            cookbookItemProvider = new CookbookItemProvider(this);
+    public Adapter createMetadataAdapter() {
+        if (metadataItemProvider == null) {
+            metadataItemProvider = new MetadataItemProvider(this);
         }
 
-        return cookbookItemProvider;
+        return metadataItemProvider;
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Version} instances.
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Provider} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected VersionItemProvider versionItemProvider;
+    protected ProviderItemProvider providerItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Version}.
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Provider}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
-    public Adapter createVersionAdapter() {
-        if (versionItemProvider == null) {
-            versionItemProvider = new VersionItemProvider(this);
+    public Adapter createProviderAdapter() {
+        if (providerItemProvider == null) {
+            providerItemProvider = new ProviderItemProvider(this);
         }
 
-        return versionItemProvider;
+        return providerItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Root_file} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected Root_fileItemProvider root_fileItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Root_file}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRoot_fileAdapter() {
+        if (root_fileItemProvider == null) {
+            root_fileItemProvider = new Root_fileItemProvider(this);
+        }
+
+        return root_fileItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.MinimalMetadata} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected MinimalMetadataItemProvider minimalMetadataItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.MinimalMetadata}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createMinimalMetadataAdapter() {
+        if (minimalMetadataItemProvider == null) {
+            minimalMetadataItemProvider = new MinimalMetadataItemProvider(this);
+        }
+
+        return minimalMetadataItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Name} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected NameItemProvider nameItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Name}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createNameAdapter() {
+        if (nameItemProvider == null) {
+            nameItemProvider = new NameItemProvider(this);
+        }
+
+        return nameItemProvider;
     }
 
     /**

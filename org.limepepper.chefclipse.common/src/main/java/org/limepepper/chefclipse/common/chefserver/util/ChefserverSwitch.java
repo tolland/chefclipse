@@ -5,11 +5,11 @@ package org.limepepper.chefclipse.common.chefserver.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-import org.limepepper.chefclipse.common.chefserver.Config;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -19,6 +19,7 @@ import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 
 /**
  * <!-- begin-user-doc -->
@@ -93,6 +94,8 @@ public class ChefserverSwitch<T> extends Switch<T> {
                 Role role = (Role)theEObject;
                 T result = caseRole(role);
                 if (result == null) result = caseNamedDescribedObject(role);
+                if (result == null) result = caseDescribedObject(role);
+                if (result == null) result = caseNamedObject(role);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -100,6 +103,8 @@ public class ChefserverSwitch<T> extends Switch<T> {
                 Node node = (Node)theEObject;
                 T result = caseNode(node);
                 if (result == null) result = caseNamedDescribedObject(node);
+                if (result == null) result = caseDescribedObject(node);
+                if (result == null) result = caseNamedObject(node);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -121,9 +126,9 @@ public class ChefserverSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
-            case ChefserverPackage.CONFIG: {
-                Config config = (Config)theEObject;
-                T result = caseConfig(config);
+            case ChefserverPackage.SERVER_CONFIG: {
+                ServerConfig serverConfig = (ServerConfig)theEObject;
+                T result = caseServerConfig(serverConfig);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -250,17 +255,17 @@ public class ChefserverSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Config</em>'.
+     * Returns the result of interpreting the object as an instance of '<em>Server Config</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
      * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Config</em>'.
+     * @return the result of interpreting the object as an instance of '<em>Server Config</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseConfig(Config object) {
+    public T caseServerConfig(ServerConfig object) {
         return null;
     }
 
@@ -291,6 +296,21 @@ public class ChefserverSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseSandbox(Sandbox object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Described Object</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Described Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDescribedObject(DescribedObject object) {
         return null;
     }
 

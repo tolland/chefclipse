@@ -6,9 +6,11 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.chefclient.*;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.limepepper.chefclipse.common.chefclient.Ohai;
 import org.limepepper.chefclipse.common.chefclient.Search;
 
@@ -81,6 +83,14 @@ public class ChefclientAdapterFactory extends AdapterFactoryImpl {
                 return createSearchAdapter();
             }
             @Override
+            public Adapter caseClientConfig(ClientConfig object) {
+                return createClientConfigAdapter();
+            }
+            @Override
+            public Adapter caseConfig(Config object) {
+                return createConfigAdapter();
+            }
+            @Override
             public Adapter defaultCase(EObject object) {
                 return createEObjectAdapter();
             }
@@ -139,6 +149,34 @@ public class ChefclientAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createSearchAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefclient.ClientConfig <em>Client Config</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.chefclient.ClientConfig
+     * @generated
+     */
+    public Adapter createClientConfigAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Config <em>Config</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.Config
+     * @generated
+     */
+    public Adapter createConfigAdapter() {
         return null;
     }
 

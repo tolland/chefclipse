@@ -28,7 +28,7 @@ public interface KnifeFactory extends EFactory {
      * @return a new object of class '<em>Config</em>'.
      * @generated
      */
-    Config createConfig();
+    KnifeConfig createKnifeConfig();
 
     /**
      * Returns a new object of class '<em>Plugin</em>'.

@@ -12,6 +12,10 @@ import org.limepepper.chefclipse.common.chefserver.Platform;
  * An implementation of the model object '<em><b>Platform</b></em>'.
  * <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.PlatformImpl#getTestVal <em>Test Val</em>}</li>
+ * </ul>
  * </p>
  *
  * @generated
@@ -44,6 +48,24 @@ public class PlatformImpl extends EObjectImpl implements Platform {
     @Override
     protected int eStaticFeatureCount() {
         return 0;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public int getTestVal() {
+        return (Integer)eGet(ChefserverPackage.Literals.PLATFORM__TEST_VAL, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setTestVal(int newTestVal) {
+        eSet(ChefserverPackage.Literals.PLATFORM__TEST_VAL, newTestVal);
     }
 
 } //PlatformImpl

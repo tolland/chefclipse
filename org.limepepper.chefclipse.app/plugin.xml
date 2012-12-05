@@ -40,40 +40,5 @@
          </property>
       </product>
    </extension>
-   <extension
-         point="org.eclipse.ui.splashHandlers">
-      <splashHandler
-            class="org.limepepper.chefclipse.app.splashHandlers.ExtensibleSplashHandler"
-            id="org.limepepper.chefclipse.app.splashHandlers.extensible">
-      </splashHandler>
-   </extension>
-   <extension
-         point="org.limepepper.chefclipse.app.splashExtension">
-      <splashExtension
-            icon="icons/af.png"
-            id="af"
-            tooltip="Application Framework">
-      </splashExtension>
-      <splashExtension
-            icon="icons/embedded.png"
-            id="embedded"
-            tooltip="Embedded">
-      </splashExtension>
-      <splashExtension
-            icon="icons/enterprise.png"
-            id="enterprise"
-            tooltip="Enterprise">
-      </splashExtension>
-      <splashExtension
-            icon="icons/languages.png"
-            id="languages"
-            tooltip="Languages">
-      </splashExtension>
-      <splashExtension
-            icon="icons/rcp.png"
-            id="rcp"
-            tooltip="RCP">
-      </splashExtension>
-   </extension>
 
 </plugin>

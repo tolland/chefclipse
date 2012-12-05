@@ -16,10 +16,11 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.chefclipse.REST.CookbookListResp;
-import org.limepepper.chefclipse.chefclipse.REST.CookbookVersionResp;
+import org.limepepper.chefclipse.REST.CookbookListResp;
+import org.limepepper.chefclipse.REST.CookbookVersionResp;
 import org.limepepper.chefclipse.chefserver.api.ChefServerAPI;
-import org.limepepper.chefclipse.chefserver.api.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,8 +31,7 @@ public class ServerAPITests {
     private File          client_key;
     private URL           chef_server_url;
     private ChefServerAPI chefServerAPI;
-    Config                config;
-
+    KnifeConfig knifeConfig ;
     Logger                logger = LoggerFactory
                                          .getLogger(ServerAPITests.class);
 
@@ -47,11 +47,16 @@ public class ServerAPITests {
             client_name = props.getProperty("client_name");
             client_key = new File(props.getProperty("client_key"));
             chef_server_url = new URL(props.getProperty("chef_server_url"));
+            
+            knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
+            knifeConfig.setChef_server_url(chef_server_url);
+            knifeConfig.setClient_key(client_key);
+            knifeConfig.setNode_name(client_name);
+            
             assertNotNull(props);
             assertTrue(client_key.exists());
             assertTrue(client_name.length() > 0);
 
-            config = new Config(client_name, client_key, chef_server_url);
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -64,7 +69,7 @@ public class ServerAPITests {
     @Test
     public void createServerObject() throws Exception {
 
-        chefServerAPI = ChefServerAPI.getInstance(config);
+        chefServerAPI = ChefServerAPI.getInstance(knifeConfig);
         assertNotNull(chefServerAPI);
 
     }
