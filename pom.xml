@@ -29,7 +29,7 @@
 			<id>emfjson-p2</id>
 			<layout>p2</layout>
 			<url>http://ghillairet.github.com/p2</url>
-		</repository
+		</repository>
 		<repository>
 			<id>zest2-p2</id>
 			<layout>p2</layout>
