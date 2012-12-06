@@ -2,10 +2,7 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,27 +11,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  *
  * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getDependencyRelation()
- * @model kind="class"
+ * @model
  * @generated
  */
-public class DependencyRelation extends EObjectImpl implements EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DependencyRelation() {
-		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return CookbookPackage.Literals.DEPENDENCY_RELATION;
-	}
-
+public interface DependencyRelation extends EObject {
 } // DependencyRelation

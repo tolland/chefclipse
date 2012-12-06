@@ -24,7 +24,7 @@
          </property>
          <property
                name="preferenceCustomization"
-               value="plugin_customization.ini">
+               value="custom.ini">
          </property>
          <property
                name="aboutImage"
@@ -39,41 +39,6 @@
                value="icons/16x16.png,icons/32x32.png,icons/48x48.png,icons/64x64.png,icons/128x128.png">
          </property>
       </product>
-   </extension>
-   <extension
-         point="org.eclipse.ui.splashHandlers">
-      <splashHandler
-            class="org.limepepper.chefclipse.app.splashHandlers.ExtensibleSplashHandler"
-            id="org.limepepper.chefclipse.app.splashHandlers.extensible">
-      </splashHandler>
-   </extension>
-   <extension
-         point="org.limepepper.chefclipse.app.splashExtension">
-      <splashExtension
-            icon="icons/af.png"
-            id="af"
-            tooltip="Application Framework">
-      </splashExtension>
-      <splashExtension
-            icon="icons/embedded.png"
-            id="embedded"
-            tooltip="Embedded">
-      </splashExtension>
-      <splashExtension
-            icon="icons/enterprise.png"
-            id="enterprise"
-            tooltip="Enterprise">
-      </splashExtension>
-      <splashExtension
-            icon="icons/languages.png"
-            id="languages"
-            tooltip="Languages">
-      </splashExtension>
-      <splashExtension
-            icon="icons/rcp.png"
-            id="rcp"
-            tooltip="RCP">
-      </splashExtension>
    </extension>
 
 </plugin>

@@ -2,13 +2,7 @@
  */
 package org.limepepper.chefclipse.common.chefserver;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-
-import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.emf.ecore.EFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,163 +12,112 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage
  * @generated
  */
-public class ChefserverFactory extends EFactoryImpl {
-	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final ChefserverFactory eINSTANCE = init();
+public interface ChefserverFactory extends EFactory {
+    /**
+     * The singleton instance of the factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    ChefserverFactory eINSTANCE = org.limepepper.chefclipse.common.chefserver.impl.ChefserverFactoryImpl.init();
 
-	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static ChefserverFactory init() {
-		try {
-			ChefserverFactory theChefserverFactory = (ChefserverFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/0.0.1/chefserver"); 
-			if (theChefserverFactory != null) {
-				return theChefserverFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new ChefserverFactory();
-	}
+    /**
+     * Returns a new object of class '<em>Environment</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Environment</em>'.
+     * @generated
+     */
+    Environment createEnvironment();
 
-	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ChefserverFactory() {
-		super();
-	}
+    /**
+     * Returns a new object of class '<em>Data Bag</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Data Bag</em>'.
+     * @generated
+     */
+    DataBag createDataBag();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case ChefserverPackage.ENVIRONMENT: return createEnvironment();
-			case ChefserverPackage.DATA_BAG: return createDataBag();
-			case ChefserverPackage.ROLE: return createRole();
-			case ChefserverPackage.NODE: return createNode();
-			case ChefserverPackage.SERVER: return createServer();
-			case ChefserverPackage.PLATFORM: return createPlatform();
-			case ChefserverPackage.RUN_LIST: return createRunList();
-			case ChefserverPackage.CONFIG: return createConfig();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+    /**
+     * Returns a new object of class '<em>Role</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Role</em>'.
+     * @generated
+     */
+    Role createRole();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Environment createEnvironment() {
-		Environment environment = new Environment();
-		return environment;
-	}
+    /**
+     * Returns a new object of class '<em>Node</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Node</em>'.
+     * @generated
+     */
+    Node createNode();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DataBag createDataBag() {
-		DataBag dataBag = new DataBag();
-		return dataBag;
-	}
+    /**
+     * Returns a new object of class '<em>Server</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Server</em>'.
+     * @generated
+     */
+    Server createServer();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Role createRole() {
-		Role role = new Role();
-		return role;
-	}
+    /**
+     * Returns a new object of class '<em>Platform</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Platform</em>'.
+     * @generated
+     */
+    Platform createPlatform();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Node createNode() {
-		Node node = new Node();
-		return node;
-	}
+    /**
+     * Returns a new object of class '<em>Run List</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Run List</em>'.
+     * @generated
+     */
+    RunList createRunList();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Server createServer() {
-		Server server = new Server();
-		return server;
-	}
+    /**
+     * Returns a new object of class '<em>Server Config</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Server Config</em>'.
+     * @generated
+     */
+    ServerConfig createServerConfig();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Platform createPlatform() {
-		Platform platform = new Platform();
-		return platform;
-	}
+    /**
+     * Returns a new object of class '<em>Data Bag Item</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Data Bag Item</em>'.
+     * @generated
+     */
+    DataBagItem createDataBagItem();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public RunList createRunList() {
-		RunList runList = new RunList();
-		return runList;
-	}
+    /**
+     * Returns a new object of class '<em>Sandbox</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Sandbox</em>'.
+     * @generated
+     */
+    Sandbox createSandbox();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Config createConfig() {
-		Config config = new Config();
-		return config;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ChefserverPackage getChefserverPackage() {
-		return (ChefserverPackage)getEPackage();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
-	@Deprecated
-	public static ChefserverPackage getPackage() {
-		return ChefserverPackage.eINSTANCE;
-	}
+    /**
+     * Returns the package supported by this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the package supported by this factory.
+     * @generated
+     */
+    ChefserverPackage getChefserverPackage();
 
 } //ChefserverFactory

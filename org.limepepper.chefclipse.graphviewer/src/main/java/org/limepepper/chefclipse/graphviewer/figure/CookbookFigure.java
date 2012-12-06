@@ -9,9 +9,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
-import org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor;
 
 public class CookbookFigure extends Figure {
 	

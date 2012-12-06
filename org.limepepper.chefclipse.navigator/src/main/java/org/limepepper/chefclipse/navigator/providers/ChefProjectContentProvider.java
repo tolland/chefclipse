@@ -11,7 +11,6 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
 import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.common.workstation.Repository;

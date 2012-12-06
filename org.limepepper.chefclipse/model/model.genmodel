@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.limepepper.chefclipse.common.editor/src/main/java"
-    editDirectory="org.limepepper.chefclipse.common.editor/src/main/java" editorDirectory="/org.limepepper.chefclipse.common.editor/src/main/java"
-    modelPluginID="org.limepepper.chefclipse.common.editor" modelName="Model" suppressInterfaces="true"
-    testsDirectory="/org.limepepper.chefclipse.common.editor/src/test/java" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false" editPluginID="org.limepepper.chefclipse.common.editor"
-    testsPluginID="org.limepepper.chefclipse.common.editor">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.limepepper.chefclipse.model/src/main/java"
+    editDirectory="org.limepepper.chefclipse.model/src/main/java" editorDirectory="/org.limepepper.chefclipse.model/src/main/java"
+    modelPluginID="org.limepepper.chefclipse.model" modelName="Model" modelPluginClass=""
+    suppressInterfaces="true" testsDirectory="/org.limepepper.chefclipse.model/src/test/java"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    editPluginID="org.limepepper.chefclipse.model" editorPluginID="org.limepepper.chefclipse.model"
+    testsPluginID="org.limepepper.chefclipse.model">
   <foreignModel>model.ecore</foreignModel>
   <genPackages prefix="Model" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
       ecorePackage="model.ecore#/">
     <genDataTypes ecoreDataType="model.ecore#//IResource"/>
-    <genClasses ecoreClass="model.ecore#//ChefclipseContainer"/>
-    <genClasses ecoreClass="model.ecore#//ChefclipseFile"/>
-    <genClasses ecoreClass="model.ecore#//ChefclipseFolder"/>
-    <genClasses ecoreClass="model.ecore#//ChefclipseObject">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ChefclipseObject/children"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ChefclipseObject/parent"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ChefclipseObject/path"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ChefclipseObject/project"/>
-      <genOperations ecoreOperation="model.ecore#//ChefclipseObject/create">
-        <genParameters ecoreParameter="model.ecore#//ChefclipseObject/create/resource"/>
+    <genClasses ecoreClass="model.ecore#//ChefContainer"/>
+    <genClasses ecoreClass="model.ecore#//ChefFile"/>
+    <genClasses ecoreClass="model.ecore#//ChefFolder"/>
+    <genClasses ecoreClass="model.ecore#//ChefObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ChefObject/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ChefObject/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ChefObject/path"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ChefObject/project"/>
+      <genOperations ecoreOperation="model.ecore#//ChefObject/create">
+        <genParameters ecoreParameter="model.ecore#//ChefObject/create/resource"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//ChefclipseObjectDefinitionFile"/>
-    <genClasses ecoreClass="model.ecore#//ChefclipseObjectElementFile"/>
-    <genClasses ecoreClass="model.ecore#//ChefclipseProject"/>
-    <genClasses ecoreClass="model.ecore#//ChefclipseResource">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ChefclipseResource/resource"/>
+    <genClasses ecoreClass="model.ecore#//ChefObjectDefinitionFile"/>
+    <genClasses ecoreClass="model.ecore#//ChefObjectElementFile"/>
+    <genClasses ecoreClass="model.ecore#//ChefProject"/>
+    <genClasses ecoreClass="model.ecore#//ChefResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ChefResource/resource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ChefResource/type"/>
     </genClasses>
-    <genClasses ecoreClass="model.ecore#//ChefclipseWorkspace"/>
+    <genClasses ecoreClass="model.ecore#//ChefWorkspace"/>
     <genClasses ecoreClass="model.ecore#//ChangeTracker"/>
     <genClasses ecoreClass="model.ecore#//ChefServer"/>
   </genPackages>

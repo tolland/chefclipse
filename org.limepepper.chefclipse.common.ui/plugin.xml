@@ -1,14 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+
+
+
+
+<!-- =================================================================================== -->
+<!-- This is the chefclipse code, the above is mostly remainder of the example, @todo migrate down	-->
+<!-- this block contains the model mappings and providers, and the builder and nature -->
+<!-- =================================================================================== -->
+
+
+
    <extension
-         id="org.limepepper.chefclipse.common.ui.resources.ChefProjectNature"
+         id="org.limepepper.chefclipse.ChefProjectNature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="org.limepepper.chefclipse.common.ui.resources.ChefProjectNature">
+               class="org.limepepper.chefclipse.common.ui.builder.ChefProjectNature">
          </run>
       </runtime>
    </extension>
+
+
+
+<!-- =================================================================================== -->
+<!-- Property Testers for chefclipse													 -->
+<!-- =================================================================================== -->
+
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.limepepper.chefclipse.navigator.testers.ChefTester"
+            id="org.limepepper.chefclipse.navigator.ChefResourcesPropertyTester"
+            namespace="org.limepepper.chefclipse"
+            properties="isRepositoryFolder,isCookbook,isChefProject,isRecipe,isCookbookMetadata,isAttributesFile,isDefinition,isCookbookProject"
+            type="org.eclipse.core.resources.mapping.ResourceMapping">
+      </propertyTester>
+   </extension>
+
+
+
+
+
+<!-- =================================================================================== -->
+<!-- This is a handler for the dynamic menu org.limepepper.chefclipse.menu.dynamic -->
+<!-- notes on creating dynamic menus, labels, handlders etc -->
+<!-- http://timezra.blogspot.co.uk/2008/01/dynamic-labels-redux.html -->
+<!-- =================================================================================== -->
+
+
+    <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="org.limepepper.chefclipse.commands.popupContext"
+            class="org.limepepper.chefclipse.handlers.ChefHandler">
+      </handler>
+   </extension>
+
+
+<!-- =================================================================================== -->
+<!-- This is the command contribution declarations for dynamic menu item etc	-->
+<!-- lars vogel tutorials on advanced commmands features -->
+<!-- http://www.vogella.com/articles/EclipseCommandsAdvanced/article.html -->
+<!-- =================================================================================== -->
+
+
+  <extension
+       point="org.eclipse.ui.commands">
+    <category
+          id="org.limepepper.chefclipse.commands.category"
+          name="Chefclipse Commands Category">
+    </category>
+    <command
+          categoryId="org.limepepper.chefclipse.commands.category"
+          id="org.limepepper.chefclipse.commands.popupContext"
+          name="Dynamic Command Label Placeholder">
+       <commandParameter
+             id="commandParameter1"
+             name="parameter to select dynamic handler"
+             optional="false">
+       </commandParameter>
+    </command>
+ </extension>
+
+
+<!-- =================================================================================== -->
+<!-- This is the dynamic menu  -->
+<!-- =================================================================================== -->
+
+   <extension
+         point="org.eclipse.ui.menus">
+
+   <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+        <menu label="Chefclipse Menu"
+               mnemonic="C"
+               id="org.limepepper.chefclipse.menus.contextgroup">
+         <dynamic
+               class="org.limepepper.chefclipse.menu.ContributionItemDynamic"
+               id="org.limepepper.chefclipse.menu.dynamic">
+        <visibleWhen checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate>
+                     <or>
+                        <adapt
+                              type="org.eclipse.core.resources.IResource">
+                        </adapt>
+                     </or>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </dynamic>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.eclipse.emf.ecore.EObject"
+            class="org.limepepper.chefclipse.common.ui.providers.AdapterFactory">
+         <adapter
+               type="org.eclipse.emf.ecore.EObject">
+         </adapter>
+      </factory>
+   </extension>
+   <extension
+         id="modelProvider"
+         point="org.eclipse.core.resources.modelProviders">
+      <modelProvider
+            class="org.limepepper.chefclipse.common.ui.providers.ChefModelProvider">
+      </modelProvider>
+      <extends-model
+            id="org.eclipse.core.resources.modelProvider">
+      </extends-model>
+      <enablement>
+         <test
+               property="org.eclipse.core.resources.projectNature">
+         </test>
+      </enablement>
+   </extension>
+
+
+
+
 
 </plugin>

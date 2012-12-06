@@ -7,11 +7,11 @@
     editorPluginClass="org.limepepper.chefclipse.common.editor.presentation.ChefclipseEditorPlugin"
     featureMapWrapperInterface="" reflectiveDelegation="true" testsDirectory="/org.limepepper.chefclipse.common.tests/src/main/java"
     testSuiteClass="org.limepepper.chefclipse.common.tests.ChefclipseAllTests" importerID="org.eclipse.emf.importer.ecore"
-    featureDelegation="Reflective" containmentProxies="true" complianceLevel="6.0"
-    copyrightFields="false" publicConstructors="true" providerRootExtendsClass="">
+    featureDelegation="Reflective" complianceLevel="6.0" copyrightFields="false" publicConstructors="true"
+    providerRootExtendsClass="">
   <foreignModel>chefclipse.ecore</foreignModel>
-  <genPackages prefix="Chefclipse" basePackage="org.limepepper.chefclipse" resource="Basic"
-      disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="chefclipse.ecore#/">
+  <genPackages prefix="Chefclipse" basePackage="org.limepepper" resource="Basic" disposableProviderFactory="true"
+      childCreationExtenders="true" ecorePackage="chefclipse.ecore#/">
     <genDataTypes ecoreDataType="chefclipse.ecore#//URL"/>
     <genDataTypes ecoreDataType="chefclipse.ecore#//File"/>
     <genClasses image="false" ecoreClass="chefclipse.ecore#//NamedDescribedObject">
@@ -30,6 +30,12 @@
     </genClasses>
     <genClasses ecoreClass="chefclipse.ecore#//DescribedObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//DescribedObject/description"/>
+    </genClasses>
+    <genClasses ecoreClass="chefclipse.ecore#//ChecksumFile">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//ChecksumFile/checksum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//ChecksumFile/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//ChecksumFile/specificity"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//ChecksumFile/url"/>
     </genClasses>
     <nestedGenPackages prefix="Chefserver" basePackage="org.limepepper.chefclipse.common"
         disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefserver">
@@ -111,15 +117,25 @@
             ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/templates"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/recipes"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/definitions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/files"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/resources"/>
       </genClasses>
       <genClasses provider="Stateful" ecoreClass="chefclipse.ecore#//cookbook/Definition"/>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/Library"/>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/Attribute"/>
       <genClasses provider="Stateful" ecoreClass="chefclipse.ecore#//cookbook/Recipe">
-        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Recipe/cookbook"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Recipe/cookbookVersion"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Recipe/resources"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Recipe/role"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Recipe/runlist"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Recipe/cookbook"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/Resource">
-        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Resource/recipe"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Resource/recipe"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/Template">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
@@ -127,6 +143,19 @@
       </genClasses>
       <genClasses provider="Stateful" ecoreClass="chefclipse.ecore#//cookbook/Attributes"/>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/File"/>
+      <genClasses ecoreClass="chefclipse.ecore#//cookbook/DependencyRelation"/>
+      <genClasses ecoreClass="chefclipse.ecore#//cookbook/Cookbook">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Cookbook/depends"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Cookbook/environment"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Cookbook/recipes"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//cookbook/Cookbook/name"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Cookbook/repository"/>
+      </genClasses>
+      <genClasses ecoreClass="chefclipse.ecore#//cookbook/Version"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Workstation" basePackage="org.limepepper.chefclipse.common"
         disposableProviderFactory="true" childCreationExtenders="true" contentTypeIdentifier=""
@@ -139,6 +168,8 @@
             ecoreFeature="ecore:EReference chefclipse.ecore#//workstation/Repository/cookbooks"/>
         <genFeatures notify="false" createChild="true" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//workstation/Repository/knife"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//workstation/Repository/oldCookbooks"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//workstation/ConfigFolder"/>
       <genClasses ecoreClass="chefclipse.ecore#//workstation/CertificatesFolder"/>
@@ -167,7 +198,8 @@
       <genClasses ecoreClass="chefclipse.ecore#//knife/Plugin"/>
       <genClasses ecoreClass="chefclipse.ecore#//knife/KnifeSearch"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="REST" disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//REST">
+    <nestedGenPackages prefix="REST" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
+        ecorePackage="chefclipse.ecore#//REST">
       <genClasses ecoreClass="chefclipse.ecore#//REST/CookbookListResp">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//REST/CookbookListResp/name"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//REST/CookbookListResp/versions"/>
@@ -227,6 +259,8 @@
       <genClasses ecoreClass="chefclipse.ecore#//REST/CookbookMetadataDependency"/>
       <genClasses ecoreClass="chefclipse.ecore#//REST/EnvironmentResp"/>
       <genClasses ecoreClass="chefclipse.ecore#//REST/JSONObjectResp"/>
+      <genClasses ecoreClass="chefclipse.ecore#//REST/ClientResp"/>
+      <genClasses ecoreClass="chefclipse.ecore#//REST/ClientListResp"/>
     </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>

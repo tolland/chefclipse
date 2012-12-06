@@ -20,6 +20,16 @@
 			<url>http://download.eclipse.org/releases/juno</url>
 			<layout>p2</layout>
 		</repository>
+		<repository>
+			<id>jackson-p2</id>
+			<layout>p2</layout>
+			<url>http://ghillairet.github.com/p2/jackson/update-site/releases</url>
+		</repository>
+		<repository>
+			<id>zest2-p2</id>
+			<layout>p2</layout>
+			<url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>
+		</repository>
 	</repositories>
 
 
@@ -29,9 +39,15 @@
 		<module>org.limepepper.chefclipse.doc.feature</module>
 		<module>org.limepepper.chefclipse.app</module>
 		<module>org.limepepper.chefclipse.app.feature</module>
+		<module>org.limepepper.chefclipse.chefserver.api</module>
+		<module>org.limepepper.chefclipse.chefserver.api.ui</module>
 		<module>org.limepepper.chefclipse.common</module>
+		<module>org.limepepper.chefclipse.common.edit</module>
+		<module>org.limepepper.chefclipse.common.editor</module>
 		<module>org.limepepper.chefclipse.common.ui</module>
+		<module>org.limepepper.chefclipse.devel.feature</module>
 		<module>org.limepepper.chefclipse.graphviewer</module>
+		<module>org.limepepper.chefclipse.model</module>
 		<module>org.limepepper.chefclipse.navigator</module>
 		<module>org.limepepper.chefclipse.ui</module>
 		<module>org.limepepper.chefclipse.ui.feature</module>
@@ -41,6 +57,8 @@
 		<module>org.limepepper.chefclipse.remotepicker.repositories</module>
 		<module>org.limepepper.chefclipse.remotepicker.extpoint</module>
 		<module>org.limepepper.chefclipse.remotepicker.ui</module>
+		
+		
 	</modules>
 
 

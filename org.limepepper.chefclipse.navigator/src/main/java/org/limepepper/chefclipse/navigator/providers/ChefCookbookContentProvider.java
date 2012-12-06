@@ -9,7 +9,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 
 
@@ -24,8 +24,8 @@ public class ChefCookbookContentProvider implements ICommonContentProvider {
 	@Override
 	public Object[] getChildren(Object parentElement) {
 		ArrayList<Object> children = new ArrayList<Object>();
-		if(parentElement instanceof Cookbook){
-			Cookbook cookbook = (Cookbook)parentElement;			
+		if(parentElement instanceof CookbookVersion){
+		    CookbookVersion cookbook = (CookbookVersion)parentElement;			
 			
 			IFolder folder = (IFolder)ChefRepositoryManager.instance().getResource(cookbook);					
 			IFile metadata = folder.getFile("metadata.rb");
