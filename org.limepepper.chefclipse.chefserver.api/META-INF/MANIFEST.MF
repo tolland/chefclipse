@@ -23,8 +23,19 @@ Require-Bundle: org.junit4;bundle-version="4.8.1",
  com.ibm.icu;bundle-version="4.4.2",
  org.codehaus.jackson.core;bundle-version="1.9.5",
  org.codehaus.jackson.mapper;bundle-version="1.9.5"
-Export-Package: org.limepepper.chefclipse.chefserver.api,
- org.limepepper.chefclipse.chefserver.api.tests
+Export-Package: com.sun.jersey.api.client,
+ opscode.chef.REST;uses:="org.codehaus.jettison.json,com.sun.jersey.api.client,org.slf4j",
+ opscode.chef.REST.tests;uses:="org.limepepper.chefclipse.common.knife,opscode.chef.REST,org.slf4j",
+ opscode.mixlib.authentication;uses:="org.slf4j",
+ opscode.mixlib.authentication.tests,
+ org.limepepper.chefclipse.chefserver.api;
+  uses:="org.limepepper.chefclipse.REST,
+   org.limepepper.chefclipse.common.chefserver,
+   org.limepepper.chefclipse,
+   org.limepepper.chefclipse.common.knife,
+   org.osgi.framework",
+ org.limepepper.chefclipse.chefserver.api.tests;uses:="org.limepepper.chefclipse.common.knife,org.slf4j",
+ org.limepepper.chefclipse.chefserver.api.util
 Bundle-Classpath: lib/jersey-client.jar,
  lib/jersey-core.jar,
  lib/jersey-json.jar,

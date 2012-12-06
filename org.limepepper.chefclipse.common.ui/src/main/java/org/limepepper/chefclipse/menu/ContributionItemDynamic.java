@@ -26,6 +26,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
                                                         .instance();
 
     Map<String, String>   menuItems             = new HashMap<String, String>();
+    Map<String, String>   remoteMenuItems       = new HashMap<String, String>();
 
     @Override
     protected IContributionItem[] getContributionItems() {
@@ -33,55 +34,68 @@ public class ContributionItemDynamic extends CompoundContributionItem {
         IStructuredSelection selection = (IStructuredSelection) PlatformUI
                 .getWorkbench().getActiveWorkbenchWindow()
                 .getSelectionService().getSelection();
+        if (selection == null)
+            return new IContributionItem[] {};
+
         Object item = selection.getFirstElement();
-      //  if (item instanceof IResource) {
+        // if (item instanceof IResource) {
 
-            if (ChefTester.testResource(item,
-                    "isCookbook")) {
-                menuItems.put("compare.cookbook", "Compare with server1");
-            }
-            if (ChefTester.testResource(item,
-                    "isKnifeConfig")) {
-                menuItems.put("open.knifeconfig", "parse knife ecores");
-                menuItems.put("open.remoteconnection", "OPen remote to this server");
-            }
-            if (ChefTester.testResource(item,
-                    "isKnifeConfigFile")) {
-                menuItems.put("open.knifeconfig", "parse knife ecores");
-            }
+        /*
+         * if (ChefTester.testResource(item, "isCookbook")) {
+         * menuItems.put("compare.cookbook", "Compare with server1");
+         * }
+         * if (ChefTester.testResource(item, "isKnifeConfig")) {
+         * menuItems.put("open.knifeconfig", "parse knife ecores");
+         * menuItems
+         * .put("open.remoteconnection", "OPen remote to this server");
+         * }
+         */
+        if (ChefTester.testResource(item, "isKnifeConfigFile")) {
+            menuItems.put("open.knifeconfig", "parse knife ecores");
+        }
 
-            if (ChefTester.testResource(item, "isChefserver")) {
-                menuItems.put("open.remoteconnection", "open this server connection");
-                menuItems.put("refresh.remoteconnection", "refresh this model from server");
-            }
-    //    }
+/*
+ * if (ChefTester.testResource(item, "isChefserver")) {
+ * menuItems.put("open.remoteconnection",
+ * "open this server connection");
+ * menuItems.put("refresh.remoteconnection",
+ * "refresh this model from server");
+ * }
+ */
+        // }
         return fillMenu();
-        //return new IContributionItem[] {};
+        // return new IContributionItem[] {};
     }
 
     IContributionItem[] fillMenu() {
 
         menuItems.put("refresh.workstation", "update local model");
-        menuItems.put("refresh.chefserver", "update remote model");
-        menuItems.put("get.cookbooks", "Get remote cookbooks");
-        // menuItems.put("get.cookbook", "Get cookbooks info");
 
         List<IContributionItem> iContItems = new ArrayList<IContributionItem>();
         for (Entry<String, String> entry : menuItems.entrySet()) {
-            iContItems.add(MenuItem(entry));
+            iContItems.add(menuItem(entry));
         }
 
         return iContItems.toArray(new IContributionItem[0]);
 
     }
 
-    IContributionItem MenuItem(Entry<String, String> entry) {
+    // org.limepepper.chefclipse.chefserver.api.ui.handler
+
+    IContributionItem menuItem(Entry<String, String> entry) {
+        // @todo monkey hack
+        IContributionItem menuItem = menuItem(entry,
+                "org.limepepper.chefclipse.commands.popupContext");
+
+        return menuItem;
+    }
+
+    IContributionItem menuItem(Entry<String, String> entry, String commandId) {
 
         workbench = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 
         CommandContributionItemParameter ccip = new CommandContributionItemParameter(
-                workbench, entry.getKey(),
-                "org.limepepper.chefclipse.commands.popupContext",
+                workbench, entry.getKey(), commandId,
                 CommandContributionItem.STYLE_PUSH);
 
         Map<String, String> params = new HashMap<String, String>();

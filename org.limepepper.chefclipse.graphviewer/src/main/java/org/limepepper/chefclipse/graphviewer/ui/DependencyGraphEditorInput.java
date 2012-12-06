@@ -14,7 +14,7 @@ public class DependencyGraphEditorInput implements IEditorInput {
         this.resource=resource;
     }
     
-    public IResource getProjectPath()
+    public IResource getResource()
     {
         return resource;
     }
@@ -45,7 +45,7 @@ public class DependencyGraphEditorInput implements IEditorInput {
             return false;
         
         DependencyGraphEditorInput other = (DependencyGraphEditorInput) obj;
-        if (!resource.getFullPath().equals(other.getProjectPath()))
+        if (!resource.getFullPath().equals(other.getResource()))
         {
             return false;
         }

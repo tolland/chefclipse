@@ -16,6 +16,7 @@ public class DrawableCookbook {
     private DrawableLibraryContainer drawableLibraryContainer =new DrawableLibraryContainer();
     private DrawableRecipeContainer drawableRecipeContainer =new DrawableRecipeContainer();
     private DrawableDefinitionContainer drawableDefinitionContainer =new DrawableDefinitionContainer();
+    private DrawableTemplateContainer drawableTemplatesContainer =new DrawableTemplateContainer();
     
     public DrawableCookbook(@NonNull CookbookVersion cookbook)
     {
@@ -49,6 +50,7 @@ public class DrawableCookbook {
         nodes.addAll(Arrays.asList(drawableLibraryContainer.getElements()));
         nodes.addAll(Arrays.asList(drawableRecipeContainer.getElements()));
         nodes.addAll(Arrays.asList(drawableDefinitionContainer.getElements()));
+        nodes.addAll(Arrays.asList(drawableTemplatesContainer.getElements()));
         return nodes.toArray();
     }
     
@@ -65,6 +67,50 @@ public class DrawableCookbook {
         public Image getImage()
         {
             return containerImage;
+        }
+    }
+    
+    public class DrawableCookbookFileContainer extends DrawableContainer
+    {
+
+        private String name = "cookbook file";
+        
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public Object[] getElements() {
+            return cookbook.getRecipes().toArray();
+        }
+
+        @Override
+        public Color getBackgroundColor() {
+            return new Color(null, 255, 255, 190);
+        }
+
+        @Override
+        public String getName() {
+            return name;
+        }        
+    }
+    
+    public class DrawableTemplateContainer extends DrawableContainer
+    {
+
+        @Override
+        public Object[] getElements() {
+            return cookbook.getTemplates().toArray();
+        }
+
+        @Override
+        public Color getBackgroundColor() {
+            return new Color(null, 255, 255, 190);
+        }
+
+        @Override
+        public String getName() {
+            return "templates";
         }
     }
     

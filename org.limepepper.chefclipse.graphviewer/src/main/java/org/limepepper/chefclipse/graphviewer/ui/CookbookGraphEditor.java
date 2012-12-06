@@ -30,10 +30,12 @@ import org.eclipse.zest.core.widgets.GraphConnection;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
+import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
+import org.limepepper.chefclipse.graphviewer.common.DrawableElement;
 import org.limepepper.chefclipse.graphviewer.common.ICookbookElement;
 import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
 import org.limepepper.chefclipse.graphviewer.controller.CookbookController;
@@ -49,10 +51,9 @@ import org.slf4j.LoggerFactory;
 public class CookbookGraphEditor extends EditorPart implements
         ICookbookChangeListener {
 
+    static Logger                    logger = LoggerFactory
+                                                    .getLogger(CookbookGraphEditor.class);
 
-    static Logger                         logger      = LoggerFactory
-            .getLogger(CookbookGraphEditor.class);
-    
     private CookbookGraphEditorInput input;
     private CookbookModel            cookbookModel;
     private CookbookController       cookbookController;
@@ -60,7 +61,7 @@ public class CookbookGraphEditor extends EditorPart implements
     private GraphViewer              graphViewer;
     private Graph                    graph;
 
-    public static final String       ID = "org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor";
+    public static final String       ID     = "org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor";
 
     @Override
     public void doSave(IProgressMonitor monitor) {
@@ -111,13 +112,13 @@ public class CookbookGraphEditor extends EditorPart implements
         TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(
                 TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(200, 50));
         graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
-        
-        IResource resource = ((CookbookGraphEditorInput) input)
-        .getResource();
-        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager.instance().getElement(resource);
-               
+
+        IResource resource = ((CookbookGraphEditorInput) input).getResource();
+        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
+                .instance().getElement(resource);
+
         DrawableCookbook drawableCookbook = new DrawableCookbook(cookbook);
-        
+
         cookbookModel.setDrawableCookbook(drawableCookbook);
         graph = graphViewer.getGraphControl();
         hookMenu(graph);
@@ -187,9 +188,13 @@ public class CookbookGraphEditor extends EditorPart implements
                 return container.getElements();
             } else if (entity instanceof ICookbookElement) {
                 return null;
+
+            } else if (entity instanceof DrawableElement) {
+                return null;
             }
 
-            //throw new RuntimeException("Type not supported:"+entity.getClass());
+            // throw new
+            // RuntimeException("Type not supported:"+entity.getClass());
             logger.debug("Type not supported: {}", entity.getClass());
             return null;
         }
@@ -224,6 +229,9 @@ public class CookbookGraphEditor extends EditorPart implements
         public String getText(Object element) {
             if (element instanceof ICookbookElement) {
                 return ((ICookbookElement) element).getName();
+            }
+            if (element instanceof NamedObject) {
+                return ((NamedObject) element).getName();
             }
             return null;
         }
@@ -264,8 +272,8 @@ public class CookbookGraphEditor extends EditorPart implements
                 CookbookVersion c = (CookbookVersion) ((DrawableCookbook) element)
                         .getCookbook();
                 ;
-                return new CookbookFigure(c.getName(), c.getMetadata().getVersion(),
-                        c.getCatalog());
+                return new CookbookFigure(c.getName(), c.getMetadata()
+                        .getVersion(), c.getCatalog());
             } else if (element instanceof DrawableContainer) {
                 return new ContainerFigure((DrawableContainer) element);
             } else if (element instanceof ICookbookElement) {

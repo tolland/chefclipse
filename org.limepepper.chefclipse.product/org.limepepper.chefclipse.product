@@ -22,12 +22,13 @@
    <splash
       location="org.limepepper.chefclipse.app" />
    <launcher name="chefclipse">
-      <linux icon="/org.limepepper.chefclipse.app/icons/48x48.xpm"/>
+      <linux icon="icons/48x48.xpm"/>
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>

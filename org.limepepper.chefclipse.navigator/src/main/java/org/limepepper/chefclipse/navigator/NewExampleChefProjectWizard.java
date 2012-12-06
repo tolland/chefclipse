@@ -49,7 +49,7 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
          * File f = new File(base+relativeUri);
          */
 
-        Bundle bundle = Activator.getDefault().getBundle();
+        Bundle bundle = NavigatorActivator.getDefault().getBundle();
         IPath path = new Path("resources/chef-repo-example");
         URL setupUrl = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
 

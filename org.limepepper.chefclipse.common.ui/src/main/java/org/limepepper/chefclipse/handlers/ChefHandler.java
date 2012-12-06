@@ -1,8 +1,5 @@
 package org.limepepper.chefclipse.handlers;
 
-import static org.junit.Assert.fail;
-
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.compare.CompareConfiguration;
@@ -27,20 +24,17 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.limepepper.chefclipse.REST.CookbookListResp;
-import org.limepepper.chefclipse.chefserver.api.ChefServerAPI;
-import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
- * 
- * 
+ *
+ *
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
- * 
+ *
  */
 public class ChefHandler extends AbstractHandler implements
         IObjectActionDelegate {
@@ -59,7 +53,7 @@ public class ChefHandler extends AbstractHandler implements
 
     /**
      * The constructor.
-     * 
+     *
      */
     public ChefHandler() {
     }
@@ -67,7 +61,7 @@ public class ChefHandler extends AbstractHandler implements
     /**
      * the command has been executed, so extract extract the needed information
      * from the application context.
-     * 
+     *
      */
     public Object execute(ExecutionEvent event) throws ExecutionException {
         IWorkbenchWindow window = HandlerUtil
@@ -82,19 +76,7 @@ public class ChefHandler extends AbstractHandler implements
 
         if (name.equals("get.cookbooks")) {
 
-            try {
-                if (item instanceof KnifeConfig) {
-
-            ChefServerAPI repo = ChefServerAPI.getInstance((KnifeConfig)item);
-
-                    CookbookListResp cookbook = repo.getCookbookInfo("apache2");
-                    logger.debug(cookbook.getUrl());
-
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            logger.error("need to make this call in the api.ui plugin");
 
         } else if (name.equals("refresh.workstation")) {
             // @todo is stupid to have this random IResource checking
@@ -110,20 +92,11 @@ public class ChefHandler extends AbstractHandler implements
             ChefRepositoryManager.instance().readInKnifeConfigs(
                     ((IResource) item).getProject());
 
-        } else if (name.equals("open.remoteconnection")) {
-            if (item instanceof KnifeConfig) {
-
-            } else {
-                fail("not implemented");
-
-            }
-
-        } 
-
+        }
         /*
          * EObject eObject = CookbookFactory.eINSTANCE
          * .create(CookbookPackage.eINSTANCE.getCookbookVersion());
-         * 
+         *
          * Resource eResource = eObject.eResource();
          * URI eUri = eResource.getURI();
          * if (eUri.isPlatformResource()) {
@@ -167,7 +140,7 @@ public class ChefHandler extends AbstractHandler implements
 
     /**
      * Return the path that was active when the menu item was selected.
-     * 
+     *
      * @return IWorkbenchPage
      */
     protected IWorkbenchPage getTargetPage() {

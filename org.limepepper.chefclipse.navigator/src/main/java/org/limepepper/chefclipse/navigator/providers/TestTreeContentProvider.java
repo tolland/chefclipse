@@ -20,6 +20,14 @@ import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ *
+ * this class is primarily based off this tutorial here;
+ * http://www.ibm.com/developerworks/library/os-eclipse-emf/
+ *
+ * @author tomhodder
+ *
+ */
 public class TestTreeContentProvider extends AdapterFactoryContentProvider {
 
     Logger                         logger      = LoggerFactory
@@ -51,7 +59,7 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
         /**
          * this messes about with the persisted model, and is for manipulating
          * the viwe of that directly
-         * 
+         *
          */
 
         if ((parentElement instanceof IFile)
