@@ -75,7 +75,7 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
             copyFolder(new File(FileLocator.toFileURL(setupUrl).getPath()),
                     new File(ResourcesPlugin.getWorkspace().getRoot()
                             .getLocation().toString()
-                            + "/"));
+                            + "/chef-repo-example"));
         } catch (IOException e1) {
             e1.printStackTrace();
         }
@@ -130,8 +130,8 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
             // if directory not exists, create it
             if (!dest.exists()) {
                 dest.mkdir();
-                System.out.println("Directory copied from " + src + "  to "
-                        + dest);
+                // System.out.println("Directory copied from " + src + "  to " +
+                // dest);
             }
 
             // list all the directory contents

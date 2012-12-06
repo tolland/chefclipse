@@ -4,19 +4,10 @@ package org.limepepper.chefclipse.model.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.Switch;
-import org.limepepper.chefclipse.model.ChangeTracker;
-import org.limepepper.chefclipse.model.ChefContainer;
-import org.limepepper.chefclipse.model.ChefFile;
-import org.limepepper.chefclipse.model.ChefFolder;
-import org.limepepper.chefclipse.model.ChefObject;
-import org.limepepper.chefclipse.model.ChefObjectDefinitionFile;
-import org.limepepper.chefclipse.model.ChefObjectElementFile;
-import org.limepepper.chefclipse.model.ChefProject;
-import org.limepepper.chefclipse.model.ChefResource;
-import org.limepepper.chefclipse.model.ChefServer;
-import org.limepepper.chefclipse.model.ChefWorkspace;
-import org.limepepper.chefclipse.model.ModelPackage;
+
+import org.limepepper.chefclipse.model.*;
 
 /**
  * <!-- begin-user-doc -->

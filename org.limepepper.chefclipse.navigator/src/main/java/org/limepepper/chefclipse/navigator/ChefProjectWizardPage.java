@@ -1,5 +1,7 @@
 package org.limepepper.chefclipse.navigator;
 
+import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
+
 
 public class ChefProjectWizardPage extends WizardNewProjectCreationPage{
 

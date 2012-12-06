@@ -1,50 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
 <plugin>
 
-   <extension
-         point="org.eclipse.ui.views">
-   </extension>
-   <extension
-         point="org.eclipse.help.contexts">
-      <contexts
-            file="contexts.xml">
-      </contexts>
-   </extension>
+  <extension point="org.eclipse.ui.views">
+  </extension>
+  <extension point="org.eclipse.help.contexts">
+    <contexts file="contexts.xml">
+    </contexts>
+  </extension>
 
-   <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            objectClass="org.eclipse.core.resources.IProject"
-            nameFilter="*"
-            id="org.limepepper.chefclipse.contribution1">
-         <action
-               label="Open Cookbook Dependency Viewer"
-               class="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction"
-               enablesFor="1"
-               id="org.limepepper.chefclipse.graphviewer.actions.OpenDependencyGraphEditorAction">
-         </action>
-         <action
-               label="Open Cookbook Structure Viewer"
-               class="org.limepepper.chefclipse.graphviewer.actions.OpenCookbookGraphEditorAction"
-               enablesFor="1"
-               id="org.limepepper.chefclipse.graphviewer.actions.OpenCookbookGraphEditorAction">
-         </action>
-      </objectContribution>
-   </extension>
-   <extension
-         point="org.eclipse.ui.editors">
-      <editor
-            class="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
-            default="false"
-            id="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
-            name="Dependency Graph Editor">
-      </editor>
-      <editor
-            class="org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor"
-            default="false"
-            id="org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor"
-            name="Structure Graph Editor">
-      </editor>
-   </extension>
+  <extension point="org.eclipse.ui.editors">
+    <editor
+      class="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
+      default="false"
+      id="org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor"
+      name="Dependency Graph Editor">
+    </editor>
+    <editor
+      class="org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor"
+      default="false"
+      id="org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor"
+      name="Structure Graph Editor">
+    </editor>
+  </extension>
+
+
+<!-- =================================================================================== -->
+<!-- This is a handler for the dynamic menu org.limepepper.chefclipse.menu.dynamic -->
+<!-- notes on creating dynamic menus, labels, handlders etc -->
+<!-- http://timezra.blogspot.co.uk/2008/01/dynamic-labels-redux.html -->
+<!-- =================================================================================== -->
+
+
+  <extension point="org.eclipse.ui.handlers">
+    <handler
+      commandId="org.limepepper.chefclipse.graphviewer.popupContext"
+      class="org.limepepper.chefclipse.graphviewer.handler.DynamicMenuHandler">
+      <!-- @todo probably should add declarative menu filtering for performance -->
+      <!--enabledWhen>
+        <with variable="activeMenuSelection">
+          <test
+            forcePluginActivation="true"
+            property="org.limepepper.chefclipse.isCookbook"
+            value="true">
+          </test>
+        </with>
+      </enabledWhen-->
+    </handler>
+  </extension>
+
+
+
+
+  <!-- =================================================================================== -->
+  <!-- This is the command contribution declarations for dynamic menu item
+    etc -->
+  <!-- lars vogel tutorials on advanced commmands features -->
+  <!-- http://www.vogella.com/articles/EclipseCommandsAdvanced/article.html -->
+  <!-- =================================================================================== -->
+
+
+  <extension point="org.eclipse.ui.commands">
+    <category
+      id="org.limepepper.chefclipse.commands.category"
+      name="Chefclipse Commands">
+    </category>
+    <command
+      categoryId="org.limepepper.chefclipse.commands.category"
+      id="org.limepepper.chefclipse.graphviewer.popupContext"
+      name="Dynamic Command Label Placeholder">
+      <commandParameter
+        id="commandParameter"
+        name="parameter to select dynamic handler"
+        optional="false">
+      </commandParameter>
+    </command>
+  </extension>
+
+
+  <extension point="org.eclipse.ui.menus">
+
+    <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+      <menu
+        label="Chefclipse Menu"
+        mnemonic="C"
+        id="org.limepepper.chefclipse.menus.contextgroup">
+        <dynamic
+          class="org.limepepper.chefclipse.graphviewer.handler.DynamicMenu"
+          id="org.limepepper.chefclipse.menu.dynamic">
+          <visibleWhen checkEnabled="false">
+            <with variable="activeMenuSelection">
+              <iterate>
+                <or>
+                  <adapt type="org.eclipse.core.resources.IResource">
+                  </adapt>
+                  <adapt type="org.eclipse.core.resources.IResource">
+                  </adapt>
+                </or>
+              </iterate>
+            </with>
+          </visibleWhen>
+        </dynamic>
+      </menu>
+    </menuContribution>
+  </extension>
+
+
 </plugin>

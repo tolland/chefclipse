@@ -4,6 +4,7 @@ package org.limepepper.chefclipse.model;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**

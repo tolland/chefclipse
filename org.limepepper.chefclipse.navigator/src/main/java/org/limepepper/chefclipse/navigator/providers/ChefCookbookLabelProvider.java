@@ -6,7 +6,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 
 public class ChefCookbookLabelProvider 
@@ -14,8 +14,8 @@ public class ChefCookbookLabelProvider
 	
 	@Override
 	public String getText(Object element){
-		if(element instanceof Cookbook){
-			return ((Cookbook)element).getName();
+		if(element instanceof CookbookVersion){
+			return ((CookbookVersion)element).getName();
 		}
 		
 		if(element instanceof IFile){

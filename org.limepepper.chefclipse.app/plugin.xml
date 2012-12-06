@@ -24,7 +24,7 @@
          </property>
          <property
                name="preferenceCustomization"
-               value="plugin_customization.ini">
+               value="custom.ini">
          </property>
          <property
                name="aboutImage"

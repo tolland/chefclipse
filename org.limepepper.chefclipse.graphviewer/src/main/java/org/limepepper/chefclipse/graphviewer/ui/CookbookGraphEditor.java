@@ -1,5 +1,6 @@
 package org.limepepper.chefclipse.graphviewer.ui;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -29,11 +30,12 @@ import org.eclipse.zest.core.widgets.GraphConnection;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
 import org.limepepper.chefclipse.graphviewer.common.ICookbookElement;
 import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
-import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
 import org.limepepper.chefclipse.graphviewer.controller.CookbookController;
 import org.limepepper.chefclipse.graphviewer.figure.ChefclipseConnectionAnchor;
 import org.limepepper.chefclipse.graphviewer.figure.ContainerFigure;
@@ -41,223 +43,235 @@ import org.limepepper.chefclipse.graphviewer.figure.CookbookElementFigure;
 import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.model.CookbookModel;
 import org.limepepper.chefclipse.graphviewer.model.CookbookModel.ICookbookChangeListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class CookbookGraphEditor extends EditorPart implements ICookbookChangeListener {
-	
-	private CookbookGraphEditorInput input;
-	private CookbookModel cookbookModel;
-	private CookbookController cookbookController;
-	
-	private GraphViewer graphViewer;
-	private Graph graph;
-	
-	public static final String ID = "org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor";
+public class CookbookGraphEditor extends EditorPart implements
+        ICookbookChangeListener {
 
-	@Override
-	public void doSave(IProgressMonitor monitor) {
-		// TODO Auto-generated method stub
 
-	}
+    static Logger                         logger      = LoggerFactory
+            .getLogger(CookbookGraphEditor.class);
+    
+    private CookbookGraphEditorInput input;
+    private CookbookModel            cookbookModel;
+    private CookbookController       cookbookController;
 
-	@Override
-	public void doSaveAs() {
-		// TODO Auto-generated method stub
+    private GraphViewer              graphViewer;
+    private Graph                    graph;
 
-	}
-	
-	@Override
-	public void init(IEditorSite site, IEditorInput input)
-			throws PartInitException {
-		if (!(input instanceof CookbookGraphEditorInput)) {
-			throw new RuntimeException("Wrong input");
-		}
-		setSite(site);
-		setInput(input);
-		this.input = (CookbookGraphEditorInput) input;
-		
-		cookbookModel=new CookbookModel();
-		cookbookController  = new CookbookController(cookbookModel);
-	}
+    public static final String       ID = "org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor";
 
-	@Override
-	public boolean isDirty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public void doSave(IProgressMonitor monitor) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public boolean isSaveAsAllowed() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    }
 
-	@Override
-	public void createPartControl(Composite parent) {
-		cookbookModel.addCookbookChangeListener(this);
-		graphViewer = new GraphViewer(parent, SWT.NONE);
+    @Override
+    public void doSaveAs() {
+        // TODO Auto-generated method stub
 
-		graphViewer.setContentProvider(new CookbookViewerContentProvider());
-		graphViewer.setLabelProvider(new CookbookViewerLabelProvider());
-		graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
-		TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(TreeLayoutAlgorithm.LEFT_RIGHT,new Dimension(200,50));
-		graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
-		cookbookModel.setDrawableCookbook(
-				cookbookController.buildDrawableCookbook());
-		graph = graphViewer.getGraphControl();
-		hookMenu(graph);
-	}
+    }
 
-	private void hookMenu(final Graph g) {
+    @Override
+    public void init(IEditorSite site, IEditorInput input)
+            throws PartInitException {
+        if (!(input instanceof CookbookGraphEditorInput)) {
+            throw new RuntimeException("Wrong input");
+        }
+        setSite(site);
+        setInput(input);
+        this.input = (CookbookGraphEditorInput) input;
 
-		MenuManager menuMgr = new MenuManager("#PopupMenu");
+        cookbookModel = new CookbookModel();
+        cookbookController = new CookbookController(cookbookModel);
+    }
 
-		menuMgr.setRemoveAllWhenShown(true);
+    @Override
+    public boolean isDirty() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-		menuMgr.addMenuListener(new IMenuListener() {
+    @Override
+    public boolean isSaveAsAllowed() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-			public void menuAboutToShow(IMenuManager manager) {
+    @Override
+    public void createPartControl(Composite parent) {
+        cookbookModel.addCookbookChangeListener(this);
+        graphViewer = new GraphViewer(parent, SWT.NONE);
 
-				fillContextMenu(manager);
+        graphViewer.setContentProvider(new CookbookViewerContentProvider());
+        graphViewer.setLabelProvider(new CookbookViewerLabelProvider());
+        graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
+        TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(
+                TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(200, 50));
+        graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
+        
+        IResource resource = ((CookbookGraphEditorInput) input)
+        .getResource();
+        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager.instance().getElement(resource);
+               
+        DrawableCookbook drawableCookbook = new DrawableCookbook(cookbook);
+        
+        cookbookModel.setDrawableCookbook(drawableCookbook);
+        graph = graphViewer.getGraphControl();
+        hookMenu(graph);
+    }
 
-			}
+    private void hookMenu(final Graph g) {
 
-		});
-		g.setMenu(menuMgr.createContextMenu(g));
-	}
-	
-	private void fillContextMenu(IMenuManager menuMgr) {
+        MenuManager menuMgr = new MenuManager("#PopupMenu");
 
-		IStructuredSelection selection = (IStructuredSelection) graphViewer
-				.getSelection();
-		if (selection != null) {
-			Object selected = selection.getFirstElement();
-		}
-	}
-	
-	@Override
-	public void setFocus() {
-		// TODO Auto-generated method stub
+        menuMgr.setRemoveAllWhenShown(true);
 
-	}
+        menuMgr.addMenuListener(new IMenuListener() {
 
-	@Override
-	public void cookbookChanged() {
-		Display.getDefault().syncExec(new Runnable() {
-			public void run() {
-				synchronized (this) {
-					DrawableCookbook rootCookbook = cookbookModel.getDrawableCookbook();
-					graphViewer.setInput(rootCookbook);
-				}
-			}
-		});
-	}
-	
-	@Override
-	public void dispose() {
-		cookbookModel.removeCookbookChangeListener(this);
-		super.dispose();
-	}
+            public void menuAboutToShow(IMenuManager manager) {
 
-	static class CookbookViewerContentProvider implements
-	IGraphEntityContentProvider {
+                fillContextMenu(manager);
 
-public Object[] getConnectedTo(Object entity) {
-	if (entity instanceof DrawableCookbook) {
-		DrawableCookbook root = (DrawableCookbook) entity;
-		return root.getDirectElements();
-	}
-	else if(entity instanceof DrawableContainer)
-	{
-		DrawableContainer container =(DrawableContainer)entity;
-		return container.getElements();
-	}
-	else if(entity instanceof ICookbookElement)
-	{
-		return null;
-	}
-	
-	throw new RuntimeException("Type not supported");
-}
+            }
 
-public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-	// TODO Auto-generated method stub
+        });
+        g.setMenu(menuMgr.createContextMenu(g));
+    }
 
-}
+    private void fillContextMenu(IMenuManager menuMgr) {
 
-public Object[] getElements(Object inputElement) {
-	
-	DrawableCookbook drawableCookbook = (DrawableCookbook) inputElement;
-	return drawableCookbook.getElements();
-}
+        IStructuredSelection selection = (IStructuredSelection) graphViewer
+                .getSelection();
+        if (selection != null) {
+            Object selected = selection.getFirstElement();
+        }
+    }
 
-@Override
-public void dispose() {
-	// TODO Auto-generated method stub
-	
-}
-}
+    @Override
+    public void setFocus() {
+        // TODO Auto-generated method stub
 
-static class CookbookViewerLabelProvider extends LabelProvider implements
-	ISelfStyleProvider,IFigureProvider {
+    }
 
-	Image attributeImage = ImageLoader.Load("methpub_obj.gif");
-	
-public CookbookViewerLabelProvider() {
+    @Override
+    public void cookbookChanged() {
+        Display.getDefault().syncExec(new Runnable() {
+            public void run() {
+                synchronized (this) {
+                    DrawableCookbook rootCookbook = cookbookModel
+                            .getDrawableCookbook();
+                    graphViewer.setInput(rootCookbook);
+                }
+            }
+        });
+    }
 
-}
+    @Override
+    public void dispose() {
+        cookbookModel.removeCookbookChangeListener(this);
+        super.dispose();
+    }
 
-public String getText(Object element) {
-	if(element instanceof ICookbookElement)
-	{
-		return ((ICookbookElement)element).getName();
-	}
-	return null;
-}
+    static class CookbookViewerContentProvider implements
+            IGraphEntityContentProvider {
 
-public Image getImage(Object element) {
-	if(element instanceof ICookbookElement)
-	{
-		return attributeImage;
-	}
-	return null;
-}
+        public Object[] getConnectedTo(Object entity) {
+            if (entity instanceof DrawableCookbook) {
+                DrawableCookbook root = (DrawableCookbook) entity;
+                return root.getDirectElements();
+            } else if (entity instanceof DrawableContainer) {
+                DrawableContainer container = (DrawableContainer) entity;
+                return container.getElements();
+            } else if (entity instanceof ICookbookElement) {
+                return null;
+            }
 
-@Override
-public void selfStyleConnection(Object element,
-		GraphConnection connection) {
-	connection.setLineColor(Display.getDefault().getSystemColor(SWT.COLOR_DARK_BLUE));
-	ManhattanConnectionRouter router = new ManhattanConnectionRouter();
-	Connection c = connection.getConnectionFigure();
-	c.setConnectionRouter(router);
-	
-	ConnectionAnchor s= new ChefclipseConnectionAnchor(c.getSourceAnchor().getOwner());
-	ConnectionAnchor t= new ChefclipseConnectionAnchor(c.getTargetAnchor().getOwner());
-	c.setSourceAnchor(s);
-	c.setTargetAnchor(t);
-}
+            //throw new RuntimeException("Type not supported:"+entity.getClass());
+            logger.debug("Type not supported: {}", entity.getClass());
+            return null;
+        }
 
-@Override
-public void selfStyleNode(Object element, GraphNode node) {
-	// TODO Auto-generated method stub
+        public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+            // TODO Auto-generated method stub
 
-}
+        }
 
-@Override
-public IFigure getFigure(Object element) {
-	if(element instanceof DrawableCookbook)
-	{
-		MockCookbookImpl c = (MockCookbookImpl)((DrawableCookbook)element).getCookbook();;
-		return new CookbookFigure(c.getName(),c.getVersion(),c.getCatalog());
-	}
-	else if(element instanceof DrawableContainer)
-	{
-		return new ContainerFigure((DrawableContainer)element);
-	}
-	else if (element instanceof ICookbookElement)
-	{
-		return new CookbookElementFigure((ICookbookElement)element);
-	}
-	return null;
-}
-}
+        public Object[] getElements(Object inputElement) {
+
+            DrawableCookbook drawableCookbook = (DrawableCookbook) inputElement;
+            return drawableCookbook.getElements();
+        }
+
+        @Override
+        public void dispose() {
+            // TODO Auto-generated method stub
+
+        }
+    }
+
+    static class CookbookViewerLabelProvider extends LabelProvider implements
+            ISelfStyleProvider, IFigureProvider {
+
+        Image attributeImage = ImageLoader.Load("methpub_obj.gif");
+
+        public CookbookViewerLabelProvider() {
+
+        }
+
+        public String getText(Object element) {
+            if (element instanceof ICookbookElement) {
+                return ((ICookbookElement) element).getName();
+            }
+            return null;
+        }
+
+        public Image getImage(Object element) {
+            if (element instanceof ICookbookElement) {
+                return attributeImage;
+            }
+            return null;
+        }
+
+        @Override
+        public void selfStyleConnection(Object element,
+                GraphConnection connection) {
+            connection.setLineColor(Display.getDefault().getSystemColor(
+                    SWT.COLOR_DARK_BLUE));
+            ManhattanConnectionRouter router = new ManhattanConnectionRouter();
+            Connection c = connection.getConnectionFigure();
+            c.setConnectionRouter(router);
+
+            ConnectionAnchor s = new ChefclipseConnectionAnchor(c
+                    .getSourceAnchor().getOwner());
+            ConnectionAnchor t = new ChefclipseConnectionAnchor(c
+                    .getTargetAnchor().getOwner());
+            c.setSourceAnchor(s);
+            c.setTargetAnchor(t);
+        }
+
+        @Override
+        public void selfStyleNode(Object element, GraphNode node) {
+            // TODO Auto-generated method stub
+
+        }
+
+        @Override
+        public IFigure getFigure(Object element) {
+            if (element instanceof DrawableCookbook) {
+                CookbookVersion c = (CookbookVersion) ((DrawableCookbook) element)
+                        .getCookbook();
+                ;
+                return new CookbookFigure(c.getName(), c.getMetadata().getVersion(),
+                        c.getCatalog());
+            } else if (element instanceof DrawableContainer) {
+                return new ContainerFigure((DrawableContainer) element);
+            } else if (element instanceof ICookbookElement) {
+                return new CookbookElementFigure((ICookbookElement) element);
+            }
+            return null;
+        }
+    }
 }

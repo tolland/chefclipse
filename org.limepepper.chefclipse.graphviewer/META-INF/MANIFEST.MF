@@ -10,10 +10,23 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.common;bundle-version="1.0.0",
  org.eclipse.emf;bundle-version="2.6.0",
  org.eclipse.emf.ecore;bundle-version="2.8.1",
- org.eclipse.core.resources
+ org.eclipse.core.resources,
+ org.limepepper.chefclipse.common.ui;bundle-version="1.0.0",
+ org.limepepper.chefclipse.navigator;bundle-version="1.0.0",
+ org.eclipse.core.expressions;bundle-version="3.4.401",
+ org.slf4j.api;bundle-version="1.6.4",
+ org.slf4j.log4j;bundle-version="1.6.4"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.eclipse.zest.core.viewers,
  org.eclipse.zest.core.widgets,
  org.eclipse.zest.layouts,
  org.eclipse.zest.layouts.algorithms
+Export-Package: org.limepepper.chefclipse.graphviewer,
+ org.limepepper.chefclipse.graphviewer.actions,
+ org.limepepper.chefclipse.graphviewer.common,
+ org.limepepper.chefclipse.graphviewer.controller,
+ org.limepepper.chefclipse.graphviewer.figure,
+ org.limepepper.chefclipse.graphviewer.handler,
+ org.limepepper.chefclipse.graphviewer.model,
+ org.limepepper.chefclipse.graphviewer.ui

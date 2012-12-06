@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse.model.tests;
 
 import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.model.ChangeTracker;

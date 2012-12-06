@@ -10,12 +10,34 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.navigator;bundle-version="3.5.200",
  org.eclipse.emf;bundle-version="2.6.0",
  org.eclipse.emf.ecore;bundle-version="2.8.1",
- org.limepepper.chefclipse.common;bundle-version="1.0.0"
+ org.limepepper.chefclipse.common;bundle-version="1.0.0",
+ org.limepepper.chefclipse.model;bundle-version="1.0.0",
+ com.ibm.icu;bundle-version="4.4.2",
+ org.eclipse.compare,
+ org.eclipse.ui.forms,
+ org.eclipse.jface.text;bundle-version="3.8.1",
+ org.eclipselabs.emfjson;bundle-version="0.5.0",
+ org.slf4j.api;bundle-version="1.6.4",
+ org.slf4j.log4j;bundle-version="1.6.4",
+ org.limepepper.chefclipse.common.edit;bundle-version="1.0.0",
+ org.limepepper.chefclipse.common.editor;bundle-version="1.0.0",
+ org.eclipse.core.expressions;bundle-version="3.4.401",
+ org.limepepper.chefclipse.model;bundle-version="1.0.0",
+ org.eclipse.compare;bundle-version="3.5.400",
+ org.eclipse.team.core;bundle-version="3.6.100",
+ com.ibm.icu;bundle-version="4.4.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.limepepper.chefclipse.common.chefclient,
- org.limepepper.chefclipse.common.chefserver,
- org.limepepper.chefclipse.common.cookbook,
- org.limepepper.chefclipse.common.knife,
- org.limepepper.chefclipse.common.workstation
-Export-Package: org.limepepper.chefclipse.common.ui.resources
+Export-Package: org.limepepper.chefclipse.common.ui,
+ org.limepepper.chefclipse.common.ui.builder,
+ org.limepepper.chefclipse.common.ui.providers,
+ org.limepepper.chefclipse.common.ui.resources,
+ org.limepepper.chefclipse.handlers,
+ org.limepepper.chefclipse.menu,
+ org.limepepper.chefclipse.model.mapping,
+ org.limepepper.chefclipse.navigator.testers
+Import-Package: org.eclipse.jface.text,
+ org.eclipse.team.internal.ui,
+ org.eclipse.ui.texteditor,
+ org.limepepper.chefclipse.chefserver.api,
+ org.limepepper.chefclipse.common.ui.resources

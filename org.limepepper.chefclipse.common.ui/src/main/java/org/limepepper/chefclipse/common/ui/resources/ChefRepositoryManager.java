@@ -147,6 +147,7 @@ public class ChefRepositoryManager implements IChefRepositoryManager,
                 if ((resource instanceof IProject)
                         && ((IProject) resource)
                                 .isNatureEnabled(ChefProjectNature.NATURE_ID)) {
+                    logger.debug("opening project and repository: {}",((IProject) resource).getName());
                     eObject = createRepository((IProject) resource);
                     // ChefProject new ChefProject();
                     // @todo return ChefProject
@@ -321,6 +322,9 @@ public class ChefRepositoryManager implements IChefRepositoryManager,
                 + "-" + ((NamedObject) eObject).getName() + "-");
         eObject.getAttributes();
         Repository repo = (Repository) getElement(resource.getProject());
+        
+        
+        
         repo.getCookbooks().add(eObject);
 
         Metadata updateMetadata = createCookbookMetadata(resource);
@@ -329,7 +333,6 @@ public class ChefRepositoryManager implements IChefRepositoryManager,
 
         logger.debug("creating cookbook:" + resource.getName());
         addMapping(resource, eObject);
-        masterResource.getContents().add(eObject);
 
         synchronizeCookbookContents(eObject, (IFolder) resource);
 
@@ -349,18 +352,18 @@ public class ChefRepositoryManager implements IChefRepositoryManager,
     public Repository createRepository(IProject resource) throws CoreException {
         initResource(resource);
         Repository eObject = WorkstationFactory.eINSTANCE.createRepository();
+        masterResource.getContents().add(eObject);
         eObject.setName(resource.getName());
         eObject.setID(eObject.eClass().getInstanceTypeName().toLowerCase()
                 + "-" + ((NamedObject) eObject).getName() + "-");
         logger.debug("creating repo:" + resource.getName());
 
         addMapping(resource, eObject);
-        masterResource.getContents().add(eObject);
 
         synchronizeRepository((IContainer) resource);
         readInKnifeConfigs(resource);
 
-        for (iterable_type cookbook : eObject.getCookbooks()) {
+        for (CookbookVersion cookbook : eObject.getCookbooks()) {
             updateDependsLists(cookbook);
         }
 
@@ -861,4 +864,9 @@ public class ChefRepositoryManager implements IChefRepositoryManager,
     public Collection<KnifeConfig> getKnives(IProject iProject) {
         return knives;
     }
+
+    @Override
+    public void synchronizeKnifeConfigs(IProject project) {
+    }
+
 }

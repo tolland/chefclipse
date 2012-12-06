@@ -40,9 +40,8 @@ import org.eclipse.zest.layouts.LayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
-import org.limepepper.chefclipse.graphviewer.common.MockCookbookImpl;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
@@ -153,7 +152,7 @@ public class DependencyGraphEditor extends EditorPart implements
 				.getSelection();
 		if (selection != null) {
 			Object selected = selection.getFirstElement();
-			if (selected instanceof Recipe || selected instanceof Cookbook) {
+			if (selected instanceof Recipe || selected instanceof CookbookVersion) {
 				selectedNode = selected;
 			} else if (selected instanceof EntityConnectionData) {
 				selectedRelation = selected;
@@ -203,7 +202,7 @@ public class DependencyGraphEditor extends EditorPart implements
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				synchronized (this) {
-					Cookbook rootCookbook = dependencyModel.getCookbook();
+				    CookbookVersion rootCookbook = dependencyModel.getCookbook();
 					graphViewer.setInput(rootCookbook);
 				}
 			}
@@ -214,13 +213,13 @@ public class DependencyGraphEditor extends EditorPart implements
 			IGraphEntityContentProvider {
 
 		public Object[] getConnectedTo(Object entity) {
-			if (entity instanceof Cookbook) {
-				MockCookbookImpl node = (MockCookbookImpl) entity;
-				if(node.getDependency().cookbooks==null)
+			if (entity instanceof CookbookVersion) {
+			    CookbookVersion node = (CookbookVersion) entity;
+				if((node.getDepends()==null)||(node.getDepends().size()==0))
 				{
 					return null;
 				}
-				return node.getDependency().cookbooks.toArray();
+				return node.getDepends().toArray();
 			}
 			throw new RuntimeException("Type not supported");
 		}
@@ -236,14 +235,14 @@ public class DependencyGraphEditor extends EditorPart implements
 		}
 
 		public Object[] getElements(Object inputElement) {
-			Cookbook cookbook = (Cookbook) inputElement;
+		    CookbookVersion cookbook = (CookbookVersion) inputElement;
 			List<Object> elements = new ArrayList<Object>();
 			elements.add(cookbook);
 			for (int i = 0; i < elements.size(); i++) {
 				Object current = elements.get(i);
 				List<? extends Object> denpendencies = null;
-				if (current instanceof Cookbook) {
-					denpendencies = ((MockCookbookImpl) current).getDependency().cookbooks;
+				if (current instanceof CookbookVersion) {
+					denpendencies = ((CookbookVersion) current).getDepends();
 				}
 				if (denpendencies == null) {
 					continue;
@@ -295,10 +294,10 @@ public class DependencyGraphEditor extends EditorPart implements
 
 		@Override
 		public IFigure getFigure(Object element) {
-			if(element instanceof Cookbook)
+			if(element instanceof CookbookVersion)
 			{
-				MockCookbookImpl c = (MockCookbookImpl)element;
-				return new CookbookFigure(c.getName(),c.getVersion(),c.getCatalog(),c.equals(dependencyModel.getSelected()));
+			    CookbookVersion c = (CookbookVersion)element;
+				return new CookbookFigure(c.getName(),c.getMetadata().getVersion(),c.getCatalog(),c.equals(dependencyModel.getSelected()));
 			}
 			return null;
 		}

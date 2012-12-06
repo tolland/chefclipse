@@ -2,23 +2,23 @@ package org.limepepper.chefclipse.graphviewer.model;
 
 import java.util.ArrayList;
 
-import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 public class DependencyModel {
-	private Cookbook mCookbook;
+	private CookbookVersion mCookbook;
 	private Object selectedObject;
 	
 	private final ArrayList<IDependencyChangeListener> mDependencyChangeListeners =
             new ArrayList<IDependencyChangeListener>();
 	
-	public void setCookbook(Cookbook cookbook)
+	public void setCookbook(CookbookVersion cookbook)
 	{
 		mCookbook=cookbook;
 		selectedObject=null;
 		notifyDependencyChanged();
 	}
 	
-	public Cookbook getCookbook()
+	public CookbookVersion getCookbook()
 	{
 		return mCookbook;
 	}
