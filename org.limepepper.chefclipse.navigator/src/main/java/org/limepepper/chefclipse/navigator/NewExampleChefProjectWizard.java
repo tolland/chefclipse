@@ -49,9 +49,6 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
          * File f = new File(base+relativeUri);
          */
 
-        Bundle bundle = NavigatorActivator.getDefault().getBundle();
-        IPath path = new Path("resources/chef-repo-example");
-        URL setupUrl = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
 
         /*
          * 
@@ -71,19 +68,21 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
  * }
  */
 
-        try {
-            copyFolder(new File(FileLocator.toFileURL(setupUrl).getPath()),
-                    new File(ResourcesPlugin.getWorkspace().getRoot()
-                            .getLocation().toString()
-                            + "/chef-repo-example"));
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-
         IRunnableWithProgress op = new IRunnableWithProgress() {
             public void run(IProgressMonitor monitor)
                     throws InvocationTargetException {
                 try {
+
+                    Bundle bundle = NavigatorActivator.getDefault().getBundle();
+                    IPath path = new Path("resources/chef-repo-example");
+                    URL setupUrl = FileLocator.find(bundle, path, Collections.EMPTY_MAP);
+                    copyFolder(new File(FileLocator.toFileURL(setupUrl)
+                            .getPath()),
+
+                    new File(ResourcesPlugin.getWorkspace().getRoot()
+                            .getLocation().toString()
+                            + "/chef-repo-example"));
+
                     IProject proj = ResourcesPlugin.getWorkspace().getRoot()
                             .getProject("/chef-repo-example");
 
@@ -99,6 +98,8 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
                 } catch (CoreException e) {
                     e.printStackTrace();
                     throw new InvocationTargetException(e);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 } finally {
                     monitor.done();
                 }

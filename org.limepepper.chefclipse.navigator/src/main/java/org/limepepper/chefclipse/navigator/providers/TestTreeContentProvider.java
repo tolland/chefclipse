@@ -134,7 +134,8 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
                 return true;
             } else if ((element instanceof IProject)
                     && ((IProject) element)
-                            .hasNature(ChefProjectNature.NATURE_ID)) {
+                    .isOpen() && ((IProject) element)
+                    .hasNature(ChefProjectNature.NATURE_ID)) {
                 logger.debug("is project");
                 return true;
             } else if (element instanceof MenuLevelHolder) {

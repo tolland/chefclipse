@@ -16,13 +16,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.expressions;bundle-version="3.4.401",
  org.slf4j.api;bundle-version="1.6.4",
  org.slf4j.log4j;bundle-version="1.6.4",
- org.eclipse.jdt.annotation;bundle-version="1.0.0"
+ org.eclipse.jdt.annotation;bundle-version="1.0.0",
+ org.eclipse.zest.core;bundle-version="2.0.0",
+ org.eclipse.zest.jface;bundle-version="2.0.0",
+ org.eclipse.zest.layouts;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: org.eclipse.zest.core.viewers,
- org.eclipse.zest.core.widgets,
- org.eclipse.zest.layouts,
- org.eclipse.zest.layouts.algorithms
 Export-Package: org.limepepper.chefclipse.graphviewer,
  org.limepepper.chefclipse.graphviewer.common,
  org.limepepper.chefclipse.graphviewer.controller,

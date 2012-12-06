@@ -48,10 +48,16 @@ import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DependencyGraphEditor extends EditorPart implements
         IDependencyChangeListener {
 
+
+    static Logger                    logger = LoggerFactory
+                                                    .getLogger(DependencyGraphEditor.class);
+    
     private GraphViewer                graphViewer;
     private Graph                      graph;
     private DependencyGraphEditorInput input;
@@ -115,9 +121,7 @@ public class DependencyGraphEditor extends EditorPart implements
                 new LayoutAlgorithm[] { horizontalShift, treeLayoutAlgorithm });
         // g.setLayoutAlgorithm(new
         // GridLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
-        graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
-        dependencyModel.setCookbook(dependencyController.getRootCookbook());
-        
+        graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);        
         
         IResource resource = ((DependencyGraphEditorInput) input).getResource();
         CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
@@ -256,11 +260,14 @@ public class DependencyGraphEditor extends EditorPart implements
                 CookbookVersion node = (CookbookVersion) entity;
                 if ((node.getDepends() == null)
                         || (node.getDepends().size() == 0)) {
-                    return null;
+                    return new Object[] {};
                 }
                 return node.getDepends().toArray();
             }
-            throw new RuntimeException("Type not supported");
+            // throw new
+            // RuntimeException("Type not supported:"+entity.getClass());
+            logger.debug("Type not supported: {}", entity.getClass());
+            return null;
         }
 
         public void dispose() {

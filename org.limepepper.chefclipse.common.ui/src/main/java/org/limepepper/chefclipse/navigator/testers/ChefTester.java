@@ -113,8 +113,10 @@ public class ChefTester extends PropertyTester {
 
                 System.out.println(((IFolder) receiver).getParent().getName());
 
-                result = ((IFolder) receiver).getParent().getName()
-                        .equals("cookbooks");
+                result = (((IFolder) receiver).getParent().getName()
+                        .equals("cookbooks") && ((IFolder) receiver).getFile(
+                                "metadata.json").exists() && ((IFolder) receiver).getFile(
+                                        "metadata.rb").exists());
             }
 
             if (property.equals("isLibrary") && (receiver instanceof IFile)) {

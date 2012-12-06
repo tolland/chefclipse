@@ -158,7 +158,8 @@ public class ChefRepositoryManager implements IChefRepositoryManager,
                 if (((IFolder) resource).getParent().getName()
                         .equals("cookbooks")
                         && (((IFolder) resource).getFile("metadata.rb")
-                                .exists())) {
+                                .exists()) && (((IFolder) resource).getFile("metadata.json")
+                                        .exists()) ) {
 
                     eObject = createCookbook((IFolder) resource);
 
