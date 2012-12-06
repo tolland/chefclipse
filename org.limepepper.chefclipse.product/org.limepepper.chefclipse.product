@@ -29,7 +29,6 @@
       </win>
    </launcher>
 
-
    <vm>
    </vm>
 
@@ -113,6 +112,7 @@ END OF TERMS AND CONDITIONS
       <feature id="org.eclipse.help"/>
       <feature id="org.eclipse.equinox.p2.rcp.feature"/>
       <feature id="org.eclipse.equinox.p2.user.ui"/>
+      <feature id="org.limepepper.chefclipse.devel.feature" version="1.0.0.qualifier"/>
    </features>
 
    <configurations>
