@@ -31,6 +31,11 @@
             <url>http://ghillairet.github.com/p2</url>
         </repository>
         <repository>
+            <id>Json-Eclipse-Plugin-p2</id>
+            <layout>p2</layout>
+            <url>http://limepepper.github.com/Json-Eclipse-Plugin/p2</url>
+        </repository>
+        <repository>
             <id>zest2-p2</id>
             <layout>p2</layout>
             <url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>

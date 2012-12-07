@@ -113,6 +113,7 @@ END OF TERMS AND CONDITIONS
       <feature id="org.eclipse.equinox.p2.rcp.feature"/>
       <feature id="org.eclipse.equinox.p2.user.ui"/>
       <feature id="org.limepepper.chefclipse.devel.feature" version="1.0.0.qualifier"/>
+      <feature id="jsonedit-feature" version="0.9.5"/>
    </features>
 
    <configurations>
