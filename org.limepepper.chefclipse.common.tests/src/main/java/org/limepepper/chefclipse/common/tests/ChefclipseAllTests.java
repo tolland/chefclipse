@@ -15,31 +15,31 @@ import junit.textui.TestRunner;
  */
 public class ChefclipseAllTests extends TestSuite {
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(suite());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static Test suite() {
+	public static Test suite() {
 		TestSuite suite = new ChefclipseAllTests("Chefclipse Tests");
 		return suite;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ChefclipseAllTests(String name) {
+	public ChefclipseAllTests(String name) {
 		super(name);
 	}
 

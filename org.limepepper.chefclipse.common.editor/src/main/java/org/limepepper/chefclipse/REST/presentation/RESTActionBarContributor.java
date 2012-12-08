@@ -52,32 +52,32 @@ import org.limepepper.chefclipse.common.editor.presentation.ChefclipseEditorPlug
  * @generated
  */
 public class RESTActionBarContributor
-    extends EditingDomainActionBarContributor
-    implements ISelectionChangedListener {
-    /**
+	extends EditingDomainActionBarContributor
+	implements ISelectionChangedListener {
+	/**
 	 * This keeps track of the active editor.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected IEditorPart activeEditorPart;
+	protected IEditorPart activeEditorPart;
 
-    /**
+	/**
 	 * This keeps track of the current selection provider.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ISelectionProvider selectionProvider;
+	protected ISelectionProvider selectionProvider;
 
-    /**
+	/**
 	 * This action opens the Properties view.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected IAction showPropertiesViewAction =
-        new Action(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+	protected IAction showPropertiesViewAction =
+		new Action(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
 			@Override
 			public void run() {
 				try {
@@ -89,15 +89,15 @@ public class RESTActionBarContributor
 			}
 		};
 
-    /**
+	/**
 	 * This action refreshes the viewer of the current editor if the editor
 	 * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected IAction refreshViewerAction =
-        new Action(ChefclipseEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+	protected IAction refreshViewerAction =
+		new Action(ChefclipseEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
 			@Override
 			public boolean isEnabled() {
 				return activeEditorPart instanceof IViewerProvider;
@@ -114,90 +114,90 @@ public class RESTActionBarContributor
 			}
 		};
 
-    /**
+	/**
 	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
 	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Collection<IAction> createChildActions;
+	protected Collection<IAction> createChildActions;
 
-    /**
+	/**
 	 * This will contain a map of {@link org.eclipse.emf.edit.ui.action.CreateChildAction}s, keyed by sub-menu text.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Map<String, Collection<IAction>> createChildSubmenuActions;
+	protected Map<String, Collection<IAction>> createChildSubmenuActions;
 
-    /**
+	/**
 	 * This is the menu manager into which menu contribution items should be added for CreateChild actions.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected IMenuManager createChildMenuManager;
+	protected IMenuManager createChildMenuManager;
 
-    /**
+	/**
 	 * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
 	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Collection<IAction> createSiblingActions;
+	protected Collection<IAction> createSiblingActions;
 
-    /**
+	/**
 	 * This will contain a map of {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction}s, keyed by submenu text.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Map<String, Collection<IAction>> createSiblingSubmenuActions;
+	protected Map<String, Collection<IAction>> createSiblingSubmenuActions;
 
-    /**
+	/**
 	 * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected IMenuManager createSiblingMenuManager;
+	protected IMenuManager createSiblingMenuManager;
 
-    /**
+	/**
 	 * This creates an instance of the contributor.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RESTActionBarContributor() {
+	public RESTActionBarContributor() {
 		super(ADDITIONS_LAST_STYLE);
 		loadResourceAction = new LoadResourceAction();
 		validateAction = new ValidateAction();
 		controlAction = new ControlAction();
 	}
 
-    /**
+	/**
 	 * This adds Separators for editor additions to the tool bar.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void contributeToToolBar(IToolBarManager toolBarManager) {
+	@Override
+	public void contributeToToolBar(IToolBarManager toolBarManager) {
 		toolBarManager.add(new Separator("rest-settings"));
 		toolBarManager.add(new Separator("rest-additions"));
 	}
 
-    /**
+	/**
 	 * This adds to the menu bar a menu and some separators for editor additions,
 	 * as well as the sub-menus for object creation items.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void contributeToMenu(IMenuManager menuManager) {
+	@Override
+	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
 		IMenuManager submenuManager = new MenuManager(ChefclipseEditorPlugin.INSTANCE.getString("_UI_RESTEditor_menu"), "org.limepepper.chefclipse.RESTMenuID");
@@ -229,14 +229,14 @@ public class RESTActionBarContributor
 		addGlobalActions(submenuManager);
 	}
 
-    /**
+	/**
 	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void setActiveEditor(IEditorPart part) {
+	@Override
+	public void setActiveEditor(IEditorPart part) {
 		super.setActiveEditor(part);
 		activeEditorPart = part;
 
@@ -260,15 +260,15 @@ public class RESTActionBarContributor
 		}
 	}
 
-    /**
+	/**
 	 * This implements {@link org.eclipse.jface.viewers.ISelectionChangedListener},
 	 * handling {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings
 	 * that can be added to the selected object and updating the menus accordingly.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void selectionChanged(SelectionChangedEvent event) {
+	public void selectionChanged(SelectionChangedEvent event) {
 		// Remove any menu items for old selection.
 		//
 		if (createChildMenuManager != null) {
@@ -314,14 +314,14 @@ public class RESTActionBarContributor
 		}
 	}
 
-    /**
+	/**
 	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
 	 * and returns the collection of these actions.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
+	protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
 		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
 			for (Object descriptor : descriptors) {
@@ -331,14 +331,14 @@ public class RESTActionBarContributor
 		return actions;
 	}
 
-    /**
+	/**
 	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
 	 * and returns the collection of these actions.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
+	protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
 		Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
 			for (Object descriptor : descriptors) {
@@ -348,16 +348,16 @@ public class RESTActionBarContributor
 		return actions;
 	}
 
-    /**
+	/**
 	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
 	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
 	 * by inserting them before the specified contribution item <code>contributionID</code>.
 	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions, String contributionID) {
+	protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions, String contributionID) {
 		if (actions != null) {
 			for (IAction action : actions) {
 				if (contributionID != null) {
@@ -369,15 +369,15 @@ public class RESTActionBarContributor
 			}
 		}
 	}
-        
-    /**
+		
+	/**
 	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
 	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
+	protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
 		if (actions != null) {
 			IContributionItem[] items = manager.getItems();
 			for (int i = 0; i < items.length; i++) {
@@ -400,14 +400,14 @@ public class RESTActionBarContributor
 		}
 	}
 
-    /**
+	/**
 	 * This extracts those actions in the <code>submenuActions</code> collection whose text is qualified and returns
 	 * a map of these actions, keyed by submenu text.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Map<String, Collection<IAction>> extractSubmenuActions(Collection<IAction> createActions) {
+	protected Map<String, Collection<IAction>> extractSubmenuActions(Collection<IAction> createActions) {
 		Map<String, Collection<IAction>> createSubmenuActions = new LinkedHashMap<String, Collection<IAction>>();
 		if (createActions != null) {
 			for (Iterator<IAction> actions = createActions.iterator(); actions.hasNext(); ) {
@@ -428,17 +428,17 @@ public class RESTActionBarContributor
 		return createSubmenuActions;
 	}
 
-    /**
+	/**
 	 * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.MenuManager}s containing
 	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the {@link org.eclipse.jface.action.IAction}s
 	 * contained in the <code>submenuActions</code> collection, by inserting them before the specified contribution
 	 * item <code>contributionID</code>.
 	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void populateManager(IContributionManager manager, Map<String, Collection<IAction>> submenuActions, String contributionID) {
+	protected void populateManager(IContributionManager manager, Map<String, Collection<IAction>> submenuActions, String contributionID) {
 		if (submenuActions != null) {
 			for (Map.Entry<String, Collection<IAction>> entry : submenuActions.entrySet()) {
 				MenuManager submenuManager = new MenuManager(entry.getKey());
@@ -453,15 +453,15 @@ public class RESTActionBarContributor
 		}
 	}
 
-    /**
+	/**
 	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.MenuManager}s and their
 	 * {@link org.eclipse.jface.action.ActionContributionItem}s based on the {@link org.eclipse.jface.action.IAction}s
 	 * contained in the <code>submenuActions</code> map.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void depopulateManager(IContributionManager manager, Map<String, Collection<IAction>> submenuActions) {
+	protected void depopulateManager(IContributionManager manager, Map<String, Collection<IAction>> submenuActions) {
 		if (submenuActions != null) {
 			IContributionItem[] items = manager.getItems();
 			for (int i = 0; i < items.length; i++) {
@@ -477,14 +477,14 @@ public class RESTActionBarContributor
 		}
 	}
 
-    /**
+	/**
 	 * This populates the pop-up menu before it appears.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void menuAboutToShow(IMenuManager menuManager) {
+	@Override
+	public void menuAboutToShow(IMenuManager menuManager) {
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
@@ -499,14 +499,14 @@ public class RESTActionBarContributor
 		menuManager.insertBefore("edit", submenuManager);
 	}
 
-    /**
+	/**
 	 * This inserts global actions before the "additions-end" separator.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected void addGlobalActions(IMenuManager menuManager) {
+	@Override
+	protected void addGlobalActions(IMenuManager menuManager) {
 		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
 		menuManager.insertAfter("ui-actions", showPropertiesViewAction);
 
@@ -516,14 +516,14 @@ public class RESTActionBarContributor
 		super.addGlobalActions(menuManager);
 	}
 
-    /**
+	/**
 	 * This ensures that a delete action will clean up all references to deleted objects.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected boolean removeAllReferencesOnDelete() {
+	@Override
+	protected boolean removeAllReferencesOnDelete() {
 		return true;
 	}
 

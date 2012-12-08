@@ -17,72 +17,72 @@ import org.limepepper.chefclipse.common.cookbook.Name;
  */
 public class NameTest extends TestCase {
 
-    /**
+	/**
 	 * The fixture for this Name test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Name fixture = null;
+	protected Name fixture = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(NameTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Name test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NameTest(String name) {
+	public NameTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Sets the fixture for this Name test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void setFixture(Name fixture) {
+	protected void setFixture(Name fixture) {
 		this.fixture = fixture;
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Name test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Name getFixture() {
+	protected Name getFixture() {
 		return fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(CookbookFactory.eINSTANCE.createName());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 

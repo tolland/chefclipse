@@ -17,55 +17,55 @@ import org.limepepper.chefclipse.tests.ChecksumFileTest;
  */
 public class ProviderTest extends ChecksumFileTest {
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(ProviderTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Provider test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ProviderTest(String name) {
+	public ProviderTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Provider test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected Provider getFixture() {
+	@Override
+	protected Provider getFixture() {
 		return (Provider)fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(CookbookFactory.eINSTANCE.createProvider());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 

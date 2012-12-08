@@ -17,55 +17,55 @@ import org.limepepper.chefclipse.tests.SandboxedObjectTest;
  */
 public class AttributesTest extends SandboxedObjectTest {
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(AttributesTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Attributes test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public AttributesTest(String name) {
+	public AttributesTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Attributes test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected Attributes getFixture() {
+	@Override
+	protected Attributes getFixture() {
 		return (Attributes)fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(CookbookFactory.eINSTANCE.createAttributes());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 

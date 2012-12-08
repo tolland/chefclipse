@@ -17,55 +17,55 @@ import org.limepepper.chefclipse.tests.DescribedObjectTest;
  */
 public class RepositoryTest extends DescribedObjectTest {
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(RepositoryTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Repository test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RepositoryTest(String name) {
+	public RepositoryTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Repository test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected Repository getFixture() {
+	@Override
+	protected Repository getFixture() {
 		return (Repository)fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(WorkstationFactory.eINSTANCE.createRepository());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 

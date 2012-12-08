@@ -37,31 +37,31 @@ import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
  * @generated
  */
 public class CookbookVersionRespItemProvider
-    extends ItemProviderAdapter
-    implements
-        IEditingDomainItemProvider,
-        IStructuredItemContentProvider,
-        ITreeItemContentProvider,
-        IItemLabelProvider,
-        IItemPropertySource {
-    /**
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookVersionRespItemProvider(AdapterFactory adapterFactory) {
+	public CookbookVersionRespItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
-    /**
+	/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -86,13 +86,13 @@ public class CookbookVersionRespItemProvider
 		return itemPropertyDescriptors;
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Maintainer feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addMaintainerPropertyDescriptor(Object object) {
+	protected void addMaintainerPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -108,13 +108,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Category feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addCategoryPropertyDescriptor(Object object) {
+	protected void addCategoryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -130,13 +130,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Updated At feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addUpdatedAtPropertyDescriptor(Object object) {
+	protected void addUpdatedAtPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -152,13 +152,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Created At feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addCreatedAtPropertyDescriptor(Object object) {
+	protected void addCreatedAtPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -174,13 +174,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Latest Version feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addLatestVersionPropertyDescriptor(Object object) {
+	protected void addLatestVersionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -196,13 +196,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the External Url feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addExternalUrlPropertyDescriptor(Object object) {
+	protected void addExternalUrlPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -218,13 +218,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Deprecated feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addDeprecatedPropertyDescriptor(Object object) {
+	protected void addDeprecatedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -240,13 +240,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Replacement feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addReplacementPropertyDescriptor(Object object) {
+	protected void addReplacementPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -262,13 +262,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Definitions feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addDefinitionsPropertyDescriptor(Object object) {
+	protected void addDefinitionsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -284,13 +284,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Files feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addFilesPropertyDescriptor(Object object) {
+	protected void addFilesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -306,13 +306,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Attributes feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addAttributesPropertyDescriptor(Object object) {
+	protected void addAttributesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -328,13 +328,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Cookbook Name feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addCookbookNamePropertyDescriptor(Object object) {
+	protected void addCookbookNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -350,13 +350,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Version feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addVersionPropertyDescriptor(Object object) {
+	protected void addVersionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -372,13 +372,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Json Class feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addJsonClassPropertyDescriptor(Object object) {
+	protected void addJsonClassPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -394,13 +394,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Chef Type feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addChefTypePropertyDescriptor(Object object) {
+	protected void addChefTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -416,13 +416,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addNamePropertyDescriptor(Object object) {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -438,13 +438,13 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This adds a property descriptor for the Description feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addDescriptionPropertyDescriptor(Object object) {
+	protected void addDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -460,16 +460,16 @@ public class CookbookVersionRespItemProvider
 				 null));
 	}
 
-    /**
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(RESTPackage.Literals.COOKBOOK_VERSION_RESP__METADATA);
@@ -477,53 +477,53 @@ public class CookbookVersionRespItemProvider
 		return childrenFeatures;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EStructuralFeature getChildFeature(Object object, Object child) {
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
 	}
 
-    /**
+	/**
 	 * This returns CookbookVersionResp.gif.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Object getImage(Object object) {
+	@Override
+	public Object getImage(Object object) {
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/CookbookVersionResp"));
 	}
 
-    /**
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public String getText(Object object) {
+	@Override
+	public String getText(Object object) {
 		String label = ((CookbookVersionResp)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_CookbookVersionResp_type") :
 			getString("_UI_CookbookVersionResp_type") + " " + label;
 	}
 
-    /**
+	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public void notifyChanged(Notification notification) {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CookbookVersionResp.class)) {
@@ -550,15 +550,15 @@ public class CookbookVersionRespItemProvider
 		super.notifyChanged(notification);
 	}
 
-    /**
+	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
@@ -567,14 +567,14 @@ public class CookbookVersionRespItemProvider
 				 RESTFactory.eINSTANCE.createCookbookMetadata()));
 	}
 
-    /**
+	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public ResourceLocator getResourceLocator() {
+	@Override
+	public ResourceLocator getResourceLocator() {
 		return ChefclipseEditPlugin.INSTANCE;
 	}
 

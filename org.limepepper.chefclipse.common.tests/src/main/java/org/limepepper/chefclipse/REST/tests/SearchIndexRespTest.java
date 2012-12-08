@@ -17,72 +17,72 @@ import org.limepepper.chefclipse.REST.SearchIndexResp;
  */
 public class SearchIndexRespTest extends TestCase {
 
-    /**
+	/**
 	 * The fixture for this Search Index Resp test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected SearchIndexResp fixture = null;
+	protected SearchIndexResp fixture = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(SearchIndexRespTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Search Index Resp test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public SearchIndexRespTest(String name) {
+	public SearchIndexRespTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Sets the fixture for this Search Index Resp test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void setFixture(SearchIndexResp fixture) {
+	protected void setFixture(SearchIndexResp fixture) {
 		this.fixture = fixture;
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Search Index Resp test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected SearchIndexResp getFixture() {
+	protected SearchIndexResp getFixture() {
 		return fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(RESTFactory.eINSTANCE.createSearchIndexResp());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 

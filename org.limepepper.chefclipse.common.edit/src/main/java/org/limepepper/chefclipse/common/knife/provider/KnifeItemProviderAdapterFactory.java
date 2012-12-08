@@ -33,37 +33,37 @@ import org.limepepper.chefclipse.common.knife.util.KnifeAdapterFactory;
  * @generated
  */
 public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-    /**
+	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ComposedAdapterFactory parentAdapterFactory;
+	protected ComposedAdapterFactory parentAdapterFactory;
 
-    /**
+	/**
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected IChangeNotifier changeNotifier = new ChangeNotifier();
+	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-    /**
+	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Collection<Object> supportedTypes = new ArrayList<Object>();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-    /**
+	/**
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public KnifeItemProviderAdapterFactory() {
+	public KnifeItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
@@ -71,22 +71,22 @@ public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory impleme
 		supportedTypes.add(IItemPropertySource.class);
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.knife.KnifeConfig} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected KnifeConfigItemProvider knifeConfigItemProvider;
+	protected KnifeConfigItemProvider knifeConfigItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createKnifeConfigAdapter() {
+	@Override
+	public Adapter createKnifeConfigAdapter() {
 		if (knifeConfigItemProvider == null) {
 			knifeConfigItemProvider = new KnifeConfigItemProvider(this);
 		}
@@ -94,22 +94,22 @@ public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory impleme
 		return knifeConfigItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.knife.Plugin} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected PluginItemProvider pluginItemProvider;
+	protected PluginItemProvider pluginItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.knife.Plugin}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createPluginAdapter() {
+	@Override
+	public Adapter createPluginAdapter() {
 		if (pluginItemProvider == null) {
 			pluginItemProvider = new PluginItemProvider(this);
 		}
@@ -117,22 +117,22 @@ public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory impleme
 		return pluginItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.knife.KnifeSearch} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected KnifeSearchItemProvider knifeSearchItemProvider;
+	protected KnifeSearchItemProvider knifeSearchItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.knife.KnifeSearch}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createKnifeSearchAdapter() {
+	@Override
+	public Adapter createKnifeSearchAdapter() {
 		if (knifeSearchItemProvider == null) {
 			knifeSearchItemProvider = new KnifeSearchItemProvider(this);
 		}
@@ -140,54 +140,54 @@ public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory impleme
 		return knifeSearchItemProvider;
 	}
 
-    /**
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ComposeableAdapterFactory getRootAdapterFactory() {
+	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
-    /**
+	/**
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public boolean isFactoryForType(Object type) {
+	@Override
+	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
 
-    /**
+	/**
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter adapt(Notifier notifier, Object type) {
+	@Override
+	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Object adapt(Object object, Object type) {
+	@Override
+	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
@@ -198,33 +198,33 @@ public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory impleme
 		return null;
 	}
 
-    /**
+	/**
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void addListener(INotifyChangedListener notifyChangedListener) {
+	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
 
-    /**
+	/**
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void removeListener(INotifyChangedListener notifyChangedListener) {
+	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
 
-    /**
+	/**
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void fireNotifyChanged(Notification notification) {
+	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
 		if (parentAdapterFactory != null) {
@@ -232,13 +232,13 @@ public class KnifeItemProviderAdapterFactory extends KnifeAdapterFactory impleme
 		}
 	}
 
-    /**
+	/**
 	 * This disposes all of the item providers created by this factory. 
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void dispose() {
+	public void dispose() {
 		if (knifeConfigItemProvider != null) knifeConfigItemProvider.dispose();
 		if (pluginItemProvider != null) pluginItemProvider.dispose();
 		if (knifeSearchItemProvider != null) knifeSearchItemProvider.dispose();

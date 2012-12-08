@@ -1,8 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: org.limepepper.chefclipse.common.editor
+Bundle-Name: %pluginName
 Bundle-SymbolicName: org.limepepper.chefclipse.common.editor;singleton:=true
-Bundle-Version: 1.0.0.SNAPSHOT
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
 Bundle-Activator: org.limepepper.chefclipse.common.editor.presentation.ChefclipseEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -22,4 +23,3 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .

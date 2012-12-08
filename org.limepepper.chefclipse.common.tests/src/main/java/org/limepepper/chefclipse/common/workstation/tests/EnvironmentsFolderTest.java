@@ -17,55 +17,55 @@ import org.limepepper.chefclipse.tests.NamedObjectTest;
  */
 public class EnvironmentsFolderTest extends NamedObjectTest {
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(EnvironmentsFolderTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Environments Folder test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EnvironmentsFolderTest(String name) {
+	public EnvironmentsFolderTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Environments Folder test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EnvironmentsFolder getFixture() {
+	@Override
+	protected EnvironmentsFolder getFixture() {
 		return (EnvironmentsFolder)fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(WorkstationFactory.eINSTANCE.createEnvironmentsFolder());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 

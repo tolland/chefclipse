@@ -17,72 +17,72 @@ import org.limepepper.chefclipse.common.chefserver.ServerConfig;
  */
 public class ServerConfigTest extends TestCase {
 
-    /**
+	/**
 	 * The fixture for this Server Config test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ServerConfig fixture = null;
+	protected ServerConfig fixture = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(ServerConfigTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Server Config test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ServerConfigTest(String name) {
+	public ServerConfigTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Sets the fixture for this Server Config test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void setFixture(ServerConfig fixture) {
+	protected void setFixture(ServerConfig fixture) {
 		this.fixture = fixture;
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Server Config test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ServerConfig getFixture() {
+	protected ServerConfig getFixture() {
 		return fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(ChefserverFactory.eINSTANCE.createServerConfig());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 

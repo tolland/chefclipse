@@ -17,72 +17,72 @@ import org.limepepper.chefclipse.Config;
  */
 public class ConfigTest extends TestCase {
 
-    /**
+	/**
 	 * The fixture for this Config test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Config fixture = null;
+	protected Config fixture = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(ConfigTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Config test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ConfigTest(String name) {
+	public ConfigTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Sets the fixture for this Config test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void setFixture(Config fixture) {
+	protected void setFixture(Config fixture) {
 		this.fixture = fixture;
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Config test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Config getFixture() {
+	protected Config getFixture() {
 		return fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(ChefclipseFactory.eINSTANCE.createConfig());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 

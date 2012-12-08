@@ -17,72 +17,72 @@ import org.limepepper.chefclipse.common.knife.Plugin;
  */
 public class PluginTest extends TestCase {
 
-    /**
+	/**
 	 * The fixture for this Plugin test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Plugin fixture = null;
+	protected Plugin fixture = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(PluginTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Plugin test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public PluginTest(String name) {
+	public PluginTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Sets the fixture for this Plugin test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void setFixture(Plugin fixture) {
+	protected void setFixture(Plugin fixture) {
 		this.fixture = fixture;
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Plugin test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Plugin getFixture() {
+	protected Plugin getFixture() {
 		return fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(KnifeFactory.eINSTANCE.createPlugin());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 
