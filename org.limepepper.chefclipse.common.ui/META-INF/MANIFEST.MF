@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.common.ui
 Bundle-SymbolicName: org.limepepper.chefclipse.common.ui;singleton:=true
-Bundle-Version: 1.0.0.SNAPSHOT
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.common.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
