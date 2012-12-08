@@ -18,32 +18,32 @@ import org.limepepper.chefclipse.common.cookbook.Name;
  */
 public class NameImpl extends EObjectImpl implements Name {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public NameImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return CookbookPackage.Literals.NAME;
-    }
+		return CookbookPackage.Literals.NAME;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //NameImpl

@@ -22,50 +22,50 @@ import org.limepepper.chefclipse.common.chefserver.Platform;
  */
 public class PlatformImpl extends EObjectImpl implements Platform {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public PlatformImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefserverPackage.Literals.PLATFORM;
-    }
+		return ChefserverPackage.Literals.PLATFORM;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public int getTestVal() {
-        return (Integer)eGet(ChefserverPackage.Literals.PLATFORM__TEST_VAL, true);
-    }
+		return (Integer)eGet(ChefserverPackage.Literals.PLATFORM__TEST_VAL, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setTestVal(int newTestVal) {
-        eSet(ChefserverPackage.Literals.PLATFORM__TEST_VAL, newTestVal);
-    }
+		eSet(ChefserverPackage.Literals.PLATFORM__TEST_VAL, newTestVal);
+	}
 
 } //PlatformImpl

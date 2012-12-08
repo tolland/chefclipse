@@ -18,32 +18,32 @@ import org.limepepper.chefclipse.common.knife.Plugin;
  */
 public class PluginImpl extends EObjectImpl implements Plugin {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public PluginImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return KnifePackage.Literals.PLUGIN;
-    }
+		return KnifePackage.Literals.PLUGIN;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //PluginImpl

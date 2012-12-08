@@ -18,72 +18,72 @@ import org.limepepper.chefclipse.common.chefserver.DataBag;
 public class DataBagTest extends TestCase {
 
     /**
-     * The fixture for this Data Bag test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this Data Bag test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected DataBag fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(DataBagTest.class);
-    }
+		TestRunner.run(DataBagTest.class);
+	}
 
     /**
-     * Constructs a new Data Bag test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Data Bag test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public DataBagTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Sets the fixture for this Data Bag test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this Data Bag test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected void setFixture(DataBag fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
     /**
-     * Returns the fixture for this Data Bag test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Data Bag test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected DataBag getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ChefserverFactory.eINSTANCE.createDataBag());
-    }
+		setFixture(ChefserverFactory.eINSTANCE.createDataBag());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //DataBagTest

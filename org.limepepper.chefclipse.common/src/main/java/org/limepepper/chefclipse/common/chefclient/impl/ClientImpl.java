@@ -23,50 +23,50 @@ import org.limepepper.chefclipse.common.chefserver.Server;
  */
 public class ClientImpl extends EObjectImpl implements Client {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ClientImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclientPackage.Literals.CLIENT;
-    }
+		return ChefclientPackage.Literals.CLIENT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Server getServer() {
-        return (Server)eGet(ChefclientPackage.Literals.CLIENT__SERVER, true);
-    }
+		return (Server)eGet(ChefclientPackage.Literals.CLIENT__SERVER, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setServer(Server newServer) {
-        eSet(ChefclientPackage.Literals.CLIENT__SERVER, newServer);
-    }
+		eSet(ChefclientPackage.Literals.CLIENT__SERVER, newServer);
+	}
 
 } //ClientImpl

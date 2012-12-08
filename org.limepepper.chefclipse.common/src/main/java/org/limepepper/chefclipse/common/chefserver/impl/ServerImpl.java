@@ -39,156 +39,156 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
  */
 public class ServerImpl extends EObjectImpl implements Server {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ServerImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefserverPackage.Literals.SERVER;
-    }
+		return ChefserverPackage.Literals.SERVER;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<CookbookVersion> getCookbooks() {
-        return (EList<CookbookVersion>)eGet(ChefserverPackage.Literals.SERVER__COOKBOOKS, true);
-    }
+		return (EList<CookbookVersion>)eGet(ChefserverPackage.Literals.SERVER__COOKBOOKS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void unsetCookbooks() {
-        eUnset(ChefserverPackage.Literals.SERVER__COOKBOOKS);
-    }
+		eUnset(ChefserverPackage.Literals.SERVER__COOKBOOKS);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public boolean isSetCookbooks() {
-        return eIsSet(ChefserverPackage.Literals.SERVER__COOKBOOKS);
-    }
+		return eIsSet(ChefserverPackage.Literals.SERVER__COOKBOOKS);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Role> getRoles() {
-        return (EList<Role>)eGet(ChefserverPackage.Literals.SERVER__ROLES, true);
-    }
+		return (EList<Role>)eGet(ChefserverPackage.Literals.SERVER__ROLES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Node> getNodes() {
-        return (EList<Node>)eGet(ChefserverPackage.Literals.SERVER__NODES, true);
-    }
+		return (EList<Node>)eGet(ChefserverPackage.Literals.SERVER__NODES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<DataBag> getDatabags() {
-        return (EList<DataBag>)eGet(ChefserverPackage.Literals.SERVER__DATABAGS, true);
-    }
+		return (EList<DataBag>)eGet(ChefserverPackage.Literals.SERVER__DATABAGS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Environment> getEnvironments() {
-        return (EList<Environment>)eGet(ChefserverPackage.Literals.SERVER__ENVIRONMENTS, true);
-    }
+		return (EList<Environment>)eGet(ChefserverPackage.Literals.SERVER__ENVIRONMENTS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Client> getClients() {
-        return (EList<Client>)eGet(ChefserverPackage.Literals.SERVER__CLIENTS, true);
-    }
+		return (EList<Client>)eGet(ChefserverPackage.Literals.SERVER__CLIENTS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public int getWebuiport() {
-        return (Integer)eGet(ChefserverPackage.Literals.SERVER__WEBUIPORT, true);
-    }
+		return (Integer)eGet(ChefserverPackage.Literals.SERVER__WEBUIPORT, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setWebuiport(int newWebuiport) {
-        eSet(ChefserverPackage.Literals.SERVER__WEBUIPORT, newWebuiport);
-    }
+		eSet(ChefserverPackage.Literals.SERVER__WEBUIPORT, newWebuiport);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Sandbox> getSandboxes() {
-        return (EList<Sandbox>)eGet(ChefserverPackage.Literals.SERVER__SANDBOXES, true);
-    }
+		return (EList<Sandbox>)eGet(ChefserverPackage.Literals.SERVER__SANDBOXES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ServerConfig getConfig() {
-        return (ServerConfig)eGet(ChefserverPackage.Literals.SERVER__CONFIG, true);
-    }
+		return (ServerConfig)eGet(ChefserverPackage.Literals.SERVER__CONFIG, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setConfig(ServerConfig newConfig) {
-        eSet(ChefserverPackage.Literals.SERVER__CONFIG, newConfig);
-    }
+		eSet(ChefserverPackage.Literals.SERVER__CONFIG, newConfig);
+	}
 
 } //ServerImpl

@@ -15,41 +15,41 @@ import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 public abstract class CookbookFileTest extends TestCase {
 
     /**
-     * The fixture for this File test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this File test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected CookbookFile fixture = null;
 
     /**
-     * Constructs a new File test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new File test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookFileTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Sets the fixture for this File test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this File test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected void setFixture(CookbookFile fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
     /**
-     * Returns the fixture for this File test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this File test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected CookbookFile getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
 } //CookbookFileTest

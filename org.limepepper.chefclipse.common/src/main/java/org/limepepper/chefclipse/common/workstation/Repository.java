@@ -28,87 +28,87 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
  */
 public interface Repository extends NamedDescribedObject {
     /**
-     * Returns the value of the '<em><b>OS</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>OS</b></em>' attribute.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>OS</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>OS</em>' attribute.
-     * @see #setOS(String)
-     * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_OS()
-     * @model
-     * @generated
-     */
+	 * @return the value of the '<em>OS</em>' attribute.
+	 * @see #setOS(String)
+	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_OS()
+	 * @model
+	 * @generated
+	 */
     String getOS();
 
     /**
-     * Sets the value of the '{@link org.limepepper.chefclipse.common.workstation.Repository#getOS <em>OS</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.workstation.Repository#getOS <em>OS</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>OS</em>' attribute.
-     * @see #getOS()
-     * @generated
-     */
+	 * @param value the new value of the '<em>OS</em>' attribute.
+	 * @see #getOS()
+	 * @generated
+	 */
     void setOS(String value);
 
     /**
-     * Returns the value of the '<em><b>Basepath</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Basepath</b></em>' attribute.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Basepath</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Basepath</em>' attribute.
-     * @see #setBasepath(String)
-     * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Basepath()
-     * @model
-     * @generated
-     */
+	 * @return the value of the '<em>Basepath</em>' attribute.
+	 * @see #setBasepath(String)
+	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Basepath()
+	 * @model
+	 * @generated
+	 */
     String getBasepath();
 
     /**
-     * Sets the value of the '{@link org.limepepper.chefclipse.common.workstation.Repository#getBasepath <em>Basepath</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.workstation.Repository#getBasepath <em>Basepath</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Basepath</em>' attribute.
-     * @see #getBasepath()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Basepath</em>' attribute.
+	 * @see #getBasepath()
+	 * @generated
+	 */
     void setBasepath(String value);
 
     /**
-     * Returns the value of the '<em><b>Cookbooks</b></em>' containment reference list.
-     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Cookbooks</b></em>' containment reference list.
+	 * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Cookbooks</em>' reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Cookbooks</em>' containment reference list.
-     * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Cookbooks()
-     * @model containment="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Cookbooks</em>' containment reference list.
+	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Cookbooks()
+	 * @model containment="true"
+	 * @generated
+	 */
     EList<CookbookVersion> getCookbooks();
 
     /**
-     * Returns the value of the '<em><b>Knife</b></em>' reference list.
-     * The list contents are of type {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Knife</b></em>' reference list.
+	 * The list contents are of type {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Knife</em>' reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Knife</em>' reference list.
-     * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Knife()
-     * @model
-     * @generated
-     */
+	 * @return the value of the '<em>Knife</em>' reference list.
+	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Knife()
+	 * @model
+	 * @generated
+	 */
     EList<KnifeConfig> getKnife();
 
 } // Repository

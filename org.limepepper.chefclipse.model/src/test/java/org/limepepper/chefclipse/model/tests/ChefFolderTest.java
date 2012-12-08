@@ -16,55 +16,55 @@ import org.limepepper.chefclipse.model.ModelFactory;
 public class ChefFolderTest extends ChefContainerTest {
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(ChefFolderTest.class);
-    }
+		TestRunner.run(ChefFolderTest.class);
+	}
 
     /**
-     * Constructs a new Chef Folder test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Chef Folder test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ChefFolderTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Returns the fixture for this Chef Folder test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Chef Folder test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected ChefFolder getFixture() {
-        return (ChefFolder)fixture;
-    }
+		return (ChefFolder)fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ModelFactory.eINSTANCE.createChefFolder());
-    }
+		setFixture(ModelFactory.eINSTANCE.createChefFolder());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //ChefFolderTest

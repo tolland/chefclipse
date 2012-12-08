@@ -18,72 +18,72 @@ import org.limepepper.chefclipse.ChefclipseFactory;
 public class ChecksumFileTest extends TestCase {
 
     /**
-     * The fixture for this Checksum File test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this Checksum File test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ChecksumFile fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(ChecksumFileTest.class);
-    }
+		TestRunner.run(ChecksumFileTest.class);
+	}
 
     /**
-     * Constructs a new Checksum File test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Checksum File test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ChecksumFileTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Sets the fixture for this Checksum File test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this Checksum File test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected void setFixture(ChecksumFile fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
     /**
-     * Returns the fixture for this Checksum File test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Checksum File test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ChecksumFile getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ChefclipseFactory.eINSTANCE.createChecksumFile());
-    }
+		setFixture(ChefclipseFactory.eINSTANCE.createChecksumFile());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //ChecksumFileTest

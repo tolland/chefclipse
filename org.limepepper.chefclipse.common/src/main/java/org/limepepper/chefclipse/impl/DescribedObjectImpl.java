@@ -22,50 +22,50 @@ import org.limepepper.chefclipse.DescribedObject;
  */
 public class DescribedObjectImpl extends EObjectImpl implements DescribedObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public DescribedObjectImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.DESCRIBED_OBJECT;
-    }
+		return ChefclipsePackage.Literals.DESCRIBED_OBJECT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getDescription() {
-        return (String)eGet(ChefclipsePackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setDescription(String newDescription) {
-        eSet(ChefclipsePackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, newDescription);
-    }
+		eSet(ChefclipsePackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, newDescription);
+	}
 
 } //DescribedObjectImpl

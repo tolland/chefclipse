@@ -18,32 +18,32 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class CookbookLibraryImpl extends EObjectImpl implements CookbookLibrary {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookLibraryImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return RESTPackage.Literals.COOKBOOK_LIBRARY;
-    }
+		return RESTPackage.Literals.COOKBOOK_LIBRARY;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //CookbookLibraryImpl

@@ -18,32 +18,32 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  */
 public class CertificatesFolderImpl extends EObjectImpl implements CertificatesFolder {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CertificatesFolderImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return WorkstationPackage.Literals.CERTIFICATES_FOLDER;
-    }
+		return WorkstationPackage.Literals.CERTIFICATES_FOLDER;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //CertificatesFolderImpl

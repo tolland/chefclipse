@@ -23,7 +23,9 @@ Require-Bundle: org.junit4;bundle-version="4.8.1",
  com.ibm.icu;bundle-version="4.4.2",
  org.codehaus.jackson.core;bundle-version="1.9.5",
  org.codehaus.jackson.mapper;bundle-version="1.9.5"
-Export-Package: opscode.chef.REST;uses:="org.codehaus.jettison.json,com.sun.jersey.api.client,org.slf4j",
+Export-Package: com.sun.jersey.api.client,
+ com.sun.jersey.api.json,
+ opscode.chef.REST;uses:="org.codehaus.jettison.json,com.sun.jersey.api.client,org.slf4j",
  opscode.chef.REST.tests;uses:="org.limepepper.chefclipse.common.knife,opscode.chef.REST,org.slf4j",
  opscode.mixlib.authentication;uses:="org.slf4j",
  org.limepepper.chefclipse.chefserver.api;
@@ -37,4 +39,4 @@ Bundle-Classpath: lib/jersey-client.jar,
  lib/jersey-core.jar,
  lib/jersey-json.jar,
  lib/jettison.jar,
- lib/bcprov-jdk16-1.46.jar
+ lib/bcprov-jdk16.jar

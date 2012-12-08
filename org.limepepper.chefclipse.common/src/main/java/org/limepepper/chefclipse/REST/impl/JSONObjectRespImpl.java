@@ -18,32 +18,32 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class JSONObjectRespImpl extends EObjectImpl implements JSONObjectResp {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public JSONObjectRespImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return RESTPackage.Literals.JSON_OBJECT_RESP;
-    }
+		return RESTPackage.Literals.JSON_OBJECT_RESP;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //JSONObjectRespImpl

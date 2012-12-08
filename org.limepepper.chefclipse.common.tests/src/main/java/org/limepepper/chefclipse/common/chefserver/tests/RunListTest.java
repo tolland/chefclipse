@@ -18,72 +18,72 @@ import org.limepepper.chefclipse.common.chefserver.RunList;
 public class RunListTest extends TestCase {
 
     /**
-     * The fixture for this Run List test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this Run List test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected RunList fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(RunListTest.class);
-    }
+		TestRunner.run(RunListTest.class);
+	}
 
     /**
-     * Constructs a new Run List test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Run List test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public RunListTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Sets the fixture for this Run List test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this Run List test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected void setFixture(RunList fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
     /**
-     * Returns the fixture for this Run List test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Run List test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected RunList getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ChefserverFactory.eINSTANCE.createRunList());
-    }
+		setFixture(ChefserverFactory.eINSTANCE.createRunList());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //RunListTest

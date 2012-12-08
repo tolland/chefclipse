@@ -19,22 +19,22 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class ChangeTracker extends EObjectImpl implements EObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ChangeTracker() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ModelPackage.Literals.CHANGE_TRACKER;
-    }
+		return ModelPackage.Literals.CHANGE_TRACKER;
+	}
 
 } // ChangeTracker

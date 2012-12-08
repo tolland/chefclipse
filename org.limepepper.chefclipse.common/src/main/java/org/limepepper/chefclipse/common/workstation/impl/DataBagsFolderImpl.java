@@ -18,32 +18,32 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  */
 public class DataBagsFolderImpl extends EObjectImpl implements DataBagsFolder {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public DataBagsFolderImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return WorkstationPackage.Literals.DATA_BAGS_FOLDER;
-    }
+		return WorkstationPackage.Literals.DATA_BAGS_FOLDER;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //DataBagsFolderImpl

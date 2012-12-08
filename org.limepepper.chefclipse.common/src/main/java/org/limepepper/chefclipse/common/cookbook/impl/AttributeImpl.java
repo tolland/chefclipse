@@ -18,22 +18,22 @@ import org.limepepper.chefclipse.impl.NamedObjectImpl;
  */
 public class AttributeImpl extends NamedObjectImpl implements Attribute {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public AttributeImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return CookbookPackage.Literals.ATTRIBUTE;
-    }
+		return CookbookPackage.Literals.ATTRIBUTE;
+	}
 
 } //AttributeImpl
