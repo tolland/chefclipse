@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipseFactory;
@@ -15,6 +16,8 @@ import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
+import org.limepepper.chefclipse.NameUrlList;
+import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
@@ -102,6 +105,13 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * @generated
      */
     private EClass configEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass nameUrlMapEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -513,6 +523,24 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getNameUrlMap() {
+        return nameUrlMapEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNameUrlMap_Entry() {
+        return (EReference)nameUrlMapEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EDataType getURL() {
         return urlEDataType;
     }
@@ -655,6 +683,9 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         createEAttribute(configEClass, CONFIG__VERSION);
         createEAttribute(configEClass, CONFIG__VALIDATION_CLIENT_NAME);
 
+        nameUrlMapEClass = createEClass(NAME_URL_MAP);
+        createEReference(nameUrlMapEClass, NAME_URL_MAP__ENTRY);
+
         // Create data types
         urlEDataType = createEDataType(URL);
         fileEDataType = createEDataType(FILE);
@@ -753,6 +784,9 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         initEAttribute(getConfig_Version(), this.getVersion(), "version", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getConfig_Validation_client_name(), ecorePackage.getEString(), "validation_client_name", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+        initEClass(nameUrlMapEClass, NameUrlMap.class, "NameUrlMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getNameUrlMap_Entry(), ecorePackage.getEStringToStringMapEntry(), null, "entry", null, 0, -1, NameUrlMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
         // Initialize data types
         initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -766,6 +800,26 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 
         // Create resource
         createResource(eNS_URI);
+
+        // Create annotations
+        // JSON
+        createJSONAnnotations();
+    }
+
+    /**
+     * Initializes the annotations for <b>JSON</b>.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void createJSONAnnotations() {
+        String source = "JSON";		
+        addAnnotation
+          (getNameUrlMap_Entry(), 
+           source, 
+           new String[] {
+             "AnonRoot", "true"
+           });
     }
 
 } //ChefclipsePackageImpl

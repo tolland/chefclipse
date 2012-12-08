@@ -256,6 +256,29 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.NameUrlMap} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected NameUrlMapItemProvider nameUrlMapItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.NameUrlMap}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createNameUrlMapAdapter() {
+        if (nameUrlMapItemProvider == null) {
+            nameUrlMapItemProvider = new NameUrlMapItemProvider(this);
+        }
+
+        return nameUrlMapItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -362,6 +385,7 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
         if (checksumFileItemProvider != null) checksumFileItemProvider.dispose();
         if (maintainedObjectItemProvider != null) maintainedObjectItemProvider.dispose();
         if (configItemProvider != null) configItemProvider.dispose();
+        if (nameUrlMapItemProvider != null) nameUrlMapItemProvider.dispose();
     }
 
 }

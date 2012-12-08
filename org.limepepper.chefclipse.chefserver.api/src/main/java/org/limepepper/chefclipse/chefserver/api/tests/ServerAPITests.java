@@ -16,6 +16,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
+import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.REST.CookbookListResp;
 import org.limepepper.chefclipse.REST.CookbookVersionResp;
 import org.limepepper.chefclipse.chefserver.api.ChefServerAPI;
@@ -31,7 +32,7 @@ public class ServerAPITests {
     private File          client_key;
     private URL           chef_server_url;
     private ChefServerAPI chefServerAPI;
-    KnifeConfig knifeConfig ;
+    KnifeConfig           knifeConfig;
     Logger                logger = LoggerFactory
                                          .getLogger(ServerAPITests.class);
 
@@ -47,16 +48,15 @@ public class ServerAPITests {
             client_name = props.getProperty("client_name");
             client_key = new File(props.getProperty("client_key"));
             chef_server_url = new URL(props.getProperty("chef_server_url"));
-            
+
             knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
             knifeConfig.setChef_server_url(chef_server_url);
             knifeConfig.setClient_key(client_key);
             knifeConfig.setNode_name(client_name);
-            
+
             assertNotNull(props);
             assertTrue(client_key.exists());
             assertTrue(client_name.length() > 0);
-
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -67,7 +67,7 @@ public class ServerAPITests {
     }
 
     @Test
-    public void createServerObject() throws Exception {
+    public void createServerObject() {
 
         chefServerAPI = ChefServerAPI.getInstance(knifeConfig);
         assertNotNull(chefServerAPI);
@@ -257,5 +257,49 @@ public class ServerAPITests {
  * String.class ));
  * }
  */
+    @Test
+    public void getRolesTest() {
+
+        if (chefServerAPI == null) {
+            createServerObject();
+        }
+
+        NameUrlMap roles = chefServerAPI.getRoleList();
+        assertNotNull(roles);
+        assertNotNull(roles.getEntry());
+        assertTrue(roles.getEntry().size()>0);
+        assertTrue(roles.getEntry().get(0).getValue().length()>0);
+    }
+
+    @Test
+    public void getNodesTest() {
+
+        if (chefServerAPI == null) {
+            createServerObject();
+        }
+
+        NameUrlMap nodes = chefServerAPI.getNodeList();
+        assertNotNull(nodes);
+        assertNotNull(nodes.getEntry());
+        assertTrue(nodes.getEntry().size()>0);
+        assertTrue(nodes.getEntry().get(0).getValue().length()>0);
+    }
+    
+
+
+    @Test
+    public void getCookbooksTest2() {
+
+        if (chefServerAPI == null) {
+            createServerObject();
+        }
+
+        List<CookbookListResp> nodes = chefServerAPI.getCookbooks();
+        assertNotNull(nodes);    }
+    
+    
+    
+    
+    
 
 }

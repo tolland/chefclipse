@@ -3,12 +3,11 @@ package org.limepepper.chefclipse.chefserver.api;
 import java.net.MalformedURLException;
 import java.util.List;
 
+import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.REST.ClientResp;
 import org.limepepper.chefclipse.REST.CookbookListResp;
 import org.limepepper.chefclipse.REST.CookbookVersionResp;
 import org.limepepper.chefclipse.REST.EnvironmentResp;
-import org.limepepper.chefclipse.REST.NodeListResp;
-import org.limepepper.chefclipse.REST.NodeResp;
 import org.limepepper.chefclipse.REST.RoleListResp;
 import org.limepepper.chefclipse.REST.RoleResp;
 import org.limepepper.chefclipse.REST.SearchIndexResp;
@@ -16,7 +15,9 @@ import org.limepepper.chefclipse.REST.SearchResultResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
+import org.limepepper.chefclipse.common.chefserver.Server;
 
 /**
  * @author tomhodder
@@ -149,33 +150,17 @@ public interface IChefServerAPI {
 
     RoleResp getRole(String name);
 
-    /*
-     * 
-     * 
-     * 
-     */
 
-    List<NodeListResp> getNodes();
+    List<Node> getNodes();
+    
 
-    NodeResp getNode(String fqdn);
+    NameUrlMap getNodeList();
+    NameUrlMap getRoleList();
+    NameUrlMap getEnvironmentList();
 
-    /*
-     * Environments
-     * /environments
-     * HTTP Methods
-     * GET
-     * 
-     * A GET call to /environments returns a data structure that contains links
-     * to each available environment.
-     * Response
-     * Response to GET /environments
-     * {
-     * "webserver": "http://localhost:4000/environments/webserver"
-     * }
-     */
-
+    
+    Node getNode(String fqdn);
     List<Environment> getEnvironments();
-
     EnvironmentResp getEnvironment(String name);
 
     /*
@@ -196,19 +181,6 @@ public interface IChefServerAPI {
      */
 
     List<SearchIndexResp> getSearchIndexes();
-
-    /*
-     * The response contains the total number of rows that matched your request,
-     * the position this result set returns (useful for paging) and the rows
-     * themselves.
-     * 
-     * You can modify the search results with the following request parameters:
-     * Param Description
-     * q A valid search string.
-     * sort A sort string, such as 'name DESC'
-     * rows How many rows to return
-     * start The result number to start from
-     */
 
     SearchResultResp doSearch(String q);
 
@@ -239,5 +211,7 @@ public interface IChefServerAPI {
 
     List<CookbookVersionResp> getCookbookVersionsByEnvironment(
             String environment, String cookbook);
+
+    Server getChefServer();
 
 }

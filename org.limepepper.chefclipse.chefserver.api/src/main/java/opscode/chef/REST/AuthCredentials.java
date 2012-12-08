@@ -12,7 +12,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-import java.util.Properties;
 import java.util.TimeZone;
 
 import javax.crypto.BadPaddingException;
@@ -27,7 +26,7 @@ public class AuthCredentials {
     private String     raw_key;
     private File       key_file;
     private PrivateKey key;
-    private Properties config;
+
 
     public AuthCredentials(String client_name, File key_file)
             throws IOException {

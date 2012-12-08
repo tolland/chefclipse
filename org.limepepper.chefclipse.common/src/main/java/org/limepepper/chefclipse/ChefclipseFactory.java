@@ -94,6 +94,15 @@ public interface ChefclipseFactory extends EFactory {
     Config createConfig();
 
     /**
+     * Returns a new object of class '<em>Name Url Map</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Name Url Map</em>'.
+     * @generated
+     */
+    NameUrlMap createNameUrlMap();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

@@ -75,6 +75,7 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
             case ChefclipsePackage.CHECKSUM_FILE: return createChecksumFile();
             case ChefclipsePackage.MAINTAINED_OBJECT: return createMaintainedObject();
             case ChefclipsePackage.CONFIG: return createConfig();
+            case ChefclipsePackage.NAME_URL_MAP: return createNameUrlMap();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -220,6 +221,16 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
     public Config createConfig() {
         ConfigImpl config = new ConfigImpl();
         return config;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NameUrlMap createNameUrlMap() {
+        NameUrlMapImpl nameUrlMap = new NameUrlMapImpl();
+        return nameUrlMap;
     }
 
     /**

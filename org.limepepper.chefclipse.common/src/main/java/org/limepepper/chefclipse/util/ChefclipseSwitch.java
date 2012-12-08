@@ -130,6 +130,12 @@ public class ChefclipseSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case ChefclipsePackage.NAME_URL_MAP: {
+                NameUrlMap nameUrlMap = (NameUrlMap)theEObject;
+                T result = caseNameUrlMap(nameUrlMap);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -266,6 +272,21 @@ public class ChefclipseSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseConfig(Config object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Name Url Map</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Name Url Map</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNameUrlMap(NameUrlMap object) {
         return null;
     }
 

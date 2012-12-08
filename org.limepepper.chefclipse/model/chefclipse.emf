@@ -1,0 +1,392 @@
+@namespace(uri="http://limepepper.org/v1/chefclipse/", prefix="org.limepepper")
+package chefclipse;
+
+abstract interface NamedDescribedObject extends DescribedObject, NamedObject {
+}
+
+class VersionedObject {
+  readonly attr Integer[1] NUM_VERSIONS = "3";
+  attr Version[1] version = "0.0.0";
+}
+
+class SandboxedObject {
+  attr URL url;
+}
+
+class RubyFile {
+  attr String extension = "rb";
+}
+
+class NamedObject {
+  attr String[1] name;
+  id attr String[1] ID;
+}
+
+class DescribedObject {
+  attr String description;
+}
+
+datatype URL : java.net.URL;
+
+datatype File : java.io.File;
+
+class ChecksumFile {
+  attr String[1] checksum;
+  attr String[1] path;
+  attr String[1] specificity = "default";
+}
+
+datatype Chef_type : java.lang.String;
+
+class MaintainedObject {
+  attr String[1] maintainer;
+  attr Email[1] maintainer_email;
+  attr Text license;
+}
+
+datatype Email : java.lang.String;
+
+datatype Text : java.lang.String;
+
+datatype Version : java.lang.String;
+
+datatype Name : java.lang.Object;
+
+datatype Description : java.lang.Object;
+
+datatype Object : java.lang.Object;
+
+class Config {
+  attr URL[1] chef_server_url;
+  attr File[1] client_key;
+  attr String[1] node_name;
+  attr String log_level;
+  attr File validation_key;
+  attr Version version;
+  attr String validation_client_name;
+}
+
+class NameUrlMap {
+
+  @JSON(AnonRoot="true")
+  val ecore.EStringToStringMapEntry[*] entry;
+}
+
+datatype NameUrlDataType : java.lang.Object;
+
+@namespace(uri="http://limepepper.org/v1/chefclipse/chefserver", prefix="org.limepepper.chefclipse.chefserver")
+package chefserver {
+  class Environment {
+  }
+
+  class DataBag {
+    ref Server#databags server;
+    val DataBagItem[*] items;
+  }
+
+  class Role extends NamedDescribedObject {
+  }
+
+  class Node extends NamedDescribedObject {
+    val RunList[*] run_list;
+    ref Environment environment;
+    ref Server[1] server;
+    ref chefclient.Client client;
+    ref cookbook.Attribute attributes;
+  }
+
+  class Server {
+    unsettable val cookbook.CookbookVersion[*] cookbooks;
+    val Role[*] roles;
+    val Node[*] nodes;
+    val DataBag[*]#server databags;
+    val Environment[*] environments;
+    ref chefclient.Client[*] clients;
+    attr int webuiport;
+    ref Sandbox[*] sandboxes;
+    ref ServerConfig config;
+  }
+
+  class Platform {
+    attr int TestVal;
+  }
+
+  class RunList {
+    ref Node node;
+    ref Environment environment;
+    ref Role role;
+    ref cookbook.Recipe[*] recipes;
+  }
+
+  class ServerConfig {
+  }
+
+  class DataBagItem extends NamedObject {
+    ref DataBag[1] dataBag;
+  }
+
+  class Sandbox {
+    attr String[1] checksum;
+    attr URL[1] url;
+  }
+
+}
+
+@namespace(uri="http://limepepper.org/v1/chefclipse/chefclient", prefix="org.limepepper.chefclipse")
+package chefclient {
+  class Client {
+    ref chefserver.Server[1] server;
+  }
+
+  class Ohai {
+  }
+
+  class Search {
+  }
+
+  class ClientConfig extends Config {
+  }
+
+}
+
+@namespace(uri="http://limepepper.org/v1/chefclipse/cookbook", prefix="org.limepepper.chefclipse")
+package cookbook {
+  class CookbookVersion extends NamedDescribedObject, CookbookFile {
+    ref chefserver.Environment environment;
+    val Template[*] templates;
+    val Recipe[*] recipes;
+    val Definition[*] definitions;
+    val File[*] files;
+    val Resource[*] resources;
+    val Library[*] libraries;
+    val Metadata[1]#cookbookVersion metadata;
+    val Provider[*] providers;
+    ref Root_file[*] root_files;
+    val Attributes[*] attributes;
+    attr Chef_type[1] chef_type = "cookbook_version";
+    attr String catalog;
+    ref CookbookVersion[*] depends;
+    ref ecore.EStringToStringMapEntry[*] missing;
+  }
+
+  class Definition extends SandboxedObject, ChecksumFile, NamedObject, CookbookFile {
+  }
+
+  class Library extends SandboxedObject, ChecksumFile, NamedObject, CookbookFile {
+  }
+
+  class Attribute extends NamedObject {
+  }
+
+  class Recipe extends SandboxedObject, RubyFile, ChecksumFile, NamedObject, CookbookFile {
+    ref chefserver.Role[*] role;
+    ref chefserver.RunList[*] runlist;
+  }
+
+  class RecipeDescription extends NamedDescribedObject {
+  }
+
+  class Resource extends RubyFile, SandboxedObject, ChecksumFile, NamedObject, CookbookFile {
+  }
+
+  class Template extends SandboxedObject, ChecksumFile, NamedObject, CookbookFile {
+  }
+
+  class Attributes extends SandboxedObject, ChecksumFile, NamedObject, CookbookFile {
+  }
+
+  class File extends SandboxedObject, ChecksumFile, NamedObject, CookbookFile {
+  }
+
+  class DependencyRelation {
+  }
+
+  class Metadata extends RubyFile, MaintainedObject, NamedDescribedObject {
+    ref CookbookVersion[1]#metadata cookbookVersion;
+    attr Text long_description;
+    attr Version[1] version = "0.0.0";
+    val ecore.EStringToStringMapEntry[*] replaces;
+    val ecore.EStringToStringMapEntry[*] provides;
+    val ecore.EStringToStringMapEntry[*] conflicts;
+    val ecore.EStringToStringMapEntry[*] suggests;
+    val ecore.EStringToStringMapEntry[*] dependencies;
+    val ecore.EStringToStringMapEntry[*] platforms;
+    val ecore.EStringToStringMapEntry[*] recipes;
+  }
+
+  class Provider extends ChecksumFile, NamedObject, SandboxedObject, CookbookFile {
+  }
+
+  class Root_file extends ChecksumFile, SandboxedObject, NamedObject {
+  }
+
+  class MinimalMetadata extends Metadata {
+  }
+
+  class Name {
+  }
+
+  abstract class CookbookFile {
+    ref CookbookVersion[1] cookbook;
+  }
+
+}
+
+@namespace(uri="http://limepepper.org/v1/chefclipse/workstation", prefix="org.limepepepper.chefclipse")
+package workstation {
+  class Repository extends NamedDescribedObject {
+    attr String OS;
+    attr String basepath;
+    val cookbook.CookbookVersion[*] cookbooks;
+    ref knife.KnifeConfig[*] knife;
+  }
+
+  class ConfigFolder {
+  }
+
+  class CertificatesFolder {
+  }
+
+  class DataBagsFolder {
+  }
+
+  class EnvironmentsFolder extends NamedObject {
+  }
+
+  class RolesFolder {
+  }
+
+  class Rakefile {
+  }
+
+}
+
+@namespace(uri="http://limepepper.org/v1/chefclipse/knife", prefix="org.limepepper.chefclipse")
+package knife {
+  class KnifeConfig extends Config {
+    val Plugin[*] plugins;
+    attr String cache_type;
+    attr String cache_option;
+    attr File[1] cookbook_path;
+    attr String cookbook_copyright;
+    attr String cookbook_email;
+    attr String cookbook_license;
+    attr File[1] path;
+    ref chefserver.Server server;
+  }
+
+  class Plugin {
+  }
+
+  class KnifeSearch {
+  }
+
+}
+
+@namespace(uri="http://limepepper.org/v1/chefclipse/REST", prefix="org.limepepepper.chefclipse")
+package REST {
+  class CookbookListResp {
+    attr String[1] name;
+    val CookbookListVersionResp[*] versions;
+    attr String[1] url;
+  }
+
+  class CookbookVersionResp {
+    attr String[1] maintainer;
+    attr String category;
+    attr EDate[1] updatedAt;
+    attr EDate[1] createdAt;
+    attr String[1] latestVersion;
+    attr String externalUrl;
+    attr boolean deprecated;
+    attr String replacement;
+    ref CookbookDefinition[*] definitions;
+    ref CookbookFile[*] files;
+    ref CookbookAttributes[*] attributes;
+    attr String[1] cookbookName;
+    attr String[1] version;
+    attr String JsonClass;
+    attr String ChefType;
+    val CookbookMetadata[1] metadata;
+    attr String[1] name;
+    attr String description;
+  }
+
+  class CookbookMetadata {
+    attr String[1] maintainer;
+    attr String[*] platforms;
+    attr String[1] version;
+    attr String[*] dependencies;
+  }
+
+  class CookbookDefinition {
+  }
+
+  class CookbookFile {
+  }
+
+  class CookbookLibrary {
+  }
+
+  class CookbookTemplate {
+  }
+
+  class CookbookRootFile {
+  }
+
+  class CookbookRecipe {
+    attr String[1] path;
+  }
+
+  class CookbookResource {
+  }
+
+  class CookbookProviders {
+  }
+
+  class CookbookAttributes {
+  }
+
+  class CookbookMaintainer {
+  }
+
+  class RoleResp {
+  }
+
+  class RoleListResp {
+  }
+
+  class CookbookListVersionResp {
+    attr String url;
+    attr String[1] version;
+  }
+
+  class NodeResp {
+  }
+
+  class NodeListResp {
+  }
+
+  class SearchResultResp {
+  }
+
+  class SearchIndexResp {
+  }
+
+  class CookbookMetadataDependency {
+  }
+
+  class EnvironmentResp extends JSONObjectResp {
+  }
+
+  class JSONObjectResp {
+  }
+
+  class ClientResp {
+  }
+
+  class ClientListResp {
+  }
+
+}
+

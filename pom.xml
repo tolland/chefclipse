@@ -40,6 +40,11 @@
             <layout>p2</layout>
             <url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>
         </repository>
+        <repository>
+            <id>orbit-p2</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/</url>
+        </repository>
     </repositories>
 
   <!--distributionManagement>

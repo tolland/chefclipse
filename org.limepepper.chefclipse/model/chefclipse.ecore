@@ -61,6 +61,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="validation_client_name"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NameUrlMap">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entry" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"
+        containment="true">
+      <eAnnotations source="JSON">
+        <details key="AnonRoot" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eSubpackages name="chefserver" nsURI="http://limepepper.org/v1/chefclipse/chefserver"
       nsPrefix="org.limepepper.chefclipse.chefserver">
     <eClassifiers xsi:type="ecore:EClass" name="Environment"/>

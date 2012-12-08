@@ -20,14 +20,13 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.jdt.annotation.NonNull;
 import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.REST.ClientResp;
 import org.limepepper.chefclipse.REST.CookbookListResp;
 import org.limepepper.chefclipse.REST.CookbookListVersionResp;
 import org.limepepper.chefclipse.REST.CookbookMetadata;
 import org.limepepper.chefclipse.REST.CookbookVersionResp;
 import org.limepepper.chefclipse.REST.EnvironmentResp;
-import org.limepepper.chefclipse.REST.NodeListResp;
-import org.limepepper.chefclipse.REST.NodeResp;
 import org.limepepper.chefclipse.REST.RESTFactory;
 import org.limepepper.chefclipse.REST.RoleListResp;
 import org.limepepper.chefclipse.REST.RoleResp;
@@ -36,8 +35,11 @@ import org.limepepper.chefclipse.REST.SearchResultResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
+import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
 
 import com.sun.jersey.api.client.ClientResponse;
 
@@ -52,6 +54,19 @@ public class ChefServerAPI implements IChefServerAPI {
     private static Map<KnifeConfig, ChefServerAPI> instances = new HashMap<KnifeConfig, ChefServerAPI>(
                                                                      1);
 
+    /**
+     * one instance of API per workstation Knife config object, keyed on the
+     * KnifeConfig instance
+     * 
+     * The Knifeconfig is KnifeConfig 0..1 ChefServer, so you should be able to
+     * get menu actions and status from either, however KnifeConfig objects
+     * might
+     * yet to
+     * be connected, and hence be closed..
+     * 
+     * @param knifeConfig
+     * @return
+     */
     public static ChefServerAPI getInstance(@NonNull KnifeConfig knifeConfig) {
 
         if (!instances.containsKey(knifeConfig)) {
@@ -76,7 +91,7 @@ public class ChefServerAPI implements IChefServerAPI {
 
     }
 
-    private JSONObject getRestCookbooks() throws MalformedURLException {
+    private JSONObject getRestCookbooks(){
         return getRestCookbooks(3, 0, -1);
     }
 
@@ -92,7 +107,7 @@ public class ChefServerAPI implements IChefServerAPI {
     }
 
     private JSONObject getRestCookbooks(int versions, int start, int items)
-            throws MalformedURLException {
+            {
 
         Map<String, List<String>> query_params = new HashMap<String, List<String>>();
         query_params.put("num_versions",
@@ -100,7 +115,7 @@ public class ChefServerAPI implements IChefServerAPI {
         return jSONRestWrapper.rest_get("/cookbooks", query_params);
     }
 
-    public List<CookbookListResp> getCookbooks() throws MalformedURLException {
+    public List<CookbookListResp> getCookbooks(){
         JSONObject json = getRestCookbooks();
         return createCookbookListRespList(json);
     }
@@ -246,67 +261,56 @@ public class ChefServerAPI implements IChefServerAPI {
 
     @Override
     public List<CookbookListResp> getCookbooks(int num_versions) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public CookbookVersionResp getCookbookVersion(String name, String version) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public List<RoleListResp> getRoles() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public RoleResp getRole(String name) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public List<NodeListResp> getNodes() {
-        // TODO Auto-generated method stub
+    public List<Node> getNodes() {
         return null;
     }
 
     @Override
-    public NodeResp getNode(String fqdn) {
-        // TODO Auto-generated method stub
+    public Node getNode(String fqdn) {
         return null;
     }
 
     @Override
     public List<CookbookVersionResp> getNodeCookbooks(String name) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public List<SearchIndexResp> getSearchIndexes() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public SearchResultResp doSearch(String q, String sort, int rows, int start) {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public List<ClientResp> getClients() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public ClientResp getClient(String name) {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -378,6 +382,38 @@ public class ChefServerAPI implements IChefServerAPI {
         ClientResponse cr = jSONRestWrapper.rest_head("/", query_params);
 
         return cr.toString();
+    }
+
+    @Override
+    public Server getChefServer() {
+        return null;
+    }
+
+    public void connectChefServer() {
+
+        EmfJsonWrapper.instance().getOjectFromJson();
+
+    }
+
+    @Override
+    public NameUrlMap getNodeList() {
+        
+        Map<String, List<String>> query_params = new HashMap<String, List<String>>();
+
+       JSONObject jsonObject = jSONRestWrapper.rest_get("/nodes/",  query_params);
+        jSONRestWrapper.asFile(".cache.node-list-.json", jsonObject.toString());
+        return null;
+        
+    }
+
+    @Override
+    public NameUrlMap getRoleList() {
+        return null;
+    }
+
+    @Override
+    public NameUrlMap getEnvironmentList() {
+        return null;
     }
 
 }

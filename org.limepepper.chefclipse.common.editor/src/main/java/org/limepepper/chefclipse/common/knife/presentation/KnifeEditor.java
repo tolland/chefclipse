@@ -1338,7 +1338,7 @@ public class KnifeEditor
      */
     public void gotoMarker(IMarker marker) {
         try {
-            if (marker.getType().equals(EValidator.MARKER)) {
+            if (marker.isSubtypeOf(EValidator.MARKER)) {
                 String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
                 if (uriAttribute != null) {
                     URI uri = URI.createURI(uriAttribute);

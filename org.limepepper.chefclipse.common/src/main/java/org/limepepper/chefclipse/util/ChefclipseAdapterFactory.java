@@ -111,6 +111,10 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
                 return createConfigAdapter();
             }
             @Override
+            public Adapter caseNameUrlMap(NameUrlMap object) {
+                return createNameUrlMapAdapter();
+            }
+            @Override
             public Adapter defaultCase(EObject object) {
                 return createEObjectAdapter();
             }
@@ -253,6 +257,20 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createConfigAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NameUrlMap <em>Name Url Map</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.NameUrlMap
+     * @generated
+     */
+    public Adapter createNameUrlMapAdapter() {
         return null;
     }
 

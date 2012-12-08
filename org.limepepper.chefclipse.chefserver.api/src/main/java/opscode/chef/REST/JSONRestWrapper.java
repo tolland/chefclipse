@@ -1,6 +1,8 @@
 package opscode.chef.REST;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.SignatureException;
@@ -81,8 +83,7 @@ public class JSONRestWrapper {
      * 
      */
     @SuppressWarnings("deprecation")
-    public JSONObject rest_get(String path, Map<String, List<String>> params)
-            throws MalformedURLException {
+    public JSONObject rest_get(String path, Map<String, List<String>> params) {
 
         final String method = "GET";
 
@@ -110,36 +111,41 @@ public class JSONRestWrapper {
 
         Map<String, String> auth_headers = null;
 
-        auth_headers = build_headers(method, new URL(url.toString() + path),
-                headers, null, false);
-
-        logger.debug("auth_headers:");
-
-        for (Entry<String, String> entry : auth_headers.entrySet()) {
-            logger.debug(entry.getKey().toString() + ":" + entry.getValue());
-        }
-
-        for (String key : auth_headers.keySet()) {
-            builder.header(key, auth_headers.get(key));
-        }
-
-        builder.accept(MediaType.APPLICATION_JSON_TYPE);
-
-        JSONObject response = builder.get(JSONObject.class);
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);
         try {
-            logger.debug(mapper.defaultPrettyPrintingWriter()
-                    .writeValueAsString(response));
-        } catch (JsonGenerationException | JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            auth_headers = build_headers(method,
+                    new URL(url.toString() + path), headers, null, false);
+
+            logger.debug("auth_headers:");
+
+            for (Entry<String, String> entry : auth_headers.entrySet()) {
+                logger.debug(entry.getKey().toString() + ":" + entry.getValue());
+            }
+
+            for (String key : auth_headers.keySet()) {
+                builder.header(key, auth_headers.get(key));
+            }
+
+            builder.accept(MediaType.APPLICATION_JSON_TYPE);
+
+            JSONObject response = builder.get(JSONObject.class);
+
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS,
+                    false);
+            try {
+                logger.debug(mapper.defaultPrettyPrintingWriter()
+                        .writeValueAsString(response));
+            } catch (JsonGenerationException | JsonMappingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return response;
+        } catch (MalformedURLException e1) {
+            e1.printStackTrace();
         }
-
-        return response;
-
+        return null;
     }
 
     public ClientResponse rest_head(String path,
@@ -165,8 +171,6 @@ public class JSONRestWrapper {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
-        
 
         return builder.accept(MediaType.APPLICATION_JSON_TYPE).head();
 
@@ -216,5 +220,26 @@ public class JSONRestWrapper {
 
     public WebResource getService() {
         return service;
+    }
+
+    public static void asFile(String path, String content) {
+
+        ObjectOutputStream outputStream = null;
+        try {
+            outputStream = new ObjectOutputStream(new FileOutputStream(path));
+            outputStream.writeObject(content);
+            outputStream.flush();
+        } catch (Exception e) {
+            System.err.println("Error: " + e);
+        } finally {
+
+            try {
+                if (outputStream != null)
+                    outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

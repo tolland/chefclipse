@@ -7,14 +7,19 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.mapping.ResourceMapping;
 import org.eclipse.core.runtime.CoreException;
-import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
 import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
 import org.limepepper.chefclipse.model.mapping.ChefResourceMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ChefTester extends PropertyTester {
 
     private static ChefTester instance = null;
+
+    private Logger            logger   = LoggerFactory
+                                               .getLogger(ChefTester.class);
 
     protected static ChefTester instance() {
         if (instance == null) {
@@ -67,9 +72,11 @@ public class ChefTester extends PropertyTester {
                 return result;
 
             } else if (property.equals("isKnifeConfig")
-                    && (receiver instanceof KnifeConfig)) {
+                    && (receiver instanceof EObject)) {
 
-                return true;
+                if (((EObject) receiver).eClass().getName()
+                        .equals("KnifeConfig"))
+                    result = true;
 
             } else if (property.equals("isKnifeConfigFile")
                     && (receiver instanceof IFile)) {
@@ -77,13 +84,9 @@ public class ChefTester extends PropertyTester {
                 result = ((IFile) receiver).getName().endsWith(".knife");
                 return result;
 
-            }
-
-            if (receiver instanceof ChefResourceMapping) {
+            } else if (receiver instanceof ChefResourceMapping) {
                 eObject = ((ResourceMapping) receiver).getModelObject();
-            }
-
-            if (property.equals("isChefProject")
+            } else if (property.equals("isChefProject")
                     && (receiver instanceof IProject)
                     && (receiver instanceof ChefResourceMapping)) {
 
@@ -114,9 +117,10 @@ public class ChefTester extends PropertyTester {
                 System.out.println(((IFolder) receiver).getParent().getName());
 
                 result = (((IFolder) receiver).getParent().getName()
-                        .equals("cookbooks") && ((IFolder) receiver).getFile(
-                                "metadata.json").exists() && ((IFolder) receiver).getFile(
-                                        "metadata.rb").exists());
+                        .equals("cookbooks")
+                        && ((IFolder) receiver).getFile("metadata.json")
+                                .exists() && ((IFolder) receiver).getFile(
+                        "metadata.rb").exists());
             }
 
             if (property.equals("isLibrary") && (receiver instanceof IFile)) {

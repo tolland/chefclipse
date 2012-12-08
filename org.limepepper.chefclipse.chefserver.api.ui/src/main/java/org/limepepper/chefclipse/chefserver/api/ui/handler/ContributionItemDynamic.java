@@ -66,6 +66,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 
 
         menuItems.put("refresh.chefserver", "update remote model");
+        menuItems.put("connect.chefserver", "connect to this Server");
 
         List<IContributionItem> iContItems = new ArrayList<IContributionItem>();
         for (Entry<String, String> entry : menuItems.entrySet()) {
@@ -77,7 +78,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
         // @todo fix this
         for (Entry<String, String> entry : remoteMenuItems.entrySet()) {
             iContItems.add(menuItem(entry,
-                    "org.limepepper.chefclipse.chefserver.api.ui.handler"));
+                    "org.limepepper.chefclipse.api.ui.popupContext"));
         }
 
         return iContItems.toArray(new IContributionItem[0]);
@@ -89,7 +90,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
     IContributionItem menuItem(Entry<String, String> entry) {
         // @todo monkey hack
         IContributionItem menuItem = menuItem(entry,
-                "org.limepepper.chefclipse.commands.popupContext");
+                "org.limepepper.chefclipse.api.ui.popupContext");
 
         return menuItem;
     }

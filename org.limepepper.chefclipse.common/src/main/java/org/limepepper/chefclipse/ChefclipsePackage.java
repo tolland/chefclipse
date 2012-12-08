@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -434,6 +435,34 @@ public interface ChefclipsePackage extends EPackage {
     int CONFIG_FEATURE_COUNT = 7;
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.NameUrlMapImpl <em>Name Url Map</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.NameUrlMapImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNameUrlMap()
+     * @generated
+     */
+    int NAME_URL_MAP = 9;
+
+    /**
+     * The feature id for the '<em><b>Entry</b></em>' map.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NAME_URL_MAP__ENTRY = 0;
+
+    /**
+     * The number of structural features of the '<em>Name Url Map</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NAME_URL_MAP_FEATURE_COUNT = 1;
+
+    /**
      * The meta object id for the '<em>URL</em>' data type.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -441,7 +470,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getURL()
      * @generated
      */
-    int URL = 9;
+    int URL = 10;
 
     /**
      * The meta object id for the '<em>File</em>' data type.
@@ -451,7 +480,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getFile()
      * @generated
      */
-    int FILE = 10;
+    int FILE = 11;
 
 
     /**
@@ -462,7 +491,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getChef_type()
      * @generated
      */
-    int CHEF_TYPE = 11;
+    int CHEF_TYPE = 12;
 
     /**
      * The meta object id for the '<em>Email</em>' data type.
@@ -472,7 +501,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getEmail()
      * @generated
      */
-    int EMAIL = 12;
+    int EMAIL = 13;
 
     /**
      * The meta object id for the '<em>Text</em>' data type.
@@ -482,7 +511,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getText()
      * @generated
      */
-    int TEXT = 13;
+    int TEXT = 14;
 
     /**
      * The meta object id for the '<em>Version</em>' data type.
@@ -492,7 +521,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getVersion()
      * @generated
      */
-    int VERSION = 14;
+    int VERSION = 15;
 
     /**
      * The meta object id for the '<em>Name</em>' data type.
@@ -502,7 +531,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getName_()
      * @generated
      */
-    int NAME = 15;
+    int NAME = 16;
 
     /**
      * The meta object id for the '<em>Description</em>' data type.
@@ -512,7 +541,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getDescription()
      * @generated
      */
-    int DESCRIPTION = 16;
+    int DESCRIPTION = 17;
 
     /**
      * The meta object id for the '<em>Object</em>' data type.
@@ -522,7 +551,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getObject()
      * @generated
      */
-    int OBJECT = 17;
+    int OBJECT = 18;
 
 
     /**
@@ -834,6 +863,27 @@ public interface ChefclipsePackage extends EPackage {
      * @generated
      */
     EAttribute getConfig_Validation_client_name();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.NameUrlMap <em>Name Url Map</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Name Url Map</em>'.
+     * @see org.limepepper.chefclipse.NameUrlMap
+     * @generated
+     */
+    EClass getNameUrlMap();
+
+    /**
+     * Returns the meta object for the map '{@link org.limepepper.chefclipse.NameUrlMap#getEntry <em>Entry</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the map '<em>Entry</em>'.
+     * @see org.limepepper.chefclipse.NameUrlMap#getEntry()
+     * @see #getNameUrlMap()
+     * @generated
+     */
+    EReference getNameUrlMap_Entry();
 
     /**
      * Returns the meta object for data type '{@link java.net.URL <em>URL</em>}'.
@@ -1205,6 +1255,24 @@ public interface ChefclipsePackage extends EPackage {
          * @generated
          */
         EAttribute CONFIG__VALIDATION_CLIENT_NAME = eINSTANCE.getConfig_Validation_client_name();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.impl.NameUrlMapImpl <em>Name Url Map</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.impl.NameUrlMapImpl
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNameUrlMap()
+         * @generated
+         */
+        EClass NAME_URL_MAP = eINSTANCE.getNameUrlMap();
+
+        /**
+         * The meta object literal for the '<em><b>Entry</b></em>' map feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference NAME_URL_MAP__ENTRY = eINSTANCE.getNameUrlMap_Entry();
 
         /**
          * The meta object literal for the '<em>URL</em>' data type.

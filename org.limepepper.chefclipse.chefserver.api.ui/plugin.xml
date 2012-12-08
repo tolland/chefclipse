@@ -44,6 +44,12 @@
                         <adapt
                               type="org.eclipse.core.resources.IResource">
                         </adapt>
+                        <adapt
+                              type="org.eclipse.emf.ecore.EObject">
+                        </adapt>
+                        <instanceof
+                              value="org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl">
+                        </instanceof>
                      </or>
                   </iterate>
                </with>
