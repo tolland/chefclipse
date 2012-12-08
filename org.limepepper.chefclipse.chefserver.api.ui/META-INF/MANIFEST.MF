@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ui
-Bundle-SymbolicName: org.limepepper.chefclipse.chefserver.api.ui; singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Name: org.limepepper.chefclipse.chefserver.api.ui
+Bundle-SymbolicName: org.limepepper.chefclipse.chefserver.api.ui;singleton:=true
+Bundle-Version: 1.0.0.SNAPSHOT
 Bundle-Activator: org.limepepper.chefclipse.chefserver.api.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -18,3 +18,5 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.common.ui;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ClassPath: .,
+ junit.jar

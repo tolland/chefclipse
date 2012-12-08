@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: UI
+Bundle-Name: org.limepepper.chefclipse.ui
 Bundle-SymbolicName: org.limepepper.chefclipse.ui;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0.SNAPSHOT
 Bundle-Activator: org.limepepper.chefclipse.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -18,3 +18,5 @@ Export-Package: org.limepepper.chefclipse.ui,
  org.limepepper.chefclipse.ui.perspective,
  org.limepepper.chefclipse.ui.preferences,
  org.limepepper.chefclipse.ui.wizards
+Bundle-ClassPath: .,
+ junit.jar

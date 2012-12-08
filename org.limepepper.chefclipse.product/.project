@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.limepepper.chefclipse.product</name>
-	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-	</buildSpec>
-	<natures>
-	</natures>
+  <name>org.limepepper.chefclipse.product</name>
+  <comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
+  <projects>
+    <project>org.limepepper.chefclipse.app</project>
+    <project>org.limepepper.chefclipse.ui</project>
+    <project>org.limepepper.chefclipse.app.feature</project>
+    <project>org.limepepper.chefclipse.chefserver.api</project>
+    <project>org.limepepper.chefclipse.common</project>
+    <project>org.limepepper.chefclipse.chefserver.api.ui</project>
+    <project>org.limepepper.chefclipse.common.ui</project>
+    <project>org.limepepper.chefclipse.common.edit</project>
+    <project>org.limepepper.chefclipse.common.editor</project>
+    <project>org.limepepper.chefclipse.model</project>
+    <project>org.limepepper.chefclipse.devel.feature</project>
+    <project>org.limepepper.chefclipse.doc</project>
+    <project>org.limepepper.chefclipse.doc.feature</project>
+    <project>org.limepepper.chefclipse.graphviewer</project>
+    <project>org.limepepper.chefclipse.navigator</project>
+    <project>org.limepepper.chefclipse.ui.feature</project>
+    <project>org.limepepper.chefclipse.remotepicker.api</project>
+    <project>org.limepepper.chefclipse.remotepicker.extpoint</project>
+    <project>org.limepepper.chefclipse.remotepicker.repositories</project>
+    <project>org.limepepper.chefclipse.remotepicker.ui</project>
+  </projects>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
 </projectDescription>

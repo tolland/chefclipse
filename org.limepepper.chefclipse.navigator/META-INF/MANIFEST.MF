@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Navigator
+Bundle-Name: org.limepepper.chefclipse.navigator
 Bundle-SymbolicName: org.limepepper.chefclipse.navigator;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0.SNAPSHOT
 Bundle-Activator: org.limepepper.chefclipse.navigator.NavigatorActivator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -24,3 +24,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.annotation;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ClassPath: .,
+ junit.jar

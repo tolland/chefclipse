@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Graphviewer
-Bundle-SymbolicName: org.limepepper.chefclipse.graphviewer; singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Name: org.limepepper.chefclipse.graphviewer
+Bundle-SymbolicName: org.limepepper.chefclipse.graphviewer;singleton:=true
+Bundle-Version: 1.0.0.SNAPSHOT
 Bundle-Activator: org.limepepper.chefclipse.graphviewer.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -29,3 +29,5 @@ Export-Package: org.limepepper.chefclipse.graphviewer,
  org.limepepper.chefclipse.graphviewer.handler,
  org.limepepper.chefclipse.graphviewer.model,
  org.limepepper.chefclipse.graphviewer.ui
+Bundle-ClassPath: .,
+ junit.jar
