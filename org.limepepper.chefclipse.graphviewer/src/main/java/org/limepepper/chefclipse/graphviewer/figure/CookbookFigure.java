@@ -9,8 +9,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
-import org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor;
+import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
 
 public class CookbookFigure extends Figure {
 	
@@ -18,13 +17,9 @@ public class CookbookFigure extends Figure {
 
 	private Font titleFont = new Font(null, "Arial", 12, SWT.BOLD);
 	
-	private Image cookbookImage = new Image(Display.getDefault(),
-			DependencyGraphEditor.class
-					.getResourceAsStream("class_obj.gif"));
+	private Image cookbookImage = ImageLoader.Load("class_obj.gif");
 	
-	Image attributeImage = new Image(Display.getDefault(),
-			DependencyGraphEditor.class
-					.getResourceAsStream("methpub_obj.gif"));
+	Image attributeImage = ImageLoader.Load("methpub_obj.gif");
 	
 	public CookbookFigure(String name,String version,String catalog)
 	{

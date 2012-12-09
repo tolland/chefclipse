@@ -2,10 +2,7 @@
  */
 package org.limepepper.chefclipse.common.chefclient;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,27 +11,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  *
  * @see org.limepepper.chefclipse.common.chefclient.ChefclientPackage#getSearch()
- * @model kind="class"
+ * @model
  * @generated
  */
-public class Search extends EObjectImpl implements EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Search() {
-		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return ChefclientPackage.Literals.SEARCH;
-	}
-
+public interface Search extends EObject {
 } // Search

@@ -2,10 +2,7 @@
  */
 package org.limepepper.chefclipse.common.chefserver;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.limepepper.chefclipse.NamedDescribedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,27 +11,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *
  *
  * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getRole()
- * @model kind="class"
+ * @model
  * @generated
  */
-public class Role extends EObjectImpl implements EObject {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Role() {
-		super();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return ChefserverPackage.Literals.ROLE;
-	}
-
+public interface Role extends NamedDescribedObject {
 } // Role

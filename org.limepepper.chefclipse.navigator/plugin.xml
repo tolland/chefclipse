@@ -2,65 +2,110 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.navigator.navigatorContent">
-      <navigatorContent
-            activeByDefault="true"
-            contentProvider="org.limepepper.chefclipse.navigator.providers.ChefProjectContentProvider"
-            id="org.limepepper.chefclipse.navigator.ChefProjectNavigator"
-            labelProvider="org.limepepper.chefclipse.navigator.providers.ChefProjectLabelProvider"
-            name="Chef Project Navigator"
-            priority="higher"
-            providesSaveables="false">
-         <triggerPoints>
-            <and>
-               <instanceof
-                     value="org.eclipse.core.resources.IProject">
-               </instanceof>
-               <test
-                     forcePluginActivation="true"
-                     property="org.eclipse.core.resources.projectNature"
-                     value="org.limepepper.chefclipse.common.ui.resources.ChefProjectNature">
-               </test>
-            </and></triggerPoints>
-      </navigatorContent>
-      <navigatorContent
-            contentProvider="org.limepepper.chefclipse.navigator.providers.ChefCookbookContentProvider"
-            id="org.limepepper.chefclipse.navigator.ChefCookbookNavigator"
-            labelProvider="org.limepepper.chefclipse.navigator.providers.ChefCookbookLabelProvider"
-            name="Chef Cookbook Navigator"
-            priority="higher">
-         <triggerPoints>
-            <instanceof
-                  value="org.limepepper.chefclipse.common.cookbook.Cookbook">
-            </instanceof>
-         </triggerPoints>
-      </navigatorContent>
-   </extension>
-   <extension
          point="org.eclipse.ui.navigator.viewer">
       <viewerContentBinding
             viewerId="org.eclipse.ui.navigator.ProjectExplorer">
          <includes>
             <contentExtension
                   isRoot="false"
-                  pattern="org.limepepper.chefclipse.navigator.ChefProjectNavigator">
+                  pattern="org.limepepper.chefclipse.navigator.navigatorContent2">
             </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.views.ResourceNavigator">
+         <includes>
             <contentExtension
                   isRoot="false"
-                  pattern="org.limepepper.chefclipse.navigator.ChefCookbookNavigator">
+                  pattern="org.limepepper.chefclipse.navigator.navigatorContent2">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.eclipse.jdt.ui.PackageExplorer">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="org.limepepper.chefclipse.navigator.navigatorContent2">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="org.limepepper.chefclipse.navigator.navigatorContent2">
             </contentExtension>
          </includes>
       </viewerContentBinding>
    </extension>
    <extension
-         point="org.eclipse.core.expressions.propertyTesters">
-      <propertyTester
-            class="org.limepepper.chefclipse.navigator.testers.ChefResourcesPropertyTester"
-            id="org.limepepper.chefclipse.navigator.ChefResourcesPropertyTester"
-            namespace="org.limepepper.chefclipse.navigator"
-            properties="isWorkstationFolder"
-            type="org.eclipse.core.resources.IResource">
-      </propertyTester>
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.limepepper.chefclipse.navigator.providers.TestTreeContentProvider"
+            id="org.limepepper.chefclipse.navigator.navigatorContent2"
+            labelProvider="org.limepepper.chefclipse.navigator.providers.TestTreeLabelProvider"
+            name="Chef Navigator"
+            priority="high"
+            providesSaveables="false">
+         <triggerPoints>
+            <or>
+               <instanceof value="org.eclipse.core.resources.IWorkspaceRoot"/>
+               <instanceof value="org.eclipse.core.resources.IProject"/>
+        <instanceof value="org.eclipse.emf.ecore.EObject"/>  
+               <and> 
+            <instanceof value="org.eclipse.core.resources.IResource"/> 
+            <test 
+                forcePluginActivation="true" 
+                property="org.eclipse.core.resources.extension" 
+                value="ecore"/> 
+        </and> 
+               <and> 
+            <instanceof value="org.eclipse.core.resources.IResource"/> 
+            <test 
+                forcePluginActivation="true" 
+                property="org.eclipse.core.resources.extension" 
+                value="workstation"/> 
+        </and>
+               <adapt
+                     type="org.eclipse.emf.ecore.EObject">
+               </adapt> 
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+          <or> 
+        <instanceof value="org.eclipse.core.resources.IResource"/>
+        <instanceof value="org.eclipse.emf.ecore.EObject"/>  
+    </or> 
+         </possibleChildren>
+      </navigatorContent>
+   </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+         
+   </extension>
+   
+   
+
+
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.ui.Examples/org.limepepper.chefclipse.category"
+            class="org.limepepper.chefclipse.navigator.NewExampleChefProjectWizard"
+            hasPages="true"
+            id="wChefProjectWizard"
+            name="Example Chef Project"
+            project="true">
+      </wizard>
+      <category
+            id="org.limepepper.chefclipse.category"
+            name="Chef Wizards"
+            parentCategory="org.eclipse.ui.Examples">
+      </category>
    </extension>
 
 </plugin>

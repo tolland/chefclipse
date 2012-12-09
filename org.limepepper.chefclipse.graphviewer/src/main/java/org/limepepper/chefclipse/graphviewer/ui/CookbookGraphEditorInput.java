@@ -1,59 +1,57 @@
 package org.limepepper.chefclipse.graphviewer.ui;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 
 public class CookbookGraphEditorInput implements IEditorInput {
 
-	private final String projectPath;
-	
-	public CookbookGraphEditorInput(String projectPath)
-	{
-		this.projectPath=projectPath;
-	}
-	
-	public String getProjectPath()
-	{
-		return projectPath;
-	}
-	
-	
-	@Override
-	public Object getAdapter(Class adapter) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    private final IResource resource;
+    
+    public CookbookGraphEditorInput(@NonNull IResource resource)
+    {
+        this.resource=resource;
+    }
+    
+    public IResource getResource()
+    {
+        return resource;
+    }
+    
+    
+    @Override
+    public Object getAdapter(Class adapter) {
+        return null;
+    }
 
-	@Override
-	public boolean exists() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean exists() {
+        return false;
+    }
 
-	@Override
-	public ImageDescriptor getImageDescriptor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public ImageDescriptor getImageDescriptor() {
+        return null;
+    }
 
-	@Override
-	public String getName() {
-		return "Cookbook Structure Graph Editor";
-	}
+    @Override
+    public String getName() {
+        return "Cookbook Structure Graph Editor";
+    }
 
-	@Override
-	public IPersistableElement getPersistable() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public IPersistableElement getPersistable() {
+        return null;
+    }
 
-	@Override
-	public String getToolTipText() {
-		return "Cookbook Structure Graph Editor";
-	}
+    @Override
+    public String getToolTipText() {
+        return "Cookbook Structure Graph Editor";
+    }
 
-	@Override
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -63,10 +61,10 @@ public class CookbookGraphEditorInput implements IEditorInput {
             return false;
         if(!(obj instanceof CookbookGraphEditorInput))
         {
-        	return false;
+            return false;
         }
         CookbookGraphEditorInput other = (CookbookGraphEditorInput) obj;
-        if (!projectPath.equals(other.getProjectPath()))
+        if (!resource.getFullPath().equals(other.getResource()))
         {
             return false;
         }

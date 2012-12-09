@@ -2,7 +2,6 @@ package org.limepepper.chefclipse.ui.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-
 import org.limepepper.chefclipse.ui.Activator;
 
 /**

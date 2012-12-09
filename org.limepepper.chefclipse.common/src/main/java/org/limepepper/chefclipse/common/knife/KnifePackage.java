@@ -2,19 +2,11 @@
  */
 package org.limepepper.chefclipse.common.knife;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-
-import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-
-import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-
-import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
+import org.limepepper.chefclipse.ChefclipsePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,381 +23,494 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * @model kind="package"
  * @generated
  */
-public class KnifePackage extends EPackageImpl {
-	/**
-	 * The package name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String eNAME = "knife";
+public interface KnifePackage extends EPackage {
+    /**
+     * The package name.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String eNAME = "knife";
 
-	/**
-	 * The package namespace URI.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String eNS_URI = "http://limepepper.org/chefclipse/knife";
+    /**
+     * The package namespace URI.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String eNS_URI = "http://limepepper.org/v1/chefclipse/knife";
 
-	/**
-	 * The package namespace name.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final String eNS_PREFIX = "org.limepepper.chefclipse";
+    /**
+     * The package namespace name.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    String eNS_PREFIX = "org.limepepper.chefclipse";
 
-	/**
-	 * The singleton instance of the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static final KnifePackage eINSTANCE = org.limepepper.chefclipse.common.knife.KnifePackage.init();
+    /**
+     * The singleton instance of the package.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    KnifePackage eINSTANCE = org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl.init();
 
-	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.knife.Config <em>Config</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.knife.Config
-	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getConfig()
-	 * @generated
-	 */
-	public static final int CONFIG = 0;
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl <em>Config</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl
+     * @see org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl#getKnifeConfig()
+     * @generated
+     */
+    int KNIFE_CONFIG = 0;
 
-	/**
-	 * The feature id for the '<em><b>Plugins</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CONFIG__PLUGINS = 0;
+    /**
+     * The feature id for the '<em><b>Chef server url</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__CHEF_SERVER_URL = ChefclipsePackage.CONFIG__CHEF_SERVER_URL;
 
-	/**
-	 * The number of structural features of the '<em>Config</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CONFIG_FEATURE_COUNT = 1;
+    /**
+     * The feature id for the '<em><b>Client key</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__CLIENT_KEY = ChefclipsePackage.CONFIG__CLIENT_KEY;
 
-	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.knife.Plugin <em>Plugin</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.knife.Plugin
-	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getPlugin()
-	 * @generated
-	 */
-	public static final int PLUGIN = 1;
+    /**
+     * The feature id for the '<em><b>Node name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__NODE_NAME = ChefclipsePackage.CONFIG__NODE_NAME;
 
-	/**
-	 * The number of structural features of the '<em>Plugin</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int PLUGIN_FEATURE_COUNT = 0;
+    /**
+     * The feature id for the '<em><b>Log level</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__LOG_LEVEL = ChefclipsePackage.CONFIG__LOG_LEVEL;
 
-	/**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.knife.KnifeSearch <em>Search</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.knife.KnifeSearch
-	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeSearch()
-	 * @generated
-	 */
-	public static final int KNIFE_SEARCH = 2;
+    /**
+     * The feature id for the '<em><b>Validation key</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__VALIDATION_KEY = ChefclipsePackage.CONFIG__VALIDATION_KEY;
 
-	/**
-	 * The number of structural features of the '<em>Search</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int KNIFE_SEARCH_FEATURE_COUNT = 0;
+    /**
+     * The feature id for the '<em><b>Version</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__VERSION = ChefclipsePackage.CONFIG__VERSION;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass configEClass = null;
+    /**
+     * The feature id for the '<em><b>Validation client name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__VALIDATION_CLIENT_NAME = ChefclipsePackage.CONFIG__VALIDATION_CLIENT_NAME;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass pluginEClass = null;
+    /**
+     * The feature id for the '<em><b>Plugins</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__PLUGINS = ChefclipsePackage.CONFIG_FEATURE_COUNT + 0;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass knifeSearchEClass = null;
+    /**
+     * The feature id for the '<em><b>Cache type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__CACHE_TYPE = ChefclipsePackage.CONFIG_FEATURE_COUNT + 1;
 
-	/**
-	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#eNS_URI
-	 * @see #init()
-	 * @generated
-	 */
-	private KnifePackage() {
-		super(eNS_URI, KnifeFactory.eINSTANCE);
-	}
+    /**
+     * The feature id for the '<em><b>Cache option</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__CACHE_OPTION = ChefclipsePackage.CONFIG_FEATURE_COUNT + 2;
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private static boolean isInited = false;
+    /**
+     * The feature id for the '<em><b>Cookbook path</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__COOKBOOK_PATH = ChefclipsePackage.CONFIG_FEATURE_COUNT + 3;
 
-	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
-	 * <p>This method is used to initialize {@link KnifePackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #eNS_URI
-	 * @see #createPackageContents()
-	 * @see #initializePackageContents()
-	 * @generated
-	 */
-	public static KnifePackage init() {
-		if (isInited) return (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
+    /**
+     * The feature id for the '<em><b>Cookbook copyright</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__COOKBOOK_COPYRIGHT = ChefclipsePackage.CONFIG_FEATURE_COUNT + 4;
 
-		// Obtain or create and register package
-		KnifePackage theKnifePackage = (KnifePackage)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof KnifePackage ? EPackage.Registry.INSTANCE.get(eNS_URI) : new KnifePackage());
+    /**
+     * The feature id for the '<em><b>Cookbook email</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__COOKBOOK_EMAIL = ChefclipsePackage.CONFIG_FEATURE_COUNT + 5;
 
-		isInited = true;
+    /**
+     * The feature id for the '<em><b>Cookbook license</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__COOKBOOK_LICENSE = ChefclipsePackage.CONFIG_FEATURE_COUNT + 6;
 
-		// Obtain or create and register interdependencies
-		ChefclientPackage theChefclientPackage = (ChefclientPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
-		ChefserverPackage theChefserverPackage = (ChefserverPackage)(EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackage ? EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) : ChefserverPackage.eINSTANCE);
-		CookbookPackage theCookbookPackage = (CookbookPackage)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackage ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
-		WorkstationPackage theWorkstationPackage = (WorkstationPackage)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackage ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
+    /**
+     * The feature id for the '<em><b>Path</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__PATH = ChefclipsePackage.CONFIG_FEATURE_COUNT + 7;
 
-		// Create package meta-data objects
-		theKnifePackage.createPackageContents();
-		theChefclientPackage.createPackageContents();
-		theChefserverPackage.createPackageContents();
-		theCookbookPackage.createPackageContents();
-		theWorkstationPackage.createPackageContents();
+    /**
+     * The feature id for the '<em><b>Server</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG__SERVER = ChefclipsePackage.CONFIG_FEATURE_COUNT + 8;
 
-		// Initialize created meta-data
-		theKnifePackage.initializePackageContents();
-		theChefclientPackage.initializePackageContents();
-		theChefserverPackage.initializePackageContents();
-		theCookbookPackage.initializePackageContents();
-		theWorkstationPackage.initializePackageContents();
+    /**
+     * The number of structural features of the '<em>Config</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_CONFIG_FEATURE_COUNT = ChefclipsePackage.CONFIG_FEATURE_COUNT + 9;
 
-		// Mark meta-data to indicate it can't be changed
-		theKnifePackage.freeze();
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.knife.impl.PluginImpl <em>Plugin</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.knife.impl.PluginImpl
+     * @see org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl#getPlugin()
+     * @generated
+     */
+    int PLUGIN = 1;
 
-  
-		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(KnifePackage.eNS_URI, theKnifePackage);
-		return theKnifePackage;
-	}
+    /**
+     * The number of structural features of the '<em>Plugin</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int PLUGIN_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.knife.impl.KnifeSearchImpl <em>Search</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.knife.impl.KnifeSearchImpl
+     * @see org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl#getKnifeSearch()
+     * @generated
+     */
+    int KNIFE_SEARCH = 2;
+
+    /**
+     * The number of structural features of the '<em>Search</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int KNIFE_SEARCH_FEATURE_COUNT = 0;
 
 
-	/**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.knife.Config <em>Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Config</em>'.
-	 * @see org.limepepper.chefclipse.common.knife.Config
-	 * @generated
-	 */
-	public EClass getConfig() {
-		return configEClass;
-	}
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.knife.KnifeConfig <em>Config</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Config</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig
+     * @generated
+     */
+    EClass getKnifeConfig();
 
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.knife.Config#getPlugins <em>Plugins</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Plugins</em>'.
-	 * @see org.limepepper.chefclipse.common.knife.Config#getPlugins()
-	 * @see #getConfig()
-	 * @generated
-	 */
-	public EReference getConfig_Plugins() {
-		return (EReference)configEClass.getEStructuralFeatures().get(0);
-	}
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getPlugins <em>Plugins</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Plugins</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getPlugins()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EReference getKnifeConfig_Plugins();
 
-	/**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.knife.Plugin <em>Plugin</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Plugin</em>'.
-	 * @see org.limepepper.chefclipse.common.knife.Plugin
-	 * @generated
-	 */
-	public EClass getPlugin() {
-		return pluginEClass;
-	}
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getCache_type <em>Cache type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Cache type</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getCache_type()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EAttribute getKnifeConfig_Cache_type();
 
-	/**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.knife.KnifeSearch <em>Search</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Search</em>'.
-	 * @see org.limepepper.chefclipse.common.knife.KnifeSearch
-	 * @generated
-	 */
-	public EClass getKnifeSearch() {
-		return knifeSearchEClass;
-	}
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getCache_option <em>Cache option</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Cache option</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getCache_option()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EAttribute getKnifeConfig_Cache_option();
 
-	/**
-	 * Returns the factory that creates the instances of the model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the factory that creates the instances of the model.
-	 * @generated
-	 */
-	public KnifeFactory getKnifeFactory() {
-		return (KnifeFactory)getEFactoryInstance();
-	}
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_path <em>Cookbook path</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Cookbook path</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_path()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EAttribute getKnifeConfig_Cookbook_path();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private boolean isCreated = false;
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_copyright <em>Cookbook copyright</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Cookbook copyright</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_copyright()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EAttribute getKnifeConfig_Cookbook_copyright();
 
-	/**
-	 * Creates the meta-model objects for the package.  This method is
-	 * guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void createPackageContents() {
-		if (isCreated) return;
-		isCreated = true;
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_email <em>Cookbook email</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Cookbook email</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_email()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EAttribute getKnifeConfig_Cookbook_email();
 
-		// Create classes and their features
-		configEClass = createEClass(CONFIG);
-		createEReference(configEClass, CONFIG__PLUGINS);
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_license <em>Cookbook license</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Cookbook license</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_license()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EAttribute getKnifeConfig_Cookbook_license();
 
-		pluginEClass = createEClass(PLUGIN);
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getPath <em>Path</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Path</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getPath()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EAttribute getKnifeConfig_Path();
 
-		knifeSearchEClass = createEClass(KNIFE_SEARCH);
-	}
+    /**
+     * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getServer <em>Server</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Server</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getServer()
+     * @see #getKnifeConfig()
+     * @generated
+     */
+    EReference getKnifeConfig_Server();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private boolean isInitialized = false;
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.knife.Plugin <em>Plugin</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Plugin</em>'.
+     * @see org.limepepper.chefclipse.common.knife.Plugin
+     * @generated
+     */
+    EClass getPlugin();
 
-	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void initializePackageContents() {
-		if (isInitialized) return;
-		isInitialized = true;
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.knife.KnifeSearch <em>Search</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Search</em>'.
+     * @see org.limepepper.chefclipse.common.knife.KnifeSearch
+     * @generated
+     */
+    EClass getKnifeSearch();
 
-		// Initialize package
-		setName(eNAME);
-		setNsPrefix(eNS_PREFIX);
-		setNsURI(eNS_URI);
+    /**
+     * Returns the factory that creates the instances of the model.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the factory that creates the instances of the model.
+     * @generated
+     */
+    KnifeFactory getKnifeFactory();
 
-		// Create type parameters
+    /**
+     * <!-- begin-user-doc -->
+     * Defines literals for the meta objects that represent
+     * <ul>
+     *   <li>each class,</li>
+     *   <li>each feature of each class,</li>
+     *   <li>each enum,</li>
+     *   <li>and each data type</li>
+     * </ul>
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    interface Literals {
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl <em>Config</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl
+         * @see org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl#getKnifeConfig()
+         * @generated
+         */
+        EClass KNIFE_CONFIG = eINSTANCE.getKnifeConfig();
 
-		// Set bounds for type parameters
+        /**
+         * The meta object literal for the '<em><b>Plugins</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference KNIFE_CONFIG__PLUGINS = eINSTANCE.getKnifeConfig_Plugins();
 
-		// Add supertypes to classes
+        /**
+         * The meta object literal for the '<em><b>Cache type</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute KNIFE_CONFIG__CACHE_TYPE = eINSTANCE.getKnifeConfig_Cache_type();
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConfig_Plugins(), this.getPlugin(), null, "plugins", null, 0, -1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        /**
+         * The meta object literal for the '<em><b>Cache option</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute KNIFE_CONFIG__CACHE_OPTION = eINSTANCE.getKnifeConfig_Cache_option();
 
-		initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        /**
+         * The meta object literal for the '<em><b>Cookbook path</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute KNIFE_CONFIG__COOKBOOK_PATH = eINSTANCE.getKnifeConfig_Cookbook_path();
 
-		initEClass(knifeSearchEClass, KnifeSearch.class, "KnifeSearch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        /**
+         * The meta object literal for the '<em><b>Cookbook copyright</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute KNIFE_CONFIG__COOKBOOK_COPYRIGHT = eINSTANCE.getKnifeConfig_Cookbook_copyright();
 
-		// Create resource
-		createResource(eNS_URI);
-	}
+        /**
+         * The meta object literal for the '<em><b>Cookbook email</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute KNIFE_CONFIG__COOKBOOK_EMAIL = eINSTANCE.getKnifeConfig_Cookbook_email();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * Defines literals for the meta objects that represent
-	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
-	 * </ul>
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public interface Literals {
-		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.knife.Config <em>Config</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.knife.Config
-		 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getConfig()
-		 * @generated
-		 */
-		public static final EClass CONFIG = eINSTANCE.getConfig();
+        /**
+         * The meta object literal for the '<em><b>Cookbook license</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute KNIFE_CONFIG__COOKBOOK_LICENSE = eINSTANCE.getKnifeConfig_Cookbook_license();
 
-		/**
-		 * The meta object literal for the '<em><b>Plugins</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public static final EReference CONFIG__PLUGINS = eINSTANCE.getConfig_Plugins();
+        /**
+         * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute KNIFE_CONFIG__PATH = eINSTANCE.getKnifeConfig_Path();
 
-		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.knife.Plugin <em>Plugin</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.knife.Plugin
-		 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getPlugin()
-		 * @generated
-		 */
-		public static final EClass PLUGIN = eINSTANCE.getPlugin();
+        /**
+         * The meta object literal for the '<em><b>Server</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference KNIFE_CONFIG__SERVER = eINSTANCE.getKnifeConfig_Server();
 
-		/**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.knife.KnifeSearch <em>Search</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.knife.KnifeSearch
-		 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeSearch()
-		 * @generated
-		 */
-		public static final EClass KNIFE_SEARCH = eINSTANCE.getKnifeSearch();
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.knife.impl.PluginImpl <em>Plugin</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.knife.impl.PluginImpl
+         * @see org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl#getPlugin()
+         * @generated
+         */
+        EClass PLUGIN = eINSTANCE.getPlugin();
 
-	}
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.knife.impl.KnifeSearchImpl <em>Search</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.knife.impl.KnifeSearchImpl
+         * @see org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl#getKnifeSearch()
+         * @generated
+         */
+        EClass KNIFE_SEARCH = eINSTANCE.getKnifeSearch();
+
+    }
 
 } //KnifePackage
