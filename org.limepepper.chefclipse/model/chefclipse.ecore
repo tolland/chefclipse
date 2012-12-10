@@ -45,8 +45,8 @@
   <eClassifiers xsi:type="ecore:EDataType" name="Email" instanceClassName="java.lang.String"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Text" instanceClassName="java.lang.String"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="java.lang.String"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="Name" instanceTypeName="EString"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="Description" instanceTypeName="EString"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Name" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Description" instanceClassName="java.lang.Object"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>
   <eClassifiers xsi:type="ecore:EClass" name="Config">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="chef_server_url" lowerBound="1"
@@ -70,6 +70,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NameUrlDataType" instanceClassName="java.lang.Object"/>
   <eSubpackages name="chefserver" nsURI="http://limepepper.org/v1/chefclipse/chefserver"
       nsPrefix="org.limepepper.chefclipse.chefserver">
     <eClassifiers xsi:type="ecore:EClass" name="Environment"/>
@@ -81,6 +82,9 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="#//NamedDescribedObject"/>
     <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//NamedDescribedObject">
+      <eAnnotations source="JSON">
+        <details key="root" value="true"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="run_list" upperBound="-1"
           eType="#//chefserver/RunList" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//chefserver/Environment"/>

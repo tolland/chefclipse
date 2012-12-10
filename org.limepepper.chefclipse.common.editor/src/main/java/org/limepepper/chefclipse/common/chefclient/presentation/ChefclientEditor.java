@@ -1609,7 +1609,7 @@ public class ChefclientEditor
      */
     public void gotoMarker(IMarker marker) {
         try {
-            if (marker.isSubtypeOf(EValidator.MARKER)) {
+            if (marker.getType().equals(EValidator.MARKER)) {
                 String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
                 if (uriAttribute != null) {
                     URI uri = URI.createURI(uriAttribute);

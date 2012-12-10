@@ -30,12 +30,18 @@ public class ContributionItemDynamic extends CompoundContributionItem {
     @Override
     protected IContributionItem[] getContributionItems() {
 
+        System.err.println("in the api.ui");
+        
         IStructuredSelection selection = (IStructuredSelection) PlatformUI
                 .getWorkbench().getActiveWorkbenchWindow()
                 .getSelectionService().getSelection();
         if (selection == null)
             return new IContributionItem[] {};
 
+        
+
+        System.err.println("in the api.ui2");
+        
         Object item = selection.getFirstElement();
         // if (item instanceof IResource) {
 
@@ -71,6 +77,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
         List<IContributionItem> iContItems = new ArrayList<IContributionItem>();
         for (Entry<String, String> entry : menuItems.entrySet()) {
             iContItems.add(menuItem(entry));
+
         }
 
         remoteMenuItems.put("get.cookbook", "Get cookbook remote");
@@ -80,7 +87,6 @@ public class ContributionItemDynamic extends CompoundContributionItem {
             iContItems.add(menuItem(entry,
                     "org.limepepper.chefclipse.api.ui.popupContext"));
         }
-
         return iContItems.toArray(new IContributionItem[0]);
 
     }

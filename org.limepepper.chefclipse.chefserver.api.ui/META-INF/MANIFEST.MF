@@ -16,6 +16,12 @@ Require-Bundle: org.eclipse.ui,
  org.slf4j.api;bundle-version="1.6.4",
  org.slf4j.log4j;bundle-version="1.6.4",
  org.limepepper.chefclipse.common.ui;bundle-version="1.0.0",
- org.eclipselabs.emfjson.ui;bundle-version="0.5.0"
+ org.eclipselabs.emfjson.ui;bundle-version="0.5.0",
+ org.limepepper.chefclipse.common.edit;bundle-version="1.0.0",
+ org.junit
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.limepepper.chefclipse.chefserver.api.ui,
+ org.limepepper.chefclipse.chefserver.api.ui.editors,
+ org.limepepper.chefclipse.chefserver.api.ui.handler,
+ org.limepepper.chefclipse.chefserver.api.ui.preferences

@@ -36,24 +36,6 @@
          <dynamic
                class="org.limepepper.chefclipse.chefserver.api.ui.handler.ContributionItemDynamic"
                id="org.limepepper.chefclipse.api.ui.dynamic">
-        <visibleWhen checkEnabled="false">
-               <with
-                     variable="activeMenuSelection">
-                  <iterate>
-                     <or>
-                        <adapt
-                              type="org.eclipse.core.resources.IResource">
-                        </adapt>
-                        <adapt
-                              type="org.eclipse.emf.ecore.EObject">
-                        </adapt>
-                        <instanceof
-                              value="org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl">
-                        </instanceof>
-                     </or>
-                  </iterate>
-               </with>
-            </visibleWhen>
          </dynamic>
          </menu>
       </menuContribution>

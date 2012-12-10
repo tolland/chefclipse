@@ -107,6 +107,8 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
                 return createDescriptionFromString(eDataType, initialValue);
             case ChefclipsePackage.OBJECT:
                 return createObjectFromString(eDataType, initialValue);
+            case ChefclipsePackage.NAME_URL_DATA_TYPE:
+                return createNameUrlDataTypeFromString(eDataType, initialValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -138,6 +140,8 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
                 return convertDescriptionToString(eDataType, instanceValue);
             case ChefclipsePackage.OBJECT:
                 return convertObjectToString(eDataType, instanceValue);
+            case ChefclipsePackage.NAME_URL_DATA_TYPE:
+                return convertNameUrlDataTypeToString(eDataType, instanceValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -392,6 +396,24 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
      * @generated
      */
     public String convertObjectToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Object createNameUrlDataTypeFromString(EDataType eDataType, String initialValue) {
+        return super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertNameUrlDataTypeToString(EDataType eDataType, Object instanceValue) {
         return super.convertToString(eDataType, instanceValue);
     }
 

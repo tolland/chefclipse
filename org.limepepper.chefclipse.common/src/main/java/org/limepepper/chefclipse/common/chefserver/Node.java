@@ -24,7 +24,7 @@ import org.limepepper.chefclipse.common.cookbook.Attribute;
  * </p>
  *
  * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getNode()
- * @model
+ * @model annotation="JSON root='true'"
  * @generated
  */
 public interface Node extends NamedDescribedObject {

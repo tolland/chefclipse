@@ -555,6 +555,17 @@ public interface ChefclipsePackage extends EPackage {
 
 
     /**
+     * The meta object id for the '<em>Name Url Data Type</em>' data type.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see java.lang.Object
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNameUrlDataType()
+     * @generated
+     */
+    int NAME_URL_DATA_TYPE = 19;
+
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -985,6 +996,17 @@ public interface ChefclipsePackage extends EPackage {
     EDataType getObject();
 
     /**
+     * Returns the meta object for data type '{@link java.lang.Object <em>Name Url Data Type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for data type '<em>Name Url Data Type</em>'.
+     * @see java.lang.Object
+     * @model instanceClass="java.lang.Object"
+     * @generated
+     */
+    EDataType getNameUrlDataType();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1363,6 +1385,16 @@ public interface ChefclipsePackage extends EPackage {
          * @generated
          */
         EDataType OBJECT = eINSTANCE.getObject();
+
+        /**
+         * The meta object literal for the '<em>Name Url Data Type</em>' data type.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see java.lang.Object
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNameUrlDataType()
+         * @generated
+         */
+        EDataType NAME_URL_DATA_TYPE = eINSTANCE.getNameUrlDataType();
 
     }
 

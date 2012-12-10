@@ -87,6 +87,7 @@ package chefserver {
   class Role extends NamedDescribedObject {
   }
 
+  @JSON(root="true")
   class Node extends NamedDescribedObject {
     val RunList[*] run_list;
     ref Environment environment;

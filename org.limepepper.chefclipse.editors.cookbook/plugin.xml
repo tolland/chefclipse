@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            lightweight="true"
+            location="BOTTOM_RIGHT"
+            adaptable="true"
+            label="Resource Decorator"
+            icon="icons/sample_decorator.gif"
+            state="true"
+            id="org.limepepper.chefclipse.editors.cookbook.decorator">
+         <enablement>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IResource">
+               </objectClass>
+               <or>
+                  <objectClass
+                        name="org.eclipse.core.resources.IProject">
+                  </objectClass>
+                  <objectClass
+                        name="org.eclipse.core.resources.IFile">
+                  </objectClass>
+               </or>
+            </and>
+         </enablement>
+      </decorator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="CookbookMetadata Editor"
+            extensions="rb"
+            icon="icons/sample.gif"
+            contributorClass="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditorContributor"
+            class="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditor"
+            id="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="CookbookMetadata Wizard"
+            id="org.limepepper.chefclipse.editors.cookbook">
+      </category>
+      <wizard
+            name="CookbookMetadata Editor file"
+            icon="icons/sample.gif"
+            category="org.limepepper.chefclipse.editors.cookbook"
+            class="org.limepepper.chefclipse.editors.cookbook.wizards.CookbookMetadataNewWizard"
+            id="org.limepepper.chefclipse.editors.cookbook.wizards.CookbookMetadataNewWizard">
+      </wizard>
+   </extension>
+
+</plugin>

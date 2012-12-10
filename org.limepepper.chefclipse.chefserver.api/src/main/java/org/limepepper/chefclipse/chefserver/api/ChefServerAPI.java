@@ -18,7 +18,8 @@ import opscode.chef.REST.JSONRestWrapper;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.REST.ClientResp;
@@ -40,34 +41,37 @@ import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.jersey.api.client.ClientResponse;
 
 /**
- * 
+ *
  * @author tolland
  */
 public class ChefServerAPI implements IChefServerAPI {
 
     private JSONRestWrapper                        jSONRestWrapper;
-
+   static Logger                logger = LoggerFactory
+            .getLogger(ChefServerAPI.class);
     private static Map<KnifeConfig, ChefServerAPI> instances = new HashMap<KnifeConfig, ChefServerAPI>(
                                                                      1);
 
     /**
      * one instance of API per workstation Knife config object, keyed on the
      * KnifeConfig instance
-     * 
+     *
      * The Knifeconfig is KnifeConfig 0..1 ChefServer, so you should be able to
      * get menu actions and status from either, however KnifeConfig objects
      * might
      * yet to
      * be connected, and hence be closed..
-     * 
+     *
      * @param knifeConfig
      * @return
      */
-    public static ChefServerAPI getInstance(@NonNull KnifeConfig knifeConfig) {
+    public static ChefServerAPI getInstance(KnifeConfig knifeConfig) {
 
         if (!instances.containsKey(knifeConfig)) {
             ChefServerAPI chefServerAPI = new ChefServerAPI(knifeConfig);
@@ -76,6 +80,11 @@ public class ChefServerAPI implements IChefServerAPI {
         }
 
         return instances.get(knifeConfig);
+    }
+
+    public ChefServerAPI(){
+
+
     }
 
     public ChefServerAPI(Config config) {
@@ -397,13 +406,16 @@ public class ChefServerAPI implements IChefServerAPI {
 
     @Override
     public NameUrlMap getNodeList() {
-        
+
         Map<String, List<String>> query_params = new HashMap<String, List<String>>();
 
        JSONObject jsonObject = jSONRestWrapper.rest_get("/nodes/",  query_params);
         jSONRestWrapper.asFile(".cache.node-list-.json", jsonObject.toString());
+
+
+        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put("http", new JsResourceFactoryImpl());
+
         return null;
-        
     }
 
     @Override

@@ -650,6 +650,26 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
         initEClass(sandboxEClass, Sandbox.class, "Sandbox", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getSandbox_Checksum(), ecorePackage.getEString(), "checksum", null, 1, 1, Sandbox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getSandbox_Url(), theChefclipsePackage.getURL(), "url", null, 1, 1, Sandbox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        // Create annotations
+        // JSON
+        createJSONAnnotations();
+    }
+
+    /**
+     * Initializes the annotations for <b>JSON</b>.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void createJSONAnnotations() {
+        String source = "JSON";		
+        addAnnotation
+          (nodeEClass, 
+           source, 
+           new String[] {
+             "root", "true"
+           });
     }
 
 } //ChefserverPackageImpl

@@ -9,7 +9,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.limepepper.chefclipse.chefserver.api.ChefServerAPI;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +28,8 @@ public class ApiUiHandler extends AbstractHandler implements IHandler {
     @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
 
+        System.err.println("execturing the handler");
+
         IWorkbenchWindow window = HandlerUtil
                 .getActiveWorkbenchWindowChecked(event);
 
@@ -44,14 +45,13 @@ public class ApiUiHandler extends AbstractHandler implements IHandler {
             logger.info("made the call");
 
         } else if (name.equals("connect.chefserver")) {
-            
+
             if(item instanceof KnifeConfig){
-                logger.debug("got here");
-                ChefServerAPI.getInstance(((KnifeConfig)item)).connectChefServer();
-                
-                
+
+
+
             }
-            
+
         }
 
         return null;
@@ -59,12 +59,12 @@ public class ApiUiHandler extends AbstractHandler implements IHandler {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isHandled() {
-        return false;
+        return true;
     }
 
     @Override

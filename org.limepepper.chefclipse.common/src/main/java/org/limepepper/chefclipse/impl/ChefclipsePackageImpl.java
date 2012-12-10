@@ -177,6 +177,13 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
     private EDataType objectEDataType = null;
 
     /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType nameUrlDataTypeEDataType = null;
+
+    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
      * package URI value.
@@ -622,6 +629,15 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EDataType getNameUrlDataType() {
+        return nameUrlDataTypeEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public ChefclipseFactory getChefclipseFactory() {
         return (ChefclipseFactory)getEFactoryInstance();
     }
@@ -696,6 +712,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         nameEDataType = createEDataType(NAME);
         descriptionEDataType = createEDataType(DESCRIPTION);
         objectEDataType = createEDataType(OBJECT);
+        nameUrlDataTypeEDataType = createEDataType(NAME_URL_DATA_TYPE);
     }
 
     /**
@@ -797,6 +814,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         initEDataType(nameEDataType, Object.class, "Name", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(descriptionEDataType, Object.class, "Description", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(nameUrlDataTypeEDataType, Object.class, "NameUrlDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(eNS_URI);

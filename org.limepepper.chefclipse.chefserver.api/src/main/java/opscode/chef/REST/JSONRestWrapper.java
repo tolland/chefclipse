@@ -5,15 +5,11 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.SignatureException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
@@ -113,7 +109,7 @@ public class JSONRestWrapper {
 
         try {
             auth_headers = build_headers(method,
-                    new URL(url.toString() + path), headers, null, false);
+                    new URL(url.toString() + path), headers, null, false, auth);
 
             logger.debug("auth_headers:");
 
@@ -164,7 +160,7 @@ public class JSONRestWrapper {
         Map<String, String> auth_headers = null;
         try {
             auth_headers = build_headers(method,
-                    new URL(url.toString() + path), headers, null, false);
+                    new URL(url.toString() + path), headers, null, false, auth);
             for (String key : auth_headers.keySet()) {
                 builder.header(key, auth_headers.get(key));
             }
@@ -176,7 +172,28 @@ public class JSONRestWrapper {
 
     }
 
-    Map<String, String> authentication_headers(String method, URL url,
+    public static Map<String, String> authentication_headers(String method, URL url,
+            String json_body, AuthCredentials auth) {
+
+        Map<String, String> request_params = new HashMap<String, String>();
+        request_params.put("method", method);
+        request_params.put("path", url.getPath());
+        request_params.put("body", (json_body == null) ? "" : json_body);
+        request_params.put("host", url.getHost() + ":" + url.getPort());
+
+        try {
+
+            return auth.signature_headers(request_params);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return request_params;
+
+    }
+
+
+    public Map<String, String> authentication_headers(String method, URL url,
             String json_body) {
 
         Map<String, String> request_params = new HashMap<String, String>();
@@ -188,15 +205,37 @@ public class JSONRestWrapper {
         try {
 
             return auth.signature_headers(request_params);
-        } catch (SignatureException | IllegalBlockSizeException
-                | NoSuchPaddingException | BadPaddingException e) {
+            
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return request_params;
 
     }
 
-    Map<String, String> build_headers(String method, URL url,
+    public static Map<String, String> build_headers(String method, URL url,
+            Map<String, String> headers, String json_body, boolean raw, AuthCredentials auth) {
+
+        if (!raw)
+            headers.put("Accept", "application/json");
+
+        if (json_body != null) {
+            headers.put("Content-Type", "application/json");
+            headers.put("Content-Length", Integer.toString(json_body.length()));
+        }
+
+        Map<String, String> auth_headers = authentication_headers(method, url,
+                json_body, auth);
+
+        for (String key : auth_headers.keySet()) {
+            headers.put(key, auth_headers.get(key));
+        }
+
+        return headers;
+
+    }
+
+    public Map<String, String> build_headers(String method, URL url,
             Map<String, String> headers, String json_body, boolean raw) {
 
         if (!raw)
@@ -208,7 +247,7 @@ public class JSONRestWrapper {
         }
 
         Map<String, String> auth_headers = authentication_headers(method, url,
-                json_body);
+                json_body, auth);
 
         for (String key : auth_headers.keySet()) {
             headers.put(key, auth_headers.get(key));
