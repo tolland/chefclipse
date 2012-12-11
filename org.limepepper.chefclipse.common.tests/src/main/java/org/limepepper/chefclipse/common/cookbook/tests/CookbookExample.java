@@ -32,14 +32,14 @@ import org.limepepper.chefclipse.common.cookbook.util.CookbookResourceFactoryImp
  * @generated
  */
 public class CookbookExample {
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * Load all the argument file paths or URIs as instances of the model.
-     * <!-- end-user-doc -->
+	 * Load all the argument file paths or URIs as instances of the model.
+	 * <!-- end-user-doc -->
      * @param args the file paths or URIs.
      * @generated
      */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         // Create a resource set to hold the resources.
         //
         ResourceSet resourceSet = new ResourceSetImpl();
@@ -108,16 +108,16 @@ public class CookbookExample {
             }
         }
     }
-    
-    /**
+	
+	/**
      * <!-- begin-user-doc -->
-     * Prints diagnostics with indentation.
-     * <!-- end-user-doc -->
+	 * Prints diagnostics with indentation.
+	 * <!-- end-user-doc -->
      * @param diagnostic the diagnostic to print.
      * @param indent the indentation for printing.
      * @generated
      */
-    protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
+	protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
         System.out.print(indent);
         System.out.println(diagnostic.getMessage());
         for (Diagnostic child : diagnostic.getChildren()) {

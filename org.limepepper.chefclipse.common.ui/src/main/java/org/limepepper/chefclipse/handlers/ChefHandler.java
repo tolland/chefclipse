@@ -36,11 +36,14 @@ import org.slf4j.LoggerFactory;
  * @see org.eclipse.core.commands.AbstractHandler
  *
  */
+
+@SuppressWarnings("unused")
 public class ChefHandler extends AbstractHandler implements
         IObjectActionDelegate {
 
     private Logger           logger              = LoggerFactory
                                                          .getLogger(ChefHandler.class);
+
     private Shell            shell;
 
     // Constants for determining the type of progress. Subclasses may
@@ -83,13 +86,13 @@ public class ChefHandler extends AbstractHandler implements
             // would like gatekeeper all these checks.
             if (item instanceof IResource) {
 
-                ChefRepositoryManager.instance().resetRepository(
+                ChefRepositoryManager.INSTANCE.resetRepository(
                         (IResource) item);
 
             }
 
         } else if (name.equals("open.knifeconfig")) {
-            ChefRepositoryManager.instance().readInKnifeConfigs(
+            ChefRepositoryManager.INSTANCE.readInKnifeConfigs(
                     ((IResource) item).getProject());
 
         }

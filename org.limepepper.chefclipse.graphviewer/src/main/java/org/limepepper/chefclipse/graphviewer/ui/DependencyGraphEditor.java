@@ -43,7 +43,7 @@ import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManagerImpl;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
@@ -124,8 +124,8 @@ public class DependencyGraphEditor extends EditorPart implements
         graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);        
         
         IResource resource = ((DependencyGraphEditorInput) input).getResource();
-        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
-                .instance().getElement(resource);
+        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManagerImpl
+                .INSTANCE.getElement(resource);
 
         dependencyModel.setCookbook(cookbook);
         

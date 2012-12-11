@@ -9,13 +9,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.Properties;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.chefserver.api.ChefServerAPI;
-import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.NameUrlMap;
+import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
+import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.slf4j.Logger;
@@ -27,7 +27,7 @@ public class TestChefServerApi {
     private String        client_name;
     private File          client_key;
     private URL           chef_server_url;
-    private ChefServerAPI chefServerAPI;
+    KnifeConfigController api    = KnifeConfigController.INSTANCE;
     KnifeConfig           knifeConfig;
     Logger                logger = LoggerFactory
                                          .getLogger(TestChefServerApi.class);
@@ -60,11 +60,13 @@ public class TestChefServerApi {
         }
     }
 
+    ChefServerApi chefServer = null;
+
     @Test
     public void createServerObject() {
 
-        chefServerAPI = ChefServerAPI.getInstance(knifeConfig);
-        assertNotNull(chefServerAPI);
+        chefServer = api.getServer(knifeConfig);
+        assertNotNull(chefServer);
 
     }
 
@@ -72,12 +74,12 @@ public class TestChefServerApi {
     public void test() {
 
         String headerInfo;
-        if (chefServerAPI == null) {
+        if (chefServer == null) {
             createServerObject();
         }
-        assertNotNull(chefServerAPI);
+        assertNotNull(chefServer);
 
-        headerInfo = chefServerAPI.getServerInfo();
+        headerInfo = chefServer.getServerInfo();
 
         assertNotNull(headerInfo);
         System.out.println(headerInfo);
@@ -87,32 +89,19 @@ public class TestChefServerApi {
     @Test
     public void testGetListOfNodesName() throws Exception {
 
-        KnifeConfig knifeConfig;
-        String client_name;
-        File client_key;
-        URL chef_server_url;
         Properties props = new Properties();
         try {
-          FileInputStream fis = new FileInputStream("opscode-tests.properties");
+            FileInputStream fis = new FileInputStream(
+                    "opscode-tests.properties");
             props.load(fis);
-            client_name = props.getProperty("client_name");
-            client_key = new File(props.getProperty("client_key"));
-            chef_server_url = new URL(props.getProperty("chef_server_url"));
             fis.close();
-            knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-            knifeConfig.setChef_server_url(chef_server_url);
-            knifeConfig.setClient_key(client_key);
-            knifeConfig.setNode_name(client_name);
-            assertNotNull(props);
-            assertTrue(client_key.exists());
-            assertTrue(client_name.length() > 0);
+ 
 
-
-            List<Node> nodes = ChefServerAPI.getInstance(knifeConfig)
-                    .getNodes();
+            NameUrlMap nodes = api.getServer(knifeConfig).getNodeList();
+                    
 
             assertNotNull(nodes);
-            assertTrue(nodes.size() > 0);
+            assertTrue(nodes.getEntries().size() > 0);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

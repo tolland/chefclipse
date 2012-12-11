@@ -57,56 +57,6 @@ public interface ChefclipsePackage extends EPackage {
     ChefclipsePackage eINSTANCE = org.limepepper.chefclipse.impl.ChefclipsePackageImpl.init();
 
     /**
-     * The meta object id for the '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.limepepper.chefclipse.NamedDescribedObject
-     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNamedDescribedObject()
-     * @generated
-     */
-    int NAMED_DESCRIBED_OBJECT = 0;
-
-    /**
-     * The meta object id for the '{@link org.limepepper.chefclipse.impl.VersionedObjectImpl <em>Versioned Object</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.limepepper.chefclipse.impl.VersionedObjectImpl
-     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getVersionedObject()
-     * @generated
-     */
-    int VERSIONED_OBJECT = 1;
-
-    /**
-     * The meta object id for the '{@link org.limepepper.chefclipse.impl.SandboxedObjectImpl <em>Sandboxed Object</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.limepepper.chefclipse.impl.SandboxedObjectImpl
-     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getSandboxedObject()
-     * @generated
-     */
-    int SANDBOXED_OBJECT = 2;
-
-    /**
-     * The meta object id for the '{@link org.limepepper.chefclipse.impl.RubyFileImpl <em>Ruby File</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.limepepper.chefclipse.impl.RubyFileImpl
-     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getRubyFile()
-     * @generated
-     */
-    int RUBY_FILE = 3;
-
-    /**
-     * The meta object id for the '{@link org.limepepper.chefclipse.impl.NamedObjectImpl <em>Named Object</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.limepepper.chefclipse.impl.NamedObjectImpl
-     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNamedObject()
-     * @generated
-     */
-    int NAMED_OBJECT = 4;
-
-    /**
      * The meta object id for the '{@link org.limepepper.chefclipse.impl.DescribedObjectImpl <em>Described Object</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -133,6 +83,16 @@ public interface ChefclipsePackage extends EPackage {
      * @ordered
      */
     int DESCRIBED_OBJECT_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.NamedDescribedObject
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNamedDescribedObject()
+     * @generated
+     */
+    int NAMED_DESCRIBED_OBJECT = 0;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -171,6 +131,16 @@ public interface ChefclipsePackage extends EPackage {
     int NAMED_DESCRIBED_OBJECT_FEATURE_COUNT = DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.VersionedObjectImpl <em>Versioned Object</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.VersionedObjectImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getVersionedObject()
+     * @generated
+     */
+    int VERSIONED_OBJECT = 1;
+
+    /**
      * The feature id for the '<em><b>NUM VERSIONS</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -198,6 +168,16 @@ public interface ChefclipsePackage extends EPackage {
     int VERSIONED_OBJECT_FEATURE_COUNT = 2;
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.SandboxedObjectImpl <em>Sandboxed Object</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.SandboxedObjectImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getSandboxedObject()
+     * @generated
+     */
+    int SANDBOXED_OBJECT = 2;
+
+    /**
      * The feature id for the '<em><b>Url</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -216,6 +196,16 @@ public interface ChefclipsePackage extends EPackage {
     int SANDBOXED_OBJECT_FEATURE_COUNT = 1;
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.RubyFileImpl <em>Ruby File</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.RubyFileImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getRubyFile()
+     * @generated
+     */
+    int RUBY_FILE = 3;
+
+    /**
      * The feature id for the '<em><b>Extension</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -232,6 +222,16 @@ public interface ChefclipsePackage extends EPackage {
      * @ordered
      */
     int RUBY_FILE_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.NamedObjectImpl <em>Named Object</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.NamedObjectImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNamedObject()
+     * @generated
+     */
+    int NAMED_OBJECT = 4;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -445,13 +445,13 @@ public interface ChefclipsePackage extends EPackage {
     int NAME_URL_MAP = 9;
 
     /**
-     * The feature id for the '<em><b>Entry</b></em>' map.
+     * The feature id for the '<em><b>Entries</b></em>' map.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int NAME_URL_MAP__ENTRY = 0;
+    int NAME_URL_MAP__ENTRIES = 0;
 
     /**
      * The number of structural features of the '<em>Name Url Map</em>' class.
@@ -481,7 +481,6 @@ public interface ChefclipsePackage extends EPackage {
      * @generated
      */
     int FILE = 11;
-
 
     /**
      * The meta object id for the '<em>Chef type</em>' data type.
@@ -552,7 +551,6 @@ public interface ChefclipsePackage extends EPackage {
      * @generated
      */
     int OBJECT = 18;
-
 
     /**
      * The meta object id for the '<em>Name Url Data Type</em>' data type.
@@ -886,15 +884,15 @@ public interface ChefclipsePackage extends EPackage {
     EClass getNameUrlMap();
 
     /**
-     * Returns the meta object for the map '{@link org.limepepper.chefclipse.NameUrlMap#getEntry <em>Entry</em>}'.
+     * Returns the meta object for the map '{@link org.limepepper.chefclipse.NameUrlMap#getEntries <em>Entries</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the map '<em>Entry</em>'.
-     * @see org.limepepper.chefclipse.NameUrlMap#getEntry()
+     * @return the meta object for the map '<em>Entries</em>'.
+     * @see org.limepepper.chefclipse.NameUrlMap#getEntries()
      * @see #getNameUrlMap()
      * @generated
      */
-    EReference getNameUrlMap_Entry();
+    EReference getNameUrlMap_Entries();
 
     /**
      * Returns the meta object for data type '{@link java.net.URL <em>URL</em>}'.
@@ -1289,12 +1287,12 @@ public interface ChefclipsePackage extends EPackage {
         EClass NAME_URL_MAP = eINSTANCE.getNameUrlMap();
 
         /**
-         * The meta object literal for the '<em><b>Entry</b></em>' map feature.
+         * The meta object literal for the '<em><b>Entries</b></em>' map feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
          */
-        EReference NAME_URL_MAP__ENTRY = eINSTANCE.getNameUrlMap_Entry();
+        EReference NAME_URL_MAP__ENTRIES = eINSTANCE.getNameUrlMap_Entries();
 
         /**
          * The meta object literal for the '<em>URL</em>' data type.

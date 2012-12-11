@@ -18,6 +18,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jettison.json.JSONObject;
+import org.eclipse.jdt.annotation.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,15 +31,15 @@ import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 /**
- * 
+ *
  * this script maps some calls between the opscode mixlib-authentication lib
  * structure and the java requirements
- * 
+ *
  * provides a mapping to the calls handled by ruby rest libs
- * 
+ *
  * @author tomhodder
- * 
- * 
+ *
+ *
  */
 
 public class JSONRestWrapper {
@@ -47,14 +48,14 @@ public class JSONRestWrapper {
                                                     .getLogger(JSONRestWrapper.class);
 
     private WebResource     service;
-    private AuthCredentials auth;
+    private AuthCredentials auth = null;
     private URL             url;
 
     Map<String, String>     default_headers = new HashMap<String, String>();
 
     // static Map<String, String> config = new HashMap<String, String>();
 
-    public JSONRestWrapper(AuthCredentials auth, URL url) {
+    public JSONRestWrapper(@NonNull AuthCredentials auth, URL url) {
         this.auth = auth;
         this.url = url;
         ClientConfig cc = new DefaultClientConfig();
@@ -76,7 +77,7 @@ public class JSONRestWrapper {
      *            into the querystring
      * @return
      * @throws MalformedURLException
-     * 
+     *
      */
     @SuppressWarnings("deprecation")
     public JSONObject rest_get(String path, Map<String, List<String>> params) {
@@ -160,7 +161,7 @@ public class JSONRestWrapper {
         Map<String, String> auth_headers = null;
         try {
             auth_headers = build_headers(method,
-                    new URL(url.toString() + path), headers, null, false, auth);
+                    new URL(url.toString() + path), headers, null, false);
             for (String key : auth_headers.keySet()) {
                 builder.header(key, auth_headers.get(key));
             }
@@ -173,7 +174,7 @@ public class JSONRestWrapper {
     }
 
     public static Map<String, String> authentication_headers(String method, URL url,
-            String json_body, AuthCredentials auth) {
+            String json_body, @NonNull AuthCredentials auth) {
 
         Map<String, String> request_params = new HashMap<String, String>();
         request_params.put("method", method);
@@ -183,8 +184,10 @@ public class JSONRestWrapper {
 
         try {
 
-            return auth.signature_headers(request_params);
-            
+            return auth
+                    .signature_headers(
+                            request_params);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -205,7 +208,7 @@ public class JSONRestWrapper {
         try {
 
             return auth.signature_headers(request_params);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -214,7 +217,7 @@ public class JSONRestWrapper {
     }
 
     public static Map<String, String> build_headers(String method, URL url,
-            Map<String, String> headers, String json_body, boolean raw, AuthCredentials auth) {
+            Map<String, String> headers, String json_body, boolean raw, @NonNull AuthCredentials auth) {
 
         if (!raw)
             headers.put("Accept", "application/json");
@@ -247,7 +250,7 @@ public class JSONRestWrapper {
         }
 
         Map<String, String> auth_headers = authentication_headers(method, url,
-                json_body, auth);
+                json_body,  auth);
 
         for (String key : auth_headers.keySet()) {
             headers.put(key, auth_headers.get(key));

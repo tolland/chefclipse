@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RubyConsole Plug-in
 Bundle-SymbolicName: org.limepepper.eclipse.RubyConsole;singleton:=true
-Bundle-Version: 1.0.1
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: rubyconsole.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
  org.eclipse.core.resources,
- org.eclipse.ui.console;bundle-version="3.5.200"
+ org.eclipse.ui.console
 Eclipse-LazyStart: true
 Bundle-ClassPath: .,
  lib/bsf-2.4.0.jar,

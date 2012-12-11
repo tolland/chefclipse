@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>org.limepepper.chefclipse.navigator</name>
-	<comment></comment>
+	<comment>NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -25,4 +25,11 @@
 		<nature>org.eclipse.pde.PluginNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>junit.jar</name>
+			<type>1</type>
+			<location>/home/tomhodder/.m2/repository/.cache/tycho/org.junit-4.10.0.v4_10_0_v20120426-0900.jar/junit.jar</location>
+		</link>
+	</linkedResources>
 </projectDescription>

@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse;
 
 import java.io.File;
+
 import java.net.URL;
 
 import org.eclipse.emf.ecore.EObject;

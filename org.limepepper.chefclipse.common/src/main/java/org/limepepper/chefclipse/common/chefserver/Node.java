@@ -3,8 +3,11 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.limepepper.chefclipse.NamedDescribedObject;
+
 import org.limepepper.chefclipse.common.chefclient.Client;
+
 import org.limepepper.chefclipse.common.cookbook.Attribute;
 
 /**
@@ -39,7 +42,7 @@ public interface Node extends NamedDescribedObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Run list</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getNode_Run_list()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<RunList> getRun_list();

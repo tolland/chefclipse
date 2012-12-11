@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ui
+Bundle-Name: org.limepepper.chefclipse.common.ui
 Bundle-SymbolicName: org.limepepper.chefclipse.common.ui;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.common.ui.Activator
@@ -24,17 +24,56 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.model;bundle-version="1.0.0",
  org.eclipse.team.core;bundle-version="3.6.100",
  org.eclipse.team.core,
- org.limepepper.chefclipse.chefserver.api;bundle-version="1.0.0"
+ org.limepepper.chefclipse.chefserver.api;bundle-version="1.0.0",
+ org.junit4;bundle-version="4.8.1",
+ org.codehaus.jackson.core;bundle-version="1.9.5",
+ org.codehaus.jackson.mapper;bundle-version="1.9.5"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.limepepper.chefclipse.common.ui,
- org.limepepper.chefclipse.common.ui.builder,
- org.limepepper.chefclipse.common.ui.providers,
- org.limepepper.chefclipse.common.ui.resources,
- org.limepepper.chefclipse.handlers,
- org.limepepper.chefclipse.menu,
- org.limepepper.chefclipse.model.mapping,
- org.limepepper.chefclipse.navigator.testers
+ org.limepepper.chefclipse.common.ui.builder;
+  uses:="org.eclipse.jface.action,
+   org.eclipse.core.runtime,
+   org.eclipse.ui,
+   org.eclipse.core.resources,
+   org.eclipse.jface.viewers",
+ org.limepepper.chefclipse.common.ui.providers;
+  uses:="org.limepepper.chefclipse.common.workstation,
+   org.eclipse.core.resources,
+   org.limepepper.chefclipse.navigator.testers,
+   org.eclipse.emf.edit.provider,
+   org.eclipse.core.resources.mapping,
+   org.slf4j",
+ org.limepepper.chefclipse.common.ui.resources;
+  uses:="org.eclipse.emf.ecore.resource,
+   org.limepepper.chefclipse.common.workstation,
+   org.eclipse.core.runtime,
+   org.eclipse.emf.ecore,
+   org.limepepper.chefclipse,
+   org.limepepper.chefclipse.common.cookbook,
+   org.eclipse.core.resources,
+   org.limepepper.chefclipse.model,
+   org.slf4j",
+ org.limepepper.chefclipse.handlers;
+  uses:="org.eclipse.jface.action,
+   org.eclipse.core.runtime,
+   org.eclipse.compare,
+   org.eclipse.ui,
+   org.eclipse.core.resources,
+   org.eclipse.jface.viewers,
+   org.eclipse.core.commands",
+ org.limepepper.chefclipse.menu;
+  uses:="org.eclipse.jface.action,
+   org.limepepper.chefclipse.common.ui.resources,
+   org.eclipse.ui,
+   org.eclipse.ui.actions",
+ org.limepepper.chefclipse.model.mapping;
+  uses:="org.limepepper.chefclipse.common.workstation,
+   org.eclipse.core.runtime,
+   org.limepepper.chefclipse.common.cookbook,
+   org.eclipse.core.resources.mapping",
+ org.limepepper.chefclipse.navigator.testers;uses:="org.eclipse.core.expressions,org.eclipse.core.resources"
 Import-Package: org.eclipse.jface.text,
  org.eclipse.team.internal.ui,
  org.eclipse.ui.texteditor
+Bundle-ClassPath: .

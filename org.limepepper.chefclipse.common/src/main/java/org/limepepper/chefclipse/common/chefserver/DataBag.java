@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -62,7 +63,7 @@ public interface DataBag extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Items</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBag_Items()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<DataBagItem> getItems();

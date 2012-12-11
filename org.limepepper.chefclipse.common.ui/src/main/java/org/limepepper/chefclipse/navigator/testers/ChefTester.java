@@ -14,6 +14,7 @@ import org.limepepper.chefclipse.model.mapping.ChefResourceMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+@SuppressWarnings("unused")
 public class ChefTester extends PropertyTester {
 
     private static ChefTester instance = null;
@@ -41,14 +42,13 @@ public class ChefTester extends PropertyTester {
     }
 
     /**
-     * 
+     *
      * @todo so for debugging I let this run though to the end so I can print
      *       out
      *       result, but for perforamnce it should return immediately
-     * 
-     * 
+     *
+     *
      */
-    @SuppressWarnings("restriction")
     public boolean test(Object receiver, String property, Object[] args,
             Object expectedValue) {
         boolean result = false;

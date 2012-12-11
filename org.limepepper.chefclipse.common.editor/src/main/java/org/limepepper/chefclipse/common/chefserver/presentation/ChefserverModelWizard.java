@@ -94,100 +94,100 @@ import org.limepepper.chefclipse.common.editor.presentation.ChefclipseEditorPlug
  * @generated
  */
 public class ChefserverModelWizard extends Wizard implements INewWizard {
-    /**
+	/**
      * The supported extensions for created files.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public static final List<String> FILE_EXTENSIONS =
-        Collections.unmodifiableList(Arrays.asList(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverEditorFilenameExtensions").split("\\s*,\\s*")));
+	public static final List<String> FILE_EXTENSIONS =
+		Collections.unmodifiableList(Arrays.asList(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverEditorFilenameExtensions").split("\\s*,\\s*")));
 
-    /**
+	/**
      * A formatted list of supported file extensions, suitable for display.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public static final String FORMATTED_FILE_EXTENSIONS =
-        ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+	public static final String FORMATTED_FILE_EXTENSIONS =
+		ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
-    /**
+	/**
      * This caches an instance of the model package.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected ChefserverPackage chefserverPackage = ChefserverPackage.eINSTANCE;
+	protected ChefserverPackage chefserverPackage = ChefserverPackage.eINSTANCE;
 
-    /**
+	/**
      * This caches an instance of the model factory.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected ChefserverFactory chefserverFactory = chefserverPackage.getChefserverFactory();
+	protected ChefserverFactory chefserverFactory = chefserverPackage.getChefserverFactory();
 
-    /**
+	/**
      * This is the file creation page.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected ChefserverModelWizardNewFileCreationPage newFileCreationPage;
+	protected ChefserverModelWizardNewFileCreationPage newFileCreationPage;
 
-    /**
+	/**
      * This is the initial object creation page.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected ChefserverModelWizardInitialObjectCreationPage initialObjectCreationPage;
+	protected ChefserverModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
-    /**
+	/**
      * Remember the selection during initialization for populating the default container.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected IStructuredSelection selection;
+	protected IStructuredSelection selection;
 
-    /**
+	/**
      * Remember the workbench during initialization.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected IWorkbench workbench;
+	protected IWorkbench workbench;
 
-    /**
+	/**
      * Caches the names of the types that can be created as the root object.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected List<String> initialObjectNames;
+	protected List<String> initialObjectNames;
 
-    /**
+	/**
      * This just records the information.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public void init(IWorkbench workbench, IStructuredSelection selection) {
+	public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.workbench = workbench;
         this.selection = selection;
         setWindowTitle(ChefclipseEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
         setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(ChefclipseEditorPlugin.INSTANCE.getImage("full/wizban/NewChefserver")));
     }
 
-    /**
+	/**
      * Returns the names of the types that can be created as the root object.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected Collection<String> getInitialObjectNames() {
+	protected Collection<String> getInitialObjectNames() {
         if (initialObjectNames == null) {
             initialObjectNames = new ArrayList<String>();
             for (EClassifier eClassifier : chefserverPackage.getEClassifiers()) {
@@ -203,26 +203,26 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
         return initialObjectNames;
     }
 
-    /**
+	/**
      * Create a new model.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected EObject createInitialModel() {
+	protected EObject createInitialModel() {
         EClass eClass = (EClass)chefserverPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
         EObject rootObject = chefserverFactory.create(eClass);
         return rootObject;
     }
 
-    /**
+	/**
      * Do the work after everything is specified.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    @Override
-    public boolean performFinish() {
+	@Override
+	public boolean performFinish() {
         try {
             // Remember the file.
             //
@@ -306,31 +306,31 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
         }
     }
 
-    /**
+	/**
      * This is the one page of the wizard.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public class ChefserverModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
-        /**
+	public class ChefserverModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
+		/**
          * Pass in the selection.
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        public ChefserverModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
+		public ChefserverModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
             super(pageId, selection);
         }
 
-        /**
+		/**
          * The framework calls this to see if the file is correct.
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        @Override
-        protected boolean validatePage() {
+		@Override
+		protected boolean validatePage() {
             if (super.validatePage()) {
                 String extension = new Path(getFileName()).getFileExtension();
                 if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
@@ -343,60 +343,60 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
             return false;
         }
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        public IFile getModelFile() {
+		public IFile getModelFile() {
             return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
         }
-    }
+	}
 
-    /**
+	/**
      * This is the page where the type of object to create is selected.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public class ChefserverModelWizardInitialObjectCreationPage extends WizardPage {
-        /**
+	public class ChefserverModelWizardInitialObjectCreationPage extends WizardPage {
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        protected Combo initialObjectField;
+		protected Combo initialObjectField;
 
-        /**
+		/**
          * @generated
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          */
-        protected List<String> encodings;
+		protected List<String> encodings;
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        protected Combo encodingField;
+		protected Combo encodingField;
 
-        /**
+		/**
          * Pass in the selection.
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        public ChefserverModelWizardInitialObjectCreationPage(String pageId) {
+		public ChefserverModelWizardInitialObjectCreationPage(String pageId) {
             super(pageId);
         }
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        public void createControl(Composite parent) {
+		public void createControl(Composite parent) {
             Composite composite = new Composite(parent, SWT.NONE); {
                 GridLayout layout = new GridLayout();
                 layout.numColumns = 1;
@@ -463,34 +463,34 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
             setControl(composite);
         }
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        protected ModifyListener validator =
-            new ModifyListener() {
+		protected ModifyListener validator =
+			new ModifyListener() {
                 public void modifyText(ModifyEvent e) {
                     setPageComplete(validatePage());
                 }
             };
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        protected boolean validatePage() {
+		protected boolean validatePage() {
             return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
         }
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        @Override
-        public void setVisible(boolean visible) {
+		@Override
+		public void setVisible(boolean visible) {
             super.setVisible(visible);
             if (visible) {
                 if (initialObjectField.getItemCount() == 1) {
@@ -504,12 +504,12 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
             }
         }
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        public String getInitialObjectName() {
+		public String getInitialObjectName() {
             String label = initialObjectField.getText();
 
             for (String name : getInitialObjectNames()) {
@@ -520,22 +520,22 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
             return null;
         }
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        public String getEncoding() {
+		public String getEncoding() {
             return encodingField.getText();
         }
 
-        /**
+		/**
          * Returns the label for the specified type name.
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        protected String getLabel(String typeName) {
+		protected String getLabel(String typeName) {
             try {
                 return ChefclipseEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
             }
@@ -545,12 +545,12 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
             return typeName;
         }
 
-        /**
+		/**
          * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
          * @generated
          */
-        protected Collection<String> getEncodings() {
+		protected Collection<String> getEncodings() {
             if (encodings == null) {
                 encodings = new ArrayList<String>();
                 for (StringTokenizer stringTokenizer = new StringTokenizer(ChefclipseEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
@@ -559,16 +559,16 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
             }
             return encodings;
         }
-    }
+	}
 
-    /**
+	/**
      * The framework calls this to create the contents of the wizard.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-        @Override
-    public void addPages() {
+		@Override
+	public void addPages() {
         // Create a page, set the title, and the initial model file name.
         //
         newFileCreationPage = new ChefserverModelWizardNewFileCreationPage("Whatever", selection);
@@ -616,13 +616,13 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
         addPage(initialObjectCreationPage);
     }
 
-    /**
+	/**
      * Get the file from the page.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public IFile getModelFile() {
+	public IFile getModelFile() {
         return newFileCreationPage.getModelFile();
     }
 

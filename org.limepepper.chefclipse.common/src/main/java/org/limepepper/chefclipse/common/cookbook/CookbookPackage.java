@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
 
 /**
@@ -1512,6 +1513,7 @@ public interface CookbookPackage extends EPackage {
      */
     int COOKBOOK_FILE_FEATURE_COUNT = 1;
 
+
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion <em>Version</em>}'.
      * <!-- begin-user-doc -->
@@ -1521,28 +1523,6 @@ public interface CookbookPackage extends EPackage {
      * @generated
      */
     EClass getCookbookVersion();
-
-    /**
-     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getDepends <em>Depends</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the reference list '<em>Depends</em>'.
-     * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getDepends()
-     * @see #getCookbookVersion()
-     * @generated
-     */
-    EReference getCookbookVersion_Depends();
-
-    /**
-     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMissing <em>Missing</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the reference list '<em>Missing</em>'.
-     * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMissing()
-     * @see #getCookbookVersion()
-     * @generated
-     */
-    EReference getCookbookVersion_Missing();
 
     /**
      * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getEnvironment <em>Environment</em>}'.
@@ -1686,6 +1666,28 @@ public interface CookbookPackage extends EPackage {
      * @generated
      */
     EAttribute getCookbookVersion_Catalog();
+
+    /**
+     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getDepends <em>Depends</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Depends</em>'.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getDepends()
+     * @see #getCookbookVersion()
+     * @generated
+     */
+    EReference getCookbookVersion_Depends();
+
+    /**
+     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMissing <em>Missing</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Missing</em>'.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMissing()
+     * @see #getCookbookVersion()
+     * @generated
+     */
+    EReference getCookbookVersion_Missing();
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.Definition <em>Definition</em>}'.
@@ -2023,22 +2025,6 @@ public interface CookbookPackage extends EPackage {
         EClass COOKBOOK_VERSION = eINSTANCE.getCookbookVersion();
 
         /**
-         * The meta object literal for the '<em><b>Depends</b></em>' reference list feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EReference COOKBOOK_VERSION__DEPENDS = eINSTANCE.getCookbookVersion_Depends();
-
-        /**
-         * The meta object literal for the '<em><b>Missing</b></em>' reference list feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EReference COOKBOOK_VERSION__MISSING = eINSTANCE.getCookbookVersion_Missing();
-
-        /**
          * The meta object literal for the '<em><b>Environment</b></em>' reference feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2141,6 +2127,22 @@ public interface CookbookPackage extends EPackage {
          * @generated
          */
         EAttribute COOKBOOK_VERSION__CATALOG = eINSTANCE.getCookbookVersion_Catalog();
+
+        /**
+         * The meta object literal for the '<em><b>Depends</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference COOKBOOK_VERSION__DEPENDS = eINSTANCE.getCookbookVersion_Depends();
+
+        /**
+         * The meta object literal for the '<em><b>Missing</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference COOKBOOK_VERSION__MISSING = eINSTANCE.getCookbookVersion_Missing();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.DefinitionImpl <em>Definition</em>}' class.

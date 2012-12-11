@@ -3,6 +3,8 @@
 package org.limepepper.chefclipse.common.cookbook.util;
 
 import org.eclipse.emf.common.util.URI;
+
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 
 /**
@@ -12,7 +14,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
  * @see org.limepepper.chefclipse.common.cookbook.util.CookbookResourceFactoryImpl
  * @generated
  */
-public class CookbookResourceImpl extends ResourceImpl {
+public class CookbookResourceImpl extends XMIResourceImpl {
     /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->

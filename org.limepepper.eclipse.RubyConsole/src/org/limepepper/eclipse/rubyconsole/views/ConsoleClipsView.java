@@ -312,6 +312,6 @@ public class ConsoleClipsView extends ViewPart {
      * Passing the focus request to the viewer's control.
      */
     public void setFocus() {
-        viewer.getControl().setFocus();
+        //viewer.getControl().setFocus();
     }
 }

@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
+import org.limepepper.chefclipse.common.workstation.util.WorkstationResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,14 +31,14 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * @generated
  */
 public class WorkstationExample {
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * Load all the argument file paths or URIs as instances of the model.
-     * <!-- end-user-doc -->
+	 * Load all the argument file paths or URIs as instances of the model.
+	 * <!-- end-user-doc -->
      * @param args the file paths or URIs.
      * @generated
      */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         // Create a resource set to hold the resources.
         //
         ResourceSet resourceSet = new ResourceSetImpl();
@@ -46,7 +47,7 @@ public class WorkstationExample {
         //
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
             (Resource.Factory.Registry.DEFAULT_EXTENSION, 
-             new XMIResourceFactoryImpl());
+             new WorkstationResourceFactoryImpl());
 
         // Register the package to ensure it is available during loading.
         //
@@ -101,16 +102,16 @@ public class WorkstationExample {
             }
         }
     }
-    
-    /**
+	
+	/**
      * <!-- begin-user-doc -->
-     * Prints diagnostics with indentation.
-     * <!-- end-user-doc -->
+	 * Prints diagnostics with indentation.
+	 * <!-- end-user-doc -->
      * @param diagnostic the diagnostic to print.
      * @param indent the indentation for printing.
      * @generated
      */
-    protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
+	protected static void printDiagnostic(Diagnostic diagnostic, String indent) {
         System.out.print(indent);
         System.out.println(diagnostic.getMessage());
         for (Diagnostic child : diagnostic.getChildren()) {

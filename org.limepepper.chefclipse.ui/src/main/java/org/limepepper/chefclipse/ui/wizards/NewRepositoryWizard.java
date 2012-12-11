@@ -38,7 +38,7 @@ public class NewRepositoryWizard extends Wizard implements INewWizard {
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {										
-					//ChefRepositoryManager.instance().createChefRepository(repoName, location, container, monitor);															
+					//ChefRepositoryManagerImpl.instance().createChefRepository(repoName, location, container, monitor);															
 				} catch (Exception e) {
 					throw new InvocationTargetException(e);
 				} finally {

@@ -43,7 +43,7 @@ public class EmfJsonWrapperTest {
 
         try {
 
-            props.load(new FileInputStream("opscode-tests.properties"));
+            props.load(new FileInputStream("resources/opscode-tests.properties"));
 
             knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
             knifeConfig.setChef_server_url(new URL(props
@@ -70,6 +70,7 @@ public class EmfJsonWrapperTest {
 
     }
 
+    @SuppressWarnings("unused")
     @Test
     public void testGetNodes() {
         Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
@@ -104,10 +105,10 @@ public class EmfJsonWrapperTest {
 
             NameUrlMap user = (NameUrlMap) resource.getContents().get(0);
 
-            assertTrue(user.getEntry() != null);
-            System.out.println("number of items was" + user.getEntry().size());
+            assertTrue(user.getEntries() != null);
+            System.out.println("number of items was" + user.getEntries().size());
 
-            for (Entry<String, String> iterable_element : user.getEntry()) {
+            for (Entry<String, String> iterable_element : user.getEntries()) {
                 System.out.println(iterable_element.getKey() + ":val:"
                         + iterable_element.getValue());
             }

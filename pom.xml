@@ -21,11 +21,6 @@
             <layout>p2</layout>
         </repository>
         <repository>
-            <id>jackson-p2</id>
-            <layout>p2</layout>
-            <url>http://ghillairet.github.com/p2/jackson/update-site/releases</url>
-        </repository>
-        <repository>
             <id>emfjson-p2</id>
             <layout>p2</layout>
             <url>http://ghillairet.github.com/p2</url>
@@ -39,11 +34,6 @@
             <id>zest2-p2</id>
             <layout>p2</layout>
             <url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>
-        </repository>
-        <repository>
-            <id>orbit-p2</id>
-            <layout>p2</layout>
-            <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/</url>
         </repository>
     </repositories>
 
@@ -78,6 +68,9 @@
         <module>org.limepepper.chefclipse.remotepicker.repositories</module>
         <module>org.limepepper.chefclipse.remotepicker.extpoint</module>
         <module>org.limepepper.chefclipse.remotepicker.ui</module>
+        <module>org.limepepper.chefclipse.remotepicker.test</module>
+        <module>org.limepepper.eclipse.RubyConsole</module>
+        <module>com.sun.jersey.bundle</module>
         
         
     </modules>

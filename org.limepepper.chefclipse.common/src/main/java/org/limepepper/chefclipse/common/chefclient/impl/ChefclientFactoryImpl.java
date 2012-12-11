@@ -5,15 +5,12 @@ package org.limepepper.chefclipse.common.chefclient.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.limepepper.chefclipse.common.chefclient.*;
-import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
-import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-import org.limepepper.chefclipse.common.chefclient.Client;
-import org.limepepper.chefclipse.common.chefclient.ClientConfig;
-import org.limepepper.chefclipse.common.chefclient.Ohai;
-import org.limepepper.chefclipse.common.chefclient.Search;
 
 /**
  * <!-- begin-user-doc -->

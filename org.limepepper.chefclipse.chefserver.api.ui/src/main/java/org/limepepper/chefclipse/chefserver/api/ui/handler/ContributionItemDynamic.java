@@ -22,7 +22,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
                                                         .getActiveWorkbenchWindow();
 
     ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager
-                                                        .instance();
+                                                        .INSTANCE;
 
     Map<String, String>   menuItems             = new HashMap<String, String>();
     Map<String, String>   remoteMenuItems       = new HashMap<String, String>();
@@ -31,17 +31,17 @@ public class ContributionItemDynamic extends CompoundContributionItem {
     protected IContributionItem[] getContributionItems() {
 
         System.err.println("in the api.ui");
-        
+
         IStructuredSelection selection = (IStructuredSelection) PlatformUI
                 .getWorkbench().getActiveWorkbenchWindow()
                 .getSelectionService().getSelection();
         if (selection == null)
             return new IContributionItem[] {};
 
-        
+
 
         System.err.println("in the api.ui2");
-        
+
         Object item = selection.getFirstElement();
         // if (item instanceof IResource) {
 

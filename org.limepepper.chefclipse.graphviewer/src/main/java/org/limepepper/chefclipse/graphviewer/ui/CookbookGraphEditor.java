@@ -115,7 +115,7 @@ public class CookbookGraphEditor extends EditorPart implements
 
         IResource resource = ((CookbookGraphEditorInput) input).getResource();
         CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
-                .instance().getElement(resource);
+                .INSTANCE.getElement(resource);
 
         DrawableCookbook drawableCookbook = new DrawableCookbook(cookbook);
 

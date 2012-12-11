@@ -3,9 +3,12 @@
 package org.limepepper.chefclipse.common.chefclient.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.Client;
+
 import org.limepepper.chefclipse.common.chefserver.Server;
 
 /**

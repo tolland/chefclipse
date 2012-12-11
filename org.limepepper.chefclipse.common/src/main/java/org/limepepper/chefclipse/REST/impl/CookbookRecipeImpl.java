@@ -3,7 +3,9 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.REST.CookbookRecipe;
 import org.limepepper.chefclipse.REST.RESTPackage;
 

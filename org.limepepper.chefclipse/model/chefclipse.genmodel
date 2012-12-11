@@ -7,10 +7,11 @@
     editorPluginClass="org.limepepper.chefclipse.common.editor.presentation.ChefclipseEditorPlugin"
     featureMapWrapperInterface="" reflectiveDelegation="true" testsDirectory="/org.limepepper.chefclipse.common.tests/src/main/java"
     testSuiteClass="org.limepepper.chefclipse.common.tests.ChefclipseAllTests" importerID="org.eclipse.emf.importer.ecore"
-    featureDelegation="Reflective" complianceLevel="6.0" copyrightFields="false" publicConstructors="true"
-    providerRootExtendsClass="" runtimeVersion="2.8">
+    featureDelegation="Reflective" containmentProxies="true" complianceLevel="6.0"
+    copyrightFields="false" publicConstructors="true" providerRootExtendsClass=""
+    runtimeVersion="2.8">
   <foreignModel>chefclipse.ecore</foreignModel>
-  <genPackages prefix="Chefclipse" basePackage="org.limepepper" resource="Basic" disposableProviderFactory="true"
+  <genPackages prefix="Chefclipse" basePackage="org.limepepper" resource="XMI" disposableProviderFactory="true"
       childCreationExtenders="true" ecorePackage="chefclipse.ecore#/">
     <genDataTypes ecoreDataType="chefclipse.ecore#//URL"/>
     <genDataTypes ecoreDataType="chefclipse.ecore#//File"/>
@@ -21,6 +22,7 @@
     <genDataTypes ecoreDataType="chefclipse.ecore#//Name"/>
     <genDataTypes ecoreDataType="chefclipse.ecore#//Description"/>
     <genDataTypes ecoreDataType="chefclipse.ecore#//Object"/>
+    <genDataTypes ecoreDataType="chefclipse.ecore#//NameUrlDataType"/>
     <genClasses image="false" ecoreClass="chefclipse.ecore#//NamedDescribedObject"/>
     <genClasses ecoreClass="chefclipse.ecore#//VersionedObject">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//VersionedObject/NUM_VERSIONS"/>
@@ -59,10 +61,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//Config/validation_client_name"/>
     </genClasses>
     <genClasses ecoreClass="chefclipse.ecore#//NameUrlMap">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//NameUrlMap/entry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//NameUrlMap/entries"/>
     </genClasses>
     <nestedGenPackages prefix="Chefserver" basePackage="org.limepepper.chefclipse.common"
-        disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefserver">
+        resource="XMI" disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefserver">
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/Environment"/>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/DataBag">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/DataBag/server"/>
@@ -119,7 +121,7 @@
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Chefclient" basePackage="org.limepepper.chefclipse.common"
-        disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefclient">
+        resource="XMI" disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefclient">
       <genClasses ecoreClass="chefclipse.ecore#//chefclient/Client">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//chefclient/Client/server"/>
@@ -129,7 +131,7 @@
       <genClasses ecoreClass="chefclipse.ecore#//chefclient/ClientConfig"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Cookbook" basePackage="org.limepepper.chefclipse.common"
-        resource="Basic" disposableProviderFactory="true" extensibleProviderFactory="true"
+        resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
         childCreationExtenders="true" contentTypeIdentifier="org.limepepper.chefclipse.content-types.cookbook"
         ecorePackage="chefclipse.ecore#//cookbook">
       <genClasses provider="Stateful" ecoreClass="chefclipse.ecore#//cookbook/CookbookVersion">
@@ -191,8 +193,8 @@
       </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Workstation" basePackage="org.limepepper.chefclipse.common"
-        disposableProviderFactory="true" childCreationExtenders="true" contentTypeIdentifier=""
-        ecorePackage="chefclipse.ecore#//workstation">
+        resource="XMI" disposableProviderFactory="true" childCreationExtenders="true"
+        contentTypeIdentifier="" ecorePackage="chefclipse.ecore#//workstation">
       <genClasses ecoreClass="chefclipse.ecore#//workstation/Repository">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//workstation/Repository/OS"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//workstation/Repository/basepath"/>
@@ -210,7 +212,8 @@
       <genClasses ecoreClass="chefclipse.ecore#//workstation/Rakefile"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Knife" basePackage="org.limepepper.chefclipse.common"
-        disposableProviderFactory="true" multipleEditorPages="false" ecorePackage="chefclipse.ecore#//knife">
+        resource="XMI" disposableProviderFactory="true" multipleEditorPages="false"
+        ecorePackage="chefclipse.ecore#//knife">
       <genClasses ecoreClass="chefclipse.ecore#//knife/KnifeConfig">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//knife/KnifeConfig/plugins"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//knife/KnifeConfig/cache_type"/>
@@ -226,8 +229,8 @@
       <genClasses ecoreClass="chefclipse.ecore#//knife/Plugin"/>
       <genClasses ecoreClass="chefclipse.ecore#//knife/KnifeSearch"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="REST" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
-        ecorePackage="chefclipse.ecore#//REST">
+    <nestedGenPackages prefix="REST" basePackage="org.limepepper.chefclipse" resource="XMI"
+        disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//REST">
       <genClasses ecoreClass="chefclipse.ecore#//REST/CookbookListResp">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//REST/CookbookListResp/name"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//REST/CookbookListResp/versions"/>

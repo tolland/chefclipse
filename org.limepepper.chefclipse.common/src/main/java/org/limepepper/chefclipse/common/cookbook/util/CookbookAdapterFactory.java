@@ -4,8 +4,11 @@ package org.limepepper.chefclipse.common.cookbook.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
@@ -13,25 +16,8 @@ import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
+
 import org.limepepper.chefclipse.common.cookbook.*;
-import org.limepepper.chefclipse.common.cookbook.Attribute;
-import org.limepepper.chefclipse.common.cookbook.Attributes;
-import org.limepepper.chefclipse.common.cookbook.CookbookFile;
-import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.cookbook.Definition;
-import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
-import org.limepepper.chefclipse.common.cookbook.File;
-import org.limepepper.chefclipse.common.cookbook.Library;
-import org.limepepper.chefclipse.common.cookbook.Metadata;
-import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
-import org.limepepper.chefclipse.common.cookbook.Name;
-import org.limepepper.chefclipse.common.cookbook.Provider;
-import org.limepepper.chefclipse.common.cookbook.Recipe;
-import org.limepepper.chefclipse.common.cookbook.RecipeDescription;
-import org.limepepper.chefclipse.common.cookbook.Resource;
-import org.limepepper.chefclipse.common.cookbook.Root_file;
-import org.limepepper.chefclipse.common.cookbook.Template;
 
 /**
  * <!-- begin-user-doc -->
@@ -458,6 +444,20 @@ public class CookbookAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedObject <em>Named Object</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.NamedObject
+     * @generated
+     */
+    public Adapter createNamedObjectAdapter() {
+        return null;
+    }
+
+    /**
      * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -486,16 +486,16 @@ public class CookbookAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedObject <em>Named Object</em>}'.
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.ChecksumFile <em>Checksum File</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * @return the new adapter.
-     * @see org.limepepper.chefclipse.NamedObject
+     * @see org.limepepper.chefclipse.ChecksumFile
      * @generated
      */
-    public Adapter createNamedObjectAdapter() {
+    public Adapter createChecksumFileAdapter() {
         return null;
     }
 
@@ -524,20 +524,6 @@ public class CookbookAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createMaintainedObjectAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.ChecksumFile <em>Checksum File</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * @return the new adapter.
-     * @see org.limepepper.chefclipse.ChecksumFile
-     * @generated
-     */
-    public Adapter createChecksumFileAdapter() {
         return null;
     }
 

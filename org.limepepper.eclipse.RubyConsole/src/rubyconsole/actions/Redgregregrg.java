@@ -1,30 +1,26 @@
 package rubyconsole.actions;
 
-import java.security.Permission;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.IWorkbenchWindowActionDelegate;
+import org.eclipse.ui.actions.ActionDelegate;
 
 import rubyconsole.IRBchefconsole;
 
-public class Redgregregrg implements IWorkbenchWindowActionDelegate {
+public class Redgregregrg extends ActionDelegate {
 
-    protected static class ExitException extends SecurityException {
+/*    protected static class ExitException extends SecurityException {
         public final int status;
 
         public ExitException(int status) {
             super("There is no escape!");
             this.status = status;
         }
-    }
+    }*/
 
-    private static class NoExitSecurityManager extends SecurityManager {
+/*    private static class NoExitSecurityManager extends SecurityManager {
         @Override
         public void checkPermission(Permission perm) {
             // allow anything.
@@ -40,7 +36,7 @@ public class Redgregregrg implements IWorkbenchWindowActionDelegate {
             super.checkExit(status);
             throw new ExitException(status);
         }
-    }
+    }*/
 
     @Override
     public void run(IAction action) {
@@ -67,14 +63,14 @@ public class Redgregregrg implements IWorkbenchWindowActionDelegate {
                 // org.jruby.Main.main(new String[] { "-S", "jirb_swing" });
 
               //  System.setSecurityManager(new NoExitSecurityManager());
-                try {
+                //try {
                   //  IRBConsole irb = new IRBConsole("Chefclipse IRB console");
 
                     IRBchefconsole.main(new String[] {});
-                } catch (ExitException e) {
-                    System.out.println("Exit status: "+ 42 +" :"+ e.status);
-                }
-                System.setSecurityManager(null);
+              //  } catch (ExitException e) {
+             //       System.out.println("Exit status: "+ 42 +" :"+ e.status);
+            //    }
+              //  System.setSecurityManager(null);
 
                 return Status.OK_STATUS;
             }
@@ -85,16 +81,6 @@ public class Redgregregrg implements IWorkbenchWindowActionDelegate {
 
     }
 
-    @Override
-    public void selectionChanged(IAction action, ISelection selection) {
-    }
 
-    @Override
-    public void dispose() {
-    }
-
-    @Override
-    public void init(IWorkbenchWindow window) {
-    }
 
 }

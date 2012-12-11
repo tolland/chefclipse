@@ -3,9 +3,11 @@
 package org.limepepper.chefclipse.common.chefserver.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+
 import org.limepepper.chefclipse.impl.NamedObjectImpl;
 
 /**

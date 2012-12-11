@@ -5,11 +5,15 @@ package org.limepepper.chefclipse.common.knife.impl;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.common.chefserver.Server;
+
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.Plugin;
+
 import org.limepepper.chefclipse.impl.ConfigImpl;
 
 /**

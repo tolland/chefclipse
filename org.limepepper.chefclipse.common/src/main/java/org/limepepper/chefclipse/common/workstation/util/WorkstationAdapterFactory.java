@@ -4,20 +4,16 @@ package org.limepepper.chefclipse.common.workstation.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
+
 import org.limepepper.chefclipse.common.workstation.*;
-import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
-import org.limepepper.chefclipse.common.workstation.ConfigFolder;
-import org.limepepper.chefclipse.common.workstation.DataBagsFolder;
-import org.limepepper.chefclipse.common.workstation.EnvironmentsFolder;
-import org.limepepper.chefclipse.common.workstation.Rakefile;
-import org.limepepper.chefclipse.common.workstation.Repository;
-import org.limepepper.chefclipse.common.workstation.RolesFolder;
-import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -248,20 +244,6 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * @return the new adapter.
-     * @see org.limepepper.chefclipse.NamedDescribedObject
-     * @generated
-     */
-    public Adapter createNamedDescribedObjectAdapter() {
-        return null;
-    }
-
-    /**
      * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedObject <em>Named Object</em>}'.
      * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -272,6 +254,20 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createNamedObjectAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.NamedDescribedObject
+     * @generated
+     */
+    public Adapter createNamedDescribedObjectAdapter() {
         return null;
     }
 

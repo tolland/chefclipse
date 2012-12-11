@@ -12,7 +12,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -20,11 +20,11 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.limepepper.chefclipse.ChefclipsePackage;
 
+import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NameUrlMap;
+
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 
 /**
@@ -78,7 +78,7 @@ public class NameUrlMapItemProvider
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(ChefclipsePackage.Literals.NAME_URL_MAP__ENTRY);
+            childrenFeatures.add(ChefclipsePackage.Literals.NAME_URL_MAP__ENTRIES);
         }
         return childrenFeatures;
     }
@@ -130,7 +130,7 @@ public class NameUrlMapItemProvider
         updateChildren(notification);
 
         switch (notification.getFeatureID(NameUrlMap.class)) {
-            case ChefclipsePackage.NAME_URL_MAP__ENTRY:
+            case ChefclipsePackage.NAME_URL_MAP__ENTRIES:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
         }

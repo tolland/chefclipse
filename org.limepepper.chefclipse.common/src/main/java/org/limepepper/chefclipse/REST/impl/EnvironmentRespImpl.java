@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.REST.EnvironmentResp;
 import org.limepepper.chefclipse.REST.RESTPackage;
 

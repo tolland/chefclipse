@@ -43,7 +43,7 @@ public class ChefServerURIHandler extends URIHandlerImpl {
  * throw new IllegalArgumentException("DataBase does not exist");
  * }
  */
-        return new JsInputStream(uri, options) {
+        JsInputStream is = new JsInputStream(uri, options) {
             @Override
             public void loadResource(Resource resource) throws IOException {
 
@@ -60,6 +60,16 @@ public class ChefServerURIHandler extends URIHandlerImpl {
                 }
             }
         };
+
+        if (options != null) {
+            final KnifeConfig knifeConfig = (KnifeConfig) options.get("knifeConfig");
+            if (knifeConfig != null) {
+                final HttpURLConnection connection = getGetConnection(new ChefRequest(
+                        uri, knifeConfig));
+                return connection.getInputStream();
+            }
+        }
+        return null;
     }
 
 /*

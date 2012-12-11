@@ -9,31 +9,45 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipseFactory;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
-import org.limepepper.chefclipse.NameUrlList;
 import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
+
+import org.limepepper.chefclipse.REST.RESTPackage;
+
+import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
+
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.VersionedObject;
-import org.limepepper.chefclipse.REST.RESTPackage;
-import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
+
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
+
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
+
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+
 import org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+
 import org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl;
+
 import org.limepepper.chefclipse.common.knife.KnifePackage;
+
 import org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl;
+
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
+
 import org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl;
 
 /**
@@ -539,7 +553,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
-    public EReference getNameUrlMap_Entry() {
+    public EReference getNameUrlMap_Entries() {
         return (EReference)nameUrlMapEClass.getEStructuralFeatures().get(0);
     }
 
@@ -700,7 +714,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         createEAttribute(configEClass, CONFIG__VALIDATION_CLIENT_NAME);
 
         nameUrlMapEClass = createEClass(NAME_URL_MAP);
-        createEReference(nameUrlMapEClass, NAME_URL_MAP__ENTRY);
+        createEReference(nameUrlMapEClass, NAME_URL_MAP__ENTRIES);
 
         // Create data types
         urlEDataType = createEDataType(URL);
@@ -802,7 +816,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         initEAttribute(getConfig_Validation_client_name(), ecorePackage.getEString(), "validation_client_name", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(nameUrlMapEClass, NameUrlMap.class, "NameUrlMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getNameUrlMap_Entry(), ecorePackage.getEStringToStringMapEntry(), null, "entry", null, 0, -1, NameUrlMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getNameUrlMap_Entries(), ecorePackage.getEStringToStringMapEntry(), null, "entries", null, 0, -1, NameUrlMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize data types
         initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -833,7 +847,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
     protected void createJSONAnnotations() {
         String source = "JSON";		
         addAnnotation
-          (getNameUrlMap_Entry(), 
+          (getNameUrlMap_Entries(), 
            source, 
            new String[] {
              "AnonRoot", "true"

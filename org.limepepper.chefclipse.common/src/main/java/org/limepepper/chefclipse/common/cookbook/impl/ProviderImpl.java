@@ -5,13 +5,16 @@ package org.limepepper.chefclipse.common.cookbook.impl;
 import java.net.URL;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Provider;
+
 import org.limepepper.chefclipse.impl.ChecksumFileImpl;
 
 /**

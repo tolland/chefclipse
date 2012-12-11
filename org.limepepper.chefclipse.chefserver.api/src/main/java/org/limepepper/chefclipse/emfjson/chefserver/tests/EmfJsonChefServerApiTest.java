@@ -29,6 +29,7 @@ import org.junit.Test;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.emfjson.chefserver.ChefServerURIHandler;
@@ -54,7 +55,7 @@ public class EmfJsonChefServerApiTest {
 
         try {
 
-            props.load(new FileInputStream("opscode-tests.properties"));
+            props.load(new FileInputStream("resources/opscode-tests.properties"));
 
             knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
             knifeConfig.setChef_server_url(new URL(props
@@ -81,10 +82,13 @@ public class EmfJsonChefServerApiTest {
     @Test
     public void testNoAuthenticatedRequest() {
 
+        int responseCode = 0;
+        String responseMessage;
+
         if (knifeConfig == null)
             return;
 
-        URI uri = URI.createURI(knifeConfig.getChef_server_url().toString());
+        URI uri = URI.createURI(knifeConfig.getChef_server_url().toString()+"/nodes");
         try {
 
             ChefServerClient
@@ -93,12 +97,17 @@ public class EmfJsonChefServerApiTest {
                     uri, knifeConfig));
             InputStream inStream = connection.getInputStream();
 
+            responseCode = connection.getResponseCode();
+
+            logger.debug("response code was", connection.getResponseCode());
         } catch (IOException e) {
-            // e.printStackTrace();
-            assertTrue(e.getMessage().contains("response code: 401"));
+            e.printStackTrace();
+
+            logger.debug("message was", e.getMessage());
         } finally {
 
         }
+        assertTrue(responseCode==401);
     }
 
     @Test
@@ -204,10 +213,11 @@ public class EmfJsonChefServerApiTest {
 
             NameUrlMap user = (NameUrlMap) resource.getContents().get(0);
 
-            assertTrue(user.getEntry() != null);
-            System.out.println("number of items was" + user.getEntry().size());
+            assertTrue(user.getEntries() != null);
+            System.out
+                    .println("number of items was" + user.getEntries().size());
 
-            for (Entry<String, String> iterable_element : user.getEntry()) {
+            for (Entry<String, String> iterable_element : user.getEntries()) {
                 System.out.println(iterable_element.getKey() + ":val:"
                         + iterable_element.getValue());
             }
@@ -224,6 +234,10 @@ public class EmfJsonChefServerApiTest {
     public void testDeserializeNodeUsingUriHandler() throws Exception {
 
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
+                "http", new JsResourceFactoryImpl());
+
+
+        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "https", new JsResourceFactoryImpl());
 
         options.put(EMFJs.OPTION_ROOT_ELEMENT,
@@ -234,13 +248,18 @@ public class EmfJsonChefServerApiTest {
         resourceSet.getURIConverter().getURIHandlers()
                 .add(0, new ChefServerURIHandler());
 
-        URI uri = URI.createURI(knifeConfig.getChef_server_url().toString()+"/node/test1");
+        URI uri = URI.createURI(knifeConfig.getChef_server_url().toString()
+                + "/nodes/test1");
 
         Resource resource = resourceSet.createResource(uri);
 
         assertNotNull(resource);
 
         resource.load(options);
+
+        Node node = (Node) resource.getContents().get(0);
+
+        assertTrue(node.getName().equals("test1"));
 
     }
 

@@ -3,6 +3,8 @@
 package org.limepepper.chefclipse.util;
 
 import org.eclipse.emf.common.util.URI;
+
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 
 /**
@@ -12,7 +14,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
  * @see org.limepepper.chefclipse.util.ChefclipseResourceFactoryImpl
  * @generated
  */
-public class ChefclipseResourceImpl extends ResourceImpl {
+public class ChefclipseResourceImpl extends XMIResourceImpl {
     /**
      * Creates an instance of the resource.
      * <!-- begin-user-doc -->

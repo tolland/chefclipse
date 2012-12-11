@@ -3,8 +3,11 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.limepepper.chefclipse.common.chefclient.Client;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
@@ -45,7 +48,7 @@ public interface Server extends EObject {
      * @see #isSetCookbooks()
      * @see #unsetCookbooks()
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Cookbooks()
-     * @model containment="true" unsettable="true"
+     * @model containment="true" resolveProxies="true" unsettable="true"
      * @generated
      */
     EList<CookbookVersion> getCookbooks();
@@ -82,7 +85,7 @@ public interface Server extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Roles</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Roles()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<Role> getRoles();
@@ -98,7 +101,7 @@ public interface Server extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Nodes</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Nodes()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<Node> getNodes();
@@ -116,7 +119,7 @@ public interface Server extends EObject {
      * @return the value of the '<em>Databags</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Databags()
      * @see org.limepepper.chefclipse.common.chefserver.DataBag#getServer
-     * @model opposite="server" containment="true"
+     * @model opposite="server" containment="true" resolveProxies="true"
      * @generated
      */
     EList<DataBag> getDatabags();
@@ -132,7 +135,7 @@ public interface Server extends EObject {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Environments</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_Environments()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<Environment> getEnvironments();

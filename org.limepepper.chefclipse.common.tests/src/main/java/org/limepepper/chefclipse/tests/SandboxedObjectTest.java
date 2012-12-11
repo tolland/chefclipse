@@ -17,72 +17,72 @@ import org.limepepper.chefclipse.SandboxedObject;
  */
 public class SandboxedObjectTest extends TestCase {
 
-    /**
+	/**
      * The fixture for this Sandboxed Object test case.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected SandboxedObject fixture = null;
+	protected SandboxedObject fixture = null;
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         TestRunner.run(SandboxedObjectTest.class);
     }
 
-    /**
+	/**
      * Constructs a new Sandboxed Object test case with the given name.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public SandboxedObjectTest(String name) {
+	public SandboxedObjectTest(String name) {
         super(name);
     }
 
-    /**
+	/**
      * Sets the fixture for this Sandboxed Object test case.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected void setFixture(SandboxedObject fixture) {
+	protected void setFixture(SandboxedObject fixture) {
         this.fixture = fixture;
     }
 
-    /**
+	/**
      * Returns the fixture for this Sandboxed Object test case.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    protected SandboxedObject getFixture() {
+	protected SandboxedObject getFixture() {
         return fixture;
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
         setFixture(ChefclipseFactory.eINSTANCE.createSandboxedObject());
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
         setFixture(null);
     }
 

@@ -2,11 +2,8 @@
  */
 package org.limepepper.chefclipse.impl;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -21,7 +18,7 @@ import org.limepepper.chefclipse.NameUrlMap;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.limepepper.chefclipse.impl.NameUrlMapImpl#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.impl.NameUrlMapImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  * </p>
  *
@@ -63,8 +60,8 @@ public class NameUrlMapImpl extends EObjectImpl implements NameUrlMap {
      * @generated
      */
     @SuppressWarnings("unchecked")
-    public EMap<String, String> getEntry() {
-        return (EMap<String, String>)eGet(ChefclipsePackage.Literals.NAME_URL_MAP__ENTRY, true);
+    public EMap<String, String> getEntries() {
+        return (EMap<String, String>)eGet(ChefclipsePackage.Literals.NAME_URL_MAP__ENTRIES, true);
     }
 
 } //NameUrlMapImpl

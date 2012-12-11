@@ -3,10 +3,13 @@
 package org.limepepper.chefclipse.common.chefserver.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
+
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Role;
+
 import org.limepepper.chefclipse.impl.DescribedObjectImpl;
 
 /**

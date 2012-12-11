@@ -22,8 +22,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
                                                         .getWorkbench()
                                                         .getActiveWorkbenchWindow();
 
-    ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager
-                                                        .instance();
+    ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager.INSTANCE;
 
     Map<String, String>   menuItems             = new HashMap<String, String>();
     Map<String, String>   remoteMenuItems       = new HashMap<String, String>();

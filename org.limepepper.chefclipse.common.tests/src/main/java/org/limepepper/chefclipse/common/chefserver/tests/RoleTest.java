@@ -17,55 +17,55 @@ import org.limepepper.chefclipse.tests.DescribedObjectTest;
  */
 public class RoleTest extends DescribedObjectTest {
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         TestRunner.run(RoleTest.class);
     }
 
-    /**
+	/**
      * Constructs a new Role test case with the given name.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public RoleTest(String name) {
+	public RoleTest(String name) {
         super(name);
     }
 
-    /**
+	/**
      * Returns the fixture for this Role test case.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    @Override
-    protected Role getFixture() {
+	@Override
+	protected Role getFixture() {
         return (Role)fixture;
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
         setFixture(ChefserverFactory.eINSTANCE.createRole());
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
         setFixture(null);
     }
 

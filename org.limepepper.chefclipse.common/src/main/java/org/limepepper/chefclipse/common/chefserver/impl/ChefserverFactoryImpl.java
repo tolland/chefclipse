@@ -5,21 +5,12 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.limepepper.chefclipse.common.chefserver.*;
-import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
-import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-import org.limepepper.chefclipse.common.chefserver.DataBag;
-import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.common.chefserver.Environment;
-import org.limepepper.chefclipse.common.chefserver.Node;
-import org.limepepper.chefclipse.common.chefserver.Platform;
-import org.limepepper.chefclipse.common.chefserver.Role;
-import org.limepepper.chefclipse.common.chefserver.RunList;
-import org.limepepper.chefclipse.common.chefserver.Sandbox;
-import org.limepepper.chefclipse.common.chefserver.Server;
-import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 
 /**
  * <!-- begin-user-doc -->

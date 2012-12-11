@@ -6,7 +6,7 @@
     suppressInterfaces="true" testsDirectory="/org.limepepper.chefclipse.model/src/test/java"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
     editPluginID="org.limepepper.chefclipse.model" editorPluginID="org.limepepper.chefclipse.model"
-    testsPluginID="org.limepepper.chefclipse.model">
+    testsPluginID="org.limepepper.chefclipse.model" runtimeVersion="2.8">
   <foreignModel>model.ecore</foreignModel>
   <genPackages prefix="Model" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
       ecorePackage="model.ecore#/">

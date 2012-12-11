@@ -17,55 +17,55 @@ import org.limepepper.chefclipse.tests.DescribedObjectTest;
  */
 public class RecipeDescriptionTest extends DescribedObjectTest {
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         TestRunner.run(RecipeDescriptionTest.class);
     }
 
-    /**
+	/**
      * Constructs a new Recipe Description test case with the given name.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public RecipeDescriptionTest(String name) {
+	public RecipeDescriptionTest(String name) {
         super(name);
     }
 
-    /**
+	/**
      * Returns the fixture for this Recipe Description test case.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    @Override
-    protected RecipeDescription getFixture() {
+	@Override
+	protected RecipeDescription getFixture() {
         return (RecipeDescription)fixture;
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
         setFixture(CookbookFactory.eINSTANCE.createRecipeDescription());
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
         setFixture(null);
     }
 

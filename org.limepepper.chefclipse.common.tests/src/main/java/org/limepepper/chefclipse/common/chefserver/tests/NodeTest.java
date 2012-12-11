@@ -17,55 +17,55 @@ import org.limepepper.chefclipse.tests.DescribedObjectTest;
  */
 public class NodeTest extends DescribedObjectTest {
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         TestRunner.run(NodeTest.class);
     }
 
-    /**
+	/**
      * Constructs a new Node test case with the given name.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    public NodeTest(String name) {
+	public NodeTest(String name) {
         super(name);
     }
 
-    /**
+	/**
      * Returns the fixture for this Node test case.
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @generated
      */
-    @Override
-    protected Node getFixture() {
+	@Override
+	protected Node getFixture() {
         return (Node)fixture;
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @see junit.framework.TestCase#setUp()
      * @generated
      */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
         setFixture(ChefserverFactory.eINSTANCE.createNode());
     }
 
-    /**
+	/**
      * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
      * @see junit.framework.TestCase#tearDown()
      * @generated
      */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
         setFixture(null);
     }
 

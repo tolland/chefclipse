@@ -191,7 +191,7 @@ public class ChefServerClient {
     public static boolean isChefServerApiService(ChefRequest uri) {
         final URI baseURI = uri.trimSegments(uri.segmentCount());
         boolean isChefServerApiDB = false;
-       // setAuthenticator(uri);
+        // setAuthenticator(uri);
 
         try {
             HttpURLConnection connection = getGetConnection(uri);
@@ -282,6 +282,11 @@ public class ChefServerClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        try {
+            parser.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -301,11 +306,14 @@ public class ChefServerClient {
         try {
             logger.debug(connection.getResponseMessage());
 
-            java.util.Scanner s = new java.util.Scanner(
-                    connection.getErrorStream()).useDelimiter("\\A");
+            InputStream es = connection.getErrorStream();
+
+            java.util.Scanner s = new java.util.Scanner(es);
+            s.useDelimiter("\\A");
             logger.debug(s.hasNext() ? s.next() : "");
 
             s.close();
+            es.close();
 
             throw new Exception("some other repsonbse code:"
                     + connection.getResponseCode());

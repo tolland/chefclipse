@@ -5,7 +5,9 @@ package org.limepepper.chefclipse.common.knife;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.limepepper.chefclipse.Config;
+
 import org.limepepper.chefclipse.common.chefserver.Server;
 
 /**
@@ -44,7 +46,7 @@ public interface KnifeConfig extends Config {
      * <!-- end-user-doc -->
      * @return the value of the '<em>Plugins</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeConfig_Plugins()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<Plugin> getPlugins();

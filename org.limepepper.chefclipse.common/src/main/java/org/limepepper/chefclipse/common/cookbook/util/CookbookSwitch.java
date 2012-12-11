@@ -4,7 +4,9 @@ package org.limepepper.chefclipse.common.cookbook.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.Switch;
+
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
@@ -12,25 +14,8 @@ import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
+
 import org.limepepper.chefclipse.common.cookbook.*;
-import org.limepepper.chefclipse.common.cookbook.Attribute;
-import org.limepepper.chefclipse.common.cookbook.Attributes;
-import org.limepepper.chefclipse.common.cookbook.CookbookFile;
-import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.cookbook.Definition;
-import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
-import org.limepepper.chefclipse.common.cookbook.File;
-import org.limepepper.chefclipse.common.cookbook.Library;
-import org.limepepper.chefclipse.common.cookbook.Metadata;
-import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
-import org.limepepper.chefclipse.common.cookbook.Name;
-import org.limepepper.chefclipse.common.cookbook.Provider;
-import org.limepepper.chefclipse.common.cookbook.Recipe;
-import org.limepepper.chefclipse.common.cookbook.RecipeDescription;
-import org.limepepper.chefclipse.common.cookbook.Resource;
-import org.limepepper.chefclipse.common.cookbook.Root_file;
-import org.limepepper.chefclipse.common.cookbook.Template;
 
 /**
  * <!-- begin-user-doc -->
@@ -522,6 +507,21 @@ public class CookbookSwitch<T> extends Switch<T> {
     }
 
     /**
+     * Returns the result of interpreting the object as an instance of '<em>Named Object</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Named Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNamedObject(NamedObject object) {
+        return null;
+    }
+
+    /**
      * Returns the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
@@ -552,17 +552,17 @@ public class CookbookSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Returns the result of interpreting the object as an instance of '<em>Named Object</em>'.
+     * Returns the result of interpreting the object as an instance of '<em>Checksum File</em>'.
      * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
      * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Named Object</em>'.
+     * @return the result of interpreting the object as an instance of '<em>Checksum File</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseNamedObject(NamedObject object) {
+    public T caseChecksumFile(ChecksumFile object) {
         return null;
     }
 
@@ -593,21 +593,6 @@ public class CookbookSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseMaintainedObject(MaintainedObject object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>Checksum File</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Checksum File</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseChecksumFile(ChecksumFile object) {
         return null;
     }
 

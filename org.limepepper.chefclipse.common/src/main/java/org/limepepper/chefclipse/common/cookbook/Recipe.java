@@ -3,10 +3,12 @@
 package org.limepepper.chefclipse.common.cookbook;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
+
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 

@@ -4,19 +4,12 @@ package org.limepepper.chefclipse.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.limepepper.chefclipse.*;
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.Config;
-import org.limepepper.chefclipse.DescribedObject;
-import org.limepepper.chefclipse.MaintainedObject;
-import org.limepepper.chefclipse.NamedDescribedObject;
-import org.limepepper.chefclipse.NamedObject;
-import org.limepepper.chefclipse.RubyFile;
-import org.limepepper.chefclipse.SandboxedObject;
-import org.limepepper.chefclipse.VersionedObject;
 
 /**
  * <!-- begin-user-doc -->

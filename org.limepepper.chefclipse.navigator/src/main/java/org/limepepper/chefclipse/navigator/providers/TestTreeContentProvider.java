@@ -45,10 +45,10 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
         System.err.println(parentElement.getClass());
 
         if (parentElement instanceof IProject) {
-            children.add(ChefRepositoryManager.instance().getRepository(
+            children.add(ChefRepositoryManager.INSTANCE.getRepository(
                     ((IProject) parentElement)));
 
-            for (KnifeConfig knifeConfig : ChefRepositoryManager.instance()
+            for (KnifeConfig knifeConfig : ChefRepositoryManager.INSTANCE
                     .getKnives(((IProject) parentElement))) {
                 children.add(knifeConfig);
             }
@@ -65,7 +65,7 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
         if ((parentElement instanceof IFile)
                 && ((IFile) parentElement).getName().equals(
                         ChefProjectManager.WORKSTATION_FOLDER)) {
-            parentElement = ChefRepositoryManager.instance().getRepository(
+            parentElement = ChefRepositoryManager.INSTANCE.getRepository(
                     ((IFile) parentElement).getProject());
 
             return super.getChildren(parentElement);

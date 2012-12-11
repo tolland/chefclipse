@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface Platform extends EObject {
-
     /**
      * Returns the value of the '<em><b>Test Val</b></em>' attribute.
      * <!-- begin-user-doc -->
@@ -47,4 +46,5 @@ public interface Platform extends EObject {
      * @generated
      */
     void setTestVal(int value);
+
 } // Platform

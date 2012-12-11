@@ -5,6 +5,7 @@ package org.limepepper.chefclipse.common.chefclient;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
 
 /**
@@ -120,7 +121,6 @@ public interface ChefclientPackage extends EPackage {
      * @ordered
      */
     int SEARCH_FEATURE_COUNT = 0;
-
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefclient.impl.ClientConfigImpl <em>Client Config</em>}' class.

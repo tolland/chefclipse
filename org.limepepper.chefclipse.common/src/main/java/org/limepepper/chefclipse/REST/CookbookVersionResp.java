@@ -5,6 +5,7 @@ package org.limepepper.chefclipse.REST;
 import java.util.Date;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -412,7 +413,7 @@ public interface CookbookVersionResp extends EObject {
      * @return the value of the '<em>Metadata</em>' containment reference.
      * @see #setMetadata(CookbookMetadata)
      * @see org.limepepper.chefclipse.REST.RESTPackage#getCookbookVersionResp_Metadata()
-     * @model containment="true" required="true"
+     * @model containment="true" resolveProxies="true" required="true"
      * @generated
      */
     CookbookMetadata getMetadata();

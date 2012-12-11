@@ -117,7 +117,7 @@
          </menu>
       </menuContribution>
    </extension>
-   <extension
+   <!--extension
          point="org.eclipse.core.runtime.adapters">
       <factory
             adaptableType="org.eclipse.emf.ecore.EObject"
@@ -126,7 +126,7 @@
                type="org.eclipse.emf.ecore.EObject">
          </adapter>
       </factory>
-   </extension>
+   </extension-->
    <extension
          id="modelProvider"
          point="org.eclipse.core.resources.modelProviders">
@@ -144,7 +144,23 @@
    </extension>
 
 
+<!-- =================================================================================== -->
+<!-- This is the cookbook structure compare  -->
+<!-- =================================================================================== -->
 
 
+<extension point="org.eclipse.compare.structureCreators">
+
+<structureCreator
+
+  class="org.limepepper.chefclipse.compare.CookbookStructureCreator"
+
+  extensions="cookbook"
+
+  id="org.limepepper.chefclipse.compare.StructureCreator">
+
+</structureCreator>
+
+</extension>
 
 </plugin>
