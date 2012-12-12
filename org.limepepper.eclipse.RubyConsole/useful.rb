@@ -9,6 +9,12 @@
 require 'java'
 
 include_class 'org.eclipse.core.resources.ResourcesPlugin'
+include_class 'org.eclipse.core.runtime.Platform'
+include_class 'org.eclipse.core.resources.IResource'
+include_class 'org.limepepper.chefclipse.common.ui.providers.ChefModelProvider'
+
+adapterFactory = new
+Platform.getAdapterManager().registerAdapters(adapterFactory, Contact.class);
 
 workspace = ResourcesPlugin.get_workspace
 

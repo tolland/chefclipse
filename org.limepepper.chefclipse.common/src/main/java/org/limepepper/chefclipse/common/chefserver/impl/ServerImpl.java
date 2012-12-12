@@ -19,6 +19,7 @@ import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
@@ -78,8 +79,8 @@ public class ServerImpl extends EObjectImpl implements Server {
      * @generated
      */
     @SuppressWarnings("unchecked")
-    public EList<CookbookVersion> getCookbooks() {
-        return (EList<CookbookVersion>)eGet(ChefserverPackage.Literals.SERVER__COOKBOOKS, true);
+    public EList<ServerCookbookVersion> getCookbooks() {
+        return (EList<ServerCookbookVersion>)eGet(ChefserverPackage.Literals.SERVER__COOKBOOKS, true);
     }
 
     /**

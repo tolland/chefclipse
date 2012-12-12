@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.limepepper.chefclipse.ChecksumFile;
+import org.limepepper.chefclipse.Cookbook;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
@@ -78,7 +79,7 @@ public class CookbookSwitch<T> extends Switch<T> {
                 CookbookVersion cookbookVersion = (CookbookVersion)theEObject;
                 T result = caseCookbookVersion(cookbookVersion);
                 if (result == null) result = caseNamedDescribedObject(cookbookVersion);
-                if (result == null) result = caseCookbookFile(cookbookVersion);
+                if (result == null) result = caseCookbook(cookbookVersion);
                 if (result == null) result = caseDescribedObject(cookbookVersion);
                 if (result == null) result = caseNamedObject(cookbookVersion);
                 if (result == null) result = defaultCase(theEObject);
@@ -205,6 +206,7 @@ public class CookbookSwitch<T> extends Switch<T> {
                 if (result == null) result = caseChecksumFile(root_file);
                 if (result == null) result = caseSandboxedObject(root_file);
                 if (result == null) result = caseNamedObject(root_file);
+                if (result == null) result = caseCookbookFile(root_file);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -533,6 +535,21 @@ public class CookbookSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseNamedDescribedObject(NamedDescribedObject object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Cookbook</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Cookbook</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCookbook(Cookbook object) {
         return null;
     }
 

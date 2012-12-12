@@ -10,7 +10,9 @@ import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
 
+import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 
 import org.limepepper.chefclipse.impl.ChecksumFileImpl;
@@ -25,6 +27,7 @@ import org.limepepper.chefclipse.impl.ChecksumFileImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.Root_fileImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.Root_fileImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.Root_fileImpl#getID <em>ID</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.Root_fileImpl#getCookbook <em>Cookbook</em>}</li>
  * </ul>
  * </p>
  *
@@ -109,6 +112,24 @@ public class Root_fileImpl extends ChecksumFileImpl implements Root_file {
      * <!-- end-user-doc -->
      * @generated
      */
+    public CookbookVersion getCookbook() {
+        return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setCookbook(CookbookVersion newCookbook) {
+        eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == SandboxedObject.class) {
@@ -121,6 +142,12 @@ public class Root_fileImpl extends ChecksumFileImpl implements Root_file {
             switch (derivedFeatureID) {
                 case CookbookPackage.ROOT_FILE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
                 case CookbookPackage.ROOT_FILE__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+                default: return -1;
+            }
+        }
+        if (baseClass == CookbookFile.class) {
+            switch (derivedFeatureID) {
+                case CookbookPackage.ROOT_FILE__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
                 default: return -1;
             }
         }
@@ -144,6 +171,12 @@ public class Root_fileImpl extends ChecksumFileImpl implements Root_file {
             switch (baseFeatureID) {
                 case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.ROOT_FILE__NAME;
                 case ChefclipsePackage.NAMED_OBJECT__ID: return CookbookPackage.ROOT_FILE__ID;
+                default: return -1;
+            }
+        }
+        if (baseClass == CookbookFile.class) {
+            switch (baseFeatureID) {
+                case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return CookbookPackage.ROOT_FILE__COOKBOOK;
                 default: return -1;
             }
         }

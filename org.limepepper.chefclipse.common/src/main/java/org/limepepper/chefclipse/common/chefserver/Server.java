@@ -37,7 +37,7 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 public interface Server extends EObject {
     /**
      * Returns the value of the '<em><b>Cookbooks</b></em>' containment reference list.
-     * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Cookbooks</em>' containment reference list isn't clear,
@@ -51,7 +51,7 @@ public interface Server extends EObject {
      * @model containment="true" resolveProxies="true" unsettable="true"
      * @generated
      */
-    EList<CookbookVersion> getCookbooks();
+    EList<ServerCookbookVersion> getCookbooks();
 
     /**
      * Unsets the value of the '{@link org.limepepper.chefclipse.common.chefserver.Server#getCookbooks <em>Cookbooks</em>}' containment reference list.

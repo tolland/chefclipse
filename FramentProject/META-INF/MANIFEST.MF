@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FramentProject
+Bundle-SymbolicName: FramentProject;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Fragment-Host: org.eclipse.ui.console;bundle-version="3.5.200"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.eclipse.ui.console;uses:="org.eclipse.jface.resource,org.eclipse.swt.graphics,org.eclipse.ui.part"

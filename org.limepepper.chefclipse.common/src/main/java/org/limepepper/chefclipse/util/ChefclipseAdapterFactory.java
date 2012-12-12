@@ -2,6 +2,7 @@
  */
 package org.limepepper.chefclipse.util;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -106,6 +107,30 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
             @Override
             public Adapter caseNameUrlMap(NameUrlMap object) {
                 return createNameUrlMapAdapter();
+            }
+            @Override
+            public Adapter caseCookbook(Cookbook object) {
+                return createCookbookAdapter();
+            }
+            @Override
+            public Adapter caseMapTestContainer(MapTestContainer object) {
+                return createMapTestContainerAdapter();
+            }
+            @Override
+            public Adapter caseEStringToVersionUrlMap(Map.Entry<String, VersionUrl> object) {
+                return createEStringToVersionUrlMapAdapter();
+            }
+            @Override
+            public Adapter caseVersionUrl(VersionUrl object) {
+                return createVersionUrlAdapter();
+            }
+            @Override
+            public Adapter caseURLEntryTest(URLEntryTest object) {
+                return createURLEntryTestAdapter();
+            }
+            @Override
+            public Adapter caseNameVersionMap(NameVersionMap object) {
+                return createNameVersionMapAdapter();
             }
             @Override
             public Adapter defaultCase(EObject object) {
@@ -264,6 +289,90 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createNameUrlMapAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Cookbook <em>Cookbook</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.Cookbook
+     * @generated
+     */
+    public Adapter createCookbookAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.MapTestContainer <em>Map Test Container</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.MapTestContainer
+     * @generated
+     */
+    public Adapter createMapTestContainerAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link java.util.Map.Entry <em>EString To Version Url Map</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see java.util.Map.Entry
+     * @generated
+     */
+    public Adapter createEStringToVersionUrlMapAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.VersionUrl <em>Version Url</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.VersionUrl
+     * @generated
+     */
+    public Adapter createVersionUrlAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.URLEntryTest <em>URL Entry Test</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.URLEntryTest
+     * @generated
+     */
+    public Adapter createURLEntryTestAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NameVersionMap <em>Name Version Map</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.NameVersionMap
+     * @generated
+     */
+    public Adapter createNameVersionMapAdapter() {
         return null;
     }
 

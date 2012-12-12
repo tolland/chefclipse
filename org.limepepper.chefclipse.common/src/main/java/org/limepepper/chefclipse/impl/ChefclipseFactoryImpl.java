@@ -6,6 +6,8 @@ import java.io.File;
 
 import java.net.URL;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -70,6 +72,12 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
             case ChefclipsePackage.MAINTAINED_OBJECT: return createMaintainedObject();
             case ChefclipsePackage.CONFIG: return createConfig();
             case ChefclipsePackage.NAME_URL_MAP: return createNameUrlMap();
+            case ChefclipsePackage.COOKBOOK: return createCookbook();
+            case ChefclipsePackage.MAP_TEST_CONTAINER: return createMapTestContainer();
+            case ChefclipsePackage.ESTRING_TO_VERSION_URL_MAP: return (EObject)createEStringToVersionUrlMap();
+            case ChefclipsePackage.VERSION_URL: return createVersionUrl();
+            case ChefclipsePackage.URL_ENTRY_TEST: return createURLEntryTest();
+            case ChefclipsePackage.NAME_VERSION_MAP: return createNameVersionMap();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -103,6 +111,8 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
                 return createObjectFromString(eDataType, initialValue);
             case ChefclipsePackage.NAME_URL_DATA_TYPE:
                 return createNameUrlDataTypeFromString(eDataType, initialValue);
+            case ChefclipsePackage.MAP_TEST:
+                return createMapTestFromString(eDataType, initialValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -136,6 +146,8 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
                 return convertObjectToString(eDataType, instanceValue);
             case ChefclipsePackage.NAME_URL_DATA_TYPE:
                 return convertNameUrlDataTypeToString(eDataType, instanceValue);
+            case ChefclipsePackage.MAP_TEST:
+                return convertMapTestToString(eDataType, instanceValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -229,6 +241,66 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
     public NameUrlMap createNameUrlMap() {
         NameUrlMapImpl nameUrlMap = new NameUrlMapImpl();
         return nameUrlMap;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Cookbook createCookbook() {
+        CookbookImpl cookbook = new CookbookImpl();
+        return cookbook;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public MapTestContainer createMapTestContainer() {
+        MapTestContainerImpl mapTestContainer = new MapTestContainerImpl();
+        return mapTestContainer;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Map.Entry<String, VersionUrl> createEStringToVersionUrlMap() {
+        EStringToVersionUrlMapImpl eStringToVersionUrlMap = new EStringToVersionUrlMapImpl();
+        return eStringToVersionUrlMap;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public VersionUrl createVersionUrl() {
+        VersionUrlImpl versionUrl = new VersionUrlImpl();
+        return versionUrl;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public URLEntryTest createURLEntryTest() {
+        URLEntryTestImpl urlEntryTest = new URLEntryTestImpl();
+        return urlEntryTest;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public NameVersionMap createNameVersionMap() {
+        NameVersionMapImpl nameVersionMap = new NameVersionMapImpl();
+        return nameVersionMap;
     }
 
     /**
@@ -408,6 +480,24 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
      * @generated
      */
     public String convertNameUrlDataTypeToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public HashMap createMapTestFromString(EDataType eDataType, String initialValue) {
+        return (HashMap)super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertMapTestToString(EDataType eDataType, Object instanceValue) {
         return super.convertToString(eDataType, instanceValue);
     }
 

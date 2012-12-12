@@ -9,11 +9,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.Properties;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
@@ -88,20 +88,20 @@ public class TestChefServerApi {
 
     @Test
     public void testGetListOfNodesName() throws Exception {
-
+        if (chefServer == null) {
+            createServerObject();
+        }
         Properties props = new Properties();
         try {
             FileInputStream fis = new FileInputStream(
-                    "opscode-tests.properties");
+                    "resources/opscode-tests.properties");
             props.load(fis);
             fis.close();
- 
 
-            NameUrlMap nodes = api.getServer(knifeConfig).getNodeList();
-                    
+            Map<String, String> nodes = chefServer.getNodeList();
 
             assertNotNull(nodes);
-            assertTrue(nodes.getEntries().size() > 0);
+            assertTrue(nodes.entrySet().size() > 0);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -3,8 +3,16 @@
  */
 package org.limepepper.chefclipse.chefserver.api;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.limepepper.chefclipse.emfjson.chefserver.internal.ChefServerClient.getConnection;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,29 +26,33 @@ import opscode.chef.REST.JSONRestWrapper;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipselabs.emfjson.EMFJs;
 import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
+import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.NameUrlMap;
+import org.limepepper.chefclipse.NameVersionMap;
+import org.limepepper.chefclipse.VersionUrl;
 import org.limepepper.chefclipse.REST.ClientResp;
 import org.limepepper.chefclipse.REST.CookbookListResp;
 import org.limepepper.chefclipse.REST.CookbookListVersionResp;
 import org.limepepper.chefclipse.REST.CookbookMetadata;
 import org.limepepper.chefclipse.REST.CookbookVersionResp;
-import org.limepepper.chefclipse.REST.EnvironmentResp;
 import org.limepepper.chefclipse.REST.RESTFactory;
 import org.limepepper.chefclipse.REST.RoleListResp;
 import org.limepepper.chefclipse.REST.RoleResp;
-import org.limepepper.chefclipse.REST.SearchIndexResp;
-import org.limepepper.chefclipse.REST.SearchResultResp;
-import org.limepepper.chefclipse.common.chefserver.DataBag;
-import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Node;
-import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
+import org.limepepper.chefclipse.emfjson.chefserver.ChefServerURIHandler;
+import org.limepepper.chefclipse.emfjson.chefserver.internal.ChefRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,19 +70,29 @@ public class ChefServerApiImpl implements ChefServerApi {
     private static Map<KnifeConfig, Object> instances = new HashMap<KnifeConfig, Object>(
                                                               1);
     AuthCredentials                         auth      = null;
+    Map<String, Object>                     options   = new HashMap<String, Object>();
 
     public static ChefServerApi getServerApi(@NonNull KnifeConfig knifeConfig) {
 
         if (!instances.containsKey(knifeConfig)) {
-
             instances.put(knifeConfig, new ChefServerApiImpl(knifeConfig));
-
         }
-
         return (ChefServerApi) instances.get(knifeConfig);
     }
 
     ChefServerApiImpl(@NonNull KnifeConfig knifeConfig) {
+
+        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
+                "http", new JsResourceFactoryImpl());
+
+        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
+                "https", new JsResourceFactoryImpl());
+
+        Resource.Factory.Registry.INSTANCE.getContentTypeToFactoryMap().put(
+                "application/json", new JsResourceFactoryImpl());
+
+        options.put("knifeConfig", knifeConfig);
+
         try {
             auth = new AuthCredentials(knifeConfig.getNode_name(),
                     knifeConfig.getClient_key());
@@ -84,6 +106,14 @@ public class ChefServerApiImpl implements ChefServerApi {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    URL getUrl() {
+        return ((KnifeConfig) options.get("knifeConfig")).getChef_server_url();
+    }
+
+    KnifeConfig getConfig() {
+        return (KnifeConfig) options.get("knifeConfig");
     }
 
     private JSONObject getRestCookbooks() {
@@ -107,11 +137,6 @@ public class ChefServerApiImpl implements ChefServerApi {
         query_params.put("num_versions",
                 Arrays.asList(new String[] { Integer.toString(versions) }));
         return jSONRestWrapper.rest_get("/cookbooks", query_params);
-    }
-
-    public List<CookbookListResp> getCookbooks() {
-        JSONObject json = getRestCookbooks();
-        return createCookbookListRespList(json);
     }
 
     public CookbookVersionResp getRestCookbookVersion(String cookbook)
@@ -149,9 +174,41 @@ public class ChefServerApiImpl implements ChefServerApi {
         return cookbookVersionResp;
     }
 
-    public CookbookVersionResp getCookbookVersion(String string)
-            throws MalformedURLException {
-        return getRestCookbookVersion(string);
+    public ServerCookbookVersion getCookbookVersion(String string,
+            String version) {
+
+        options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                ChefserverPackage.eINSTANCE.getServerCookbookVersion());
+
+        ResourceSetImpl resourceSet = new ResourceSetImpl();
+
+        resourceSet.getURIConverter().getURIHandlers()
+                .add(0, new ChefServerURIHandler());
+
+        URI uri = URI.createURI(((Config) options.get("knifeConfig"))
+                .getChef_server_url().toString()
+                + "/cookbooks/"
+                + string
+                + "/"
+                + version);
+
+        Resource resource = resourceSet.createResource(uri);
+
+        try {
+            resource.load(options);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("failed to load resource");
+        }
+
+        ServerCookbookVersion cookbook = (ServerCookbookVersion) resource
+                .getContents().get(0);
+
+        assertNotNull(cookbook);
+        assertTrue(cookbook.getCookbook_name() != null);
+
+        return cookbook;
+
     }
 
     private List<CookbookListResp> createCookbookListRespList(JSONObject json) {
@@ -267,8 +324,8 @@ public class ChefServerApiImpl implements ChefServerApi {
     }
 
     @Override
-    public CookbookVersionResp getCookbookVersion(String name, String version) {
-        return null;
+    public ServerCookbookVersion getCookbookVersion(String name) {
+        return getCookbookVersion(name, "_latest");
     }
 
     @Override
@@ -297,83 +354,12 @@ public class ChefServerApiImpl implements ChefServerApi {
     }
 
     @Override
-    public List<SearchIndexResp> getSearchIndexes() {
-        return null;
-    }
-
-    @Override
-    public SearchResultResp doSearch(String q, String sort, int rows, int start) {
-        return null;
-    }
-
-    @Override
     public List<ClientResp> getClients() {
         return null;
     }
 
     @Override
     public ClientResp getClient(String name) {
-        return null;
-    }
-
-    @Override
-    public List<DataBag> getDataBags() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public DataBag getDataBag(String bag) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public DataBagItem getDataBag(String bag, String name) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<Environment> getEnvironments() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public EnvironmentResp getEnvironment(String name) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<Sandbox> getSandboxes() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public boolean putSandbox(Sandbox sandbox) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public List<CookbookVersionResp> getCookbooksByEnvironment(String name) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<CookbookVersionResp> getCookbookVersionsByEnvironment(
-            String environment, String cookbook) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public SearchResultResp doSearch(String q) {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -398,27 +384,145 @@ public class ChefServerApiImpl implements ChefServerApi {
     }
 
     @Override
-    public NameUrlMap getNodeList() {
+    public Map<String, String> getNodeList() {
 
-        Map<String, List<String>> query_params = new HashMap<String, List<String>>();
+        URI uri = URI.createURI(getUrl().toString() + "/nodes");
+        try {
 
-        JSONObject jsonObject = jSONRestWrapper.rest_get("/nodes/",
-                query_params);
-        jSONRestWrapper.asFile(".cache.node-list-.json", jsonObject.toString());
+            assertNotNull(uri);
+            ResourceSetImpl resourceSet = new ResourceSetImpl();
 
-        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
-                "http", new JsResourceFactoryImpl());
+            HttpURLConnection connection = getConnection(new ChefRequest(uri,
+                    getConfig()), "GET");
+
+            Map<String, Object> options = new HashMap<String, Object>();
+
+            options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                    ChefclipsePackage.eINSTANCE.getNameUrlMap());
+
+            URL url = null;
+
+            Resource resource = resourceSet.createResource(uri,
+                    "application/json");
+
+            assertNotNull(resource);
+
+            final InputStream inStream = connection.getInputStream();
+
+            resource.load(inStream, options);
+
+            inStream.close();
+
+            NameUrlMap user = (NameUrlMap) resource.getContents().get(0);
+
+            assertTrue(user.getEntries() != null);
+
+            return user.getEntries().map();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("error");
+        } finally {
+
+        }
+
+        return null;
+    }
+
+    public List<ServerCookbookVersion> getCookbooks() {
+
+        return null;
+
+    }
+
+    @Override
+    public Map<String, String> getRoleList() {
+        URI uri = URI.createURI(getUrl().toString() + "/roles");
+        try {
+
+            assertNotNull(uri);
+            ResourceSetImpl resourceSet = new ResourceSetImpl();
+
+            HttpURLConnection connection = getConnection(new ChefRequest(uri,
+                    getConfig()), "GET");
+
+            Map<String, Object> options = new HashMap<String, Object>();
+
+            options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                    ChefclipsePackage.eINSTANCE.getNameUrlMap());
+
+            URL url = null;
+
+            Resource resource = resourceSet.createResource(uri,
+                    "application/json");
+
+            assertNotNull(resource);
+
+            final InputStream inStream = connection.getInputStream();
+
+            resource.load(inStream, options);
+
+            inStream.close();
+
+            NameUrlMap user = (NameUrlMap) resource.getContents().get(0);
+
+            assertTrue(user.getEntries() != null);
+
+            return user.getEntries().map();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("error");
+        } finally {
+
+        }
 
         return null;
     }
 
     @Override
-    public NameUrlMap getRoleList() {
-        return null;
-    }
+    public Map<String, VersionUrl> getCookbookList() {
+        URI uri = URI.createURI(getUrl().toString()
+                + "/cookbooks?start=0&items=25");
 
-    @Override
-    public NameUrlMap getEnvironmentList() {
+        try {
+
+            assertNotNull(uri);
+            ResourceSetImpl resourceSet = new ResourceSetImpl();
+
+            HttpURLConnection connection = getConnection(new ChefRequest(uri,
+                    getConfig()), "GET");
+
+            Map<String, Object> options = new HashMap<String, Object>();
+
+            options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                    ChefclipsePackage.eINSTANCE.getNameVersionMap());
+
+            URL url = null;
+
+            Resource resource = resourceSet.createResource(uri,
+                    "application/json");
+
+            assertNotNull(resource);
+
+            final InputStream inStream = connection.getInputStream();
+
+            resource.load(inStream, options);
+
+            inStream.close();
+
+            NameVersionMap user = (NameVersionMap) resource.getContents().get(0);
+
+            assertNotNull(user);
+
+            return user.getEntries().map();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("error");
+        } finally {
+
+        }
         return null;
     }
 

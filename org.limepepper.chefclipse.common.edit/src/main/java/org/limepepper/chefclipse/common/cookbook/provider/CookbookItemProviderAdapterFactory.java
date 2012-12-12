@@ -351,14 +351,6 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Root_file} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected Root_fileItemProvider root_fileItemProvider;
-
-    /**
      * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Root_file}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -366,11 +358,7 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
      */
     @Override
     public Adapter createRoot_fileAdapter() {
-        if (root_fileItemProvider == null) {
-            root_fileItemProvider = new Root_fileItemProvider(this);
-        }
-
-        return root_fileItemProvider;
+        return new Root_fileItemProvider(this);
     }
 
     /**

@@ -537,6 +537,271 @@ public interface ChefserverPackage extends EPackage {
 
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl <em>Cookbook List Resp</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl
+     * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getCookbookListResp()
+     * @generated
+     */
+    int COOKBOOK_LIST_RESP = 10;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_LIST_RESP__NAME = 0;
+
+    /**
+     * The feature id for the '<em><b>Versions</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_LIST_RESP__VERSIONS = 1;
+
+    /**
+     * The feature id for the '<em><b>Url</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_LIST_RESP__URL = 2;
+
+    /**
+     * The number of structural features of the '<em>Cookbook List Resp</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_LIST_RESP_FEATURE_COUNT = 3;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl <em>Server Cookbook File</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl
+     * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerCookbookFile()
+     * @generated
+     */
+    int SERVER_COOKBOOK_FILE = 11;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_FILE__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
+
+    /**
+     * The feature id for the '<em><b>ID</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_FILE__ID = ChefclipsePackage.NAMED_OBJECT__ID;
+
+    /**
+     * The feature id for the '<em><b>Checksum</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_FILE__CHECKSUM = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Path</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_FILE__PATH = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Specificity</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_FILE__SPECIFICITY = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Url</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_FILE__URL = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Cookbook</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_FILE__COOKBOOK = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 4;
+
+    /**
+     * The number of structural features of the '<em>Server Cookbook File</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_FILE_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 5;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl <em>Server Cookbook Version</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl
+     * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerCookbookVersion()
+     * @generated
+     */
+    int SERVER_COOKBOOK_VERSION = 12;
+
+    /**
+     * The feature id for the '<em><b>Json class</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__JSON_CLASS = ChefclipsePackage.COOKBOOK__JSON_CLASS;
+
+    /**
+     * The feature id for the '<em><b>Chef type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__CHEF_TYPE = ChefclipsePackage.COOKBOOK__CHEF_TYPE;
+
+    /**
+     * The feature id for the '<em><b>Root files</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__ROOT_FILES = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Recipes</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__RECIPES = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Templates</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__TEMPLATES = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Libraries</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__LIBRARIES = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Providers</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__PROVIDERS = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__RESOURCES = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 5;
+
+    /**
+     * The feature id for the '<em><b>Files</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__FILES = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 6;
+
+    /**
+     * The feature id for the '<em><b>Definitions</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__DEFINITIONS = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 7;
+
+    /**
+     * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__ATTRIBUTES = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 8;
+
+    /**
+     * The feature id for the '<em><b>Version</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__VERSION = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 9;
+
+    /**
+     * The feature id for the '<em><b>Cookbook name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION__COOKBOOK_NAME = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 10;
+
+    /**
+     * The number of structural features of the '<em>Server Cookbook Version</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int SERVER_COOKBOOK_VERSION_FEATURE_COUNT = ChefclipsePackage.COOKBOOK_FEATURE_COUNT + 11;
+
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Environment <em>Environment</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -901,6 +1166,201 @@ public interface ChefserverPackage extends EPackage {
     EAttribute getSandbox_Url();
 
     /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp <em>Cookbook List Resp</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Cookbook List Resp</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.CookbookListResp
+     * @generated
+     */
+    EClass getCookbookListResp();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getName <em>Name</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.CookbookListResp#getName()
+     * @see #getCookbookListResp()
+     * @generated
+     */
+    EAttribute getCookbookListResp_Name();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getVersions <em>Versions</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Versions</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.CookbookListResp#getVersions()
+     * @see #getCookbookListResp()
+     * @generated
+     */
+    EReference getCookbookListResp_Versions();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getUrl <em>Url</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Url</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.CookbookListResp#getUrl()
+     * @see #getCookbookListResp()
+     * @generated
+     */
+    EAttribute getCookbookListResp_Url();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile <em>Server Cookbook File</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Server Cookbook File</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookFile
+     * @generated
+     */
+    EClass getServerCookbookFile();
+
+    /**
+     * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile#getCookbook <em>Cookbook</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Cookbook</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookFile#getCookbook()
+     * @see #getServerCookbookFile()
+     * @generated
+     */
+    EReference getServerCookbookFile_Cookbook();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion <em>Server Cookbook Version</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Server Cookbook Version</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion
+     * @generated
+     */
+    EClass getServerCookbookVersion();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getRoot_files <em>Root files</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Root files</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getRoot_files()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Root_files();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getRecipes <em>Recipes</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Recipes</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getRecipes()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Recipes();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getTemplates <em>Templates</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Templates</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getTemplates()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Templates();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getLibraries <em>Libraries</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Libraries</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getLibraries()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Libraries();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getProviders <em>Providers</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Providers</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getProviders()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Providers();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getResources <em>Resources</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Resources</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getResources()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Resources();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getFiles <em>Files</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Files</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getFiles()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Files();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getDefinitions <em>Definitions</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Definitions</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getDefinitions()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Definitions();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getAttributes <em>Attributes</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Attributes</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getAttributes()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EReference getServerCookbookVersion_Attributes();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getVersion <em>Version</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Version</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getVersion()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EAttribute getServerCookbookVersion_Version();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getCookbook_name <em>Cookbook name</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Cookbook name</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getCookbook_name()
+     * @see #getServerCookbookVersion()
+     * @generated
+     */
+    EAttribute getServerCookbookVersion_Cookbook_name();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1213,6 +1673,156 @@ public interface ChefserverPackage extends EPackage {
          * @generated
          */
         EAttribute SANDBOX__URL = eINSTANCE.getSandbox_Url();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl <em>Cookbook List Resp</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl
+         * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getCookbookListResp()
+         * @generated
+         */
+        EClass COOKBOOK_LIST_RESP = eINSTANCE.getCookbookListResp();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute COOKBOOK_LIST_RESP__NAME = eINSTANCE.getCookbookListResp_Name();
+
+        /**
+         * The meta object literal for the '<em><b>Versions</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference COOKBOOK_LIST_RESP__VERSIONS = eINSTANCE.getCookbookListResp_Versions();
+
+        /**
+         * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute COOKBOOK_LIST_RESP__URL = eINSTANCE.getCookbookListResp_Url();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl <em>Server Cookbook File</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl
+         * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerCookbookFile()
+         * @generated
+         */
+        EClass SERVER_COOKBOOK_FILE = eINSTANCE.getServerCookbookFile();
+
+        /**
+         * The meta object literal for the '<em><b>Cookbook</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_FILE__COOKBOOK = eINSTANCE.getServerCookbookFile_Cookbook();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl <em>Server Cookbook Version</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl
+         * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerCookbookVersion()
+         * @generated
+         */
+        EClass SERVER_COOKBOOK_VERSION = eINSTANCE.getServerCookbookVersion();
+
+        /**
+         * The meta object literal for the '<em><b>Root files</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__ROOT_FILES = eINSTANCE.getServerCookbookVersion_Root_files();
+
+        /**
+         * The meta object literal for the '<em><b>Recipes</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__RECIPES = eINSTANCE.getServerCookbookVersion_Recipes();
+
+        /**
+         * The meta object literal for the '<em><b>Templates</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__TEMPLATES = eINSTANCE.getServerCookbookVersion_Templates();
+
+        /**
+         * The meta object literal for the '<em><b>Libraries</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__LIBRARIES = eINSTANCE.getServerCookbookVersion_Libraries();
+
+        /**
+         * The meta object literal for the '<em><b>Providers</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__PROVIDERS = eINSTANCE.getServerCookbookVersion_Providers();
+
+        /**
+         * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__RESOURCES = eINSTANCE.getServerCookbookVersion_Resources();
+
+        /**
+         * The meta object literal for the '<em><b>Files</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__FILES = eINSTANCE.getServerCookbookVersion_Files();
+
+        /**
+         * The meta object literal for the '<em><b>Definitions</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__DEFINITIONS = eINSTANCE.getServerCookbookVersion_Definitions();
+
+        /**
+         * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference SERVER_COOKBOOK_VERSION__ATTRIBUTES = eINSTANCE.getServerCookbookVersion_Attributes();
+
+        /**
+         * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SERVER_COOKBOOK_VERSION__VERSION = eINSTANCE.getServerCookbookVersion_Version();
+
+        /**
+         * The meta object literal for the '<em><b>Cookbook name</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute SERVER_COOKBOOK_VERSION__COOKBOOK_NAME = eINSTANCE.getServerCookbookVersion_Cookbook_name();
 
     }
 

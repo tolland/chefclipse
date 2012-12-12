@@ -69,11 +69,10 @@ public class CookbookVersionItemProvider
 
             addNamePropertyDescriptor(object);
             addIDPropertyDescriptor(object);
-            addCookbookPropertyDescriptor(object);
+            addJson_classPropertyDescriptor(object);
+            addChef_typePropertyDescriptor(object);
             addEnvironmentPropertyDescriptor(object);
             addTemplatesPropertyDescriptor(object);
-            addRoot_filesPropertyDescriptor(object);
-            addChef_typePropertyDescriptor(object);
             addCatalogPropertyDescriptor(object);
             addDependsPropertyDescriptor(object);
             addMissingPropertyDescriptor(object);
@@ -126,23 +125,23 @@ public class CookbookVersionItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Cookbook feature.
+     * This adds a property descriptor for the Json class feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    protected void addCookbookPropertyDescriptor(Object object) {
+    protected void addJson_classPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_CookbookFile_cookbook_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_cookbook_feature", "_UI_CookbookFile_type"),
-                 CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK,
+                 getString("_UI_Cookbook_json_class_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Cookbook_json_class_feature", "_UI_Cookbook_type"),
+                 ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS,
                  true,
                  false,
-                 true,
-                 null,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                  null,
                  null));
     }
@@ -192,28 +191,6 @@ public class CookbookVersionItemProvider
     }
 
     /**
-     * This adds a property descriptor for the Root files feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addRoot_filesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_CookbookVersion_root_files_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_root_files_feature", "_UI_CookbookVersion_type"),
-                 CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
-    }
-
-    /**
      * This adds a property descriptor for the Chef type feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -224,9 +201,9 @@ public class CookbookVersionItemProvider
             (createItemPropertyDescriptor
                 (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
                  getResourceLocator(),
-                 getString("_UI_CookbookVersion_chef_type_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_chef_type_feature", "_UI_CookbookVersion_type"),
-                 CookbookPackage.Literals.COOKBOOK_VERSION__CHEF_TYPE,
+                 getString("_UI_Cookbook_chef_type_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Cookbook_chef_type_feature", "_UI_Cookbook_type"),
+                 ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE,
                  true,
                  false,
                  false,
@@ -313,6 +290,7 @@ public class CookbookVersionItemProvider
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
+            childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__TEMPLATES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__RECIPES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__DEFINITIONS);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__FILES);
@@ -320,6 +298,7 @@ public class CookbookVersionItemProvider
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__LIBRARIES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__METADATA);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__PROVIDERS);
+            childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__ATTRIBUTES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__DEPENDS);
         }
@@ -378,10 +357,12 @@ public class CookbookVersionItemProvider
         switch (notification.getFeatureID(CookbookVersion.class)) {
             case CookbookPackage.COOKBOOK_VERSION__NAME:
             case CookbookPackage.COOKBOOK_VERSION__ID:
+            case CookbookPackage.COOKBOOK_VERSION__JSON_CLASS:
             case CookbookPackage.COOKBOOK_VERSION__CHEF_TYPE:
             case CookbookPackage.COOKBOOK_VERSION__CATALOG:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
+            case CookbookPackage.COOKBOOK_VERSION__TEMPLATES:
             case CookbookPackage.COOKBOOK_VERSION__RECIPES:
             case CookbookPackage.COOKBOOK_VERSION__DEFINITIONS:
             case CookbookPackage.COOKBOOK_VERSION__FILES:
@@ -389,6 +370,7 @@ public class CookbookVersionItemProvider
             case CookbookPackage.COOKBOOK_VERSION__LIBRARIES:
             case CookbookPackage.COOKBOOK_VERSION__METADATA:
             case CookbookPackage.COOKBOOK_VERSION__PROVIDERS:
+            case CookbookPackage.COOKBOOK_VERSION__ROOT_FILES:
             case CookbookPackage.COOKBOOK_VERSION__ATTRIBUTES:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
@@ -406,6 +388,11 @@ public class CookbookVersionItemProvider
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add
+            (createChildParameter
+                (CookbookPackage.Literals.COOKBOOK_VERSION__TEMPLATES,
+                 CookbookFactory.eINSTANCE.createTemplate()));
 
         newChildDescriptors.add
             (createChildParameter
@@ -446,6 +433,11 @@ public class CookbookVersionItemProvider
             (createChildParameter
                 (CookbookPackage.Literals.COOKBOOK_VERSION__PROVIDERS,
                  CookbookFactory.eINSTANCE.createProvider()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES,
+                 CookbookFactory.eINSTANCE.createRoot_file()));
 
         newChildDescriptors.add
             (createChildParameter

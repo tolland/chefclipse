@@ -23,6 +23,7 @@
     <genDataTypes ecoreDataType="chefclipse.ecore#//Description"/>
     <genDataTypes ecoreDataType="chefclipse.ecore#//Object"/>
     <genDataTypes ecoreDataType="chefclipse.ecore#//NameUrlDataType"/>
+    <genDataTypes ecoreDataType="chefclipse.ecore#//MapTest"/>
     <genClasses image="false" ecoreClass="chefclipse.ecore#//NamedDescribedObject"/>
     <genClasses ecoreClass="chefclipse.ecore#//VersionedObject">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//VersionedObject/NUM_VERSIONS"/>
@@ -62,6 +63,27 @@
     </genClasses>
     <genClasses ecoreClass="chefclipse.ecore#//NameUrlMap">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//NameUrlMap/entries"/>
+    </genClasses>
+    <genClasses ecoreClass="chefclipse.ecore#//Cookbook">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//Cookbook/json_class"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//Cookbook/chef_type"/>
+    </genClasses>
+    <genClasses ecoreClass="chefclipse.ecore#//MapTestContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//MapTestContainer/entries"/>
+    </genClasses>
+    <genClasses ecoreClass="chefclipse.ecore#//EStringToVersionUrlMap">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//EStringToVersionUrlMap/key"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefclipse.ecore#//EStringToVersionUrlMap/value"/>
+    </genClasses>
+    <genClasses ecoreClass="chefclipse.ecore#//VersionUrl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//VersionUrl/url"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference chefclipse.ecore#//VersionUrl/versions"/>
+    </genClasses>
+    <genClasses ecoreClass="chefclipse.ecore#//URLEntryTest">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//URLEntryTest/url"/>
+    </genClasses>
+    <genClasses ecoreClass="chefclipse.ecore#//NameVersionMap">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//NameVersionMap/entries"/>
     </genClasses>
     <nestedGenPackages prefix="Chefserver" basePackage="org.limepepper.chefclipse.common"
         resource="XMI" disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefserver">
@@ -119,6 +141,28 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/Sandbox/checksum"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/Sandbox/url"/>
       </genClasses>
+      <genClasses ecoreClass="chefclipse.ecore#//chefserver/CookbookListResp">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/CookbookListResp/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/CookbookListResp/versions"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/CookbookListResp/url"/>
+      </genClasses>
+      <genClasses ecoreClass="chefclipse.ecore#//chefserver/ServerCookbookFile">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookFile/cookbook"/>
+      </genClasses>
+      <genClasses ecoreClass="chefclipse.ecore#//chefserver/ServerCookbookVersion">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/root_files"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/recipes"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/templates"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/libraries"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/providers"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/resources"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/files"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/definitions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/attributes"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/ServerCookbookVersion/version"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/ServerCookbookVersion/cookbook_name"/>
+      </genClasses>
     </nestedGenPackages>
     <nestedGenPackages prefix="Chefclient" basePackage="org.limepepper.chefclipse.common"
         resource="XMI" disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefclient">
@@ -137,7 +181,7 @@
       <genClasses provider="Stateful" ecoreClass="chefclipse.ecore#//cookbook/CookbookVersion">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/environment"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/templates"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/recipes"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/definitions"/>
@@ -146,10 +190,9 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/libraries"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/metadata"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/providers"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/root_files"/>
+        <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+            propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/root_files"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/attributes"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//cookbook/CookbookVersion/chef_type"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//cookbook/CookbookVersion/catalog"/>
         <genFeatures notify="false" children="true" createChild="true" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/depends"/>
@@ -184,7 +227,7 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Metadata/recipes"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/Provider"/>
-      <genClasses ecoreClass="chefclipse.ecore#//cookbook/Root_file"/>
+      <genClasses provider="Stateful" ecoreClass="chefclipse.ecore#//cookbook/Root_file"/>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/MinimalMetadata"/>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/Name"/>
       <genClasses image="false" ecoreClass="chefclipse.ecore#//cookbook/CookbookFile">

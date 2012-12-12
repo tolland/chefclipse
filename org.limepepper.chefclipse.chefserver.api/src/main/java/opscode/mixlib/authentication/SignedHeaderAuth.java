@@ -24,7 +24,7 @@ import com.sun.jersey.core.util.Base64;
 /*
  * lazily ported from the origin opscode;
  * opscode/mixlib-authentication
- * 
+ *
  * require 'time'
  * require 'base64'
  * require 'digest/sha1'
@@ -76,7 +76,7 @@ public class SignedHeaderAuth {
     }
 
 /*
- * 
+ *
  * http://apidock.com/ruby/v1_9_2_180/OpenSSL/PKey/RSA/private_encrypt
  */
     public Map<String, String> sign(PrivateKey private_key,
@@ -96,7 +96,7 @@ public class SignedHeaderAuth {
 
             String plaintext = canonicalize_request(sign_algorithm,
                     sign_version);
-            
+
             assertTrue(plaintext.length()>0);
 
             Cipher cipher = Cipher.getInstance("RSA");
@@ -104,7 +104,7 @@ public class SignedHeaderAuth {
             byte[] signature = cipher.doFinal(plaintext.getBytes());
 
             logger.debug("Input data: ======>", plaintext);
-                    
+
             String signed_string = new String(Base64.encode(signature));
             logger.debug("Signature: " + signed_string);
 
@@ -125,6 +125,8 @@ public class SignedHeaderAuth {
 
     }
 
+
+    //@todo utils bundle
     static String bytes2String(byte[] bytes) {
         StringBuilder string = new StringBuilder();
         for (byte b : bytes) {
@@ -135,14 +137,14 @@ public class SignedHeaderAuth {
     }
 
 /*
- * 
+ *
  * def hashed_body
  * # Hash the file object if it was passed in, otherwise hash based on
  * # the body.
  * # TODO: tim 2009-12-28: It'd be nice to just remove this special case,
  * # always sign the entire request body, using the expanded multipart
  * # body in the case of a file being include.
- * 
+ *
  * @hashed_body ||= (self.file && self.file.respond_to?(:read)) ?
  * digester.hash_file(self.file) : digester.hash_string(self.body)
  * end
@@ -174,16 +176,16 @@ public class SignedHeaderAuth {
          * raise AuthenticationError,
          * "Bad algorithm '#{sign_algorithm}' (allowed: #{SUPPORTED_ALGORITHMS.inspect}) or version '#{sign_version}' (allowed: #{SUPPORTED_VERSIONS.inspect})"
          * end
-         * 
+         *
          * def canonicalize_request(sign_algorithm=algorithm,
          * sign_version=proto_version)
-         * 
+         *
          * canonical_x_ops_user_id = canonicalize_user_id(user_id, sign_version)
          * "Method:#{http_method.to_s.upcase}\nHashed Path:#{digester.hash_string(canonical_path)}\nX-Ops-Content-Hash:#{hashed_body}\nX-Ops-Timestamp:#{canonical_time}\nX-Ops-UserId:#{canonical_x_ops_user_id}"
          * end
          */
 
-        
+
         String req = "Method:"
                 + request_params.get("method")
                 + "\nHashed Path:"
@@ -197,7 +199,7 @@ public class SignedHeaderAuth {
                 + "X-Ops-UserId:"
                 + canonicalize_user_id(request_params.get("client_name"),
                         sign_version);
-        
+
         logger.debug("req:"+req);
         return req;
     }
@@ -210,7 +212,7 @@ public class SignedHeaderAuth {
 /*
  * // private :canonical_time, :canonical_path, :parse_signing_description,
  * :digester, :canonicalize_user_id
- * 
+ *
  * # === SigningObject
  * # A Struct-based value object that contains the necessary information to
  * # generate a request signature. `SignedHeaderAuth.signing_object()`
@@ -218,7 +220,7 @@ public class SignedHeaderAuth {
  * class SigningObject < Struct.new(:http_method, :path, :body, :host,
  * :timestamp, :user_id, :file, :proto_version)
  * include SignedHeaderAuth
- * 
+ *
  * truct.new(:http_method, :path,
  * :body,
  * :host,
@@ -226,7 +228,7 @@ public class SignedHeaderAuth {
  * :user_id,
  * :file,
  * :proto_version)
- * 
+ *
  * def proto_version
  * (self[:proto_version] or DEFAULT_PROTO_VERSION).to_s
  * end
@@ -237,7 +239,7 @@ public class SignedHeaderAuth {
  * private class SigningObject {
  * String http_method, path, body, host, timestamp, client_name, file,
  * proto_version;
- * 
+ *
  * public SigningObject(String http_method, String path, String body,
  * String host, String timestamp, String client_name, String file,
  * String proto_version) {
@@ -251,7 +253,7 @@ public class SignedHeaderAuth {
  * this.file = file;
  * this.proto_version = proto_version;
  * }
- * 
+ *
  * private String proto_version() {
  * return proto_version != null ? proto_version
  * : DEFAULT_PROTO_VERSION;

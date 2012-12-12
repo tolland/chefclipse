@@ -103,6 +103,51 @@ public interface ChefclipseFactory extends EFactory {
     NameUrlMap createNameUrlMap();
 
     /**
+     * Returns a new object of class '<em>Cookbook</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Cookbook</em>'.
+     * @generated
+     */
+    Cookbook createCookbook();
+
+    /**
+     * Returns a new object of class '<em>Map Test Container</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Map Test Container</em>'.
+     * @generated
+     */
+    MapTestContainer createMapTestContainer();
+
+    /**
+     * Returns a new object of class '<em>Version Url</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Version Url</em>'.
+     * @generated
+     */
+    VersionUrl createVersionUrl();
+
+    /**
+     * Returns a new object of class '<em>URL Entry Test</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>URL Entry Test</em>'.
+     * @generated
+     */
+    URLEntryTest createURLEntryTest();
+
+    /**
+     * Returns a new object of class '<em>Name Version Map</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Name Version Map</em>'.
+     * @generated
+     */
+    NameVersionMap createNameVersionMap();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

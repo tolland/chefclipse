@@ -32,6 +32,14 @@
                style="push"
                toolbarPath="sampleGroup">
          </action>
+         <action
+               class="rubyconsole.actions.NewSwingJRubyConsolePop"
+               id="org.limepepper.eclipse.RubyConsole.action2"
+               label="Pop swing console"
+               menubarPath="rubyConsole/sampleGroup"
+               style="push"
+               toolbarPath="sampleGroup">
+         </action>
       </actionSet>
    </extension>
    <extension

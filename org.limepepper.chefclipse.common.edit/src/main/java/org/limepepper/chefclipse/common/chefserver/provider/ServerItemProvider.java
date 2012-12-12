@@ -282,7 +282,7 @@ public class ServerItemProvider
         newChildDescriptors.add
             (createChildParameter
                 (ChefserverPackage.Literals.SERVER__COOKBOOKS,
-                 CookbookFactory.eINSTANCE.createCookbookVersion()));
+                 ChefserverFactory.eINSTANCE.createServerCookbookVersion()));
 
         newChildDescriptors.add
             (createChildParameter

@@ -9,6 +9,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Cookbook;
 import org.limepepper.chefclipse.NamedObject;
 
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -38,7 +39,8 @@ import org.limepepper.chefclipse.impl.DescribedObjectImpl;
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getID <em>ID</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getJson_class <em>Json class</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getChef_type <em>Chef type</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getTemplates <em>Templates</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getRecipes <em>Recipes</em>}</li>
@@ -50,7 +52,6 @@ import org.limepepper.chefclipse.impl.DescribedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getProviders <em>Providers</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getRoot_files <em>Root files</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getAttributes <em>Attributes</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getChef_type <em>Chef type</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getCatalog <em>Catalog</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getDepends <em>Depends</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl#getMissing <em>Missing</em>}</li>
@@ -120,8 +121,8 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
      * <!-- end-user-doc -->
      * @generated
      */
-    public CookbookVersion getCookbook() {
-        return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
+    public String getJson_class() {
+        return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, true);
     }
 
     /**
@@ -129,8 +130,8 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
      * <!-- end-user-doc -->
      * @generated
      */
-    public void setCookbook(CookbookVersion newCookbook) {
-        eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
+    public void setJson_class(String newJson_class) {
+        eSet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, newJson_class);
     }
 
     /**
@@ -265,7 +266,7 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
      * @generated
      */
     public String getChef_type() {
-        return (String)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__CHEF_TYPE, true);
+        return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, true);
     }
 
     /**
@@ -274,7 +275,7 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
      * @generated
      */
     public void setChef_type(String newChef_type) {
-        eSet(CookbookPackage.Literals.COOKBOOK_VERSION__CHEF_TYPE, newChef_type);
+        eSet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, newChef_type);
     }
 
     /**
@@ -329,9 +330,10 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
                 default: return -1;
             }
         }
-        if (baseClass == CookbookFile.class) {
+        if (baseClass == Cookbook.class) {
             switch (derivedFeatureID) {
-                case CookbookPackage.COOKBOOK_VERSION__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
+                case CookbookPackage.COOKBOOK_VERSION__JSON_CLASS: return ChefclipsePackage.COOKBOOK__JSON_CLASS;
+                case CookbookPackage.COOKBOOK_VERSION__CHEF_TYPE: return ChefclipsePackage.COOKBOOK__CHEF_TYPE;
                 default: return -1;
             }
         }
@@ -352,9 +354,10 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
                 default: return -1;
             }
         }
-        if (baseClass == CookbookFile.class) {
+        if (baseClass == Cookbook.class) {
             switch (baseFeatureID) {
-                case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return CookbookPackage.COOKBOOK_VERSION__COOKBOOK;
+                case ChefclipsePackage.COOKBOOK__JSON_CLASS: return CookbookPackage.COOKBOOK_VERSION__JSON_CLASS;
+                case ChefclipsePackage.COOKBOOK__CHEF_TYPE: return CookbookPackage.COOKBOOK_VERSION__CHEF_TYPE;
                 default: return -1;
             }
         }

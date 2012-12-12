@@ -1,5 +1,6 @@
 package org.limepepper.chefclipse.emfjson.chefserver.internal;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Authenticator;
@@ -18,6 +19,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.eclipse.emf.common.util.URI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
+
 
 @SuppressWarnings("unused")
 public class ChefServerClient {
@@ -64,13 +68,25 @@ public class ChefServerClient {
         final JsonFactory jsonFactory = new JsonFactory();
         JsonParser jp = null;
         try {
-            jp = jsonFactory.createJsonParser(inStream);
+
+            BufferedInputStream bis = new BufferedInputStream(inStream);
+            bis.mark(Integer.MAX_VALUE);
+            logger.debug("input stream was", convertStreamToString(bis));
+            bis.reset();
+            jp = jsonFactory.createJsonParser(bis);
         } catch (JsonParseException e1) {
             e1.printStackTrace();
         } catch (IOException e1) {
             e1.printStackTrace();
         }
         return jp;
+    }
+
+
+    public static String convertStreamToString(java.io.InputStream is) {
+        java.util.Scanner s = new java.util.Scanner(is, "UTF-8")
+                .useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
     }
 
     public static HttpURLConnection getGetConnection(ChefRequest uri)
