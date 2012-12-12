@@ -31,7 +31,7 @@ public class AuthCredentials {
     public AuthCredentials(String client_name, File key_file)
             throws IOException {
         this.client_name = client_name;
-        this.key_file = new File("/home/tomhodder/gitrepo/chefclipse/org.limepepper.chefclipse.chefserver.api/chefclipse.pem");
+        this.key_file = new File("resources/chefclipse.pem");
 
         if (sign_requests())
             load_signing_key();
