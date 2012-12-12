@@ -145,6 +145,16 @@ package chefserver {
     attr String json_class;
     attr String chef_type;
     val ServerCookbookFile[*]#cookbook root_files;
+    val ServerCookbookFile[*]#cookbook recipes;
+    val ServerCookbookFile[*]#cookbook templates;
+    val ServerCookbookFile[*]#cookbook libraries;
+    val ServerCookbookFile[*]#cookbook providers;
+    val ServerCookbookFile[*]#cookbook resources;
+    val ServerCookbookFile[*]#cookbook files;
+    val ServerCookbookFile[*]#cookbook definitions;
+    val ServerCookbookFile[*]#cookbook attributes;
+    attr Version[1] version = "0.0.0";
+    attr String[1] cookbook_name;
   }
 
 }

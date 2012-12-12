@@ -3,6 +3,9 @@
  */
 package org.limepepper.chefclipse.chefserver.api;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -18,29 +21,30 @@ import opscode.chef.REST.JSONRestWrapper;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipselabs.emfjson.EMFJs;
 import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
+import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.REST.ClientResp;
 import org.limepepper.chefclipse.REST.CookbookListResp;
 import org.limepepper.chefclipse.REST.CookbookListVersionResp;
 import org.limepepper.chefclipse.REST.CookbookMetadata;
 import org.limepepper.chefclipse.REST.CookbookVersionResp;
-import org.limepepper.chefclipse.REST.EnvironmentResp;
 import org.limepepper.chefclipse.REST.RESTFactory;
 import org.limepepper.chefclipse.REST.RoleListResp;
 import org.limepepper.chefclipse.REST.RoleResp;
-import org.limepepper.chefclipse.REST.SearchIndexResp;
-import org.limepepper.chefclipse.REST.SearchResultResp;
-import org.limepepper.chefclipse.common.chefserver.DataBag;
-import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Node;
-import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
+import org.limepepper.chefclipse.emfjson.chefserver.ChefServerURIHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,6 +63,8 @@ public class ChefServerApiImpl implements ChefServerApi {
                                                               1);
     AuthCredentials                         auth      = null;
 
+    Map<String, Object>                     options   = new HashMap<String, Object>();
+
     public static ChefServerApi getServerApi(@NonNull KnifeConfig knifeConfig) {
 
         if (!instances.containsKey(knifeConfig)) {
@@ -71,6 +77,15 @@ public class ChefServerApiImpl implements ChefServerApi {
     }
 
     ChefServerApiImpl(@NonNull KnifeConfig knifeConfig) {
+
+        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
+                "http", new JsResourceFactoryImpl());
+
+        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
+                "https", new JsResourceFactoryImpl());
+
+        options.put("knifeConfig", knifeConfig);
+
         try {
             auth = new AuthCredentials(knifeConfig.getNode_name(),
                     knifeConfig.getClient_key());
@@ -149,9 +164,48 @@ public class ChefServerApiImpl implements ChefServerApi {
         return cookbookVersionResp;
     }
 
-    public CookbookVersionResp getCookbookVersion(String string)
-            throws MalformedURLException {
-        return getRestCookbookVersion(string);
+    public ServerCookbookVersion getCookbookVersion(String string, String version) {
+
+        options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                ChefserverPackage.eINSTANCE.getServerCookbookVersion());
+
+        ResourceSetImpl resourceSet = new ResourceSetImpl();
+        // EmfJsonWrapper.instance().getOjectFromJson();
+
+        resourceSet.getURIConverter().getURIHandlers()
+                .add(0, new ChefServerURIHandler());
+
+        URI uri = URI.createURI(((Config) options.get("knifeConfig"))
+                .getChef_server_url().toString()
+                + "/cookbooks/"
+                + string
+                + "/_latest");
+
+        Resource resource = resourceSet.createResource(uri);
+
+        try {
+            resource.load(options);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ServerCookbookVersion user = (ServerCookbookVersion) resource
+                .getContents().get(0);
+
+        assertNotNull(user);
+        assertTrue(user.getCookbook_name() != null);
+        for (ServerCookbookFile file : user.getTemplates()) {
+            System.out.println(file.getName());
+            System.out.println(file.getChecksum());
+        }
+        System.out.println("number of items was" + user.getRoot_files().size());
+
+        for (ServerCookbookFile iterable_element : user.getRoot_files()) {
+            System.out.println(iterable_element.getName() + ":val:"
+                    + iterable_element.getPath());
+        }
+        return user;
+
     }
 
     private List<CookbookListResp> createCookbookListRespList(JSONObject json) {
@@ -267,8 +321,8 @@ public class ChefServerApiImpl implements ChefServerApi {
     }
 
     @Override
-    public CookbookVersionResp getCookbookVersion(String name, String version) {
-        return null;
+    public ServerCookbookVersion getCookbookVersion(String name) {
+        return getCookbookVersion(name, "_latest");
     }
 
     @Override
@@ -296,15 +350,6 @@ public class ChefServerApiImpl implements ChefServerApi {
         return null;
     }
 
-    @Override
-    public List<SearchIndexResp> getSearchIndexes() {
-        return null;
-    }
-
-    @Override
-    public SearchResultResp doSearch(String q, String sort, int rows, int start) {
-        return null;
-    }
 
     @Override
     public List<ClientResp> getClients() {
@@ -316,66 +361,6 @@ public class ChefServerApiImpl implements ChefServerApi {
         return null;
     }
 
-    @Override
-    public List<DataBag> getDataBags() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public DataBag getDataBag(String bag) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public DataBagItem getDataBag(String bag, String name) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<Environment> getEnvironments() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public EnvironmentResp getEnvironment(String name) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<Sandbox> getSandboxes() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public boolean putSandbox(Sandbox sandbox) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public List<CookbookVersionResp> getCookbooksByEnvironment(String name) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public List<CookbookVersionResp> getCookbookVersionsByEnvironment(
-            String environment, String cookbook) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public SearchResultResp doSearch(String q) {
-        // TODO Auto-generated method stub
-        return null;
-    }
 
     @Override
     public String getServerInfo() {
@@ -417,9 +402,5 @@ public class ChefServerApiImpl implements ChefServerApi {
         return null;
     }
 
-    @Override
-    public NameUrlMap getEnvironmentList() {
-        return null;
-    }
 
 }

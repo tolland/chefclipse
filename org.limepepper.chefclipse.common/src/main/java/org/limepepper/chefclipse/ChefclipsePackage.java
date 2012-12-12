@@ -463,6 +463,43 @@ public interface ChefclipsePackage extends EPackage {
     int NAME_URL_MAP_FEATURE_COUNT = 1;
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.CookbookImpl <em>Cookbook</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.CookbookImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getCookbook()
+     * @generated
+     */
+    int COOKBOOK = 10;
+
+    /**
+     * The feature id for the '<em><b>Json class</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK__JSON_CLASS = 0;
+
+    /**
+     * The feature id for the '<em><b>Chef type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK__CHEF_TYPE = 1;
+
+    /**
+     * The number of structural features of the '<em>Cookbook</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_FEATURE_COUNT = 2;
+
+    /**
      * The meta object id for the '<em>URL</em>' data type.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -470,7 +507,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getURL()
      * @generated
      */
-    int URL = 10;
+    int URL = 11;
 
     /**
      * The meta object id for the '<em>File</em>' data type.
@@ -480,7 +517,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getFile()
      * @generated
      */
-    int FILE = 11;
+    int FILE = 12;
 
     /**
      * The meta object id for the '<em>Chef type</em>' data type.
@@ -490,7 +527,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getChef_type()
      * @generated
      */
-    int CHEF_TYPE = 12;
+    int CHEF_TYPE = 13;
 
     /**
      * The meta object id for the '<em>Email</em>' data type.
@@ -500,7 +537,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getEmail()
      * @generated
      */
-    int EMAIL = 13;
+    int EMAIL = 14;
 
     /**
      * The meta object id for the '<em>Text</em>' data type.
@@ -510,7 +547,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getText()
      * @generated
      */
-    int TEXT = 14;
+    int TEXT = 15;
 
     /**
      * The meta object id for the '<em>Version</em>' data type.
@@ -520,7 +557,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getVersion()
      * @generated
      */
-    int VERSION = 15;
+    int VERSION = 16;
 
     /**
      * The meta object id for the '<em>Name</em>' data type.
@@ -530,7 +567,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getName_()
      * @generated
      */
-    int NAME = 16;
+    int NAME = 17;
 
     /**
      * The meta object id for the '<em>Description</em>' data type.
@@ -540,7 +577,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getDescription()
      * @generated
      */
-    int DESCRIPTION = 17;
+    int DESCRIPTION = 18;
 
     /**
      * The meta object id for the '<em>Object</em>' data type.
@@ -550,7 +587,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getObject()
      * @generated
      */
-    int OBJECT = 18;
+    int OBJECT = 19;
 
     /**
      * The meta object id for the '<em>Name Url Data Type</em>' data type.
@@ -560,7 +597,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNameUrlDataType()
      * @generated
      */
-    int NAME_URL_DATA_TYPE = 19;
+    int NAME_URL_DATA_TYPE = 20;
 
 
     /**
@@ -893,6 +930,38 @@ public interface ChefclipsePackage extends EPackage {
      * @generated
      */
     EReference getNameUrlMap_Entries();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.Cookbook <em>Cookbook</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Cookbook</em>'.
+     * @see org.limepepper.chefclipse.Cookbook
+     * @generated
+     */
+    EClass getCookbook();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.Cookbook#getJson_class <em>Json class</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Json class</em>'.
+     * @see org.limepepper.chefclipse.Cookbook#getJson_class()
+     * @see #getCookbook()
+     * @generated
+     */
+    EAttribute getCookbook_Json_class();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.Cookbook#getChef_type <em>Chef type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Chef type</em>'.
+     * @see org.limepepper.chefclipse.Cookbook#getChef_type()
+     * @see #getCookbook()
+     * @generated
+     */
+    EAttribute getCookbook_Chef_type();
 
     /**
      * Returns the meta object for data type '{@link java.net.URL <em>URL</em>}'.
@@ -1293,6 +1362,32 @@ public interface ChefclipsePackage extends EPackage {
          * @generated
          */
         EReference NAME_URL_MAP__ENTRIES = eINSTANCE.getNameUrlMap_Entries();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.impl.CookbookImpl <em>Cookbook</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.impl.CookbookImpl
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getCookbook()
+         * @generated
+         */
+        EClass COOKBOOK = eINSTANCE.getCookbook();
+
+        /**
+         * The meta object literal for the '<em><b>Json class</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute COOKBOOK__JSON_CLASS = eINSTANCE.getCookbook_Json_class();
+
+        /**
+         * The meta object literal for the '<em><b>Chef type</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute COOKBOOK__CHEF_TYPE = eINSTANCE.getCookbook_Chef_type();
 
         /**
          * The meta object literal for the '<em>URL</em>' data type.

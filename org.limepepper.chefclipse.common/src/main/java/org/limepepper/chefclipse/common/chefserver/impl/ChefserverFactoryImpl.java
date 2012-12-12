@@ -66,6 +66,9 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
             case ChefserverPackage.SERVER_CONFIG: return createServerConfig();
             case ChefserverPackage.DATA_BAG_ITEM: return createDataBagItem();
             case ChefserverPackage.SANDBOX: return createSandbox();
+            case ChefserverPackage.COOKBOOK_LIST_RESP: return createCookbookListResp();
+            case ChefserverPackage.SERVER_COOKBOOK_FILE: return createServerCookbookFile();
+            case ChefserverPackage.SERVER_COOKBOOK_VERSION: return createServerCookbookVersion();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -169,6 +172,36 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
     public Sandbox createSandbox() {
         SandboxImpl sandbox = new SandboxImpl();
         return sandbox;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CookbookListResp createCookbookListResp() {
+        CookbookListRespImpl cookbookListResp = new CookbookListRespImpl();
+        return cookbookListResp;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ServerCookbookFile createServerCookbookFile() {
+        ServerCookbookFileImpl serverCookbookFile = new ServerCookbookFileImpl();
+        return serverCookbookFile;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ServerCookbookVersion createServerCookbookVersion() {
+        ServerCookbookVersionImpl serverCookbookVersion = new ServerCookbookVersionImpl();
+        return serverCookbookVersion;
     }
 
     /**

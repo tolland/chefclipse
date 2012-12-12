@@ -16,6 +16,7 @@ import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipseFactory;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.Cookbook;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NameUrlMap;
@@ -126,6 +127,13 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * @generated
      */
     private EClass nameUrlMapEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass cookbookEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -562,6 +570,33 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getCookbook() {
+        return cookbookEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getCookbook_Json_class() {
+        return (EAttribute)cookbookEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getCookbook_Chef_type() {
+        return (EAttribute)cookbookEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EDataType getURL() {
         return urlEDataType;
     }
@@ -716,6 +751,10 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         nameUrlMapEClass = createEClass(NAME_URL_MAP);
         createEReference(nameUrlMapEClass, NAME_URL_MAP__ENTRIES);
 
+        cookbookEClass = createEClass(COOKBOOK);
+        createEAttribute(cookbookEClass, COOKBOOK__JSON_CLASS);
+        createEAttribute(cookbookEClass, COOKBOOK__CHEF_TYPE);
+
         // Create data types
         urlEDataType = createEDataType(URL);
         fileEDataType = createEDataType(FILE);
@@ -817,6 +856,10 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 
         initEClass(nameUrlMapEClass, NameUrlMap.class, "NameUrlMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getNameUrlMap_Entries(), ecorePackage.getEStringToStringMapEntry(), null, "entries", null, 0, -1, NameUrlMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(cookbookEClass, Cookbook.class, "Cookbook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getCookbook_Json_class(), ecorePackage.getEString(), "json_class", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getCookbook_Chef_type(), ecorePackage.getEString(), "chef_type", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize data types
         initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

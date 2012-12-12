@@ -103,112 +103,13 @@ public interface CookbookPackage extends EPackage {
     int COOKBOOK_VERSION__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
-     * The feature id for the '<em><b>Cookbook</b></em>' reference.
+     * The feature id for the '<em><b>Json class</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int COOKBOOK_VERSION__COOKBOOK = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
-
-    /**
-     * The feature id for the '<em><b>Environment</b></em>' reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__ENVIRONMENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
-
-    /**
-     * The feature id for the '<em><b>Templates</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__TEMPLATES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
-
-    /**
-     * The feature id for the '<em><b>Recipes</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__RECIPES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
-
-    /**
-     * The feature id for the '<em><b>Definitions</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__DEFINITIONS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
-
-    /**
-     * The feature id for the '<em><b>Files</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__FILES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
-
-    /**
-     * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__RESOURCES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 6;
-
-    /**
-     * The feature id for the '<em><b>Libraries</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__LIBRARIES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 7;
-
-    /**
-     * The feature id for the '<em><b>Metadata</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__METADATA = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 8;
-
-    /**
-     * The feature id for the '<em><b>Providers</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__PROVIDERS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 9;
-
-    /**
-     * The feature id for the '<em><b>Root files</b></em>' reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__ROOT_FILES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 10;
-
-    /**
-     * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int COOKBOOK_VERSION__ATTRIBUTES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 11;
+    int COOKBOOK_VERSION__JSON_CLASS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Chef type</b></em>' attribute.
@@ -217,7 +118,106 @@ public interface CookbookPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COOKBOOK_VERSION__CHEF_TYPE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 12;
+    int COOKBOOK_VERSION__CHEF_TYPE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Environment</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__ENVIRONMENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Templates</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__TEMPLATES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Recipes</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__RECIPES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Definitions</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__DEFINITIONS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
+
+    /**
+     * The feature id for the '<em><b>Files</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__FILES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 6;
+
+    /**
+     * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__RESOURCES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 7;
+
+    /**
+     * The feature id for the '<em><b>Libraries</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__LIBRARIES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 8;
+
+    /**
+     * The feature id for the '<em><b>Metadata</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__METADATA = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 9;
+
+    /**
+     * The feature id for the '<em><b>Providers</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__PROVIDERS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 10;
+
+    /**
+     * The feature id for the '<em><b>Root files</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__ROOT_FILES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 11;
+
+    /**
+     * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int COOKBOOK_VERSION__ATTRIBUTES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Catalog</b></em>' attribute.
@@ -1646,17 +1646,6 @@ public interface CookbookPackage extends EPackage {
     EReference getCookbookVersion_Attributes();
 
     /**
-     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type <em>Chef type</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Chef type</em>'.
-     * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type()
-     * @see #getCookbookVersion()
-     * @generated
-     */
-    EAttribute getCookbookVersion_Chef_type();
-
-    /**
      * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getCatalog <em>Catalog</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2111,14 +2100,6 @@ public interface CookbookPackage extends EPackage {
          * @generated
          */
         EReference COOKBOOK_VERSION__ATTRIBUTES = eINSTANCE.getCookbookVersion_Attributes();
-
-        /**
-         * The meta object literal for the '<em><b>Chef type</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute COOKBOOK_VERSION__CHEF_TYPE = eINSTANCE.getCookbookVersion_Chef_type();
 
         /**
          * The meta object literal for the '<em><b>Catalog</b></em>' attribute feature.

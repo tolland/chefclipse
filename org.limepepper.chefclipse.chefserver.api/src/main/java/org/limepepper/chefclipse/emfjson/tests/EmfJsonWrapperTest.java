@@ -25,6 +25,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NameUrlMap;
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
@@ -106,7 +109,8 @@ public class EmfJsonWrapperTest {
             NameUrlMap user = (NameUrlMap) resource.getContents().get(0);
 
             assertTrue(user.getEntries() != null);
-            System.out.println("number of items was" + user.getEntries().size());
+            System.out
+                    .println("number of items was" + user.getEntries().size());
 
             for (Entry<String, String> iterable_element : user.getEntries()) {
                 System.out.println(iterable_element.getKey() + ":val:"
@@ -119,4 +123,58 @@ public class EmfJsonWrapperTest {
 
     }
 
+    @Test
+    public void testGetCookbookVersionFromSErver() throws Exception {
+
+        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
+                "json", new JsResourceFactoryImpl());
+
+        ResourceSetImpl resourceSet = new ResourceSetImpl();
+        // EmfJsonWrapper.instance().getOjectFromJson();
+
+        Map<String, Object> options = new HashMap<String, Object>();
+        options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                ChefserverPackage.eINSTANCE.getServerCookbookVersion());
+        URL url = null;
+
+        try {
+            url = new URL("file:resources/server-cookbook-version.json");
+
+            InputStream inputStream = url.openConnection().getInputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    inputStream));
+            String inputLine;
+
+            while ((inputLine = in.readLine()) != null) {
+                // System.out.println(inputLine);
+            }
+
+            in.close();
+
+            Resource resource = resourceSet.createResource(URI
+                    .createURI("resources/server-cookbook-version.json"));
+
+            resource.load(options);
+
+            ServerCookbookVersion user = (ServerCookbookVersion) resource
+                    .getContents().get(0);
+
+            assertNotNull(user);
+            assertTrue(user.getCookbook_name() != null);
+            for(ServerCookbookFile file : user.getTemplates()){
+                System.out.println(file.getName());
+                System.out.println(file.getChecksum());
+            }
+            System.out.println("number of items was"
+                    + user.getRoot_files().size());
+
+            for (ServerCookbookFile iterable_element : user.getRoot_files()) {
+                System.out.println(iterable_element.getName() + ":val:"
+                        + iterable_element.getPath());
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

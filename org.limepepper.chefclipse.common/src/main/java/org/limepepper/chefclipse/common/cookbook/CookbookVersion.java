@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.limepepper.chefclipse.Cookbook;
 import org.limepepper.chefclipse.NamedDescribedObject;
 
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -29,7 +30,6 @@ import org.limepepper.chefclipse.common.chefserver.Environment;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getProviders <em>Providers</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getRoot_files <em>Root files</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getAttributes <em>Attributes</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type <em>Chef type</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getCatalog <em>Catalog</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getDepends <em>Depends</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMissing <em>Missing</em>}</li>
@@ -40,7 +40,7 @@ import org.limepepper.chefclipse.common.chefserver.Environment;
  * @model
  * @generated
  */
-public interface CookbookVersion extends NamedDescribedObject, CookbookFile {
+public interface CookbookVersion extends NamedDescribedObject, Cookbook {
     /**
      * Returns the value of the '<em><b>Environment</b></em>' reference.
      * <!-- begin-user-doc -->
@@ -238,33 +238,6 @@ public interface CookbookVersion extends NamedDescribedObject, CookbookFile {
      * @generated
      */
     EList<Attributes> getAttributes();
-
-    /**
-     * Returns the value of the '<em><b>Chef type</b></em>' attribute.
-     * The default value is <code>"cookbook_version"</code>.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Chef type</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * @return the value of the '<em>Chef type</em>' attribute.
-     * @see #setChef_type(String)
-     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Chef_type()
-     * @model default="cookbook_version" dataType="org.limepepper.chefclipse.Chef_type" required="true"
-     * @generated
-     */
-    String getChef_type();
-
-    /**
-     * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type <em>Chef type</em>}' attribute.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Chef type</em>' attribute.
-     * @see #getChef_type()
-     * @generated
-     */
-    void setChef_type(String value);
 
     /**
      * Returns the value of the '<em><b>Catalog</b></em>' attribute.

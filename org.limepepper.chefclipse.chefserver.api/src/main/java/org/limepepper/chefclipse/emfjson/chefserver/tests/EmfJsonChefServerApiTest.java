@@ -30,6 +30,8 @@ import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.emfjson.chefserver.ChefServerURIHandler;
@@ -52,6 +54,15 @@ public class EmfJsonChefServerApiTest {
     public void setUp() throws Exception {
 
         Properties props = new Properties();
+
+
+
+        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
+                "http", new JsResourceFactoryImpl());
+
+        Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
+                "https", new JsResourceFactoryImpl());
+
 
         try {
 
@@ -88,7 +99,8 @@ public class EmfJsonChefServerApiTest {
         if (knifeConfig == null)
             return;
 
-        URI uri = URI.createURI(knifeConfig.getChef_server_url().toString()+"/nodes");
+        URI uri = URI.createURI(knifeConfig.getChef_server_url().toString()
+                + "/nodes");
         try {
 
             ChefServerClient
@@ -107,7 +119,7 @@ public class EmfJsonChefServerApiTest {
         } finally {
 
         }
-        assertTrue(responseCode==401);
+        assertTrue(responseCode == 401);
     }
 
     @Test
@@ -236,7 +248,6 @@ public class EmfJsonChefServerApiTest {
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "http", new JsResourceFactoryImpl());
 
-
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "https", new JsResourceFactoryImpl());
 
@@ -260,6 +271,44 @@ public class EmfJsonChefServerApiTest {
         Node node = (Node) resource.getContents().get(0);
 
         assertTrue(node.getName().equals("test1"));
+
+    }
+
+    @Test
+    public void testGetCookbookVersionFromSErver() throws Exception {
+
+        options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                ChefserverPackage.eINSTANCE.getServerCookbookVersion());
+
+        ResourceSetImpl resourceSet = new ResourceSetImpl();
+        // EmfJsonWrapper.instance().getOjectFromJson();
+
+
+        resourceSet.getURIConverter().getURIHandlers()
+                .add(0, new ChefServerURIHandler());
+
+        URI uri = URI.createURI(knifeConfig.getChef_server_url().toString()
+                + "/cookbooks/apache2/_latest");
+
+        Resource resource = resourceSet.createResource(uri);
+
+        resource.load(options);
+
+        ServerCookbookVersion user = (ServerCookbookVersion) resource
+                .getContents().get(0);
+
+        assertNotNull(user);
+        assertTrue(user.getCookbook_name() != null);
+        for (ServerCookbookFile file : user.getTemplates()) {
+            System.out.println(file.getName());
+            System.out.println(file.getChecksum());
+        }
+        System.out.println("number of items was" + user.getRoot_files().size());
+
+        for (ServerCookbookFile iterable_element : user.getRoot_files()) {
+            System.out.println(iterable_element.getName() + ":val:"
+                    + iterable_element.getPath());
+        }
 
     }
 

@@ -7,29 +7,23 @@ import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.REST.ClientResp;
 import org.limepepper.chefclipse.REST.CookbookListResp;
 import org.limepepper.chefclipse.REST.CookbookVersionResp;
-import org.limepepper.chefclipse.REST.EnvironmentResp;
 import org.limepepper.chefclipse.REST.RoleListResp;
 import org.limepepper.chefclipse.REST.RoleResp;
-import org.limepepper.chefclipse.REST.SearchIndexResp;
-import org.limepepper.chefclipse.REST.SearchResultResp;
-import org.limepepper.chefclipse.common.chefserver.DataBag;
-import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
-import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 
 /**
  * @author tomhodder
- * 
+ *
  */
 public interface ChefServerApi {
 
-    
+
     /**
      * provides a function that returns the banner from the server as a means to
      * test a connection
-     * 
+     *
      * @return string containing the HTTP banner
      */
     String getServerInfo();
@@ -37,7 +31,7 @@ public interface ChefServerApi {
     /**
      * @return list of cookbooks in JSON response format objects (i.e. not the
      *         CookbookVersion object that is used in the model
-     * @throws MalformedURLException 
+     * @throws MalformedURLException
      */
     List<CookbookListResp> getCookbooks();
 
@@ -74,7 +68,7 @@ public interface ChefServerApi {
     /**
      * @param name
      * @return list of
-     * @throws MalformedURLException 
+     * @throws MalformedURLException
      */
     CookbookListResp getCookbookInfo(String name);
 
@@ -86,46 +80,47 @@ public interface ChefServerApi {
      *            "_latest"
      * @return a CookbookVersionResp response object which reflects the JSON
      *         object...
-     * 
+     *
      */
-    CookbookVersionResp getCookbookVersion(String name, String version);
+    ServerCookbookVersion getCookbookVersion(String name);
+    ServerCookbookVersion getCookbookVersion(String name, String version);
 
     /**
      * @return List of Data bags
-     * 
-     * 
+     *
+     *
      *         #/data
      *         #/data/DATA_BAG_NAME
      *         #/data/DATA_BAG_NAME/DATA_BAG_ITEM_ID
      */
-    List<DataBag> getDataBags();
+  //  List<DataBag> getDataBags();
 
     /*
      * /data/DATA_BAG_NAME
      * HTTP Methods
      * GET
-     * 
+     *
      * Returns a hash of all the entries in the given bag.
      * Response
      * Response to a GET on /data/DATA_BAG_NAME
      * {
      * "adam": "http://localhost:4000/data/users/adam"
      * }
-     * 
+     *
      * Returns "200 OK".
      * Returns "401 Unauthorized" if the user is not allowed to view the bag.
      * Returns "404 Not Found" if the bag does not exist.
      */
-    DataBag getDataBag(String bag);
+ //   DataBag getDataBag(String bag);
 
     /*
      * /data/DATA_BAG_NAME/DATA_BAG_ITEM_ID
-     * 
+     *
      * This endpoint allows you to show/manipulate data bag items within a bag.
      * The data bag item itself can be any arbitrary JSON you construct.
      * HTTP Methods
      * GET
-     * 
+     *
      * Returns the data bag item in the bag.
      * Response
      * Response to a GET on /data/DATA_BAG_NAME/DATA_BAG_ITEM_ID
@@ -133,18 +128,18 @@ public interface ChefServerApi {
      * "real_name": "Adam Jacob",
      * "id": "adam"
      * }
-     * 
+     *
      * Returns "200 OK"
      * Returns "401 Unauthorized"
      * Returns "404 Not Found"
      */
 
-    DataBagItem getDataBag(String bag, String name);
+ //   DataBagItem getDataBag(String bag, String name);
 
     /*
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
 
     List<RoleListResp> getRoles();
@@ -153,65 +148,65 @@ public interface ChefServerApi {
 
 
     List<Node> getNodes();
-    
+
 
     NameUrlMap getNodeList();
     NameUrlMap getRoleList();
-    NameUrlMap getEnvironmentList();
+//    NameUrlMap getEnvironmentList();
 
-    
+
     Node getNode(String fqdn);
-    List<Environment> getEnvironments();
-    EnvironmentResp getEnvironment(String name);
+ //   List<Environment> getEnvironments();
+ //   EnvironmentResp getEnvironment(String name);
 
     /*
-     * 
-     * 
-     * 
-     * 
+     *
+     *
+     *
+     *
      */
 
     List<CookbookVersionResp> getNodeCookbooks(String name);
 
     /*
-     * 
+     *
      * Search
-     * 
+     *
      * /search
      * /search/INDEX
      */
 
-    List<SearchIndexResp> getSearchIndexes();
+ //   List<SearchIndexResp> getSearchIndexes();
 
-    SearchResultResp doSearch(String q);
+//    SearchResultResp doSearch(String q);
 
-    SearchResultResp doSearch(String q, String sort, int rows, int start);
+ //   SearchResultResp doSearch(String q, String sort, int rows, int start);
 
     /*
-     * 
+     *
      * /sandboxes
      * /sandboxes/SANDBOX_ID
      * /sandboxes/SANDBOX_ID/CHECKSUM
      * Sandboxes
-     * 
+     *
      * Sandboxes are used to commit files so that they only have to be uploaded
      * once, as opposed to each time a cookbook is uploaded, even if only one
      * file has changed.
-     * 
+     *
      * return to top of page
      * /sandboxes
-     * 
+     *
      * Create or list sandboxes.
      */
 
-    List<Sandbox> getSandboxes();
+  //  List<Sandbox> getSandboxes();
 
-    boolean putSandbox(Sandbox sandbox);
+ //   boolean putSandbox(Sandbox sandbox);
 
-    List<CookbookVersionResp> getCookbooksByEnvironment(String name);
+ //   List<CookbookVersionResp> getCookbooksByEnvironment(String name);
 
-    List<CookbookVersionResp> getCookbookVersionsByEnvironment(
-            String environment, String cookbook);
+ //   List<CookbookVersionResp> getCookbookVersionsByEnvironment(
+  //          String environment, String cookbook);
 
     Server getChefServer();
 

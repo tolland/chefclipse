@@ -45,8 +45,8 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
         System.err.println(parentElement.getClass());
 
         if (parentElement instanceof IProject) {
-            children.add(ChefRepositoryManager.INSTANCE.getRepository(
-                    ((IProject) parentElement)));
+            children.add(ChefRepositoryManager.INSTANCE
+                    .getRepository(((IProject) parentElement)));
 
             for (KnifeConfig knifeConfig : ChefRepositoryManager.INSTANCE
                     .getKnives(((IProject) parentElement))) {
@@ -65,8 +65,8 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
         if ((parentElement instanceof IFile)
                 && ((IFile) parentElement).getName().equals(
                         ChefProjectManager.WORKSTATION_FOLDER)) {
-            parentElement = ChefRepositoryManager.INSTANCE.getRepository(
-                    ((IFile) parentElement).getProject());
+            parentElement = ChefRepositoryManager.INSTANCE
+                    .getRepository(((IFile) parentElement).getProject());
 
             return super.getChildren(parentElement);
         } else if (parentElement instanceof CookbookVersion) {
@@ -83,8 +83,9 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
                             ((CookbookVersion) parentElement).getDefinitions()),
                     new MenuLevelHolder("Libraries",
                             ((CookbookVersion) parentElement).getLibraries()),
-                    new MenuLevelHolder("Dependendies",
-                            ((CookbookVersion) parentElement).getDepends()) };
+                    new MenuLevelHolder(
+                            ((CookbookVersion) parentElement).getDepends(),
+                            "Dependencies") };
 
         } else if (parentElement instanceof MenuLevelHolder) {
 
@@ -113,6 +114,12 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
             children = eList.toArray();
         }
 
+        MenuLevelHolder(@NonNull EList<CookbookVersion> eList,
+                @NonNull String name) {
+            label = name;
+            children = eList.toArray();
+        }
+
     }
 
     public Object getParent(Object element) {
@@ -133,9 +140,9 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
                 System.err.println("is workstation folder");
                 return true;
             } else if ((element instanceof IProject)
+                    && ((IProject) element).isOpen()
                     && ((IProject) element)
-                    .isOpen() && ((IProject) element)
-                    .hasNature(ChefProjectNature.NATURE_ID)) {
+                            .hasNature(ChefProjectNature.NATURE_ID)) {
                 logger.debug("is project");
                 return true;
             } else if (element instanceof MenuLevelHolder) {
