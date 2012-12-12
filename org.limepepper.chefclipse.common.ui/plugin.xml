@@ -163,4 +163,63 @@
 
 </extension>
 
+
+     <extension
+         point="org.eclipse.compare.contentMergeViewers">
+      <viewer
+            extensions="cookbookitem"
+            class="org.limepepper.chefclipse.compare.structurecreator.TextMergeViewerCreator"
+            id="org.limepepper.chefclipse.compare.TextMergeViewerCreator">
+      </viewer>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Compare Action Set"
+            visible="true"
+            id="cookbook.compare.actionset">
+         <menu
+               label="Compare action set menu"
+               id="compare.actionset">
+            <separator
+                  name="sampleGroup.compare.cookbook">
+            </separator>
+         </menu>
+         <action
+               label="&amp;Compare Cookbook"
+               icon="icons/sample.gif"
+               class="org.limepepper.chefclipse.compare.actions.CompareAction"
+               tooltip="Hello, Eclipse world"
+               menubarPath="compare.actionset/sampleGroup.compare.cookbook"
+               toolbarPath="sampleGroup"
+               id="rubyconsole.actions.NewRubyConsole">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.limepepper.chefclipse.common.ui.contribution1"
+            objectClass="org.eclipse.core.resources.IFolder">
+         <menu
+               id="org.limepepper.chefclipse.common.ui.menu1"
+               label="New Submenu"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="org.limepepper.chefclipse.common.ui.popup.actions.NewActionPopupTest"
+               enablesFor="+"
+               id="org.limepepper.chefclipse.common.ui.newAction"
+               label="New Action"
+               menubarPath="org.limepepper.chefclipse.common.ui.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
+
+
+
 </plugin>

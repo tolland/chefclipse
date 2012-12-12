@@ -70,13 +70,11 @@ public class ChefServerApiImpl implements ChefServerApi {
         return (ChefServerApi) instances.get(knifeConfig);
     }
 
-    ChefServerApiImpl(KnifeConfig knifeConfig) {
+    ChefServerApiImpl(@NonNull KnifeConfig knifeConfig) {
         try {
             auth = new AuthCredentials(knifeConfig.getNode_name(),
                     knifeConfig.getClient_key());
-            if (auth == null) {
-                throw new Exception("is null");
-            } else {
+            if (auth != null) {
                 jSONRestWrapper = new JSONRestWrapper(auth,
                         knifeConfig.getChef_server_url());
             }

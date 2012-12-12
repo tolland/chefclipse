@@ -21,7 +21,6 @@ public class KnifeConfigControllerImpl implements KnifeConfigController {
 
     public ChefServerApi getServer(KnifeConfig config) {
         return new ChefServerApiImpl(config);
-
     }
 
 }

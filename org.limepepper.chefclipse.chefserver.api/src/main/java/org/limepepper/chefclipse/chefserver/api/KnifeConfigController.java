@@ -8,4 +8,8 @@ public interface KnifeConfigController {
                                            .init();
 
     ChefServerApi getServer(KnifeConfig knifeConfig);
+
+
+    //List<KnifeConfig> knifeConfigs = ChefServerApiImpl.getKnifeConfigs();
+
 }

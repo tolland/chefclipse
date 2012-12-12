@@ -131,6 +131,23 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" lowerBound="1" eType="#//URL"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CookbookListResp">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="versions" upperBound="-1"
+          eType="#//REST/CookbookListVersionResp" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServerCookbookFile" eSuperTypes="#//NamedObject #//ChecksumFile #//SandboxedObject">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cookbook" lowerBound="1"
+          eType="#//chefserver/ServerCookbookVersion" eOpposite="#//chefserver/ServerCookbookVersion/root_files"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServerCookbookVersion">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="json_class" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="chef_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="root_files" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true" eOpposite="#//chefserver/ServerCookbookFile/cookbook"/>
+    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="chefclient" nsURI="http://limepepper.org/v1/chefclipse/chefclient"
       nsPrefix="org.limepepper.chefclipse">

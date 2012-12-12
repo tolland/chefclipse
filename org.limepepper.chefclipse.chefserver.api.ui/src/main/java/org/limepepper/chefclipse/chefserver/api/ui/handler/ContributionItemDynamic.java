@@ -13,6 +13,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
+import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 
 public class ContributionItemDynamic extends CompoundContributionItem {
@@ -24,8 +25,11 @@ public class ContributionItemDynamic extends CompoundContributionItem {
     ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager
                                                         .INSTANCE;
 
+    KnifeConfigController api = KnifeConfigController.INSTANCE;
+
     Map<String, String>   menuItems             = new HashMap<String, String>();
     Map<String, String>   remoteMenuItems       = new HashMap<String, String>();
+
 
     @Override
     protected IContributionItem[] getContributionItems() {
@@ -69,6 +73,9 @@ public class ContributionItemDynamic extends CompoundContributionItem {
     }
 
     IContributionItem[] fillMenu() {
+
+
+     //   api.getServer(knifeConfig)
 
 
         menuItems.put("refresh.chefserver", "update remote model");

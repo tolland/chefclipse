@@ -1,18 +1,20 @@
 package org.limepepper.chefclipse.handlers;
 
-import java.lang.reflect.InvocationTargetException;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
-import org.eclipse.compare.CompareConfiguration;
-import org.eclipse.compare.CompareEditorInput;
-import org.eclipse.compare.ResourceNode;
-import org.eclipse.compare.structuremergeviewer.DiffNode;
-import org.eclipse.compare.structuremergeviewer.Differencer;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+
+import org.eclipse.compare.CompareUI;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -24,7 +26,10 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.compare.CookbookCompareInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,14 +91,60 @@ public class ChefHandler extends AbstractHandler implements
             // would like gatekeeper all these checks.
             if (item instanceof IResource) {
 
-                ChefRepositoryManager.INSTANCE.resetRepository(
-                        (IResource) item);
+                ChefRepositoryManager.INSTANCE
+                        .resetRepository((IResource) item);
 
             }
 
         } else if (name.equals("open.knifeconfig")) {
-            ChefRepositoryManager.INSTANCE.readInKnifeConfigs(
-                    ((IResource) item).getProject());
+            ChefRepositoryManager.INSTANCE
+                    .readInKnifeConfigs(((IResource) item).getProject());
+
+        } else if (name.equals("compare.cookbook")) {
+
+            logger.error("made the call to the coompare cookbook");
+
+            if (item instanceof IResource) {
+
+                logger.error("is resource");
+                if (selection.size() == 2) {
+
+                    IResource sel1 = (IResource) selection.toArray()[0];
+                    IResource sel2 = (IResource) selection.toArray()[1];
+                    logger.debug("cakkubg");
+                    CompareUI.openCompareEditor(new CookbookCompareInput(sel1,
+                            sel2));
+
+                } else if (selection.size() == 1) {
+                    logger.debug("comparing with server");
+
+                    IResource sel1 = (IResource) selection.toArray()[0];
+
+                    Properties props = new Properties();
+                    try {
+                        props.load(new FileInputStream(
+                                "resources/opscode-tests.properties"));
+
+                        KnifeConfig knifeConfig = KnifeFactory.eINSTANCE
+                                .createKnifeConfig();
+                        knifeConfig.setChef_server_url(new URL(props
+                                .getProperty("chef_server_url")));
+                        knifeConfig.setClient_key(new File(props
+                                .getProperty("client_key")));
+                        knifeConfig.setNode_name(props
+                                .getProperty("client_name"));
+
+                        assertNotNull(props);
+                        assertTrue(knifeConfig.getClient_key().exists());
+                        assertTrue(knifeConfig.getNode_name().length() > 0);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
 
         }
         /*
@@ -110,35 +161,6 @@ public class ChefHandler extends AbstractHandler implements
          */
 
         return null;
-    }
-
-    class CompareInput extends CompareEditorInput {
-        IResource item1;
-        IResource item2;
-
-        public CompareInput(IResource item1, IResource item2) {
-            super(new CompareConfiguration());
-        }
-
-        protected Object prepareInput(IProgressMonitor pm) {
-            ResourceNode ancestor = null;
-
-            ResourceNode left = new ResourceNode((IResource) item1);
-            ResourceNode right = new ResourceNode((IResource) item2);
-            return new DiffNode(null, Differencer.CONFLICTING, ancestor, left,
-                    right);
-        }
-
-        @Override
-        public void saveChanges(IProgressMonitor monitor) throws CoreException {
-
-            super.saveChanges(monitor);
-        }
-
-        @Override
-        public boolean isSaveNeeded() {
-            return true;
-        }
     }
 
     /**
@@ -176,11 +198,6 @@ public class ChefHandler extends AbstractHandler implements
 
     @Override
     public void setActivePart(IAction action, IWorkbenchPart targetPart) {
-    }
-
-    protected Object prepareInput(IProgressMonitor monitor)
-            throws InvocationTargetException, InterruptedException {
-        return null;
     }
 
 }

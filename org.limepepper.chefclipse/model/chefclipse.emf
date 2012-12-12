@@ -69,7 +69,7 @@ class Config {
 class NameUrlMap {
 
   @JSON(AnonRoot="true")
-  val ecore.EStringToStringMapEntry[*] entry;
+  val ecore.EStringToStringMapEntry[*] entries;
 }
 
 datatype NameUrlDataType : java.lang.Object;
@@ -129,6 +129,22 @@ package chefserver {
   class Sandbox {
     attr String[1] checksum;
     attr URL[1] url;
+  }
+
+  class CookbookListResp {
+    attr String[1] name;
+    val REST.CookbookListVersionResp[*] versions;
+    attr String[1] url;
+  }
+
+  class ServerCookbookFile extends NamedObject, ChecksumFile, SandboxedObject {
+    ref ServerCookbookVersion[1]#root_files cookbook;
+  }
+
+  class ServerCookbookVersion {
+    attr String json_class;
+    attr String chef_type;
+    val ServerCookbookFile[*]#cookbook root_files;
   }
 
 }
