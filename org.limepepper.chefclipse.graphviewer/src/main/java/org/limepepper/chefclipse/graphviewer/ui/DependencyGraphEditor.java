@@ -35,10 +35,12 @@ import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
 import org.eclipse.zest.core.viewers.ISelfStyleProvider;
 import org.eclipse.zest.core.widgets.Graph;
 import org.eclipse.zest.core.widgets.GraphConnection;
+import org.eclipse.zest.core.widgets.GraphContainer;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.LayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
+import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
@@ -304,7 +306,7 @@ public class DependencyGraphEditor extends EditorPart implements
     }
 
     class GraphViewerLabelProvider extends LabelProvider implements
-            ISelfStyleProvider, IFigureProvider {
+			ISelfStyleProvider, IFigureProvider {
 
         public GraphViewerLabelProvider() {
 
@@ -326,7 +328,7 @@ public class DependencyGraphEditor extends EditorPart implements
             ManhattanConnectionRouter router = new ManhattanConnectionRouter();
             Connection c = connection.getConnectionFigure();
             c.setConnectionRouter(router);
-
+            
             // ConnectionAnchor s= new
             // ChefclipseConnectionAnchor(c.getSourceAnchor().getOwner());
             // ConnectionAnchor t= new

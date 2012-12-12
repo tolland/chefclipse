@@ -28,8 +28,13 @@ import org.eclipse.zest.core.viewers.INestedContentProvider;
 import org.eclipse.zest.core.viewers.ISelfStyleProvider;
 import org.eclipse.zest.core.widgets.Graph;
 import org.eclipse.zest.core.widgets.GraphConnection;
+import org.eclipse.zest.core.widgets.GraphContainer;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
+import org.eclipse.zest.layouts.LayoutAlgorithm;
+import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
+import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
+import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
@@ -112,7 +117,7 @@ public class CookbookGraphEditor extends EditorPart implements
         graphViewer.setLabelProvider(new CookbookViewerLabelProvider());
         graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
         TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(
-                TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(250, 50));
+                TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(250, 150));
         graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
 
         IResource resource = ((CookbookGraphEditorInput) input).getResource();
@@ -233,7 +238,11 @@ public class CookbookGraphEditor extends EditorPart implements
 		public Object[] getChildren(Object element) {
 			if(element instanceof DrawableContainer)
 			{
-				return ((DrawableContainer)element).getElements();
+				Object[] objects = ((DrawableContainer)element).getElements();
+				if(objects.length>0)
+				{
+					return objects;
+				}
 			}
 			return null;
 		}
@@ -289,7 +298,28 @@ public class CookbookGraphEditor extends EditorPart implements
         @Override
         public void selfStyleNode(Object element, GraphNode node) {
             // TODO Auto-generated method stub
-
+        	if(element instanceof DrawableContainer)
+        	{
+        		GraphContainer graphContainer = (GraphContainer)node;
+        		DrawableContainer container = (DrawableContainer)element;
+        		
+        		if(container.getElements().length>0)
+        		{
+                	graphContainer.open(false);
+            		CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
+            				new LayoutAlgorithm[] { new GridLayoutAlgorithm(),
+            						new HorizontalShiftAlgorithm() });
+                	graphContainer.setLayoutAlgorithm(compositeLayoutAlgorithm, false);
+        		}
+        	}
+        	else if(element instanceof DrawableCookbook)
+        	{}
+        	else if(element instanceof DrawableFolder)
+        	{}
+        	else
+        	{
+        		//files in container
+        	}
         }
 
         @Override
