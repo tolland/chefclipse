@@ -2,6 +2,13 @@ package org.limepepper.chefclipse.graphviewer.model;
 
 import java.util.ArrayList;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 
 /**
@@ -10,12 +17,26 @@ import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
  * @author
  * 
  */
-public class CookbookModel {
+public class CookbookModel implements IResourceChangeListener  {
 
     private DrawableCookbook                         drawableCookbook;
+    private IResource resource;
 
     private final ArrayList<ICookbookChangeListener> mCookbookChangeListeners = new ArrayList<ICookbookChangeListener>();
 
+    public CookbookModel()
+    {
+    	ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
+    }
+    
+	public void setResource(IResource resource)
+	{
+		this.resource=resource;
+        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
+                .instance().getElement(resource);
+        setDrawableCookbook(new DrawableCookbook(cookbook));
+	}
+    
     public void setDrawableCookbook(DrawableCookbook drawableCookbook) {
         this.drawableCookbook = drawableCookbook;
         notifyCookbookChanged();
@@ -62,4 +83,24 @@ public class CookbookModel {
     public interface ICookbookChangeListener {
         public void cookbookChanged();
     }
+
+	@Override
+	public void resourceChanged(IResourceChangeEvent event) {
+		if (event.getType() != IResourceChangeEvent.POST_CHANGE)
+            return;
+		if(resource==null)
+			return;
+		IResourceDelta rootDelta = event.getDelta();
+		IResourceDelta cookbookDelta = rootDelta.findMember(resource.getFullPath());
+		if(cookbookDelta==null)
+		{
+			return;
+		}
+		setResource(cookbookDelta.getResource());
+	}
+	
+	public void dispose()
+	{
+		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
+	}
 }

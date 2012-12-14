@@ -2,6 +2,7 @@ package org.limepepper.chefclipse.graphviewer.ui;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
@@ -121,12 +122,7 @@ public class CookbookGraphEditor extends EditorPart implements
         graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
 
         IResource resource = ((CookbookGraphEditorInput) input).getResource();
-        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
-                .instance().getElement(resource);
-
-        DrawableCookbook drawableCookbook = new DrawableCookbook(cookbook);
-
-        cookbookModel.setDrawableCookbook(drawableCookbook);
+        cookbookModel.setResource(resource);
         graph = graphViewer.getGraphControl();
         hookMenu(graph);
     }
@@ -180,6 +176,7 @@ public class CookbookGraphEditor extends EditorPart implements
     @Override
     public void dispose() {
         cookbookModel.removeCookbookChangeListener(this);
+        cookbookModel.dispose();
         super.dispose();
     }
 
@@ -284,13 +281,14 @@ public class CookbookGraphEditor extends EditorPart implements
             connection.setLineColor(Display.getDefault().getSystemColor(
                     SWT.COLOR_DARK_BLUE));
             ManhattanConnectionRouter router = new ManhattanConnectionRouter();
+            //BendpointConnectionRouter router =new BendpointConnectionRouter();
             Connection c = connection.getConnectionFigure();
             c.setConnectionRouter(router);
-
             ConnectionAnchor s = new ChefclipseConnectionAnchor(c
                     .getSourceAnchor().getOwner());
             ConnectionAnchor t = new ChefclipseConnectionAnchor(c
                     .getTargetAnchor().getOwner());
+            c.setLocation(s.getReferencePoint());
             c.setSourceAnchor(s);
             c.setTargetAnchor(t);
         }
