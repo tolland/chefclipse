@@ -8,16 +8,22 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ManhattanConnectionRouter;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ViewForm;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
@@ -39,7 +45,6 @@ import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableFolder;
@@ -68,6 +73,7 @@ public class CookbookGraphEditor extends EditorPart implements
 
     private GraphViewer              graphViewer;
     private Graph                    graph;
+    LayoutAlgorithm currentLayoutAlgorithm;
 
     public static final String       ID     = "org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor";
 
@@ -112,19 +118,34 @@ public class CookbookGraphEditor extends EditorPart implements
     @Override
     public void createPartControl(Composite parent) {
         cookbookModel.addCookbookChangeListener(this);
-        graphViewer = new GraphViewer(parent, SWT.NONE);
+        
+        ViewForm viewForm = new ViewForm(parent, SWT.NONE);
+        viewForm.setLayout(new FillLayout());
+        
+        graphViewer = new GraphViewer(viewForm, SWT.NONE);
 
         graphViewer.setContentProvider(new CookbookViewerContentProvider());
-        graphViewer.setLabelProvider(new CookbookViewerLabelProvider());
+        graphViewer.setLabelProvider(new CookbookViewerLabelProvider(this));
         graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
         TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(
                 TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(250, 150));
         graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
-
+        currentLayoutAlgorithm = treeLayoutAlgorithm;
         IResource resource = ((CookbookGraphEditorInput) input).getResource();
         cookbookModel.setResource(resource);
         graph = graphViewer.getGraphControl();
+        createToolbar(viewForm);
         hookMenu(graph);
+        viewForm.setContent(graph);
+    }
+    
+    private void createToolbar(ViewForm viewFrom)
+    {
+    	ToolBar toolBar = new ToolBar(viewFrom, SWT.FLAT);
+    	ToolBarManager toolBarManager =new ToolBarManager(toolBar);
+    	toolBarManager.add(new CookbookGraphLayoutAction());
+    	toolBarManager.update(true);
+    	viewFrom.setTopLeft(toolBar);
     }
 
     private void hookMenu(final Graph g) {
@@ -244,14 +265,19 @@ public class CookbookGraphEditor extends EditorPart implements
 			return null;
 		}
     }
+    
+    public LayoutAlgorithm getLayoutAlgorithm()
+    {
+    	return this.currentLayoutAlgorithm;
+    }
 
     static class CookbookViewerLabelProvider extends LabelProvider implements
             ISelfStyleProvider, IFigureProvider {
 
         Image attributeImage = ImageLoader.Load("methpub_obj.gif");
-
-        public CookbookViewerLabelProvider() {
-
+        CookbookGraphEditor editor;
+        public CookbookViewerLabelProvider(CookbookGraphEditor editor) {
+        	this.editor=editor;
         }
 
         public String getText(Object element) {
@@ -281,16 +307,19 @@ public class CookbookGraphEditor extends EditorPart implements
             connection.setLineColor(Display.getDefault().getSystemColor(
                     SWT.COLOR_DARK_BLUE));
             ManhattanConnectionRouter router = new ManhattanConnectionRouter();
-            //BendpointConnectionRouter router =new BendpointConnectionRouter();
             Connection c = connection.getConnectionFigure();
-            c.setConnectionRouter(router);
-            ConnectionAnchor s = new ChefclipseConnectionAnchor(c
-                    .getSourceAnchor().getOwner());
-            ConnectionAnchor t = new ChefclipseConnectionAnchor(c
-                    .getTargetAnchor().getOwner());
-            c.setLocation(s.getReferencePoint());
-            c.setSourceAnchor(s);
-            c.setTargetAnchor(t);
+            connection.setRouter(router);
+           
+            if(editor.getLayoutAlgorithm().getClass()==TreeLayoutAlgorithm.class)
+            {
+	            ConnectionAnchor s = new ChefclipseConnectionAnchor(c
+	                    .getSourceAnchor().getOwner());
+	            ConnectionAnchor t = new ChefclipseConnectionAnchor(c
+	                    .getTargetAnchor().getOwner());
+	            c.setLocation(s.getReferencePoint());
+	            c.setSourceAnchor(s);
+	            c.setTargetAnchor(t);
+            }
         }
 
         @Override
@@ -335,5 +364,29 @@ public class CookbookGraphEditor extends EditorPart implements
             }
             return null;
         }
+    }
+    
+    class CookbookGraphLayoutAction extends Action
+    {
+    	public CookbookGraphLayoutAction() {
+    		this.setToolTipText("Change Cookbook Structure Graph Layout");
+    		setImageDescriptor(ImageDescriptor.createFromImage(ImageLoader.Load("full_hierarchy.gif")));
+    	}
+    	
+    	@Override
+    	public void run()
+    	{
+    		if(currentLayoutAlgorithm.getClass() == TreeLayoutAlgorithm.class)
+    		{
+    			currentLayoutAlgorithm = new GridLayoutAlgorithm();
+    		}
+    		else
+    		{
+    			currentLayoutAlgorithm = new TreeLayoutAlgorithm(
+    	                TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(250, 150));
+    		}
+    		graphViewer.setLayoutAlgorithm(currentLayoutAlgorithm);
+    		cookbookModel.notifyCookbookChanged();
+    	}
     }
 }

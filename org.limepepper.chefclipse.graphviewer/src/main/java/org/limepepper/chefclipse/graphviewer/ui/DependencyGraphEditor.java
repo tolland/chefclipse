@@ -13,16 +13,21 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ViewForm;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
@@ -46,10 +51,12 @@ import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
+import org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor.CookbookGraphLayoutAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,6 +67,7 @@ public class DependencyGraphEditor extends EditorPart implements
 
 	private GraphViewer graphViewer;
 	private Graph graph;
+    LayoutAlgorithm currentLayoutAlgorithm;
 	private DependencyGraphEditorInput input;
 	private DependencyController dependencyController;
 	private DependencyModel dependencyModel;
@@ -107,27 +115,31 @@ public class DependencyGraphEditor extends EditorPart implements
 	@Override
 	public void createPartControl(Composite parent) {
 		dependencyModel.addDependencyChangeListener(this);
-		graphViewer = new GraphViewer(parent, SWT.NONE);
+		
+		ViewForm viewForm = new ViewForm(parent, SWT.NONE);
+        viewForm.setLayout(new FillLayout());
+		graphViewer = new GraphViewer(viewForm, SWT.NONE);
 		graph = graphViewer.getGraphControl();
 		graphViewer.setContentProvider(new GraphViewerContentProvider());
 		graphViewer.setLabelProvider(new GraphViewerLabelProvider());
 		// graphViewer.addSelectionChangedListener(graghviewer_SelectionChangedListener);
 		graph.addSelectionListener(gragh_SelectionChangedListener);
 		graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
-		TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(
+		currentLayoutAlgorithm = new TreeLayoutAlgorithm(
 				TreeLayoutAlgorithm.TOP_DOWN, new Dimension(200, 150));
-		HorizontalShiftAlgorithm horizontalShift = new HorizontalShiftAlgorithm();
-		CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
-				new LayoutAlgorithm[] { horizontalShift, treeLayoutAlgorithm });
+		//HorizontalShiftAlgorithm horizontalShift = new HorizontalShiftAlgorithm();
+		//CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
+		//		new LayoutAlgorithm[] { horizontalShift, treeLayoutAlgorithm });
 		// g.setLayoutAlgorithm(new
 		// GridLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
-		graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);
+		graphViewer.setLayoutAlgorithm(currentLayoutAlgorithm);
 
 		IResource resource = ((DependencyGraphEditorInput) input).getResource();
 		dependencyModel.setResource(resource);
-
 		graph = graphViewer.getGraphControl();
 		hookMenu(graph);
+		createToolbar(viewForm);
+		viewForm.setContent(graph);
 
 	}
 
@@ -136,6 +148,15 @@ public class DependencyGraphEditor extends EditorPart implements
 		// TODO Auto-generated method stub
 
 	}
+	
+    private void createToolbar(ViewForm viewFrom)
+    {
+    	ToolBar toolBar = new ToolBar(viewFrom, SWT.FLAT);
+    	ToolBarManager toolBarManager =new ToolBarManager(toolBar);
+    	toolBarManager.add(new DependencyGraphLayoutAction());
+    	toolBarManager.update(true);
+    	viewFrom.setTopLeft(toolBar);
+    }
 
 	private void hookMenu(final Graph g) {
 
@@ -408,5 +429,29 @@ public class DependencyGraphEditor extends EditorPart implements
 			return selectedElement != null;
 		}
 	}
+	
+    class DependencyGraphLayoutAction extends Action
+    {
+    	public DependencyGraphLayoutAction() {
+    		this.setToolTipText("Change Dependency Graph Layout");
+    		setImageDescriptor(ImageDescriptor.createFromImage(ImageLoader.Load("full_hierarchy.gif")));
+    	}
+    	
+    	@Override
+    	public void run()
+    	{
+    		if(currentLayoutAlgorithm.getClass() == TreeLayoutAlgorithm.class)
+    		{
+    			currentLayoutAlgorithm = new GridLayoutAlgorithm();
+    		}
+    		else
+    		{
+    			currentLayoutAlgorithm = new TreeLayoutAlgorithm(
+    	                TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(200, 150));
+    		}
+    		graphViewer.setLayoutAlgorithm(currentLayoutAlgorithm);
+    		dependencyModel.notifyDependencyChanged();
+    	}
+    }
 
 }
