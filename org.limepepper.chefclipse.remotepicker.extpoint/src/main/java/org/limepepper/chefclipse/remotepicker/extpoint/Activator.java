@@ -3,6 +3,12 @@ package org.limepepper.chefclipse.remotepicker.extpoint;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
+/**
+ * Activator class for this plugin.
+ * 
+ * @author Guillermo Zunino
+ *
+ */
 public class Activator implements BundleActivator {
 
 	public static final String PLUGIN_ID = "org.limepepper.chefclipse.remotepicker.extpoint";

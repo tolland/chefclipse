@@ -8,8 +8,9 @@ import org.eclipse.ui.IStartup;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 
 /**
+ * Creates extension point reader on eclipse startup.
+ * 
  * @author Guillermo Zunino
- *
  */
 public class CookbooksEarlyFetcher implements IStartup {
 
