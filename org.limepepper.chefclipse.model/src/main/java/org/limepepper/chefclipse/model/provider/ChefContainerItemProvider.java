@@ -9,6 +9,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -16,7 +17,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.limepepper.chefclipse.model.ChefContainer;
+import org.limepepper.chefclipse.model.ModelFactory;
+import org.limepepper.chefclipse.model.ModelPackage;
 
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.model.ChefContainer} object.
@@ -58,6 +62,36 @@ public class ChefContainerItemProvider
     }
 
     /**
+     * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+     * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+     * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+        if (childrenFeatures == null) {
+            super.getChildrenFeatures(object);
+            childrenFeatures.add(ModelPackage.Literals.CHEF_CONTAINER__MEMBERS);
+        }
+        return childrenFeatures;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    protected EStructuralFeature getChildFeature(Object object, Object child) {
+        // Check the type of the specified child object and return the proper feature to use for
+        // adding (see {@link AddCommand}) it as a child.
+
+        return super.getChildFeature(object, child);
+    }
+
+    /**
      * This returns ChefContainer.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -76,7 +110,7 @@ public class ChefContainerItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefContainer)object).getPath();
+        String label = ((ChefContainer)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefContainer_type") :
             getString("_UI_ChefContainer_type") + " " + label;
@@ -92,6 +126,12 @@ public class ChefContainerItemProvider
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+
+        switch (notification.getFeatureID(ChefContainer.class)) {
+            case ModelPackage.CHEF_CONTAINER__MEMBERS:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+                return;
+        }
         super.notifyChanged(notification);
     }
 
@@ -105,6 +145,46 @@ public class ChefContainerItemProvider
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createChefResource()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createChefContainer()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createChefFile()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createChefFolder()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createChefObjectDefinitionFile()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createChefObjectElementFile()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createChefProject()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createChefWorkspace()));
     }
 
 }

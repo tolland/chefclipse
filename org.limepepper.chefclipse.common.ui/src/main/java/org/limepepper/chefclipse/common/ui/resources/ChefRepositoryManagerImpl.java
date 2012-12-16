@@ -440,7 +440,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
 
             String checksum = ChefUtils.hexMd5Sum(file.getContents());
 
-            logger.debug("md5sum is: {}", checksum);
+     //       logger.debug("md5sum is: {}", checksum);
 
             checksumFile.setChecksum(checksum);
         } catch (CoreException e) {

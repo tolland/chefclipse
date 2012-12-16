@@ -6,16 +6,15 @@ package org.limepepper.chefclipse.model.provider;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.limepepper.chefclipse.model.ChefFolder;
 
 /**
@@ -76,10 +75,10 @@ public class ChefFolderItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefFolder)object).getPath();
+        String label = ((IResource)((ChefFolder)object).getResource()).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefFolder_type") :
-            getString("_UI_ChefFolder_type") + " " + label;
+            label;
     }
 
     /**

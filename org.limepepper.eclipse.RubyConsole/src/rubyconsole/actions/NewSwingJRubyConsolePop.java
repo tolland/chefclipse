@@ -5,13 +5,15 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
-import org.eclipse.ui.actions.ActionDelegate;
 
 import rubyconsole.IRBConsole;
 
-public class NewSwingJRubyConsolePop extends ActionDelegate implements IWorkbenchWindowActionDelegate {
+public class NewSwingJRubyConsolePop implements IWorkbenchWindowActionDelegate {
+
+    private IWorkbenchWindow window;
 
 /*    protected static class ExitException extends SecurityException {
         public final int status;
@@ -40,7 +42,7 @@ public class NewSwingJRubyConsolePop extends ActionDelegate implements IWorkbenc
         }
     }*/
 
-    @Override
+
     public void run(IAction action) {
 
         Job job = new Job("My Job") {
@@ -83,8 +85,16 @@ public class NewSwingJRubyConsolePop extends ActionDelegate implements IWorkbenc
 
     }
 
-    @Override
+
     public void init(IWorkbenchWindow window) {
+        this.window = window;
+    }
+
+    public void selectionChanged(IAction action, ISelection selection) {
+    }
+
+
+    public void dispose() {
     }
 
 

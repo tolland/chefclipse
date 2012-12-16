@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import opscode.chef.REST.AuthCredentials;
 import opscode.chef.REST.JSONRestWrapper;
@@ -29,7 +30,6 @@ import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.jdt.annotation.NonNull;
 import org.eclipselabs.emfjson.EMFJs;
 import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
 import org.limepepper.chefclipse.ChefclipsePackage;
@@ -47,7 +47,6 @@ import org.limepepper.chefclipse.REST.RoleListResp;
 import org.limepepper.chefclipse.REST.RoleResp;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Node;
-import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
@@ -64,23 +63,14 @@ import com.sun.jersey.api.client.ClientResponse;
  */
 public class ChefServerApiImpl implements ChefServerApi {
 
-    private JSONRestWrapper                 jSONRestWrapper;
-    static Logger                           logger    = LoggerFactory
-                                                              .getLogger(ChefServerApiImpl.class);
-    private static Map<KnifeConfig, Object> instances = new HashMap<KnifeConfig, Object>(
-                                                              1);
-    AuthCredentials                         auth      = null;
-    Map<String, Object>                     options   = new HashMap<String, Object>();
+    private JSONRestWrapper jSONRestWrapper;
+    static Logger           logger  = LoggerFactory
+                                            .getLogger(ChefServerApiImpl.class);
 
-    public static ChefServerApi getServerApi(@NonNull KnifeConfig knifeConfig) {
+    AuthCredentials         auth    = null;
+    Map<String, Object>     options = new HashMap<String, Object>();
 
-        if (!instances.containsKey(knifeConfig)) {
-            instances.put(knifeConfig, new ChefServerApiImpl(knifeConfig));
-        }
-        return (ChefServerApi) instances.get(knifeConfig);
-    }
-
-    ChefServerApiImpl(@NonNull KnifeConfig knifeConfig) {
+    ChefServerApiImpl(KnifeConfig knifeConfig) {
 
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "http", new JsResourceFactoryImpl());
@@ -114,10 +104,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 
     KnifeConfig getConfig() {
         return (KnifeConfig) options.get("knifeConfig");
-    }
-
-    private JSONObject getRestCookbooks() {
-        return getRestCookbooks(3, 0, -1);
     }
 
     private JSONObject getRestCookbookVersion(String cookbook, int versions)
@@ -340,12 +326,45 @@ public class ChefServerApiImpl implements ChefServerApi {
 
     @Override
     public List<Node> getNodes() {
-        return null;
+
+        List<Node> nodes = new ArrayList<Node>();
+        Map<String, String> list = getNodeList();
+        for (Entry<String, String> entry : list.entrySet()) {
+            nodes.add(getNode(entry.getKey()));
+        }
+        return nodes;
     }
 
     @Override
-    public Node getNode(String fqdn) {
-        return null;
+    public Node getNode(String name) {
+
+        options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                ChefserverPackage.eINSTANCE.getNode());
+
+        ResourceSetImpl resourceSet = new ResourceSetImpl();
+
+        resourceSet.getURIConverter().getURIHandlers()
+                .add(0, new ChefServerURIHandler());
+
+        URI uri = URI.createURI(((Config) options.get("knifeConfig"))
+                .getChef_server_url().toString() + "/nodes/" + name);
+
+        Resource resource = resourceSet.createResource(uri);
+
+        try {
+            resource.load(options);
+        } catch (IOException e) {
+            e.printStackTrace();
+            fail("failed to load resource");
+        }
+
+        Node eObject = (Node) resource
+                .getContents().get(0);
+
+        assertNotNull(eObject);
+        assertTrue(eObject.getName() != null);
+
+        return eObject;
     }
 
     @Override
@@ -370,11 +389,6 @@ public class ChefServerApiImpl implements ChefServerApi {
         ClientResponse cr = jSONRestWrapper.rest_head("/", query_params);
 
         return cr.toString();
-    }
-
-    @Override
-    public Server getChefServer() {
-        return null;
     }
 
     public void connectChefServer() {
@@ -431,7 +445,12 @@ public class ChefServerApiImpl implements ChefServerApi {
 
     public List<ServerCookbookVersion> getCookbooks() {
 
-        return null;
+        List<ServerCookbookVersion> items = new ArrayList<ServerCookbookVersion>();
+        Map<String, VersionUrl> list = getCookbookList();
+        for (Entry<String, VersionUrl> entry : list.entrySet()) {
+            items.add(getCookbookVersion(entry.getKey()));
+        }
+        return items;
 
     }
 
@@ -511,7 +530,8 @@ public class ChefServerApiImpl implements ChefServerApi {
 
             inStream.close();
 
-            NameVersionMap user = (NameVersionMap) resource.getContents().get(0);
+            NameVersionMap user = (NameVersionMap) resource.getContents()
+                    .get(0);
 
             assertNotNull(user);
 
@@ -523,6 +543,10 @@ public class ChefServerApiImpl implements ChefServerApi {
         } finally {
 
         }
+        return null;
+    }
+
+    public static List<KnifeConfig> getKnifeConfigs() {
         return null;
     }
 

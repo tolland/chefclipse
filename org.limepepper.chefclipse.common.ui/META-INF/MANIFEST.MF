@@ -28,7 +28,9 @@ Require-Bundle: org.eclipse.ui,
  org.junit4;bundle-version="4.8.1",
  org.codehaus.jackson.core;bundle-version="1.9.5",
  org.codehaus.jackson.mapper;bundle-version="1.9.5",
- org.eclipse.core.filesystem;bundle-version="1.3.200"
+ org.eclipse.core.filesystem;bundle-version="1.3.200",
+ org.eclipse.jdt.annotation;bundle-version="1.0.0",
+ org.limepepper.chefclipse.utils;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.limepepper.chefclipse.common.ui,
@@ -38,6 +40,7 @@ Export-Package: org.limepepper.chefclipse.common.ui,
    org.eclipse.ui,
    org.eclipse.core.resources,
    org.eclipse.jface.viewers",
+ org.limepepper.chefclipse.common.ui.popup.actions,
  org.limepepper.chefclipse.common.ui.providers;
   uses:="org.limepepper.chefclipse.common.workstation,
    org.eclipse.core.resources,
@@ -76,6 +79,7 @@ Export-Package: org.limepepper.chefclipse.common.ui,
    org.eclipse.core.runtime,
    org.limepepper.chefclipse.common.cookbook,
    org.eclipse.core.resources.mapping",
+ org.limepepper.chefclipse.model.mapping.actions,
  org.limepepper.chefclipse.navigator.testers;uses:="org.eclipse.core.expressions,org.eclipse.core.resources"
 Import-Package: org.eclipse.jface.text,
  org.eclipse.team.internal.ui,

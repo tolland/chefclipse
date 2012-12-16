@@ -76,7 +76,7 @@ public class ChefWorkspaceItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefWorkspace)object).getPath();
+        String label = ((ChefWorkspace)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefWorkspace_type") :
             getString("_UI_ChefWorkspace_type") + " " + label;

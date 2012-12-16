@@ -1,5 +1,7 @@
 package org.limepepper.chefclipse.chefserver.api;
 
+import java.util.List;
+
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
 public interface KnifeConfigController {
@@ -10,6 +12,6 @@ public interface KnifeConfigController {
     ChefServerApi getServer(KnifeConfig knifeConfig);
 
 
-    //List<KnifeConfig> knifeConfigs = ChefServerApiImpl.getKnifeConfigs();
+    List<KnifeConfig> knifeConfigs = ChefServerApiImpl.getKnifeConfigs();
 
 }

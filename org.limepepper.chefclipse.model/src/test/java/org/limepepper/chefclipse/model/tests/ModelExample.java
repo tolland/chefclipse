@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.limepepper.chefclipse.model.ChefContainer;
 import org.limepepper.chefclipse.model.ModelFactory;
 import org.limepepper.chefclipse.model.ModelPackage;
+import org.limepepper.chefclipse.model.util.ModelResourceFactoryImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,7 +47,7 @@ public class ModelExample {
         //
         resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
             (Resource.Factory.Registry.DEFAULT_EXTENSION, 
-             new XMIResourceFactoryImpl());
+             new ModelResourceFactoryImpl());
 
         // Register the package to ensure it is available during loading.
         //

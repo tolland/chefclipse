@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.chefserver.api
 Bundle-SymbolicName: org.limepepper.chefclipse.chefserver.api;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: org.limepepper.chefclipse.chefserver.api.Activator
+Bundle-Activator: org.limepepper.chefclipse.chefserver.api.ServerApiActivator
 Bundle-Vendor: Lime Pepper Ltd
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
@@ -11,17 +11,13 @@ Require-Bundle: org.junit4;bundle-version="4.8.1",
  org.eclipse.emf.ecore;bundle-version="2.8.1",
  org.eclipse.core.runtime;bundle-version="3.8.0",
  com.ibm.icu;bundle-version="4.4.2",
- org.slf4j.api;bundle-version="1.6.4",
- org.apache.log4j;bundle-version="1.2.15",
  org.eclipse.jdt.annotation;bundle-version="1.0.0",
  com.sun.jersey.bundle;bundle-version="1.0.0",
  org.eclipselabs.emfjson;bundle-version="0.5.0",
- org.limepepper.chefclipse.common;bundle-version="1.0.0";visibility:=reexport
+ org.limepepper.chefclipse.common;bundle-version="1.0.0";visibility:=reexport,
+ org.limepepper.chefclipse.logger;bundle-version="1.0.0"
 Bundle-Classpath: .,
- lib/slf4j-api.jar,
- lib/slf4j-log4j12.jar,
- lib/bcprov-jdk16.jar,
- lib/log4j.jar
+ lib/bcprov-jdk16.jar
 Export-Package: org.limepepper.chefclipse.chefserver.api,
  org.limepepper.chefclipse.chefserver.api.util,
  org.limepepper.chefclipse.knife.api

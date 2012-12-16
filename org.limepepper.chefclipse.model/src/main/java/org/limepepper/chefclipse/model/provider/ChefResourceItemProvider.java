@@ -126,7 +126,7 @@ public class ChefResourceItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefResource)object).getPath();
+        String label = ((ChefResource)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefResource_type") :
             getString("_UI_ChefResource_type") + " " + label;

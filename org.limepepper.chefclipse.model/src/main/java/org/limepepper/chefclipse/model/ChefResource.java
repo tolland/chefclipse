@@ -3,11 +3,8 @@
 package org.limepepper.chefclipse.model;
 
 import org.eclipse.core.resources.IResource;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -27,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @model kind="class"
  * @generated
  */
-public class ChefResource extends ChefObject {
+public class ChefResource extends ChefObject{
     /**
      * The default value of the '{@link #getResource() <em>Resource</em>}' attribute.
      * <!-- begin-user-doc -->
@@ -46,7 +43,7 @@ public class ChefResource extends ChefObject {
      * @generated
      * @ordered
      */
-    protected IResource resource = RESOURCE_EDEFAULT;
+    protected IResource              resource          = RESOURCE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -56,7 +53,7 @@ public class ChefResource extends ChefObject {
      * @generated
      * @ordered
      */
-    protected static final int TYPE_EDEFAULT = 0;
+    protected static final int       TYPE_EDEFAULT     = 0;
 
     /**
      * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -66,7 +63,7 @@ public class ChefResource extends ChefObject {
      * @generated
      * @ordered
      */
-    protected int type = TYPE_EDEFAULT;
+    protected int                    type              = TYPE_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -91,8 +88,8 @@ public class ChefResource extends ChefObject {
      * Returns the value of the '<em><b>Resource</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Resource</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Resource</em>' attribute isn't clear, there
+     * really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Resource</em>' attribute.
@@ -125,8 +122,8 @@ public class ChefResource extends ChefObject {
      * The default value is <code>"0"</code>.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Type</em>' attribute isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Type</em>' attribute isn't clear, there really
+     * should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * @return the value of the '<em>Type</em>' attribute.
@@ -239,5 +236,8 @@ public class ChefResource extends ChefObject {
         result.append(')');
         return result.toString();
     }
+
+
+
 
 } // ChefResource

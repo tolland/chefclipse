@@ -9,7 +9,7 @@
     testSuiteClass="org.limepepper.chefclipse.common.tests.ChefclipseAllTests" importerID="org.eclipse.emf.importer.ecore"
     featureDelegation="Reflective" containmentProxies="true" complianceLevel="6.0"
     copyrightFields="false" publicConstructors="true" providerRootExtendsClass=""
-    runtimeVersion="2.8">
+    tableProviders="true" runtimeVersion="2.8">
   <foreignModel>chefclipse.ecore</foreignModel>
   <genPackages prefix="Chefclipse" basePackage="org.limepepper" resource="XMI" disposableProviderFactory="true"
       childCreationExtenders="true" ecorePackage="chefclipse.ecore#/">
@@ -86,7 +86,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//NameVersionMap/entries"/>
     </genClasses>
     <nestedGenPackages prefix="Chefserver" basePackage="org.limepepper.chefclipse.common"
-        resource="XMI" disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefserver">
+        resource="XMI" disposableProviderFactory="true" contentTypeIdentifier="" ecorePackage="chefclipse.ecore#//chefserver">
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/Environment"/>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/DataBag">
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/DataBag/server"/>

@@ -76,7 +76,7 @@ public class ChefFileItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefFile)object).getPath();
+        String label = ((ChefFile)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefFile_type") :
             getString("_UI_ChefFile_type") + " " + label;

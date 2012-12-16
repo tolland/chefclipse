@@ -14,7 +14,7 @@ include_class 'org.eclipse.core.resources.IResource'
 include_class 'org.limepepper.chefclipse.common.ui.providers.ChefModelProvider'
 
 adapterFactory = new
-Platform.getAdapterManager().registerAdapters(adapterFactory, Contact.class);
+fact = Platform.getAdapterManager().registerAdapters(adapterFactory, Contact.class);
 
 workspace = ResourcesPlugin.get_workspace
 
