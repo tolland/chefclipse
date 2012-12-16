@@ -4,14 +4,19 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 
 public class DependencyGraphEditorInput implements IEditorInput {
 
     private final IResource resource;
+    private final CookbookVersion cookbook;
     
     public DependencyGraphEditorInput(IResource resource)
     {
         this.resource=resource;
+        cookbook = (CookbookVersion) ChefRepositoryManager
+                .instance().getElement(resource);
     }
     
     public IResource getResource()
@@ -22,7 +27,7 @@ public class DependencyGraphEditorInput implements IEditorInput {
 
     @Override
     public String getName() {
-        return "Dependency Graph Editor";
+        return cookbook.getName()+ " Dependency";
     }
 
     @Override
@@ -32,10 +37,10 @@ public class DependencyGraphEditorInput implements IEditorInput {
 
     @Override
     public String getToolTipText() {
-        return "Dependency Graph Editor";
+    	return cookbook.getName()+ " Dependency";
     }
     
-    @Override
+/*    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
@@ -50,7 +55,7 @@ public class DependencyGraphEditorInput implements IEditorInput {
             return false;
         }
         return true;
-    }
+    }*/
 
     @Override
     public Object getAdapter(Class adapter) {

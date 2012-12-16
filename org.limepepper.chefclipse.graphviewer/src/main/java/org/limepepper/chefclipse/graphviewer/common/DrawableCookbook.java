@@ -12,15 +12,33 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 public class DrawableCookbook {
     
     private CookbookVersion cookbook;
-    private DrawableAttributeContainer drawableAttributeContainer =new DrawableAttributeContainer();
-    private DrawableLibraryContainer drawableLibraryContainer =new DrawableLibraryContainer();
-    private DrawableRecipeContainer drawableRecipeContainer =new DrawableRecipeContainer();
-    private DrawableDefinitionContainer drawableDefinitionContainer =new DrawableDefinitionContainer();
-    private DrawableTemplateContainer drawableTemplatesContainer =new DrawableTemplateContainer();
+    private DrawableAttributeContainer drawableAttributeContainer;
+    private DrawableLibraryContainer drawableLibraryContainer;
+    private DrawableRecipeContainer drawableRecipeContainer;
+    private DrawableDefinitionContainer drawableDefinitionContainer;
+    private DrawableTemplateContainer drawableTemplatesContainer;
+    private DrawableFolder drawableAttributeFolder;
+    private DrawableFolder drawableLibraryFolder;
+    private DrawableFolder drawableRecipeFolder;
+    private DrawableFolder drawableDefinitionFolder;
+    private DrawableFolder drawableTemplatesFolder;
     
     public DrawableCookbook(@NonNull CookbookVersion cookbook)
     {
         this.cookbook=cookbook;
+        
+        Color color = new Color(null, 255, 255, 190);
+        
+        drawableAttributeContainer =new DrawableAttributeContainer();
+        drawableLibraryContainer =new DrawableLibraryContainer();
+        drawableRecipeContainer =new DrawableRecipeContainer();
+        drawableDefinitionContainer =new DrawableDefinitionContainer();
+        drawableTemplatesContainer =new DrawableTemplateContainer();
+        drawableAttributeFolder=new DrawableFolder("attributes",drawableAttributeContainer,color);
+        drawableLibraryFolder=new DrawableFolder("libraries",drawableLibraryContainer,color);
+        drawableRecipeFolder=new DrawableFolder("recipes",drawableRecipeContainer,color);
+        drawableDefinitionFolder=new DrawableFolder("definitions",drawableDefinitionContainer,color);
+        drawableTemplatesFolder=new DrawableFolder("templates",drawableTemplatesContainer,color);
     }
     
     @SuppressWarnings("unused")
@@ -35,39 +53,31 @@ public class DrawableCookbook {
     
     public Object[] getDirectElements()
     {
-        return new Object[]{drawableAttributeContainer,drawableLibraryContainer,drawableRecipeContainer,drawableDefinitionContainer};
+        return new Object[]{drawableAttributeFolder,drawableLibraryFolder,drawableRecipeFolder,drawableDefinitionFolder,drawableTemplatesFolder};
     }
     
     public Object[] getElements()
     {
         List<Object> nodes=new ArrayList<Object>();
         nodes.add(this);
-        nodes.add(drawableAttributeContainer);
-        nodes.add(drawableLibraryContainer);
-        nodes.add(drawableRecipeContainer);
-        nodes.add(drawableDefinitionContainer);
-        nodes.addAll(Arrays.asList(drawableAttributeContainer.getElements()));
-        nodes.addAll(Arrays.asList(drawableLibraryContainer.getElements()));
-        nodes.addAll(Arrays.asList(drawableRecipeContainer.getElements()));
-        nodes.addAll(Arrays.asList(drawableDefinitionContainer.getElements()));
-        nodes.addAll(Arrays.asList(drawableTemplatesContainer.getElements()));
+        nodes.add(drawableAttributeFolder);
+        nodes.add(drawableLibraryFolder);
+        nodes.add(drawableRecipeFolder);
+        nodes.add(drawableDefinitionFolder);
+        nodes.add(drawableTemplatesFolder);
+        nodes.addAll(Arrays.asList(drawableAttributeFolder.getElements()));
+        nodes.addAll(Arrays.asList(drawableLibraryFolder.getElements()));
+        nodes.addAll(Arrays.asList(drawableRecipeFolder.getElements()));
+        nodes.addAll(Arrays.asList(drawableDefinitionFolder.getElements()));
+        nodes.addAll(Arrays.asList(drawableTemplatesFolder.getElements()));
         return nodes.toArray();
     }
     
     public abstract class DrawableContainer
     {
-        private Image containerImage = ImageLoader.Load("FolderOpen_24x24_72.png");
-        
         abstract public String getName();
         
         abstract public Object[] getElements();
-        
-        abstract public Color getBackgroundColor();
-        
-        public Image getImage()
-        {
-            return containerImage;
-        }
     }
     
     public class DrawableCookbookFileContainer extends DrawableContainer
@@ -83,12 +93,7 @@ public class DrawableCookbook {
         public Object[] getElements() {
             return cookbook.getRecipes().toArray();
         }
-
-        @Override
-        public Color getBackgroundColor() {
-            return new Color(null, 255, 255, 190);
-        }
-
+        
         @Override
         public String getName() {
             return name;
@@ -101,11 +106,6 @@ public class DrawableCookbook {
         @Override
         public Object[] getElements() {
             return cookbook.getTemplates().toArray();
-        }
-
-        @Override
-        public Color getBackgroundColor() {
-            return new Color(null, 255, 255, 190);
         }
 
         @Override
@@ -123,11 +123,6 @@ public class DrawableCookbook {
         }
 
         @Override
-        public Color getBackgroundColor() {
-            return new Color(null, 255, 255, 190);
-        }
-
-        @Override
         public String getName() {
             return "recipes";
         }
@@ -138,21 +133,8 @@ public class DrawableCookbook {
 
         @Override
         public Object[] getElements() {
-            if(getCookbook()==null)
-                return new Object[] {};
-            
-            Object[] arr =          
-                    getCookbook()
-                    .getAttributes()
-                    .toArray();
-            
-            
+            Object[] arr = cookbook.getAttributes().toArray();
             return arr;
-        }
-
-        @Override
-        public Color getBackgroundColor() {
-            return new Color(null, 255, 255, 190);
         }
 
         @Override
@@ -165,12 +147,8 @@ public class DrawableCookbook {
     {
         @Override
         public Object[] getElements() {
-            return ((CookbookVersion)cookbook).getLibraries().toArray();
-        }
-
-        @Override
-        public Color getBackgroundColor() {
-            return new Color(null, 255, 255, 190);
+        	Object[] libraries =  cookbook.getLibraries().toArray();
+        	return libraries;
         }
 
         @Override
@@ -183,12 +161,7 @@ public class DrawableCookbook {
     {
         @Override
         public Object[] getElements() {
-            return ((CookbookVersion)cookbook).getDefinitions().toArray();
-        }
-
-        @Override
-        public Color getBackgroundColor() {
-            return new Color(null, 255, 255, 190);
+            return cookbook.getDefinitions().toArray();
         }
 
         @Override
@@ -196,6 +169,36 @@ public class DrawableCookbook {
             return "definitions";
         }
     }
-
     
+    public class DrawableFolder
+    {
+    	private Image containerImage = ImageLoader.Load("FolderOpen_24x24_72.png");
+    	DrawableContainer drawableContainer;
+    	Color color;
+    	String folderName;
+    	
+    	public DrawableFolder(String folderName, DrawableContainer drawableContainer,  Color color)
+    	{
+    		this.drawableContainer=drawableContainer;
+    		this.folderName=folderName;
+    		this.color=color;	
+    	}
+    	
+         public Object[] getElements() {
+             return new Object[]{drawableContainer};
+         }
+
+         public Color getBackgroundColor() {
+             return color;
+         }
+
+         public String getName() {
+             return folderName;
+         }
+         
+         public Image getImage()
+         {
+             return containerImage;
+         }
+    }
 }
