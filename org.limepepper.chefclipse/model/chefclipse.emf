@@ -74,6 +74,36 @@ class NameUrlMap {
 
 datatype NameUrlDataType : java.lang.Object;
 
+class Cookbook {
+  attr String json_class;
+  attr String chef_type;
+}
+
+datatype MapTest : java.util.HashMap;
+
+class MapTestContainer {
+  attr MapTest[*] entries;
+}
+
+class EStringToVersionUrlMap : java.util.Map$Entry {
+  attr String[1] key;
+  ref VersionUrl[1] value;
+}
+
+class VersionUrl {
+  attr String[1] url;
+  ref URLEntryTest[+] versions;
+}
+
+class URLEntryTest {
+  attr String[1] url;
+}
+
+class NameVersionMap {
+
+  @JSON(AnonRoot="true")
+  val EStringToVersionUrlMap[*] entries;
+}
 @namespace(uri="http://limepepper.org/v1/chefclipse/chefserver", prefix="org.limepepper.chefclipse.chefserver")
 package chefserver {
   class Environment {
@@ -97,7 +127,7 @@ package chefserver {
   }
 
   class Server {
-    unsettable val cookbook.CookbookVersion[*] cookbooks;
+    unsettable val ServerCookbookVersion[*] cookbooks;
     val Role[*] roles;
     val Node[*] nodes;
     val DataBag[*]#server databags;
@@ -138,21 +168,19 @@ package chefserver {
   }
 
   class ServerCookbookFile extends NamedObject, ChecksumFile, SandboxedObject {
-    ref ServerCookbookVersion[1]#root_files cookbook;
+    ref ServerCookbookVersion[1] cookbook;
   }
 
-  class ServerCookbookVersion {
-    attr String json_class;
-    attr String chef_type;
-    val ServerCookbookFile[*]#cookbook root_files;
-    val ServerCookbookFile[*]#cookbook recipes;
-    val ServerCookbookFile[*]#cookbook templates;
-    val ServerCookbookFile[*]#cookbook libraries;
-    val ServerCookbookFile[*]#cookbook providers;
-    val ServerCookbookFile[*]#cookbook resources;
-    val ServerCookbookFile[*]#cookbook files;
-    val ServerCookbookFile[*]#cookbook definitions;
-    val ServerCookbookFile[*]#cookbook attributes;
+  class ServerCookbookVersion extends Cookbook {
+    val ServerCookbookFile[*] root_files;
+    val ServerCookbookFile[*] recipes;
+    val ServerCookbookFile[*] templates;
+    val ServerCookbookFile[*] libraries;
+    val ServerCookbookFile[*] providers;
+    val ServerCookbookFile[*] resources;
+    val ServerCookbookFile[*] files;
+    val ServerCookbookFile[*] definitions;
+    val ServerCookbookFile[*] attributes;
     attr Version[1] version = "0.0.0";
     attr String[1] cookbook_name;
   }
@@ -178,7 +206,7 @@ package chefclient {
 
 @namespace(uri="http://limepepper.org/v1/chefclipse/cookbook", prefix="org.limepepper.chefclipse")
 package cookbook {
-  class CookbookVersion extends NamedDescribedObject, CookbookFile {
+  class CookbookVersion extends NamedDescribedObject, Cookbook {
     ref chefserver.Environment environment;
     val Template[*] templates;
     val Recipe[*] recipes;
@@ -188,9 +216,8 @@ package cookbook {
     val Library[*] libraries;
     val Metadata[1]#cookbookVersion metadata;
     val Provider[*] providers;
-    ref Root_file[*] root_files;
+    val Root_file[*] root_files;
     val Attributes[*] attributes;
-    attr Chef_type[1] chef_type = "cookbook_version";
     attr String catalog;
     ref CookbookVersion[*] depends;
     ref ecore.EStringToStringMapEntry[*] missing;
@@ -244,7 +271,7 @@ package cookbook {
   class Provider extends ChecksumFile, NamedObject, SandboxedObject, CookbookFile {
   }
 
-  class Root_file extends ChecksumFile, SandboxedObject, NamedObject {
+  class Root_file extends ChecksumFile, SandboxedObject, NamedObject, CookbookFile {
   }
 
   class MinimalMetadata extends Metadata {

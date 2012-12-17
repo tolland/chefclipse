@@ -19,6 +19,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.limepepper.chefclipse.util.ChefclipseAdapterFactory;
@@ -69,6 +70,7 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
         supportedTypes.add(ITreeItemContentProvider.class);
         supportedTypes.add(IItemLabelProvider.class);
         supportedTypes.add(IItemPropertySource.class);
+        supportedTypes.add(ITableItemLabelProvider.class);
     }
 
     /**
@@ -302,6 +304,121 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.MapTestContainer} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected MapTestContainerItemProvider mapTestContainerItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.MapTestContainer}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createMapTestContainerAdapter() {
+        if (mapTestContainerItemProvider == null) {
+            mapTestContainerItemProvider = new MapTestContainerItemProvider(this);
+        }
+
+        return mapTestContainerItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected EStringToVersionUrlMapItemProvider eStringToVersionUrlMapItemProvider;
+
+    /**
+     * This creates an adapter for a {@link java.util.Map.Entry}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createEStringToVersionUrlMapAdapter() {
+        if (eStringToVersionUrlMapItemProvider == null) {
+            eStringToVersionUrlMapItemProvider = new EStringToVersionUrlMapItemProvider(this);
+        }
+
+        return eStringToVersionUrlMapItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.VersionUrl} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected VersionUrlItemProvider versionUrlItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.VersionUrl}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createVersionUrlAdapter() {
+        if (versionUrlItemProvider == null) {
+            versionUrlItemProvider = new VersionUrlItemProvider(this);
+        }
+
+        return versionUrlItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.URLEntryTest} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected URLEntryTestItemProvider urlEntryTestItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.URLEntryTest}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createURLEntryTestAdapter() {
+        if (urlEntryTestItemProvider == null) {
+            urlEntryTestItemProvider = new URLEntryTestItemProvider(this);
+        }
+
+        return urlEntryTestItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.NameVersionMap} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected NameVersionMapItemProvider nameVersionMapItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.NameVersionMap}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createNameVersionMapAdapter() {
+        if (nameVersionMapItemProvider == null) {
+            nameVersionMapItemProvider = new NameVersionMapItemProvider(this);
+        }
+
+        return nameVersionMapItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -410,6 +527,11 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
         if (configItemProvider != null) configItemProvider.dispose();
         if (nameUrlMapItemProvider != null) nameUrlMapItemProvider.dispose();
         if (cookbookItemProvider != null) cookbookItemProvider.dispose();
+        if (mapTestContainerItemProvider != null) mapTestContainerItemProvider.dispose();
+        if (eStringToVersionUrlMapItemProvider != null) eStringToVersionUrlMapItemProvider.dispose();
+        if (versionUrlItemProvider != null) versionUrlItemProvider.dispose();
+        if (urlEntryTestItemProvider != null) urlEntryTestItemProvider.dispose();
+        if (nameVersionMapItemProvider != null) nameVersionMapItemProvider.dispose();
     }
 
 }

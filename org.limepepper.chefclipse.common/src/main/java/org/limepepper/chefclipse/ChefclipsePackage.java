@@ -500,6 +500,164 @@ public interface ChefclipsePackage extends EPackage {
     int COOKBOOK_FEATURE_COUNT = 2;
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.MapTestContainerImpl <em>Map Test Container</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.MapTestContainerImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getMapTestContainer()
+     * @generated
+     */
+    int MAP_TEST_CONTAINER = 11;
+
+    /**
+     * The feature id for the '<em><b>Entries</b></em>' attribute list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int MAP_TEST_CONTAINER__ENTRIES = 0;
+
+    /**
+     * The number of structural features of the '<em>Map Test Container</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int MAP_TEST_CONTAINER_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.EStringToVersionUrlMapImpl <em>EString To Version Url Map</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.EStringToVersionUrlMapImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getEStringToVersionUrlMap()
+     * @generated
+     */
+    int ESTRING_TO_VERSION_URL_MAP = 12;
+
+    /**
+     * The feature id for the '<em><b>Key</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ESTRING_TO_VERSION_URL_MAP__KEY = 0;
+
+    /**
+     * The feature id for the '<em><b>Value</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ESTRING_TO_VERSION_URL_MAP__VALUE = 1;
+
+    /**
+     * The number of structural features of the '<em>EString To Version Url Map</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ESTRING_TO_VERSION_URL_MAP_FEATURE_COUNT = 2;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.VersionUrlImpl <em>Version Url</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.VersionUrlImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getVersionUrl()
+     * @generated
+     */
+    int VERSION_URL = 13;
+
+    /**
+     * The feature id for the '<em><b>Url</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VERSION_URL__URL = 0;
+
+    /**
+     * The feature id for the '<em><b>Versions</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VERSION_URL__VERSIONS = 1;
+
+    /**
+     * The number of structural features of the '<em>Version Url</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int VERSION_URL_FEATURE_COUNT = 2;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.URLEntryTestImpl <em>URL Entry Test</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.URLEntryTestImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getURLEntryTest()
+     * @generated
+     */
+    int URL_ENTRY_TEST = 14;
+
+    /**
+     * The feature id for the '<em><b>Url</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int URL_ENTRY_TEST__URL = 0;
+
+    /**
+     * The number of structural features of the '<em>URL Entry Test</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int URL_ENTRY_TEST_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.impl.NameVersionMapImpl <em>Name Version Map</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.impl.NameVersionMapImpl
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNameVersionMap()
+     * @generated
+     */
+    int NAME_VERSION_MAP = 15;
+
+    /**
+     * The feature id for the '<em><b>Entries</b></em>' map.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NAME_VERSION_MAP__ENTRIES = 0;
+
+    /**
+     * The number of structural features of the '<em>Name Version Map</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NAME_VERSION_MAP_FEATURE_COUNT = 1;
+
+    /**
      * The meta object id for the '<em>URL</em>' data type.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -507,7 +665,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getURL()
      * @generated
      */
-    int URL = 11;
+    int URL = 16;
 
     /**
      * The meta object id for the '<em>File</em>' data type.
@@ -517,7 +675,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getFile()
      * @generated
      */
-    int FILE = 12;
+    int FILE = 17;
 
     /**
      * The meta object id for the '<em>Chef type</em>' data type.
@@ -527,7 +685,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getChef_type()
      * @generated
      */
-    int CHEF_TYPE = 13;
+    int CHEF_TYPE = 18;
 
     /**
      * The meta object id for the '<em>Email</em>' data type.
@@ -537,7 +695,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getEmail()
      * @generated
      */
-    int EMAIL = 14;
+    int EMAIL = 19;
 
     /**
      * The meta object id for the '<em>Text</em>' data type.
@@ -547,7 +705,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getText()
      * @generated
      */
-    int TEXT = 15;
+    int TEXT = 20;
 
     /**
      * The meta object id for the '<em>Version</em>' data type.
@@ -557,7 +715,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getVersion()
      * @generated
      */
-    int VERSION = 16;
+    int VERSION = 21;
 
     /**
      * The meta object id for the '<em>Name</em>' data type.
@@ -567,7 +725,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getName_()
      * @generated
      */
-    int NAME = 17;
+    int NAME = 22;
 
     /**
      * The meta object id for the '<em>Description</em>' data type.
@@ -577,7 +735,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getDescription()
      * @generated
      */
-    int DESCRIPTION = 18;
+    int DESCRIPTION = 23;
 
     /**
      * The meta object id for the '<em>Object</em>' data type.
@@ -587,7 +745,7 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getObject()
      * @generated
      */
-    int OBJECT = 19;
+    int OBJECT = 24;
 
     /**
      * The meta object id for the '<em>Name Url Data Type</em>' data type.
@@ -597,7 +755,18 @@ public interface ChefclipsePackage extends EPackage {
      * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNameUrlDataType()
      * @generated
      */
-    int NAME_URL_DATA_TYPE = 20;
+    int NAME_URL_DATA_TYPE = 25;
+
+
+    /**
+     * The meta object id for the '<em>Map Test</em>' data type.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see java.util.HashMap
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getMapTest()
+     * @generated
+     */
+    int MAP_TEST = 26;
 
 
     /**
@@ -930,7 +1099,6 @@ public interface ChefclipsePackage extends EPackage {
      * @generated
      */
     EReference getNameUrlMap_Entries();
-
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.Cookbook <em>Cookbook</em>}'.
      * <!-- begin-user-doc -->
@@ -962,6 +1130,135 @@ public interface ChefclipsePackage extends EPackage {
      * @generated
      */
     EAttribute getCookbook_Chef_type();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.MapTestContainer <em>Map Test Container</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Map Test Container</em>'.
+     * @see org.limepepper.chefclipse.MapTestContainer
+     * @generated
+     */
+    EClass getMapTestContainer();
+
+    /**
+     * Returns the meta object for the attribute list '{@link org.limepepper.chefclipse.MapTestContainer#getEntries <em>Entries</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute list '<em>Entries</em>'.
+     * @see org.limepepper.chefclipse.MapTestContainer#getEntries()
+     * @see #getMapTestContainer()
+     * @generated
+     */
+    EAttribute getMapTestContainer_Entries();
+
+    /**
+     * Returns the meta object for class '{@link java.util.Map.Entry <em>EString To Version Url Map</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>EString To Version Url Map</em>'.
+     * @see java.util.Map.Entry
+     * @model keyDataType="org.eclipse.emf.ecore.EString" keyRequired="true"
+     *        valueType="org.limepepper.chefclipse.VersionUrl" valueRequired="true"
+     * @generated
+     */
+    EClass getEStringToVersionUrlMap();
+
+    /**
+     * Returns the meta object for the attribute '{@link java.util.Map.Entry <em>Key</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Key</em>'.
+     * @see java.util.Map.Entry
+     * @see #getEStringToVersionUrlMap()
+     * @generated
+     */
+    EAttribute getEStringToVersionUrlMap_Key();
+
+    /**
+     * Returns the meta object for the reference '{@link java.util.Map.Entry <em>Value</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Value</em>'.
+     * @see java.util.Map.Entry
+     * @see #getEStringToVersionUrlMap()
+     * @generated
+     */
+    EReference getEStringToVersionUrlMap_Value();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.VersionUrl <em>Version Url</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Version Url</em>'.
+     * @see org.limepepper.chefclipse.VersionUrl
+     * @generated
+     */
+    EClass getVersionUrl();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.VersionUrl#getUrl <em>Url</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Url</em>'.
+     * @see org.limepepper.chefclipse.VersionUrl#getUrl()
+     * @see #getVersionUrl()
+     * @generated
+     */
+    EAttribute getVersionUrl_Url();
+
+    /**
+     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.VersionUrl#getVersions <em>Versions</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference list '<em>Versions</em>'.
+     * @see org.limepepper.chefclipse.VersionUrl#getVersions()
+     * @see #getVersionUrl()
+     * @generated
+     */
+    EReference getVersionUrl_Versions();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.URLEntryTest <em>URL Entry Test</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>URL Entry Test</em>'.
+     * @see org.limepepper.chefclipse.URLEntryTest
+     * @generated
+     */
+    EClass getURLEntryTest();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.URLEntryTest#getUrl <em>Url</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Url</em>'.
+     * @see org.limepepper.chefclipse.URLEntryTest#getUrl()
+     * @see #getURLEntryTest()
+     * @generated
+     */
+    EAttribute getURLEntryTest_Url();
+
+    /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.NameVersionMap <em>Name Version Map</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Name Version Map</em>'.
+     * @see org.limepepper.chefclipse.NameVersionMap
+     * @generated
+     */
+    EClass getNameVersionMap();
+
+    /**
+     * Returns the meta object for the map '{@link org.limepepper.chefclipse.NameVersionMap#getEntries <em>Entries</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the map '<em>Entries</em>'.
+     * @see org.limepepper.chefclipse.NameVersionMap#getEntries()
+     * @see #getNameVersionMap()
+     * @generated
+     */
+    EReference getNameVersionMap_Entries();
 
     /**
      * Returns the meta object for data type '{@link java.net.URL <em>URL</em>}'.
@@ -1072,6 +1369,17 @@ public interface ChefclipsePackage extends EPackage {
      * @generated
      */
     EDataType getNameUrlDataType();
+
+    /**
+     * Returns the meta object for data type '{@link java.util.HashMap <em>Map Test</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for data type '<em>Map Test</em>'.
+     * @see java.util.HashMap
+     * @model instanceClass="java.util.HashMap"
+     * @generated
+     */
+    EDataType getMapTest();
 
     /**
      * Returns the factory that creates the instances of the model.
@@ -1390,6 +1698,112 @@ public interface ChefclipsePackage extends EPackage {
         EAttribute COOKBOOK__CHEF_TYPE = eINSTANCE.getCookbook_Chef_type();
 
         /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.impl.MapTestContainerImpl <em>Map Test Container</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.impl.MapTestContainerImpl
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getMapTestContainer()
+         * @generated
+         */
+        EClass MAP_TEST_CONTAINER = eINSTANCE.getMapTestContainer();
+
+        /**
+         * The meta object literal for the '<em><b>Entries</b></em>' attribute list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute MAP_TEST_CONTAINER__ENTRIES = eINSTANCE.getMapTestContainer_Entries();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.impl.EStringToVersionUrlMapImpl <em>EString To Version Url Map</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.impl.EStringToVersionUrlMapImpl
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getEStringToVersionUrlMap()
+         * @generated
+         */
+        EClass ESTRING_TO_VERSION_URL_MAP = eINSTANCE.getEStringToVersionUrlMap();
+
+        /**
+         * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute ESTRING_TO_VERSION_URL_MAP__KEY = eINSTANCE.getEStringToVersionUrlMap_Key();
+
+        /**
+         * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ESTRING_TO_VERSION_URL_MAP__VALUE = eINSTANCE.getEStringToVersionUrlMap_Value();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.impl.VersionUrlImpl <em>Version Url</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.impl.VersionUrlImpl
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getVersionUrl()
+         * @generated
+         */
+        EClass VERSION_URL = eINSTANCE.getVersionUrl();
+
+        /**
+         * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute VERSION_URL__URL = eINSTANCE.getVersionUrl_Url();
+
+        /**
+         * The meta object literal for the '<em><b>Versions</b></em>' reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference VERSION_URL__VERSIONS = eINSTANCE.getVersionUrl_Versions();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.impl.URLEntryTestImpl <em>URL Entry Test</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.impl.URLEntryTestImpl
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getURLEntryTest()
+         * @generated
+         */
+        EClass URL_ENTRY_TEST = eINSTANCE.getURLEntryTest();
+
+        /**
+         * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute URL_ENTRY_TEST__URL = eINSTANCE.getURLEntryTest_Url();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.impl.NameVersionMapImpl <em>Name Version Map</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.impl.NameVersionMapImpl
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getNameVersionMap()
+         * @generated
+         */
+        EClass NAME_VERSION_MAP = eINSTANCE.getNameVersionMap();
+
+        /**
+         * The meta object literal for the '<em><b>Entries</b></em>' map feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference NAME_VERSION_MAP__ENTRIES = eINSTANCE.getNameVersionMap_Entries();
+
+        /**
          * The meta object literal for the '<em>URL</em>' data type.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1488,6 +1902,15 @@ public interface ChefclipsePackage extends EPackage {
          * @generated
          */
         EDataType NAME_URL_DATA_TYPE = eINSTANCE.getNameUrlDataType();
+        /**
+         * The meta object literal for the '<em>Map Test</em>' data type.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see java.util.HashMap
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getMapTest()
+         * @generated
+         */
+        EDataType MAP_TEST = eINSTANCE.getMapTest();
 
     }
 

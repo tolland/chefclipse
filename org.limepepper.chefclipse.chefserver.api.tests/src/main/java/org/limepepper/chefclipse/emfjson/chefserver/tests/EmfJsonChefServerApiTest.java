@@ -30,7 +30,6 @@ import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Node;
-import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
@@ -55,15 +54,11 @@ public class EmfJsonChefServerApiTest {
 
         Properties props = new Properties();
 
-
-
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "http", new JsResourceFactoryImpl());
 
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "https", new JsResourceFactoryImpl());
-
-
         try {
 
             props.load(new FileInputStream("resources/opscode-tests.properties"));
@@ -119,7 +114,7 @@ public class EmfJsonChefServerApiTest {
         } finally {
 
         }
-        assertTrue(responseCode == 401);
+        assertTrue(responseCode==401);
     }
 
     @Test
@@ -248,6 +243,7 @@ public class EmfJsonChefServerApiTest {
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "http", new JsResourceFactoryImpl());
 
+
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "https", new JsResourceFactoryImpl());
 
@@ -271,7 +267,6 @@ public class EmfJsonChefServerApiTest {
         Node node = (Node) resource.getContents().get(0);
 
         assertTrue(node.getName().equals("test1"));
-
     }
 
     @Test
@@ -291,7 +286,7 @@ public class EmfJsonChefServerApiTest {
                 + "/cookbooks/apache2/_latest");
 
         Resource resource = resourceSet.createResource(uri);
-
+        assertNotNull(resource);
         resource.load(options);
 
         ServerCookbookVersion user = (ServerCookbookVersion) resource
@@ -299,16 +294,7 @@ public class EmfJsonChefServerApiTest {
 
         assertNotNull(user);
         assertTrue(user.getCookbook_name() != null);
-        for (ServerCookbookFile file : user.getTemplates()) {
-            System.out.println(file.getName());
-            System.out.println(file.getChecksum());
-        }
-        System.out.println("number of items was" + user.getRoot_files().size());
-
-        for (ServerCookbookFile iterable_element : user.getRoot_files()) {
-            System.out.println(iterable_element.getName() + ":val:"
-                    + iterable_element.getPath());
-        }
+        assertTrue(user.getRoot_files().size()>0);
 
     }
 

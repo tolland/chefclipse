@@ -97,7 +97,7 @@ public class ChefRequest {
                             .getClient_key()));
 
             for (Entry<String, String> entry : auth_headers.entrySet()) {
-                logger.debug(entry.getKey().toString() + ":" + entry.getValue());
+                logger.debug("adding header-->>"+entry.getKey().toString() + ":" + entry.getValue());
             }
 
             for (String key : auth_headers.keySet()) {

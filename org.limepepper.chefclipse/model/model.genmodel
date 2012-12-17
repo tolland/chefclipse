@@ -8,10 +8,12 @@
     editPluginID="org.limepepper.chefclipse.model" editorPluginID="org.limepepper.chefclipse.model"
     testsPluginID="org.limepepper.chefclipse.model" runtimeVersion="2.8">
   <foreignModel>model.ecore</foreignModel>
-  <genPackages prefix="Model" basePackage="org.limepepper.chefclipse" disposableProviderFactory="true"
-      ecorePackage="model.ecore#/">
+  <genPackages prefix="Model" basePackage="org.limepepper.chefclipse" resource="XMI"
+      disposableProviderFactory="true" ecorePackage="model.ecore#/">
     <genDataTypes ecoreDataType="model.ecore#//IResource"/>
-    <genClasses ecoreClass="model.ecore#//ChefContainer"/>
+    <genClasses ecoreClass="model.ecore#//ChefContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//ChefContainer/members"/>
+    </genClasses>
     <genClasses ecoreClass="model.ecore#//ChefFile"/>
     <genClasses ecoreClass="model.ecore#//ChefFolder"/>
     <genClasses ecoreClass="model.ecore#//ChefObject">
@@ -19,6 +21,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ChefObject/parent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ChefObject/path"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ChefObject/project"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ChefObject/name"/>
       <genOperations ecoreOperation="model.ecore#//ChefObject/create">
         <genParameters ecoreParameter="model.ecore#//ChefObject/create/resource"/>
       </genOperations>

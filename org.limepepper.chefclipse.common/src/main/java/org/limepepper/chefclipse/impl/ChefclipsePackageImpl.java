@@ -4,6 +4,8 @@ package org.limepepper.chefclipse.impl;
 
 import java.io.File;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -19,7 +21,9 @@ import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.Cookbook;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
+import org.limepepper.chefclipse.MapTestContainer;
 import org.limepepper.chefclipse.NameUrlMap;
+import org.limepepper.chefclipse.NameVersionMap;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 
@@ -29,6 +33,8 @@ import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
 
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.URLEntryTest;
+import org.limepepper.chefclipse.VersionUrl;
 import org.limepepper.chefclipse.VersionedObject;
 
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
@@ -140,6 +146,41 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    private EClass mapTestContainerEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass eStringToVersionUrlMapEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass versionUrlEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass urlEntryTestEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass nameVersionMapEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     private EDataType urlEDataType = null;
 
     /**
@@ -204,6 +245,13 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * @generated
      */
     private EDataType nameUrlDataTypeEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType mapTestEDataType = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -597,6 +645,114 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EClass getMapTestContainer() {
+        return mapTestContainerEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getMapTestContainer_Entries() {
+        return (EAttribute)mapTestContainerEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getEStringToVersionUrlMap() {
+        return eStringToVersionUrlMapEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getEStringToVersionUrlMap_Key() {
+        return (EAttribute)eStringToVersionUrlMapEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getEStringToVersionUrlMap_Value() {
+        return (EReference)eStringToVersionUrlMapEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getVersionUrl() {
+        return versionUrlEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getVersionUrl_Url() {
+        return (EAttribute)versionUrlEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getVersionUrl_Versions() {
+        return (EReference)versionUrlEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getURLEntryTest() {
+        return urlEntryTestEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getURLEntryTest_Url() {
+        return (EAttribute)urlEntryTestEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EClass getNameVersionMap() {
+        return nameVersionMapEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EReference getNameVersionMap_Entries() {
+        return (EReference)nameVersionMapEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EDataType getURL() {
         return urlEDataType;
     }
@@ -687,6 +843,15 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EDataType getMapTest() {
+        return mapTestEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public ChefclipseFactory getChefclipseFactory() {
         return (ChefclipseFactory)getEFactoryInstance();
     }
@@ -755,6 +920,22 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         createEAttribute(cookbookEClass, COOKBOOK__JSON_CLASS);
         createEAttribute(cookbookEClass, COOKBOOK__CHEF_TYPE);
 
+        mapTestContainerEClass = createEClass(MAP_TEST_CONTAINER);
+        createEAttribute(mapTestContainerEClass, MAP_TEST_CONTAINER__ENTRIES);
+
+        eStringToVersionUrlMapEClass = createEClass(ESTRING_TO_VERSION_URL_MAP);
+        createEAttribute(eStringToVersionUrlMapEClass, ESTRING_TO_VERSION_URL_MAP__KEY);
+        createEReference(eStringToVersionUrlMapEClass, ESTRING_TO_VERSION_URL_MAP__VALUE);
+
+        versionUrlEClass = createEClass(VERSION_URL);
+        createEAttribute(versionUrlEClass, VERSION_URL__URL);
+        createEReference(versionUrlEClass, VERSION_URL__VERSIONS);
+
+        urlEntryTestEClass = createEClass(URL_ENTRY_TEST);
+        createEAttribute(urlEntryTestEClass, URL_ENTRY_TEST__URL);
+
+        nameVersionMapEClass = createEClass(NAME_VERSION_MAP);
+        createEReference(nameVersionMapEClass, NAME_VERSION_MAP__ENTRIES);
         // Create data types
         urlEDataType = createEDataType(URL);
         fileEDataType = createEDataType(FILE);
@@ -766,6 +947,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         descriptionEDataType = createEDataType(DESCRIPTION);
         objectEDataType = createEDataType(OBJECT);
         nameUrlDataTypeEDataType = createEDataType(NAME_URL_DATA_TYPE);
+        mapTestEDataType = createEDataType(MAP_TEST);
     }
 
     /**
@@ -861,6 +1043,22 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         initEAttribute(getCookbook_Json_class(), ecorePackage.getEString(), "json_class", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCookbook_Chef_type(), ecorePackage.getEString(), "chef_type", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+        initEClass(mapTestContainerEClass, MapTestContainer.class, "MapTestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getMapTestContainer_Entries(), this.getMapTest(), "entries", null, 0, -1, MapTestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(eStringToVersionUrlMapEClass, Map.Entry.class, "EStringToVersionUrlMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getEStringToVersionUrlMap_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getEStringToVersionUrlMap_Value(), this.getVersionUrl(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(versionUrlEClass, VersionUrl.class, "VersionUrl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getVersionUrl_Url(), ecorePackage.getEString(), "url", null, 1, 1, VersionUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getVersionUrl_Versions(), this.getURLEntryTest(), null, "versions", null, 1, -1, VersionUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(urlEntryTestEClass, URLEntryTest.class, "URLEntryTest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getURLEntryTest_Url(), ecorePackage.getEString(), "url", null, 1, 1, URLEntryTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(nameVersionMapEClass, NameVersionMap.class, "NameVersionMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getNameVersionMap_Entries(), this.getEStringToVersionUrlMap(), null, "entries", null, 0, -1, NameVersionMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         // Initialize data types
         initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -872,6 +1070,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         initEDataType(descriptionEDataType, Object.class, "Description", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(nameUrlDataTypeEDataType, Object.class, "NameUrlDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(mapTestEDataType, HashMap.class, "MapTest", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(eNS_URI);
@@ -891,6 +1090,12 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         String source = "JSON";		
         addAnnotation
           (getNameUrlMap_Entries(), 
+           source, 
+           new String[] {
+             "AnonRoot", "true"
+           });		
+        addAnnotation
+          (getNameVersionMap_Entries(), 
            source, 
            new String[] {
              "AnonRoot", "true"

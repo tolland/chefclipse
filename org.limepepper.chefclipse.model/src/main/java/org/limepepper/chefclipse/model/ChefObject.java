@@ -5,16 +5,12 @@ package org.limepepper.chefclipse.model;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -29,6 +25,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.limepepper.chefclipse.model.ChefObject#getParent <em>Parent</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.model.ChefObject#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.model.ChefObject#getProject <em>Project</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.model.ChefObject#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -86,6 +83,26 @@ public class ChefObject extends EObjectImpl implements EObject {
      * @ordered
      */
     protected ChefProject project;
+
+    /**
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
+    protected static final String NAME_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
+    protected String name = NAME_EDEFAULT;
 
     /**
      * <!-- begin-user-doc -->
@@ -261,6 +278,39 @@ public class ChefObject extends EObjectImpl implements EObject {
     }
 
     /**
+     * Returns the value of the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Name</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Name</em>' attribute.
+     * @see #setName(String)
+     * @see org.limepepper.chefclipse.model.ModelPackage#getChefObject_Name()
+     * @model required="true"
+     * @generated
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the value of the '{@link org.limepepper.chefclipse.model.ChefObject#getName <em>Name</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Name</em>' attribute.
+     * @see #getName()
+     * @generated
+     */
+    public void setName(String newName) {
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ModelPackage.CHEF_OBJECT__NAME, oldName, name));
+    }
+
+    /**
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @model resourceRequired="true"
@@ -290,6 +340,8 @@ public class ChefObject extends EObjectImpl implements EObject {
             case ModelPackage.CHEF_OBJECT__PROJECT:
                 if (resolve) return getProject();
                 return basicGetProject();
+            case ModelPackage.CHEF_OBJECT__NAME:
+                return getName();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -316,6 +368,9 @@ public class ChefObject extends EObjectImpl implements EObject {
             case ModelPackage.CHEF_OBJECT__PROJECT:
                 setProject((ChefProject)newValue);
                 return;
+            case ModelPackage.CHEF_OBJECT__NAME:
+                setName((String)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -340,6 +395,9 @@ public class ChefObject extends EObjectImpl implements EObject {
             case ModelPackage.CHEF_OBJECT__PROJECT:
                 setProject((ChefProject)null);
                 return;
+            case ModelPackage.CHEF_OBJECT__NAME:
+                setName(NAME_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -360,6 +418,8 @@ public class ChefObject extends EObjectImpl implements EObject {
                 return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
             case ModelPackage.CHEF_OBJECT__PROJECT:
                 return project != null;
+            case ModelPackage.CHEF_OBJECT__NAME:
+                return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
         }
         return super.eIsSet(featureID);
     }
@@ -376,6 +436,8 @@ public class ChefObject extends EObjectImpl implements EObject {
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (path: ");
         result.append(path);
+        result.append(", name: ");
+        result.append(name);
         result.append(')');
         return result.toString();
     }

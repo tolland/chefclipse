@@ -206,6 +206,7 @@ public class CookbookSwitch<T> extends Switch<T> {
                 if (result == null) result = caseChecksumFile(root_file);
                 if (result == null) result = caseSandboxedObject(root_file);
                 if (result == null) result = caseNamedObject(root_file);
+                if (result == null) result = caseCookbookFile(root_file);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }

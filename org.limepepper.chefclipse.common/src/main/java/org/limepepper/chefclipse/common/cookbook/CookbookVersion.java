@@ -208,7 +208,7 @@ public interface CookbookVersion extends NamedDescribedObject, Cookbook {
     EList<Provider> getProviders();
 
     /**
-     * Returns the value of the '<em><b>Root files</b></em>' reference list.
+     * Returns the value of the '<em><b>Root files</b></em>' containment reference list.
      * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Root_file}.
      * <!-- begin-user-doc -->
      * <p>
@@ -216,9 +216,9 @@ public interface CookbookVersion extends NamedDescribedObject, Cookbook {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Root files</em>' reference list.
+     * @return the value of the '<em>Root files</em>' containment reference list.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Root_files()
-     * @model
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<Root_file> getRoot_files();

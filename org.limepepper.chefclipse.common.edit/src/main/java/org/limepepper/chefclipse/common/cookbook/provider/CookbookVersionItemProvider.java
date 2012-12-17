@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -41,11 +42,7 @@ import org.limepepper.chefclipse.provider.DescribedObjectItemProvider;
 public class CookbookVersionItemProvider
     extends DescribedObjectItemProvider
     implements
-        IEditingDomainItemProvider,
-        IStructuredItemContentProvider,
-        ITreeItemContentProvider,
-        IItemLabelProvider,
-        IItemPropertySource {
+        IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
@@ -74,6 +71,7 @@ public class CookbookVersionItemProvider
             addEnvironmentPropertyDescriptor(object);
             addTemplatesPropertyDescriptor(object);
             addRoot_filesPropertyDescriptor(object);
+            addChef_typePropertyDescriptor(object);
             addCatalogPropertyDescriptor(object);
             addDependsPropertyDescriptor(object);
             addMissingPropertyDescriptor(object);
@@ -313,6 +311,7 @@ public class CookbookVersionItemProvider
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
+            childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__TEMPLATES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__RECIPES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__DEFINITIONS);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__FILES);
@@ -320,6 +319,7 @@ public class CookbookVersionItemProvider
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__LIBRARIES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__METADATA);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__PROVIDERS);
+            childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__ATTRIBUTES);
             childrenFeatures.add(CookbookPackage.Literals.COOKBOOK_VERSION__DEPENDS);
         }
@@ -383,6 +383,7 @@ public class CookbookVersionItemProvider
             case CookbookPackage.COOKBOOK_VERSION__CATALOG:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
+            case CookbookPackage.COOKBOOK_VERSION__TEMPLATES:
             case CookbookPackage.COOKBOOK_VERSION__RECIPES:
             case CookbookPackage.COOKBOOK_VERSION__DEFINITIONS:
             case CookbookPackage.COOKBOOK_VERSION__FILES:
@@ -390,6 +391,7 @@ public class CookbookVersionItemProvider
             case CookbookPackage.COOKBOOK_VERSION__LIBRARIES:
             case CookbookPackage.COOKBOOK_VERSION__METADATA:
             case CookbookPackage.COOKBOOK_VERSION__PROVIDERS:
+            case CookbookPackage.COOKBOOK_VERSION__ROOT_FILES:
             case CookbookPackage.COOKBOOK_VERSION__ATTRIBUTES:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
                 return;
@@ -407,6 +409,11 @@ public class CookbookVersionItemProvider
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add
+            (createChildParameter
+                (CookbookPackage.Literals.COOKBOOK_VERSION__TEMPLATES,
+                 CookbookFactory.eINSTANCE.createTemplate()));
 
         newChildDescriptors.add
             (createChildParameter
@@ -447,6 +454,10 @@ public class CookbookVersionItemProvider
             (createChildParameter
                 (CookbookPackage.Literals.COOKBOOK_VERSION__PROVIDERS,
                  CookbookFactory.eINSTANCE.createProvider()));
+        newChildDescriptors.add
+            (createChildParameter
+                (CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES,
+                 CookbookFactory.eINSTANCE.createRoot_file()));
 
         newChildDescriptors.add
             (createChildParameter

@@ -4,25 +4,25 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.NameUrlMap;
-import org.limepepper.chefclipse.REST.CookbookListResp;
+import org.limepepper.chefclipse.VersionUrl;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
+import org.limepepper.chefclipse.tools.ChefUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +34,7 @@ public class ServerAPITests {
     private URL           chef_server_url;
     private ChefServerApi chefServerApi;
     KnifeConfig           knifeConfig;
-    Logger                logger = LoggerFactory
+    static Logger         logger = LoggerFactory
                                          .getLogger(ServerAPITests.class);
 
     KnifeConfigController api    = KnifeConfigController.INSTANCE;
@@ -84,174 +84,13 @@ public class ServerAPITests {
         if (chefServerApi == null) {
             createServerObject();
         }
+
         assertNotNull(chefServerApi);
-
-        headerInfo = api.getServer(knifeConfig).getServerInfo();
-
+        headerInfo = chefServerApi.getServerInfo();
         assertNotNull(headerInfo);
-        System.out.println(headerInfo);
 
     }
 
-    @SuppressWarnings("deprecation")
-    @Test
-    public void getCookbooksTest() throws Exception {
-        if (chefServerApi == null) {
-            createServerObject();
-        }
-
-        List<CookbookListResp> cookbook = chefServerApi.getCookbooks();
-
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            System.out.println(mapper.defaultPrettyPrintingWriter()
-                    .writeValueAsString(cookbook));
-        } catch (JsonGenerationException | JsonMappingException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    @Test
-    public void getCookbookInfoVersionsTest() throws Exception {
-
-        if (chefServerApi == null) {
-            createServerObject();
-        }
-        CookbookListResp cookbook = chefServerApi.getCookbookInfo("apache2");
-
-        assertNotNull(cookbook);
-
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            System.out.println(mapper.defaultPrettyPrintingWriter()
-                    .writeValueAsString(cookbook));
-
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-    }
-
-    @Test
-    public void getCookbookVersionTest() throws Exception {
-        if (chefServerApi == null) {
-            createServerObject();
-        }
-
-        ServerCookbookVersion cookbook = chefServerApi
-                .getCookbookVersion("apache2");
-
-        assertNotNull(cookbook);
-
-        assertTrue(cookbook.getCookbook_name().equals("apache2"));
-
-    }
-
-/*
- * @Test
- * public void testGetCookbookInfo() throws Exception {
- *
- * if (auth == null) {
- * createAuthenticationObject();
- * }
- *
- * ClientConfig cc = new DefaultClientConfig();
- *
- * ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
- * // CookbookInfoREST cookbook = mapper.readValue(new File("user.json"),
- * User.class);
- *
- * cc.getClasses().add( CookbookListResp.class);
- * cc.getClasses().add( JSONListElementProvider.General.class);
- *
- * cc.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
- * Client c = Client.create(cc);
- *
- * JSONRestWrapper jSONRestWrapper = new JSONRestWrapper(auth,c);
- *
- * Map<String, List<String>> params = new HashMap<String, List<String>>();
- * // params.put("num_versions", Arrays.asList(new String[] { "1" }));
- *
- * final String method = "GET";
- *
- * Map<String, String> headers = new HashMap<String, String>();
- *
- * MultivaluedMap<String, String> query_params = new MultivaluedMapImpl();
- * query_params.putAll(params);
- *
- * WebResource.Builder builder =
- * jSONRestWrapper.getService().path("/cookbooks/apache2")
- * .queryParams(query_params).getRequestBuilder();
- *
- * Map<String, String> auth_headers = null;
- * try {
- * String path = "/cookbooks/apache2";
- * auth_headers = jSONRestWrapper.build_headers(method, new
- * URL(chefServerApi.getChef_server_url() + path), headers, null, false);
- * } catch (MalformedURLException e) {
- * e.printStackTrace();
- * }
- * for (String key : auth_headers.keySet()) {
- * builder.header(key, auth_headers.get(key));
- * }
- *
- * System.out.println( builder.accept(MediaType.APPLICATION_JSON_TYPE).get(
- * CookbookListResp.class ));
- * }
- *
- * @Test
- * public void testGetCookbooksInfo() throws Exception {
- *
- * if (auth == null) {
- * createAuthenticationObject();
- * }
- *
- * ClientConfig cc = new DefaultClientConfig();
- *
- * ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
- * // CookbookInfoREST cookbook = mapper.readValue(new File("user.json"),
- * User.class);
- *
- * cc.getClasses().add( CookbookListResp.class);
- * cc.getClasses().add( JSONListElementProvider.General.class);
- *
- * cc.getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, Boolean.TRUE);
- * Client c = Client.create(cc);
- *
- * JSONRestWrapper jSONRestWrapper = new JSONRestWrapper(auth,c);
- *
- * Map<String, List<String>> params = new HashMap<String, List<String>>();
- * // params.put("num_versions", Arrays.asList(new String[] { "1" }));
- *
- * final String method = "GET";
- *
- * Map<String, String> headers = new HashMap<String, String>();
- *
- * MultivaluedMap<String, String> query_params = new MultivaluedMapImpl();
- * query_params.putAll(params);
- *
- * WebResource.Builder builder = jSONRestWrapper.getService().path("/cookbooks")
- * .queryParams(query_params).getRequestBuilder();
- *
- * Map<String, String> auth_headers = null;
- * try {
- * String path = "/cookbooks";
- * auth_headers = jSONRestWrapper.build_headers(method, new
- * URL(chefServerApi.getChef_server_url()
- * .toString() + path), headers, null, false);
- * } catch (MalformedURLException e) {
- * e.printStackTrace();
- * }
- * for (String key : auth_headers.keySet()) {
- * builder.header(key, auth_headers.get(key));
- * }
- *
- * System.out.println( builder.accept(MediaType.APPLICATION_JSON_TYPE).get(
- * String.class ));
- * }
- */
     @Test
     public void getRolesTest() {
 
@@ -259,11 +98,11 @@ public class ServerAPITests {
             createServerObject();
         }
 
-        NameUrlMap roles = chefServerApi.getRoleList();
-        assertNotNull(roles);
-        assertNotNull(roles.getEntries());
-        assertTrue(roles.getEntries().size() > 0);
-        assertTrue(roles.getEntries().get(0).getValue().length() > 0);
+        Map<String, String> items = chefServerApi.getRoleList();
+        assertNotNull(items);
+        assertNotNull(items.keySet());
+        assertTrue(items.keySet().size() > 0);
+
     }
 
     @Test
@@ -273,11 +112,25 @@ public class ServerAPITests {
             createServerObject();
         }
 
-        NameUrlMap nodes = chefServerApi.getNodeList();
-        assertNotNull(nodes);
-        assertNotNull(nodes.getEntries());
-        assertTrue(nodes.getEntries().size() > 0);
-        assertTrue(nodes.getEntries().get(0).getValue().length() > 0);
+        Map<String, String> items = chefServerApi.getNodeList();
+        assertNotNull(items);
+        assertNotNull(items.keySet());
+        assertTrue(items.keySet().size() > 0);
+
+    }
+
+    @Test
+    public void getCookbookListTest() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        Map<String, VersionUrl> items = chefServerApi.getCookbookList();
+        assertNotNull(items);
+        assertNotNull(items.keySet());
+        assertTrue(items.keySet().size() > 0);
+        assertNotNull(items.keySet().iterator().next());
     }
 
     @Test
@@ -287,8 +140,107 @@ public class ServerAPITests {
             createServerObject();
         }
 
-        List<CookbookListResp> nodes = chefServerApi.getCookbooks();
-        assertNotNull(nodes);
+        List<ServerCookbookVersion> items = chefServerApi.getCookbooks();
+        assertNotNull(items);
+        assertTrue(items.size() > 0);
+
+    }
+
+    @Test
+    public void getCookbookVersionTest1() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        ServerCookbookVersion cookbook = chefServerApi
+                .getCookbookVersion("sudo");
+
+        assertNotNull(cookbook);
+        assertTrue(cookbook.getCookbook_name().equals("sudo"));
+        assertTrue(cookbook.getRecipes().size() > 0);
+
+    }
+
+    @Test
+    public void getCookbookVersionTest2() throws Exception {
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        ServerCookbookVersion cookbook = chefServerApi
+                .getCookbookVersion("XXchecksum-test-cookbook");
+
+        assertNotNull(cookbook);
+        assertTrue(cookbook.getCookbook_name().equals(
+                "XXchecksum-test-cookbook"));
+        assertTrue(cookbook.getRecipes().size() > 0);
+        assertTrue(cookbook.getRoot_files().size() > 0);
+        assertTrue(!cookbook.getVersion().equals(""));
+
+    }
+
+    /*
+     *
+     * "name":"metadata.rb",
+     * "url":
+     * "https://s3.amazonaws.com/opscode-platform-production-data/organization-203fc1d14d95451f9fe423d0b8b121d7/checksum-dae935bbc74049333a3a4997211ea470?AWSAccessKeyId=AKIAIN4GUX4PULV7JQSA&Expires=1355431779&Signature=5fdND7dqhIZCxN45qTGlv7o5Of8%3D"
+     * ,
+     * "checksum":"dae935bbc74049333a3a4997211ea470",
+     * "path":"metadata.rb",
+     * "specificity":"default"
+     */
+
+    @Test
+    public void getCookbookVersionTest3() throws Exception {
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        ServerCookbookVersion cookbook = chefServerApi
+                .getCookbookVersion("XXchecksum-test-cookbook");
+
+        assertNotNull(cookbook);
+        assertTrue(cookbook.getCookbook_name().equals(
+                "XXchecksum-test-cookbook"));
+        assertTrue(cookbook.getRecipes().size() > 0);
+        assertTrue(cookbook.getRoot_files().size() > 0);
+        assertTrue(!cookbook.getVersion().equals(""));
+        for (ServerCookbookFile file : cookbook.getRoot_files()) {
+            logger.debug("chefserver: " + file.getName() + "-->checksum: {}",
+                    file.getChecksum());
+            if (file.getName().equals("metadata.rb")) {
+                assertTrue(file.getChecksum().equals(
+                        "dae935bbc74049333a3a4997211ea470"));
+                assertTrue(file.getChecksum().length() > 0);
+            }
+        }
+    }
+
+    @Test
+    public void checkMd5matchesExpectedTest() throws IOException {
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        FileInputStream fis = new FileInputStream("resources/metadata.rb");
+        BufferedInputStream bis = new BufferedInputStream(fis);
+        int available = bis.available();
+        byte[] filebytes = new byte[bis.available()];
+
+        int read = bis.read(filebytes);
+
+        assertTrue(read == available);
+
+        String md5sum = ChefUtils.hexMd5Sum(filebytes);
+
+        assertTrue("dae935bbc74049333a3a4997211ea470".equals(md5sum));
+
+        logger.debug("md5 sum was {}", md5sum);
+
+        bis.close();
+        fis.close();
+
     }
 
 }

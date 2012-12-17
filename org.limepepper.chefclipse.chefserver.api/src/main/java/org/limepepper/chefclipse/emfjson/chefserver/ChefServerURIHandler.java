@@ -12,6 +12,7 @@ package org.limepepper.chefclipse.emfjson.chefserver;
 
 import static org.limepepper.chefclipse.emfjson.chefserver.internal.ChefServerClient.getGetConnection;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -24,19 +25,25 @@ import org.eclipselabs.emfjson.internal.JSONLoad;
 import org.eclipselabs.emfjson.internal.JsInputStream;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.emfjson.chefserver.internal.ChefRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ChefServerURIHandler extends URIHandlerImpl {
+
+    static Logger logger = LoggerFactory.getLogger(ChefServerURIHandler.class);
 
     @Override
     public boolean canHandle(URI uri) {
         // return isChefServerApiService(uri);
-        return uri.toString().contains("http");
+        return uri.toString().contains("http")
+                || uri.toString().startsWith("https://");
     }
 
     @Override
     public InputStream createInputStream(final URI uri, final Map<?, ?> options)
             throws IOException {
 
+        logger.debug("Creating JsInputStream to process uri: {}", uri);
 
 /*
  * if (checkDataBase(new ChefRequest(uri, null)) == 0) {
@@ -44,16 +51,22 @@ public class ChefServerURIHandler extends URIHandlerImpl {
  * }
  */
         JsInputStream is = new JsInputStream(uri, options) {
+
             @Override
             public void loadResource(Resource resource) throws IOException {
 
-
                 if (options != null) {
-                    final KnifeConfig knifeConfig = (KnifeConfig) options.get("knifeConfig");
+                    final KnifeConfig knifeConfig = (KnifeConfig) options
+                            .get("knifeConfig");
                     if (knifeConfig != null) {
                         final HttpURLConnection connection = getGetConnection(new ChefRequest(
                                 uri, knifeConfig));
-                        final InputStream inStream = connection.getInputStream();
+                        final InputStream inStream = connection
+                                .getInputStream();
+
+
+                        System.out.println("stream to string2: ");
+
                         final JSONLoad loader = new JSONLoad(inStream, options);
                         loader.fillResource(resource);
                     }
@@ -62,14 +75,27 @@ public class ChefServerURIHandler extends URIHandlerImpl {
         };
 
         if (options != null) {
-            final KnifeConfig knifeConfig = (KnifeConfig) options.get("knifeConfig");
+            final KnifeConfig knifeConfig = (KnifeConfig) options
+                    .get("knifeConfig");
             if (knifeConfig != null) {
                 final HttpURLConnection connection = getGetConnection(new ChefRequest(
                         uri, knifeConfig));
-                return connection.getInputStream();
+                BufferedInputStream bis = new BufferedInputStream(
+                        connection.getInputStream());
+                bis.mark(Integer.MAX_VALUE);
+                System.out.println("stream to string: "+ convertStreamToString(bis));
+
+                bis.reset();
+                return bis;
             }
         }
         return null;
+    }
+
+    public static String convertStreamToString(java.io.InputStream is) {
+        java.util.Scanner s = new java.util.Scanner(is, "UTF-8")
+                .useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
     }
 
 /*

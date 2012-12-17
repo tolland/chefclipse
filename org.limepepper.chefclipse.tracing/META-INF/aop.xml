@@ -1,0 +1,8 @@
+<aspectj>
+  <aspects>
+    <aspect name="aspectj.Trace" />
+    <aspect name="aspectj.Hello" />
+  </aspects>
+  <weaver options="-verbose -debug">
+  </weaver>
+</aspectj>

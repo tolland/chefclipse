@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
@@ -97,6 +98,7 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
         supportedTypes.add(ITreeItemContentProvider.class);
         supportedTypes.add(IItemLabelProvider.class);
         supportedTypes.add(IItemPropertySource.class);
+        supportedTypes.add(ITableItemLabelProvider.class);
     }
 
     /**
@@ -351,14 +353,6 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Root_file} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected Root_fileItemProvider root_fileItemProvider;
-
-    /**
      * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Root_file}.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -366,11 +360,7 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
      */
     @Override
     public Adapter createRoot_fileAdapter() {
-        if (root_fileItemProvider == null) {
-            root_fileItemProvider = new Root_fileItemProvider(this);
-        }
-
-        return root_fileItemProvider;
+        return new Root_fileItemProvider(this);
     }
 
     /**

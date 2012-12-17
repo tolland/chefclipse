@@ -76,7 +76,7 @@ public class ChefProjectItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefProject)object).getPath();
+        String label = ((ChefProject)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefProject_type") :
             getString("_UI_ChefProject_type") + " " + label;

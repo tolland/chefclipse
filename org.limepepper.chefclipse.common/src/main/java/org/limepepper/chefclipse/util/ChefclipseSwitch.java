@@ -134,6 +134,36 @@ public class ChefclipseSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case ChefclipsePackage.MAP_TEST_CONTAINER: {
+                MapTestContainer mapTestContainer = (MapTestContainer)theEObject;
+                T result = caseMapTestContainer(mapTestContainer);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ChefclipsePackage.ESTRING_TO_VERSION_URL_MAP: {
+                @SuppressWarnings("unchecked") Map.Entry<String, VersionUrl> eStringToVersionUrlMap = (Map.Entry<String, VersionUrl>)theEObject;
+                T result = caseEStringToVersionUrlMap(eStringToVersionUrlMap);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ChefclipsePackage.VERSION_URL: {
+                VersionUrl versionUrl = (VersionUrl)theEObject;
+                T result = caseVersionUrl(versionUrl);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ChefclipsePackage.URL_ENTRY_TEST: {
+                URLEntryTest urlEntryTest = (URLEntryTest)theEObject;
+                T result = caseURLEntryTest(urlEntryTest);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ChefclipsePackage.NAME_VERSION_MAP: {
+                NameVersionMap nameVersionMap = (NameVersionMap)theEObject;
+                T result = caseNameVersionMap(nameVersionMap);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -300,6 +330,81 @@ public class ChefclipseSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseCookbook(Cookbook object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Map Test Container</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Map Test Container</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseMapTestContainer(MapTestContainer object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>EString To Version Url Map</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>EString To Version Url Map</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEStringToVersionUrlMap(Map.Entry<String, VersionUrl> object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Version Url</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Version Url</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseVersionUrl(VersionUrl object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>URL Entry Test</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>URL Entry Test</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseURLEntryTest(URLEntryTest object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Name Version Map</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Name Version Map</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNameVersionMap(NameVersionMap object) {
         return null;
     }
 

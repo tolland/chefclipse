@@ -5,32 +5,37 @@
    <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
-            label="Ruby Action Set"
+            label="RubyConsole Action Set"
             visible="true"
             id="RubyConsole.actionSet">
          <menu
                label="Ruby Console"
                id="rubyConsole">
             <separator
-                  name="sampleGroup">
+                  name="rubyConsoleGroup">
             </separator>
          </menu>
          <action
-               label="&amp;New Ruby Console"
+               label="&amp;Console 1"
                icon="icons/sample.gif"
                class="rubyconsole.actions.NewRubyConsole"
                tooltip="Hello, Eclipse world"
-               menubarPath="rubyConsole/sampleGroup"
-               toolbarPath="sampleGroup"
+               menubarPath="chefClipse/rubyConsoleGroup"
                id="rubyconsole.actions.NewRubyConsole">
          </action>
          <action
                class="rubyconsole.actions.Redgregregrg"
                id="org.limepepper.eclipse.RubyConsole.action1"
-               label="labelfwefewf"
-               menubarPath="rubyConsole/sampleGroup"
-               style="push"
-               toolbarPath="sampleGroup">
+               label="&amp;Console 2"
+               menubarPath="chefClipse/rubyConsoleGroup"
+               style="push">
+         </action>
+         <action
+               class="rubyconsole.actions.NewSwingJRubyConsolePop"
+               id="org.limepepper.eclipse.RubyConsole.action2"
+               label="&amp;Console 3"
+               menubarPath="chefClipse/rubyConsoleGroup"
+               style="push">
          </action>
       </actionSet>
    </extension>

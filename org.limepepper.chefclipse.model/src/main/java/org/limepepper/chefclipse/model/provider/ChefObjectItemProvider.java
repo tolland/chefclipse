@@ -64,6 +64,7 @@ public class ChefObjectItemProvider
             addParentPropertyDescriptor(object);
             addPathPropertyDescriptor(object);
             addProjectPropertyDescriptor(object);
+            addNamePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -157,6 +158,28 @@ public class ChefObjectItemProvider
     }
 
     /**
+     * This adds a property descriptor for the Name feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addNamePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ChefObject_name_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ChefObject_name_feature", "_UI_ChefObject_type"),
+                 ModelPackage.Literals.CHEF_OBJECT__NAME,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This returns ChefObject.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -175,7 +198,7 @@ public class ChefObjectItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefObject)object).getPath();
+        String label = ((ChefObject)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefObject_type") :
             getString("_UI_ChefObject_type") + " " + label;
@@ -194,6 +217,7 @@ public class ChefObjectItemProvider
 
         switch (notification.getFeatureID(ChefObject.class)) {
             case ModelPackage.CHEF_OBJECT__PATH:
+            case ModelPackage.CHEF_OBJECT__NAME:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

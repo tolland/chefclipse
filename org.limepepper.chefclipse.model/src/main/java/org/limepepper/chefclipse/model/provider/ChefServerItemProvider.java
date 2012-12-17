@@ -76,7 +76,7 @@ public class ChefServerItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefServer)object).getPath();
+        String label = ((ChefServer)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefServer_type") :
             getString("_UI_ChefServer_type") + " " + label;

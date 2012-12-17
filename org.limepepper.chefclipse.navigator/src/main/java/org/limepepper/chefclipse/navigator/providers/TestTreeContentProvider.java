@@ -15,8 +15,10 @@ import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
+import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.navigator.NavigatorActivator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,7 +44,7 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
     public Object[] getChildren(Object parentElement) {
 
         ArrayList<Object> children = new ArrayList<Object>();
-        System.err.println(parentElement.getClass());
+        NavigatorActivator.debug(parentElement.getClass().toString());
 
         if (parentElement instanceof IProject) {
             children.add(ChefRepositoryManager.INSTANCE
@@ -137,13 +139,14 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
             if ((element instanceof IFile)
                     && ((IFile) element).getName().equals(
                             ChefProjectManager.WORKSTATION_FOLDER)) {
-                System.err.println("is workstation folder");
+                NavigatorActivator.debug("is workstation folder");
                 return true;
             } else if ((element instanceof IProject)
                     && ((IProject) element).isOpen()
                     && ((IProject) element)
-                            .hasNature(ChefProjectNature.NATURE_ID)) {
-                logger.debug("is project");
+                    .isOpen() && ((IProject) element)
+                    .hasNature(ChefProjectNature.NATURE_ID)) {
+                NavigatorActivator.debug("is project");
                 return true;
             } else if (element instanceof MenuLevelHolder) {
                 return (((MenuLevelHolder) element).getChildren().length > 0);

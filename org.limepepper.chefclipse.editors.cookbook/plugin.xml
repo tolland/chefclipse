@@ -38,6 +38,9 @@
             contributorClass="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditorContributor"
             class="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditor"
             id="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditor">
+         <contentTypeBinding
+               contentTypeId="org.limepepper.chefclipse.editors.cookbook.content-type">
+         </contentTypeBinding>
       </editor>
    </extension>
    <extension
@@ -53,6 +56,19 @@
             class="org.limepepper.chefclipse.editors.cookbook.wizards.CookbookMetadataNewWizard"
             id="org.limepepper.chefclipse.editors.cookbook.wizards.CookbookMetadataNewWizard">
       </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            file-names="metadata.rb"
+            id="org.limepepper.chefclipse.editors.cookbook.content-type"
+            name="Cookbook metadata file"
+            priority="high">
+      </content-type>
+      <file-association
+            content-type="org.limepepper.chefclipse.editors.cookbook.content-type"
+            file-names="metadata.rb">
+      </file-association>
    </extension>
 
 </plugin>

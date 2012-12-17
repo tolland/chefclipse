@@ -108,13 +108,22 @@ public class ModelPackage extends EPackageImpl {
     public static final int CHEF_OBJECT__PROJECT = 3;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_OBJECT__NAME = 4;
+
+    /**
      * The number of structural features of the '<em>Chef Object</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    public static final int CHEF_OBJECT_FEATURE_COUNT = 4;
+    public static final int CHEF_OBJECT_FEATURE_COUNT = 5;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.model.ChefResource <em>Chef Resource</em>}' class.
@@ -161,6 +170,15 @@ public class ModelPackage extends EPackageImpl {
      * @ordered
      */
     public static final int CHEF_RESOURCE__PROJECT = CHEF_OBJECT__PROJECT;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_RESOURCE__NAME = CHEF_OBJECT__NAME;
 
     /**
      * The feature id for the '<em><b>Resource</b></em>' attribute.
@@ -236,6 +254,15 @@ public class ModelPackage extends EPackageImpl {
     public static final int CHEF_CONTAINER__PROJECT = CHEF_RESOURCE__PROJECT;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_CONTAINER__NAME = CHEF_RESOURCE__NAME;
+
+    /**
      * The feature id for the '<em><b>Resource</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -254,13 +281,22 @@ public class ModelPackage extends EPackageImpl {
     public static final int CHEF_CONTAINER__TYPE = CHEF_RESOURCE__TYPE;
 
     /**
+     * The feature id for the '<em><b>Members</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_CONTAINER__MEMBERS = CHEF_RESOURCE_FEATURE_COUNT + 0;
+
+    /**
      * The number of structural features of the '<em>Chef Container</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    public static final int CHEF_CONTAINER_FEATURE_COUNT = CHEF_RESOURCE_FEATURE_COUNT + 0;
+    public static final int CHEF_CONTAINER_FEATURE_COUNT = CHEF_RESOURCE_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.model.ChefFile <em>Chef File</em>}' class.
@@ -307,6 +343,15 @@ public class ModelPackage extends EPackageImpl {
      * @ordered
      */
     public static final int CHEF_FILE__PROJECT = CHEF_RESOURCE__PROJECT;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_FILE__NAME = CHEF_RESOURCE__NAME;
 
     /**
      * The feature id for the '<em><b>Resource</b></em>' attribute.
@@ -382,6 +427,15 @@ public class ModelPackage extends EPackageImpl {
     public static final int CHEF_FOLDER__PROJECT = CHEF_CONTAINER__PROJECT;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_FOLDER__NAME = CHEF_CONTAINER__NAME;
+
+    /**
      * The feature id for the '<em><b>Resource</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -398,6 +452,15 @@ public class ModelPackage extends EPackageImpl {
      * @ordered
      */
     public static final int CHEF_FOLDER__TYPE = CHEF_CONTAINER__TYPE;
+
+    /**
+     * The feature id for the '<em><b>Members</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_FOLDER__MEMBERS = CHEF_CONTAINER__MEMBERS;
 
     /**
      * The number of structural features of the '<em>Chef Folder</em>' class.
@@ -453,6 +516,15 @@ public class ModelPackage extends EPackageImpl {
      * @ordered
      */
     public static final int CHEF_OBJECT_DEFINITION_FILE__PROJECT = CHEF_FILE__PROJECT;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_OBJECT_DEFINITION_FILE__NAME = CHEF_FILE__NAME;
 
     /**
      * The feature id for the '<em><b>Resource</b></em>' attribute.
@@ -528,6 +600,15 @@ public class ModelPackage extends EPackageImpl {
     public static final int CHEF_OBJECT_ELEMENT_FILE__PROJECT = CHEF_FILE__PROJECT;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_OBJECT_ELEMENT_FILE__NAME = CHEF_FILE__NAME;
+
+    /**
      * The feature id for the '<em><b>Resource</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -601,6 +682,15 @@ public class ModelPackage extends EPackageImpl {
     public static final int CHEF_PROJECT__PROJECT = CHEF_CONTAINER__PROJECT;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_PROJECT__NAME = CHEF_CONTAINER__NAME;
+
+    /**
      * The feature id for the '<em><b>Resource</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -617,6 +707,15 @@ public class ModelPackage extends EPackageImpl {
      * @ordered
      */
     public static final int CHEF_PROJECT__TYPE = CHEF_CONTAINER__TYPE;
+
+    /**
+     * The feature id for the '<em><b>Members</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_PROJECT__MEMBERS = CHEF_CONTAINER__MEMBERS;
 
     /**
      * The number of structural features of the '<em>Chef Project</em>' class.
@@ -674,6 +773,15 @@ public class ModelPackage extends EPackageImpl {
     public static final int CHEF_WORKSPACE__PROJECT = CHEF_CONTAINER__PROJECT;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_WORKSPACE__NAME = CHEF_CONTAINER__NAME;
+
+    /**
      * The feature id for the '<em><b>Resource</b></em>' attribute.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -690,6 +798,15 @@ public class ModelPackage extends EPackageImpl {
      * @ordered
      */
     public static final int CHEF_WORKSPACE__TYPE = CHEF_CONTAINER__TYPE;
+
+    /**
+     * The feature id for the '<em><b>Members</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_WORKSPACE__MEMBERS = CHEF_CONTAINER__MEMBERS;
 
     /**
      * The number of structural features of the '<em>Chef Workspace</em>' class.
@@ -764,6 +881,15 @@ public class ModelPackage extends EPackageImpl {
      * @ordered
      */
     public static final int CHEF_SERVER__PROJECT = CHEF_OBJECT__PROJECT;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int CHEF_SERVER__NAME = CHEF_OBJECT__NAME;
 
     /**
      * The number of structural features of the '<em>Chef Server</em>' class.
@@ -943,6 +1069,20 @@ public class ModelPackage extends EPackageImpl {
     }
 
     /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.model.ChefContainer#getMembers <em>Members</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Members</em>'.
+     * @see org.limepepper.chefclipse.model.ChefContainer#getMembers()
+     * @see #getChefContainer()
+     * @generated
+     */
+    public EReference getChefContainer_Members() {
+        return (EReference)chefContainerEClass.getEStructuralFeatures().get(0);
+    }
+
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.model.ChefFile <em>Chef File</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1029,6 +1169,20 @@ public class ModelPackage extends EPackageImpl {
     public EReference getChefObject_Project() {
         return (EReference)chefObjectEClass.getEStructuralFeatures().get(3);
     }
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.model.ChefObject#getName <em>Name</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see org.limepepper.chefclipse.model.ChefObject#getName()
+     * @see #getChefObject()
+     * @generated
+     */
+    public EAttribute getChefObject_Name() {
+        return (EAttribute)chefObjectEClass.getEStructuralFeatures().get(4);
+    }
+
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.model.ChefObjectDefinitionFile <em>Chef Object Definition File</em>}'.
@@ -1184,6 +1338,7 @@ public class ModelPackage extends EPackageImpl {
 
         // Create classes and their features
         chefContainerEClass = createEClass(CHEF_CONTAINER);
+        createEReference(chefContainerEClass, CHEF_CONTAINER__MEMBERS);
 
         chefFileEClass = createEClass(CHEF_FILE);
 
@@ -1194,6 +1349,7 @@ public class ModelPackage extends EPackageImpl {
         createEReference(chefObjectEClass, CHEF_OBJECT__PARENT);
         createEAttribute(chefObjectEClass, CHEF_OBJECT__PATH);
         createEReference(chefObjectEClass, CHEF_OBJECT__PROJECT);
+        createEAttribute(chefObjectEClass, CHEF_OBJECT__NAME);
 
         chefObjectDefinitionFileEClass = createEClass(CHEF_OBJECT_DEFINITION_FILE);
 
@@ -1255,6 +1411,7 @@ public class ModelPackage extends EPackageImpl {
 
         // Initialize classes and features; add operations and parameters
         initEClass(chefContainerEClass, ChefContainer.class, "ChefContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getChefContainer_Members(), this.getChefResource(), null, "members", null, 0, -1, ChefContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(chefFileEClass, ChefFile.class, "ChefFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1265,6 +1422,7 @@ public class ModelPackage extends EPackageImpl {
         initEReference(getChefObject_Parent(), this.getChefObject(), null, "parent", null, 0, 1, ChefObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getChefObject_Path(), ecorePackage.getEString(), "path", null, 1, 1, ChefObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getChefObject_Project(), this.getChefProject(), null, "project", null, 1, 1, ChefObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getChefObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, ChefObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         EOperation op = addEOperation(chefObjectEClass, null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, this.getChefResource(), "resource", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1314,6 +1472,14 @@ public class ModelPackage extends EPackageImpl {
          * @generated
          */
         public static final EClass CHEF_CONTAINER = eINSTANCE.getChefContainer();
+
+        /**
+         * The meta object literal for the '<em><b>Members</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public static final EReference CHEF_CONTAINER__MEMBERS = eINSTANCE.getChefContainer_Members();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.model.ChefFile <em>Chef File</em>}' class.
@@ -1376,6 +1542,14 @@ public class ModelPackage extends EPackageImpl {
          * @generated
          */
         public static final EReference CHEF_OBJECT__PROJECT = eINSTANCE.getChefObject_Project();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        public static final EAttribute CHEF_OBJECT__NAME = eINSTANCE.getChefObject_Name();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.model.ChefObjectDefinitionFile <em>Chef Object Definition File</em>}' class.

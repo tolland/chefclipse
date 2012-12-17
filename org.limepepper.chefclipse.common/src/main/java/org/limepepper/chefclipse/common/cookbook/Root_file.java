@@ -16,5 +16,5 @@ import org.limepepper.chefclipse.SandboxedObject;
  * @model
  * @generated
  */
-public interface Root_file extends ChecksumFile, SandboxedObject, NamedObject {
+public interface Root_file extends ChecksumFile, SandboxedObject, NamedObject, CookbookFile {
 } // Root_file

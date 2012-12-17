@@ -40,6 +40,17 @@
          </includes>
       </viewerContentBinding>
    </extension>
+
+
+
+  <!--  the main navigator content for the model  -->
+
+  <!--  the main navigator content for the model  -->
+
+  <!--  the main navigator content for the model  -->
+
+
+
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
       <navigatorContent
@@ -54,43 +65,129 @@
             <or>
                <instanceof value="org.eclipse.core.resources.IWorkspaceRoot"/>
                <instanceof value="org.eclipse.core.resources.IProject"/>
-        <instanceof value="org.eclipse.emf.ecore.EObject"/>  
-               <and> 
-            <instanceof value="org.eclipse.core.resources.IResource"/> 
-            <test 
-                forcePluginActivation="true" 
-                property="org.eclipse.core.resources.extension" 
-                value="ecore"/> 
-        </and> 
-               <and> 
-            <instanceof value="org.eclipse.core.resources.IResource"/> 
-            <test 
-                forcePluginActivation="true" 
-                property="org.eclipse.core.resources.extension" 
-                value="workstation"/> 
+        <instanceof value="org.eclipse.emf.ecore.EObject"/>
+               <and>
+            <instanceof value="org.eclipse.core.resources.IResource"/>
+            <test
+                forcePluginActivation="true"
+                property="org.eclipse.core.resources.extension"
+                value="ecore"/>
+        </and>
+               <and>
+            <instanceof value="org.eclipse.core.resources.IResource"/>
+            <test
+                forcePluginActivation="true"
+                property="org.eclipse.core.resources.extension"
+                value="workstation"/>
         </and>
                <adapt
                      type="org.eclipse.emf.ecore.EObject">
-               </adapt> 
+               </adapt>
             </or>
          </triggerPoints>
          <possibleChildren>
-          <or> 
+          <or>
         <instanceof value="org.eclipse.core.resources.IResource"/>
-        <instanceof value="org.eclipse.emf.ecore.EObject"/>  
-    </or> 
+        <instanceof value="org.eclipse.emf.ecore.EObject"/>
+    </or>
          </possibleChildren>
       </navigatorContent>
    </extension>
-   <extension
-         point="org.eclipse.emf.common.ui.examples">
-         
+
+
+
+  <!--  the main navigator content  -->
+
+  <!--  the main navigator content  -->
+
+  <!--  the main navigator content  -->
+
+    <extension
+            point="org.eclipse.ui.navigator.viewer">
+        <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+            <includes>
+                <contentExtension pattern="org.limepepper.chefclipse.ui.chefContent" />
+            </includes>
+        </viewerContentBinding>
+    </extension>
+
+    <extension
+            point="org.eclipse.ui.navigator.navigatorContent">
+        <navigatorContent
+                activeByDefault="true"
+                contentProvider="org.limepepper.chefclipse.ui.navigator.ChefNavigatorContentProvider"
+                icon="icons/packagefolder_obj.png"
+                id="org.limepepper.chefclipse.ui.chefContent"
+                labelProvider="org.limepepper.chefclipse.ui.navigator.ChefNavigatorLabelProvider"
+                name="%commonNavigatorContentName"
+                priority="high">
+            <triggerPoints>
+                <or>
+                    <adapt type="org.eclipse.core.resources.IProject" >
+                        <test property="org.eclipse.core.resources.projectNature"
+                        value="org.limepepper.chefclipse.ChefProjectNature"/>
+                    </adapt>
+                    <instanceof value="org.eclipse.core.resources.IResource" />
+                    <instanceof value="org.limepepper.chefclipse.model.ChefResource" />
+                </or>
+            </triggerPoints>
+            <possibleChildren>
+                <or>
+                    <instanceof value="org.eclipse.core.resources.IResource" />
+                    <instanceof value="org.limepepper.chefclipse.model.ChefResource" />
+                </or>
+            </possibleChildren>
+            <override
+                  policy="InvokeAlwaysRegardlessOfSuppressedExt"
+                  suppressedExtensionId="org.eclipse.ui.navigator.resourceContent">
+            </override>
+            <!--commonWizard
+                  menuGroupId="org.eclipse.jdt.ui.java"
+                  type="new"
+                  wizardId="org.eclipse.jdt.ui.wizards.NewSourceFolderCreationWizard">
+                <enablement>
+                    <or>
+                        <instanceof value="org.eclipse.jdt.core.IPackageFragmentRoot"/>
+                        <adapt type="org.eclipse.core.resources.IProject">
+                            <test property="org.eclipse.core.resources.projectNature" value="org.eclipse.jdt.core.javanature"/>
+                        </adapt>
+                    </or>
+                </enablement>
+            </commonWizard-->
+            <!--dropAssistant
+                class="org.eclipse.jdt.internal.ui.navigator.JavaDropAdapterAssistant"
+                id="org.eclipse.jdt.ui.dropAssistant">
+                <possibleDropTargets>
+                    <or>
+                        <instanceof value="org.eclipse.core.resources.IResource"/>
+                        <instanceof value="org.eclipse.jdt.core.IJavaElement"/>
+                    </or>
+                </possibleDropTargets>
+            </dropAssistant-->
+        </navigatorContent>
+        <!--commonFilter
+                activeByDefault="false"
+                class="org.eclipse.jdt.internal.ui.navigator.NonEssentialEmptyPackageFilter"
+                name="%HideEmptyPackages.label"
+                description="%HideEmptyPackages.description"
+                id="org.eclipse.jdt.java.ui.filters.HideEmptyPackages"/-->
    </extension>
-   
-   
 
 
-   
+
+
+
+
+
+   <!--extension
+         point="org.eclipse.emf.common.ui.examples">
+
+   </extension-->
+
+
+
+
+
    <extension
          point="org.eclipse.ui.newWizards">
       <wizard

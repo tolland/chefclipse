@@ -202,7 +202,7 @@ public interface CookbookPackage extends EPackage {
     int COOKBOOK_VERSION__PROVIDERS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 10;
 
     /**
-     * The feature id for the '<em><b>Root files</b></em>' reference list.
+     * The feature id for the '<em><b>Root files</b></em>' containment reference list.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1286,13 +1286,22 @@ public interface CookbookPackage extends EPackage {
     int ROOT_FILE__ID = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 2;
 
     /**
+     * The feature id for the '<em><b>Cookbook</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ROOT_FILE__COOKBOOK = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 3;
+
+    /**
      * The number of structural features of the '<em>Root file</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int ROOT_FILE_FEATURE_COUNT = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 3;
+    int ROOT_FILE_FEATURE_COUNT = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.MinimalMetadataImpl <em>Minimal Metadata</em>}' class.
@@ -1624,10 +1633,10 @@ public interface CookbookPackage extends EPackage {
     EReference getCookbookVersion_Providers();
 
     /**
-     * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getRoot_files <em>Root files</em>}'.
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getRoot_files <em>Root files</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the reference list '<em>Root files</em>'.
+     * @return the meta object for the containment reference list '<em>Root files</em>'.
      * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getRoot_files()
      * @see #getCookbookVersion()
      * @generated
@@ -1644,6 +1653,17 @@ public interface CookbookPackage extends EPackage {
      * @generated
      */
     EReference getCookbookVersion_Attributes();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type <em>Chef type</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Chef type</em>'.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type()
+     * @see #getCookbookVersion()
+     * @generated
+     */
+    EAttribute getCookbookVersion_Chef_type();
 
     /**
      * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getCatalog <em>Catalog</em>}'.
@@ -2086,7 +2106,7 @@ public interface CookbookPackage extends EPackage {
         EReference COOKBOOK_VERSION__PROVIDERS = eINSTANCE.getCookbookVersion_Providers();
 
         /**
-         * The meta object literal for the '<em><b>Root files</b></em>' reference list feature.
+         * The meta object literal for the '<em><b>Root files</b></em>' containment reference list feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -2100,6 +2120,14 @@ public interface CookbookPackage extends EPackage {
          * @generated
          */
         EReference COOKBOOK_VERSION__ATTRIBUTES = eINSTANCE.getCookbookVersion_Attributes();
+
+        /**
+         * The meta object literal for the '<em><b>Chef type</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute COOKBOOK_VERSION__CHEF_TYPE = eINSTANCE.getCookbookVersion_Chef_type();
 
         /**
          * The meta object literal for the '<em><b>Catalog</b></em>' attribute feature.

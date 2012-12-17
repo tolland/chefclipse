@@ -18,6 +18,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
@@ -38,11 +39,7 @@ import org.limepepper.chefclipse.provider.ChecksumFileItemProvider;
 public class Root_fileItemProvider
     extends ChecksumFileItemProvider
     implements
-        IEditingDomainItemProvider,
-        IStructuredItemContentProvider,
-        ITreeItemContentProvider,
-        IItemLabelProvider,
-        IItemPropertySource {
+        IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
     /**
      * This constructs an instance from a factory and a notifier.
      * <!-- begin-user-doc -->
@@ -67,6 +64,7 @@ public class Root_fileItemProvider
             addUrlPropertyDescriptor(object);
             addNamePropertyDescriptor(object);
             addIDPropertyDescriptor(object);
+            addCookbookPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -133,6 +131,28 @@ public class Root_fileItemProvider
                  false,
                  false,
                  ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Cookbook feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addCookbookPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CookbookFile_cookbook_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_cookbook_feature", "_UI_CookbookFile_type"),
+                 CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK,
+                 true,
+                 false,
+                 true,
+                 null,
                  null,
                  null));
     }
