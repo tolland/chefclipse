@@ -2,6 +2,7 @@
  */
 package org.limepepper.chefclipse.util;
 
+import java.util.Map;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 

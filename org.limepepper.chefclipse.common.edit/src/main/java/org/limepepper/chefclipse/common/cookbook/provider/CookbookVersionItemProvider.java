@@ -70,8 +70,6 @@ public class CookbookVersionItemProvider
             addChef_typePropertyDescriptor(object);
             addEnvironmentPropertyDescriptor(object);
             addTemplatesPropertyDescriptor(object);
-            addRoot_filesPropertyDescriptor(object);
-            addChef_typePropertyDescriptor(object);
             addCatalogPropertyDescriptor(object);
             addDependsPropertyDescriptor(object);
             addMissingPropertyDescriptor(object);
@@ -181,28 +179,6 @@ public class CookbookVersionItemProvider
                  getString("_UI_CookbookVersion_templates_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_templates_feature", "_UI_CookbookVersion_type"),
                  CookbookPackage.Literals.COOKBOOK_VERSION__TEMPLATES,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
-    }
-
-    /**
-     * This adds a property descriptor for the Root files feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void addRoot_filesPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_CookbookVersion_root_files_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_root_files_feature", "_UI_CookbookVersion_type"),
-                 CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES,
                  true,
                  false,
                  true,
@@ -454,6 +430,7 @@ public class CookbookVersionItemProvider
             (createChildParameter
                 (CookbookPackage.Literals.COOKBOOK_VERSION__PROVIDERS,
                  CookbookFactory.eINSTANCE.createProvider()));
+
         newChildDescriptors.add
             (createChildParameter
                 (CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES,

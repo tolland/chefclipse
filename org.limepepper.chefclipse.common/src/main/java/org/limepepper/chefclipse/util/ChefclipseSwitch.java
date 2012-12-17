@@ -2,6 +2,7 @@
  */
 package org.limepepper.chefclipse.util;
 
+import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 

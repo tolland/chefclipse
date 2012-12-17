@@ -936,6 +936,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 
         nameVersionMapEClass = createEClass(NAME_VERSION_MAP);
         createEReference(nameVersionMapEClass, NAME_VERSION_MAP__ENTRIES);
+
         // Create data types
         urlEDataType = createEDataType(URL);
         fileEDataType = createEDataType(FILE);
@@ -1059,6 +1060,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 
         initEClass(nameVersionMapEClass, NameVersionMap.class, "NameVersionMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getNameVersionMap_Entries(), this.getEStringToVersionUrlMap(), null, "entries", null, 0, -1, NameVersionMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
         // Initialize data types
         initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

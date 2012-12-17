@@ -1655,17 +1655,6 @@ public interface CookbookPackage extends EPackage {
     EReference getCookbookVersion_Attributes();
 
     /**
-     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type <em>Chef type</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Chef type</em>'.
-     * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getChef_type()
-     * @see #getCookbookVersion()
-     * @generated
-     */
-    EAttribute getCookbookVersion_Chef_type();
-
-    /**
      * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getCatalog <em>Catalog</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2120,14 +2109,6 @@ public interface CookbookPackage extends EPackage {
          * @generated
          */
         EReference COOKBOOK_VERSION__ATTRIBUTES = eINSTANCE.getCookbookVersion_Attributes();
-
-        /**
-         * The meta object literal for the '<em><b>Chef type</b></em>' attribute feature.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute COOKBOOK_VERSION__CHEF_TYPE = eINSTANCE.getCookbookVersion_Chef_type();
 
         /**
          * The meta object literal for the '<em><b>Catalog</b></em>' attribute feature.
