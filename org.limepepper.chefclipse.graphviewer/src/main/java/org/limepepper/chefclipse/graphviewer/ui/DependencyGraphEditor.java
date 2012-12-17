@@ -13,16 +13,21 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ViewForm;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
@@ -35,37 +40,40 @@ import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
 import org.eclipse.zest.core.viewers.ISelfStyleProvider;
 import org.eclipse.zest.core.widgets.Graph;
 import org.eclipse.zest.core.widgets.GraphConnection;
+import org.eclipse.zest.core.widgets.GraphContainer;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.LayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
+import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManagerImpl;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
+import org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor.CookbookGraphLayoutAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DependencyGraphEditor extends EditorPart implements
         IDependencyChangeListener {
 
+    static Logger logger = LoggerFactory.getLogger(DependencyGraphEditor.class);
 
-    static Logger                    logger = LoggerFactory
-                                                    .getLogger(DependencyGraphEditor.class);
-    
-    private GraphViewer                graphViewer;
-    private Graph                      graph;
+    private GraphViewer graphViewer;
+    private Graph graph;
+    LayoutAlgorithm currentLayoutAlgorithm;
     private DependencyGraphEditorInput input;
-    private DependencyController       dependencyController;
-    private DependencyModel            dependencyModel;
-    private GraphNode                  selectedGraphNode;
+    private DependencyController dependencyController;
+    private DependencyModel dependencyModel;
+    private GraphNode selectedGraphNode;
 
-    public static final String         ID = "org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor";
+    public static final String ID = "org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor";
 
     @Override
     public void doSave(IProgressMonitor monitor) {
@@ -107,31 +115,31 @@ public class DependencyGraphEditor extends EditorPart implements
     @Override
     public void createPartControl(Composite parent) {
         dependencyModel.addDependencyChangeListener(this);
-        graphViewer = new GraphViewer(parent, SWT.NONE);
+        
+        ViewForm viewForm = new ViewForm(parent, SWT.NONE);
+        viewForm.setLayout(new FillLayout());
+        graphViewer = new GraphViewer(viewForm, SWT.NONE);
         graph = graphViewer.getGraphControl();
         graphViewer.setContentProvider(new GraphViewerContentProvider());
         graphViewer.setLabelProvider(new GraphViewerLabelProvider());
         // graphViewer.addSelectionChangedListener(graghviewer_SelectionChangedListener);
         graph.addSelectionListener(gragh_SelectionChangedListener);
         graphViewer.setConnectionStyle(ZestStyles.CONNECTIONS_DIRECTED);
-        TreeLayoutAlgorithm treeLayoutAlgorithm = new TreeLayoutAlgorithm(
+        currentLayoutAlgorithm = new TreeLayoutAlgorithm(
                 TreeLayoutAlgorithm.TOP_DOWN, new Dimension(200, 150));
-        HorizontalShiftAlgorithm horizontalShift = new HorizontalShiftAlgorithm();
-        CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
-                new LayoutAlgorithm[] { horizontalShift, treeLayoutAlgorithm });
+        //HorizontalShiftAlgorithm horizontalShift = new HorizontalShiftAlgorithm();
+        //CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
+        //      new LayoutAlgorithm[] { horizontalShift, treeLayoutAlgorithm });
         // g.setLayoutAlgorithm(new
         // GridLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING), true);
-        graphViewer.setLayoutAlgorithm(treeLayoutAlgorithm, true);        
-        
-        IResource resource = ((DependencyGraphEditorInput) input).getResource();
-        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManagerImpl
-                .INSTANCE.getElement(resource);
+        graphViewer.setLayoutAlgorithm(currentLayoutAlgorithm);
 
-        dependencyModel.setCookbook(cookbook);
-        
-        
+        IResource resource = ((DependencyGraphEditorInput) input).getResource();
+        dependencyModel.setResource(resource);
         graph = graphViewer.getGraphControl();
         hookMenu(graph);
+        createToolbar(viewForm);
+        viewForm.setContent(graph);
 
     }
 
@@ -139,6 +147,15 @@ public class DependencyGraphEditor extends EditorPart implements
     public void setFocus() {
         // TODO Auto-generated method stub
 
+    }
+    
+    private void createToolbar(ViewForm viewFrom)
+    {
+        ToolBar toolBar = new ToolBar(viewFrom, SWT.FLAT);
+        ToolBarManager toolBarManager =new ToolBarManager(toolBar);
+        toolBarManager.add(new DependencyGraphLayoutAction());
+        toolBarManager.update(true);
+        viewFrom.setTopLeft(toolBar);
     }
 
     private void hookMenu(final Graph g) {
@@ -181,63 +198,45 @@ public class DependencyGraphEditor extends EditorPart implements
 
     SelectionListener gragh_SelectionChangedListener = new SelectionListener() {
 
-                                                         @Override
-                                                         public void widgetSelected(
-                                                                 SelectionEvent e) {
-                                                             List graphNodes = graph
-                                                                     .getSelection();
-                                                             if (graphNodes != null
-                                                                     && graphNodes
-                                                                             .size() > 0) {
-                                                                 if (selectedGraphNode != null) {
-                                                                     selectedGraphNode
-                                                                             .getFigure()
-                                                                             .setBackgroundColor(
-                                                                                     new Color(
-                                                                                             null,
-                                                                                             255,
-                                                                                             255,
-                                                                                             206));
-                                                                 }
-                                                                 GraphNode selectedNode = (GraphNode) graphNodes
-                                                                         .get(0);
-                                                                 selectedNode
-                                                                         .getFigure()
-                                                                         .setBackgroundColor(
-                                                                                 new Color(
-                                                                                         null,
-                                                                                         206,
-                                                                                         206,
-                                                                                         255));
-                                                                 selectedGraphNode = selectedNode;
-                                                             }
-                                                             // TODO
-                                                             // Auto-generated
-                                                             // method stub
-                                                             // IStructuredSelection
-                                                             // selection =
-                                                             // (IStructuredSelection)
-                                                             // graph
-                                                             // .getSelection();
-                                                             // Object selected
-                                                             // =null;
-                                                             // if (selection !=
-                                                             // null) {
-                                                             // selected =
-                                                             // selection.getFirstElement();
-                                                             // }
-                                                         }
+        @Override
+        public void widgetSelected(SelectionEvent e) {
+            List graphNodes = graph.getSelection();
+            if (graphNodes != null && graphNodes.size() > 0) {
+                if (selectedGraphNode != null) {
+                    selectedGraphNode.getFigure().setBackgroundColor(
+                            new Color(null, 255, 255, 206));
+                }
+                GraphNode selectedNode = (GraphNode) graphNodes.get(0);
+                selectedNode.getFigure().setBackgroundColor(
+                        new Color(null, 206, 206, 255));
+                selectedGraphNode = selectedNode;
+            }
+            // TODO
+            // Auto-generated
+            // method stub
+            // IStructuredSelection
+            // selection =
+            // (IStructuredSelection)
+            // graph
+            // .getSelection();
+            // Object selected
+            // =null;
+            // if (selection !=
+            // null) {
+            // selected =
+            // selection.getFirstElement();
+            // }
+        }
 
-                                                         @Override
-                                                         public void widgetDefaultSelected(
-                                                                 SelectionEvent e) {
-                                                             // TODO
-                                                             // Auto-generated
-                                                             // method stub
+        @Override
+        public void widgetDefaultSelected(SelectionEvent e) {
+            // TODO
+            // Auto-generated
+            // method stub
 
-                                                         }
+        }
 
-                                                     };
+    };
 
     @Override
     public void dependencyChanged() {
@@ -356,6 +355,7 @@ public class DependencyGraphEditor extends EditorPart implements
     @Override
     public void dispose() {
         dependencyModel.removeDependencyChangeListener(this);
+        dependencyModel.dispose();
         super.dispose();
     }
 
@@ -427,6 +427,30 @@ public class DependencyGraphEditor extends EditorPart implements
         @Override
         public boolean isEnabled() {
             return selectedElement != null;
+        }
+    }
+    
+    class DependencyGraphLayoutAction extends Action
+    {
+        public DependencyGraphLayoutAction() {
+            this.setToolTipText("Change Dependency Graph Layout");
+            setImageDescriptor(ImageDescriptor.createFromImage(ImageLoader.Load("full_hierarchy.gif")));
+        }
+        
+        @Override
+        public void run()
+        {
+            if(currentLayoutAlgorithm.getClass() == TreeLayoutAlgorithm.class)
+            {
+                currentLayoutAlgorithm = new GridLayoutAlgorithm();
+            }
+            else
+            {
+                currentLayoutAlgorithm = new TreeLayoutAlgorithm(
+                        TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(200, 150));
+            }
+            graphViewer.setLayoutAlgorithm(currentLayoutAlgorithm);
+            dependencyModel.notifyDependencyChanged();
         }
     }
 
