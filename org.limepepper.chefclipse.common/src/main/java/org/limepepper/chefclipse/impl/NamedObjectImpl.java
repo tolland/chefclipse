@@ -23,68 +23,68 @@ import org.limepepper.chefclipse.NamedObject;
  */
 public class NamedObjectImpl extends EObjectImpl implements NamedObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public NamedObjectImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.NAMED_OBJECT;
-    }
+		return ChefclipsePackage.Literals.NAMED_OBJECT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getName() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setName(String newName) {
-        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
-    }
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getID() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setID(String newID) {
-        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
-    }
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+	}
 
 } //NamedObjectImpl

@@ -31,377 +31,377 @@ import org.limepepper.chefclipse.VersionedObject;
  */
 public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFactory {
     /**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static ChefclipseFactory init() {
-        try {
-            ChefclipseFactory theChefclipseFactory = (ChefclipseFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/"); 
-            if (theChefclipseFactory != null) {
-                return theChefclipseFactory;
-            }
-        }
-        catch (Exception exception) {
-            EcorePlugin.INSTANCE.log(exception);
-        }
-        return new ChefclipseFactoryImpl();
-    }
+		try {
+			ChefclipseFactory theChefclipseFactory = (ChefclipseFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/"); 
+			if (theChefclipseFactory != null) {
+				return theChefclipseFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new ChefclipseFactoryImpl();
+	}
 
     /**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ChefclipseFactoryImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public EObject create(EClass eClass) {
-        switch (eClass.getClassifierID()) {
-            case ChefclipsePackage.VERSIONED_OBJECT: return createVersionedObject();
-            case ChefclipsePackage.SANDBOXED_OBJECT: return createSandboxedObject();
-            case ChefclipsePackage.RUBY_FILE: return createRubyFile();
-            case ChefclipsePackage.NAMED_OBJECT: return createNamedObject();
-            case ChefclipsePackage.DESCRIBED_OBJECT: return createDescribedObject();
-            case ChefclipsePackage.CHECKSUM_FILE: return createChecksumFile();
-            case ChefclipsePackage.MAINTAINED_OBJECT: return createMaintainedObject();
-            case ChefclipsePackage.CONFIG: return createConfig();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eClass.getClassifierID()) {
+			case ChefclipsePackage.VERSIONED_OBJECT: return createVersionedObject();
+			case ChefclipsePackage.SANDBOXED_OBJECT: return createSandboxedObject();
+			case ChefclipsePackage.RUBY_FILE: return createRubyFile();
+			case ChefclipsePackage.NAMED_OBJECT: return createNamedObject();
+			case ChefclipsePackage.DESCRIBED_OBJECT: return createDescribedObject();
+			case ChefclipsePackage.CHECKSUM_FILE: return createChecksumFile();
+			case ChefclipsePackage.MAINTAINED_OBJECT: return createMaintainedObject();
+			case ChefclipsePackage.CONFIG: return createConfig();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
-        switch (eDataType.getClassifierID()) {
-            case ChefclipsePackage.URL:
-                return createURLFromString(eDataType, initialValue);
-            case ChefclipsePackage.FILE:
-                return createFileFromString(eDataType, initialValue);
-            case ChefclipsePackage.CHEF_TYPE:
-                return createChef_typeFromString(eDataType, initialValue);
-            case ChefclipsePackage.EMAIL:
-                return createEmailFromString(eDataType, initialValue);
-            case ChefclipsePackage.TEXT:
-                return createTextFromString(eDataType, initialValue);
-            case ChefclipsePackage.VERSION:
-                return createVersionFromString(eDataType, initialValue);
-            case ChefclipsePackage.NAME:
-                return createNameFromString(eDataType, initialValue);
-            case ChefclipsePackage.DESCRIPTION:
-                return createDescriptionFromString(eDataType, initialValue);
-            case ChefclipsePackage.OBJECT:
-                return createObjectFromString(eDataType, initialValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eDataType.getClassifierID()) {
+			case ChefclipsePackage.URL:
+				return createURLFromString(eDataType, initialValue);
+			case ChefclipsePackage.FILE:
+				return createFileFromString(eDataType, initialValue);
+			case ChefclipsePackage.CHEF_TYPE:
+				return createChef_typeFromString(eDataType, initialValue);
+			case ChefclipsePackage.EMAIL:
+				return createEmailFromString(eDataType, initialValue);
+			case ChefclipsePackage.TEXT:
+				return createTextFromString(eDataType, initialValue);
+			case ChefclipsePackage.VERSION:
+				return createVersionFromString(eDataType, initialValue);
+			case ChefclipsePackage.NAME:
+				return createNameFromString(eDataType, initialValue);
+			case ChefclipsePackage.DESCRIPTION:
+				return createDescriptionFromString(eDataType, initialValue);
+			case ChefclipsePackage.OBJECT:
+				return createObjectFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
-        switch (eDataType.getClassifierID()) {
-            case ChefclipsePackage.URL:
-                return convertURLToString(eDataType, instanceValue);
-            case ChefclipsePackage.FILE:
-                return convertFileToString(eDataType, instanceValue);
-            case ChefclipsePackage.CHEF_TYPE:
-                return convertChef_typeToString(eDataType, instanceValue);
-            case ChefclipsePackage.EMAIL:
-                return convertEmailToString(eDataType, instanceValue);
-            case ChefclipsePackage.TEXT:
-                return convertTextToString(eDataType, instanceValue);
-            case ChefclipsePackage.VERSION:
-                return convertVersionToString(eDataType, instanceValue);
-            case ChefclipsePackage.NAME:
-                return convertNameToString(eDataType, instanceValue);
-            case ChefclipsePackage.DESCRIPTION:
-                return convertDescriptionToString(eDataType, instanceValue);
-            case ChefclipsePackage.OBJECT:
-                return convertObjectToString(eDataType, instanceValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eDataType.getClassifierID()) {
+			case ChefclipsePackage.URL:
+				return convertURLToString(eDataType, instanceValue);
+			case ChefclipsePackage.FILE:
+				return convertFileToString(eDataType, instanceValue);
+			case ChefclipsePackage.CHEF_TYPE:
+				return convertChef_typeToString(eDataType, instanceValue);
+			case ChefclipsePackage.EMAIL:
+				return convertEmailToString(eDataType, instanceValue);
+			case ChefclipsePackage.TEXT:
+				return convertTextToString(eDataType, instanceValue);
+			case ChefclipsePackage.VERSION:
+				return convertVersionToString(eDataType, instanceValue);
+			case ChefclipsePackage.NAME:
+				return convertNameToString(eDataType, instanceValue);
+			case ChefclipsePackage.DESCRIPTION:
+				return convertDescriptionToString(eDataType, instanceValue);
+			case ChefclipsePackage.OBJECT:
+				return convertObjectToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public VersionedObject createVersionedObject() {
-        VersionedObjectImpl versionedObject = new VersionedObjectImpl();
-        return versionedObject;
-    }
+		VersionedObjectImpl versionedObject = new VersionedObjectImpl();
+		return versionedObject;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public SandboxedObject createSandboxedObject() {
-        SandboxedObjectImpl sandboxedObject = new SandboxedObjectImpl();
-        return sandboxedObject;
-    }
+		SandboxedObjectImpl sandboxedObject = new SandboxedObjectImpl();
+		return sandboxedObject;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public RubyFile createRubyFile() {
-        RubyFileImpl rubyFile = new RubyFileImpl();
-        return rubyFile;
-    }
+		RubyFileImpl rubyFile = new RubyFileImpl();
+		return rubyFile;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public NamedObject createNamedObject() {
-        NamedObjectImpl namedObject = new NamedObjectImpl();
-        return namedObject;
-    }
+		NamedObjectImpl namedObject = new NamedObjectImpl();
+		return namedObject;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public DescribedObject createDescribedObject() {
-        DescribedObjectImpl describedObject = new DescribedObjectImpl();
-        return describedObject;
-    }
+		DescribedObjectImpl describedObject = new DescribedObjectImpl();
+		return describedObject;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ChecksumFile createChecksumFile() {
-        ChecksumFileImpl checksumFile = new ChecksumFileImpl();
-        return checksumFile;
-    }
+		ChecksumFileImpl checksumFile = new ChecksumFileImpl();
+		return checksumFile;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public MaintainedObject createMaintainedObject() {
-        MaintainedObjectImpl maintainedObject = new MaintainedObjectImpl();
-        return maintainedObject;
-    }
+		MaintainedObjectImpl maintainedObject = new MaintainedObjectImpl();
+		return maintainedObject;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Config createConfig() {
-        ConfigImpl config = new ConfigImpl();
-        return config;
-    }
+		ConfigImpl config = new ConfigImpl();
+		return config;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public URL createURLFromString(EDataType eDataType, String initialValue) {
-        return (URL)super.createFromString(eDataType, initialValue);
-    }
+		return (URL)super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertURLToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public File createFileFromString(EDataType eDataType, String initialValue) {
-        return (File)super.createFromString(eDataType, initialValue);
-    }
+		return (File)super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertFileToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String createChef_typeFromString(EDataType eDataType, String initialValue) {
-        return (String)super.createFromString(eDataType, initialValue);
-    }
+		return (String)super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertChef_typeToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String createEmailFromString(EDataType eDataType, String initialValue) {
-        return (String)super.createFromString(eDataType, initialValue);
-    }
+		return (String)super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertEmailToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String createTextFromString(EDataType eDataType, String initialValue) {
-        return (String)super.createFromString(eDataType, initialValue);
-    }
+		return (String)super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertTextToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String createVersionFromString(EDataType eDataType, String initialValue) {
-        return (String)super.createFromString(eDataType, initialValue);
-    }
+		return (String)super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertVersionToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Object createNameFromString(EDataType eDataType, String initialValue) {
-        return super.createFromString(eDataType, initialValue);
-    }
+		return super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertNameToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Object createDescriptionFromString(EDataType eDataType, String initialValue) {
-        return super.createFromString(eDataType, initialValue);
-    }
+		return super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertDescriptionToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Object createObjectFromString(EDataType eDataType, String initialValue) {
-        return super.createFromString(eDataType, initialValue);
-    }
+		return super.createFromString(eDataType, initialValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String convertObjectToString(EDataType eDataType, Object instanceValue) {
-        return super.convertToString(eDataType, instanceValue);
-    }
+		return super.convertToString(eDataType, instanceValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ChefclipsePackage getChefclipsePackage() {
-        return (ChefclipsePackage)getEPackage();
-    }
+		return (ChefclipsePackage)getEPackage();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @deprecated
-     * @generated
-     */
+	 * @deprecated
+	 * @generated
+	 */
     @Deprecated
     public static ChefclipsePackage getPackage() {
-        return ChefclipsePackage.eINSTANCE;
-    }
+		return ChefclipsePackage.eINSTANCE;
+	}
 
 } //ChefclipseFactoryImpl

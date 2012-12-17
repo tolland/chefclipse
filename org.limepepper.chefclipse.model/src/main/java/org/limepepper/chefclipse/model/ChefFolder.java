@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class ChefFolder extends ChefContainer {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ChefFolder() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ModelPackage.Literals.CHEF_FOLDER;
-    }
+		return ModelPackage.Literals.CHEF_FOLDER;
+	}
 
 } // ChefFolder

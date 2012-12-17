@@ -16,55 +16,55 @@ import org.limepepper.chefclipse.model.ModelFactory;
 public class ChefObjectDefinitionFileTest extends ChefFileTest {
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(ChefObjectDefinitionFileTest.class);
-    }
+		TestRunner.run(ChefObjectDefinitionFileTest.class);
+	}
 
     /**
-     * Constructs a new Chef Object Definition File test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Chef Object Definition File test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ChefObjectDefinitionFileTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Returns the fixture for this Chef Object Definition File test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Chef Object Definition File test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected ChefObjectDefinitionFile getFixture() {
-        return (ChefObjectDefinitionFile)fixture;
-    }
+		return (ChefObjectDefinitionFile)fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ModelFactory.eINSTANCE.createChefObjectDefinitionFile());
-    }
+		setFixture(ModelFactory.eINSTANCE.createChefObjectDefinitionFile());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //ChefObjectDefinitionFileTest

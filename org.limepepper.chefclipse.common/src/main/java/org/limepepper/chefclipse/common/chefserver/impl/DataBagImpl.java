@@ -26,60 +26,60 @@ import org.limepepper.chefclipse.common.chefserver.Server;
  */
 public class DataBagImpl extends EObjectImpl implements DataBag {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public DataBagImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefserverPackage.Literals.DATA_BAG;
-    }
+		return ChefserverPackage.Literals.DATA_BAG;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Server getServer() {
-        return (Server)eGet(ChefserverPackage.Literals.DATA_BAG__SERVER, true);
-    }
+		return (Server)eGet(ChefserverPackage.Literals.DATA_BAG__SERVER, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setServer(Server newServer) {
-        eSet(ChefserverPackage.Literals.DATA_BAG__SERVER, newServer);
-    }
+		eSet(ChefserverPackage.Literals.DATA_BAG__SERVER, newServer);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<DataBagItem> getItems() {
-        return (EList<DataBagItem>)eGet(ChefserverPackage.Literals.DATA_BAG__ITEMS, true);
-    }
+		return (EList<DataBagItem>)eGet(ChefserverPackage.Literals.DATA_BAG__ITEMS, true);
+	}
 
 } //DataBagImpl

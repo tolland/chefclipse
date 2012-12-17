@@ -17,73 +17,73 @@ import org.limepepper.chefclipse.REST.RESTFactory;
  */
 public class CookbookDefinitionTest extends TestCase {
 
-    /**
-     * The fixture for this Cookbook Definition test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected CookbookDefinition fixture = null;
+	/**
+	 * The fixture for this Cookbook Definition test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CookbookDefinition fixture = null;
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public static void main(String[] args) {
-        TestRunner.run(CookbookDefinitionTest.class);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static void main(String[] args) {
+		TestRunner.run(CookbookDefinitionTest.class);
+	}
 
-    /**
-     * Constructs a new Cookbook Definition test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public CookbookDefinitionTest(String name) {
-        super(name);
-    }
+	/**
+	 * Constructs a new Cookbook Definition test case with the given name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CookbookDefinitionTest(String name) {
+		super(name);
+	}
 
-    /**
-     * Sets the fixture for this Cookbook Definition test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected void setFixture(CookbookDefinition fixture) {
-        this.fixture = fixture;
-    }
+	/**
+	 * Sets the fixture for this Cookbook Definition test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(CookbookDefinition fixture) {
+		this.fixture = fixture;
+	}
 
-    /**
-     * Returns the fixture for this Cookbook Definition test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected CookbookDefinition getFixture() {
-        return fixture;
-    }
+	/**
+	 * Returns the fixture for this Cookbook Definition test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CookbookDefinition getFixture() {
+		return fixture;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
-    @Override
-    protected void setUp() throws Exception {
-        setFixture(RESTFactory.eINSTANCE.createCookbookDefinition());
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
+	@Override
+	protected void setUp() throws Exception {
+		setFixture(RESTFactory.eINSTANCE.createCookbookDefinition());
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
-    @Override
-    protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
+	@Override
+	protected void tearDown() throws Exception {
+		setFixture(null);
+	}
 
 } //CookbookDefinitionTest

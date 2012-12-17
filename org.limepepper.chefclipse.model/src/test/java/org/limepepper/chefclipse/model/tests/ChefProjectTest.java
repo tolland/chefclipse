@@ -16,55 +16,55 @@ import org.limepepper.chefclipse.model.ModelFactory;
 public class ChefProjectTest extends ChefContainerTest {
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(ChefProjectTest.class);
-    }
+		TestRunner.run(ChefProjectTest.class);
+	}
 
     /**
-     * Constructs a new Chef Project test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Chef Project test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ChefProjectTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Returns the fixture for this Chef Project test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Chef Project test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected ChefProject getFixture() {
-        return (ChefProject)fixture;
-    }
+		return (ChefProject)fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ModelFactory.eINSTANCE.createChefProject());
-    }
+		setFixture(ModelFactory.eINSTANCE.createChefProject());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //ChefProjectTest

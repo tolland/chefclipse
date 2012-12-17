@@ -16,7 +16,7 @@ public class CookbookGraphEditorInput implements IEditorInput {
     public CookbookGraphEditorInput(@NonNull IResource resource)
     {
         this.resource=resource;
-        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
+        cookbook = (CookbookVersion) ChefRepositoryManager
                 .instance().getElement(resource);
     }
     

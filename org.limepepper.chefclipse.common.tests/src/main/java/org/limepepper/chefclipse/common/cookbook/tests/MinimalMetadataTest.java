@@ -15,56 +15,56 @@ import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
  */
 public class MinimalMetadataTest extends MetadataTest {
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public static void main(String[] args) {
-        TestRunner.run(MinimalMetadataTest.class);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static void main(String[] args) {
+		TestRunner.run(MinimalMetadataTest.class);
+	}
 
-    /**
-     * Constructs a new Minimal Metadata test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public MinimalMetadataTest(String name) {
-        super(name);
-    }
+	/**
+	 * Constructs a new Minimal Metadata test case with the given name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MinimalMetadataTest(String name) {
+		super(name);
+	}
 
-    /**
-     * Returns the fixture for this Minimal Metadata test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    protected MinimalMetadata getFixture() {
-        return (MinimalMetadata)fixture;
-    }
+	/**
+	 * Returns the fixture for this Minimal Metadata test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected MinimalMetadata getFixture() {
+		return (MinimalMetadata)fixture;
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
-    @Override
-    protected void setUp() throws Exception {
-        setFixture(CookbookFactory.eINSTANCE.createMinimalMetadata());
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
+	@Override
+	protected void setUp() throws Exception {
+		setFixture(CookbookFactory.eINSTANCE.createMinimalMetadata());
+	}
 
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
-    @Override
-    protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
+	@Override
+	protected void tearDown() throws Exception {
+		setFixture(null);
+	}
 
 } //MinimalMetadataTest

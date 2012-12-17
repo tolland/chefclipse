@@ -23,40 +23,40 @@ import org.limepepper.chefclipse.impl.NamedObjectImpl;
  */
 public class DataBagItemImpl extends NamedObjectImpl implements DataBagItem {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public DataBagItemImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefserverPackage.Literals.DATA_BAG_ITEM;
-    }
+		return ChefserverPackage.Literals.DATA_BAG_ITEM;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public DataBag getDataBag() {
-        return (DataBag)eGet(ChefserverPackage.Literals.DATA_BAG_ITEM__DATA_BAG, true);
-    }
+		return (DataBag)eGet(ChefserverPackage.Literals.DATA_BAG_ITEM__DATA_BAG, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setDataBag(DataBag newDataBag) {
-        eSet(ChefserverPackage.Literals.DATA_BAG_ITEM__DATA_BAG, newDataBag);
-    }
+		eSet(ChefserverPackage.Literals.DATA_BAG_ITEM__DATA_BAG, newDataBag);
+	}
 
 } //DataBagItemImpl

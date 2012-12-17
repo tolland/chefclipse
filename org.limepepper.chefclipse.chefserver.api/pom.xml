@@ -25,16 +25,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.6.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <version>1.6.1</version>
-    </dependency>
-    <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-json</artifactId>
       <version>1.14</version>
@@ -105,14 +95,6 @@
                 <artifactItem>
                   <groupId>org.bouncycastle</groupId>
                   <artifactId>bcprov-jdk16</artifactId>
-                </artifactItem>
-                <artifact>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>slf4j-api</artifactId>
-                </artifact>
-                <artifactItem>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>slf4j-log4j12</artifactId>
                 </artifactItem>
               </artifactItems>
               <outputDirectory>lib</outputDirectory>

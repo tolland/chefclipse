@@ -12,25 +12,25 @@ import org.limepepper.chefclipse.NamedDescribedObject;
  */
 public abstract class NamedDescribedObjectTest extends DescribedObjectTest {
 
-    /**
-     * Constructs a new Named Described Object test case with the given name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public NamedDescribedObjectTest(String name) {
-        super(name);
-    }
+	/**
+	 * Constructs a new Named Described Object test case with the given name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedDescribedObjectTest(String name) {
+		super(name);
+	}
 
-    /**
-     * Returns the fixture for this Named Described Object test case.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    protected NamedDescribedObject getFixture() {
-        return (NamedDescribedObject)fixture;
-    }
+	/**
+	 * Returns the fixture for this Named Described Object test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected NamedDescribedObject getFixture() {
+		return (NamedDescribedObject)fixture;
+	}
 
 } //NamedDescribedObjectTest

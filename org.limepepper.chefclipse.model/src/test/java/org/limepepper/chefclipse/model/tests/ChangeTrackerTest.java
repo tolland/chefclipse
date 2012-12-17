@@ -18,72 +18,72 @@ import org.limepepper.chefclipse.model.ModelFactory;
 public class ChangeTrackerTest extends TestCase {
 
     /**
-     * The fixture for this Change Tracker test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this Change Tracker test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ChangeTracker fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(ChangeTrackerTest.class);
-    }
+		TestRunner.run(ChangeTrackerTest.class);
+	}
 
     /**
-     * Constructs a new Change Tracker test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Change Tracker test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ChangeTrackerTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Sets the fixture for this Change Tracker test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this Change Tracker test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected void setFixture(ChangeTracker fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
     /**
-     * Returns the fixture for this Change Tracker test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Change Tracker test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected ChangeTracker getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ModelFactory.eINSTANCE.createChangeTracker());
-    }
+		setFixture(ModelFactory.eINSTANCE.createChangeTracker());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //ChangeTrackerTest
