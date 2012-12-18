@@ -16,7 +16,7 @@ public class ImageLoader {
 		try
 		{
 			Bundle bundle = Platform.getBundle("org.limepepper.chefclipse.graphviewer"); 
-			URL url = bundle.getResource("main/java/image/"+imageName);
+			URL url = bundle.getResource("src/main/java/image/"+imageName);
 			if(url==null)
 			{
 				url = bundle.getResource("image/"+imageName);
