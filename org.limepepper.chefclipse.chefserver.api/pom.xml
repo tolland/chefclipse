@@ -28,38 +28,13 @@
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
       <version>1.2.16</version>
-      <!-- exclusions>
-        <exclusion>
-        <groupId>com.sun.jmx</groupId>
-        <artifactId>jmxri</artifactId>
-        </exclusion>
-        <exclusion>
-        <groupId>com.sun.jdmk</groupId>
-        <artifactId>jmxtools</artifactId>
-        </exclusion>
-        <exclusion>
-        <groupId>javax.jms</groupId>
-        <artifactId>jms</artifactId>
-        </exclusion>
-        </exclusions -->
     </dependency>
-
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk16</artifactId>
       <version>1.46</version>
       <type>jar</type>
     </dependency>
-<!--     <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-mapper-asl</artifactId>
-      <version>1.9.5</version>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-core-asl</artifactId>
-      <version>1.9.5</version>
-    </dependency> -->
   </dependencies>
 
   <build>
