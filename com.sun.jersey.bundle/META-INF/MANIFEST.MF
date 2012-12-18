@@ -5,11 +5,7 @@ Bundle-SymbolicName: com.sun.jersey.bundle
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: SUN
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Bundle-ClassPath: jersey-client.jar,
- jersey-core.jar,
- jersey-json.jar,
- jettison.jar,
- .,
+Bundle-ClassPath: .,
  lib/bcprov-jdk16.jar,
  lib/jersey-client.jar,
  lib/jersey-core.jar,
