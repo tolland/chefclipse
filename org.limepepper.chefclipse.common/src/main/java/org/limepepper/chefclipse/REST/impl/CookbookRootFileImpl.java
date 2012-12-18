@@ -3,7 +3,9 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.REST.CookbookRootFile;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -18,32 +20,32 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class CookbookRootFileImpl extends EObjectImpl implements CookbookRootFile {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public CookbookRootFileImpl() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return RESTPackage.Literals.COOKBOOK_ROOT_FILE;
-	}
+        return RESTPackage.Literals.COOKBOOK_ROOT_FILE;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected int eStaticFeatureCount() {
-		return 0;
-	}
+        return 0;
+    }
 
 } //CookbookRootFileImpl

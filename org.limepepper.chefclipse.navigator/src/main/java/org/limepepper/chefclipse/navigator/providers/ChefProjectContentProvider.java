@@ -30,7 +30,7 @@ public class ChefProjectContentProvider implements ICommonContentProvider {
 				for(IResource member: ((IProject)parentElement).members()){
 					if((member instanceof IFolder) && 
 							member.getName().equals(ChefProjectManager.WORKSTATION_FOLDER)){
-						Repository repo = ChefRepositoryManager.instance().getRepository((IProject)parentElement);
+						Repository repo = ChefRepositoryManager.INSTANCE.getRepository((IProject)parentElement);
 						children.add(repo);
 					}
 					else{

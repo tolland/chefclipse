@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.dltk.ruby.core.RubyNature;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -51,7 +52,7 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
 
 
         /*
-         * 
+         *
          * IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
          * IResource resourceInRuntimeWorkspace =
          * root.findMember("rules/setup.txt");
@@ -89,7 +90,7 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
                     IProjectDescription desc = proj.getWorkspace()
                             .newProjectDescription(proj.getName());
 
-                    desc.setNatureIds(new String[] { ChefProjectNature.NATURE_ID });
+                    desc.setNatureIds(new String[] { ChefProjectNature.NATURE_ID, RubyNature.NATURE_ID });
                     proj.create(desc, monitor);
 
                     if (!proj.isOpen()) {
@@ -162,7 +163,7 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
 
             in.close();
             out.close();
-            System.out.println("File copied from " + src + " to " + dest);
+          //  System.out.println("File copied from " + src + " to " + dest);
         }
     }
 

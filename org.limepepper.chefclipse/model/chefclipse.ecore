@@ -45,8 +45,8 @@
   <eClassifiers xsi:type="ecore:EDataType" name="Email" instanceClassName="java.lang.String"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Text" instanceClassName="java.lang.String"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="java.lang.String"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="Name" instanceTypeName="EString"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="Description" instanceTypeName="EString"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Name" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Description" instanceClassName="java.lang.Object"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Object" instanceClassName="java.lang.Object"/>
   <eClassifiers xsi:type="ecore:EClass" name="Config">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="chef_server_url" lowerBound="1"
@@ -61,6 +61,45 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="validation_client_name"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NameUrlMap">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry"
+        containment="true">
+      <eAnnotations source="JSON">
+        <details key="AnonRoot" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NameUrlDataType" instanceClassName="java.lang.Object"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Cookbook">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="json_class" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="chef_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="MapTest" instanceClassName="java.util.HashMap"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MapTestContainer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="entries" upperBound="-1"
+        eType="#//MapTest"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EStringToVersionUrlMap" instanceClassName="java.util.Map$Entry">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//VersionUrl"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VersionUrl">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versions" lowerBound="1"
+        upperBound="-1" eType="#//URLEntryTest"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="URLEntryTest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NameVersionMap">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entries" upperBound="-1"
+        eType="#//EStringToVersionUrlMap" containment="true">
+      <eAnnotations source="JSON">
+        <details key="AnonRoot" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eSubpackages name="chefserver" nsURI="http://limepepper.org/v1/chefclipse/chefserver"
       nsPrefix="org.limepepper.chefclipse.chefserver">
     <eClassifiers xsi:type="ecore:EClass" name="Environment"/>
@@ -72,6 +111,9 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="#//NamedDescribedObject"/>
     <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//NamedDescribedObject">
+      <eAnnotations source="JSON">
+        <details key="root" value="true"/>
+      </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="run_list" upperBound="-1"
           eType="#//chefserver/RunList" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//chefserver/Environment"/>
@@ -82,7 +124,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Server">
       <eStructuralFeatures xsi:type="ecore:EReference" name="cookbooks" upperBound="-1"
-          eType="#//cookbook/CookbookVersion" unsettable="true" containment="true"/>
+          eType="#//chefserver/ServerCookbookVersion" unsettable="true" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
           eType="#//chefserver/Role" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
@@ -118,6 +160,41 @@
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" lowerBound="1" eType="#//URL"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CookbookListResp">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="versions" upperBound="-1"
+          eType="#//REST/CookbookListVersionResp" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServerCookbookFile" eSuperTypes="#//NamedObject #//ChecksumFile #//SandboxedObject">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cookbook" lowerBound="1"
+          eType="#//chefserver/ServerCookbookVersion"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ServerCookbookVersion" eSuperTypes="#//Cookbook">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="root_files" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="recipes" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="libraries" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="providers" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="files" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="definitions" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+          eType="#//chefserver/ServerCookbookFile" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+          eType="#//Version" defaultValueLiteral="0.0.0"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="cookbook_name" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
   </eSubpackages>
   <eSubpackages name="chefclient" nsURI="http://limepepper.org/v1/chefclipse/chefclient"
       nsPrefix="org.limepepper.chefclipse">
@@ -131,7 +208,7 @@
   </eSubpackages>
   <eSubpackages name="cookbook" nsURI="http://limepepper.org/v1/chefclipse/cookbook"
       nsPrefix="org.limepepper.chefclipse">
-    <eClassifiers xsi:type="ecore:EClass" name="CookbookVersion" eSuperTypes="#//NamedDescribedObject #//cookbook/CookbookFile">
+    <eClassifiers xsi:type="ecore:EClass" name="CookbookVersion" eSuperTypes="#//NamedDescribedObject #//Cookbook">
       <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//chefserver/Environment"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
           eType="#//cookbook/Template" containment="true"/>
@@ -150,11 +227,9 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="providers" upperBound="-1"
           eType="#//cookbook/Provider" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="root_files" upperBound="-1"
-          eType="#//cookbook/Root_file"/>
+          eType="#//cookbook/Root_file" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
           eType="#//cookbook/Attributes" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="chef_type" lowerBound="1"
-          eType="#//Chef_type" defaultValueLiteral="cookbook_version"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="catalog" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="depends" upperBound="-1"
           eType="#//cookbook/CookbookVersion"/>
@@ -205,7 +280,7 @@
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Provider" eSuperTypes="#//ChecksumFile #//NamedObject #//SandboxedObject #//cookbook/CookbookFile"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Root_file" eSuperTypes="#//ChecksumFile #//SandboxedObject #//NamedObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Root_file" eSuperTypes="#//ChecksumFile #//SandboxedObject #//NamedObject #//cookbook/CookbookFile"/>
     <eClassifiers xsi:type="ecore:EClass" name="MinimalMetadata" eSuperTypes="#//cookbook/Metadata"/>
     <eClassifiers xsi:type="ecore:EClass" name="Name"/>
     <eClassifiers xsi:type="ecore:EClass" name="CookbookFile" abstract="true">

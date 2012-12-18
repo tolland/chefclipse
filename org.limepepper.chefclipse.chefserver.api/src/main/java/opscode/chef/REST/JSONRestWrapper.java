@@ -1,17 +1,15 @@
 package opscode.chef.REST;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.security.SignatureException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
@@ -20,6 +18,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jettison.json.JSONObject;
+import org.eclipse.jdt.annotation.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,15 +31,15 @@ import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 /**
- * 
+ *
  * this script maps some calls between the opscode mixlib-authentication lib
  * structure and the java requirements
- * 
+ *
  * provides a mapping to the calls handled by ruby rest libs
- * 
+ *
  * @author tomhodder
- * 
- * 
+ *
+ *
  */
 
 public class JSONRestWrapper {
@@ -49,14 +48,14 @@ public class JSONRestWrapper {
                                                     .getLogger(JSONRestWrapper.class);
 
     private WebResource     service;
-    private AuthCredentials auth;
+    private AuthCredentials auth = null;
     private URL             url;
 
     Map<String, String>     default_headers = new HashMap<String, String>();
 
     // static Map<String, String> config = new HashMap<String, String>();
 
-    public JSONRestWrapper(AuthCredentials auth, URL url) {
+    public JSONRestWrapper(@NonNull AuthCredentials auth, URL url) {
         this.auth = auth;
         this.url = url;
         ClientConfig cc = new DefaultClientConfig();
@@ -78,11 +77,10 @@ public class JSONRestWrapper {
      *            into the querystring
      * @return
      * @throws MalformedURLException
-     * 
+     *
      */
     @SuppressWarnings("deprecation")
-    public JSONObject rest_get(String path, Map<String, List<String>> params)
-            throws MalformedURLException {
+    public JSONObject rest_get(String path, Map<String, List<String>> params) {
 
         final String method = "GET";
 
@@ -110,36 +108,41 @@ public class JSONRestWrapper {
 
         Map<String, String> auth_headers = null;
 
-        auth_headers = build_headers(method, new URL(url.toString() + path),
-                headers, null, false);
-
-        logger.debug("auth_headers:");
-
-        for (Entry<String, String> entry : auth_headers.entrySet()) {
-            logger.debug(entry.getKey().toString() + ":" + entry.getValue());
-        }
-
-        for (String key : auth_headers.keySet()) {
-            builder.header(key, auth_headers.get(key));
-        }
-
-        builder.accept(MediaType.APPLICATION_JSON_TYPE);
-
-        JSONObject response = builder.get(JSONObject.class);
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS, false);
         try {
-            logger.debug(mapper.defaultPrettyPrintingWriter()
-                    .writeValueAsString(response));
-        } catch (JsonGenerationException | JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            auth_headers = build_headers(method,
+                    new URL(url.toString() + path), headers, null, false, auth);
+
+            logger.debug("auth_headers:");
+
+            for (Entry<String, String> entry : auth_headers.entrySet()) {
+                logger.debug(entry.getKey().toString() + ":" + entry.getValue());
+            }
+
+            for (String key : auth_headers.keySet()) {
+                builder.header(key, auth_headers.get(key));
+            }
+
+            builder.accept(MediaType.APPLICATION_JSON_TYPE);
+
+            JSONObject response = builder.get(JSONObject.class);
+
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS,
+                    false);
+            try {
+                logger.debug(mapper.defaultPrettyPrintingWriter()
+                        .writeValueAsString(response));
+            } catch (JsonGenerationException | JsonMappingException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return response;
+        } catch (MalformedURLException e1) {
+            e1.printStackTrace();
         }
-
-        return response;
-
+        return null;
     }
 
     public ClientResponse rest_head(String path,
@@ -166,13 +169,34 @@ public class JSONRestWrapper {
             e.printStackTrace();
         }
 
-        
-
         return builder.accept(MediaType.APPLICATION_JSON_TYPE).head();
 
     }
 
-    Map<String, String> authentication_headers(String method, URL url,
+    public static Map<String, String> authentication_headers(String method, URL url,
+            String json_body, @NonNull AuthCredentials auth) {
+
+        Map<String, String> request_params = new HashMap<String, String>();
+        request_params.put("method", method);
+        request_params.put("path", url.getPath());
+        request_params.put("body", (json_body == null) ? "" : json_body);
+        request_params.put("host", url.getHost() + ":" + url.getPort());
+
+        try {
+
+            return auth
+                    .signature_headers(
+                            request_params);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return request_params;
+
+    }
+
+
+    public Map<String, String> authentication_headers(String method, URL url,
             String json_body) {
 
         Map<String, String> request_params = new HashMap<String, String>();
@@ -184,15 +208,37 @@ public class JSONRestWrapper {
         try {
 
             return auth.signature_headers(request_params);
-        } catch (SignatureException | IllegalBlockSizeException
-                | NoSuchPaddingException | BadPaddingException e) {
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return request_params;
 
     }
 
-    Map<String, String> build_headers(String method, URL url,
+    public static Map<String, String> build_headers(String method, URL url,
+            Map<String, String> headers, String json_body, boolean raw, @NonNull AuthCredentials auth) {
+
+        if (!raw)
+            headers.put("Accept", "application/json");
+
+        if (json_body != null) {
+            headers.put("Content-Type", "application/json");
+            headers.put("Content-Length", Integer.toString(json_body.length()));
+        }
+
+        Map<String, String> auth_headers = authentication_headers(method, url,
+                json_body, auth);
+
+        for (String key : auth_headers.keySet()) {
+            headers.put(key, auth_headers.get(key));
+        }
+
+        return headers;
+
+    }
+
+    public Map<String, String> build_headers(String method, URL url,
             Map<String, String> headers, String json_body, boolean raw) {
 
         if (!raw)
@@ -204,7 +250,7 @@ public class JSONRestWrapper {
         }
 
         Map<String, String> auth_headers = authentication_headers(method, url,
-                json_body);
+                json_body,  auth);
 
         for (String key : auth_headers.keySet()) {
             headers.put(key, auth_headers.get(key));
@@ -216,5 +262,26 @@ public class JSONRestWrapper {
 
     public WebResource getService() {
         return service;
+    }
+
+    public static void asFile(String path, String content) {
+
+        ObjectOutputStream outputStream = null;
+        try {
+            outputStream = new ObjectOutputStream(new FileOutputStream(path));
+            outputStream.writeObject(content);
+            outputStream.flush();
+        } catch (Exception e) {
+            System.err.println("Error: " + e);
+        } finally {
+
+            try {
+                if (outputStream != null)
+                    outputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }

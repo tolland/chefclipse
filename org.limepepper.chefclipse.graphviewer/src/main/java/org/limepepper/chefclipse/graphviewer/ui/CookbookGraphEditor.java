@@ -141,11 +141,11 @@ public class CookbookGraphEditor extends EditorPart implements
     
     private void createToolbar(ViewForm viewFrom)
     {
-    	ToolBar toolBar = new ToolBar(viewFrom, SWT.FLAT);
-    	ToolBarManager toolBarManager =new ToolBarManager(toolBar);
-    	toolBarManager.add(new CookbookGraphLayoutAction());
-    	toolBarManager.update(true);
-    	viewFrom.setTopLeft(toolBar);
+        ToolBar toolBar = new ToolBar(viewFrom, SWT.FLAT);
+        ToolBarManager toolBarManager =new ToolBarManager(toolBar);
+        toolBarManager.add(new CookbookGraphLayoutAction());
+        toolBarManager.update(true);
+        viewFrom.setTopLeft(toolBar);
     }
 
     private void hookMenu(final Graph g) {
@@ -210,8 +210,8 @@ public class CookbookGraphEditor extends EditorPart implements
                 return root.getDirectElements();
             }  else if (entity instanceof DrawableFolder)
             {
-            	DrawableFolder drawableFolder = (DrawableFolder) entity;
-            	return drawableFolder.getElements();
+                DrawableFolder drawableFolder = (DrawableFolder) entity;
+                return drawableFolder.getElements();
             }
             else if (entity instanceof ICookbookElement) {
                 return null;
@@ -243,32 +243,32 @@ public class CookbookGraphEditor extends EditorPart implements
 
         }
 
-		@Override
-		public boolean hasChildren(Object element) {
-			if(element instanceof DrawableContainer)
-			{
-				return true;
-			}
-			return false;
-		}
+        @Override
+        public boolean hasChildren(Object element) {
+            if(element instanceof DrawableContainer)
+            {
+                return true;
+            }
+            return false;
+        }
 
-		@Override
-		public Object[] getChildren(Object element) {
-			if(element instanceof DrawableContainer)
-			{
-				Object[] objects = ((DrawableContainer)element).getElements();
-				if(objects.length>0)
-				{
-					return objects;
-				}
-			}
-			return null;
-		}
+        @Override
+        public Object[] getChildren(Object element) {
+            if(element instanceof DrawableContainer)
+            {
+                Object[] objects = ((DrawableContainer)element).getElements();
+                if(objects.length>0)
+                {
+                    return objects;
+                }
+            }
+            return null;
+        }
     }
     
     public LayoutAlgorithm getLayoutAlgorithm()
     {
-    	return this.currentLayoutAlgorithm;
+        return this.currentLayoutAlgorithm;
     }
 
     static class CookbookViewerLabelProvider extends LabelProvider implements
@@ -277,14 +277,14 @@ public class CookbookGraphEditor extends EditorPart implements
         Image attributeImage = ImageLoader.Load("methpub_obj.gif");
         CookbookGraphEditor editor;
         public CookbookViewerLabelProvider(CookbookGraphEditor editor) {
-        	this.editor=editor;
+            this.editor=editor;
         }
 
         public String getText(Object element) {
-        	if(element instanceof DrawableContainer)
-        	{
-        		return ((DrawableContainer)element).getName();
-        	}
+            if(element instanceof DrawableContainer)
+            {
+                return ((DrawableContainer)element).getName();
+            }
             if (element instanceof ICookbookElement) {
                 return ((ICookbookElement) element).getName();
             }
@@ -312,41 +312,41 @@ public class CookbookGraphEditor extends EditorPart implements
            
             if(editor.getLayoutAlgorithm().getClass()==TreeLayoutAlgorithm.class)
             {
-	            ConnectionAnchor s = new ChefclipseConnectionAnchor(c
-	                    .getSourceAnchor().getOwner());
-	            ConnectionAnchor t = new ChefclipseConnectionAnchor(c
-	                    .getTargetAnchor().getOwner());
-	            c.setLocation(s.getReferencePoint());
-	            c.setSourceAnchor(s);
-	            c.setTargetAnchor(t);
+                ConnectionAnchor s = new ChefclipseConnectionAnchor(c
+                        .getSourceAnchor().getOwner());
+                ConnectionAnchor t = new ChefclipseConnectionAnchor(c
+                        .getTargetAnchor().getOwner());
+                c.setLocation(s.getReferencePoint());
+                c.setSourceAnchor(s);
+                c.setTargetAnchor(t);
             }
         }
 
         @Override
         public void selfStyleNode(Object element, GraphNode node) {
             // TODO Auto-generated method stub
-        	if(element instanceof DrawableContainer)
-        	{
-        		GraphContainer graphContainer = (GraphContainer)node;
-        		DrawableContainer container = (DrawableContainer)element;
-        		
-        		if(container.getElements().length>0)
-        		{
-                	graphContainer.open(false);
-            		CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
-            				new LayoutAlgorithm[] { new GridLayoutAlgorithm(),
-            						new HorizontalShiftAlgorithm() });
-                	graphContainer.setLayoutAlgorithm(compositeLayoutAlgorithm, false);
-        		}
-        	}
-        	else if(element instanceof DrawableCookbook)
-        	{}
-        	else if(element instanceof DrawableFolder)
-        	{}
-        	else
-        	{
-        		//files in container
-        	}
+            if(element instanceof DrawableContainer)
+            {
+                GraphContainer graphContainer = (GraphContainer)node;
+                DrawableContainer container = (DrawableContainer)element;
+                
+                if(container.getElements().length>0)
+                {
+                    graphContainer.open(false);
+                    CompositeLayoutAlgorithm compositeLayoutAlgorithm = new CompositeLayoutAlgorithm(
+                            new LayoutAlgorithm[] { new GridLayoutAlgorithm(),
+                                    new HorizontalShiftAlgorithm() });
+                    graphContainer.setLayoutAlgorithm(compositeLayoutAlgorithm, false);
+                }
+            }
+            else if(element instanceof DrawableCookbook)
+            {}
+            else if(element instanceof DrawableFolder)
+            {}
+            else
+            {
+                //files in container
+            }
         }
 
         @Override
@@ -368,25 +368,25 @@ public class CookbookGraphEditor extends EditorPart implements
     
     class CookbookGraphLayoutAction extends Action
     {
-    	public CookbookGraphLayoutAction() {
-    		this.setToolTipText("Change Cookbook Structure Graph Layout");
-    		setImageDescriptor(ImageDescriptor.createFromImage(ImageLoader.Load("full_hierarchy.gif")));
-    	}
-    	
-    	@Override
-    	public void run()
-    	{
-    		if(currentLayoutAlgorithm.getClass() == TreeLayoutAlgorithm.class)
-    		{
-    			currentLayoutAlgorithm = new GridLayoutAlgorithm();
-    		}
-    		else
-    		{
-    			currentLayoutAlgorithm = new TreeLayoutAlgorithm(
-    	                TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(250, 150));
-    		}
-    		graphViewer.setLayoutAlgorithm(currentLayoutAlgorithm);
-    		cookbookModel.notifyCookbookChanged();
-    	}
+        public CookbookGraphLayoutAction() {
+            this.setToolTipText("Change Cookbook Structure Graph Layout");
+            setImageDescriptor(ImageDescriptor.createFromImage(ImageLoader.Load("full_hierarchy.gif")));
+        }
+        
+        @Override
+        public void run()
+        {
+            if(currentLayoutAlgorithm.getClass() == TreeLayoutAlgorithm.class)
+            {
+                currentLayoutAlgorithm = new GridLayoutAlgorithm();
+            }
+            else
+            {
+                currentLayoutAlgorithm = new TreeLayoutAlgorithm(
+                        TreeLayoutAlgorithm.LEFT_RIGHT, new Dimension(250, 150));
+            }
+            graphViewer.setLayoutAlgorithm(currentLayoutAlgorithm);
+            cookbookModel.notifyCookbookChanged();
+        }
     }
 }

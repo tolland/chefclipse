@@ -5,7 +5,9 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 import java.net.URL;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 
@@ -25,68 +27,68 @@ import org.limepepper.chefclipse.common.chefserver.Sandbox;
  */
 public class SandboxImpl extends EObjectImpl implements Sandbox {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public SandboxImpl() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return ChefserverPackage.Literals.SANDBOX;
-	}
+        return ChefserverPackage.Literals.SANDBOX;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected int eStaticFeatureCount() {
-		return 0;
-	}
+        return 0;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getChecksum() {
-		return (String)eGet(ChefserverPackage.Literals.SANDBOX__CHECKSUM, true);
-	}
+        return (String)eGet(ChefserverPackage.Literals.SANDBOX__CHECKSUM, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setChecksum(String newChecksum) {
-		eSet(ChefserverPackage.Literals.SANDBOX__CHECKSUM, newChecksum);
-	}
+        eSet(ChefserverPackage.Literals.SANDBOX__CHECKSUM, newChecksum);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public URL getUrl() {
-		return (URL)eGet(ChefserverPackage.Literals.SANDBOX__URL, true);
-	}
+        return (URL)eGet(ChefserverPackage.Literals.SANDBOX__URL, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setUrl(URL newUrl) {
-		eSet(ChefserverPackage.Literals.SANDBOX__URL, newUrl);
-	}
+        eSet(ChefserverPackage.Literals.SANDBOX__URL, newUrl);
+    }
 
 } //SandboxImpl

@@ -33,7 +33,7 @@ public class CookbookModel implements IResourceChangeListener  {
 	{
 		this.resource=resource;
         CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
-                .instance().getElement(resource);
+                .INSTANCE.getElement(resource);
         setDrawableCookbook(new DrawableCookbook(cookbook));
 	}
     

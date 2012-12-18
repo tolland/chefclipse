@@ -13,6 +13,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
+import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 
 public class ContributionItemDynamic extends CompoundContributionItem {
@@ -22,19 +23,28 @@ public class ContributionItemDynamic extends CompoundContributionItem {
                                                         .getActiveWorkbenchWindow();
 
     ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager
-                                                        .instance();
+                                                        .INSTANCE;
+
+    KnifeConfigController api = KnifeConfigController.INSTANCE;
 
     Map<String, String>   menuItems             = new HashMap<String, String>();
     Map<String, String>   remoteMenuItems       = new HashMap<String, String>();
 
+
     @Override
     protected IContributionItem[] getContributionItems() {
+
+        System.err.println("in the api.ui");
 
         IStructuredSelection selection = (IStructuredSelection) PlatformUI
                 .getWorkbench().getActiveWorkbenchWindow()
                 .getSelectionService().getSelection();
         if (selection == null)
             return new IContributionItem[] {};
+
+
+
+        System.err.println("in the api.ui2");
 
         Object item = selection.getFirstElement();
         // if (item instanceof IResource) {
@@ -65,11 +75,16 @@ public class ContributionItemDynamic extends CompoundContributionItem {
     IContributionItem[] fillMenu() {
 
 
+     //   api.getServer(knifeConfig)
+
+
         menuItems.put("refresh.chefserver", "update remote model");
+        menuItems.put("connect.chefserver", "connect to this Server");
 
         List<IContributionItem> iContItems = new ArrayList<IContributionItem>();
         for (Entry<String, String> entry : menuItems.entrySet()) {
             iContItems.add(menuItem(entry));
+
         }
 
         remoteMenuItems.put("get.cookbook", "Get cookbook remote");
@@ -77,9 +92,8 @@ public class ContributionItemDynamic extends CompoundContributionItem {
         // @todo fix this
         for (Entry<String, String> entry : remoteMenuItems.entrySet()) {
             iContItems.add(menuItem(entry,
-                    "org.limepepper.chefclipse.chefserver.api.ui.handler"));
+                    "org.limepepper.chefclipse.api.ui.popupContext"));
         }
-
         return iContItems.toArray(new IContributionItem[0]);
 
     }
@@ -89,7 +103,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
     IContributionItem menuItem(Entry<String, String> entry) {
         // @todo monkey hack
         IContributionItem menuItem = menuItem(entry,
-                "org.limepepper.chefclipse.commands.popupContext");
+                "org.limepepper.chefclipse.api.ui.popupContext");
 
         return menuItem;
     }

@@ -1,0 +1,12 @@
+opscode.chef.REST
+opscode.chef.REST.tests
+opscode.mixlib.authentication
+opscode.mixlib.authentication.tests
+org.limepepper.chefclipse.chefserver.api
+org.limepepper.chefclipse.chefserver.api.tests
+org.limepepper.chefclipse.chefserver.api.util
+org.limepepper.chefclipse.emfjson
+org.limepepper.chefclipse.emfjson.chefserver
+org.limepepper.chefclipse.emfjson.chefserver.internal
+org.limepepper.chefclipse.emfjson.chefserver.tests
+org.limepepper.chefclipse.emfjson.tests

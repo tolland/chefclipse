@@ -24,85 +24,85 @@ import org.limepepper.chefclipse.model.ModelFactory;
 public class ChefObjectTest extends TestCase {
 
     /**
-	 * The fixture for this Chef Object test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Chef Object test case.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     protected ChefObject fixture = null;
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public static void main(String[] args) {
-		TestRunner.run(ChefObjectTest.class);
-	}
+        TestRunner.run(ChefObjectTest.class);
+    }
 
     /**
-	 * Constructs a new Chef Object test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Chef Object test case with the given name.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public ChefObjectTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
     /**
-	 * Sets the fixture for this Chef Object test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Chef Object test case.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     protected void setFixture(ChefObject fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
     /**
-	 * Returns the fixture for this Chef Object test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Chef Object test case.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     protected ChefObject getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
     @Override
     protected void setUp() throws Exception {
-		setFixture(ModelFactory.eINSTANCE.createChefObject());
-	}
+        setFixture(ModelFactory.eINSTANCE.createChefObject());
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
     @Override
     protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
     /**
-	 * Tests the '{@link org.limepepper.chefclipse.model.ChefObject#create(org.limepepper.chefclipse.model.ChefResource) <em>Create</em>}' operation.
-	 * <!-- begin-user-doc -->
+     * Tests the '{@link org.limepepper.chefclipse.model.ChefObject#create(org.limepepper.chefclipse.model.ChefResource) <em>Create</em>}' operation.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.model.ChefObject#create(org.limepepper.chefclipse.model.ChefResource)
-	 * @generated
-	 */
+     * @see org.limepepper.chefclipse.model.ChefObject#create(org.limepepper.chefclipse.model.ChefResource)
+     * @generated
+     */
     public void testCreate__ChefResource() {
-		// TODO: implement this operation test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
+        // TODO: implement this operation test method
+        // Ensure that you remove @generated or mark it @generated NOT
+        fail();
+    }
 
 } //ChefObjectTest

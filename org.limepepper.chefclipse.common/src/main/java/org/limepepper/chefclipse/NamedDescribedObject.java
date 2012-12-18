@@ -14,5 +14,4 @@ package org.limepepper.chefclipse;
  * @generated
  */
 public interface NamedDescribedObject extends DescribedObject, NamedObject {
-
 } // NamedDescribedObject

@@ -7,6 +7,7 @@ import org.eclipse.swt.graphics.Image;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.ui.Activator;
+import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
 import org.limepepper.chefclipse.navigator.NavigatorActivator;
 import org.limepepper.chefclipse.navigator.providers.TestTreeContentProvider.MenuLevelHolder;
@@ -30,7 +31,7 @@ public class TestTreeLabelProvider extends AdapterFactoryLabelProvider {
         } else if (element instanceof MenuLevelHolder) {
             return     Activator
                     .imageDescriptorFromPlugin(
-                            NavigatorActivator.PLUGIN_ID, 
+                            NavigatorActivator.PLUGIN_ID,
                             "icons/file_obj.png")
                             .createImage();
             // imageDescriptorFromPlugin(getBundle().getSymbolicName(),
@@ -40,9 +41,9 @@ public class TestTreeLabelProvider extends AdapterFactoryLabelProvider {
         } else if (element instanceof EObject) {
             return super.getImage(element);
         } else if (element instanceof String) {
-            
-            
-            
+
+
+
         }
         return null;
     }

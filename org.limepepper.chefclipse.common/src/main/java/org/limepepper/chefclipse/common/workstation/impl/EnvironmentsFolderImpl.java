@@ -3,8 +3,10 @@
 package org.limepepper.chefclipse.common.workstation.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.common.workstation.EnvironmentsFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
+
 import org.limepepper.chefclipse.impl.NamedObjectImpl;
 
 /**
@@ -18,22 +20,22 @@ import org.limepepper.chefclipse.impl.NamedObjectImpl;
  */
 public class EnvironmentsFolderImpl extends NamedObjectImpl implements EnvironmentsFolder {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public EnvironmentsFolderImpl() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return WorkstationPackage.Literals.ENVIRONMENTS_FOLDER;
-	}
+        return WorkstationPackage.Literals.ENVIRONMENTS_FOLDER;
+    }
 
 } //EnvironmentsFolderImpl

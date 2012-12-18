@@ -18,72 +18,72 @@ import org.limepepper.chefclipse.REST.RESTFactory;
 public class CookbookResourceTest extends TestCase {
 
 	/**
-	 * The fixture for this Cookbook Resource test case.
-	 * <!-- begin-user-doc -->
+     * The fixture for this Cookbook Resource test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected CookbookResource fixture = null;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(CookbookResourceTest.class);
-	}
+        TestRunner.run(CookbookResourceTest.class);
+    }
 
 	/**
-	 * Constructs a new Cookbook Resource test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Cookbook Resource test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public CookbookResourceTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Sets the fixture for this Cookbook Resource test case.
-	 * <!-- begin-user-doc -->
+     * Sets the fixture for this Cookbook Resource test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void setFixture(CookbookResource fixture) {
-		this.fixture = fixture;
-	}
+        this.fixture = fixture;
+    }
 
 	/**
-	 * Returns the fixture for this Cookbook Resource test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Cookbook Resource test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected CookbookResource getFixture() {
-		return fixture;
-	}
+        return fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(RESTFactory.eINSTANCE.createCookbookResource());
-	}
+        setFixture(RESTFactory.eINSTANCE.createCookbookResource());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //CookbookResourceTest

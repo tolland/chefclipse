@@ -7,10 +7,6 @@ Bundle-Activator: org.limepepper.chefclipse.model.provider.ModelEditPlugin$Imple
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.limepepper.chefclipse.model,
- org.limepepper.chefclipse.model.presentation,
- org.limepepper.chefclipse.model.provider,
- org.limepepper.chefclipse.model.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  org.limepepper.chefclipse.model;visibility:=reexport,
@@ -22,3 +18,8 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  junit.jar
+Export-Package: org.limepepper.chefclipse.model,
+ org.limepepper.chefclipse.model.presentation,
+ org.limepepper.chefclipse.model.provider,
+ org.limepepper.chefclipse.model.tests,
+ org.limepepper.chefclipse.model.util

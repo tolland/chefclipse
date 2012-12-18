@@ -16,55 +16,55 @@ import org.limepepper.chefclipse.model.ModelFactory;
 public class ChefObjectElementFileTest extends ChefFileTest {
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public static void main(String[] args) {
-		TestRunner.run(ChefObjectElementFileTest.class);
-	}
+        TestRunner.run(ChefObjectElementFileTest.class);
+    }
 
     /**
-	 * Constructs a new Chef Object Element File test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Chef Object Element File test case with the given name.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public ChefObjectElementFileTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
     /**
-	 * Returns the fixture for this Chef Object Element File test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Chef Object Element File test case.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected ChefObjectElementFile getFixture() {
-		return (ChefObjectElementFile)fixture;
-	}
+        return (ChefObjectElementFile)fixture;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
     @Override
     protected void setUp() throws Exception {
-		setFixture(ModelFactory.eINSTANCE.createChefObjectElementFile());
-	}
+        setFixture(ModelFactory.eINSTANCE.createChefObjectElementFile());
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
     @Override
     protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //ChefObjectElementFileTest

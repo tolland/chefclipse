@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -13,6 +14,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.navigator.testers.ChefTester;
 
@@ -22,8 +24,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
                                                         .getWorkbench()
                                                         .getActiveWorkbenchWindow();
 
-    ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager
-                                                        .instance();
+    ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager.INSTANCE;
 
     Map<String, String>   menuItems             = new HashMap<String, String>();
     Map<String, String>   remoteMenuItems       = new HashMap<String, String>();
@@ -40,10 +41,17 @@ public class ContributionItemDynamic extends CompoundContributionItem {
         Object item = selection.getFirstElement();
         // if (item instanceof IResource) {
 
+        if (ChefTester.testResource(item, "isCookbook")) {
+
+            for (KnifeConfig knifeConfig : ChefRepositoryManager.INSTANCE
+                    .getKnives(((IResource) item).getProject())) {
+
+                menuItems.put("compare.cookbook", "Compare with ... "
+                        + knifeConfig.getChef_server_url());
+            }
+
+        }
         /*
-         * if (ChefTester.testResource(item, "isCookbook")) {
-         * menuItems.put("compare.cookbook", "Compare with server1");
-         * }
          * if (ChefTester.testResource(item, "isKnifeConfig")) {
          * menuItems.put("open.knifeconfig", "parse knife ecores");
          * menuItems

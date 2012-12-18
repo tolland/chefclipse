@@ -27,7 +27,7 @@ public class ChefCookbookContentProvider implements ICommonContentProvider {
 		if(parentElement instanceof CookbookVersion){
 		    CookbookVersion cookbook = (CookbookVersion)parentElement;			
 			
-			IFolder folder = (IFolder)ChefRepositoryManager.instance().getResource(cookbook);					
+			IFolder folder = (IFolder)ChefRepositoryManager.INSTANCE.getResource(cookbook);					
 			IFile metadata = folder.getFile("metadata.rb");
 									
 			children.add(metadata);

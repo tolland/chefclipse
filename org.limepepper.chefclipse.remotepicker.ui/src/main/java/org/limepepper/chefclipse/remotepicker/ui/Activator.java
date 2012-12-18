@@ -20,22 +20,22 @@ public class Activator extends AbstractUIPlugin {
 	public static final String NO_ICON_PROVIDED = "NO_ICON_PROVIDED"; //$NON-NLS-1$
 
 	public static final String NO_ICON_PROVIDED_CATALOG = "NO_ICON_PROVIDED_CATALOG"; //$NON-NLS-1$
-	
+
 	public static final String DEPRECATED_ICON_OVERLAY = "DEPRECATED_ICON";
-	
+
 	public static final String NEW_ICON_OVERLAY = "NEW_ICON_OVERLAY";
-	
+
 	public static final String INSTALLED_ICON_OVERLAY = "INSTALLED_ICON_OVERLAY";
-	
+
 	public static final String DIRTY_ICON_OVERLAY = "DIRTY_ICON_OVERLAY";
-	
+
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.limepepper.chefclipse.remotepicker.ui"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
-	
+
 	/**
 	 * The constructor
 	 */
@@ -79,7 +79,7 @@ public class Activator extends AbstractUIPlugin {
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
-	
+
 	@Override
 	protected ImageRegistry createImageRegistry() {
 		ImageRegistry imageRegistry = super.createImageRegistry();

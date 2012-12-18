@@ -25,55 +25,55 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Sandbox extends EObject {
     /**
-	 * Returns the value of the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Checksum</b></em>' attribute.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Checksum</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-	 * @return the value of the '<em>Checksum</em>' attribute.
-	 * @see #setChecksum(String)
-	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getSandbox_Checksum()
-	 * @model required="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Checksum</em>' attribute.
+     * @see #setChecksum(String)
+     * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getSandbox_Checksum()
+     * @model required="true"
+     * @generated
+     */
     String getChecksum();
 
     /**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.Sandbox#getChecksum <em>Checksum</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.Sandbox#getChecksum <em>Checksum</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Checksum</em>' attribute.
-	 * @see #getChecksum()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Checksum</em>' attribute.
+     * @see #getChecksum()
+     * @generated
+     */
     void setChecksum(String value);
 
     /**
-	 * Returns the value of the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Url</b></em>' attribute.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Url</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-	 * @return the value of the '<em>Url</em>' attribute.
-	 * @see #setUrl(URL)
-	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getSandbox_Url()
-	 * @model dataType="org.limepepper.chefclipse.URL" required="true"
-	 * @generated
-	 */
+     * @return the value of the '<em>Url</em>' attribute.
+     * @see #setUrl(URL)
+     * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getSandbox_Url()
+     * @model dataType="org.limepepper.chefclipse.URL" required="true"
+     * @generated
+     */
     URL getUrl();
 
     /**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.Sandbox#getUrl <em>Url</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.Sandbox#getUrl <em>Url</em>}' attribute.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Url</em>' attribute.
-	 * @see #getUrl()
-	 * @generated
-	 */
+     * @param value the new value of the '<em>Url</em>' attribute.
+     * @see #getUrl()
+     * @generated
+     */
     void setUrl(URL value);
 
 } // Sandbox

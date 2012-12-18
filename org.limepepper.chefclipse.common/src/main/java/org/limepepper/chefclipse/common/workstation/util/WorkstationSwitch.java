@@ -4,19 +4,14 @@ package org.limepepper.chefclipse.common.workstation.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.Switch;
+
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
+
 import org.limepepper.chefclipse.common.workstation.*;
-import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
-import org.limepepper.chefclipse.common.workstation.ConfigFolder;
-import org.limepepper.chefclipse.common.workstation.DataBagsFolder;
-import org.limepepper.chefclipse.common.workstation.EnvironmentsFolder;
-import org.limepepper.chefclipse.common.workstation.Rakefile;
-import org.limepepper.chefclipse.common.workstation.Repository;
-import org.limepepper.chefclipse.common.workstation.RolesFolder;
-import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,262 +28,262 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  */
 public class WorkstationSwitch<T> extends Switch<T> {
     /**
-	 * The cached model package
-	 * <!-- begin-user-doc -->
+     * The cached model package
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     protected static WorkstationPackage modelPackage;
 
     /**
-	 * Creates an instance of the switch.
-	 * <!-- begin-user-doc -->
+     * Creates an instance of the switch.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public WorkstationSwitch() {
-		if (modelPackage == null) {
-			modelPackage = WorkstationPackage.eINSTANCE;
-		}
-	}
+        if (modelPackage == null) {
+            modelPackage = WorkstationPackage.eINSTANCE;
+        }
+    }
 
     /**
-	 * Checks whether this is a switch for the given package.
-	 * <!-- begin-user-doc -->
+     * Checks whether this is a switch for the given package.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
-	 * @return whether this is a switch for the given package.
-	 * @generated
-	 */
+     * @parameter ePackage the package in question.
+     * @return whether this is a switch for the given package.
+     * @generated
+     */
     @Override
     protected boolean isSwitchFor(EPackage ePackage) {
-		return ePackage == modelPackage;
-	}
+        return ePackage == modelPackage;
+    }
 
     /**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
+     * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
+     * @return the first non-null result returned by a <code>caseXXX</code> call.
+     * @generated
+     */
     @Override
     protected T doSwitch(int classifierID, EObject theEObject) {
-		switch (classifierID) {
-			case WorkstationPackage.REPOSITORY: {
-				Repository repository = (Repository)theEObject;
-				T result = caseRepository(repository);
-				if (result == null) result = caseNamedDescribedObject(repository);
-				if (result == null) result = caseDescribedObject(repository);
-				if (result == null) result = caseNamedObject(repository);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkstationPackage.CONFIG_FOLDER: {
-				ConfigFolder configFolder = (ConfigFolder)theEObject;
-				T result = caseConfigFolder(configFolder);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkstationPackage.CERTIFICATES_FOLDER: {
-				CertificatesFolder certificatesFolder = (CertificatesFolder)theEObject;
-				T result = caseCertificatesFolder(certificatesFolder);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkstationPackage.DATA_BAGS_FOLDER: {
-				DataBagsFolder dataBagsFolder = (DataBagsFolder)theEObject;
-				T result = caseDataBagsFolder(dataBagsFolder);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkstationPackage.ENVIRONMENTS_FOLDER: {
-				EnvironmentsFolder environmentsFolder = (EnvironmentsFolder)theEObject;
-				T result = caseEnvironmentsFolder(environmentsFolder);
-				if (result == null) result = caseNamedObject(environmentsFolder);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkstationPackage.ROLES_FOLDER: {
-				RolesFolder rolesFolder = (RolesFolder)theEObject;
-				T result = caseRolesFolder(rolesFolder);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case WorkstationPackage.RAKEFILE: {
-				Rakefile rakefile = (Rakefile)theEObject;
-				T result = caseRakefile(rakefile);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
-		}
-	}
+        switch (classifierID) {
+            case WorkstationPackage.REPOSITORY: {
+                Repository repository = (Repository)theEObject;
+                T result = caseRepository(repository);
+                if (result == null) result = caseNamedDescribedObject(repository);
+                if (result == null) result = caseDescribedObject(repository);
+                if (result == null) result = caseNamedObject(repository);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case WorkstationPackage.CONFIG_FOLDER: {
+                ConfigFolder configFolder = (ConfigFolder)theEObject;
+                T result = caseConfigFolder(configFolder);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case WorkstationPackage.CERTIFICATES_FOLDER: {
+                CertificatesFolder certificatesFolder = (CertificatesFolder)theEObject;
+                T result = caseCertificatesFolder(certificatesFolder);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case WorkstationPackage.DATA_BAGS_FOLDER: {
+                DataBagsFolder dataBagsFolder = (DataBagsFolder)theEObject;
+                T result = caseDataBagsFolder(dataBagsFolder);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case WorkstationPackage.ENVIRONMENTS_FOLDER: {
+                EnvironmentsFolder environmentsFolder = (EnvironmentsFolder)theEObject;
+                T result = caseEnvironmentsFolder(environmentsFolder);
+                if (result == null) result = caseNamedObject(environmentsFolder);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case WorkstationPackage.ROLES_FOLDER: {
+                RolesFolder rolesFolder = (RolesFolder)theEObject;
+                T result = caseRolesFolder(rolesFolder);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case WorkstationPackage.RAKEFILE: {
+                Rakefile rakefile = (Rakefile)theEObject;
+                T result = caseRakefile(rakefile);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            default: return defaultCase(theEObject);
+        }
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Repository</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Repository</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Repository</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Repository</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseRepository(Repository object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Config Folder</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Config Folder</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Config Folder</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Config Folder</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseConfigFolder(ConfigFolder object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Certificates Folder</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Certificates Folder</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Certificates Folder</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Certificates Folder</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseCertificatesFolder(CertificatesFolder object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Data Bags Folder</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Data Bags Folder</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Data Bags Folder</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Data Bags Folder</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseDataBagsFolder(DataBagsFolder object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Environments Folder</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Environments Folder</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Environments Folder</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Environments Folder</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseEnvironmentsFolder(EnvironmentsFolder object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Roles Folder</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Roles Folder</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Roles Folder</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Roles Folder</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseRolesFolder(RolesFolder object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Rakefile</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Rakefile</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Rakefile</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Rakefile</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseRakefile(Rakefile object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Described Object</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Described Object</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Described Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Described Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseDescribedObject(DescribedObject object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Named Object</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-    public T caseNamedDescribedObject(NamedDescribedObject object) {
-		return null;
-	}
-
-    /**
-	 * Returns the result of interpreting the object as an instance of '<em>Named Object</em>'.
-	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Named Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Named Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
     public T caseNamedObject(NamedObject object) {
-		return null;
-	}
+        return null;
+    }
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * <!-- begin-user-doc -->
+     * Returns the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Named Described Object</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNamedDescribedObject(NamedDescribedObject object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+     * <!-- begin-user-doc -->
      * This implementation returns null;
      * returning a non-null result will terminate the switch, but this is the last case anyway.
      * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-	 * @generated
-	 */
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+     * @generated
+     */
     @Override
     public T defaultCase(EObject object) {
-		return null;
-	}
+        return null;
+    }
 
 } //WorkstationSwitch

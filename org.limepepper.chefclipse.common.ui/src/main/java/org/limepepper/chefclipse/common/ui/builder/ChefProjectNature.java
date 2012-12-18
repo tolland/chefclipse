@@ -10,7 +10,7 @@ import org.eclipse.core.runtime.CoreException;
  * @author markin
  * A project nature for the template project
  */
-public class ChefProjectNature implements IProjectNature{
+public class ChefProjectNature implements IProjectNature {
 
 	public static String NATURE_ID = "org.limepepper.chefclipse.ChefProjectNature";
 
