@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class ChefProject extends ChefContainer {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     protected ChefProject() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return ModelPackage.Literals.CHEF_PROJECT;
-	}
+        return ModelPackage.Literals.CHEF_PROJECT;
+    }
 
 } // ChefProject

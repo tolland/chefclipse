@@ -17,6 +17,6 @@ Export-Package: org.limepepper.chefclipse.REST.provider,
  org.limepepper.chefclipse.common.workstation.provider,
  org.limepepper.chefclipse.provider
 Require-Bundle: org.eclipse.core.runtime,
- org.limepepper.chefclipse.common;visibility:=reexport,
- org.eclipse.emf.edit;visibility:=reexport
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.limepepper.chefclipse.common;visibility:=reexport;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy

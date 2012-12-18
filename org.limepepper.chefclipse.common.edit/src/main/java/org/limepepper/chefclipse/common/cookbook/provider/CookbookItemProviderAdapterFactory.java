@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
@@ -45,521 +46,510 @@ import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
  * @generated
  */
 public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
-	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ComposedAdapterFactory parentAdapterFactory;
+    /**
+     * This keeps track of the root adapter factory that delegates to this adapter factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ComposedAdapterFactory parentAdapterFactory;
 
-	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IChangeNotifier changeNotifier = new ChangeNotifier();
+    /**
+     * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-	/**
-	 * This keeps track of all the item providers created, so that they can be {@link #dispose disposed}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Disposable disposable = new Disposable();
+    /**
+     * This keeps track of all the item providers created, so that they can be {@link #dispose disposed}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected Disposable disposable = new Disposable();
 
-	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ChefclipseEditPlugin.INSTANCE, CookbookPackage.eNS_URI);
+    /**
+     * This helps manage the child creation extenders.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ChefclipseEditPlugin.INSTANCE, CookbookPackage.eNS_URI);
 
-	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Collection<Object> supportedTypes = new ArrayList<Object>();
+    /**
+     * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public CookbookItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    /**
+     * This constructs an instance.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CookbookItemProviderAdapterFactory() {
+        supportedTypes.add(IEditingDomainItemProvider.class);
+        supportedTypes.add(IStructuredItemContentProvider.class);
+        supportedTypes.add(ITreeItemContentProvider.class);
+        supportedTypes.add(IItemLabelProvider.class);
+        supportedTypes.add(IItemPropertySource.class);
+        supportedTypes.add(ITableItemLabelProvider.class);
+    }
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCookbookVersionAdapter() {
-		return new CookbookVersionItemProvider(this);
-	}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createCookbookVersionAdapter() {
+        return new CookbookVersionItemProvider(this);
+    }
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Definition}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDefinitionAdapter() {
-		return new DefinitionItemProvider(this);
-	}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Definition}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDefinitionAdapter() {
+        return new DefinitionItemProvider(this);
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Library} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected LibraryItemProvider libraryItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Library} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected LibraryItemProvider libraryItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Library}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createLibraryAdapter() {
-		if (libraryItemProvider == null) {
-			libraryItemProvider = new LibraryItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Library}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createLibraryAdapter() {
+        if (libraryItemProvider == null) {
+            libraryItemProvider = new LibraryItemProvider(this);
+        }
 
-		return libraryItemProvider;
-	}
+        return libraryItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Attribute} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected AttributeItemProvider attributeItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Attribute} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected AttributeItemProvider attributeItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Attribute}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAttributeAdapter() {
-		if (attributeItemProvider == null) {
-			attributeItemProvider = new AttributeItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Attribute}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createAttributeAdapter() {
+        if (attributeItemProvider == null) {
+            attributeItemProvider = new AttributeItemProvider(this);
+        }
 
-		return attributeItemProvider;
-	}
+        return attributeItemProvider;
+    }
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Recipe}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRecipeAdapter() {
-		return new RecipeItemProvider(this);
-	}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Recipe}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRecipeAdapter() {
+        return new RecipeItemProvider(this);
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.RecipeDescription} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RecipeDescriptionItemProvider recipeDescriptionItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.RecipeDescription} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected RecipeDescriptionItemProvider recipeDescriptionItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.RecipeDescription}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRecipeDescriptionAdapter() {
-		if (recipeDescriptionItemProvider == null) {
-			recipeDescriptionItemProvider = new RecipeDescriptionItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.RecipeDescription}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRecipeDescriptionAdapter() {
+        if (recipeDescriptionItemProvider == null) {
+            recipeDescriptionItemProvider = new RecipeDescriptionItemProvider(this);
+        }
 
-		return recipeDescriptionItemProvider;
-	}
+        return recipeDescriptionItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Resource} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ResourceItemProvider resourceItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Resource} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ResourceItemProvider resourceItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Resource}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createResourceAdapter() {
-		if (resourceItemProvider == null) {
-			resourceItemProvider = new ResourceItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Resource}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createResourceAdapter() {
+        if (resourceItemProvider == null) {
+            resourceItemProvider = new ResourceItemProvider(this);
+        }
 
-		return resourceItemProvider;
-	}
+        return resourceItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Template} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TemplateItemProvider templateItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Template} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected TemplateItemProvider templateItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Template}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTemplateAdapter() {
-		if (templateItemProvider == null) {
-			templateItemProvider = new TemplateItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Template}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createTemplateAdapter() {
+        if (templateItemProvider == null) {
+            templateItemProvider = new TemplateItemProvider(this);
+        }
 
-		return templateItemProvider;
-	}
+        return templateItemProvider;
+    }
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Attributes}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createAttributesAdapter() {
-		return new AttributesItemProvider(this);
-	}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Attributes}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createAttributesAdapter() {
+        return new AttributesItemProvider(this);
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.File} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected FileItemProvider fileItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.File} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected FileItemProvider fileItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.File}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createFileAdapter() {
-		if (fileItemProvider == null) {
-			fileItemProvider = new FileItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.File}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createFileAdapter() {
+        if (fileItemProvider == null) {
+            fileItemProvider = new FileItemProvider(this);
+        }
 
-		return fileItemProvider;
-	}
+        return fileItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.DependencyRelation} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DependencyRelationItemProvider dependencyRelationItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.DependencyRelation} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DependencyRelationItemProvider dependencyRelationItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.DependencyRelation}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDependencyRelationAdapter() {
-		if (dependencyRelationItemProvider == null) {
-			dependencyRelationItemProvider = new DependencyRelationItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.DependencyRelation}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDependencyRelationAdapter() {
+        if (dependencyRelationItemProvider == null) {
+            dependencyRelationItemProvider = new DependencyRelationItemProvider(this);
+        }
 
-		return dependencyRelationItemProvider;
-	}
+        return dependencyRelationItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Metadata} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MetadataItemProvider metadataItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Metadata} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected MetadataItemProvider metadataItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Metadata}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMetadataAdapter() {
-		if (metadataItemProvider == null) {
-			metadataItemProvider = new MetadataItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Metadata}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createMetadataAdapter() {
+        if (metadataItemProvider == null) {
+            metadataItemProvider = new MetadataItemProvider(this);
+        }
 
-		return metadataItemProvider;
-	}
+        return metadataItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Provider} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ProviderItemProvider providerItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Provider} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ProviderItemProvider providerItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Provider}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createProviderAdapter() {
-		if (providerItemProvider == null) {
-			providerItemProvider = new ProviderItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Provider}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createProviderAdapter() {
+        if (providerItemProvider == null) {
+            providerItemProvider = new ProviderItemProvider(this);
+        }
 
-		return providerItemProvider;
-	}
+        return providerItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Root_file} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Root_fileItemProvider root_fileItemProvider;
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Root_file}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRoot_fileAdapter() {
+        return new Root_fileItemProvider(this);
+    }
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Root_file}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRoot_fileAdapter() {
-		if (root_fileItemProvider == null) {
-			root_fileItemProvider = new Root_fileItemProvider(this);
-		}
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.MinimalMetadata} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected MinimalMetadataItemProvider minimalMetadataItemProvider;
 
-		return root_fileItemProvider;
-	}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.MinimalMetadata}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createMinimalMetadataAdapter() {
+        if (minimalMetadataItemProvider == null) {
+            minimalMetadataItemProvider = new MinimalMetadataItemProvider(this);
+        }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.MinimalMetadata} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected MinimalMetadataItemProvider minimalMetadataItemProvider;
+        return minimalMetadataItemProvider;
+    }
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.MinimalMetadata}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createMinimalMetadataAdapter() {
-		if (minimalMetadataItemProvider == null) {
-			minimalMetadataItemProvider = new MinimalMetadataItemProvider(this);
-		}
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Name} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected NameItemProvider nameItemProvider;
 
-		return minimalMetadataItemProvider;
-	}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Name}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createNameAdapter() {
+        if (nameItemProvider == null) {
+            nameItemProvider = new NameItemProvider(this);
+        }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.cookbook.Name} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NameItemProvider nameItemProvider;
+        return nameItemProvider;
+    }
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.cookbook.Name}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createNameAdapter() {
-		if (nameItemProvider == null) {
-			nameItemProvider = new NameItemProvider(this);
-		}
+    /**
+     * This returns the root adapter factory that contains this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ComposeableAdapterFactory getRootAdapterFactory() {
+        return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+    }
 
-		return nameItemProvider;
-	}
+    /**
+     * This sets the composed adapter factory that contains this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+        this.parentAdapterFactory = parentAdapterFactory;
+    }
 
-	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public boolean isFactoryForType(Object type) {
+        return supportedTypes.contains(type) || super.isFactoryForType(type);
+    }
 
-	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    /**
+     * This implementation substitutes the factory itself as the key for the adapter.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter adapt(Notifier notifier, Object type) {
+        return super.adapt(notifier, this);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Object adapt(Object object, Object type) {
+        if (isFactoryForType(type)) {
+            Object adapter = super.adapt(object, type);
+            if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+                return adapter;
+            }
+        }
 
-	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+        return null;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    /**
+     * Associates an adapter with a notifier via the base implementation, then records it to ensure it will be disposed.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    protected void associate(Adapter adapter, Notifier target) {
+        super.associate(adapter, target);
+        if (adapter != null) {
+            disposable.add(adapter);
+        }
+    }
 
-		return null;
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public List<IChildCreationExtender> getChildCreationExtenders() {
+        return childCreationExtenderManager.getChildCreationExtenders();
+    }
 
-	/**
-	 * Associates an adapter with a notifier via the base implementation, then records it to ensure it will be disposed.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected void associate(Adapter adapter, Notifier target) {
-		super.associate(adapter, target);
-		if (adapter != null) {
-			disposable.add(adapter);
-		}
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+        return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ResourceLocator getResourceLocator() {
+        return childCreationExtenderManager;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+    /**
+     * This adds a listener.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void addListener(INotifyChangedListener notifyChangedListener) {
+        changeNotifier.addListener(notifyChangedListener);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+    /**
+     * This removes a listener.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void removeListener(INotifyChangedListener notifyChangedListener) {
+        changeNotifier.removeListener(notifyChangedListener);
+    }
 
-	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    /**
+     * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void fireNotifyChanged(Notification notification) {
+        changeNotifier.fireNotifyChanged(notification);
 
-	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+        if (parentAdapterFactory != null) {
+            parentAdapterFactory.fireNotifyChanged(notification);
+        }
+    }
 
-	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
-
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
-
-	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void dispose() {
-		disposable.dispose();
-	}
+    /**
+     * This disposes all of the item providers created by this factory. 
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void dispose() {
+        disposable.dispose();
+    }
 
 }

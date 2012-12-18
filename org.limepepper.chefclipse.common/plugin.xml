@@ -23,11 +23,25 @@
             class="org.limepepper.chefclipse.common.chefserver.ChefserverPackage"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated chefclipse -->
+      <parser
+            type="chefserver"
+            class="org.limepepper.chefclipse.common.chefserver.util.ChefserverResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated chefclipse -->
       <package
             uri="http://limepepper.org/v1/chefclipse/chefclient"
             class="org.limepepper.chefclipse.common.chefclient.ChefclientPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated chefclipse -->
+      <parser
+            type="chefclient"
+            class="org.limepepper.chefclipse.common.chefclient.util.ChefclientResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -47,13 +61,14 @@
    <extension point="org.eclipse.core.contenttype.contentTypes">
       <!-- @generated chefclipse -->
       <content-type
-            base-type="org.eclipse.core.runtime.xml"
+            base-type="org.eclipse.emf.ecore.xmi"
             file-extensions="cookbook"
             id="org.limepepper.chefclipse.content-types.cookbook"
             name="%_UI_Cookbook_content_type"
             priority="normal">
          <describer class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
             <parameter name="namespace" value="http://limepepper.org/v1/chefclipse/cookbook"/>
+            <parameter name="kind" value="xmi"/>
          </describer>
       </content-type>
    </extension>
@@ -65,6 +80,13 @@
       </package>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated chefclipse -->
+      <parser
+            type="workstation"
+            class="org.limepepper.chefclipse.common.workstation.util.WorkstationResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated chefclipse -->
       <package
@@ -72,11 +94,25 @@
             class="org.limepepper.chefclipse.common.knife.KnifePackage"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated chefclipse -->
+      <parser
+            type="knife"
+            class="org.limepepper.chefclipse.common.knife.util.KnifeResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated chefclipse -->
       <package
             uri="http://limepepper.org/v1/chefclipse/REST"
             class="org.limepepper.chefclipse.REST.RESTPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated chefclipse -->
+      <parser
+            type="rest"
+            class="org.limepepper.chefclipse.REST.util.RESTResourceFactoryImpl"/>
    </extension>
 
 </plugin>

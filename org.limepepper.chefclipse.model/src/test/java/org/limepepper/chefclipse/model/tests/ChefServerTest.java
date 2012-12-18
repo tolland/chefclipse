@@ -16,55 +16,55 @@ import org.limepepper.chefclipse.model.ModelFactory;
 public class ChefServerTest extends ChefObjectTest {
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public static void main(String[] args) {
-		TestRunner.run(ChefServerTest.class);
-	}
+        TestRunner.run(ChefServerTest.class);
+    }
 
     /**
-	 * Constructs a new Chef Server test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Chef Server test case with the given name.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public ChefServerTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
     /**
-	 * Returns the fixture for this Chef Server test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Chef Server test case.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected ChefServer getFixture() {
-		return (ChefServer)fixture;
-	}
+        return (ChefServer)fixture;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
     @Override
     protected void setUp() throws Exception {
-		setFixture(ModelFactory.eINSTANCE.createChefServer());
-	}
+        setFixture(ModelFactory.eINSTANCE.createChefServer());
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
     @Override
     protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //ChefServerTest

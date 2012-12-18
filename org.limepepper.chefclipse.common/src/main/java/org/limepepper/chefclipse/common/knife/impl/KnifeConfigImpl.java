@@ -5,11 +5,15 @@ package org.limepepper.chefclipse.common.knife.impl;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.common.chefserver.Server;
+
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.Plugin;
+
 import org.limepepper.chefclipse.impl.ConfigImpl;
 
 /**
@@ -35,176 +39,176 @@ import org.limepepper.chefclipse.impl.ConfigImpl;
  */
 public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public KnifeConfigImpl() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return KnifePackage.Literals.KNIFE_CONFIG;
-	}
+        return KnifePackage.Literals.KNIFE_CONFIG;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @SuppressWarnings("unchecked")
     public EList<Plugin> getPlugins() {
-		return (EList<Plugin>)eGet(KnifePackage.Literals.KNIFE_CONFIG__PLUGINS, true);
-	}
+        return (EList<Plugin>)eGet(KnifePackage.Literals.KNIFE_CONFIG__PLUGINS, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getCache_type() {
-		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_TYPE, true);
-	}
+        return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_TYPE, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setCache_type(String newCache_type) {
-		eSet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_TYPE, newCache_type);
-	}
+        eSet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_TYPE, newCache_type);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getCache_option() {
-		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_OPTION, true);
-	}
+        return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_OPTION, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setCache_option(String newCache_option) {
-		eSet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_OPTION, newCache_option);
-	}
+        eSet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_OPTION, newCache_option);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public File getCookbook_path() {
-		return (File)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_PATH, true);
-	}
+        return (File)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_PATH, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setCookbook_path(File newCookbook_path) {
-		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_PATH, newCookbook_path);
-	}
+        eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_PATH, newCookbook_path);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getCookbook_copyright() {
-		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_COPYRIGHT, true);
-	}
+        return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_COPYRIGHT, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setCookbook_copyright(String newCookbook_copyright) {
-		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_COPYRIGHT, newCookbook_copyright);
-	}
+        eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_COPYRIGHT, newCookbook_copyright);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getCookbook_email() {
-		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_EMAIL, true);
-	}
+        return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_EMAIL, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setCookbook_email(String newCookbook_email) {
-		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_EMAIL, newCookbook_email);
-	}
+        eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_EMAIL, newCookbook_email);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public String getCookbook_license() {
-		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_LICENSE, true);
-	}
+        return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_LICENSE, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setCookbook_license(String newCookbook_license) {
-		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_LICENSE, newCookbook_license);
-	}
+        eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_LICENSE, newCookbook_license);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public File getPath() {
-		return (File)eGet(KnifePackage.Literals.KNIFE_CONFIG__PATH, true);
-	}
+        return (File)eGet(KnifePackage.Literals.KNIFE_CONFIG__PATH, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setPath(File newPath) {
-		eSet(KnifePackage.Literals.KNIFE_CONFIG__PATH, newPath);
-	}
+        eSet(KnifePackage.Literals.KNIFE_CONFIG__PATH, newPath);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public Server getServer() {
-		return (Server)eGet(KnifePackage.Literals.KNIFE_CONFIG__SERVER, true);
-	}
+        return (Server)eGet(KnifePackage.Literals.KNIFE_CONFIG__SERVER, true);
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public void setServer(Server newServer) {
-		eSet(KnifePackage.Literals.KNIFE_CONFIG__SERVER, newServer);
-	}
+        eSet(KnifePackage.Literals.KNIFE_CONFIG__SERVER, newServer);
+    }
 
 } //KnifeConfigImpl

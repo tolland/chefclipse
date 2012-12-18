@@ -37,7 +37,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WizardNewProjectReferencePage;
-import org.limepepper.chefclipse.common.ui.resources.ChefProjectNature;
+import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -48,25 +48,25 @@ import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStr
 
 /**
  * A wizard for interacting with cookbooks repositories.
- * 
+ *
  * @author Sebastian Sampaoli
  */
 @SuppressWarnings("restriction")
 public class CookbookDiscoveryWizard extends DiscoveryWizard{
-	
+
 	private static final String INSTALL_COOKBOOKS = "Install Cookbooks";
-	
+
 	private static final String PROJECT_SELECTION_MESSAGE_DIALOG = "Choose the projects to which you want to install the selected cookbooks.";
-	
+
 	private boolean performFinishStatus;
-	
+
 	@Inject
 	private CookbookRepositoryManager repoManager;
 
 	private WizardNewProjectReferencePage secondPage;
-	
+
 	private List<IProject> selectedProjects;
-	
+
 	public CookbookDiscoveryWizard(Catalog catalog, CookbookCatalogConfiguration configuration) {
 		super(catalog, configuration);
 		setWindowTitle(INSTALL_COOKBOOKS);
@@ -78,7 +78,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	protected CookbookCatalogPage doCreateCatalogPage() {
 		return new CookbookCatalogPage(getCatalog(), getConfiguration());
 	}
-	
+
 	@Override
 	public void addPages() {
 		doDefaultCatalogSelection();
@@ -92,19 +92,19 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 				final Table checkboxTable = (Table) children[1];
 				setPageComplete(false);
 				checkboxTable.addSelectionListener(new SelectionListener() {
-					
+
 					@Override
 					public void widgetSelected(SelectionEvent e) {
-						
+
 						IProject[] referencedProjects = getReferencedProjects();
 						setPageComplete(!(referencedProjects.length == 0));
 					}
 
 					@Override
 					public void widgetDefaultSelected(SelectionEvent e) {
-						
+
 					}
-					
+
 				});
 				setPageComplete(false);
 			}
@@ -117,18 +117,18 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	/**
 	 * Select the default repository to be shown in the wizard. This default repository is chosen
 	 * from a preference page.
-	 * 
+	 *
 	 */
 	private void doDefaultCatalogSelection() {
-		
+
 		if (getConfiguration().getCatalogDescriptor() == null) {
-			
+
 			IPreferenceStore preferenceStore = Activator.getDefault()
 			        .getPreferenceStore();
 			String repositoryId = preferenceStore.getString(IRemotePickerPreferences.DEFAULT_REPOSITORY);
-			
+
 			List<CatalogDescriptor> catalogDescriptors = getConfiguration().getCatalogDescriptors();
-	
+
 			for (CatalogDescriptor catalogDescriptor : catalogDescriptors) {
 				if (catalogDescriptor.getId().equals(repositoryId)){
 					getConfiguration().setCatalogDescriptor(catalogDescriptor);
@@ -137,7 +137,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 			}
 		}
 	}
-	
+
 	@Override
 	public CookbookCatalogConfiguration getConfiguration() {
 		return (CookbookCatalogConfiguration) super.getConfiguration();
@@ -214,10 +214,10 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 		}
 		return isPerformFinishStatus();
 	}
-	
+
 	/**
 	 * Refresh the selected workspace projects after the installation of cookbooks to them.
-	 * 
+	 *
 	 * @param selectedProjects
 	 */
 	private void refreshProjects(List<IProject> selectedProjects) {
@@ -233,7 +233,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	private void showAndLogErrorMessage(final Shell activeShell,
 			final InstallCookbookException e) {
 		Display.getDefault().syncExec(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				MessageDialog.openError(activeShell, "Error while trying to install cookbook.", e.getMessage());
@@ -261,7 +261,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 					new CookbookDiscoveryStrategy(getConfiguration().getCatalogDescriptor()));
 		}
 	}
-	
+
 	/**
 	 * Can perform the installation if at least one project exists in the workspace, or the user has selected
 	 * projects in the next project selection page.
@@ -306,7 +306,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 			IProjectNature nature;
 			try {
 				nature = iProject
-						.getNature(ChefProjectNature.PROJECT_NATURE_ID);
+						.getNature(ChefProjectNature.NATURE_ID);
 				if (nature != null) {
 					ArrayList<IProject> projectWithChefclipseNature = new ArrayList<IProject>();
 					projectWithChefclipseNature.add(iProject);
@@ -344,15 +344,15 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
         }
         return null;
 	}
-        
-	
+
+
 	/**
 	 * @return the repoManager
 	 */
 	public CookbookRepositoryManager getRepoManager() {
 		return repoManager;
 	}
-	
+
 	/**
 	 * @param repoManager the repoManager to set
 	 */
@@ -375,5 +375,5 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	public void setSelectedProjects(List<IProject> selectedProjects) {
 		this.selectedProjects = selectedProjects;
 	}
-	
+
 }

@@ -16,7 +16,7 @@ public class DependencyGraphEditorInput implements IEditorInput {
     {
         this.resource=resource;
         cookbook = (CookbookVersion) ChefRepositoryManager
-                .instance().getElement(resource);
+                .INSTANCE.getElement(resource);
     }
     
     public IResource getResource()

@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class ChefWorkspace extends ChefContainer {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     protected ChefWorkspace() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return ModelPackage.Literals.CHEF_WORKSPACE;
-	}
+        return ModelPackage.Literals.CHEF_WORKSPACE;
+    }
 
 } // ChefWorkspace

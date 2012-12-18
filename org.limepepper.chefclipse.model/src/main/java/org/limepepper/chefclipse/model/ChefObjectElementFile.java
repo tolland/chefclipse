@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class ChefObjectElementFile extends ChefFile {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     protected ChefObjectElementFile() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return ModelPackage.Literals.CHEF_OBJECT_ELEMENT_FILE;
-	}
+        return ModelPackage.Literals.CHEF_OBJECT_ELEMENT_FILE;
+    }
 
 } // ChefObjectElementFile

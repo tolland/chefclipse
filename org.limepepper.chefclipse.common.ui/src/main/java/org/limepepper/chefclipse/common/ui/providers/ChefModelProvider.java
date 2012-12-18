@@ -55,8 +55,8 @@ public class ChefModelProvider extends ModelProvider implements
 
     public Repository getModel(IResource resource) {
 
-        return ChefRepositoryManager.instance().getRepository(
-                resource.getProject());
+        return ChefRepositoryManager.INSTANCE.getRepository(resource
+                .getProject());
 
     }
 
@@ -91,7 +91,7 @@ public class ChefModelProvider extends ModelProvider implements
                 logger.debug("processing added");
                 for (IResource iterable_element : fAdded) {
                     logger.debug(iterable_element.getName());
-                    ChefRepositoryManager.instance().add(iterable_element);
+                    ChefRepositoryManager.INSTANCE.add(iterable_element);
                 }
 
             }
@@ -100,7 +100,7 @@ public class ChefModelProvider extends ModelProvider implements
                 logger.debug("processing removed");
                 for (IResource iterable_element : fRemoved) {
                     logger.debug("rmovig {}", iterable_element.getName());
-                    ChefRepositoryManager.instance().remove(iterable_element);
+                    ChefRepositoryManager.INSTANCE.remove(iterable_element);
                 }
             }
 
@@ -216,7 +216,9 @@ public class ChefModelProvider extends ModelProvider implements
                 switch (delta.getKind()) {
 
                 case IResourceDelta.CHANGED:
-
+                    if (!isIgnored(resource)) {
+                        fAdded.add(resource);
+                    }
                 break;
                 case IResourceDelta.REMOVED:
                     fRemoved.add(resource);
@@ -233,33 +235,42 @@ public class ChefModelProvider extends ModelProvider implements
                 logger.debug("on ifolder {}", resource);
                 // dont want to visit children of new cookbooks or project
                 // objects, because they will be processed by the model builder
-                if (isContainer(resource)) {
-                    switch (delta.getKind()) {
-                    case IResourceDelta.CHANGED:
-                    case IResourceDelta.ADDED:
-                        if (!isIgnored(resource)) {
-                            fAdded.add(resource);
-                        }
-                    break;
-                    case IResourceDelta.REMOVED:
-                        fRemoved.add(resource);
-                    break;
-                    default:
-                    break;
-                    }
-                    // if this is just a plain ole folder, then continue to look
-                    // inside
-                } else {
-                    switch (delta.getKind()) {
-                    case IResourceDelta.CHANGED:
-                    case IResourceDelta.ADDED:
-                        return true;
-                    case IResourceDelta.REMOVED:
-                    default:
-                    break;
+                // if (isContainer(resource)) {
+                switch (delta.getKind()) {
+                case IResourceDelta.CHANGED:
 
+                    logger.debug("on container {} - changed", resource);
+
+                    logger.debug(" flags are ." + flags);
+                    if ((flags & IResourceDelta.CONTENT) != 0) {
+                        logger.debug("--> Content Change");
                     }
+                    if ((flags & IResourceDelta.REPLACED) != 0) {
+                        logger.debug("--> Content Replaced");
+                    }
+                    if ((flags & IResourceDelta.MARKERS) != 0) {
+                        logger.debug("--> Marker Change");
+                        IMarkerDelta[] markers = delta.getMarkerDeltas();
+                        // if interested in markers, check these deltas
+                    }
+                    if (flags == 0) {
+                        logger.debug("--> resource flags were zero, so visit children");
+                        return true;
+                    }
+
+                break;
+                case IResourceDelta.ADDED:
+                    if (!isIgnored(resource)) {
+                        fAdded.add(resource);
+                    }
+                break;
+                case IResourceDelta.REMOVED:
+                    fRemoved.add(resource);
+                break;
+                default:
+                break;
                 }
+
             } else if (resource instanceof IWorkspace) {
                 logger.debug("on workspace {}", resource);
 
@@ -274,14 +285,15 @@ public class ChefModelProvider extends ModelProvider implements
             return true;
         }
         if (resource.getName().endsWith(".workstation")
-                || resource.getName().endsWith(".cookbook")
-                || resource.getName().endsWith(".knife"))
+                || resource.getName().equals(".cookbook")
+                || resource.getName().endsWith(".knife")
+                || resource.getName().equals("metadata.json"))
             return true;
         return false;
     }
 
     public boolean isContainer(IResource resource) {
-        if (resource.getParent().getName().equals("cookbooks")
+        if (resource.getName().equals("cookbooks")
                 || (resource instanceof IProject)) {
             return true;
         }

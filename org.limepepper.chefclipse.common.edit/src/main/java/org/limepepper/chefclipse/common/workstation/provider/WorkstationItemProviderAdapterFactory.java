@@ -19,6 +19,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.limepepper.chefclipse.common.workstation.util.WorkstationAdapterFactory;
@@ -33,311 +34,312 @@ import org.limepepper.chefclipse.common.workstation.util.WorkstationAdapterFacto
  * @generated
  */
 public class WorkstationItemProviderAdapterFactory extends WorkstationAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ComposedAdapterFactory parentAdapterFactory;
+    /**
+     * This keeps track of the root adapter factory that delegates to this adapter factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ComposedAdapterFactory parentAdapterFactory;
 
-	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IChangeNotifier changeNotifier = new ChangeNotifier();
+    /**
+     * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Collection<Object> supportedTypes = new ArrayList<Object>();
+    /**
+     * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public WorkstationItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+    /**
+     * This constructs an instance.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public WorkstationItemProviderAdapterFactory() {
+        supportedTypes.add(IEditingDomainItemProvider.class);
+        supportedTypes.add(IStructuredItemContentProvider.class);
+        supportedTypes.add(ITreeItemContentProvider.class);
+        supportedTypes.add(IItemLabelProvider.class);
+        supportedTypes.add(IItemPropertySource.class);
+        supportedTypes.add(ITableItemLabelProvider.class);
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.Repository} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RepositoryItemProvider repositoryItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.Repository} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected RepositoryItemProvider repositoryItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.Repository}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRepositoryAdapter() {
-		if (repositoryItemProvider == null) {
-			repositoryItemProvider = new RepositoryItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.Repository}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRepositoryAdapter() {
+        if (repositoryItemProvider == null) {
+            repositoryItemProvider = new RepositoryItemProvider(this);
+        }
 
-		return repositoryItemProvider;
-	}
+        return repositoryItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.ConfigFolder} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ConfigFolderItemProvider configFolderItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.ConfigFolder} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected ConfigFolderItemProvider configFolderItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.ConfigFolder}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createConfigFolderAdapter() {
-		if (configFolderItemProvider == null) {
-			configFolderItemProvider = new ConfigFolderItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.ConfigFolder}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createConfigFolderAdapter() {
+        if (configFolderItemProvider == null) {
+            configFolderItemProvider = new ConfigFolderItemProvider(this);
+        }
 
-		return configFolderItemProvider;
-	}
+        return configFolderItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.CertificatesFolder} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CertificatesFolderItemProvider certificatesFolderItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.CertificatesFolder} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected CertificatesFolderItemProvider certificatesFolderItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.CertificatesFolder}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createCertificatesFolderAdapter() {
-		if (certificatesFolderItemProvider == null) {
-			certificatesFolderItemProvider = new CertificatesFolderItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.CertificatesFolder}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createCertificatesFolderAdapter() {
+        if (certificatesFolderItemProvider == null) {
+            certificatesFolderItemProvider = new CertificatesFolderItemProvider(this);
+        }
 
-		return certificatesFolderItemProvider;
-	}
+        return certificatesFolderItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.DataBagsFolder} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected DataBagsFolderItemProvider dataBagsFolderItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.DataBagsFolder} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected DataBagsFolderItemProvider dataBagsFolderItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.DataBagsFolder}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createDataBagsFolderAdapter() {
-		if (dataBagsFolderItemProvider == null) {
-			dataBagsFolderItemProvider = new DataBagsFolderItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.DataBagsFolder}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createDataBagsFolderAdapter() {
+        if (dataBagsFolderItemProvider == null) {
+            dataBagsFolderItemProvider = new DataBagsFolderItemProvider(this);
+        }
 
-		return dataBagsFolderItemProvider;
-	}
+        return dataBagsFolderItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.EnvironmentsFolder} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected EnvironmentsFolderItemProvider environmentsFolderItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.EnvironmentsFolder} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected EnvironmentsFolderItemProvider environmentsFolderItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.EnvironmentsFolder}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createEnvironmentsFolderAdapter() {
-		if (environmentsFolderItemProvider == null) {
-			environmentsFolderItemProvider = new EnvironmentsFolderItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.EnvironmentsFolder}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createEnvironmentsFolderAdapter() {
+        if (environmentsFolderItemProvider == null) {
+            environmentsFolderItemProvider = new EnvironmentsFolderItemProvider(this);
+        }
 
-		return environmentsFolderItemProvider;
-	}
+        return environmentsFolderItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.RolesFolder} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RolesFolderItemProvider rolesFolderItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.RolesFolder} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected RolesFolderItemProvider rolesFolderItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.RolesFolder}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRolesFolderAdapter() {
-		if (rolesFolderItemProvider == null) {
-			rolesFolderItemProvider = new RolesFolderItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.RolesFolder}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRolesFolderAdapter() {
+        if (rolesFolderItemProvider == null) {
+            rolesFolderItemProvider = new RolesFolderItemProvider(this);
+        }
 
-		return rolesFolderItemProvider;
-	}
+        return rolesFolderItemProvider;
+    }
 
-	/**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.Rakefile} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected RakefileItemProvider rakefileItemProvider;
+    /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.Rakefile} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected RakefileItemProvider rakefileItemProvider;
 
-	/**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.Rakefile}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createRakefileAdapter() {
-		if (rakefileItemProvider == null) {
-			rakefileItemProvider = new RakefileItemProvider(this);
-		}
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.Rakefile}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRakefileAdapter() {
+        if (rakefileItemProvider == null) {
+            rakefileItemProvider = new RakefileItemProvider(this);
+        }
 
-		return rakefileItemProvider;
-	}
+        return rakefileItemProvider;
+    }
 
-	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+    /**
+     * This returns the root adapter factory that contains this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ComposeableAdapterFactory getRootAdapterFactory() {
+        return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+    }
 
-	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+    /**
+     * This sets the composed adapter factory that contains this factory.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+        this.parentAdapterFactory = parentAdapterFactory;
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public boolean isFactoryForType(Object type) {
+        return supportedTypes.contains(type) || super.isFactoryForType(type);
+    }
 
-	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+    /**
+     * This implementation substitutes the factory itself as the key for the adapter.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter adapt(Notifier notifier, Object type) {
+        return super.adapt(notifier, this);
+    }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Object adapt(Object object, Object type) {
+        if (isFactoryForType(type)) {
+            Object adapter = super.adapt(object, type);
+            if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+                return adapter;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+    /**
+     * This adds a listener.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void addListener(INotifyChangedListener notifyChangedListener) {
+        changeNotifier.addListener(notifyChangedListener);
+    }
 
-	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+    /**
+     * This removes a listener.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void removeListener(INotifyChangedListener notifyChangedListener) {
+        changeNotifier.removeListener(notifyChangedListener);
+    }
 
-	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+    /**
+     * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void fireNotifyChanged(Notification notification) {
+        changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+        if (parentAdapterFactory != null) {
+            parentAdapterFactory.fireNotifyChanged(notification);
+        }
+    }
 
-	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void dispose() {
-		if (repositoryItemProvider != null) repositoryItemProvider.dispose();
-		if (configFolderItemProvider != null) configFolderItemProvider.dispose();
-		if (certificatesFolderItemProvider != null) certificatesFolderItemProvider.dispose();
-		if (dataBagsFolderItemProvider != null) dataBagsFolderItemProvider.dispose();
-		if (environmentsFolderItemProvider != null) environmentsFolderItemProvider.dispose();
-		if (rolesFolderItemProvider != null) rolesFolderItemProvider.dispose();
-		if (rakefileItemProvider != null) rakefileItemProvider.dispose();
-	}
+    /**
+     * This disposes all of the item providers created by this factory. 
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void dispose() {
+        if (repositoryItemProvider != null) repositoryItemProvider.dispose();
+        if (configFolderItemProvider != null) configFolderItemProvider.dispose();
+        if (certificatesFolderItemProvider != null) certificatesFolderItemProvider.dispose();
+        if (dataBagsFolderItemProvider != null) dataBagsFolderItemProvider.dispose();
+        if (environmentsFolderItemProvider != null) environmentsFolderItemProvider.dispose();
+        if (rolesFolderItemProvider != null) rolesFolderItemProvider.dispose();
+        if (rakefileItemProvider != null) rakefileItemProvider.dispose();
+    }
 
 }

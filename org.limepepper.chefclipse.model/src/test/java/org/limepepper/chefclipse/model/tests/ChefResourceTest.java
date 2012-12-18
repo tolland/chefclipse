@@ -22,81 +22,81 @@ import org.limepepper.chefclipse.model.ModelFactory;
 public class ChefResourceTest extends ChefObjectTest {
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public static void main(String[] args) {
-		TestRunner.run(ChefResourceTest.class);
-	}
+        TestRunner.run(ChefResourceTest.class);
+    }
 
     /**
-	 * Constructs a new Chef Resource test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Chef Resource test case with the given name.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public ChefResourceTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
     /**
-	 * Returns the fixture for this Chef Resource test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Chef Resource test case.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected ChefResource getFixture() {
-		return (ChefResource)fixture;
-	}
+        return (ChefResource)fixture;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
     @Override
     protected void setUp() throws Exception {
-		setFixture(ModelFactory.eINSTANCE.createChefResource());
-	}
+        setFixture(ModelFactory.eINSTANCE.createChefResource());
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
     @Override
     protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
     /**
-	 * Tests the '{@link org.limepepper.chefclipse.model.ChefResource#getType() <em>Type</em>}' feature getter.
-	 * <!-- begin-user-doc -->
+     * Tests the '{@link org.limepepper.chefclipse.model.ChefResource#getType() <em>Type</em>}' feature getter.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.model.ChefResource#getType()
-	 * @generated
-	 */
+     * @see org.limepepper.chefclipse.model.ChefResource#getType()
+     * @generated
+     */
     public void testGetType() {
-		// TODO: implement this feature getter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
+        // TODO: implement this feature getter test method
+        // Ensure that you remove @generated or mark it @generated NOT
+        fail();
+    }
 
     /**
-	 * Tests the '{@link org.limepepper.chefclipse.model.ChefResource#setType(int) <em>Type</em>}' feature setter.
-	 * <!-- begin-user-doc -->
+     * Tests the '{@link org.limepepper.chefclipse.model.ChefResource#setType(int) <em>Type</em>}' feature setter.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.model.ChefResource#setType(int)
-	 * @generated
-	 */
+     * @see org.limepepper.chefclipse.model.ChefResource#setType(int)
+     * @generated
+     */
     public void testSetType() {
-		// TODO: implement this feature setter test method
-		// Ensure that you remove @generated or mark it @generated NOT
-		fail();
-	}
+        // TODO: implement this feature setter test method
+        // Ensure that you remove @generated or mark it @generated NOT
+        fail();
+    }
 
 } //ChefResourceTest

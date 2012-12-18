@@ -19,9 +19,10 @@ public class ChefProjectBuilder extends IncrementalProjectBuilder {
 
         public boolean visit(IResourceDelta delta) throws CoreException {
 
+            @SuppressWarnings("unused")
             IResource resource = delta.getResource();
-            
-            
+
+
        //     System.out.println("kind was "+delta.getKind());
             switch (delta.getKind()) {
             case IResourceDelta.ADDED:
@@ -33,6 +34,8 @@ public class ChefProjectBuilder extends IncrementalProjectBuilder {
             case IResourceDelta.CHANGED:
 
             break;
+            default:
+                break;
             }
 
             return true;
@@ -46,13 +49,13 @@ public class ChefProjectBuilder extends IncrementalProjectBuilder {
         }
     }
 
-    protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
+    protected IProject[] build(int kind, Map<String, String> args, IProgressMonitor monitor)
             throws CoreException {
 /*
  * IWorkbenchWindow window = HandlerUtil
  * .getActiveWorkbenchWindowChecked(event);
  */
-        // ChefRepositoryManager.instance().fullBuild(getProject());
+        // ChefRepositoryManagerImpl.instance().fullBuild(getProject());
 /*
  * MessageDialog
  * .openInformation(
@@ -63,25 +66,25 @@ public class ChefProjectBuilder extends IncrementalProjectBuilder {
  * "org.limepepper.chefclipse.common.ui",
  * "Hello, Cheflipse world");
  */
-        // Repository repo = ChefRepositoryManager.instance().loadRepository(
+        // Repository repo = ChefRepositoryManagerImpl.instance().loadRepository(
         // getProject());
 
         System.out.println("HERE!!!");
 /*
- * ChefRepositoryManager.instance().persistChefRepository(
+ * ChefRepositoryManagerImpl.instance().persistChefRepository(
  * eObject,"repoxxx.workstation", getProject().getFullPath().toString(),
  * getProject(), null);
- * 
+ *
  * try {
- * ChefRepositoryManager.instance().persistChefclipseModel(repo,
+ * ChefRepositoryManagerImpl.instance().persistChefclipseModel(repo,
  * ".workstation", getProject().getFullPath().toString(),
  * getProject(), null);
  * } catch (Exception e) {
- * 
+ *
  * e.printStackTrace();
  * }
  */
-        
+
         if (kind == FULL_BUILD) {
 
             fullBuild(monitor);
@@ -113,4 +116,5 @@ public class ChefProjectBuilder extends IncrementalProjectBuilder {
 
         delta.accept(new ChefclipseProjectDeltaVisitor());
     }
+
 }

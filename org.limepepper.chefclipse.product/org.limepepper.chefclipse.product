@@ -100,9 +100,6 @@ END OF TERMS AND CONDITIONS
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.equinox.p2.extras.feature"/>
-      <feature id="org.limepepper.chefclipse.app.feature" version="1.0.0.qualifier"/>
-      <feature id="org.limepepper.chefclipse.doc.feature" version="1.0.0.qualifier"/>
-      <feature id="org.limepepper.chefclipse.ui.feature" version="1.0.0.qualifier"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
       <feature id="org.eclipse.e4.rcp" version="1.1.0.v20120521-2329-8yFTIGIbGGduEZ6-7-jLx41nXj"/>
       <feature id="org.eclipse.rcp" version="4.2.1.v20120814-120134-7IAPA8BrHQicS-rjP0GbqK780kMy"/>
@@ -112,8 +109,12 @@ END OF TERMS AND CONDITIONS
       <feature id="org.eclipse.help"/>
       <feature id="org.eclipse.equinox.p2.rcp.feature"/>
       <feature id="org.eclipse.equinox.p2.user.ui"/>
-      <feature id="org.limepepper.chefclipse.devel.feature" version="1.0.0.qualifier"/>
+      <feature id="org.codehaus.jackson.feature" version="1.9.5.201204111326"/>
       <feature id="jsonedit-feature" version="0.9.5"/>
+      <feature id="org.limepepper.chefclipse.ui.feature" version="1.0.0.qualifier"/>
+      <feature id="org.limepepper.chefclipse.app.feature" version="1.0.0.qualifier"/>
+      <feature id="org.limepepper.chefclipse.devel.feature" version="1.0.0.qualifier"/>
+      <feature id="org.limepepper.chefclipse.doc.feature" version="1.0.0.qualifier"/>
    </features>
 
    <configurations>

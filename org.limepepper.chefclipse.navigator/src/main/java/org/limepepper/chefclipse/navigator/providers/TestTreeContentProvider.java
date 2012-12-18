@@ -15,8 +15,10 @@ import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
+import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.navigator.NavigatorActivator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,13 +44,13 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
     public Object[] getChildren(Object parentElement) {
 
         ArrayList<Object> children = new ArrayList<Object>();
-        System.err.println(parentElement.getClass());
+        NavigatorActivator.debug(parentElement.getClass().toString());
 
         if (parentElement instanceof IProject) {
-            children.add(ChefRepositoryManager.instance().getRepository(
-                    ((IProject) parentElement)));
+            children.add(ChefRepositoryManager.INSTANCE
+                    .getRepository(((IProject) parentElement)));
 
-            for (KnifeConfig knifeConfig : ChefRepositoryManager.instance()
+            for (KnifeConfig knifeConfig : ChefRepositoryManager.INSTANCE
                     .getKnives(((IProject) parentElement))) {
                 children.add(knifeConfig);
             }
@@ -65,8 +67,8 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
         if ((parentElement instanceof IFile)
                 && ((IFile) parentElement).getName().equals(
                         ChefProjectManager.WORKSTATION_FOLDER)) {
-            parentElement = ChefRepositoryManager.instance().getRepository(
-                    ((IFile) parentElement).getProject());
+            parentElement = ChefRepositoryManager.INSTANCE
+                    .getRepository(((IFile) parentElement).getProject());
 
             return super.getChildren(parentElement);
         } else if (parentElement instanceof CookbookVersion) {
@@ -83,8 +85,9 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
                             ((CookbookVersion) parentElement).getDefinitions()),
                     new MenuLevelHolder("Libraries",
                             ((CookbookVersion) parentElement).getLibraries()),
-                    new MenuLevelHolder("Dependendies",
-                            ((CookbookVersion) parentElement).getDepends()) };
+                    new MenuLevelHolder(
+                            ((CookbookVersion) parentElement).getDepends(),
+                            "Dependencies") };
 
         } else if (parentElement instanceof MenuLevelHolder) {
 
@@ -113,6 +116,12 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
             children = eList.toArray();
         }
 
+        MenuLevelHolder(@NonNull EList<CookbookVersion> eList,
+                @NonNull String name) {
+            label = name;
+            children = eList.toArray();
+        }
+
     }
 
     public Object getParent(Object element) {
@@ -130,13 +139,14 @@ public class TestTreeContentProvider extends AdapterFactoryContentProvider {
             if ((element instanceof IFile)
                     && ((IFile) element).getName().equals(
                             ChefProjectManager.WORKSTATION_FOLDER)) {
-                System.err.println("is workstation folder");
+                NavigatorActivator.debug("is workstation folder");
                 return true;
             } else if ((element instanceof IProject)
+                    && ((IProject) element).isOpen()
                     && ((IProject) element)
                     .isOpen() && ((IProject) element)
                     .hasNature(ChefProjectNature.NATURE_ID)) {
-                logger.debug("is project");
+                NavigatorActivator.debug("is project");
                 return true;
             } else if (element instanceof MenuLevelHolder) {
                 return (((MenuLevelHolder) element).getChildren().length > 0);

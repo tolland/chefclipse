@@ -3,7 +3,9 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.REST.ClientListResp;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -18,32 +20,32 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class ClientListRespImpl extends EObjectImpl implements ClientListResp {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public ClientListRespImpl() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return RESTPackage.Literals.CLIENT_LIST_RESP;
-	}
+        return RESTPackage.Literals.CLIENT_LIST_RESP;
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected int eStaticFeatureCount() {
-		return 0;
-	}
+        return 0;
+    }
 
 } //ClientListRespImpl

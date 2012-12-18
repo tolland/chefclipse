@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.REST.EnvironmentResp;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -17,22 +18,22 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class EnvironmentRespImpl extends JSONObjectRespImpl implements EnvironmentResp {
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     public EnvironmentRespImpl() {
-		super();
-	}
+        super();
+    }
 
     /**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
     @Override
     protected EClass eStaticClass() {
-		return RESTPackage.Literals.ENVIRONMENT_RESP;
-	}
+        return RESTPackage.Literals.ENVIRONMENT_RESP;
+    }
 
 } //EnvironmentRespImpl

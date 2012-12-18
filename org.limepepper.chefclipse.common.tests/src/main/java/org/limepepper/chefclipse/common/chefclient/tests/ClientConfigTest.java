@@ -18,55 +18,55 @@ import org.limepepper.chefclipse.tests.ConfigTest;
 public class ClientConfigTest extends ConfigTest {
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public static void main(String[] args) {
-		TestRunner.run(ClientConfigTest.class);
-	}
+        TestRunner.run(ClientConfigTest.class);
+    }
 
 	/**
-	 * Constructs a new Client Config test case with the given name.
-	 * <!-- begin-user-doc -->
+     * Constructs a new Client Config test case with the given name.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ClientConfigTest(String name) {
-		super(name);
-	}
+        super(name);
+    }
 
 	/**
-	 * Returns the fixture for this Client Config test case.
-	 * <!-- begin-user-doc -->
+     * Returns the fixture for this Client Config test case.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected ClientConfig getFixture() {
-		return (ClientConfig)fixture;
-	}
+        return (ClientConfig)fixture;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#setUp()
+     * @generated
+     */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(ChefclientFactory.eINSTANCE.createClientConfig());
-	}
+        setFixture(ChefclientFactory.eINSTANCE.createClientConfig());
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
+     * @see junit.framework.TestCase#tearDown()
+     * @generated
+     */
 	@Override
 	protected void tearDown() throws Exception {
-		setFixture(null);
-	}
+        setFixture(null);
+    }
 
 } //ClientConfigTest

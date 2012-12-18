@@ -11,108 +11,100 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 
 public class DependencyModel implements IResourceChangeListener {
-	private CookbookVersion mCookbook;
-	private Object selectedObject;
-	private IResource resource;
-	
-	private final ArrayList<IDependencyChangeListener> mDependencyChangeListeners =
-            new ArrayList<IDependencyChangeListener>();
-	
-	public DependencyModel()
-	{
-		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
-	}
-	
-	public void setCookbook(CookbookVersion cookbook)
-	{
-		mCookbook=cookbook;
-		selectedObject=null;
-		notifyDependencyChanged();
-	}
-	
-	public void setResource(IResource resource)
-	{
-		this.resource=resource;
-        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager
-                .instance().getElement(resource);
+    private CookbookVersion                            mCookbook;
+    private Object                                     selectedObject;
+    private IResource                                  resource;
+
+    private final ArrayList<IDependencyChangeListener> mDependencyChangeListeners = new ArrayList<IDependencyChangeListener>();
+
+    public DependencyModel() {
+        ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
+    }
+
+    public void setCookbook(CookbookVersion cookbook) {
+        mCookbook = cookbook;
+        selectedObject = null;
+        notifyDependencyChanged();
+    }
+
+    public void setResource(IResource resource) {
+        this.resource = resource;
+        CookbookVersion cookbook = (CookbookVersion) ChefRepositoryManager.INSTANCE
+                .getElement(resource);
         setCookbook(cookbook);
-	}
-	
-	public CookbookVersion getCookbook()
-	{
-		return mCookbook;
-	}
-	
-	public Object getSelected()
-	{
-		return selectedObject;
-	}
-	
-	public void setSelected(Object selected)
-	{
-		if(selected==selectedObject)
-		{
-			return;
-		}
-		selectedObject=selected;
-		notifyDependencyChanged();
-	}
-	
-	private IDependencyChangeListener[] getDependencyChangeListenerList() {
-		IDependencyChangeListener[] listeners = null;
+    }
+
+    public CookbookVersion getCookbook() {
+        return mCookbook;
+    }
+
+    public Object getSelected() {
+        return selectedObject;
+    }
+
+    public void setSelected(Object selected) {
+        if (selected == selectedObject) {
+            return;
+        }
+        selectedObject = selected;
+        notifyDependencyChanged();
+    }
+
+    private IDependencyChangeListener[] getDependencyChangeListenerList() {
+        IDependencyChangeListener[] listeners = null;
         synchronized (mDependencyChangeListeners) {
             if (mDependencyChangeListeners.size() == 0) {
                 return null;
             }
-            listeners =
-            		mDependencyChangeListeners.toArray(new IDependencyChangeListener[mDependencyChangeListeners.size()]);
+            listeners = mDependencyChangeListeners
+                    .toArray(new IDependencyChangeListener[mDependencyChangeListeners
+                            .size()]);
         }
         return listeners;
     }
-	
-	
+
     public void notifyDependencyChanged() {
-    	IDependencyChangeListener[] listeners = getDependencyChangeListenerList();
+        IDependencyChangeListener[] listeners = getDependencyChangeListenerList();
         if (listeners != null) {
             for (int i = 0; i < listeners.length; i++) {
                 listeners[i].dependencyChanged();
             }
         }
     }
-    
+
     public void addDependencyChangeListener(IDependencyChangeListener listener) {
         synchronized (mDependencyChangeListeners) {
-        	mDependencyChangeListeners.add(listener);
+            mDependencyChangeListeners.add(listener);
         }
     }
 
-    public void removeDependencyChangeListener(IDependencyChangeListener listener) {
+    public void removeDependencyChangeListener(
+            IDependencyChangeListener listener) {
         synchronized (mDependencyChangeListeners) {
-        	mDependencyChangeListeners.remove(listener);
+            mDependencyChangeListeners.remove(listener);
         }
     }
-    
-	public interface IDependencyChangeListener {
+
+    public interface IDependencyChangeListener {
         public void dependencyChanged();
     }
 
-	@Override
-	public void resourceChanged(IResourceChangeEvent event) {
-		if (event.getType() != IResourceChangeEvent.POST_CHANGE)
+    @Override
+    public void resourceChanged(IResourceChangeEvent event) {
+        if (event.getType() != IResourceChangeEvent.POST_CHANGE)
             return;
-		if(resource==null)
-			return;
-		IResourceDelta rootDelta = event.getDelta();
-		IResourceDelta cookbookDelta = rootDelta.findMember(resource.getFullPath());
-		if(cookbookDelta==null)
-		{
-			return;
-		}
-		setResource(cookbookDelta.getResource());
-	}
-	
-	public void dispose()
-	{
-		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
-	}
+        if (resource == null)
+            return;
+        IResourceDelta rootDelta = event.getDelta();
+        IResourceDelta cookbookDelta = rootDelta.findMember(resource
+                .getFullPath());
+        if (cookbookDelta == null) {
+            return;
+        }
+        setResource(cookbookDelta.getResource());
+    }
+
+    public void dispose() {
+        ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
+    }
 }

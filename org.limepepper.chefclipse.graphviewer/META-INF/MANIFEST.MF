@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.annotation;bundle-version="1.0.0",
  org.eclipse.zest.core;bundle-version="2.0.0",
  org.eclipse.zest.jface;bundle-version="2.0.0",
- org.eclipse.zest.layouts;bundle-version="2.0.0"
+ org.eclipse.zest.layouts;bundle-version="2.0.0",
+ org.junit4;bundle-version="4.8.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.limepepper.chefclipse.graphviewer,
@@ -29,5 +30,4 @@ Export-Package: org.limepepper.chefclipse.graphviewer,
  org.limepepper.chefclipse.graphviewer.handler,
  org.limepepper.chefclipse.graphviewer.model,
  org.limepepper.chefclipse.graphviewer.ui
-Bundle-ClassPath: .,
- junit.jar
+Bundle-ClassPath: .

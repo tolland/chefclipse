@@ -3,10 +3,12 @@
 package org.limepepper.chefclipse.common.cookbook;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
+
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 
@@ -29,35 +31,35 @@ import org.limepepper.chefclipse.common.chefserver.RunList;
  */
 public interface Recipe extends SandboxedObject, RubyFile, ChecksumFile, NamedObject, CookbookFile {
     /**
-	 * Returns the value of the '<em><b>Role</b></em>' reference list.
-	 * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.Role}.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Role</b></em>' reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.Role}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Role</em>' reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-	 * @return the value of the '<em>Role</em>' reference list.
-	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_Role()
-	 * @model
-	 * @generated
-	 */
+     * @return the value of the '<em>Role</em>' reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_Role()
+     * @model
+     * @generated
+     */
     EList<Role> getRole();
 
     /**
-	 * Returns the value of the '<em><b>Runlist</b></em>' reference list.
-	 * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.RunList}.
-	 * <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Runlist</b></em>' reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.RunList}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Runlist</em>' reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-	 * @return the value of the '<em>Runlist</em>' reference list.
-	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_Runlist()
-	 * @model
-	 * @generated
-	 */
+     * @return the value of the '<em>Runlist</em>' reference list.
+     * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getRecipe_Runlist()
+     * @model
+     * @generated
+     */
     EList<RunList> getRunlist();
 
 } // Recipe

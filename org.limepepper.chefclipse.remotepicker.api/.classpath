@@ -4,20 +4,4 @@
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
   <classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.osgi/3.8.1.v20120830-144521/org.eclipse.osgi-3.8.1.v20120830-144521.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.core.contenttype/3.4.200.v20120523-2004/org.eclipse.core.contenttype-3.4.200.v20120523-2004.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.equinox.preferences/3.5.0.v20120522-1841/org.eclipse.equinox.preferences-3.5.0.v20120522-1841.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.equinox.registry/3.5.200.v20120522-1841/org.eclipse.equinox.registry-3.5.200.v20120522-1841.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.equinox.common/3.6.100.v20120522-1841/org.eclipse.equinox.common-3.6.100.v20120522-1841.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.core.runtime/3.8.0.v20120521-2346/org.eclipse.core.runtime-3.8.0.v20120521-2346.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.core.expressions/3.4.401.v20120627-124442/org.eclipse.core.expressions-3.4.401.v20120627-124442.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.core.filesystem/1.3.200.v20120522-2012/org.eclipse.core.filesystem-1.3.200.v20120522-2012.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.core.jobs/3.5.300.v20120622-204750/org.eclipse.core.jobs-3.5.300.v20120622-204750.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.core.resources/3.8.1.v20120802-154922/org.eclipse.core.resources-3.8.1.v20120802-154922.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.equinox.app/1.3.100.v20120522-1841/org.eclipse.equinox.app-1.3.100.v20120522-1841.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.emf.common/2.8.0.v20120911-0500/org.eclipse.emf.common-2.8.0.v20120911-0500.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.emf.ecore/2.8.1.v20120911-0500/org.eclipse.emf.ecore-2.8.1.v20120911-0500.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.emf.ecore.xmi/2.8.0.v20120911-0500/org.eclipse.emf.ecore.xmi-2.8.0.v20120911-0500.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.eclipse.emf/2.6.0.v20120917-0436/org.eclipse.emf-2.6.0.v20120917-0436.jar"/>
-  <classpathentry kind="lib" path="/home/tomhodder/.m2/repository/p2/osgi/bundle/org.apache.commons.io/2.0.1.v201105210651/org.apache.commons.io-2.0.1.v201105210651.jar"/>
 </classpath>
