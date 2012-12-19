@@ -901,6 +901,97 @@ public class ModelPackage extends EPackageImpl {
     public static final int CHEF_SERVER_FEATURE_COUNT = CHEF_OBJECT_FEATURE_COUNT + 0;
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.model.CookbookFolder <em>Cookbook Folder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.model.CookbookFolder
+     * @see org.limepepper.chefclipse.model.ModelPackage#getCookbookFolder()
+     * @generated
+     */
+    public static final int COOKBOOK_FOLDER = 11;
+
+    /**
+     * The feature id for the '<em><b>Children</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER__CHILDREN = CHEF_FOLDER__CHILDREN;
+
+    /**
+     * The feature id for the '<em><b>Parent</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER__PARENT = CHEF_FOLDER__PARENT;
+
+    /**
+     * The feature id for the '<em><b>Path</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER__PATH = CHEF_FOLDER__PATH;
+
+    /**
+     * The feature id for the '<em><b>Project</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER__PROJECT = CHEF_FOLDER__PROJECT;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER__NAME = CHEF_FOLDER__NAME;
+
+    /**
+     * The feature id for the '<em><b>Resource</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER__RESOURCE = CHEF_FOLDER__RESOURCE;
+
+    /**
+     * The feature id for the '<em><b>Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER__TYPE = CHEF_FOLDER__TYPE;
+
+    /**
+     * The feature id for the '<em><b>Members</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER__MEMBERS = CHEF_FOLDER__MEMBERS;
+
+    /**
+     * The number of structural features of the '<em>Cookbook Folder</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int COOKBOOK_FOLDER_FEATURE_COUNT = CHEF_FOLDER_FEATURE_COUNT + 0;
+
+    /**
      * The meta object id for the '<em>IResource</em>' data type.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -908,7 +999,7 @@ public class ModelPackage extends EPackageImpl {
      * @see org.limepepper.chefclipse.model.ModelPackage#getIResource()
      * @generated
      */
-    public static final int IRESOURCE = 11;
+    public static final int IRESOURCE = 12;
 
     /**
      * <!-- begin-user-doc -->
@@ -986,6 +1077,13 @@ public class ModelPackage extends EPackageImpl {
      * @generated
      */
     private EClass chefServerEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass cookbookFolderEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -1295,6 +1393,19 @@ public class ModelPackage extends EPackageImpl {
     }
 
     /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.model.CookbookFolder <em>Cookbook Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Cookbook Folder</em>'.
+     * @see org.limepepper.chefclipse.model.CookbookFolder
+     * @generated
+     */
+    public EClass getCookbookFolder() {
+        return cookbookFolderEClass;
+    }
+
+
+    /**
      * Returns the meta object for data type '{@link org.eclipse.core.resources.IResource <em>IResource</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1367,6 +1478,8 @@ public class ModelPackage extends EPackageImpl {
 
         chefServerEClass = createEClass(CHEF_SERVER);
 
+        cookbookFolderEClass = createEClass(COOKBOOK_FOLDER);
+
         // Create data types
         iResourceEDataType = createEDataType(IRESOURCE);
     }
@@ -1408,6 +1521,7 @@ public class ModelPackage extends EPackageImpl {
         chefResourceEClass.getESuperTypes().add(this.getChefObject());
         chefWorkspaceEClass.getESuperTypes().add(this.getChefContainer());
         chefServerEClass.getESuperTypes().add(this.getChefObject());
+        cookbookFolderEClass.getESuperTypes().add(this.getChefFolder());
 
         // Initialize classes and features; add operations and parameters
         initEClass(chefContainerEClass, ChefContainer.class, "ChefContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1442,6 +1556,8 @@ public class ModelPackage extends EPackageImpl {
         initEClass(changeTrackerEClass, ChangeTracker.class, "ChangeTracker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(chefServerEClass, ChefServer.class, "ChefServer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        initEClass(cookbookFolderEClass, CookbookFolder.class, "CookbookFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Initialize data types
         initEDataType(iResourceEDataType, IResource.class, "IResource", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -1636,6 +1752,16 @@ public class ModelPackage extends EPackageImpl {
          * @generated
          */
         public static final EClass CHEF_SERVER = eINSTANCE.getChefServer();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.model.CookbookFolder <em>Cookbook Folder</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.model.CookbookFolder
+         * @see org.limepepper.chefclipse.model.ModelPackage#getCookbookFolder()
+         * @generated
+         */
+        public static final EClass COOKBOOK_FOLDER = eINSTANCE.getCookbookFolder();
 
         /**
          * The meta object literal for the '<em>IResource</em>' data type.

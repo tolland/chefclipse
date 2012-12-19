@@ -9,6 +9,7 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.ui.Activator;
 import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
+import org.limepepper.chefclipse.model.ChefResource;
 import org.limepepper.chefclipse.navigator.NavigatorActivator;
 import org.limepepper.chefclipse.navigator.providers.TestTreeContentProvider.MenuLevelHolder;
 
@@ -29,11 +30,9 @@ public class TestTreeLabelProvider extends AdapterFactoryLabelProvider {
         } else if (element instanceof CookbookVersion) {
             return super.getImage(element);
         } else if (element instanceof MenuLevelHolder) {
-            return     Activator
-                    .imageDescriptorFromPlugin(
-                            NavigatorActivator.PLUGIN_ID,
-                            "icons/file_obj.png")
-                            .createImage();
+            return Activator.imageDescriptorFromPlugin(
+                    NavigatorActivator.PLUGIN_ID, "icons/file_obj.png")
+                    .createImage();
             // imageDescriptorFromPlugin(getBundle().getSymbolicName(),
             // "icons/iu_obj.gif")
 
@@ -41,8 +40,6 @@ public class TestTreeLabelProvider extends AdapterFactoryLabelProvider {
         } else if (element instanceof EObject) {
             return super.getImage(element);
         } else if (element instanceof String) {
-
-
 
         }
         return null;
@@ -61,7 +58,9 @@ public class TestTreeLabelProvider extends AdapterFactoryLabelProvider {
                                            * return super.getText(element);
                                            */
         } else if (element instanceof EObject) {
+
             return super.getText(element);
+
         } else if (element instanceof String) {
             return (String) element;
         } else if (element instanceof MenuLevelHolder) {
@@ -71,5 +70,4 @@ public class TestTreeLabelProvider extends AdapterFactoryLabelProvider {
         }
         return null;
     }
-
 }

@@ -6,25 +6,26 @@ package org.limepepper.chefclipse.model.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.limepepper.chefclipse.model.ChefFolder;
+
+import org.limepepper.chefclipse.model.CookbookFolder;
 
 /**
- * This is the item provider adapter for a {@link org.limepepper.chefclipse.model.ChefFolder} object.
+ * This is the item provider adapter for a {@link org.limepepper.chefclipse.model.CookbookFolder} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChefFolderItemProvider
-    extends ChefContainerItemProvider
+public class CookbookFolderItemProvider
+    extends ChefFolderItemProvider
     implements
         IEditingDomainItemProvider,
         IStructuredItemContentProvider,
@@ -37,7 +38,7 @@ public class ChefFolderItemProvider
      * <!-- end-user-doc -->
      * @generated
      */
-    public ChefFolderItemProvider(AdapterFactory adapterFactory) {
+    public CookbookFolderItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -57,14 +58,14 @@ public class ChefFolderItemProvider
     }
 
     /**
-     * This returns ChefFolder.gif.
+     * This returns CookbookFolder.gif.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ChefFolder"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/CookbookFolder"));
     }
 
     /**
@@ -75,9 +76,9 @@ public class ChefFolderItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((ChefFolder)object).getName();
+        String label = ((CookbookFolder)object).getName();
         return label == null || label.length() == 0 ?
-            getString("_UI_ChefFolder_type") :
+            getString("_UI_CookbookFolder_type") :
             label;
     }
 

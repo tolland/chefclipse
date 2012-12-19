@@ -185,6 +185,11 @@ public class ChefContainerItemProvider
             (createChildParameter
                 (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
                  ModelFactory.eINSTANCE.createChefWorkspace()));
+
+        newChildDescriptors.add
+            (createChildParameter
+                (ModelPackage.Literals.CHEF_CONTAINER__MEMBERS,
+                 ModelFactory.eINSTANCE.createCookbookFolder()));
     }
 
 }
