@@ -3,9 +3,6 @@
 <provider id="org.eclipse.egit.core.GitProvider">
 <project reference="1.0,git@github.com:tolland/chefclipse,prealpha,com.sun.jersey.bundle"/>
 <project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.eclipse.ui.console"/>
-<project reference="1.0,git://git.eclipse.org/gitroot/gef/org.eclipse.zest.git,master,org.eclipse.zest.core"/>
-<project reference="1.0,git://git.eclipse.org/gitroot/gef/org.eclipse.zest.git,master,org.eclipse.zest.jface"/>
-<project reference="1.0,git://git.eclipse.org/gitroot/gef/org.eclipse.zest.git,master,org.eclipse.zest.layouts"/>
 <project reference="1.0,git@github.com:limepepper/emfjson.git,monkey-patch-02,bundles/org.eclipselabs.emfjson"/>
 <project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse"/>
 <project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.api"/>

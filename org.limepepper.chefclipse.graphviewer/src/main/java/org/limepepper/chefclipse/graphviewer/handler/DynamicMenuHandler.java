@@ -15,6 +15,7 @@ import org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor;
 import org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditorInput;
 import org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor;
 import org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditorInput;
+import org.limepepper.chefclipse.model.CookbookFolder;
 
 public class DynamicMenuHandler extends AbstractHandler {
 
@@ -31,6 +32,8 @@ public class DynamicMenuHandler extends AbstractHandler {
     public Object execute(ExecutionEvent event) throws ExecutionException {
 
         String commandParameter = event.getParameter("commandParameter");
+
+        System.err.println("processing dynamic handle");
 
         if (commandParameter == null)
             return null;
@@ -53,6 +56,28 @@ public class DynamicMenuHandler extends AbstractHandler {
             if (firstElement instanceof IAdaptable) {
                 IResource resource = (IResource) ((IAdaptable) firstElement)
                         .getAdapter(IResource.class);
+                if (resource != null) {
+
+                    if (commandParameter.equals("Dependency.Graph.Editor")) {
+
+                        page.openEditor(
+                                new DependencyGraphEditorInput(resource),
+                                DependencyGraphEditor.ID);
+                        return null;
+                    } else if (commandParameter
+                            .equals("Structure.Graph.Editor")) {
+
+                        page.openEditor(new CookbookGraphEditorInput(resource),
+                                CookbookGraphEditor.ID);
+                        return null;
+                    } else {
+
+                        // @todo error catching
+                    }
+                }
+            } else if (firstElement instanceof CookbookFolder) {
+                IResource resource = (IResource) ((CookbookFolder) firstElement)
+                        .getResource();
                 if (resource != null) {
 
                     if (commandParameter.equals("Dependency.Graph.Editor")) {
