@@ -9,6 +9,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
@@ -17,6 +18,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.limepepper.chefclipse.model.CookbookFolder;
+import org.limepepper.chefclipse.model.ModelPackage;
 
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.model.CookbookFolder} object.
@@ -53,8 +55,31 @@ public class CookbookFolderItemProvider
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addCookbookVersionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Cookbook Version feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addCookbookVersionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_CookbookFolder_cookbookVersion_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFolder_cookbookVersion_feature", "_UI_CookbookFolder_type"),
+                 ModelPackage.Literals.COOKBOOK_FOLDER__COOKBOOK_VERSION,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
     }
 
     /**
@@ -79,7 +104,7 @@ public class CookbookFolderItemProvider
         String label = ((CookbookFolder)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_CookbookFolder_type") :
-            label;
+            getString("_UI_CookbookFolder_type") + " " + label;
     }
 
     /**

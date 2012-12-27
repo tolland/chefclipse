@@ -159,6 +159,13 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import org.limepepper.chefclipse.model.provider.ModelItemProviderAdapterFactory;
 
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.limepepper.chefclipse.REST.provider.RESTItemProviderAdapterFactory;
+import org.limepepper.chefclipse.common.chefclient.provider.ChefclientItemProviderAdapterFactory;
+import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProviderAdapterFactory;
+import org.limepepper.chefclipse.common.cookbook.provider.CookbookItemProviderAdapterFactory;
+import org.limepepper.chefclipse.common.knife.provider.KnifeItemProviderAdapterFactory;
+import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory;
+import org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory;
 
 
 /**
@@ -694,6 +701,13 @@ public class ModelEditor
 
         adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new ModelItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new ChefclipseItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new ChefserverItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new ChefclientItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new CookbookItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new WorkstationItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new KnifeItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new RESTItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
         // Create the command stack that will notify this editor as commands are executed.
@@ -1589,7 +1603,7 @@ public class ModelEditor
      */
     public void gotoMarker(IMarker marker) {
         try {
-            if (marker.getType().equals(EValidator.MARKER)) {
+            if (marker.isSubtypeOf(EValidator.MARKER)) {
                 String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
                 if (uriAttribute != null) {
                     URI uri = URI.createURI(uriAttribute);

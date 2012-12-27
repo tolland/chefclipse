@@ -78,7 +78,7 @@ public class ChefFolderItemProvider
         String label = ((ChefFolder)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefFolder_type") :
-            label;
+            getString("_UI_ChefFolder_type") + " " + label;
     }
 
     /**

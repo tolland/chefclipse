@@ -102,8 +102,11 @@
   </eClassifiers>
   <eSubpackages name="chefserver" nsURI="http://limepepper.org/v1/chefclipse/chefserver"
       nsPrefix="org.limepepper.chefclipse.chefserver">
-    <eClassifiers xsi:type="ecore:EClass" name="Environment"/>
-    <eClassifiers xsi:type="ecore:EClass" name="DataBag">
+    <eClassifiers xsi:type="ecore:EClass" name="Environment" eSuperTypes="#//NamedDescribedObject">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="override_attributes"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataBag" eSuperTypes="#//NamedDescribedObject">
       <eStructuralFeatures xsi:type="ecore:EReference" name="server" eType="#//chefserver/Server"
           eOpposite="#//chefserver/Server/databags"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"

@@ -68,13 +68,49 @@ public interface ChefserverPackage extends EPackage {
     int ENVIRONMENT = 0;
 
     /**
+     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ENVIRONMENT__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ENVIRONMENT__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+
+    /**
+     * The feature id for the '<em><b>ID</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ENVIRONMENT__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+
+    /**
+     * The feature id for the '<em><b>Override attributes</b></em>' attribute list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ENVIRONMENT__OVERRIDE_ATTRIBUTES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+
+    /**
      * The number of structural features of the '<em>Environment</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int ENVIRONMENT_FEATURE_COUNT = 0;
+    int ENVIRONMENT_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagImpl <em>Data Bag</em>}' class.
@@ -87,13 +123,40 @@ public interface ChefserverPackage extends EPackage {
     int DATA_BAG = 1;
 
     /**
+     * The feature id for the '<em><b>Description</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DATA_BAG__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DATA_BAG__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+
+    /**
+     * The feature id for the '<em><b>ID</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DATA_BAG__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+
+    /**
      * The feature id for the '<em><b>Server</b></em>' container reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int DATA_BAG__SERVER = 0;
+    int DATA_BAG__SERVER = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -102,7 +165,7 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DATA_BAG__ITEMS = 1;
+    int DATA_BAG__ITEMS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Data Bag</em>' class.
@@ -111,7 +174,7 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DATA_BAG_FEATURE_COUNT = 2;
+    int DATA_BAG_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RoleImpl <em>Role</em>}' class.
@@ -812,6 +875,17 @@ public interface ChefserverPackage extends EPackage {
     EClass getEnvironment();
 
     /**
+     * Returns the meta object for the attribute list '{@link org.limepepper.chefclipse.common.chefserver.Environment#getOverride_attributes <em>Override attributes</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute list '<em>Override attributes</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.Environment#getOverride_attributes()
+     * @see #getEnvironment()
+     * @generated
+     */
+    EAttribute getEnvironment_Override_attributes();
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.DataBag <em>Data Bag</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1391,6 +1465,14 @@ public interface ChefserverPackage extends EPackage {
          * @generated
          */
         EClass ENVIRONMENT = eINSTANCE.getEnvironment();
+
+        /**
+         * The meta object literal for the '<em><b>Override attributes</b></em>' attribute list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute ENVIRONMENT__OVERRIDE_ATTRIBUTES = eINSTANCE.getEnvironment_Override_attributes();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagImpl <em>Data Bag</em>}' class.

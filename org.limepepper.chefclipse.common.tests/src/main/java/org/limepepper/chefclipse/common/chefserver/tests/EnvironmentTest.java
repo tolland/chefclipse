@@ -8,6 +8,7 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.tests.DescribedObjectTest;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,15 +16,7 @@ import org.limepepper.chefclipse.common.chefserver.Environment;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EnvironmentTest extends TestCase {
-
-	/**
-     * The fixture for this Environment test case.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected Environment fixture = null;
+public class EnvironmentTest extends DescribedObjectTest {
 
 	/**
      * <!-- begin-user-doc -->
@@ -45,23 +38,14 @@ public class EnvironmentTest extends TestCase {
     }
 
 	/**
-     * Sets the fixture for this Environment test case.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected void setFixture(Environment fixture) {
-        this.fixture = fixture;
-    }
-
-	/**
      * Returns the fixture for this Environment test case.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
-	protected Environment getFixture() {
-        return fixture;
+	@Override
+    protected Environment getFixture() {
+        return (Environment)fixture;
     }
 
 	/**

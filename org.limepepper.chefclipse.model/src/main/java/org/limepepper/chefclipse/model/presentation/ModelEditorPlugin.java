@@ -7,6 +7,7 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 
 /**
  * This is the central singleton for the Model editor plugin.
@@ -40,6 +41,7 @@ public final class ModelEditorPlugin extends EMFPlugin {
     public ModelEditorPlugin() {
         super
             (new ResourceLocator [] {
+                ChefclipseEditPlugin.INSTANCE,
             });
     }
 

@@ -32,5 +32,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="ChangeTracker"/>
   <eClassifiers xsi:type="ecore:EDataType" name="IResource" instanceClassName="org.eclipse.core.resources.IResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="ChefServer" eSuperTypes="#//ChefObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CookbookFolder" eSuperTypes="#//ChefFolder"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CookbookFolder" eSuperTypes="#//ChefFolder">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cookbookVersion" lowerBound="1"
+        eType="ecore:EClass chefclipse.ecore#//cookbook/CookbookVersion"/>
+  </eClassifiers>
 </ecore:EPackage>

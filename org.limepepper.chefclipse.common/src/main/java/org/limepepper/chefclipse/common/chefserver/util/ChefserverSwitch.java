@@ -76,12 +76,18 @@ public class ChefserverSwitch<T> extends Switch<T> {
             case ChefserverPackage.ENVIRONMENT: {
                 Environment environment = (Environment)theEObject;
                 T result = caseEnvironment(environment);
+                if (result == null) result = caseNamedDescribedObject(environment);
+                if (result == null) result = caseDescribedObject(environment);
+                if (result == null) result = caseNamedObject(environment);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
             case ChefserverPackage.DATA_BAG: {
                 DataBag dataBag = (DataBag)theEObject;
                 T result = caseDataBag(dataBag);
+                if (result == null) result = caseNamedDescribedObject(dataBag);
+                if (result == null) result = caseDescribedObject(dataBag);
+                if (result == null) result = caseNamedObject(dataBag);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }

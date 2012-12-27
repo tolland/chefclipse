@@ -35,13 +35,13 @@ public class CookbookResourceMapping extends ContainerResourceMapping {
 
     @Override
     public String getModelProviderId() {
-        // TODO Auto-generated method stub
+
         return null;
     }
 
     @Override
     public IProject[] getProjects() {
-        // TODO Auto-generated method stub
+
         return null;
     }
 
