@@ -13,12 +13,16 @@ Require-Bundle: org.junit4;bundle-version="4.8.1",
  com.ibm.icu;bundle-version="4.4.2",
  org.eclipse.jdt.annotation;bundle-version="1.0.0",
  com.sun.jersey.bundle;bundle-version="1.0.0",
- org.eclipselabs.emfjson;bundle-version="0.5.0",
  org.limepepper.chefclipse.common;bundle-version="1.0.0";visibility:=reexport,
  org.limepepper.chefclipse.logger;bundle-version="1.0.0"
 Bundle-Classpath: .,
- lib/bcprov-jdk16.jar
-Export-Package: org.limepepper.chefclipse.chefserver.api,
+ lib/bcprov-jdk16.jar,
+ lib/org.eclipselabs.emfjson.jar
+Export-Package: org.eclipselabs.emfjson,
+ org.eclipselabs.emfjson.common,
+ org.eclipselabs.emfjson.internal,
+ org.eclipselabs.emfjson.resource,
+ org.limepepper.chefclipse.chefserver.api,
  org.limepepper.chefclipse.chefserver.api.util,
  org.limepepper.chefclipse.knife.api
 Import-Package: org.codehaus.jackson;version="1.6.0",
