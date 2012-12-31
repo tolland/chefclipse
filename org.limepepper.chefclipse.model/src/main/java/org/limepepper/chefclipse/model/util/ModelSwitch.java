@@ -153,6 +153,16 @@ public class ModelSwitch<T> extends Switch<T> {
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
+            case ModelPackage.COOKBOOK_FOLDER: {
+                CookbookFolder cookbookFolder = (CookbookFolder)theEObject;
+                T result = caseCookbookFolder(cookbookFolder);
+                if (result == null) result = caseChefFolder(cookbookFolder);
+                if (result == null) result = caseChefContainer(cookbookFolder);
+                if (result == null) result = caseChefResource(cookbookFolder);
+                if (result == null) result = caseChefObject(cookbookFolder);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
             default: return defaultCase(theEObject);
         }
     }
@@ -319,6 +329,21 @@ public class ModelSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseChefServer(ChefServer object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Cookbook Folder</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Cookbook Folder</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseCookbookFolder(CookbookFolder object) {
         return null;
     }
 

@@ -243,6 +243,15 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EAttribute getEnvironment_Override_attributes() {
+        return (EAttribute)environmentEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public EClass getDataBag() {
         return dataBagEClass;
     }
@@ -726,6 +735,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
         // Create classes and their features
         environmentEClass = createEClass(ENVIRONMENT);
+        createEAttribute(environmentEClass, ENVIRONMENT__OVERRIDE_ATTRIBUTES);
 
         dataBagEClass = createEClass(DATA_BAG);
         createEReference(dataBagEClass, DATA_BAG__SERVER);
@@ -825,6 +835,8 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
         // Set bounds for type parameters
 
         // Add supertypes to classes
+        environmentEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
+        dataBagEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
         roleEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
         nodeEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
         dataBagItemEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
@@ -835,6 +847,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
         // Initialize classes and features; add operations and parameters
         initEClass(environmentEClass, Environment.class, "Environment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getEnvironment_Override_attributes(), ecorePackage.getEString(), "override_attributes", null, 0, -1, Environment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dataBagEClass, DataBag.class, "DataBag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDataBag_Server(), this.getServer(), this.getServer_Databags(), "server", null, 0, 1, DataBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

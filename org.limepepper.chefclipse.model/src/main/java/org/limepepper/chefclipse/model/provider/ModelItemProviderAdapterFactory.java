@@ -325,6 +325,29 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.model.CookbookFolder} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected CookbookFolderItemProvider cookbookFolderItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.model.CookbookFolder}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createCookbookFolderAdapter() {
+        if (cookbookFolderItemProvider == null) {
+            cookbookFolderItemProvider = new CookbookFolderItemProvider(this);
+        }
+
+        return cookbookFolderItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -434,6 +457,7 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
         if (chefWorkspaceItemProvider != null) chefWorkspaceItemProvider.dispose();
         if (changeTrackerItemProvider != null) changeTrackerItemProvider.dispose();
         if (chefServerItemProvider != null) chefServerItemProvider.dispose();
+        if (cookbookFolderItemProvider != null) cookbookFolderItemProvider.dispose();
     }
 
 }

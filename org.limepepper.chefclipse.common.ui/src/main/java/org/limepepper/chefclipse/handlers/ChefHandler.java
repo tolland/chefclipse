@@ -28,18 +28,21 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
+import org.limepepper.chefclipse.common.ui.Activator;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.compare.CookbookCompareInput;
+import org.limepepper.chefclipse.compare.Utilities;
+import org.limepepper.chefclipse.model.CookbookFolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
- *
- *
+ * 
+ * 
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
- *
+ * 
  */
 
 @SuppressWarnings("unused")
@@ -61,7 +64,7 @@ public class ChefHandler extends AbstractHandler implements
 
     /**
      * The constructor.
-     *
+     * 
      */
     public ChefHandler() {
     }
@@ -69,7 +72,7 @@ public class ChefHandler extends AbstractHandler implements
     /**
      * the command has been executed, so extract extract the needed information
      * from the application context.
-     *
+     * 
      */
     public Object execute(ExecutionEvent event) throws ExecutionException {
         IWorkbenchWindow window = HandlerUtil
@@ -104,14 +107,25 @@ public class ChefHandler extends AbstractHandler implements
 
             logger.error("made the call to the coompare cookbook");
 
-            if (item instanceof IResource) {
+            if (item instanceof CookbookFolder) {
 
-                logger.error("is resource");
+                if (selection.size() == 1) {
+                    Activator.log("is cookbook folder");
+                    Utilities.compareWithServer((CookbookFolder) item);
+
+                } else {
+                    Activator.log("need on 1 selection to compare with server");
+                }
+
+            } else if (item instanceof IResource) {
+
+                Activator.log("is resource");
                 if (selection.size() == 2) {
+                    logger.debug("selection size==2");
 
                     IResource sel1 = (IResource) selection.toArray()[0];
                     IResource sel2 = (IResource) selection.toArray()[1];
-                    logger.debug("cakkubg");
+
                     CompareUI.openCompareEditor(new CookbookCompareInput(sel1,
                             sel2));
 
@@ -123,7 +137,7 @@ public class ChefHandler extends AbstractHandler implements
                     Properties props = new Properties();
                     try {
                         props.load(new FileInputStream(
-                                "resources/opscode-tests.properties"));
+                                "opscode-tests.properties"));
 
                         KnifeConfig knifeConfig = KnifeFactory.eINSTANCE
                                 .createKnifeConfig();
@@ -150,7 +164,7 @@ public class ChefHandler extends AbstractHandler implements
         /*
          * EObject eObject = CookbookFactory.eINSTANCE
          * .create(CookbookPackage.eINSTANCE.getCookbookVersion());
-         *
+         * 
          * Resource eResource = eObject.eResource();
          * URI eUri = eResource.getURI();
          * if (eUri.isPlatformResource()) {
@@ -165,7 +179,7 @@ public class ChefHandler extends AbstractHandler implements
 
     /**
      * Return the path that was active when the menu item was selected.
-     *
+     * 
      * @return IWorkbenchPage
      */
     protected IWorkbenchPage getTargetPage() {

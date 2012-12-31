@@ -75,12 +75,12 @@ public class Activator extends AbstractUIPlugin {
 
     public static void log(Object object) {
 
-        logger.info("log message: {}");
+        logger.info("log message: {}", object);
     }
 
     public static void debug(Object object) {
 
-        logger.debug("log message: {}");
+        logger.debug("log message: {}", object);
     }
 
 }

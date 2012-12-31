@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EMFJs Junit
+Bundle-SymbolicName: org.eclipselabs.emfjson.junit;singleton:=true
+Bundle-Version: 0.5.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: eclipselabs
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipselabs.emfjson.junit.model,
+ org.eclipselabs.emfjson.junit.model.impl,
+ org.eclipselabs.emfjson.junit.model.util
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.7.0"
+Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipselabs.emfjson,
+ org.eclipselabs.emfjson.internal,
+ org.eclipselabs.emfjson.resource,
+ org.junit,
+ org.junit.runner,
+ org.junit.runners,
+ org.osgi.framework;version="[1.0.0,2.0.0)"
+Bundle-Activator: org.eclipselabs.emfjson.junit.Activator

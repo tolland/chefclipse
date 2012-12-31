@@ -16,6 +16,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.model.CookbookFolder;
 
 public class CookbookCompareInput extends CompareEditorInput {
 
@@ -24,9 +29,10 @@ public class CookbookCompareInput extends CompareEditorInput {
     private IStructureComparator fAncestor;
     private IStructureComparator fLeft;
     private IStructureComparator fRight;
-    private IResource            fAncestorResource;
-    private IResource            fLeftResource;
-    private IResource            fRightResource;
+
+    private Object               fAncestorResource;
+    private Object               fLeftResource;
+    private Object               fRightResource;
 
     public CookbookCompareInput(IResource item1, IResource item2) {
         super(new CompareConfiguration());
@@ -34,16 +40,29 @@ public class CookbookCompareInput extends CompareEditorInput {
         fLeftResource = item1;
         fRightResource = item2;
 
-        fLeft = getStructure(fLeftResource);
-        fRight = getStructure(fRightResource);
+        fLeft = getStructure(item1);
+        fRight = getStructure(item2);
+
+    }
+
+    public CookbookCompareInput(IResource item1, ServerCookbookVersion item2) {
+        super(new CompareConfiguration());
+
+        fLeftResource = item1;
+        fRightResource = item2;
+
+        fLeft = getStructure((IResource) fLeftResource);
+        fRight = getStructure(item2);
 
     }
 
     protected Object prepareInput(IProgressMonitor pm) {
-        ResourceNode ancestor = null;
-        System.out.println("preparing input22");
-        ResourceNode left = new ResourceNode((IResource) fLeftResource);
-        ResourceNode right = new ResourceNode((IResource) fRightResource);
+        System.out.println("preparing input");
+
+        // ResourceNode ancestor = null;
+
+        // ResourceNode left = new ResourceNode((IResource) fLeftResource);
+        // ResourceNode right = new ResourceNode((IResource) fRightResource);
 
         Differencer d = new Differencer() {
             protected Object visit(Object parent, int description,
@@ -71,10 +90,53 @@ public class CookbookCompareInput extends CompareEditorInput {
                 return null;
             return new FilteredBufferedResourceNode(child);
         }
+        
+        @Override
+        public boolean equals(Object other) {
+            return super.equals(other);
+        }
+        
+        @Override
+        public int hashCode() {
+            return super.hashCode();
+        }
+        
     }
 
-    private IStructureComparator getStructure(IResource input) {
+    public IStructureComparator getStructure(IResource input) {
 
+        System.out.println("object is:" + input);
+
+        if ((input instanceof ResourceNode)) {
+
+            System.out.println(((ResourceNode) input).getType());
+            if (((ResourceNode) input).getType().equals("cookbook")) {
+                System.out.println(((ITypedElement) input).getType());
+
+                if ((((ResourceNode) input).getResource()).getParent()
+                        .getParent() != null) {
+
+                    if ((((ResourceNode) input).getResource()).getParent()
+                            .getParent().getName().equals("cookbooks")) {
+
+                        System.err.println("here");
+                        System.err.println("here2");
+
+                        EObject eObject = ChefRepositoryManager.INSTANCE
+                                .getElement((((ResourceNode) input)
+                                        .getResource()).getParent());
+
+                        IResource cookbookResource = (((ResourceNode) input)
+                                .getResource()).getParent();
+
+                        if (cookbookResource instanceof IContainer)
+                            return new FilteredBufferedResourceNode(
+                                    cookbookResource);
+
+                    }
+                }
+            }
+        }
         if (input instanceof IContainer)
             return new FilteredBufferedResourceNode(input);
 
@@ -89,6 +151,21 @@ public class CookbookCompareInput extends CompareEditorInput {
         return null;
     }
 
+    @SuppressWarnings("unused")
+    private IStructureComparator getStructure(CookbookFolder input) {
+
+        if (input.getResource() != null)
+            return new FilteredBufferedResourceNode(input.getResource());
+
+        return null;
+    }
+
+    private IStructureComparator getStructure(ServerCookbookVersion input) {
+
+        return new CookbookFolderNode(input);
+
+    }
+
     @Override
     public void saveChanges(IProgressMonitor monitor) throws CoreException {
 
@@ -97,7 +174,7 @@ public class CookbookCompareInput extends CompareEditorInput {
 
     @Override
     public boolean isSaveNeeded() {
-        return true;
+        return false;
     }
 
     private static String normalizeCase(String s) {

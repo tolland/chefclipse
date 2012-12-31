@@ -75,10 +75,10 @@ public class ChefFolderItemProvider
      */
     @Override
     public String getText(Object object) {
-        String label = ((IResource)((ChefFolder)object).getResource()).getName();
+        String label = ((ChefFolder)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_ChefFolder_type") :
-            label;
+            getString("_UI_ChefFolder_type") + " " + label;
     }
 
     /**

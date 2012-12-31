@@ -5,6 +5,7 @@ package org.limepepper.chefclipse.common.chefserver;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
+import org.limepepper.chefclipse.NamedDescribedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DataBag extends EObject {
+public interface DataBag extends NamedDescribedObject {
     /**
      * Returns the value of the '<em><b>Server</b></em>' container reference.
      * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.chefserver.Server#getDatabags <em>Databags</em>}'.

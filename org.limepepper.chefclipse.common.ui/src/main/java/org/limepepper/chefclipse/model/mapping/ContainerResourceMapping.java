@@ -19,7 +19,7 @@ public class ContainerResourceMapping extends
 
     @Override
     public IProject[] getProjects() {
-        // TODO Auto-generated method stub
+
         return null;
     }
     /* (non-Javadoc)

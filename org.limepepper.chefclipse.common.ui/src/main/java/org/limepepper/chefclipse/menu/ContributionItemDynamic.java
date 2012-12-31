@@ -50,6 +50,20 @@ public class ContributionItemDynamic extends CompoundContributionItem {
                         + knifeConfig.getChef_server_url());
             }
 
+        } else if (ChefTester.testResource(item, "isCookbookFolder")) {
+
+            IResource resource = ((org.limepepper.chefclipse.model.CookbookFolder) item)
+                    .getResource();
+
+            // IResource resource = ((IResource)().getResource());
+
+            for (KnifeConfig knifeConfig : ChefRepositoryManager.INSTANCE
+                    .getKnives(resource.getProject())) {
+
+                menuItems.put("compare.cookbook", "Compare with ... "
+                        + knifeConfig.getChef_server_url());
+            }
+
         }
         /*
          * if (ChefTester.testResource(item, "isKnifeConfig")) {

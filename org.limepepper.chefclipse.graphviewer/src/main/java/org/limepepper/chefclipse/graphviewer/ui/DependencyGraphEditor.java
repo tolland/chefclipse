@@ -77,13 +77,13 @@ public class DependencyGraphEditor extends EditorPart implements
 
     @Override
     public void doSave(IProgressMonitor monitor) {
-        // TODO Auto-generated method stub
+
 
     }
 
     @Override
     public void doSaveAs() {
-        // TODO Auto-generated method stub
+
 
     }
 
@@ -108,7 +108,7 @@ public class DependencyGraphEditor extends EditorPart implements
 
     @Override
     public boolean isSaveAsAllowed() {
-        // TODO Auto-generated method stub
+
         return false;
     }
 
@@ -145,7 +145,7 @@ public class DependencyGraphEditor extends EditorPart implements
 
     @Override
     public void setFocus() {
-        // TODO Auto-generated method stub
+
 
     }
     
@@ -200,7 +200,7 @@ public class DependencyGraphEditor extends EditorPart implements
 
         @Override
         public void widgetSelected(SelectionEvent e) {
-            List graphNodes = graph.getSelection();
+            List<?> graphNodes = graph.getSelection();
             if (graphNodes != null && graphNodes.size() > 0) {
                 if (selectedGraphNode != null) {
                     selectedGraphNode.getFigure().setBackgroundColor(
@@ -270,12 +270,12 @@ public class DependencyGraphEditor extends EditorPart implements
         }
 
         public void dispose() {
-            // TODO Auto-generated method stub
+
 
         }
 
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-            // TODO Auto-generated method stub
+
 
         }
 
@@ -336,7 +336,7 @@ public class DependencyGraphEditor extends EditorPart implements
 
         @Override
         public void selfStyleNode(Object element, GraphNode node) {
-            // TODO Auto-generated method stub
+
 
         }
 
@@ -419,7 +419,7 @@ public class DependencyGraphEditor extends EditorPart implements
                                         input.getResource()),
                                 CookbookGraphEditor.ID);
             } catch (PartInitException e) {
-                // TODO Auto-generated catch block
+    
                 e.printStackTrace();
             }
         }
