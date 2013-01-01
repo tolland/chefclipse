@@ -11,6 +11,7 @@ import org.limepepper.chefclipse.SandboxedObject;
 
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +30,7 @@ import org.limepepper.chefclipse.common.chefserver.RunList;
  * @model
  * @generated
  */
-public interface Recipe extends SandboxedObject, RubyFile, ChecksumFile, NamedObject, CookbookFile {
+public interface Recipe extends SandboxedObject, RubyFile, ChecksumFile, NamedObject, CookbookFile, RunListItem {
     /**
      * Returns the value of the '<em><b>Role</b></em>' reference list.
      * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.Role}.

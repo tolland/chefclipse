@@ -214,13 +214,31 @@ public interface ChefserverPackage extends EPackage {
     int ROLE__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
+     * The feature id for the '<em><b>Run list</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ROLE__RUN_LIST = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Environment</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int ROLE__ENVIRONMENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+
+    /**
      * The number of structural features of the '<em>Role</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int ROLE_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+    int ROLE_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl <em>Node</em>}' class.
@@ -260,22 +278,13 @@ public interface ChefserverPackage extends EPackage {
     int NODE__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
-     * The feature id for the '<em><b>Run list</b></em>' containment reference list.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int NODE__RUN_LIST = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
-
-    /**
      * The feature id for the '<em><b>Environment</b></em>' reference.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int NODE__ENVIRONMENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+    int NODE__ENVIRONMENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Server</b></em>' reference.
@@ -284,7 +293,7 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__SERVER = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+    int NODE__SERVER = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Client</b></em>' reference.
@@ -293,7 +302,7 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__CLIENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+    int NODE__CLIENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Attributes</b></em>' reference.
@@ -302,7 +311,25 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE__ATTRIBUTES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
+    int NODE__ATTRIBUTES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Run list items</b></em>' attribute list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NODE__RUN_LIST_ITEMS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Run list</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int NODE__RUN_LIST = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '<em>Node</em>' class.
@@ -311,7 +338,7 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int NODE_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
+    int NODE_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 6;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl <em>Server</em>}' class.
@@ -488,13 +515,22 @@ public interface ChefserverPackage extends EPackage {
     int RUN_LIST__RECIPES = 3;
 
     /**
+     * The feature id for the '<em><b>Run list items</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RUN_LIST__RUN_LIST_ITEMS = 4;
+
+    /**
      * The number of structural features of the '<em>Run List</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int RUN_LIST_FEATURE_COUNT = 4;
+    int RUN_LIST_FEATURE_COUNT = 5;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerConfigImpl <em>Server Config</em>}' class.
@@ -865,6 +901,26 @@ public interface ChefserverPackage extends EPackage {
 
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RunListItemImpl <em>Run List Item</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.common.chefserver.impl.RunListItemImpl
+     * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getRunListItem()
+     * @generated
+     */
+    int RUN_LIST_ITEM = 13;
+
+    /**
+     * The number of structural features of the '<em>Run List Item</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int RUN_LIST_ITEM_FEATURE_COUNT = 0;
+
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Environment <em>Environment</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -928,6 +984,28 @@ public interface ChefserverPackage extends EPackage {
     EClass getRole();
 
     /**
+     * Returns the meta object for the containment reference '{@link org.limepepper.chefclipse.common.chefserver.Role#getRun_list <em>Run list</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference '<em>Run list</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.Role#getRun_list()
+     * @see #getRole()
+     * @generated
+     */
+    EReference getRole_Run_list();
+
+    /**
+     * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.chefserver.Role#getEnvironment <em>Environment</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the reference '<em>Environment</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.Role#getEnvironment()
+     * @see #getRole()
+     * @generated
+     */
+    EReference getRole_Environment();
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Node <em>Node</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -938,10 +1016,10 @@ public interface ChefserverPackage extends EPackage {
     EClass getNode();
 
     /**
-     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.Node#getRun_list <em>Run list</em>}'.
+     * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.chefserver.Node#getRun_list <em>Run list</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @return the meta object for the containment reference list '<em>Run list</em>'.
+     * @return the meta object for the reference '<em>Run list</em>'.
      * @see org.limepepper.chefclipse.common.chefserver.Node#getRun_list()
      * @see #getNode()
      * @generated
@@ -991,6 +1069,17 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      */
     EReference getNode_Attributes();
+
+    /**
+     * Returns the meta object for the attribute list '{@link org.limepepper.chefclipse.common.chefserver.Node#getRun_list_items <em>Run list items</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute list '<em>Run list items</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.Node#getRun_list_items()
+     * @see #getNode()
+     * @generated
+     */
+    EAttribute getNode_Run_list_items();
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Server <em>Server</em>}'.
@@ -1175,6 +1264,17 @@ public interface ChefserverPackage extends EPackage {
      * @generated
      */
     EReference getRunList_Recipes();
+
+    /**
+     * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.RunList#getRun_list_items <em>Run list items</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the containment reference list '<em>Run list items</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.RunList#getRun_list_items()
+     * @see #getRunList()
+     * @generated
+     */
+    EReference getRunList_Run_list_items();
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.ServerConfig <em>Server Config</em>}'.
@@ -1435,6 +1535,16 @@ public interface ChefserverPackage extends EPackage {
     EAttribute getServerCookbookVersion_Cookbook_name();
 
     /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.RunListItem <em>Run List Item</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Run List Item</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.RunListItem
+     * @generated
+     */
+    EClass getRunListItem();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1511,6 +1621,22 @@ public interface ChefserverPackage extends EPackage {
         EClass ROLE = eINSTANCE.getRole();
 
         /**
+         * The meta object literal for the '<em><b>Run list</b></em>' containment reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ROLE__RUN_LIST = eINSTANCE.getRole_Run_list();
+
+        /**
+         * The meta object literal for the '<em><b>Environment</b></em>' reference feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference ROLE__ENVIRONMENT = eINSTANCE.getRole_Environment();
+
+        /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl <em>Node</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1521,7 +1647,7 @@ public interface ChefserverPackage extends EPackage {
         EClass NODE = eINSTANCE.getNode();
 
         /**
-         * The meta object literal for the '<em><b>Run list</b></em>' containment reference list feature.
+         * The meta object literal for the '<em><b>Run list</b></em>' reference feature.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * @generated
@@ -1559,6 +1685,14 @@ public interface ChefserverPackage extends EPackage {
          * @generated
          */
         EReference NODE__ATTRIBUTES = eINSTANCE.getNode_Attributes();
+
+        /**
+         * The meta object literal for the '<em><b>Run list items</b></em>' attribute list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute NODE__RUN_LIST_ITEMS = eINSTANCE.getNode_Run_list_items();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl <em>Server</em>}' class.
@@ -1701,6 +1835,14 @@ public interface ChefserverPackage extends EPackage {
          * @generated
          */
         EReference RUN_LIST__RECIPES = eINSTANCE.getRunList_Recipes();
+
+        /**
+         * The meta object literal for the '<em><b>Run list items</b></em>' containment reference list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EReference RUN_LIST__RUN_LIST_ITEMS = eINSTANCE.getRunList_Run_list_items();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerConfigImpl <em>Server Config</em>}' class.
@@ -1905,6 +2047,16 @@ public interface ChefserverPackage extends EPackage {
          * @generated
          */
         EAttribute SERVER_COOKBOOK_VERSION__COOKBOOK_NAME = eINSTANCE.getServerCookbookVersion_Cookbook_name();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RunListItemImpl <em>Run List Item</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.common.chefserver.impl.RunListItemImpl
+         * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getRunListItem()
+         * @generated
+         */
+        EClass RUN_LIST_ITEM = eINSTANCE.getRunListItem();
 
     }
 

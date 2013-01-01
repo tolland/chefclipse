@@ -139,6 +139,15 @@ public interface ChefserverFactory extends EFactory {
     ServerCookbookVersion createServerCookbookVersion();
 
     /**
+     * Returns a new object of class '<em>Run List Item</em>'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return a new object of class '<em>Run List Item</em>'.
+     * @generated
+     */
+    RunListItem createRunListItem();
+
+    /**
      * Returns the package supported by this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

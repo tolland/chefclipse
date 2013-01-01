@@ -27,6 +27,7 @@ import opscode.chef.REST.JSONRestWrapper;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -45,6 +46,7 @@ import org.limepepper.chefclipse.REST.CookbookVersionResp;
 import org.limepepper.chefclipse.REST.RESTFactory;
 import org.limepepper.chefclipse.REST.RoleListResp;
 import org.limepepper.chefclipse.REST.RoleResp;
+import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
@@ -356,6 +358,25 @@ public class ChefServerApiImpl implements ChefServerApi {
         assertNotNull(eObject);
         assertTrue(eObject.getName() != null);
 
+        EList<String> runList = eObject.getRun_list_items();
+        for (String runListItem : runList) {
+            System.out.println("text is :" + runListItem);
+            if (runListItem.startsWith("role[")) {
+                Role role = getRole(runListItem.substring("role[".length(),
+                        runListItem.length() - 1));
+
+                if (eObject.getRun_list() == null) {
+                    eObject.setRun_list(ChefserverFactory.eINSTANCE
+                            .createRunList());
+                }
+
+                eObject.getRun_list().getRun_list_items().add(role);
+
+            } else if (runListItem.startsWith("recipe[")) {
+
+            }
+        }
+
         return eObject;
     }
 
@@ -593,7 +614,7 @@ public class ChefServerApiImpl implements ChefServerApi {
             items.add(getRole(entry.getKey()));
         }
         return items;
-        
+
     }
 
     @Override

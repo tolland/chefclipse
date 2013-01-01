@@ -18,6 +18,7 @@ import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
 
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.cookbook.*;
 
 /**
@@ -171,6 +172,10 @@ public class CookbookAdapterFactory extends AdapterFactoryImpl {
             @Override
             public Adapter caseRubyFile(RubyFile object) {
                 return createRubyFileAdapter();
+            }
+            @Override
+            public Adapter caseRunListItem(RunListItem object) {
+                return createRunListItemAdapter();
             }
             @Override
             public Adapter caseMaintainedObject(MaintainedObject object) {
@@ -529,6 +534,20 @@ public class CookbookAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createRubyFileAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefserver.RunListItem <em>Run List Item</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.common.chefserver.RunListItem
+     * @generated
+     */
+    public Adapter createRunListItemAdapter() {
         return null;
     }
 

@@ -104,26 +104,32 @@ class NameVersionMap {
   @JSON(AnonRoot="true")
   val EStringToVersionUrlMap[*] entries;
 }
+
 @namespace(uri="http://limepepper.org/v1/chefclipse/chefserver", prefix="org.limepepper.chefclipse.chefserver")
 package chefserver {
-  class Environment {
+  class Environment extends NamedDescribedObject {
+    attr String[*] override_attributes;
   }
 
-  class DataBag {
+  class DataBag extends NamedDescribedObject {
     ref Server#databags server;
     val DataBagItem[*] items;
   }
 
-  class Role extends NamedDescribedObject {
+  class Role extends NamedDescribedObject, RunListItem {
+    val RunList run_list;
+    ref Environment environment;
   }
 
   @JSON(root="true")
   class Node extends NamedDescribedObject {
-    val RunList[*] run_list;
     ref Environment environment;
     ref Server[1] server;
     ref chefclient.Client client;
     ref cookbook.Attribute attributes;
+    @JSON(element="run_list")
+    attr String[*] run_list_items;
+    ref RunList run_list;
   }
 
   class Server {
@@ -147,6 +153,7 @@ package chefserver {
     ref Environment environment;
     ref Role role;
     ref cookbook.Recipe[*] recipes;
+    val RunListItem[*] run_list_items;
   }
 
   class ServerConfig {
@@ -183,6 +190,9 @@ package chefserver {
     val ServerCookbookFile[*] attributes;
     attr Version[1] version = "0.0.0";
     attr String[1] cookbook_name;
+  }
+
+  class RunListItem {
   }
 
 }
@@ -232,7 +242,7 @@ package cookbook {
   class Attribute extends NamedObject {
   }
 
-  class Recipe extends SandboxedObject, RubyFile, ChecksumFile, NamedObject, CookbookFile {
+  class Recipe extends SandboxedObject, RubyFile, ChecksumFile, NamedObject, CookbookFile, chefserver.RunListItem {
     ref chefserver.Role[*] role;
     ref chefserver.RunList[*] runlist;
   }

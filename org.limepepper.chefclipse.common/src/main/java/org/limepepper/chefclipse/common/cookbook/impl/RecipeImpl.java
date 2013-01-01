@@ -14,6 +14,7 @@ import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
@@ -242,6 +243,11 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
                 default: return -1;
             }
         }
+        if (baseClass == RunListItem.class) {
+            switch (derivedFeatureID) {
+                default: return -1;
+            }
+        }
         return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
     }
 
@@ -276,6 +282,11 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
         if (baseClass == CookbookFile.class) {
             switch (baseFeatureID) {
                 case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return CookbookPackage.RECIPE__COOKBOOK;
+                default: return -1;
+            }
+        }
+        if (baseClass == RunListItem.class) {
+            switch (baseFeatureID) {
                 default: return -1;
             }
         }

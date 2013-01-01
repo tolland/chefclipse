@@ -30,11 +30,12 @@ import org.limepepper.chefclipse.impl.DescribedObjectImpl;
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getID <em>ID</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getRun_list <em>Run list</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getServer <em>Server</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getClient <em>Client</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getRun_list_items <em>Run list items</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getRun_list <em>Run list</em>}</li>
  * </ul>
  * </p>
  *
@@ -102,8 +103,17 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
      * @generated
      */
     @SuppressWarnings("unchecked")
-    public EList<RunList> getRun_list() {
-        return (EList<RunList>)eGet(ChefserverPackage.Literals.NODE__RUN_LIST, true);
+    public RunList getRun_list() {
+        return (RunList)eGet(ChefserverPackage.Literals.NODE__RUN_LIST, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setRun_list(RunList newRun_list) {
+        eSet(ChefserverPackage.Literals.NODE__RUN_LIST, newRun_list);
     }
 
     /**
@@ -176,6 +186,16 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
      */
     public void setAttributes(Attribute newAttributes) {
         eSet(ChefserverPackage.Literals.NODE__ATTRIBUTES, newAttributes);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @SuppressWarnings("unchecked")
+    public EList<String> getRun_list_items() {
+        return (EList<String>)eGet(ChefserverPackage.Literals.NODE__RUN_LIST_ITEMS, true);
     }
 
     /**

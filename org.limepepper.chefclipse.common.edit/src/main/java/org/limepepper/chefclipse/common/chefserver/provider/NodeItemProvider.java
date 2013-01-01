@@ -71,6 +71,7 @@ public class NodeItemProvider
             addServerPropertyDescriptor(object);
             addClientPropertyDescriptor(object);
             addAttributesPropertyDescriptor(object);
+            addRun_list_itemsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -208,6 +209,28 @@ public class NodeItemProvider
     }
 
     /**
+     * This adds a property descriptor for the Run list items feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addRun_list_itemsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Node_run_list_items_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Node_run_list_items_feature", "_UI_Node_type"),
+                 ChefserverPackage.Literals.NODE__RUN_LIST_ITEMS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -276,6 +299,7 @@ public class NodeItemProvider
         switch (notification.getFeatureID(Node.class)) {
             case ChefserverPackage.NODE__NAME:
             case ChefserverPackage.NODE__ID:
+            case ChefserverPackage.NODE__RUN_LIST_ITEMS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case ChefserverPackage.NODE__RUN_LIST:
