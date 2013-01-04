@@ -111,6 +111,9 @@
            file="contexts.xml">
      </contexts>
   </extension>
-
+  <extension point="org.eclipse.ui.editors"> 
+     <editor id="org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditor" class="org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditor" name="RunList Editor"> 
+     </editor> 
+  </extension>
 
 </plugin>

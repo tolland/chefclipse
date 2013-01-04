@@ -34,8 +34,8 @@ public class ServerCookbookTable extends Composite {
         tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
                 | SWT.V_SCROLL);
 
-        tableViewer.setContentProvider(new CookbookContentProvider());
-        tableViewer.setLabelProvider(new CookbookLabelProvider());
+        tableViewer.setContentProvider(new ServerCookbookContentProvider());
+        tableViewer.setLabelProvider(new ServerCookbookLabelProvider());
         tableViewer.setSorter(new NameSorter());
         tableViewer.getTable().setLinesVisible(true);
         tableViewer.setInput(api.getCookbooks());
@@ -45,9 +45,9 @@ public class ServerCookbookTable extends Composite {
     class NameSorter extends ViewerSorter {
     }
     
-    class CookbookLabelProvider extends AdapterFactoryLabelProvider {
+    class ServerCookbookLabelProvider extends AdapterFactoryLabelProvider {
 
-        public CookbookLabelProvider() {
+        public ServerCookbookLabelProvider() {
             super(ChefProjectAdapterFactory.getAdapterFactory());
         }
 
@@ -69,8 +69,8 @@ public class ServerCookbookTable extends Composite {
         }
     }
     
-    class CookbookContentProvider extends AdapterFactoryContentProvider {
-    	CookbookContentProvider() {
+    class ServerCookbookContentProvider extends AdapterFactoryContentProvider {
+    	ServerCookbookContentProvider() {
             super(ChefProjectAdapterFactory.getAdapterFactory());
         }
 
