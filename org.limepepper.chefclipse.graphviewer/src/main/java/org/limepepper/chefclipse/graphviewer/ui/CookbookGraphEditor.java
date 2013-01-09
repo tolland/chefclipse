@@ -79,13 +79,13 @@ public class CookbookGraphEditor extends EditorPart implements
 
     @Override
     public void doSave(IProgressMonitor monitor) {
-        // TODO Auto-generated method stub
+
 
     }
 
     @Override
     public void doSaveAs() {
-        // TODO Auto-generated method stub
+
 
     }
 
@@ -105,13 +105,13 @@ public class CookbookGraphEditor extends EditorPart implements
 
     @Override
     public boolean isDirty() {
-        // TODO Auto-generated method stub
+
         return false;
     }
 
     @Override
     public boolean isSaveAsAllowed() {
-        // TODO Auto-generated method stub
+
         return false;
     }
 
@@ -177,7 +177,7 @@ public class CookbookGraphEditor extends EditorPart implements
 
     @Override
     public void setFocus() {
-        // TODO Auto-generated method stub
+
 
     }
 
@@ -227,7 +227,7 @@ public class CookbookGraphEditor extends EditorPart implements
         }
 
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-            // TODO Auto-generated method stub
+
 
         }
 
@@ -239,7 +239,7 @@ public class CookbookGraphEditor extends EditorPart implements
 
         @Override
         public void dispose() {
-            // TODO Auto-generated method stub
+
 
         }
 
@@ -324,7 +324,7 @@ public class CookbookGraphEditor extends EditorPart implements
 
         @Override
         public void selfStyleNode(Object element, GraphNode node) {
-            // TODO Auto-generated method stub
+
             if(element instanceof DrawableContainer)
             {
                 GraphContainer graphContainer = (GraphContainer)node;

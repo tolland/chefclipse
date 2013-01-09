@@ -76,12 +76,18 @@ public class ChefserverSwitch<T> extends Switch<T> {
             case ChefserverPackage.ENVIRONMENT: {
                 Environment environment = (Environment)theEObject;
                 T result = caseEnvironment(environment);
+                if (result == null) result = caseNamedDescribedObject(environment);
+                if (result == null) result = caseDescribedObject(environment);
+                if (result == null) result = caseNamedObject(environment);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
             case ChefserverPackage.DATA_BAG: {
                 DataBag dataBag = (DataBag)theEObject;
                 T result = caseDataBag(dataBag);
+                if (result == null) result = caseNamedDescribedObject(dataBag);
+                if (result == null) result = caseDescribedObject(dataBag);
+                if (result == null) result = caseNamedObject(dataBag);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -89,6 +95,7 @@ public class ChefserverSwitch<T> extends Switch<T> {
                 Role role = (Role)theEObject;
                 T result = caseRole(role);
                 if (result == null) result = caseNamedDescribedObject(role);
+                if (result == null) result = caseRunListItem(role);
                 if (result == null) result = caseDescribedObject(role);
                 if (result == null) result = caseNamedObject(role);
                 if (result == null) result = defaultCase(theEObject);
@@ -159,6 +166,12 @@ public class ChefserverSwitch<T> extends Switch<T> {
                 ServerCookbookVersion serverCookbookVersion = (ServerCookbookVersion)theEObject;
                 T result = caseServerCookbookVersion(serverCookbookVersion);
                 if (result == null) result = caseCookbook(serverCookbookVersion);
+                if (result == null) result = defaultCase(theEObject);
+                return result;
+            }
+            case ChefserverPackage.RUN_LIST_ITEM: {
+                RunListItem runListItem = (RunListItem)theEObject;
+                T result = caseRunListItem(runListItem);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -358,6 +371,21 @@ public class ChefserverSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseServerCookbookVersion(ServerCookbookVersion object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Run List Item</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Run List Item</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseRunListItem(RunListItem object) {
         return null;
     }
 

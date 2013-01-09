@@ -6,6 +6,7 @@ import org.eclipse.swt.graphics.Image;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
+import org.limepepper.chefclipse.model.ChefResource;
 
 public class ChefNavigatorLabelProvider extends AdapterFactoryLabelProvider {
 
@@ -14,7 +15,10 @@ public class ChefNavigatorLabelProvider extends AdapterFactoryLabelProvider {
     }
 
     public String getText(Object element) {
-        if (element instanceof EObject) {
+        if (element instanceof ChefResource) {
+            return super.getText(((ChefResource) element).getResource()
+                    .getName());
+        } else if (element instanceof EObject) {
             return super.getText(element);
         } else if (element instanceof String) {
             return (String) element;

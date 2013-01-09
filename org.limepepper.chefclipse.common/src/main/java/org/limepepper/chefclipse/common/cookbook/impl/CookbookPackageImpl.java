@@ -794,6 +794,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
         recipeEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
         recipeEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
         recipeEClass.getESuperTypes().add(this.getCookbookFile());
+        recipeEClass.getESuperTypes().add(theChefserverPackage.getRunListItem());
         recipeDescriptionEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
         resourceEClass.getESuperTypes().add(theChefclipsePackage.getRubyFile());
         resourceEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());

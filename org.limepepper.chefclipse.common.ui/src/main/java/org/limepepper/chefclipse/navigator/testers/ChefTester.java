@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
 import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
+import org.limepepper.chefclipse.model.CookbookFolder;
 import org.limepepper.chefclipse.model.mapping.ChefResourceMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,12 +43,12 @@ public class ChefTester extends PropertyTester {
     }
 
     /**
-     *
+     * 
      * @todo so for debugging I let this run though to the end so I can print
      *       out
      *       result, but for perforamnce it should return immediately
-     *
-     *
+     * 
+     * 
      */
     public boolean test(Object receiver, String property, Object[] args,
             Object expectedValue) {
@@ -121,6 +122,20 @@ public class ChefTester extends PropertyTester {
                         && ((IFolder) receiver).getFile("metadata.json")
                                 .exists() && ((IFolder) receiver).getFile(
                         "metadata.rb").exists());
+            }
+
+            if (property.equals("isCookbookFolder")
+                    && (receiver instanceof CookbookFolder)) {
+                System.out.println("here receiver iu:" + receiver);
+                IFolder resource = (IFolder) ((CookbookFolder) receiver)
+                        .getResource();
+
+                // System.out.println(((IFolder)
+                // receiver).getParent().getName());
+
+                result = resource.getParent().getName().equals("cookbooks")
+                        && (resource.getFile("metadata.json").exists() && (resource
+                                .getFile("metadata.rb").exists()));
             }
 
             if (property.equals("isLibrary") && (receiver instanceof IFile)) {

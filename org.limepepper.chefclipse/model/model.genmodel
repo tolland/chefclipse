@@ -6,7 +6,7 @@
     suppressInterfaces="true" testsDirectory="/org.limepepper.chefclipse.model/src/test/java"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
     editPluginID="org.limepepper.chefclipse.model" editorPluginID="org.limepepper.chefclipse.model"
-    testsPluginID="org.limepepper.chefclipse.model" runtimeVersion="2.8">
+    testsPluginID="org.limepepper.chefclipse.model" runtimeVersion="2.8" usedGenPackages="chefclipse.genmodel#//chefclipse">
   <foreignModel>model.ecore</foreignModel>
   <genPackages prefix="Model" basePackage="org.limepepper.chefclipse" resource="XMI"
       disposableProviderFactory="true" ecorePackage="model.ecore#/">
@@ -36,5 +36,8 @@
     <genClasses ecoreClass="model.ecore#//ChefWorkspace"/>
     <genClasses ecoreClass="model.ecore#//ChangeTracker"/>
     <genClasses ecoreClass="model.ecore#//ChefServer"/>
+    <genClasses ecoreClass="model.ecore#//CookbookFolder">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//CookbookFolder/cookbookVersion"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

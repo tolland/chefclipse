@@ -58,7 +58,7 @@ public class DynamicMenu extends CompoundContributionItem {
 
         // @todo erm?
 
-        if (ChefTester.testResource(item, "isCookbook")) {
+        if (ChefTester.testResource(item, "isCookbookFolder")) {
             menuItems.put("Dependency.Graph.Editor", "Dependency Graph Editor");
             menuItems.put("Structure.Graph.Editor", "Structure Graph Editor");
         }

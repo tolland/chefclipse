@@ -13,11 +13,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import org.eclipse.emf.common.util.EList;
 import org.junit.Before;
 import org.junit.Test;
 import org.limepepper.chefclipse.VersionUrl;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
+import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Role;
+import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
@@ -92,21 +98,7 @@ public class ServerAPITests {
     }
 
     @Test
-    public void getRolesTest() {
-
-        if (chefServerApi == null) {
-            createServerObject();
-        }
-
-        Map<String, String> items = chefServerApi.getRoleList();
-        assertNotNull(items);
-        assertNotNull(items.keySet());
-        assertTrue(items.keySet().size() > 0);
-
-    }
-
-    @Test
-    public void getNodesTest() {
+    public void getNodesListTest() {
 
         if (chefServerApi == null) {
             createServerObject();
@@ -181,7 +173,7 @@ public class ServerAPITests {
     }
 
     /*
-     *
+     * 
      * "name":"metadata.rb",
      * "url":
      * "https://s3.amazonaws.com/opscode-platform-production-data/organization-203fc1d14d95451f9fe423d0b8b121d7/checksum-dae935bbc74049333a3a4997211ea470?AWSAccessKeyId=AKIAIN4GUX4PULV7JQSA&Expires=1355431779&Signature=5fdND7dqhIZCxN45qTGlv7o5Of8%3D"
@@ -240,6 +232,105 @@ public class ServerAPITests {
 
         bis.close();
         fis.close();
+
+    }
+
+    @Test
+    public void getEnvironmentsListTest() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        Map<String, String> items = chefServerApi.getEnvironmentsList();
+        assertNotNull(items);
+        assertNotNull(items.keySet());
+        assertTrue(items.keySet().size() > 0);
+
+    }
+
+    @Test
+    public void getEnvironmentsTest() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        List<Environment> items = chefServerApi.getEnvironments();
+        assertNotNull(items);
+        assertTrue(items.size() > 0);
+
+    }
+
+    @Test
+    public void getEnvironmentTest() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        Environment item = chefServerApi.getEnvironment("_default");
+        assertNotNull(item);
+        assertTrue(item.getName().equals("_default"));
+
+    }
+
+    @Test
+    public void getRolesListTest() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        Map<String, String> items = chefServerApi.getRolesList();
+        assertNotNull(items);
+        assertNotNull(items.keySet());
+        assertTrue(items.keySet().size() > 0);
+
+    }
+
+    @Test
+    public void getRolesTest() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        List<Role> items = chefServerApi.getRoles();
+        assertNotNull(items);
+        assertTrue(items.size() > 0);
+
+    }
+
+    @Test
+    public void getRoleTest() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        Role item = chefServerApi.getRole("monitoring");
+        assertNotNull(item);
+        assertTrue(item.getName().equals("monitoring"));
+
+    }
+
+    @Test
+    public void getNodeRunListTest() {
+
+        if (chefServerApi == null) {
+            createServerObject();
+        }
+
+        Node item = chefServerApi.getNode("node2");
+        assertNotNull(item);
+        assertNotNull(item.getName());
+
+        RunList runList = item.getRun_list();
+        assertNotNull(runList);
+        assertNotNull(runList.getRun_list_items());
+        assertTrue(runList.getRun_list_items().size() > 0);
+        assertNotNull(runList.getRun_list_items().get(0));
 
     }
 

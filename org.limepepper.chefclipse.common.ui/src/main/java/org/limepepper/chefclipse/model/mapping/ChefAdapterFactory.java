@@ -15,7 +15,7 @@ public class ChefAdapterFactory implements IAdapterFactory, IWorkbenchAdapter {
 
     public ChefAdapterFactory() {
 
-        Activator.debug("in constructor for");
+        Activator.debug("in constructor for ChefAdapterFactory");
     }
 
     @Override

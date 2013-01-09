@@ -373,6 +373,29 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.RunListItem} instances.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected RunListItemItemProvider runListItemItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.RunListItem}.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @Override
+    public Adapter createRunListItemAdapter() {
+        if (runListItemItemProvider == null) {
+            runListItemItemProvider = new RunListItemItemProvider(this);
+        }
+
+        return runListItemItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -484,6 +507,7 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
         if (cookbookListRespItemProvider != null) cookbookListRespItemProvider.dispose();
         if (serverCookbookFileItemProvider != null) serverCookbookFileItemProvider.dispose();
         if (serverCookbookVersionItemProvider != null) serverCookbookVersionItemProvider.dispose();
+        if (runListItemItemProvider != null) runListItemItemProvider.dispose();
     }
 
 }

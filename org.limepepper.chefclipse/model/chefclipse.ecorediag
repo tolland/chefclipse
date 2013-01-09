@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_6NrUsFIhEeKlF9AVluQAgQ" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_6lFIEFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6m5tAFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6m7iMFIhEeKlF9AVluQAgQ" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6m7iMVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6m7iMlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6m7iM1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6m8JQFIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6m8JQVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6m8JQlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6m8JQ1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6lFvIFIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//NamedDescribedObject"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6lFvIVIhEeKlF9AVluQAgQ" x="1278" y="205"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6ne70FIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6nfi4FIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6nfi4VIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6nh_IFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//VersionedObject/NUM_VERSIONS"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nh_IVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6nimMFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//VersionedObject/version"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nimMVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nfi4lIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nfi41IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nfi5FIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6nfi5VIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nfi5lIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nfi51IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nfi6FIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6ne70VIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//VersionedObject"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6ne70lIhEeKlF9AVluQAgQ" x="228" y="120"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6njNQFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6njNQ1IhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6nj0UFIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6nj0WFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//SandboxedObject/url"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nj0WVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nj0UVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nj0UlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nj0U1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6nj0VFIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nj0VVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nj0VlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nj0V1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6njNQVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//SandboxedObject"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6njNQlIhEeKlF9AVluQAgQ" x="600" y="84"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6nkbYFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6nlCcFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6noFwFIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6nos1FIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//RubyFile/extension"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nos1VIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6noFwVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6noFwlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6noFw1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6nos0FIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nos0VIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nos0lIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nos01IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6nkbYVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//RubyFile"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6nkbYlIhEeKlF9AVluQAgQ" x="288" y="252"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6nos1lIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6npT4FIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6npT4VIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6np69FIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//NamedObject/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6np69VIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6np69lIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//NamedObject/ID"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6np691IhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6npT4lIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6npT41IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6npT5FIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6np68FIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6np68VIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6np68lIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6np681IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6nos11IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//NamedObject"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6nos2FIhEeKlF9AVluQAgQ" x="1202"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6nqiAFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6nqiA1IhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6nqiBFIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6nrJFFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//DescribedObject/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nrJFVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nqiBVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nqiBlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nqiB1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6nrJEFIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nrJEVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nrJElIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nrJE1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6nqiAVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//DescribedObject"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6nqiAlIhEeKlF9AVluQAgQ" x="1388"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6nrwIFIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6nsXMFIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6ns-QFIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6nrwIVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//URL"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6nrwIlIhEeKlF9AVluQAgQ" x="576" y="348"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6ns-QVIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6ntlUFIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6ntlUVIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6ns-QlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//File"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6ns-Q1IhEeKlF9AVluQAgQ" x="792" y="228"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6ntlUlIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6nuMYFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6nuMYVIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6nuzcFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//ChecksumFile/checksum"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nuzcVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6nuzclIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//ChecksumFile/path"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nuzc1IhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6nwooFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//ChecksumFile/specificity"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nwooVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nuMYlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nuMY1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nuMZFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6nuMZVIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nuMZlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nuMZ1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nuMaFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6ntlU1IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//ChecksumFile"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6ntlVFIhEeKlF9AVluQAgQ" x="1607"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6nwoolIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6nxPsFIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6nxPsVIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6nwoo1IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//Chef_type"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6nwopFIhEeKlF9AVluQAgQ" x="1821"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6nx2wFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6nx2w1IhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6nx2xFIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6nyd1FIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//MaintainedObject/maintainer"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nyd1VIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6nyd1lIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//MaintainedObject/maintainer_email"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nyd11IhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6nzE4FIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//MaintainedObject/license"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6nzE4VIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nx2xVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nx2xlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nx2x1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6nyd0FIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6nyd0VIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6nyd0lIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6nyd01IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6nx2wVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//MaintainedObject"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6nx2wlIhEeKlF9AVluQAgQ" x="2088"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6nzE4lIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6nzr8FIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6nzr8VIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6nzE41IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//Email"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6nzE5FIhEeKlF9AVluQAgQ" x="2337"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6nzr8lIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6n0TAFIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6n0TAVIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6nzr81IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//Text"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6nzr9FIhEeKlF9AVluQAgQ" x="2604"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n0TAlIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6n06EFIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6n06EVIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n0TA1IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//Version"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n0TBFIhEeKlF9AVluQAgQ" x="2871"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n06ElIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6n1hIFIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6n1hIVIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n06E1IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//Name"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n06FFIhEeKlF9AVluQAgQ" x="3138"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n2IMFIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6n2IM1IhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6n2vQFIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n2IMVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//Description"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n2IMlIhEeKlF9AVluQAgQ" x="3408"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n2vQVIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6n2vRFIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6n3WUFIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n2vQlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//Object"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n2vQ1IhEeKlF9AVluQAgQ" x="3678"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n3WUVIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6n39YFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6n39YVIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6n39aVIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Config/chef_server_url"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n39alIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6n4kcFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Config/client_key"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n4kcVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6n5LgFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Config/node_name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n5LgVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6n5LglIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Config/log_level"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n5Lg1IhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6n5LhFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Config/validation_key"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n5LhVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6n5ykFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Config/version"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n5ykVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6n5yklIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Config/validation_client_name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n5yk1IhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n39YlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n39Y1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n39ZFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6n39ZVIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n39ZlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n39Z1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n39aFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n3WUlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//Config"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n3WU1IhEeKlF9AVluQAgQ" x="3948"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n5ylFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6n6ZoFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6n6ZoVIhEeKlF9AVluQAgQ" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n6ZolIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n6Zo1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n6ZpFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6n7AsFIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n7AsVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n7AslIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n7As1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n5ylVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//NameUrlMap"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n5yllIhEeKlF9AVluQAgQ" x="4243"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n7nwFIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6n8O0FIhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6n8O0VIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n7nwVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//NameUrlDataType"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n7nwlIhEeKlF9AVluQAgQ" x="4408"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n8O0lIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6n814FIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6n814VIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6n9c8FIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Cookbook/json_class"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n9c8VIhEeKlF9AVluQAgQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_6n9c8lIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//Cookbook/chef_type"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n9c81IhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n814lIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n8141IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n815FIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6n815VIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n815lIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n8151IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n816FIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n8O01IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//Cookbook"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n8O1FIhEeKlF9AVluQAgQ" x="4678"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n-EAFIhEeKlF9AVluQAgQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_6n-EA1IhEeKlF9AVluQAgQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_6n-EBFIhEeKlF9AVluQAgQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n-EAVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="chefclipse.ecore#//MapTest"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n-EAlIhEeKlF9AVluQAgQ" x="4892"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n-rEFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6n-rE1IhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6n-rFFIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6n_SJ1IhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//MapTestContainer/entries"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6n_SKFIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n_SIFIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n_SIVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n_SIlIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6n_SI1IhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n_SJFIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n_SJVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n_SJlIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n-rEVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//MapTestContainer"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n-rElIhEeKlF9AVluQAgQ" x="5173"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6n_SKVIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6n_5MFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6n_5MVIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6oAgQlIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//EStringToVersionUrlMap/key"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6oAgQ1IhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n_5MlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6n_5M1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6n_5NFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6n_5NVIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6n_5NlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oAgQFIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oAgQVIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6n_SKlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//EStringToVersionUrlMap"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6n_SK1IhEeKlF9AVluQAgQ" x="5338" y="314"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oAgRFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6oBHUFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6oBHUVIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6oBuYFIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//VersionUrl/url"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6oBuYVIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oBHUlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oBHU1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oBHVFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6oBHVVIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oBHVlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oBHV1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oBHWFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oAgRVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//VersionUrl"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oAgRlIhEeKlF9AVluQAgQ" x="5372" y="205"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oBuYlIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6oCVcFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6oCVcVIhEeKlF9AVluQAgQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_6oCVeVIhEeKlF9AVluQAgQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="chefclipse.ecore#//URLEntryTest/url"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_6oCVelIhEeKlF9AVluQAgQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oCVclIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oCVc1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oCVdFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6oCVdVIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oCVdlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oCVd1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oCVeFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oBuY1IhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//URLEntryTest"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oBuZFIhEeKlF9AVluQAgQ" x="5372"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oC8gFIhEeKlF9AVluQAgQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_6oDjkFIhEeKlF9AVluQAgQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_6oEKoFIhEeKlF9AVluQAgQ" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oEKoVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oEKolIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oEKo1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6oExsFIhEeKlF9AVluQAgQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oExsVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oExslIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oExs1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oC8gVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="chefclipse.ecore#//NameVersionMap"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oC8glIhEeKlF9AVluQAgQ" x="5357" y="423"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oGm4FIhEeKlF9AVluQAgQ" type="1002">
+    <children xmi:type="notation:Node" xmi:id="_6oJDIFIhEeKlF9AVluQAgQ" type="4006"/>
+    <children xmi:type="notation:Node" xmi:id="_6oJqMFIhEeKlF9AVluQAgQ" type="5003">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oJqMVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oJqMlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oJqM1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oGm4VIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13150135" lineColor="4210752"/>
+    <styles xmi:type="notation:MultiDiagramLinkStyle" xmi:id="_6oGm4lIhEeKlF9AVluQAgQ"/>
+    <element xmi:type="ecore:EPackage" href="chefclipse.ecore#//chefserver"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oGm41IhEeKlF9AVluQAgQ" x="5537"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oJqNFIhEeKlF9AVluQAgQ" type="1002">
+    <children xmi:type="notation:Node" xmi:id="_6oKRQFIhEeKlF9AVluQAgQ" type="4006"/>
+    <children xmi:type="notation:Node" xmi:id="_6oKRQVIhEeKlF9AVluQAgQ" type="5003">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oKRQlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oKRQ1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oKRRFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oJqNVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13150135" lineColor="4210752"/>
+    <styles xmi:type="notation:MultiDiagramLinkStyle" xmi:id="_6oJqNlIhEeKlF9AVluQAgQ"/>
+    <element xmi:type="ecore:EPackage" href="chefclipse.ecore#//chefclient"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oJqN1IhEeKlF9AVluQAgQ" x="5709"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oKRRVIhEeKlF9AVluQAgQ" type="1002">
+    <children xmi:type="notation:Node" xmi:id="_6oK4UFIhEeKlF9AVluQAgQ" type="4006"/>
+    <children xmi:type="notation:Node" xmi:id="_6oK4UVIhEeKlF9AVluQAgQ" type="5003">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oK4UlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oK4U1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oK4VFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oKRRlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13150135" lineColor="4210752"/>
+    <styles xmi:type="notation:MultiDiagramLinkStyle" xmi:id="_6oKRR1IhEeKlF9AVluQAgQ"/>
+    <element xmi:type="ecore:EPackage" href="chefclipse.ecore#//cookbook"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oKRSFIhEeKlF9AVluQAgQ" x="5881"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oK4VVIhEeKlF9AVluQAgQ" type="1002">
+    <children xmi:type="notation:Node" xmi:id="_6oLfYlIhEeKlF9AVluQAgQ" type="4006"/>
+    <children xmi:type="notation:Node" xmi:id="_6oLfY1IhEeKlF9AVluQAgQ" type="5003">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oLfZFIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oLfZVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oLfZlIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oK4VlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13150135" lineColor="4210752"/>
+    <styles xmi:type="notation:MultiDiagramLinkStyle" xmi:id="_6oLfYFIhEeKlF9AVluQAgQ"/>
+    <element xmi:type="ecore:EPackage" href="chefclipse.ecore#//workstation"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oLfYVIhEeKlF9AVluQAgQ" x="6053"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oMGcFIhEeKlF9AVluQAgQ" type="1002">
+    <children xmi:type="notation:Node" xmi:id="_6oMGdFIhEeKlF9AVluQAgQ" type="4006"/>
+    <children xmi:type="notation:Node" xmi:id="_6oMGdVIhEeKlF9AVluQAgQ" type="5003">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oMGdlIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oMGd1IhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oMGeFIhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oMGcVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13150135" lineColor="4210752"/>
+    <styles xmi:type="notation:MultiDiagramLinkStyle" xmi:id="_6oMGclIhEeKlF9AVluQAgQ"/>
+    <element xmi:type="ecore:EPackage" href="chefclipse.ecore#//knife"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oMGc1IhEeKlF9AVluQAgQ" x="6225"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_6oMtgFIhEeKlF9AVluQAgQ" type="1002">
+    <children xmi:type="notation:Node" xmi:id="_6oMthFIhEeKlF9AVluQAgQ" type="4006"/>
+    <children xmi:type="notation:Node" xmi:id="_6oNUkFIhEeKlF9AVluQAgQ" type="5003">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_6oNUkVIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_6oNUklIhEeKlF9AVluQAgQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_6oNUk1IhEeKlF9AVluQAgQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_6oMtgVIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10" fillColor="13150135" lineColor="4210752"/>
+    <styles xmi:type="notation:MultiDiagramLinkStyle" xmi:id="_6oMtglIhEeKlF9AVluQAgQ"/>
+    <element xmi:type="ecore:EPackage" href="chefclipse.ecore#//REST"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6oMtg1IhEeKlF9AVluQAgQ" x="6397"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_6NrUsVIhEeKlF9AVluQAgQ"/>
+  <element xmi:type="ecore:EPackage" href="chefclipse.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_6oQ-8FIhEeKlF9AVluQAgQ" type="3003" source="_6lFIEFIhEeKlF9AVluQAgQ" target="_6nqiAFIhEeKlF9AVluQAgQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_6oQ-8VIhEeKlF9AVluQAgQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_6oQ-8lIhEeKlF9AVluQAgQ" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6oQ-81IhEeKlF9AVluQAgQ" points="[0, 0, -72, 156]$[0, -30, -72, 126]$[72, -30, 0, 126]$[72, -156, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63Xx8FIhEeKlF9AVluQAgQ" id="(0.6647727272727273,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63Xx8VIhEeKlF9AVluQAgQ" id="(0.4968553459119497,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_6oSNEFIhEeKlF9AVluQAgQ" type="3003" source="_6lFIEFIhEeKlF9AVluQAgQ" target="_6nos1lIhEeKlF9AVluQAgQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_6oSNEVIhEeKlF9AVluQAgQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_6oSNElIhEeKlF9AVluQAgQ" fontName="Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6oSNE1IhEeKlF9AVluQAgQ" points="[0, 0, 71, 140]$[0, -30, 71, 110]$[-71, -30, 0, 110]$[-71, -140, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63Wj0FIhEeKlF9AVluQAgQ" id="(0.32954545454545453,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63XK4FIhEeKlF9AVluQAgQ" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_6oS0IFIhEeKlF9AVluQAgQ" type="3002" source="_6n_SKVIhEeKlF9AVluQAgQ" target="_6oAgRFIhEeKlF9AVluQAgQ">
+    <children xmi:type="notation:Node" xmi:id="_6oTbMFIhEeKlF9AVluQAgQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6oTbMVIhEeKlF9AVluQAgQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6ob-EFIhEeKlF9AVluQAgQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6ob-EVIhEeKlF9AVluQAgQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_6oS0IVIhEeKlF9AVluQAgQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_6oS0IlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="chefclipse.ecore#//EStringToVersionUrlMap/value"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6oS0I1IhEeKlF9AVluQAgQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63ZAEFIhEeKlF9AVluQAgQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63ZnIFIhEeKlF9AVluQAgQ" id="(0.49523809523809526,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_6oclIFIhEeKlF9AVluQAgQ" type="3002" source="_6oAgRFIhEeKlF9AVluQAgQ" target="_6oBuYlIhEeKlF9AVluQAgQ">
+    <children xmi:type="notation:Node" xmi:id="_6oclJFIhEeKlF9AVluQAgQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6oclJVIhEeKlF9AVluQAgQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6oclJlIhEeKlF9AVluQAgQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6oclJ1IhEeKlF9AVluQAgQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_6oclIVIhEeKlF9AVluQAgQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_6oclIlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="chefclipse.ecore#//VersionUrl/versions"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6oclI1IhEeKlF9AVluQAgQ" points="[0, 0, 0, 156]$[0, -156, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63Xx8lIhEeKlF9AVluQAgQ" id="(0.49523809523809526,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63YZAFIhEeKlF9AVluQAgQ" id="(0.49523809523809526,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_6odMMFIhEeKlF9AVluQAgQ" type="3002" source="_6oC8gFIhEeKlF9AVluQAgQ" target="_6n_SKVIhEeKlF9AVluQAgQ">
+    <children xmi:type="notation:Node" xmi:id="_6odMNFIhEeKlF9AVluQAgQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6odMNVIhEeKlF9AVluQAgQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_6odzQFIhEeKlF9AVluQAgQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_6odzQVIhEeKlF9AVluQAgQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_6odMMVIhEeKlF9AVluQAgQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_6odMMlIhEeKlF9AVluQAgQ" fontColor="4210752" fontName="Sans" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="chefclipse.ecore#//NameVersionMap/entries"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6odMM1IhEeKlF9AVluQAgQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63ZnIVIhEeKlF9AVluQAgQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_63aOMFIhEeKlF9AVluQAgQ" id="(0.5,1.0)"/>
+  </edges>
+</notation:Diagram>

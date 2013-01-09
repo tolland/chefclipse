@@ -16,6 +16,7 @@ import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
 
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.cookbook.*;
 
 /**
@@ -120,6 +121,7 @@ public class CookbookSwitch<T> extends Switch<T> {
                 if (result == null) result = caseChecksumFile(recipe);
                 if (result == null) result = caseNamedObject(recipe);
                 if (result == null) result = caseCookbookFile(recipe);
+                if (result == null) result = caseRunListItem(recipe);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -595,6 +597,21 @@ public class CookbookSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseRubyFile(RubyFile object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Run List Item</em>'.
+     * <!-- begin-user-doc -->
+     * This implementation returns null;
+     * returning a non-null result will terminate the switch.
+     * <!-- end-user-doc -->
+     * @param object the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Run List Item</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseRunListItem(RunListItem object) {
         return null;
     }
 

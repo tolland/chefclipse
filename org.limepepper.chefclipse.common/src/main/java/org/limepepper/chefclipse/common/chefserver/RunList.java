@@ -20,6 +20,7 @@ import org.limepepper.chefclipse.common.cookbook.Recipe;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.RunList#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.RunList#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.RunList#getRecipes <em>Recipes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.RunList#getRun_list_items <em>Run list items</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,5 +122,21 @@ public interface RunList extends EObject {
      * @generated
      */
     EList<Recipe> getRecipes();
+
+    /**
+     * Returns the value of the '<em><b>Run list items</b></em>' containment reference list.
+     * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.RunListItem}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Run list items</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Run list items</em>' containment reference list.
+     * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getRunList_Run_list_items()
+     * @model containment="true" resolveProxies="true"
+     * @generated
+     */
+    EList<RunListItem> getRun_list_items();
 
 } // RunList

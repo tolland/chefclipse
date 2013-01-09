@@ -8,6 +8,7 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.tests.DescribedObjectTest;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,15 +16,7 @@ import org.limepepper.chefclipse.common.chefserver.DataBag;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DataBagTest extends TestCase {
-
-	/**
-     * The fixture for this Data Bag test case.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected DataBag fixture = null;
+public class DataBagTest extends DescribedObjectTest {
 
 	/**
      * <!-- begin-user-doc -->
@@ -45,23 +38,14 @@ public class DataBagTest extends TestCase {
     }
 
 	/**
-     * Sets the fixture for this Data Bag test case.
-     * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-     * @generated
-     */
-	protected void setFixture(DataBag fixture) {
-        this.fixture = fixture;
-    }
-
-	/**
      * Returns the fixture for this Data Bag test case.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
-	protected DataBag getFixture() {
-        return fixture;
+	@Override
+    protected DataBag getFixture() {
+        return (DataBag)fixture;
     }
 
 	/**

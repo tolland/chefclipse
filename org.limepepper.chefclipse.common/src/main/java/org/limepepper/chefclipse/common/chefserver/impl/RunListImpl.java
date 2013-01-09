@@ -14,6 +14,7 @@ import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 
 /**
@@ -27,6 +28,7 @@ import org.limepepper.chefclipse.common.cookbook.Recipe;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getRecipes <em>Recipes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getRun_list_items <em>Run list items</em>}</li>
  * </ul>
  * </p>
  *
@@ -124,6 +126,16 @@ public class RunListImpl extends EObjectImpl implements RunList {
     @SuppressWarnings("unchecked")
     public EList<Recipe> getRecipes() {
         return (EList<Recipe>)eGet(ChefserverPackage.Literals.RUN_LIST__RECIPES, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    @SuppressWarnings("unchecked")
+    public EList<RunListItem> getRun_list_items() {
+        return (EList<RunListItem>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS, true);
     }
 
 } //RunListImpl

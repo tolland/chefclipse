@@ -3,33 +3,6 @@
 <plugin>
 
    <extension
-         point="org.eclipse.ui.decorators">
-      <decorator
-            lightweight="true"
-            location="BOTTOM_RIGHT"
-            adaptable="true"
-            label="Resource Decorator"
-            icon="icons/sample_decorator.gif"
-            state="true"
-            id="org.limepepper.chefclipse.editors.cookbook.decorator">
-         <enablement>
-            <and>
-               <objectClass
-                     name="org.eclipse.core.resources.IResource">
-               </objectClass>
-               <or>
-                  <objectClass
-                        name="org.eclipse.core.resources.IProject">
-                  </objectClass>
-                  <objectClass
-                        name="org.eclipse.core.resources.IFile">
-                  </objectClass>
-               </or>
-            </and>
-         </enablement>
-      </decorator>
-   </extension>
-   <extension
          point="org.eclipse.ui.editors">
       <editor
             name="CookbookMetadata Editor"
@@ -69,6 +42,38 @@
             content-type="org.limepepper.chefclipse.editors.cookbook.content-type"
             file-names="metadata.rb">
       </file-association>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/sample_decorator.gif"
+            id="org.limepepper.chefclipse.editors.cookbook.decorator"
+            label="Resource Decorator"
+            lightweight="true"
+            location="TOP_LEFT"
+            state="true">
+         <enablement>
+         <or>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IProject">
+               </objectClass>
+              <objectState name="nature" value="org.limepepper.chefclipse.ChefProjectNature" />
+            </and>
+
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IFolder">
+               </objectClass>
+<objectState name="org.limepepper.chefclipse.isCookbook" value="true"/>
+
+
+            </and>
+
+            </or>
+         </enablement>
+      </decorator>
    </extension>
 
 </plugin>

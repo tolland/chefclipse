@@ -102,25 +102,37 @@
   </eClassifiers>
   <eSubpackages name="chefserver" nsURI="http://limepepper.org/v1/chefclipse/chefserver"
       nsPrefix="org.limepepper.chefclipse.chefserver">
-    <eClassifiers xsi:type="ecore:EClass" name="Environment"/>
-    <eClassifiers xsi:type="ecore:EClass" name="DataBag">
+    <eClassifiers xsi:type="ecore:EClass" name="Environment" eSuperTypes="#//NamedDescribedObject">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="override_attributes"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataBag" eSuperTypes="#//NamedDescribedObject">
       <eStructuralFeatures xsi:type="ecore:EReference" name="server" eType="#//chefserver/Server"
           eOpposite="#//chefserver/Server/databags"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
           eType="#//chefserver/DataBagItem" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="#//NamedDescribedObject"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="#//NamedDescribedObject #//chefserver/RunListItem">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="run_list" eType="#//chefserver/RunList"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//chefserver/Environment"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Node" eSuperTypes="#//NamedDescribedObject">
       <eAnnotations source="JSON">
         <details key="root" value="true"/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="run_list" upperBound="-1"
-          eType="#//chefserver/RunList" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//chefserver/Environment"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="server" lowerBound="1"
           eType="#//chefserver/Server"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="client" eType="#//chefclient/Client"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" eType="#//cookbook/Attribute"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="run_list_items" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="JSON">
+          <details key="element" value="run_list"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="run_list" eType="#//chefserver/RunList"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Server">
       <eStructuralFeatures xsi:type="ecore:EReference" name="cookbooks" upperBound="-1"
@@ -149,6 +161,8 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" eType="#//chefserver/Role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="recipes" upperBound="-1"
           eType="#//cookbook/Recipe"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="run_list_items" upperBound="-1"
+          eType="#//chefserver/RunListItem" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ServerConfig"/>
     <eClassifiers xsi:type="ecore:EClass" name="DataBagItem" eSuperTypes="#//NamedObject">
@@ -195,6 +209,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="cookbook_name" lowerBound="1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RunListItem"/>
   </eSubpackages>
   <eSubpackages name="chefclient" nsURI="http://limepepper.org/v1/chefclipse/chefclient"
       nsPrefix="org.limepepper.chefclipse">
@@ -239,7 +254,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="Definition" eSuperTypes="#//SandboxedObject #//ChecksumFile #//NamedObject #//cookbook/CookbookFile"/>
     <eClassifiers xsi:type="ecore:EClass" name="Library" eSuperTypes="#//SandboxedObject #//ChecksumFile #//NamedObject #//cookbook/CookbookFile"/>
     <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//NamedObject"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Recipe" eSuperTypes="#//SandboxedObject #//RubyFile #//ChecksumFile #//NamedObject #//cookbook/CookbookFile">
+    <eClassifiers xsi:type="ecore:EClass" name="Recipe" eSuperTypes="#//SandboxedObject #//RubyFile #//ChecksumFile #//NamedObject #//cookbook/CookbookFile #//chefserver/RunListItem">
       <eStructuralFeatures xsi:type="ecore:EReference" name="role" upperBound="-1"
           eType="#//chefserver/Role"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="runlist" upperBound="-1"

@@ -53,7 +53,7 @@ public class ChefResourceMapping extends ResourceMapping {
  */
     public ResourceTraversal[] getTraversals(ResourceMappingContext context,
             IProgressMonitor monitor) throws CoreException {
-        // TODO Auto-generated method stub
+
         return null;
     }
 

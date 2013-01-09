@@ -18,11 +18,12 @@ import org.limepepper.chefclipse.common.cookbook.Attribute;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.Node#getRun_list <em>Run list</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Node#getEnvironment <em>Environment</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Node#getServer <em>Server</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Node#getClient <em>Client</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Node#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.Node#getRun_list_items <em>Run list items</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.Node#getRun_list <em>Run list</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,20 +33,30 @@ import org.limepepper.chefclipse.common.cookbook.Attribute;
  */
 public interface Node extends NamedDescribedObject {
     /**
-     * Returns the value of the '<em><b>Run list</b></em>' containment reference list.
-     * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.RunList}.
+     * Returns the value of the '<em><b>Run list</b></em>' reference.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Run list</em>' containment reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Run list</em>' containment reference list.
+     * @return the value of the '<em>Run list</em>' reference.
+     * @see #setRun_list(RunList)
      * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getNode_Run_list()
-     * @model containment="true" resolveProxies="true"
+     * @model
      * @generated
      */
-    EList<RunList> getRun_list();
+    RunList getRun_list();
+
+    /**
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.Node#getRun_list <em>Run list</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Run list</em>' reference.
+     * @see #getRun_list()
+     * @generated
+     */
+    void setRun_list(RunList value);
 
     /**
      * Returns the value of the '<em><b>Environment</b></em>' reference.
@@ -150,5 +161,21 @@ public interface Node extends NamedDescribedObject {
      * @generated
      */
     void setAttributes(Attribute value);
+
+    /**
+     * Returns the value of the '<em><b>Run list items</b></em>' attribute list.
+     * The list contents are of type {@link java.lang.String}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Run list items</em>' attribute list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Run list items</em>' attribute list.
+     * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getNode_Run_list_items()
+     * @model annotation="JSON element='run_list'"
+     * @generated
+     */
+    EList<String> getRun_list_items();
 
 } // Node

@@ -13,7 +13,7 @@ public class RepositoryResourceMapping extends ChefResourceMapping {
 
     @Override
     public IProject[] getProjects() {
-        // TODO Auto-generated method stub
+
         return null;
     }
 

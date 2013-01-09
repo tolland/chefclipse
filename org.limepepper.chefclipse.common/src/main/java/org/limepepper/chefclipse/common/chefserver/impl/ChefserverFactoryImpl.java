@@ -69,6 +69,7 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
             case ChefserverPackage.COOKBOOK_LIST_RESP: return createCookbookListResp();
             case ChefserverPackage.SERVER_COOKBOOK_FILE: return createServerCookbookFile();
             case ChefserverPackage.SERVER_COOKBOOK_VERSION: return createServerCookbookVersion();
+            case ChefserverPackage.RUN_LIST_ITEM: return createRunListItem();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -202,6 +203,16 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
     public ServerCookbookVersion createServerCookbookVersion() {
         ServerCookbookVersionImpl serverCookbookVersion = new ServerCookbookVersionImpl();
         return serverCookbookVersion;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public RunListItem createRunListItem() {
+        RunListItemImpl runListItem = new RunListItemImpl();
+        return runListItem;
     }
 
     /**
