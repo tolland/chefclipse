@@ -312,6 +312,8 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 	 * @ordered
 	 */
 	protected Date installedAt = INSTALLED_AT_EDEFAULT;
+	
+	protected String repositoryId;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -780,6 +782,17 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 		installedAt = newInstalledAt;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT, oldInstalledAt, installedAt));
+	}
+	
+	public String getRepositoryId() {
+		return repositoryId;
+	}
+
+	public void setRepositoryId(String newRepositoryId) {
+		String oldRepositoryId = repositoryId;
+		repositoryId = newRepositoryId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT, oldRepositoryId, repositoryId));
 	}
 
 	/**

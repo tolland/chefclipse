@@ -169,17 +169,18 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 						throws InvocationTargetException, InterruptedException {
 					monitor.beginTask("Installing cookbooks...",
 							IProgressMonitor.UNKNOWN);
-					String repositoryId = getConfiguration()
-							.getCatalogDescriptor().getId();
+//					String repositoryId = getConfiguration()
+//							.getCatalogDescriptor().getId();
 					List<CatalogItem> installableCookbooks = getCatalogPage()
 							.getInstallableCookbooks();
 
 					for (CatalogItem catalogItem : installableCookbooks) {
 						try {
+							RemoteCookbook remoteCookbook = (RemoteCookbook) catalogItem
+									.getData();
 							File downloadCookbook = repoManager
 									.downloadCookbook(
-											(RemoteCookbook) catalogItem
-													.getData(), repositoryId);
+											remoteCookbook, remoteCookbook.getRepositoryId());
 							for (IProject iProject : selectedProjects) {
 								repoManager.installCookbook(catalogItem
 										.getName(), downloadCookbook, iProject

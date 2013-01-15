@@ -75,6 +75,7 @@ public class ExtensionPointHandler {
 				if (o instanceof ICookbooksRepository) {
 					RemoteRepository registeredRepository = getRepoManager().registerRepository(repo, (ICookbooksRepository) o);
 					registeredRepository.setIcon(iconFile.toString());
+					getRepoManager().createCompositeRepository();
 				}
 			}
 			retrieveAndCacheCookbooks();

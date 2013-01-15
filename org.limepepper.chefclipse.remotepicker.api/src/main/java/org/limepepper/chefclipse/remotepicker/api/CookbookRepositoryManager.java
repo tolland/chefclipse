@@ -3,10 +3,13 @@
  */
 package org.limepepper.chefclipse.remotepicker.api;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -25,6 +28,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
@@ -182,6 +186,7 @@ public class CookbookRepositoryManager {
 			if (installedAt != null) {
 				cookbook.setInstalledAt(installedAt);
 			}
+			cookbook.setRepositoryId(repo.getId());
 		}
 		lock.lock();
 		try {
@@ -361,5 +366,103 @@ public class CookbookRepositoryManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Register a composite repository (a repository which has all the cookbooks of the others repositories).
+	 * This method must be called after registering all the concrete repositories.
+	 */
+	public void createCompositeRepository() {
+		
+		final RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
+		repo.getCookbooks().clear();
+		repo.setId("composite.repository");
+		repo.setName("Composite Repository");
+		repo.setDescription("Contains all the cookbooks of all registered repositories.");
+		repo.setUri("http://cookbooks.composite.repository.com");
+		
+		for (final RemoteRepository remoteRepository : getRepositories()){
+			this.addRepositoryListener(remoteRepository.getId(), new PropertyChangeListener() {
+				
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					EList<RemoteCookbook> cookbooks = remoteRepository.getCookbooks();
+					repo.getCookbooks().addAll(cookbooks);
+					removeRepositoryListener(remoteRepository.getId(), this);
+//					boolean areAllReady = true;
+//					for (final RemoteRepository remoteRepository : getRepositories()){
+//						if (!isRepositoryReady(remoteRepository.getId())){
+//							areAllReady = false;
+//						}
+//					}
+//					if (areAllReady){
+//						listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks);
+//					}
+				}
+			});
+		}
+		
+		RemoteRepository registeredRepository = registerCompositeRepository(repo);
+		
+		URL iconURL = this.getClass().getClassLoader().getResource("icons/composite.png");
+		registeredRepository.setIcon(iconURL.toString());
+//		getRepoManager().addRepositoryListener(catalogDescriptor.getId(), new PropertyChangeListener() {
+	}
+
+	private RemoteRepository registerCompositeRepository(
+			final RemoteRepository repo) {
+		
+		RemoteRepository registeredRepository = registerRepository(repo, new ICookbooksRepository() {
+			
+			@Override
+			public boolean isUpdated(RemoteRepository repo) {
+				//as it's only use to cache purposes.
+				return false;
+			}
+			
+			@Override
+			public java.net.URI getRepositoryURI() {
+				try {
+					return new java.net.URI(repo.getUri());
+				} catch (URISyntaxException e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+			
+			@Override
+			public String getRepositoryId() {
+				return repo.getId();
+			}
+			
+			@Override
+			public Collection<RemoteCookbook> getCookbooks() {
+				return Collections.emptyList();
+			}
+			
+			@Override
+			public RemoteCookbook getCookbook(String name) {
+				
+				for (RemoteRepository repository : getRepositories()) {
+					EList<RemoteCookbook> cookbooks = repository.getCookbooks();
+					for (RemoteCookbook cookbook : cookbooks){
+						if (cookbook.getName().equals(name)){
+							return cookbook;
+						}
+					}
+				}
+				return null;
+			}
+			
+			@Override
+			public File downloadCookbook(RemoteCookbook remoteCookbook)
+					throws InstallCookbookException {
+				
+				String repositoryId = remoteCookbook.getRepositoryId();
+				File downloadedCookbook = CookbookRepositoryManager.getInstance().downloadCookbook(remoteCookbook, repositoryId);
+				return downloadedCookbook;
+			}
+		});
+		return registeredRepository;
 	}
 }
