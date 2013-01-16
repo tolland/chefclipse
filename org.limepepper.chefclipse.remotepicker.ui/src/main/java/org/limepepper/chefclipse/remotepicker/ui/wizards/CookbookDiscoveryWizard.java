@@ -169,8 +169,6 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 						throws InvocationTargetException, InterruptedException {
 					monitor.beginTask("Installing cookbooks...",
 							IProgressMonitor.UNKNOWN);
-//					String repositoryId = getConfiguration()
-//							.getCatalogDescriptor().getId();
 					List<CatalogItem> installableCookbooks = getCatalogPage()
 							.getInstallableCookbooks();
 
@@ -286,8 +284,6 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 			setSelectedProjects(Arrays.asList(referencedProjects));
 			return true;
 		}
-		// TODO fix, as it's not working when a project is selected on the
-		// package explorer.
 		List<IProject> selectedProjectFromPackageExplorer = getSelectedProjectFromPackageExplorer();
 		if (selectedProjectFromPackageExplorer != null) {
 			setSelectedProjects(selectedProjectFromPackageExplorer);

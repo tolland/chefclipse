@@ -186,6 +186,8 @@ public class CookbookRepositoryManager {
 			if (installedAt != null) {
 				cookbook.setInstalledAt(installedAt);
 			}
+		}
+		for (RemoteCookbook cookbook : cookbooks) {
 			cookbook.setRepositoryId(repo.getId());
 		}
 		lock.lock();
@@ -375,11 +377,10 @@ public class CookbookRepositoryManager {
 	public void createCompositeRepository() {
 		
 		final RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
-		repo.getCookbooks().clear();
 		repo.setId("composite.repository");
 		repo.setName("Composite Repository");
 		repo.setDescription("Contains all the cookbooks of all registered repositories.");
-		repo.setUri("http://cookbooks.composite.repository.com");
+		repo.setUri("http:/www.chefclipse.com/compositeRespository.html");
 		
 		for (final RemoteRepository remoteRepository : getRepositories()){
 			this.addRepositoryListener(remoteRepository.getId(), new PropertyChangeListener() {
@@ -389,15 +390,15 @@ public class CookbookRepositoryManager {
 					EList<RemoteCookbook> cookbooks = remoteRepository.getCookbooks();
 					repo.getCookbooks().addAll(cookbooks);
 					removeRepositoryListener(remoteRepository.getId(), this);
-//					boolean areAllReady = true;
-//					for (final RemoteRepository remoteRepository : getRepositories()){
-//						if (!isRepositoryReady(remoteRepository.getId())){
-//							areAllReady = false;
-//						}
-//					}
-//					if (areAllReady){
-//						listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks);
-//					}
+					boolean areAllReady = true;
+					for (final RemoteRepository remoteRepository : getRepositories()){
+						if (!isRepositoryReady(remoteRepository.getId())){
+							areAllReady = false;
+						}
+					}
+					if (areAllReady){
+						listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks);
+					}
 				}
 			});
 		}
