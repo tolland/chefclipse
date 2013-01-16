@@ -789,10 +789,7 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 	}
 
 	public void setRepositoryId(String newRepositoryId) {
-		String oldRepositoryId = repositoryId;
 		repositoryId = newRepositoryId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT, oldRepositoryId, repositoryId));
 	}
 
 	/**
