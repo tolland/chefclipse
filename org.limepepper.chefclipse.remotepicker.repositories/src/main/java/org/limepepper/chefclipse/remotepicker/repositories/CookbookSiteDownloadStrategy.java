@@ -124,7 +124,7 @@ public class CookbookSiteDownloadStrategy implements
 	    TarArchiveEntry entry = null; 
 	    while ((entry = (TarArchiveEntry)debInputStream.getNextEntry()) != null) {
 	        final File outputFile = new File(outputDir, entry.getName());
-	        if (entry.getName().endsWith(File.separator)) {
+	        if (entry.isDirectory() || entry.getName().endsWith(File.separator)) {
 	            //LOG.info(String.format("Attempting to write output directory %s.", outputFile.getAbsolutePath()));
 	            if (!outputFile.exists()) {
 	                //LOG.info(String.format("Attempting to create output directory %s.", outputFile.getAbsolutePath()));

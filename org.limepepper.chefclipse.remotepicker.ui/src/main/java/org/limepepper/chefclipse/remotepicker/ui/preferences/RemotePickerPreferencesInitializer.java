@@ -27,8 +27,10 @@ public class RemotePickerPreferencesInitializer extends
 		Collection<RemoteRepository> repositories = CookbookRepositoryManager.getInstance().getRepositories();
 		for (RemoteRepository remoteRepository : repositories) {
 			RemoteRepository defaultRepository = remoteRepository;
-			store.setDefault(IRemotePickerPreferences.DEFAULT_REPOSITORY, defaultRepository.getId());
-			return;
+			if (!defaultRepository.getId().equals(CookbookRepositoryManager.COMPOSITE_REPOSITORY_ID)){
+				store.setDefault(IRemotePickerPreferences.DEFAULT_REPOSITORY, defaultRepository.getId());
+				return;
+			}
 		}
 	}
 
