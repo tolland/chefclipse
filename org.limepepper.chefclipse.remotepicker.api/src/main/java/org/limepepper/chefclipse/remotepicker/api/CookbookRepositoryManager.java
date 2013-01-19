@@ -46,6 +46,7 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepos
  */
 public class CookbookRepositoryManager {
 	
+	public static final String COMPOSITE_REPOSITORY_ID = "composite.repository";
 	private static final String CACHE_EXT = "cookbookrepository";
 	private static final String COOKBOOKS_PROJECT_DIRECTORY = "cookbooks";
 
@@ -187,12 +188,10 @@ public class CookbookRepositoryManager {
 				cookbook.setInstalledAt(installedAt);
 			}
 		}
-		for (RemoteCookbook cookbook : cookbooks) {
-			cookbook.setRepositoryId(repo.getId());
-		}
 		lock.lock();
 		try {
 			repo.getCookbooks().addAll(cookbooks);
+			addRepositoryIds(repo);
 		} finally {
 			lock.unlock();
 		}
@@ -278,6 +277,13 @@ public class CookbookRepositoryManager {
 
 		if (!isCached(repo) || cookbookRepository.isUpdated(repo)) {
 			cacheRepository(repo);
+		}
+	}
+
+	private void addRepositoryIds(RemoteRepository repo) {
+		
+		for (RemoteCookbook cookbook : repo.getCookbooks()) {
+			cookbook.setRepositoryId(repo.getId());
 		}
 	}
 
@@ -377,10 +383,15 @@ public class CookbookRepositoryManager {
 	public void createCompositeRepository() {
 		
 		final RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
-		repo.setId("composite.repository");
+		repo.setId(COMPOSITE_REPOSITORY_ID);
 		repo.setName("Composite Repository");
 		repo.setDescription("Contains all the cookbooks of all registered repositories.");
 		repo.setUri("http:/www.chefclipse.com/compositeRespository.html");
+		
+		final RemoteRepository registeredRepository = registerCompositeRepository(repo);
+		
+		URL iconURL = this.getClass().getClassLoader().getResource("icons/composite.png");
+		registeredRepository.setIcon(iconURL.toString());
 		
 		for (final RemoteRepository remoteRepository : getRepositories()){
 			this.addRepositoryListener(remoteRepository.getId(), new PropertyChangeListener() {
@@ -388,7 +399,7 @@ public class CookbookRepositoryManager {
 				@Override
 				public void propertyChange(PropertyChangeEvent evt) {
 					EList<RemoteCookbook> cookbooks = remoteRepository.getCookbooks();
-					repo.getCookbooks().addAll(cookbooks);
+					registeredRepository.getCookbooks().addAll(cookbooks);
 					removeRepositoryListener(remoteRepository.getId(), this);
 					boolean areAllReady = true;
 					for (final RemoteRepository remoteRepository : getRepositories()){
@@ -397,19 +408,20 @@ public class CookbookRepositoryManager {
 						}
 					}
 					if (areAllReady){
-						listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks);
+						listeners.get(registeredRepository.getId()).firePropertyChange("cookbooks", null, cookbooks);
 					}
 				}
 			});
 		}
 		
-		RemoteRepository registeredRepository = registerCompositeRepository(repo);
-		
-		URL iconURL = this.getClass().getClassLoader().getResource("icons/composite.png");
-		registeredRepository.setIcon(iconURL.toString());
-//		getRepoManager().addRepositoryListener(catalogDescriptor.getId(), new PropertyChangeListener() {
 	}
 
+	/**
+	 * Create and register a composite repository.
+	 * 
+	 * @param repo the composite repository to be registered.
+	 * @return
+	 */
 	private RemoteRepository registerCompositeRepository(
 			final RemoteRepository repo) {
 		

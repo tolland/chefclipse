@@ -77,8 +77,8 @@ public class ExtensionPointHandler {
 					registeredRepository.setIcon(iconFile.toString());
 				}
 			}
-			getRepoManager().createCompositeRepository();
 			retrieveAndCacheCookbooks();
+			getRepoManager().createCompositeRepository();
 		} catch (CoreException ex) {
 			IStatus status = new Status(Status.ERROR, Activator.PLUGIN_ID, ex.getMessage(), ex);
 			Platform.getLog(Activator.getContext().getBundle()).log(status );
