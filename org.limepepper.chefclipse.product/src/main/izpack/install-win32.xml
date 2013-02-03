@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<installation version="5.0"
+	xmlns="http://izpack.org/schema/installation">
+	<!-- Ant properties in this file can be referenced with @{}, otherwise use 
+		variables below in installer files with ${} -->
+	<info>
+		<appname>@{product.name}</appname>
+		<appversion>@{product.version}</appversion>
+		<uninstaller name="uninstaller.jar" path="${INSTALL_PATH}/Uninstall"
+			write="yes" />
+	</info>
+
+	<guiprefs width="800" height="600" resizable="no">
+		<laf name="substance">
+			<os family="windows" />
+			<os family="unix" />
+			<param name="variant" value="mist-silver" />
+		</laf>
+		<laf name="substance">
+			<os family="mac" />
+			<param name="variant" value="mist-aqua" />
+		</laf>
+		<modifier key="useHeadingPanel" value="yes" />
+		<modifier key="useHeadingForSummary" value="yes" />
+		<modifier key="headingImageOnLeft" value="yes" />
+		<modifier key="headingLineCount" value="2" />
+		<modifier key="headingFontSize" value="1.5" />
+		<modifier key="headingBackgroundColor" value="0x00ffffff" />
+		<modifier key="headingPanelCounter" value="text" />
+		<modifier key="headingPanelCounterPos" value="inHeading" />
+	</guiprefs>
+
+	<locale>
+		<langpack iso3="eng" />
+	</locale>
+
+	<resources>
+		<res id="box-out-32.png" src="@{icons.dir}/32x32.png" />
+		<res id="HTMLInfoPanel.info" src="@{izpack.staging.dir}/linux/gtk/x86_64/epl-v10.html" />
+		<res id="Heading.image" src="@{icons.dir}/16x16.png" />
+		<res id="Installer.image" src="@{icons.dir}/about_vert.gif" />
+	</resources>
+
+	<panels>
+		<panel classname="HelloPanel" />
+		<panel classname="HTMLInfoPanel" />
+		<panel classname="TargetPanel" />
+		<panel classname="PacksPanel" />
+		<panel classname="InstallPanel" />
+		<panel classname="SimpleFinishPanel" />
+	</panels>
+
+	<packs>
+		<pack name="Chefclipse Application" required="yes" installGroups="Chefclipse">
+			<description>Chefclipse Reality-Based automation for the Cloud.</description>
+			<fileset dir="@{izpack.staging.dir}/win32/win32/@{product.arch}" targetdir="$INSTALL_PATH" />
+ 		</pack>
+	</packs>
+
+</installation>

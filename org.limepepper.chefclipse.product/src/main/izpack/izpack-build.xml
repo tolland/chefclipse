@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<project name="izPack bundles build">
+
+	<property name="izpack.staging.dir" location="${project.build.dir}/products/org.limepepper.chefclipse.product"/>
+	<property name="icons.dir" value="${izpack.staging.dir}/icons"/>
+
+	<property name="product.name" value="Chefclipse"/>
+	<property name="product.version" value="Prealpha"/>
+	
+	
+	<dirname file="${ant.file}" property="izpack.scripts.dir" />
+
+	<taskdef name="izpack" classpath="${plugin_classpath}" classname="com.izforge.izpack.ant.IzPackTask" />
+
+	<macrodef name="izpackTask">
+		<attribute name="platform"/>
+		<attribute name="arch"/>
+		<sequential>
+			<izpack input="${izpack.scripts.dir}/install-@{platform}.xml" 
+				output="${project.build.dir}/${product.name}-@{platform}-@{arch}.jar" 
+				installerType="standard" 
+				inheritAll="true" 
+				basedir="${izpack.staging.dir}" 
+				compression="deflate" 
+				compressionlevel="9">
+				<property name="product.arch" value="@{arch}"/>
+			</izpack>			
+		</sequential>
+	</macrodef>
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: prepare                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="prepare">
+		<copy todir="${icons.dir}">
+			<fileset dir="../org.limepepper.chefclipse.app/icons" includes="*.*" />
+		</copy>
+	</target>
+
+
+	<target name="build.bundles" depends="prepare">
+		<izpackTask arch="x86_64" platform="win32"/>
+		<izpackTask arch="x86" platform="win32"/>
+		<izpackTask arch="x86_64" platform="linux"/>
+		<izpackTask arch="x86" platform="linux"/>
+		<izpackTask arch="x86_64" platform="macosx"/>
+	</target>
+
+</project>
