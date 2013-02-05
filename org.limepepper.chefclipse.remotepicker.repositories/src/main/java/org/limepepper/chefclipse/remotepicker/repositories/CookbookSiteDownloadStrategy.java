@@ -51,7 +51,7 @@ public class CookbookSiteDownloadStrategy implements
 		try {
 			String latestVersion = cookbook.getLatestVersion();
 			String lastVersion = latestVersion
-					.substring(latestVersion.length() - 5);
+					.substring(latestVersion.lastIndexOf("/")+1);
 			URL cookbookURL = new URL(repositoryURI + File.separator
 					+ "cookbooks" + File.separator + cookbook.getName()
 					+ File.separator + "versions" + File.separator
