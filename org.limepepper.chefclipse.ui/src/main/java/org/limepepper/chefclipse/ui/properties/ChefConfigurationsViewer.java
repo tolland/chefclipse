@@ -11,6 +11,7 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -419,4 +420,57 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
         }
 	}
 
+	public int getItemCount() {
+		return configViewer.getTable().getItemCount();
+	}
+
+	public void addDoubleClickListener(IDoubleClickListener iDoubleClickListener) {
+		configViewer.addDoubleClickListener(iDoubleClickListener);
+	}
+
+	public void add(Config config) {
+		configs.add(config);
+	}
+
+	public void replace(Config config, Config editedConfig) {
+		int index = configs.indexOf(config);
+		configs.remove(index);
+		configs.add(index, editedConfig);
+	}
+
+	/**
+	 * Remove a chef config.
+	 * 
+	 * @param config
+	 */
+	public void remove(Config config) {
+		configs.remove(config);
+	}
+	
+	public void refresh(){
+		configViewer.refresh();
+	}
+
+	/**
+	 * Remove a list of selected Chef's configs.
+	 * 
+	 * @param chefConfigs
+	 */
+	public void removeChefConfigs(Config[] chefConfigs) {
+		IStructuredSelection prev = (IStructuredSelection) getSelection();
+		for (int i = 0; i < configs.size(); i++) {
+			remove((Config) configs.get(i));
+		}
+		refresh();
+		IStructuredSelection curr = (IStructuredSelection) getSelection();
+		if (!curr.equals(prev)) {
+			Config[] installs = getChefConfigs();
+			if (curr.size() == 0 && installs.length == 1) {
+				// pick a default VM automatically
+				setSelection(new StructuredSelection(installs[0]));
+			} else {
+				fireSelectionChanged();
+			}
+		}
+	}
 }

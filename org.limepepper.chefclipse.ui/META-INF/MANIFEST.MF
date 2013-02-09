@@ -18,5 +18,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse.ui,
  org.limepepper.chefclipse.ui.perspective,
  org.limepepper.chefclipse.ui.preferences,
+ org.limepepper.chefclipse.ui.properties,
  org.limepepper.chefclipse.ui.wizards
 Bundle-ClassPath: .

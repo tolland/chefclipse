@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Chef Server Configurations Page"
+            class="org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage1"
+            id="org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.limepepper.chefclipse.preferences.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>
