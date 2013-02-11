@@ -6,7 +6,7 @@
          point="org.eclipse.ui.preferencePages">
       <page
             name="Chef Server Configurations Page"
-            class="org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage1"
+            class="org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage"
             id="org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage">
       </page>
    </extension>

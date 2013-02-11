@@ -45,7 +45,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	private static final String CHEFCONFIG_URL_PROPERTY = "CHEF_CONFIGURATION_URL"; //$NON-NLS-1$
 	private static final String CHEFCONFIG_NAME_PROPERTY = "CHEF_CONFIGURATION_NAME"; //$NON-NLS-1$
 	private static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
-	private static KnifeConfig DEFAULT_CONFIG = null;
+	public static KnifeConfig DEFAULT_CONFIG = null;
 	{
 		DEFAULT_CONFIG = KnifeFactory.eINSTANCE.createKnifeConfig();
 		DEFAULT_CONFIG.setNode_name("node 1"); //$NON-NLS-1$
