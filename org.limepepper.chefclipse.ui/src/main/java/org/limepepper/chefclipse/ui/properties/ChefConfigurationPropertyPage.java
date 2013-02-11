@@ -2,120 +2,78 @@ package org.limepepper.chefclipse.ui.properties;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.QualifiedName;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.preference.PreferencePage;
-import org.eclipse.jface.viewers.CheckboxTableViewer;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PropertyPage;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.ui.Activator;
+import org.limepepper.chefclipse.ui.Messages;
+import org.osgi.service.prefs.BackingStoreException;
 
 /**
+ * Project property page to select Chef-server configuration for chef project.
+ * This property page is only enabled for project with chef nature.
  * 
  * @author Guillermo Zunino
  *
  */
 public class ChefConfigurationPropertyPage extends PropertyPage {
 
-	private static final String PATH_TITLE = "Path:";
-	private static final String OWNER_TITLE = "&Owner:";
-	private static final String OWNER_PROPERTY = "OWNER";
-	private static final String DEFAULT_OWNER = "John Doe";
-
-	private static final String CHEFCONFIG_PROPERTY = "CHEF_CONFIGURATION";
-	private static final int REPOSITORY_LIST_MULTIPLIER = 30;
-	private static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page";;
+	private static final String CHEFCONFIG_URL_PROPERTY = "CHEF_CONFIGURATION_URL"; //$NON-NLS-1$
+	private static final String CHEFCONFIG_NAME_PROPERTY = "CHEF_CONFIGURATION_NAME"; //$NON-NLS-1$
+	private static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
+	private static KnifeConfig DEFAULT_CONFIG = null;
+	{
+		DEFAULT_CONFIG = KnifeFactory.eINSTANCE.createKnifeConfig();
+		DEFAULT_CONFIG.setNode_name("node 1"); //$NON-NLS-1$
+		try {
+			DEFAULT_CONFIG.setChef_server_url(new URL("http://chef.server1.com")); //$NON-NLS-1$
+		} catch (MalformedURLException e) {
+		}
+	}
+	
 	private IProject project;
 	private boolean modified = false;
-//	private CheckboxTableViewer listViewer;
-	private ChefConfigurationsViewer fJREBlock;
+	private ChefConfigurationsViewer configsViewer;
 
 	/**
-	 * Constructor for SamplePropertyPage.
+	 * Constructor for ChefConfigurationPropertyPage.
 	 */
 	public ChefConfigurationPropertyPage() {
 		super();
-	}
-
-	private void addFirstSection(Composite parent) {
-		Composite composite = createDefaultComposite(parent);
-
-		//Label for path field
-		Label pathLabel = new Label(composite, SWT.NONE);
-		pathLabel.setText(PATH_TITLE);
-
-		// Path text field
-		Text pathValueText = new Text(composite, SWT.WRAP | SWT.READ_ONLY);
-		pathValueText.setText(((IResource) getElement()).getFullPath().toString());
-	}
-
-	private void addSeparator(Composite parent) {
-		Label separator = new Label(parent, SWT.SEPARATOR | SWT.HORIZONTAL);
-		GridData gridData = new GridData();
-		gridData.horizontalAlignment = GridData.FILL;
-		gridData.grabExcessHorizontalSpace = true;
-		separator.setLayoutData(gridData);
-	}
-
-	private void addSecondSection(Composite parent) {
-//		Composite composite = createDefaultComposite(parent);
-//
-//		// Label for owner field
-//		Label ownerLabel = new Label(composite, SWT.NONE);
-//		ownerLabel.setText(OWNER_TITLE);
-//
-//		// Owner text field
-//		ownerText = new Text(composite, SWT.SINGLE | SWT.BORDER);
-//		GridData gd = new GridData();
-//		gd.widthHint = convertWidthInCharsToPixels(TEXT_FIELD_WIDTH);
-//		ownerText.setLayoutData(gd);
-//
-//		// Populate owner text field
-//		try {
-//			String owner =
-//				((IResource) getElement()).getPersistentProperty(
-//					new QualifiedName("", OWNER_PROPERTY));
-//			ownerText.setText((owner != null) ? owner : DEFAULT_OWNER);
-//		} catch (CoreException e) {
-//			ownerText.setText(DEFAULT_OWNER);
-//		}
 	}
 
 	/**
 	 * @see PreferencePage#createContents(Composite)
 	 */
 	protected Control createContents(Composite parent) {
-//		Composite composite = new Composite(parent, SWT.NONE);
-//		GridLayout layout = new GridLayout();
-//		composite.setLayout(layout);
-//		GridData data = new GridData(GridData.FILL);
-//		data.grabExcessHorizontalSpace = true;
-//		composite.setLayoutData(data);
-
-//		addFirstSection(composite);
-//		addSeparator(composite);
-//		addSecondSection(composite);
-//		return composite;
 		Font font = parent.getFont();
 
 		Composite composite = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		composite.setLayout(layout);
+		composite.setLayout(new GridLayout());
 		composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		composite.setFont(font);
 
@@ -124,118 +82,111 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		Label description = createDescriptionLabel(composite);
 		description.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
 
-		fJREBlock = new ChefConfigurationsViewer();
-		fJREBlock.createControl(composite);
-		Control control = fJREBlock.getControl();
+		configsViewer = new ChefConfigurationsViewer();
+		configsViewer.createControl(composite);
+		Control control = configsViewer.getControl();
 		GridData data = new GridData(GridData.FILL_BOTH);
 		data.horizontalSpan = 1;
 		control.setLayoutData(data);
 		
-		fJREBlock.restoreColumnSettings(Activator.getDefault().getDialogSettings(), PROPERTIES_PAGE);
+		configsViewer.restoreColumnSettings(Activator.getDefault().getDialogSettings(), PROPERTIES_PAGE);
 
-		
-//		listViewer = CheckboxTableViewer.newCheckList(composite, SWT.TOP | SWT.BORDER);
-//		listViewer.getTable().setFont(font);
-//		GridData data = new GridData(GridData.FILL_BOTH);
-//		data.grabExcessHorizontalSpace = true;
-
-		// Only set a height hint if it will not result in a cut off dialog
-//		if (DialogUtil.inRegularFontMode(parent)) {
-//			data.heightHint = getDefaultFontHeight(listViewer.getTable(), REPOSITORY_LIST_MULTIPLIER);
-//		}
-//		listViewer.getTable().setLayoutData(data);
-//		listViewer.getTable().setFont(font);
-
-//		listViewer.setLabelProvider(new DecoratingLabelProvider(new TaskRepositoryLabelProvider(),
-//				PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator()));
-//		listViewer.setContentProvider(new IStructuredContentProvider() {
-//			public void inputChanged(Viewer v, Object oldInput, Object newInput) {
-//			}
-//
-//			public void dispose() {
-//			}
-//
-//			public Object[] getElements(Object parent) {
-//				return new String[] {"Chef Server 1", "Cherf Server 2"};
-//			}
-//
-//		});
-
-//		listViewer.setSorter(new TaskRepositoriesSorter());
-//		listViewer.setInput(project.getWorkspace());
-
-//		listViewer.addCheckStateListener(new ICheckStateListener() {
-//			public void checkStateChanged(CheckStateChangedEvent event) {
-//				if (event.getChecked()) {
-//					// only allow single selection
-//					listViewer.setAllChecked(false);
-//					listViewer.setChecked(event.getElement(), event.getChecked());
-//				}
-//				modified = true;
-//			}
-//		});
-		updateLinkedRepository();
+		configsViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			@Override
+			public void selectionChanged(SelectionChangedEvent event) {
+				modified = true;
+				if (event.getSelection().isEmpty()) {
+					setValid(false);
+					setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection);
+				} else {
+					setValid(true);
+					setErrorMessage(null);
+				}
+			}
+		});
+		loadChefServerConfigs();
 		return composite;
 	}
 
+	/**
+	 * Initialize dialog.
+	 */
 	private void initialize() {
 		project = (IProject) getElement().getAdapter(IResource.class);
-		noDefaultAndApplyButton();
-		setDescription("Select a Chef Configuration to associate with this project below");
+		setDescription(Messages.ChefConfigurationPropertyPage_Description);
 	}
 	
-	void updateLinkedRepository() {
-		KnifeConfig kconfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-		kconfig.setNode_name("node 1");
-		try {
-			kconfig.setChef_server_url(new URL("http://chef.server1.com"));
-		} catch (MalformedURLException e1) {
-			e1.printStackTrace();
-		}
-		fJREBlock.setChefConfigs(new KnifeConfig[]{kconfig});
+	/**
+	 * Safe method to get getChef_server_url for {@link KnifeConfig}
+	 * @param config the {@link KnifeConfig}
+	 * @return non-null String
+	 */
+	private String serverUrl(Config config) {
+		if (config.getChef_server_url() != null)
+			return config.getChef_server_url().toExternalForm();
+		return ""; //$NON-NLS-1$
+	}
+
+	/**
+	 * Load workspace chef configuration on viewer and select default or saved configuration.
+	 */
+	private void loadChefServerConfigs() {
+		List<KnifeConfig> configs = getChefServerConfigs();
+		KnifeConfig defaultConfig = getDefaultChefServerConfig();
 		
-		try {
-			String config = ((IResource) getElement()).getPersistentProperty(
-						new QualifiedName("", CHEFCONFIG_PROPERTY));
-			if (config != null) {
-				fJREBlock.setCheckedConfig(kconfig);
-//				listViewer.setCheckedElements(new Object[] { config });
+		configsViewer.setChefConfigs(configs.toArray(new KnifeConfig[0]));
+		
+		IScopeContext projectScope = new ProjectScope(project);
+		IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
+		String selectedUrl = ""; //$NON-NLS-1$
+		String selectedName = ""; //$NON-NLS-1$
+		if (defaultConfig != null) {
+			selectedUrl = serverUrl(defaultConfig);
+			selectedName = (defaultConfig.getNode_name() == null) ? "" : defaultConfig.getNode_name(); //$NON-NLS-1$
+		}
+		if (projectNode != null) {
+			selectedUrl = projectNode.get(CHEFCONFIG_URL_PROPERTY, selectedUrl);
+			selectedName = projectNode.get(CHEFCONFIG_NAME_PROPERTY, selectedName);
+		}
+		
+		for (KnifeConfig knifeConfig : configs) {
+			if (selectedUrl.equals(serverUrl(knifeConfig))
+					&& selectedName.equals(knifeConfig.getNode_name())) {
+				configsViewer.setCheckedConfig(knifeConfig);
 			}
-		} catch (CoreException e) {
-			// TODO: log
 		}
 	}
-	
-	private static int getDefaultFontHeight(Control control, int lines) {
-		FontData[] viewerFontData = control.getFont().getFontData();
-		int fontHeight = 10;
 
-		// If we have no font data use our guess
-		if (viewerFontData.length > 0) {
-			fontHeight = viewerFontData[0].getHeight();
-		}
-		return lines * fontHeight;
-
+	/**
+	 * Gets the workspace wide default chef server configuration.
+	 * @return the default {@link KnifeConfig}, can be null.
+	 */
+	public KnifeConfig getDefaultChefServerConfig() {
+		return DEFAULT_CONFIG;
 	}
-	
-	private Composite createDefaultComposite(Composite parent) {
-		Composite composite = new Composite(parent, SWT.NULL);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 2;
-		composite.setLayout(layout);
 
-		GridData data = new GridData();
-		data.verticalAlignment = GridData.FILL;
-		data.horizontalAlignment = GridData.FILL;
-		composite.setLayoutData(data);
+	/**
+	 * Gets Chef-server configuration from workspace preferences.
+	 * @return List of configurations
+	 */
+	public List<KnifeConfig> getChefServerConfigs() {
+		List<KnifeConfig> configs = new ArrayList<KnifeConfig>();
+		try {
+			KnifeConfig kconfig = KnifeFactory.eINSTANCE.createKnifeConfig();
+			kconfig = KnifeFactory.eINSTANCE.createKnifeConfig();
+			kconfig.setNode_name("node name 2"); //$NON-NLS-1$
+			kconfig.setChef_server_url(new URL("http://asdasd as.d asdasd.server1.com")); //$NON-NLS-1$
+			configs.add(kconfig);
 
-		return composite;
+			configs.add(DEFAULT_CONFIG);
+		} catch (MalformedURLException e1) {
+		}
+		return configs;
 	}
 
 	protected void performDefaults() {
 		super.performDefaults();
-		// Populate the owner text field with the default value
-//		ownerText.setText(DEFAULT_OWNER);
+		configsViewer.setCheckedConfig(getDefaultChefServerConfig());
 	}
 	
 	@Override
@@ -243,44 +194,41 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		if (!modified) {
 			return true;
 		}
-//		if ( != ) {
-//			TaskRepository selectedRepository = (TaskRepository) listViewer.getCheckedElements()[0];
-//			TasksUiPlugin.getDefault().setRepositoryForResource(project, selectedRepository);
-//			savePreference(listViewer.getCheckedElements()[0].toString());
-//		} else {
-			savePreference(fJREBlock.getCheckedConfig());
-//		}
+		savePreference(configsViewer.getCheckedConfig());
 		
 		// save column widths
 		IDialogSettings settings = Activator.getDefault().getDialogSettings();
-		fJREBlock.saveColumnSettings(settings, PROPERTIES_PAGE);
+		configsViewer.saveColumnSettings(settings, PROPERTIES_PAGE);
 		return super.performOk();
 	}
 
 	/**
-	 * @param selected 
-	 * @throws CoreException
+	 * Save selected Chef-server configuration for this project.
+	 * @param selected {@link KnifeConfig}
 	 */
 	private void savePreference(Config selected) {
-		try {
-			((IResource) getElement()).setPersistentProperty(
-					new QualifiedName("", CHEFCONFIG_PROPERTY),
-					selected.getChef_server_url().toExternalForm());
-		} catch (CoreException e) {
-			// TODO Auto-generated catch block
+		IProject project = this.project.getProject();
+		if (project == null || !project.isAccessible()) {
+			return;
+		}
+
+		IScopeContext projectScope = new ProjectScope(project);
+		IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
+		if (projectNode != null) {
+			if (selected != null) {
+				projectNode.put(CHEFCONFIG_URL_PROPERTY, serverUrl(selected));
+				projectNode.put(CHEFCONFIG_NAME_PROPERTY, selected.getNode_name());
+			} else {
+				projectNode.remove(CHEFCONFIG_URL_PROPERTY);
+				projectNode.remove(CHEFCONFIG_NAME_PROPERTY);
+			}
+			try {
+				projectNode.flush();
+			} catch (BackingStoreException e) {
+				StatusManager.getManager().handle(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+						"Failed to save Chef Configuration to project association preference", e)); //$NON-NLS-1$
+			}
 		}
 	}
-	
-//	public boolean performOk() {
-//		// store the value in the owner text field
-//		try {
-//			((IResource) getElement()).setPersistentProperty(
-//				new QualifiedName("", OWNER_PROPERTY),
-//				ownerText.getText());
-//		} catch (CoreException e) {
-//			return false;
-//		}
-//		return true;
-//	}
 
 }

@@ -56,11 +56,14 @@
       <page
             class="org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage"
             id="org.limepepper.chefclipse.ui.properties.pages.chef.configuration"
-            name="Chef Configuration">
+            name="Chef-Server Configuration">
+         <filter
+               name="projectNature"
+               value="org.limepepper.chefclipse.ChefProjectNature"/>
          <enabledWhen>
-            <instanceof
-                  value="org.eclipse.core.resources.IProject">
-            </instanceof>
+            <adapt
+                  type="org.eclipse.core.resources.IProject">
+            </adapt>
          </enabledWhen>
       </page>
    </extension>

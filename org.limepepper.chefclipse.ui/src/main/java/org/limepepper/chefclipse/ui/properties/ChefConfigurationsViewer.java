@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.ui.Activator;
+import org.limepepper.chefclipse.ui.Messages;
 
 /**
  * A composite that displays installed Chef Config's in a table. Chef Configs can be 
@@ -108,7 +109,7 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 		 */
 		public Image getColumnImage(Object element, int columnIndex) {
 			if (columnIndex == 0) {
-				return Activator.getImageDescriptor("icons/chefserver.png").createImage();
+				return Activator.getImageDescriptor("icons/chefserver.png").createImage(); //$NON-NLS-1$
 			}
 			return null;
 		}
@@ -182,7 +183,7 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 		table.setLinesVisible(true);	
 
 		TableColumn column = new TableColumn(table, SWT.NULL);
-		column.setText("Chef Node Name"); 
+		column.setText(Messages.ChefConfigurationsViewer_ColumnNodeName); 
 		column.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -193,7 +194,7 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 		column.setWidth(defaultwidth);
 	
 		column = new TableColumn(table, SWT.NULL);
-		column.setText("Chef Server Url"); 
+		column.setText(Messages.ChefConfigurationsViewer_ColumnServerUrl); 
 		column.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
