@@ -1,14 +1,10 @@
 package org.limepepper.chefclipse.ui.properties;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ProjectScope;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -27,8 +23,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.PropertyPage;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.api.ChefConfigurationsManager;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.ui.Activator;
 import org.limepepper.chefclipse.ui.Messages;
 import org.osgi.service.prefs.BackingStoreException;
@@ -45,15 +41,6 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	private static final String CHEFCONFIG_URL_PROPERTY = "CHEF_CONFIGURATION_URL"; //$NON-NLS-1$
 	private static final String CHEFCONFIG_NAME_PROPERTY = "CHEF_CONFIGURATION_NAME"; //$NON-NLS-1$
 	private static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
-	public static KnifeConfig DEFAULT_CONFIG = null;
-	{
-		DEFAULT_CONFIG = KnifeFactory.eINSTANCE.createKnifeConfig();
-		DEFAULT_CONFIG.setNode_name("node 1"); //$NON-NLS-1$
-		try {
-			DEFAULT_CONFIG.setChef_server_url(new URL("http://chef.server1.com")); //$NON-NLS-1$
-		} catch (MalformedURLException e) {
-		}
-	}
 	
 	private IProject project;
 	private boolean modified = false;
@@ -162,7 +149,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @return the default {@link KnifeConfig}, can be null.
 	 */
 	public KnifeConfig getDefaultChefServerConfig() {
-		return DEFAULT_CONFIG;
+		return ChefConfigurationsManager.getManager().getDefaultChefConfiguration();
 	}
 
 	/**
@@ -170,18 +157,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @return List of configurations
 	 */
 	public List<KnifeConfig> getChefServerConfigs() {
-		List<KnifeConfig> configs = new ArrayList<KnifeConfig>();
-		try {
-			KnifeConfig kconfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-			kconfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-			kconfig.setNode_name("node name 2"); //$NON-NLS-1$
-			kconfig.setChef_server_url(new URL("http://asdasd as.d asdasd.server1.com")); //$NON-NLS-1$
-			configs.add(kconfig);
-
-			configs.add(DEFAULT_CONFIG);
-		} catch (MalformedURLException e1) {
-		}
-		return configs;
+		return ChefConfigurationsManager.getManager().getChefConfigurations();
 	}
 
 	protected void performDefaults() {

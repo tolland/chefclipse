@@ -29,8 +29,8 @@ public class AddChefConfigurationDialog extends TitleAreaDialog{
 	}
 
 	public Config getCreatedChefConfig() {
-		// TODO remove this
-		return ChefConfigurationPropertyPage.DEFAULT_CONFIG;
+		// TODO implement this
+		return null;
 	}
 
 	@Override

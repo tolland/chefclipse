@@ -6,6 +6,7 @@ package org.limepepper.chefclipse.api;
 import java.util.List;
 
 import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
 
 /**
@@ -16,7 +17,7 @@ import org.limepepper.chefclipse.Config;
  */
 public class ChefConfigurationsManager {
 
-	private ChefConfigurationsManager instance;
+	private static ChefConfigurationsManager instance;
 	/**
 	 * 
 	 */
@@ -24,19 +25,25 @@ public class ChefConfigurationsManager {
 
 	}
 	
-	public synchronized ChefConfigurationsManager getManager() {
+	public static synchronized ChefConfigurationsManager getManager() {
 		if (instance == null){
 			instance = new ChefConfigurationsManager();
 		}
 		return instance;
 	}
 	
-	public List<Config> retrieveChefConfigurations(){
+	public List<KnifeConfig> getChefConfigurations() {
+		// TODO implement
 		return null;
 	}
 	
 	public void saveChefConfigurations(List<Config> chefConfigs){
 		
+	}
+
+	public KnifeConfig getDefaultChefConfiguration() {
+		// TODO implement
+		return null;
 	}
 
 }

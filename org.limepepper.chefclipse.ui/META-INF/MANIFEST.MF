@@ -10,6 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
  org.limepepper.chefclipse.common;bundle-version="1.0.0",
  org.eclipse.ui.navigator;bundle-version="3.5.200",
+ org.limepepper.chefclipse.api;bundle-version="1.0.0",
  org.limepepper.chefclipse.common.ui;bundle-version="1.0.0",
  org.limepepper.chefclipse.remotepicker.api;bundle-version="1.0.0",
  org.junit4;bundle-version="4.8.1"
