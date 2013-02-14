@@ -10,7 +10,10 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.jface.layout.GridDataFactory;
+import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.preference.PreferencePage;
+import org.eclipse.jface.resource.JFaceColors;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
@@ -20,7 +23,11 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.dialogs.PropertyPage;
+import org.eclipse.ui.forms.events.HyperlinkAdapter;
+import org.eclipse.ui.forms.events.HyperlinkEvent;
+import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.api.ChefConfigurationsManager;
@@ -38,6 +45,7 @@ import org.osgi.service.prefs.BackingStoreException;
  */
 public class ChefConfigurationPropertyPage extends PropertyPage {
 
+	private static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
 	private static final String CHEFCONFIG_URL_PROPERTY = "CHEF_CONFIGURATION_URL"; //$NON-NLS-1$
 	private static final String CHEFCONFIG_NAME_PROPERTY = "CHEF_CONFIGURATION_NAME"; //$NON-NLS-1$
 	private static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
@@ -61,14 +69,13 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setLayout(new GridLayout());
-		composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 		composite.setFont(font);
 
 		initialize();
 
-		Label description = createDescriptionLabel(composite);
-		description.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
-
+		createHeader(composite);
+		
 		configsViewer = new ChefConfigurationsViewer();
 		configsViewer.createControl(composite);
 		Control control = configsViewer.getControl();
@@ -92,6 +99,40 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 			}
 		});
 		loadChefServerConfigs();
+		return composite;
+	}
+
+	/**
+	 * Create description label and workspace settings link.
+	 * @param parent {@link Composite}
+	 * @return the created composite to host label and link
+	 */
+	private Composite createHeader(Composite parent) {
+		Composite composite = new Composite(parent, SWT.NONE);
+		composite.setFont(parent.getFont());
+		GridLayout layout = new GridLayout();
+		layout.marginHeight = 0;
+		layout.marginWidth = 0;
+		layout.numColumns = 2;
+		composite.setLayout(layout);
+		composite.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
+
+		Label description = createDescriptionLabel(composite);
+		GridDataFactory.fillDefaults().grab(true, false).applyTo(description);
+		
+		Hyperlink configurationHyperlink = new Hyperlink(composite, SWT.NONE);
+		configurationHyperlink.setUnderlined(true);
+		configurationHyperlink.setText(Messages.ChefConfigurationPropertyPage_CONFIGURE_WORKSPACE);
+		configurationHyperlink.setForeground(JFaceColors.getHyperlinkText(getShell().getDisplay()));
+		configurationHyperlink.addHyperlinkListener(new HyperlinkAdapter() {
+			@Override
+			public void linkActivated(HyperlinkEvent e) {
+				PreferenceDialog dlg = PreferencesUtil.createPreferenceDialogOn(getShell(),
+						CHEF_CONFIG_PREFERENCE_ID, new String[] { CHEF_CONFIG_PREFERENCE_ID }, null);
+				dlg.open();
+			}
+		});
+
 		return composite;
 	}
 
