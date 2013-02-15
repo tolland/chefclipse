@@ -80,6 +80,8 @@
         <module>org.limepepper.chefclipse.remotepicker.test</module>
         <module>org.limepepper.eclipse.RubyConsole</module>
         <module>com.sun.jersey.bundle</module>
+        <module>org.limepepper.chefclipse.preferences</module>
+        <module>org.limepepper.chefclipse.preferences.ui</module>
         
         
     </modules>
