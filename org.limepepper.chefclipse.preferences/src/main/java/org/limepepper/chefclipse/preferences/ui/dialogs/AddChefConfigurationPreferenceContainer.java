@@ -27,6 +27,7 @@ import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.preferences.ui.preferences.AddChefConfigurationPreferencePage;
 import org.limepepper.chefclipse.preferences.ui.preferences.ChefConfigurationPreferenceStore;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
+import org.limepepper.chefclipse.ui.Messages;
 
 /**
  * Dialog which allow to create and add a new Chef configuration or edit an
@@ -78,11 +79,11 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		Composite parentComposite = (Composite) super.createDialogArea(parent);
 		
 		if (addMode){
-			setTitle("Add Chef server configuration");
-			setMessage("Add a new Chef server configuration to the existing list.");
+			setTitle(Messages.AddChefConfigurationPreferencePage_AddConfigTitle);
+			setMessage(Messages.AddChefConfigurationPreferencePage_AddConfigDesc);
 		} else {
-			setTitle("Edit Chef server configuration");
-			setMessage("Edit the selected Chef server configuration.");
+			setTitle(Messages.AddChefConfigurationPreferencePage_editConfigTitle);
+			setMessage(Messages.AddChefConfigurationPreferencePage_editConfigDesc);
 		}
 				
 		Composite composite = new Composite(parentComposite, SWT.NONE);

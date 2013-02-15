@@ -39,6 +39,7 @@ import org.limepepper.chefclipse.preferences.ChefConfigurationsManager;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 import org.limepepper.chefclipse.ui.Activator;
+import org.limepepper.chefclipse.ui.Messages;
 import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
 
 /**
@@ -76,7 +77,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		
 		GridLayoutFactory.fillDefaults().numColumns(2).applyTo(ancestor);
 		
-		SWTFactory.createWrapLabel(ancestor, "Add, remove or edit Chef Configurations definitions.", 1, 300);
+		SWTFactory.createWrapLabel(ancestor, Messages.ChefConfigurationPreferencePage_Desc, 1, 300);
 		SWTFactory.createVerticalSpacer(ancestor, 1);
 		
 		chefConfigurationsViewer = new ChefConfigurationsViewer();
@@ -139,7 +140,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 				Config installed = getCurrentDefaultConfig();
 				if (installed == null) {
 					setValid(false);
-					setErrorMessage("Select a default Chef configuration"); 
+					setErrorMessage(Messages.ChefConfigurationPreferencePage_SelectDefault); 
 				} else {
 					setValid(true);
 					setErrorMessage(null);
@@ -217,7 +218,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	 */
 	private void addChefConfig() {
 		KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-		knifeConfig.setValidation_client_name("#{ENV['validation_client_name']}");
+		knifeConfig.setValidation_client_name(Messages.Config_DefaultValidationClientName);
 		
 		AddChefConfigurationPreferenceContainer dialog = new AddChefConfigurationPreferenceContainer(this.getShell(), knifeConfig, true);
 		if (dialog.open() == IDialogConstants.OK_ID) {

@@ -13,6 +13,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
+import org.limepepper.chefclipse.ui.Messages;
 
 /**
  * Preference page which allow to create and add a new Chef configuration or edit an
@@ -42,17 +43,17 @@ public class AddChefConfigurationPreferencePage extends FieldEditorPreferencePag
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.CENTER).hint(400, SWT.DEFAULT)
           .grab(true, true).applyTo(chefServerUrlEditor.getTextControl(getFieldEditorParent()));
 		chefServerUrlEditor.setEmptyStringAllowed(false);
-		chefServerUrlEditor.setErrorMessage("The URL must not be empty");
+		chefServerUrlEditor.setErrorMessage(Messages.AddChefConfigurationPreferencePage_EmptyURL);
 		addField(chefServerUrlEditor);
 		
 		nodeNameEditor = new StringFieldEditor(PreferenceConstants.P_NODE_NAME, "&Node name:", getFieldEditorParent());
 		nodeNameEditor.setEmptyStringAllowed(false);
-		nodeNameEditor.setErrorMessage("The node name must not be empty");
+		nodeNameEditor.setErrorMessage(Messages.AddChefConfigurationPreferencePage_EmptyNodeName);
 		addField(nodeNameEditor);
 		
 		clientKeyEditor = new FileFieldEditor(PreferenceConstants.P_CLIENT_KEY, "&Client key:", true, getFieldEditorParent());
 		clientKeyEditor.setEmptyStringAllowed(false);
-		clientKeyEditor.setErrorMessage("The client key path must be absolute and cannot be empty");
+		clientKeyEditor.setErrorMessage(Messages.AddChefConfigurationPreferencePage_InvalidClientKey);
 		addField(clientKeyEditor);
 		
 		cookbookPathEditor = new DirectoryFieldEditor(PreferenceConstants.P_COOKBOOK_PATH, "Cookbook &path:", getFieldEditorParent());
@@ -68,7 +69,7 @@ public class AddChefConfigurationPreferencePage extends FieldEditorPreferencePag
 					setErrorMessage(null);
 				} else {
 					setValid(false);
-					setErrorMessage("The validation client name must begin with '#{ENV[' and end with ']}'");
+					setErrorMessage(Messages.AddChefConfigurationPreferencePage_InvalidValidationKey);
 				}
 			}
 		});
