@@ -52,7 +52,7 @@
 	<extension
          point="org.eclipse.ui.preferencePages">
       <page
-            category="org.limepepper.chefclipse.ui.preferences.chefclipsePreferencePage"
+            category="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
             class="org.limepepper.chefclipse.remotepicker.ui.preferences.RemotePickerPreferencePage"
             id="org.limepepper.chefclipse.remotepicker.ui.remotePickerPreferencePage"
             name="Cookbooks Remote Picker">

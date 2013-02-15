@@ -30,8 +30,8 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.limepepper.chefclipse.Config;
-import org.limepepper.chefclipse.api.ChefConfigurationsManager;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.preferences.ChefConfigurationsManager;
 import org.limepepper.chefclipse.ui.Activator;
 import org.limepepper.chefclipse.ui.Messages;
 import org.osgi.service.prefs.BackingStoreException;
@@ -190,7 +190,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @return the default {@link KnifeConfig}, can be null.
 	 */
 	public KnifeConfig getDefaultChefServerConfig() {
-		return ChefConfigurationsManager.getManager().getDefaultChefConfiguration();
+		return ChefConfigurationsManager.getManager().retrieveDefaultChefConfiguration();
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @return List of configurations
 	 */
 	public List<KnifeConfig> getChefServerConfigs() {
-		return ChefConfigurationsManager.getManager().getChefConfigurations();
+		return ChefConfigurationsManager.getManager().retrieveChefConfigurations();
 	}
 
 	protected void performDefaults() {

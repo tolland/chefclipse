@@ -3,6 +3,7 @@
  */
 package org.limepepper.chefclipse.ui.properties;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,7 +99,12 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 					case 0:
 						return config.getNode_name();
 					case 1:
-						return config.getChef_server_url().toExternalForm();
+					URL chef_server_url = config.getChef_server_url();
+					if (chef_server_url != null){
+						return chef_server_url.toExternalForm();
+					} else {
+						return "";
+					}
 				}
 			}
 			return element.toString();
@@ -459,8 +465,8 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 	 */
 	public void removeChefConfigs(Config[] chefConfigs) {
 		IStructuredSelection prev = (IStructuredSelection) getSelection();
-		for (int i = 0; i < configs.size(); i++) {
-			remove((Config) configs.get(i));
+		for (int i = 0; i < chefConfigs.length; i++) {
+			remove((Config) chefConfigs[i]);
 		}
 		refresh();
 		IStructuredSelection curr = (IStructuredSelection) getSelection();

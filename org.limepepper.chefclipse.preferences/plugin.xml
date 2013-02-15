@@ -4,17 +4,20 @@
 
    <extension
          point="org.eclipse.ui.preferencePages">
-      <page
-            name="Chef Server Configurations Page"
-            class="org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage"
-            id="org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage">
-      </page>
-   </extension>
+		<page
+            class="org.limepepper.chefclipse.preferences.ui.preferences.ChefclipseRootPreferencePage"
+            id="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
+            name="Chefclipse">
+      	</page>
+      	<page
+             category="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
+             class="org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"
+             id="org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"
+             name="Chef Server Configurations">
+      	</page>
+   	</extension>
    <extension
          point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="org.limepepper.chefclipse.preferences.preferences.PreferenceInitializer">
-      </initializer>
+      <initializer class="org.limepepper.chefclipse.preferences.ui.preferences.PreferenceInitializer"/>
    </extension>
-
 </plugin>
