@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.forms;bundle-version="3.5.200",
  org.limepepper.chefclipse.ui;bundle-version="1.0.0",
  org.limepepper.chefclipse.common;bundle-version="1.0.0",
- org.limepepper.chefclipse.preferences;bundle-version="1.0.0",
+ org.limepepper.chefclipse.preferences.api;bundle-version="1.0.0",
  org.limepepper.chefclipse.chefserver.api;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

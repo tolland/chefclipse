@@ -35,7 +35,7 @@ import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
-import org.limepepper.chefclipse.preferences.ChefConfigurationsManager;
+import org.limepepper.chefclipse.preferences.api.ChefConfigurationsManager;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 import org.limepepper.chefclipse.ui.Activator;
@@ -82,7 +82,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		
 		chefConfigurationsViewer = new ChefConfigurationsViewer();
 		chefConfigurationsViewer.createControl(ancestor);
-		GridDataFactory.fillDefaults().span(1, 1).applyTo(chefConfigurationsViewer.getControl());
+		GridDataFactory.fillDefaults().grab(true, true).applyTo(chefConfigurationsViewer.getControl());
 		
 		chefConfigurationsViewer.restoreColumnSettings(Activator.getDefault().getDialogSettings(), PREFERENCE_PAGE);
 		

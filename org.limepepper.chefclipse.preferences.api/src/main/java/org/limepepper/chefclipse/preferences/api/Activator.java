@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.preferences;
+package org.limepepper.chefclipse.preferences.api;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -6,7 +6,7 @@ import org.osgi.framework.BundleContext;
 public class Activator implements BundleActivator {
 
 	private static BundleContext context;
-	public static final String PLUGIN_ID = "org.limepepper.chefclipse.preferences";
+	public static final String PLUGIN_ID = "org.limepepper.chefclipse.preferences.api";
 
 	static BundleContext getContext() {
 		return context;

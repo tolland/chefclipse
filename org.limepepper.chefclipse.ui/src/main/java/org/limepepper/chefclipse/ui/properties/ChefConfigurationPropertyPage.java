@@ -31,7 +31,7 @@ import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.preferences.ChefConfigurationsManager;
+import org.limepepper.chefclipse.preferences.api.ChefConfigurationsManager;
 import org.limepepper.chefclipse.ui.Activator;
 import org.limepepper.chefclipse.ui.Messages;
 import org.osgi.service.prefs.BackingStoreException;
@@ -45,7 +45,7 @@ import org.osgi.service.prefs.BackingStoreException;
  */
 public class ChefConfigurationPropertyPage extends PropertyPage {
 
-	private static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
+	private static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
 	private static final String CHEFCONFIG_URL_PROPERTY = "CHEF_CONFIGURATION_URL"; //$NON-NLS-1$
 	private static final String CHEFCONFIG_NAME_PROPERTY = "CHEF_CONFIGURATION_NAME"; //$NON-NLS-1$
 	private static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
@@ -98,7 +98,6 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 				}
 			}
 		});
-		loadChefServerConfigs();
 		return composite;
 	}
 
@@ -183,6 +182,13 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 				configsViewer.setCheckedConfig(knifeConfig);
 			}
 		}
+	}
+	
+	@Override
+	public void setVisible(boolean visible) {
+		if (visible && configsViewer != null)
+			loadChefServerConfigs();
+		super.setVisible(visible);
 	}
 
 	/**

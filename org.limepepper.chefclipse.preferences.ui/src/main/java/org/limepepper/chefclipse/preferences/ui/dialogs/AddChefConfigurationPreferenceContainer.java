@@ -4,14 +4,17 @@
 package org.limepepper.chefclipse.preferences.ui.dialogs;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.preference.IPreferencePageContainer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceStore;
@@ -19,6 +22,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.progress.IProgressService;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
@@ -36,7 +41,7 @@ import org.limepepper.chefclipse.ui.Messages;
  * @author Sebastian Sampaoli
  *
  */
-public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog implements IPreferencePageContainer{
+public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog implements IPreferencePageContainer {
 
 	private static final String DEFAULT_VALUE = "";
 	private static final int TEST_BUTTON_ID = 34;
@@ -72,7 +77,6 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_KEY, validation_key != null ? validation_key.getAbsolutePath() : DEFAULT_VALUE);
 		return preferenceStore;
 	}
-
 	
 	@Override
 	protected Control createDialogArea(Composite parent) {
@@ -117,17 +121,28 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		createdKnifeConfig.setNode_name(preferenceStore.getString(PreferenceConstants.P_NODE_NAME));
 		
 		String clientPath = preferenceStore.getString(PreferenceConstants.P_CLIENT_KEY);
-		createdKnifeConfig.setClient_key(new File(clientPath));
+		createdKnifeConfig.setClient_key(getFileOrNull(clientPath));
 		
 		String cookbookPath = preferenceStore.getString(PreferenceConstants.P_COOKBOOK_PATH);
-		createdKnifeConfig.setCookbook_path(new File(cookbookPath));
+		createdKnifeConfig.setCookbook_path(getFileOrNull(cookbookPath));
 		
 		createdKnifeConfig.setValidation_client_name(preferenceStore.getString(PreferenceConstants.P_VALIDATION_CLIENT_NAME));
 		
 		String validationKey = preferenceStore.getString(PreferenceConstants.P_VALIDATION_KEY);
-		createdKnifeConfig.setValidation_key(new File(validationKey));
+		createdKnifeConfig.setValidation_key(getFileOrNull(validationKey));
 		
 		return createdKnifeConfig;
+	}
+
+	/**
+	 * Returns a {@link File} if path is non empty, otherwise it returns null.
+	 * @param path Path to file, can be null or empty
+	 * @return a {@link File} or null
+	 */
+	private File getFileOrNull(String path) {
+		if (path != null && !"".equals(path))
+			return new File(path);
+		return null;
 	}
 
 	@Override
@@ -141,6 +156,8 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		super.createButton(parent, TEST_BUTTON_ID,
 				"Test Connection", false);
 		super.createButtonsForButtonBar(parent);
+		
+		updateButtons();
 	}
 	
 	@Override
@@ -165,27 +182,52 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	 * Shows test result in an informational or error dialog.
 	 */
 	public void testConnection() {
+		IProgressService progressService = PlatformUI.getWorkbench().getProgressService();
 		preferencePage.performOk();
-		
-		Config knifeConfig = getCreatedChefConfig();
-		if (knifeConfig == null){
+		final Config knifeConfig = getCreatedChefConfig();
+		if (knifeConfig == null) {
 			return;
 		}
-		
-		if (hasKey(knifeConfig)){
-			ChefServerApi server = KnifeConfigController.INSTANCE.getServer((KnifeConfig) knifeConfig);
-			
-			try {
-				String info = server.getServerInfo();
-			
-				MessageDialog.openInformation(getShell(), "Connection Succesfull", "Test connection to Chef-Server: OK\n\nServer Info:\n" + info);
-			} catch (Exception e) {
-				MessageDialog.openError(getShell(), "Connection Error", "Could not connect to Chef server. \n\nError message is:\n" + 
-						e.getLocalizedMessage() + "\n" );
+		try {
+			progressService.busyCursorWhile(new IRunnableWithProgress() {
+				@Override
+				public void run(IProgressMonitor monitor) throws InvocationTargetException,
+						InterruptedException {
+					monitor.beginTask("Testing Connection", IProgressMonitor.UNKNOWN);
+					
+					if (hasKey(knifeConfig)) {
+						ChefServerApi server = KnifeConfigController.INSTANCE.getServer((KnifeConfig) knifeConfig);
+						
+						try {
+							final String info = server.getServerInfo();
+							
+							showTestConnectionResult("Connection Succesfull", "Test connection to Chef-Server: OK\n\nServer Info:\n" + info, MessageDialog.INFORMATION);
+						} catch (final Exception e) {
+							showTestConnectionResult("Connection Error", "Could not connect to Chef server. \n\nError message is:\n" + 
+											e + "\n", MessageDialog.ERROR );
+						}
+					} else {
+						showTestConnectionResult("Connection Error", "Could not connect to chef server. The client key doesn't exist or is invalid.", MessageDialog.ERROR);
+					}
+					monitor.done();
+				}
+			});
+		} catch (InvocationTargetException | InterruptedException e) {}
+	}
+
+	/**
+	 * Show an information or error dialog with the given title and message on the UI thread.
+	 * @param dlgTitle The title of the dialog
+	 * @param msg the dialog message
+	 * @param type the dialog type from {@link MessageDialog}
+	 */
+	private void showTestConnectionResult(final String dlgTitle, final String msg, final int type) {
+		getShell().getDisplay().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				MessageDialog.open(type, getShell(), dlgTitle, msg, SWT.NONE);
 			}
-		} else {
-			MessageDialog.openError(getShell(), "Connection Error", "Could not connect to chef server. The client key doesn't exist or is invalid.");
-		}
+		});
 	}
 	
 	private boolean hasKey(Config knifeConfig) {
@@ -202,6 +244,9 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	public void updateButtons() {
 		if (getButton(IDialogConstants.OK_ID) != null) {
 			getButton(IDialogConstants.OK_ID).setEnabled(preferencePage.isValid());
+		}
+		if (getButton(TEST_BUTTON_ID) != null) {
+			getButton(TEST_BUTTON_ID).setEnabled(preferencePage.isValid());
 		}
 	}
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.limepepper.chefclipse.preferences;
+package org.limepepper.chefclipse.preferences.api;
 
 import java.io.File;
 import java.io.IOException;
@@ -75,7 +75,7 @@ public class ChefConfigurationsManager {
 			configs.addAll((Collection<? extends KnifeConfig>) result);
 			return configs;
 		}
-		return null;
+		return new ArrayList<KnifeConfig>();
 	}
 
 	/**
