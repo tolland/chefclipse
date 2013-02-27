@@ -11,7 +11,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ProjectScope;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.ConfigurationScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -23,6 +31,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
+import org.osgi.service.prefs.BackingStoreException;
 
 /**
  * Manager that allow to persist and retrieve chef configurations.
@@ -35,13 +44,16 @@ public class ChefConfigurationsManager {
 	private static final String CHEF_CONFIGS_LIST = "chefConfigsList";
 	private static final String DEFAULT_CHEF_CONFIG = "defaultChefConfig";
 	private static final Object KNIFE_CONFIG_EXT = "knife";
+	
+	private static final String CHEFCONFIG_URL_PROPERTY = "CHEF_CONFIGURATION_URL"; //$NON-NLS-1$
+	private static final String CHEFCONFIG_NAME_PROPERTY = "CHEF_CONFIGURATION_NAME"; //$NON-NLS-1$
+
 	private static ChefConfigurationsManager instance;
 
 	/**
-	 * 
+	 * Private Constructor.
 	 */
 	private ChefConfigurationsManager() {
-
 	}
 
 	public static synchronized ChefConfigurationsManager getManager() {
@@ -157,7 +169,81 @@ public class ChefConfigurationsManager {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Sets the given {@link Config} as the project configured chef-server configuration.
+	 * @param project the projcet to apply the chef-server configuration
+	 * @param config the {@link Config} to apply
+	 */
+	public void setProjectChefConfiguration(IResource project, Config config) {
+		assert project != null;
+		IProject iproject = project.getProject();
+		if (iproject == null || !iproject.isAccessible()) {
+			return;
+		}
 
+		IScopeContext projectScope = new ProjectScope(iproject);
+		IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
+		if (projectNode != null) {
+			if (config != null) {
+				projectNode.put(CHEFCONFIG_URL_PROPERTY, serverUrl(config));
+				projectNode.put(CHEFCONFIG_NAME_PROPERTY, config.getNode_name());
+			} else {
+				projectNode.remove(CHEFCONFIG_URL_PROPERTY);
+				projectNode.remove(CHEFCONFIG_NAME_PROPERTY);
+			}
+			try {
+				projectNode.flush();
+			} catch (BackingStoreException e) {
+				Platform.getLog(Activator.getContext().getBundle()).log(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
+						"Failed to save Chef Configuration to project association preference", e)); //$NON-NLS-1$
+			}
+		}
+	}
+	
+	/**
+	 * Retrieves the Chef-server configured for the given project.
+	 * @param project a resource or project
+	 * @return the {@link Config} configured for the project
+	 */
+	public Config getProjectChefConfiguration(IResource project) {
+		assert project != null;
+		List<KnifeConfig> configs = retrieveChefConfigurations();
+		Config defaultConfig = retrieveDefaultChefConfiguration();
+
+		IScopeContext projectScope = new ProjectScope(project.getProject());
+		IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
+		String selectedUrl = ""; //$NON-NLS-1$
+		String selectedName = ""; //$NON-NLS-1$
+		if (defaultConfig  != null) {
+			selectedUrl = serverUrl(defaultConfig);
+			selectedName = (defaultConfig.getNode_name() == null) ? "" : defaultConfig.getNode_name(); //$NON-NLS-1$
+		}
+		if (projectNode != null) {
+			selectedUrl = projectNode.get(CHEFCONFIG_URL_PROPERTY, selectedUrl);
+			selectedName = projectNode.get(CHEFCONFIG_NAME_PROPERTY, selectedName);
+		}
+		
+		for (KnifeConfig knifeConfig : configs) {
+			if (selectedUrl.equals(serverUrl(knifeConfig))
+					&& selectedName.equals(knifeConfig.getNode_name())) {
+				return knifeConfig;
+			}
+		}
+		return defaultConfig;
+	}
+
+	/**
+	 * Safe method to get getChef_server_url for {@link KnifeConfig}
+	 * @param config the {@link KnifeConfig}
+	 * @return non-null String
+	 */
+	private String serverUrl(Config config) {
+		if (config.getChef_server_url() != null)
+			return config.getChef_server_url().toExternalForm();
+		return ""; //$NON-NLS-1$
+	}
+	
 	private String getConfigListFile() {
 		return new StringBuilder(ConfigurationScope.INSTANCE.getLocation()
 				.toOSString()).append(File.separatorChar)
