@@ -59,7 +59,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	 * 
 	 */
 	public ChefServerConfigurationsPreferencePage() {
-		super("Chef Configurations Page");
+		super(Messages.ChefConfigurationPreferencePage_Title);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		GridDataFactory.fillDefaults().span(1, 1).applyTo(buttons);
 
 		addButton = SWTFactory.createPushButton(buttons,
-				"Add...", null);
+				Messages.ChefConfigurationPreferencePage_AddButton, null);
 		addButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event evt) {
 				addChefConfig();
@@ -107,7 +107,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		});
 
 		editButton = SWTFactory.createPushButton(buttons,
-				"Edit...", null);
+				Messages.ChefConfigurationPreferencePage_EditButton, null);
 		editButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event evt) {
 				editChefConfig();
@@ -115,7 +115,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		});
 
 		removeButton = SWTFactory.createPushButton(buttons,
-				"Remove", null);
+				Messages.ChefConfigurationPreferencePage_RemoveButton, null);
 		removeButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event evt) {
 				removeChefConfigs();
@@ -148,7 +148,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 			}
 		});
 		chefConfigurationsViewer.setChefConfigs(getChefServerConfigs());
-		setDefaultConfig();
+//		setDefaultConfig();
 		
 		applyDialogFont(ancestor);
 		enableButtons();
@@ -218,7 +218,6 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	 */
 	private void addChefConfig() {
 		KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-		knifeConfig.setValidation_client_name(Messages.Config_DefaultValidationClientName);
 		
 		AddChefConfigurationPreferenceContainer dialog = new AddChefConfigurationPreferenceContainer(this.getShell(), knifeConfig, true);
 		if (dialog.open() == IDialogConstants.OK_ID) {

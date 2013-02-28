@@ -19,11 +19,32 @@ public class Messages extends NLS {
 	public static String AddChefConfigurationPreferencePage_EmptyNodeName;
 	public static String AddChefConfigurationPreferencePage_InvalidClientKey;
 	public static String AddChefConfigurationPreferencePage_InvalidValidationKey;
+	public static String AddChefConfigurationPreferencePage_TestingConnection;
+	public static String AddChefConfigurationPreferencePage_ConnectionSuccessful;
+	public static String AddChefConfigurationPreferencePage_TestingConnectionMsg;
+	public static String AddChefConfigurationPreferencePage_ConnectionError;
+	public static String AddChefConfigurationPreferencePage_ConnectionErrorMsj1;
+	public static String AddChefConfigurationPreferencePage_ConnectionErrorMsj2;
+	public static String AddChefConfigurationPreferencePage_ChefServerURL;
+	public static String AddChefConfigurationPreferencePage_NodeName;
+	public static String AddChefConfigurationPreferencePage_ClientKey;
+	public static String AddChefConfigurationPreferencePage_CookbookPath;
+	public static String AddChefConfigurationPreferencePage_ValidationClientName;
+	public static String AddChefConfigurationPreferencePage_ValidationKey;
+	public static String AddChefConfigurationPreferencePage_ValidURL;
+
+	public static String ChefclipseRootPreferencePage_Description;
+	public static String ChefclipseRootPreferencePage_CookbookCopyright;
+	public static String ChefclipseRootPreferencePage_CookbookEmail;
+	public static String ChefclipseRootPreferencePage_CookbookLicense;
 	
 	public static String ChefConfigurationPreferencePage_Desc;
 	public static String ChefConfigurationPreferencePage_SelectDefault;
+	public static String ChefConfigurationPreferencePage_Title;
+	public static String ChefConfigurationPreferencePage_AddButton;
+	public static String ChefConfigurationPreferencePage_EditButton;
+	public static String ChefConfigurationPreferencePage_RemoveButton;
 	
-	public static String Config_DefaultValidationClientName;
 //	public static String ChefConfigurationPreferencePage_ADD_CHEF_SERVER_CONFIGURATION = "Add Chef server configuration";
 	static {
 		// initialize resource bundle

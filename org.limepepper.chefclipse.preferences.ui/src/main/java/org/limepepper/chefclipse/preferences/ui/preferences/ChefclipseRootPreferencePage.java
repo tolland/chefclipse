@@ -7,6 +7,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.limepepper.chefclipse.ui.Activator;
+import org.limepepper.chefclipse.ui.Messages;
 
 /**
  * Chefclipse's root preference page.
@@ -17,18 +18,18 @@ public class ChefclipseRootPreferencePage extends FieldEditorPreferencePage impl
 	public ChefclipseRootPreferencePage() {
 		super(GRID);
 		setPreferenceStore(new ScopedPreferenceStore(ConfigurationScope.INSTANCE, Activator.PLUGIN_ID));
-		setDescription("Configure the general chefclipse preferences.");
+		setDescription(Messages.ChefclipseRootPreferencePage_Description);
 	}
 	
 	@Override
 	public void createFieldEditors() {
-		StringFieldEditor cookbookCopyrightEditor = new StringFieldEditor(PreferenceConstants.P_COOKBOOK_COPYRIGHT, "Cookbook &copyright:", getFieldEditorParent());
+		StringFieldEditor cookbookCopyrightEditor = new StringFieldEditor(PreferenceConstants.P_COOKBOOK_COPYRIGHT, Messages.ChefclipseRootPreferencePage_CookbookCopyright, getFieldEditorParent());
 		addField(cookbookCopyrightEditor);
 		
-		StringFieldEditor cookbookEmailEditor = new StringFieldEditor(PreferenceConstants.P_COOKBOOK_EMAIL, "Cookbook &email:", getFieldEditorParent());
+		StringFieldEditor cookbookEmailEditor = new StringFieldEditor(PreferenceConstants.P_COOKBOOK_EMAIL, Messages.ChefclipseRootPreferencePage_CookbookEmail, getFieldEditorParent());
 		addField(cookbookEmailEditor);
 		
-		StringFieldEditor cookbookLicense = new StringFieldEditor(PreferenceConstants.P_COOKBOOK_LICENSE, "Cookbook &license:", getFieldEditorParent());
+		StringFieldEditor cookbookLicense = new StringFieldEditor(PreferenceConstants.P_COOKBOOK_LICENSE, Messages.ChefclipseRootPreferencePage_CookbookLicense, getFieldEditorParent());
 		addField(cookbookLicense);
 	}
 
