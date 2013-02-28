@@ -50,7 +50,7 @@ import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
 
 public class ChefServerConfigurationsPreferencePage extends PreferencePage implements IWorkbenchPreferencePage{
 
-	private static final String PREFERENCE_PAGE = Activator.PLUGIN_ID + ".chef_configs_preference_page";;
+	private static final String PREFERENCE_PAGE = Activator.PLUGIN_ID + ".chef_configs_preference_page"; //$NON-NLS-1$
 	private ChefConfigurationsViewer chefConfigurationsViewer;
 	private Button editButton;
 	private Button addButton;
@@ -148,7 +148,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 			}
 		});
 		chefConfigurationsViewer.setChefConfigs(getChefServerConfigs());
-//		setDefaultConfig();
+		setDefaultConfig();
 		
 		applyDialogFont(ancestor);
 		enableButtons();
@@ -254,7 +254,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	/**
 	 * Performs the remove VM(s) action when the Remove... button is pressed
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //$NON-NLS-1$
 	private void removeChefConfigs() {
 		IStructuredSelection selection= (IStructuredSelection)chefConfigurationsViewer.getSelection();
 		Config[] chefConfigs = new Config[selection.size()];

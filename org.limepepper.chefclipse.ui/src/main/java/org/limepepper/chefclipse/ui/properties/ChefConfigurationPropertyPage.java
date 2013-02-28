@@ -142,7 +142,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		
 		configsViewer.setChefConfigs(configs.toArray(new KnifeConfig[0]));
 		
-		Config knifeConfig = ChefConfigurationsManager.getManager().getProjectChefConfiguration(project);
+		Config knifeConfig = ChefConfigurationsManager.getManager().retrieveProjectChefConfiguration(project);
 		configsViewer.setCheckedConfig(knifeConfig);
 	}
 	
@@ -192,7 +192,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @param selected {@link KnifeConfig}
 	 */
 	private void savePreference(Config selected) {
-		ChefConfigurationsManager.getManager().setProjectChefConfiguration(this.project, selected);
+		ChefConfigurationsManager.getManager().saveProjectChefConfiguration(this.project, selected);
 	}
 
 }

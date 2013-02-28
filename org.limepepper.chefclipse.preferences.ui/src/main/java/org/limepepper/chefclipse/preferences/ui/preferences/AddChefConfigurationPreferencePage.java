@@ -26,8 +26,8 @@ import org.limepepper.chefclipse.ui.Messages;
  */
 public class AddChefConfigurationPreferencePage extends FieldEditorPreferencePage {
 
-	public static final String URL_PREFIX = "http://";
-	public static final String URL_INVALID_PREFIX = "http:";
+	public static final String URL_PREFIX = "http://"; //$NON-NLS-1$
+	public static final String URL_INVALID_PREFIX = "http:"; //$NON-NLS-1$
 	public static final String DEFAULT_VALUE = "";
 	
 	private StringFieldEditor chefServerUrlEditor;
@@ -97,7 +97,7 @@ public class AddChefConfigurationPreferencePage extends FieldEditorPreferencePag
 		if (!validationValue.startsWith("#{ENV[")){
 			return false;
 		}
-		if (!validationValue.endsWith("]}")){
+		if (!validationValue.endsWith("]}")){ //$NON-NLS-1$
 			return false;
 		}
 		return super.isValid();

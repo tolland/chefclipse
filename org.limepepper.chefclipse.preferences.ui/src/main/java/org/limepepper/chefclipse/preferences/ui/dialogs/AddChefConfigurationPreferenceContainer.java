@@ -145,7 +145,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	 * @return a {@link File} or null
 	 */
 	private File getFileOrNull(String path) {
-		if (path != null && !"".equals(path))
+		if (path != null && !"".equals(path)) //$NON-NLS-1$
 			return new File(path);
 		return null;
 	}
@@ -159,7 +159,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
 		super.createButton(parent, TEST_BUTTON_ID,
-				"Test Connection", false);
+				"Test Connection", false); //$NON-NLS-1$
 		super.createButtonsForButtonBar(parent);
 		
 		updateButtons();
@@ -209,7 +209,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionSuccessful, Messages.AddChefConfigurationPreferencePage_TestingConnectionMsg + info, MessageDialog.INFORMATION);
 						} catch (final Exception e) {
 							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionError, Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj1 + 
-											e + "\n", MessageDialog.ERROR );
+											e + "\n", MessageDialog.ERROR ); //$NON-NLS-1$
 						}
 					} else {
 						showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionError, Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj2, MessageDialog.ERROR);
@@ -279,7 +279,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 
 	private String getValidationClientNameErrorMessage() {
 		String validationValue = preferencePage.getValidationClientNameText();
-		if (!validationValue.startsWith("#{ENV[")){
+		if (!validationValue.startsWith("#{ENV[")){ //$NON-NLS-1$
 			return Messages.AddChefConfigurationPreferencePage_InvalidValidationKey;
 		}
 		if (!validationValue.endsWith("]}")){
