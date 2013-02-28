@@ -67,7 +67,8 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 	/**
 	 * Previous selection
 	 */
-	private ISelection prevSelection = new StructuredSelection();
+	private ISelection prevChecked = new StructuredSelection();
+	private ISelection prevSelected = new StructuredSelection();
 	
     private Table table;
 
@@ -133,7 +134,7 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 	 * @see org.eclipse.jface.viewers.ISelectionProvider#getSelection()
 	 */
 	public ISelection getSelection() {
-		return new StructuredSelection(configViewer.getCheckedElements());
+		return configViewer.getSelection();
 	}
 
 	/* (non-Javadoc)
@@ -148,15 +149,9 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 	 */
 	public void setSelection(ISelection selection) {
 		if (selection instanceof IStructuredSelection) {
-			if (!selection.equals(prevSelection)) {
-				prevSelection = selection;
-				Object config = ((IStructuredSelection)selection).getFirstElement();
-				if (config == null) {
-					configViewer.setCheckedElements(new Object[0]);
-				} else {
-					configViewer.setCheckedElements(new Object[]{config});
-					configViewer.reveal(config);
-				}
+			if (!selection.equals(prevSelected)) {
+				prevSelected = selection;
+				configViewer.setSelection(prevSelected);
 				fireSelectionChanged();
 			}
 		}
@@ -226,8 +221,14 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 				if (event.getChecked()) {
 					setCheckedConfig((Config)event.getElement());
 				} else {
-					setCheckedConfig(null);
+					setSelectedConfig(null);
 				}
+			}
+		});
+		
+		configViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+			public void selectionChanged(SelectionChangedEvent event) {
+				setSelection(event.getSelection());
 			}
 		});
 		
@@ -309,12 +310,28 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 	 */
 	public void setCheckedConfig(Config config) {
 		if (config == null) {
-			setSelection(new StructuredSelection());
+			setSelectedConfig(new StructuredSelection());
 		} else {
-			setSelection(new StructuredSelection(config));
+			setSelectedConfig(new StructuredSelection(config));
 		}
 	}
 	
+	private void setSelectedConfig(StructuredSelection selection) {
+		if (selection instanceof IStructuredSelection) {
+			if (!selection.equals(prevChecked)) {
+				prevChecked = selection;
+				Object config = ((IStructuredSelection)selection).getFirstElement();
+				if (config == null) {
+					configViewer.setCheckedElements(new Object[0]);
+				} else {
+					configViewer.setCheckedElements(new Object[]{config});
+					configViewer.reveal(config);
+				}
+				fireSelectionChanged();
+			}
+		}
+	}
+
 	/**
 	 * Returns the checked Chef Config or <code>null</code> if none.
 	 * 
