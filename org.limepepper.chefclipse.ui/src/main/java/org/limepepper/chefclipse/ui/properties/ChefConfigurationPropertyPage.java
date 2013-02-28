@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences.PreferenceChangeEvent;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.preference.PreferenceDialog;
@@ -80,13 +82,22 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				modified = true;
-				if (event.getSelection().isEmpty()) {
+				Config current = configsViewer.getCheckedConfig();
+				if (current == null) {
 					setValid(false);
-					setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection);
+					setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection); 
 				} else {
 					setValid(true);
 					setErrorMessage(null);
 				}
+			}
+		});
+		
+		ChefConfigurationsManager.getManager().getPreferences().addPreferenceChangeListener(new IPreferenceChangeListener() {
+
+			@Override
+			public void preferenceChange(PreferenceChangeEvent event) {
+				loadChefServerConfigs();
 			}
 		});
 		return composite;
@@ -142,8 +153,21 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		
 		configsViewer.setChefConfigs(configs.toArray(new KnifeConfig[0]));
 		
-		Config knifeConfig = ChefConfigurationsManager.getManager().retrieveProjectChefConfiguration(project);
-		configsViewer.setCheckedConfig(knifeConfig);
+		setDefaultProjectConfig();
+	}
+	
+	private void setDefaultProjectConfig() {
+		
+		Config projectConfig = ChefConfigurationsManager.getManager().retrieveProjectChefConfiguration(project);
+		
+		Config[] chefConfigs = configsViewer.getChefConfigs();
+		for (Config config : chefConfigs) {
+			boolean equalsUrl = projectConfig.getChef_server_url().toExternalForm().equals(config.getChef_server_url().toExternalForm());
+			if (projectConfig.getNode_name().equals(config.getNode_name()) && equalsUrl){
+				configsViewer.setCheckedConfig(config);
+				return;
+			}
+		}
 	}
 	
 	@Override

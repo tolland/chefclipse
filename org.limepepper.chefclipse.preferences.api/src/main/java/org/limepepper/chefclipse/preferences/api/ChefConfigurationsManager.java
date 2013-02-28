@@ -69,7 +69,7 @@ public class ChefConfigurationsManager {
 	 */
 	@SuppressWarnings("unchecked") //$NON-NLS-1$
 	public List<KnifeConfig> retrieveChefConfigurations() {
-		IEclipsePreferences preferences = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+		IEclipsePreferences preferences = getPreferences();
 		String defaultChefConfigsList = preferences.get(CHEF_CONFIGS_LIST, CHEF_CONFIGS_LIST);
 
 		if (defaultChefConfigsList != null && !defaultChefConfigsList.equals(CHEF_CONFIGS_LIST)) {
@@ -97,6 +97,10 @@ public class ChefConfigurationsManager {
 			}
 		}
 		return null;
+	}
+
+	public IEclipsePreferences getPreferences() {
+		return ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 	}
 			 
 	/**
@@ -126,7 +130,7 @@ public class ChefConfigurationsManager {
 		StringWriter stringWriter = new StringWriter();
 		try {
 			resource.save(new URIConverter.WriteableOutputStream(stringWriter, "UTF-8"), null);
-			IEclipsePreferences preferences = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+			IEclipsePreferences preferences = getPreferences();
 			preferences.put(CHEF_CONFIGS_LIST, stringWriter.toString());
 			preferences.flush();
 		} catch (IOException | BackingStoreException e) {
@@ -145,7 +149,7 @@ public class ChefConfigurationsManager {
 	 * @return the default knifeconfig
 	 */
 	public KnifeConfig retrieveDefaultChefConfiguration() {
-		IEclipsePreferences preferences = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+		IEclipsePreferences preferences = getPreferences();
 		
 		String defaultConfigUrl = preferences.get(CHEFCONFIG_URL_PROPERTY, ""); //$NON-NLS-1$
 		String defaultConfigName = preferences.get(CHEFCONFIG_NAME_PROPERTY, ""); //$NON-NLS-1$
@@ -167,8 +171,7 @@ public class ChefConfigurationsManager {
 	 * @param currentDefaultConfig
 	 */
 	public void saveDefaultChefConfiguration(Config currentDefaultConfig) {
-		IEclipsePreferences preferences = ConfigurationScope.INSTANCE
-				.getNode(Activator.PLUGIN_ID);
+		IEclipsePreferences preferences = getPreferences();
 		try {
 			saveChefConfiguration(currentDefaultConfig, preferences);
 		} catch (BackingStoreException e) {
