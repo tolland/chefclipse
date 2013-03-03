@@ -27,7 +27,7 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.preferences.api.ChefConfigurationsManager;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.ui.Activator;
 import org.limepepper.chefclipse.ui.Messages;
 
@@ -93,7 +93,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 			}
 		});
 		
-		ChefConfigurationsManager.getManager().getPreferences().addPreferenceChangeListener(new IPreferenceChangeListener() {
+		ChefConfigManager.instance().getPreferences().addPreferenceChangeListener(new IPreferenceChangeListener() {
 
 			@Override
 			public void preferenceChange(PreferenceChangeEvent event) {
@@ -158,7 +158,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	
 	private void setDefaultProjectConfig() {
 		
-		Config projectConfig = ChefConfigurationsManager.getManager().retrieveProjectChefConfiguration(project);
+		Config projectConfig = ChefConfigManager.instance().retrieveProjectChefConfig(project);
 		
 		Config[] chefConfigs = configsViewer.getChefConfigs();
 		for (Config config : chefConfigs) {
@@ -182,7 +182,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @return the default {@link KnifeConfig}, can be null.
 	 */
 	public KnifeConfig getDefaultChefServerConfig() {
-		return ChefConfigurationsManager.getManager().retrieveDefaultChefConfiguration();
+		return ChefConfigManager.instance().retrieveDefaultChefConfig();
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @return List of configurations
 	 */
 	public List<KnifeConfig> getChefServerConfigs() {
-		return ChefConfigurationsManager.getManager().retrieveChefConfigurations();
+		return ChefConfigManager.instance().retrieveChefConfigurations();
 	}
 
 	protected void performDefaults() {
@@ -216,7 +216,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @param selected {@link KnifeConfig}
 	 */
 	private void savePreference(Config selected) {
-		ChefConfigurationsManager.getManager().saveProjectChefConfiguration(this.project, selected);
+		ChefConfigManager.instance().saveProjectChefConfig(this.project, selected);
 	}
 
 }

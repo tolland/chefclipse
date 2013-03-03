@@ -1,21 +1,13 @@
 package org.limepepper.chefclipse.compare;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Properties;
 
 import org.eclipse.compare.CompareUI;
 import org.eclipse.compare.IStreamContentAccessor;
@@ -27,7 +19,6 @@ import org.eclipse.compare.structuremergeviewer.IStructureComparator;
 import org.eclipse.compare.structuremergeviewer.IStructureCreator;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNull;
@@ -39,15 +30,16 @@ import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.compare.CookbookCompareInput.FilteredBufferedResourceNode;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+import org.limepepper.chefclipse.tools.EMFUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CookbookStructureCreator implements IStructureCreator {
     static Logger                logger          = LoggerFactory
-                                                         .getLogger(CookbookStructureCreator.class);
+            .getLogger(CookbookStructureCreator.class);
     private static final boolean NORMALIZE_CASE  = true;
 
     private boolean              fThreeWay       = false;
@@ -61,7 +53,8 @@ public class CookbookStructureCreator implements IStructureCreator {
     private DiffTreeViewer       fDiffViewer;
     private IAction              fOpenAction;
     IResource[]                  selection;
-    private String[]             cookbookFolders = new String[] { "attributes",
+    private final String[] cookbookFolders = new String[] {
+            "attributes",
             "files", "templates"                };
 
     public CookbookStructureCreator() {
@@ -72,8 +65,8 @@ public class CookbookStructureCreator implements IStructureCreator {
         return "Compare Cookbook with ...";
     }
 
-    boolean setSelection(ISelection s, Shell shell,
-            boolean showSelectAncestorDialog) {
+    boolean setSelection(final ISelection s, final Shell shell,
+            final boolean showSelectAncestorDialog) {
 
         selection = Utilities.getResources(s);
 
@@ -88,8 +81,9 @@ public class CookbookStructureCreator implements IStructureCreator {
         return true;
     }
 
+    @Override
     @SuppressWarnings("null")
-    public IStructureComparator getStructure(Object input) {
+    public IStructureComparator getStructure(final Object input) {
 
         System.out.println("object is:" + input);
 
@@ -115,9 +109,10 @@ public class CookbookStructureCreator implements IStructureCreator {
                         IResource cookbookResource = (((ResourceNode) input)
                                 .getResource()).getParent();
 
-                        if (cookbookResource instanceof IContainer)
+                        if (cookbookResource instanceof IContainer) {
                             return new FilteredBufferedResourceNode(
                                     cookbookResource);
+                        }
 
                     }
                 }
@@ -131,93 +126,52 @@ public class CookbookStructureCreator implements IStructureCreator {
 
         }
 
-        System.err
-                .println("don';t care what the other type of resource input is");
+        System.err.println("don';t care what the other type of resource input is");
 
-        Properties props = new Properties();
+        IResource ires = EMFUtils.getIResource(input);
+        KnifeConfig knifeConfig = ChefConfigManager.instance().retrieveProjectChefConfig(ires);
+        KnifeConfigController api = KnifeConfigController.INSTANCE;
 
-        String client_name;
-        File client_key;
-        URL chef_server_url = null;
-        try {
+        ServerCookbookVersion cookbook = api.getServer(knifeConfig).getCookbookVersion("XXchecksum-test-cookbook");
 
-            URL url = new URL("platform:/plugin/"
-                    + "org.limepepper.chefclipse.chefserver.api"
-                    + "/resources/opscode-tests.properties");
-            InputStream inputStream = url.openConnection().getInputStream();
-            URL url2 = new URL("platform:/plugin/"
-                    + "org.limepepper.chefclipse.chefserver.api"
-                    + "/resources/chefclipse.pem");
-            props.load(inputStream);
-            client_name = props.getProperty("client_name");
-            client_key = new File(FileLocator.resolve(url2).toURI());
+        assertNotNull(cookbook);
 
-            chef_server_url = new URL(props.getProperty("chef_server_url"));
+        ZipFolder zipRoot = new ZipFolder(cookbook.getCookbook_name());
 
-            KnifeConfig knifeConfig = KnifeFactory.eINSTANCE
-                    .createKnifeConfig();
-            knifeConfig.setChef_server_url(chef_server_url);
-            knifeConfig.setClient_key(client_key);
-            knifeConfig.setNode_name(client_name);
+        // CookbookItemProviderAdapterFactory cookbookItemprovier = new
+        // CookbookItemProviderAdapterFactory();
 
-            assertNotNull(props);
-            assertTrue(client_key.exists());
-            assertTrue(client_name.length() > 0);
+        // cookbookItemprovier.createCookbookAdapter();
 
-            KnifeConfigController api = KnifeConfigController.INSTANCE;
-
-            ServerCookbookVersion cookbook = api.getServer(knifeConfig)
-                    .getCookbookVersion("XXchecksum-test-cookbook");
-
-            assertNotNull(cookbook);
-
-            ZipFolder zipRoot = new ZipFolder(cookbook.getCookbook_name());
-
-            // CookbookItemProviderAdapterFactory cookbookItemprovier = new
-            // CookbookItemProviderAdapterFactory();
-
-            // cookbookItemprovier.createCookbookAdapter();
-
-            for (Adapter adapter : cookbook.eAdapters()) {
-                logger.info("adapter is: {}", adapter.getTarget());
-                logger.info("class is: {}", adapter.getClass());
-            }
-
-            for (EObject eObject : cookbook.eContents()) {
-                logger.info("object is: {}", eObject.toString());
-                logger.info("class is: {}", eObject.eClass());
-            }
-
-            for (ServerCookbookFile file : cookbook.getRoot_files()) {
-                logger.debug("processing: {}", file.getName());
-                ZipFile zipFile = new ZipFile(file.getName(),
-                        file.getChecksum());
-
-                zipFile.setBytes(file.getChecksum().getBytes());
-                zipRoot.add(file.getName(), zipFile);
-            }
-
-            return zipRoot;
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+        for (Adapter adapter : cookbook.eAdapters()) {
+            logger.info("adapter is: {}", adapter.getTarget());
+            logger.info("class is: {}", adapter.getClass());
         }
 
+        for (EObject eObject : cookbook.eContents()) {
+            logger.info("object is: {}", eObject.toString());
+            logger.info("class is: {}", eObject.eClass());
+        }
+
+        for (ServerCookbookFile file : cookbook.getRoot_files()) {
+            logger.debug("processing: {}", file.getName());
+            ZipFile zipFile = new ZipFile(file.getName(), file.getChecksum());
+
+            zipFile.setBytes(file.getChecksum().getBytes());
+            zipRoot.add(file.getName(), zipFile);
+        }
+
+        return zipRoot;
+    }
+
+    @Override
+    public String getContents(final Object node, final boolean ignoreWhitespace) {
+
         return null;
     }
 
-    public String getContents(Object node, boolean ignoreWhitespace) {
-
-        return null;
-    }
-
-    public IStructureComparator locate(Object path, Object source) {
+    @Override
+    public IStructureComparator locate(final Object path, final Object source) {
         return null;
     }
 
@@ -226,7 +180,7 @@ public class CookbookStructureCreator implements IStructureCreator {
     }
 
     @Override
-    public void save(IStructureComparator node, Object input) {
+    public void save(final IStructureComparator node, final Object input) {
     }
 
     /**
@@ -235,26 +189,31 @@ public class CookbookStructureCreator implements IStructureCreator {
     static abstract class ZipResource implements IStructureComparator,
             ITypedElement {
 
-        private String fName;
+        private final String fName;
 
-        ZipResource(String name) {
+        ZipResource(final String name) {
             fName = name;
         }
 
+        @Override
         public String getName() {
             return fName;
         }
 
+        @Override
         public Image getImage() {
             return CompareUI.getImage(getType());
         }
 
-        public boolean equals(Object other) {
-            if (other instanceof ITypedElement)
+        @Override
+        public boolean equals(final Object other) {
+            if (other instanceof ITypedElement) {
                 return fName.equals(((ITypedElement) other).getName());
+            }
             return super.equals(other);
         }
 
+        @Override
         public int hashCode() {
             return fName.hashCode();
         }
@@ -262,59 +221,67 @@ public class CookbookStructureCreator implements IStructureCreator {
 
     static class ZipFolder extends ZipResource {
 
-        private HashMap<String, ZipResource> fChildren = new HashMap<String, ZipResource>(
-                                                               10);
+        private final HashMap<String, ZipResource> fChildren = new HashMap<String, ZipResource>(
+                10);
 
-        ZipFolder(String name) {
+        ZipFolder(final String name) {
             super(name);
         }
 
+        @Override
         public String getType() {
             return ITypedElement.FOLDER_TYPE;
         }
 
-        public void add(String name, ZipResource resource) {
+        public void add(final String name, final ZipResource resource) {
             fChildren.put(name, resource);
         }
 
+        @Override
         public Object[] getChildren() {
             Object[] children = new Object[fChildren.size()];
             Iterator<ZipResource> iter = fChildren.values().iterator();
-            for (int i = 0; iter.hasNext(); i++)
+            for (int i = 0; iter.hasNext(); i++) {
                 children[i] = iter.next();
+            }
             return children;
         }
 
         ZipFile createContainer(String path) {
             String entry = path;
             int pos = path.indexOf('/');
-            if (pos < 0)
+            if (pos < 0) {
                 pos = path.indexOf('\\');
+            }
             if (pos >= 0) {
                 entry = path.substring(0, pos);
                 path = path.substring(pos + 1);
             } else if (entry.length() > 0) {
-                if (CompareUIPlugin.getDefault().filter(path, false, true))
+                if (CompareUIPlugin.getDefault().filter(path, false, true)) {
                     return null;
+                }
                 // ZipFile ze = new ZipFile(entry, null);
                 // fChildren.put(entry, ze);
                 // return ze;
                 return null;
-            } else
+            } else {
                 return null;
+            }
 
             ZipFolder folder = null;
             if (fChildren != null) {
                 Object o = fChildren.get(entry);
-                if (o instanceof ZipFolder)
+                if (o instanceof ZipFolder) {
                     folder = (ZipFolder) o;
+                }
             }
 
             if (folder == null) {
                 if (path.length() > 0
                         && CompareUIPlugin.getDefault()
-                                .filter(path, true, true))
+                                .filter(path, true, true)) {
                     return null;
+                }
                 folder = new ZipFolder(entry);
                 fChildren.put(entry, folder);
             }
@@ -328,30 +295,35 @@ public class CookbookStructureCreator implements IStructureCreator {
         private byte[] fContents;
         private String md5Sum;
 
-        public void setMd5Sum(String md5Sum) {
+        public void setMd5Sum(final String md5Sum) {
             this.md5Sum = md5Sum;
         }
 
-        ZipFile(@NonNull String name, @NonNull String md5Sum) {
+        ZipFile(@NonNull final String name, @NonNull final String md5Sum) {
             super(name);
             setMd5Sum(md5Sum);
         }
 
+        @Override
         public String getType() {
             String s = this.getName();
             int pos = s.lastIndexOf('.');
-            if (pos >= 0)
+            if (pos >= 0) {
                 return s.substring(pos + 1);
+            }
             return ITypedElement.UNKNOWN_TYPE;
         }
 
+        @Override
         public Object[] getChildren() {
             return null;
         }
 
+        @Override
         public InputStream getContents() {
-            if (fContents == null)
+            if (fContents == null) {
                 fContents = new byte[0];
+            }
             return new ByteArrayInputStream(fContents);
         }
 
@@ -363,25 +335,27 @@ public class CookbookStructureCreator implements IStructureCreator {
             return md5Sum;
         }
 
-        void setBytes(byte[] buffer) {
+        void setBytes(final byte[] buffer) {
             fContents = buffer;
         }
 
-        void appendBytes(byte[] buffer, int length) {
+        void appendBytes(final byte[] buffer, final int length) {
             if (length > 0) {
                 int oldLen = 0;
-                if (fContents != null)
+                if (fContents != null) {
                     oldLen = fContents.length;
+                }
                 byte[] newBuf = new byte[oldLen + length];
-                if (oldLen > 0)
+                if (oldLen > 0) {
                     System.arraycopy(fContents, 0, newBuf, 0, oldLen);
+                }
                 System.arraycopy(buffer, 0, newBuf, oldLen, length);
                 fContents = newBuf;
             }
         }
 
         // @todo utils bundle
-        static String bytes2String(byte[] bytes) {
+        static String bytes2String(final byte[] bytes) {
             StringBuilder string = new StringBuilder();
             for (byte b : bytes) {
                 String hexString = Integer.toHexString(0x00FF & b);
@@ -396,7 +370,8 @@ public class CookbookStructureCreator implements IStructureCreator {
          *
          * @see IComparator#equals
          */
-        public boolean equals(Object other) {
+        @Override
+        public boolean equals(final Object other) {
             if ((other instanceof FilteredBufferedResourceNode)
                     && (getName().equals(((FilteredBufferedResourceNode) other)
                             .getName()))) {
@@ -404,7 +379,7 @@ public class CookbookStructureCreator implements IStructureCreator {
                 logger.debug(" local -->{}", getName());
                 logger.debug(" remote -->{}",
 
-                ((FilteredBufferedResourceNode) other).getName());
+                        ((FilteredBufferedResourceNode) other).getName());
 
                 logger.debug("checking md5sums: local -->{}", getMd5Sum());
 

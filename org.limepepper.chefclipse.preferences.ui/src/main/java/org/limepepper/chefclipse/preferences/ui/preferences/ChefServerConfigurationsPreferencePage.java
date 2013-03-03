@@ -35,7 +35,7 @@ import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
-import org.limepepper.chefclipse.preferences.api.ChefConfigurationsManager;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 import org.limepepper.chefclipse.ui.Activator;
@@ -157,7 +157,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	
 	private void setDefaultConfig() {
 		
-		KnifeConfig defaultChefConfiguration = ChefConfigurationsManager.getManager().retrieveDefaultChefConfiguration();
+		KnifeConfig defaultChefConfiguration = ChefConfigManager.instance().retrieveDefaultChefConfig();
 		Config[] chefConfigs = chefConfigurationsViewer.getChefConfigs();
 		for (Config config : chefConfigs) {
 			boolean equalsUrl = defaultChefConfiguration.getChef_server_url().toExternalForm().equals(config.getChef_server_url().toExternalForm());
@@ -173,7 +173,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	}
 	
 	private KnifeConfig[] getChefServerConfigs(){
-		List<KnifeConfig> chefConfigurations = ChefConfigurationsManager.getManager().retrieveChefConfigurations();
+		List<KnifeConfig> chefConfigurations = ChefConfigManager.instance().retrieveChefConfigurations();
 		if (chefConfigurations != null){
 			return chefConfigurations.toArray(new KnifeConfig[0]);
 		}
@@ -190,8 +190,8 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 				Config[] configs = chefConfigurationsViewer.getChefConfigs();
 				List<Config> configsToSave = new ArrayList<Config>();
 				configsToSave.addAll(Arrays.asList(configs));
-				ChefConfigurationsManager.getManager().saveChefConfigurations(configsToSave);
-				ChefConfigurationsManager.getManager().saveDefaultChefConfiguration(getCurrentDefaultConfig());
+				ChefConfigManager.instance().saveChefConfigs(configsToSave);
+				ChefConfigManager.instance().saveDefaultChefConfig(getCurrentDefaultConfig());
 			}
 		});
 		IDialogSettings settings = Activator.getDefault().getDialogSettings();

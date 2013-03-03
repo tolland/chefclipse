@@ -9,20 +9,21 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
-import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.Activator;
 import org.limepepper.chefclipse.model.CookbookFolder;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Utilities {
 
     static Logger                logger = LoggerFactory
-                                                .getLogger(Utilities.class);
+            .getLogger(Utilities.class);
 
     static KnifeConfigController api    = KnifeConfigController.INSTANCE;
 
-    public static IResource[] getResources(ISelection selection) {
+    public static IResource[] getResources(final ISelection selection) {
 
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection sel = (IStructuredSelection) selection;
@@ -39,11 +40,13 @@ public class Utilities {
         return null;
     }
 
-    public static void compareWithServer(CookbookFolder item) {
+    public static void compareWithServer(final CookbookFolder item) {
 
         assertNotNull(item);
 
-        ChefServerApi chefServerApi = api.getServer(null);
+        KnifeConfig config = ChefConfigManager.instance()
+                .retrieveProjectChefConfig(item.getResource());
+        ChefServerApi chefServerApi = api.getServer(config);
 
         assertNotNull(chefServerApi);
 

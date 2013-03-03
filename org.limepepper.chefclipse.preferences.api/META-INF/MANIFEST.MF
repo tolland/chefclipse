@@ -5,9 +5,9 @@ Bundle-SymbolicName: org.limepepper.chefclipse.preferences.api
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.preferences.api.Activator
 Bundle-Vendor: Limepepper
-Require-Bundle: org.limepepper.chefclipse.chefserver.api;bundle-version="1.0.0",
- org.eclipse.core.runtime;bundle-version="3.8.0",
- org.eclipse.core.resources;bundle-version="3.8.0"
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
+ org.eclipse.core.resources;bundle-version="3.8.0",
+ org.limepepper.chefclipse.common;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: org.limepepper.chefclipse.preferences.api
