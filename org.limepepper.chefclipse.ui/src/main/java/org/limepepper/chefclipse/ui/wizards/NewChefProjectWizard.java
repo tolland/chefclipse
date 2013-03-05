@@ -9,6 +9,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.limepepper.chefclipse.common.ui.resources.ChefProjectManager;
@@ -42,7 +43,14 @@ public class NewChefProjectWizard extends Wizard implements INewWizard {
 			public void run(IProgressMonitor monitor) throws InvocationTargetException {
 				try {
 					ChefProjectManager.instance().createChefProject(proj, repoPath, monitor);
-					
+					final ChefConfigSelectionWizardPage page = (ChefConfigSelectionWizardPage) getPage(ChefConfigSelectionWizardPage.CHEF_CONFIG_SELECTION_PAGE);
+					if (page != null) {
+					    Display.getCurrent().asyncExec(new Runnable() {
+			                public void run() {
+			                    page.performOk();
+			                }
+			            });
+					}
 					if(!proj.isOpen()){
 						proj.open(monitor);
 					}
@@ -61,7 +69,7 @@ public class NewChefProjectWizard extends Wizard implements INewWizard {
 			return false;
 		} catch (InvocationTargetException e) {
 			Throwable realException = e.getTargetException();
-			MessageDialog.openError(getShell(), "Error", realException.getMessage());
+			MessageDialog.openError(getShell(), "Error", realException.getMessage()); //$NON-NLS-1$
 			return false;
 		}
 		return true;		

@@ -42,7 +42,7 @@
       <page
             class="org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage"
             id="org.limepepper.chefclipse.ui.properties.pages.chef.configuration"
-            name="Chef-Server Configuration">
+            name="Chef server configuration">
          <filter
                name="projectNature"
                value="org.limepepper.chefclipse.ChefProjectNature"/>

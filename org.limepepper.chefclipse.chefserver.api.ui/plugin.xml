@@ -3,20 +3,6 @@
 <plugin>
 
    <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            name="Sample Preferences"
-            class="org.limepepper.chefclipse.chefserver.api.ui.preferences.SamplePreferencePage"
-            id="org.limepepper.chefclipse.chefserver.api.ui.preferences.SamplePreferencePage">
-      </page>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="org.limepepper.chefclipse.chefserver.api.ui.preferences.PreferenceInitializer">
-      </initializer>
-   </extension>
-   <extension
          point="org.eclipse.ui.handlers">
       <handler
             class="org.limepepper.chefclipse.chefserver.api.ui.handler.ApiUiHandler"

@@ -4,11 +4,8 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ProjectScope;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.IScopeContext;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences.PreferenceChangeEvent;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.preference.PreferenceDialog;
@@ -28,13 +25,11 @@ import org.eclipse.ui.dialogs.PropertyPage;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
-import org.eclipse.ui.statushandlers.StatusManager;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.preferences.api.ChefConfigurationsManager;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.ui.Activator;
 import org.limepepper.chefclipse.ui.Messages;
-import org.osgi.service.prefs.BackingStoreException;
 
 /**
  * Project property page to select Chef-server configuration for chef project.
@@ -45,10 +40,8 @@ import org.osgi.service.prefs.BackingStoreException;
  */
 public class ChefConfigurationPropertyPage extends PropertyPage {
 
-	private static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
-	private static final String CHEFCONFIG_URL_PROPERTY = "CHEF_CONFIGURATION_URL"; //$NON-NLS-1$
-	private static final String CHEFCONFIG_NAME_PROPERTY = "CHEF_CONFIGURATION_NAME"; //$NON-NLS-1$
-	private static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
+	public static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
+	public static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
 	
 	private IProject project;
 	private boolean modified = false;
@@ -88,14 +81,23 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		configsViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				modified = true;
-				if (event.getSelection().isEmpty()) {
+				setModified(true);
+				Config current = configsViewer.getCheckedConfig();
+				if (current == null) {
 					setValid(false);
-					setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection);
+					setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection); 
 				} else {
 					setValid(true);
 					setErrorMessage(null);
 				}
+			}
+		});
+		
+		ChefConfigManager.instance().getPreferences().addPreferenceChangeListener(new IPreferenceChangeListener() {
+
+			@Override
+			public void preferenceChange(PreferenceChangeEvent event) {
+				loadChefServerConfigs();
 			}
 		});
 		return composite;
@@ -106,7 +108,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @param parent {@link Composite}
 	 * @return the created composite to host label and link
 	 */
-	private Composite createHeader(Composite parent) {
+	protected Composite createHeader(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setFont(parent.getFont());
 		GridLayout layout = new GridLayout();
@@ -138,49 +140,34 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	/**
 	 * Initialize dialog.
 	 */
-	private void initialize() {
+	protected void initialize() {
 		project = (IProject) getElement().getAdapter(IResource.class);
 		setDescription(Messages.ChefConfigurationPropertyPage_Description);
 	}
 	
 	/**
-	 * Safe method to get getChef_server_url for {@link KnifeConfig}
-	 * @param config the {@link KnifeConfig}
-	 * @return non-null String
-	 */
-	private String serverUrl(Config config) {
-		if (config.getChef_server_url() != null)
-			return config.getChef_server_url().toExternalForm();
-		return ""; //$NON-NLS-1$
-	}
-
-	/**
 	 * Load workspace chef configuration on viewer and select default or saved configuration.
 	 */
 	private void loadChefServerConfigs() {
 		List<KnifeConfig> configs = getChefServerConfigs();
-		KnifeConfig defaultConfig = getDefaultChefServerConfig();
 		
 		configsViewer.setChefConfigs(configs.toArray(new KnifeConfig[0]));
 		
-		IScopeContext projectScope = new ProjectScope(project);
-		IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
-		String selectedUrl = ""; //$NON-NLS-1$
-		String selectedName = ""; //$NON-NLS-1$
-		if (defaultConfig != null) {
-			selectedUrl = serverUrl(defaultConfig);
-			selectedName = (defaultConfig.getNode_name() == null) ? "" : defaultConfig.getNode_name(); //$NON-NLS-1$
-		}
-		if (projectNode != null) {
-			selectedUrl = projectNode.get(CHEFCONFIG_URL_PROPERTY, selectedUrl);
-			selectedName = projectNode.get(CHEFCONFIG_NAME_PROPERTY, selectedName);
-		}
+		setDefaultProjectConfig();
+	}
+	
+	private void setDefaultProjectConfig() {
 		
-		for (KnifeConfig knifeConfig : configs) {
-			if (selectedUrl.equals(serverUrl(knifeConfig))
-					&& selectedName.equals(knifeConfig.getNode_name())) {
-				configsViewer.setCheckedConfig(knifeConfig);
-			}
+		Config projectConfig = ChefConfigManager.instance().retrieveProjectChefConfig(project);
+		if (projectConfig != null) {
+		    Config[] chefConfigs = configsViewer.getChefConfigs();
+	        for (Config config : chefConfigs) {
+	            boolean equalsUrl = projectConfig.getChef_server_url().toExternalForm().equals(config.getChef_server_url().toExternalForm());
+	            if (projectConfig.getNode_name().equals(config.getNode_name()) && equalsUrl){
+	                configsViewer.setCheckedConfig(config);
+	                return;
+	            }
+	        }
 		}
 	}
 	
@@ -196,7 +183,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @return the default {@link KnifeConfig}, can be null.
 	 */
 	public KnifeConfig getDefaultChefServerConfig() {
-		return ChefConfigurationsManager.getManager().retrieveDefaultChefConfiguration();
+		return ChefConfigManager.instance().retrieveDefaultChefConfig();
 	}
 
 	/**
@@ -204,7 +191,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @return List of configurations
 	 */
 	public List<KnifeConfig> getChefServerConfigs() {
-		return ChefConfigurationsManager.getManager().retrieveChefConfigurations();
+		return ChefConfigManager.instance().retrieveChefConfigurations();
 	}
 
 	protected void performDefaults() {
@@ -214,7 +201,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	
 	@Override
 	public boolean performOk() {
-		if (!modified) {
+		if (!isModified()) {
 			return true;
 		}
 		savePreference(configsViewer.getCheckedConfig());
@@ -230,28 +217,15 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @param selected {@link KnifeConfig}
 	 */
 	private void savePreference(Config selected) {
-		IProject project = this.project.getProject();
-		if (project == null || !project.isAccessible()) {
-			return;
-		}
-
-		IScopeContext projectScope = new ProjectScope(project);
-		IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
-		if (projectNode != null) {
-			if (selected != null) {
-				projectNode.put(CHEFCONFIG_URL_PROPERTY, serverUrl(selected));
-				projectNode.put(CHEFCONFIG_NAME_PROPERTY, selected.getNode_name());
-			} else {
-				projectNode.remove(CHEFCONFIG_URL_PROPERTY);
-				projectNode.remove(CHEFCONFIG_NAME_PROPERTY);
-			}
-			try {
-				projectNode.flush();
-			} catch (BackingStoreException e) {
-				StatusManager.getManager().handle(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
-						"Failed to save Chef Configuration to project association preference", e)); //$NON-NLS-1$
-			}
-		}
+		ChefConfigManager.instance().saveProjectChefConfig(this.project, selected);
 	}
+
+    public boolean isModified() {
+        return modified;
+    }
+
+    public void setModified(boolean modified) {
+        this.modified = modified;
+    }
 
 }

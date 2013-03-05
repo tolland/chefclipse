@@ -35,7 +35,7 @@ import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
-import org.limepepper.chefclipse.preferences.api.ChefConfigurationsManager;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 import org.limepepper.chefclipse.ui.Activator;
@@ -50,7 +50,7 @@ import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
 
 public class ChefServerConfigurationsPreferencePage extends PreferencePage implements IWorkbenchPreferencePage{
 
-	private static final String PREFERENCE_PAGE = Activator.PLUGIN_ID + ".chef_configs_preference_page";;
+	private static final String PREFERENCE_PAGE = Activator.PLUGIN_ID + ".chef_configs_preference_page"; //$NON-NLS-1$
 	private ChefConfigurationsViewer chefConfigurationsViewer;
 	private Button editButton;
 	private Button addButton;
@@ -59,7 +59,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	 * 
 	 */
 	public ChefServerConfigurationsPreferencePage() {
-		super("Chef Configurations Page");
+		super(Messages.ChefConfigurationPreferencePage_Title);
 	}
 
 	@Override
@@ -99,7 +99,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		GridDataFactory.fillDefaults().span(1, 1).applyTo(buttons);
 
 		addButton = SWTFactory.createPushButton(buttons,
-				"Add...", null);
+				Messages.ChefConfigurationPreferencePage_AddButton, null);
 		addButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event evt) {
 				addChefConfig();
@@ -107,7 +107,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		});
 
 		editButton = SWTFactory.createPushButton(buttons,
-				"Edit...", null);
+				Messages.ChefConfigurationPreferencePage_EditButton, null);
 		editButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event evt) {
 				editChefConfig();
@@ -115,7 +115,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		});
 
 		removeButton = SWTFactory.createPushButton(buttons,
-				"Remove", null);
+				Messages.ChefConfigurationPreferencePage_RemoveButton, null);
 		removeButton.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event evt) {
 				removeChefConfigs();
@@ -157,12 +157,15 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	
 	private void setDefaultConfig() {
 		
-		KnifeConfig defaultChefConfiguration = ChefConfigurationsManager.getManager().retrieveDefaultChefConfiguration();
-		Config[] chefConfigs = chefConfigurationsViewer.getChefConfigs();
-		for (Config config : chefConfigs) {
-			if (defaultChefConfiguration.getNode_name().equals(config.getNode_name())){
-				chefConfigurationsViewer.setCheckedConfig(config);
-				return;
+		KnifeConfig defaultChefConfiguration = ChefConfigManager.instance().retrieveDefaultChefConfig();
+		if (defaultChefConfiguration != null) {
+			Config[] chefConfigs = chefConfigurationsViewer.getChefConfigs();
+			for (Config config : chefConfigs) {
+				boolean equalsUrl = defaultChefConfiguration.getChef_server_url().toExternalForm().equals(config.getChef_server_url().toExternalForm());
+				if (defaultChefConfiguration.getNode_name().equals(config.getNode_name()) && equalsUrl){
+					chefConfigurationsViewer.setCheckedConfig(config);
+					return;
+				}
 			}
 		}
 	}
@@ -172,7 +175,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	}
 	
 	private KnifeConfig[] getChefServerConfigs(){
-		List<KnifeConfig> chefConfigurations = ChefConfigurationsManager.getManager().retrieveChefConfigurations();
+		List<KnifeConfig> chefConfigurations = ChefConfigManager.instance().retrieveChefConfigurations();
 		if (chefConfigurations != null){
 			return chefConfigurations.toArray(new KnifeConfig[0]);
 		}
@@ -189,8 +192,8 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 				Config[] configs = chefConfigurationsViewer.getChefConfigs();
 				List<Config> configsToSave = new ArrayList<Config>();
 				configsToSave.addAll(Arrays.asList(configs));
-				ChefConfigurationsManager.getManager().saveChefConfigurations(configsToSave);
-				ChefConfigurationsManager.getManager().saveDefaultChefConfiguration(getCurrentDefaultConfig());
+				ChefConfigManager.instance().saveChefConfigs(configsToSave);
+				ChefConfigManager.instance().saveDefaultChefConfig(getCurrentDefaultConfig());
 			}
 		});
 		IDialogSettings settings = Activator.getDefault().getDialogSettings();
@@ -218,7 +221,6 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	 */
 	private void addChefConfig() {
 		KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-		knifeConfig.setValidation_client_name(Messages.Config_DefaultValidationClientName);
 		
 		AddChefConfigurationPreferenceContainer dialog = new AddChefConfigurationPreferenceContainer(this.getShell(), knifeConfig, true);
 		if (dialog.open() == IDialogConstants.OK_ID) {
@@ -255,7 +257,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	/**
 	 * Performs the remove VM(s) action when the Remove... button is pressed
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //$NON-NLS-1$
 	private void removeChefConfigs() {
 		IStructuredSelection selection= (IStructuredSelection)chefConfigurationsViewer.getSelection();
 		Config[] chefConfigs = new Config[selection.size()];

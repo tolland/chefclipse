@@ -8,6 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.commons.validator.UrlValidator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -43,16 +44,19 @@ import org.limepepper.chefclipse.ui.Messages;
  */
 public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog implements IPreferencePageContainer {
 
-	private static final String DEFAULT_VALUE = "";
+	private static final String VALIDATION_CLIENT_NAME_DEFAULT_VALUE = "#{ENV['validation_client_name']}"; //$NON-NLS-1$
 	private static final int TEST_BUTTON_ID = 34;
 	private PreferenceStore preferenceStore;
 	private boolean addMode;
 	private AddChefConfigurationPreferencePage preferencePage;
+	private boolean valid;
+	private UrlValidator urlValidator;
 
 	public AddChefConfigurationPreferenceContainer(Shell parentShell, KnifeConfig knifeConfig, boolean addMode) {
 		super(parentShell);
 		this.preferenceStore = createChefConfigurationStore(knifeConfig);
 		this.addMode = addMode;
+		urlValidator = new UrlValidator();
 	}
 	
 	/**
@@ -64,17 +68,21 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	private PreferenceStore createChefConfigurationStore(KnifeConfig knifeConfig) {
 		PreferenceStore preferenceStore = new ChefConfigurationPreferenceStore();
 		URL chef_server_url = knifeConfig.getChef_server_url();
-		preferenceStore.setValue(PreferenceConstants.P_CHEF_SERVER_URL, chef_server_url != null ? chef_server_url.toExternalForm() : DEFAULT_VALUE);
+		if (chef_server_url == null || chef_server_url.toExternalForm().equals(AddChefConfigurationPreferencePage.URL_INVALID_PREFIX)){
+			preferenceStore.setValue(PreferenceConstants.P_CHEF_SERVER_URL, AddChefConfigurationPreferencePage.URL_PREFIX);
+		} else {
+			preferenceStore.setValue(PreferenceConstants.P_CHEF_SERVER_URL, chef_server_url.toExternalForm());
+		}
 		String node_name = knifeConfig.getNode_name();
-		preferenceStore.setValue(PreferenceConstants.P_NODE_NAME, node_name != null ? node_name : DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_NODE_NAME, node_name != null ? node_name : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		File client_key = knifeConfig.getClient_key();
-		preferenceStore.setValue(PreferenceConstants.P_CLIENT_KEY, client_key != null ? client_key.getAbsolutePath() : DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_CLIENT_KEY, client_key != null ? client_key.getAbsolutePath() : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		File cookbook_path = knifeConfig.getCookbook_path();
-		preferenceStore.setValue(PreferenceConstants.P_COOKBOOK_PATH, cookbook_path != null ? cookbook_path.getAbsolutePath() : DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_COOKBOOK_PATH, cookbook_path != null ? cookbook_path.getAbsolutePath() : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		String validation_client_name = knifeConfig.getValidation_client_name();
-		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_CLIENT_NAME, validation_client_name != null ? validation_client_name : DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_CLIENT_NAME, validation_client_name != null ? validation_client_name : VALIDATION_CLIENT_NAME_DEFAULT_VALUE);
 		File validation_key = knifeConfig.getValidation_key();
-		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_KEY, validation_key != null ? validation_key.getAbsolutePath() : DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_KEY, validation_key != null ? validation_key.getAbsolutePath() : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		return preferenceStore;
 	}
 	
@@ -112,10 +120,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		try {
 			createdKnifeConfig.setChef_server_url(new URL(stringURL));
 		} catch (MalformedURLException e) {
-			boolean openQuestion = MessageDialog.openQuestion(getShell(), "Problem with URL", "The URL you have chosen is not correct. Do you want to continue anyway?");
-			if (!openQuestion){
-				return null;
-			}
+			
 		};
 		
 		createdKnifeConfig.setNode_name(preferenceStore.getString(PreferenceConstants.P_NODE_NAME));
@@ -140,7 +145,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	 * @return a {@link File} or null
 	 */
 	private File getFileOrNull(String path) {
-		if (path != null && !"".equals(path))
+		if (path != null && !"".equals(path)) //$NON-NLS-1$
 			return new File(path);
 		return null;
 	}
@@ -154,7 +159,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
 		super.createButton(parent, TEST_BUTTON_ID,
-				"Test Connection", false);
+				"Test Connection", false); //$NON-NLS-1$
 		super.createButtonsForButtonBar(parent);
 		
 		updateButtons();
@@ -193,7 +198,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 				@Override
 				public void run(IProgressMonitor monitor) throws InvocationTargetException,
 						InterruptedException {
-					monitor.beginTask("Testing Connection", IProgressMonitor.UNKNOWN);
+					monitor.beginTask(Messages.AddChefConfigurationPreferencePage_TestingConnection, IProgressMonitor.UNKNOWN);
 					
 					if (hasKey(knifeConfig)) {
 						ChefServerApi server = KnifeConfigController.INSTANCE.getServer((KnifeConfig) knifeConfig);
@@ -201,13 +206,13 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 						try {
 							final String info = server.getServerInfo();
 							
-							showTestConnectionResult("Connection Succesfull", "Test connection to Chef-Server: OK\n\nServer Info:\n" + info, MessageDialog.INFORMATION);
+							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionSuccessful, Messages.AddChefConfigurationPreferencePage_TestingConnectionMsg + info, MessageDialog.INFORMATION);
 						} catch (final Exception e) {
-							showTestConnectionResult("Connection Error", "Could not connect to Chef server. \n\nError message is:\n" + 
-											e + "\n", MessageDialog.ERROR );
+							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionError, Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj1 + 
+											e + "\n", MessageDialog.ERROR ); //$NON-NLS-1$
 						}
 					} else {
-						showTestConnectionResult("Connection Error", "Could not connect to chef server. The client key doesn't exist or is invalid.", MessageDialog.ERROR);
+						showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionError, Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj2, MessageDialog.ERROR);
 					}
 					monitor.done();
 				}
@@ -255,20 +260,58 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		if (preferencePage != null) {
 			String pageMessage = preferencePage.getMessage();
 			String pageErrorMessage = preferencePage.getErrorMessage();
-
-			if (!preferencePage.isValid() && pageErrorMessage != null) {
-				setErrorMessage(pageErrorMessage);
-			} else if (preferencePage.isValid()) {
+			if (preferencePage.isValid() && pageErrorMessage == null){
 				setMessage(pageMessage);
 				setErrorMessage(null);
-			}	
+			} else {
+				setErrorMessage(pageErrorMessage);
+			}
+			if (!preferencePage.isValid() && getErrorMessage() == null){
+				String errorMessage = getUrlErrorMessage();
+				if (errorMessage == null){
+					errorMessage = getValidationClientNameErrorMessage();
+				}
+				setErrorMessage(errorMessage);
+			}
 			updateButtons();
 	    }
+	}
+
+	private String getValidationClientNameErrorMessage() {
+		String validationValue = preferencePage.getValidationClientNameText();
+		if (!validationValue.startsWith("#{ENV[")){ //$NON-NLS-1$
+			return Messages.AddChefConfigurationPreferencePage_InvalidValidationKey;
+		}
+		if (!validationValue.endsWith("]}")){
+			return Messages.AddChefConfigurationPreferencePage_InvalidValidationKey;
+		}
+		return null;
+	}
+
+	private String getUrlErrorMessage() {
+		String urlValue = preferencePage.getURLText();
+		if (urlValue.isEmpty()){
+			return Messages.AddChefConfigurationPreferencePage_EmptyURL;
+		} else if (urlValue.equals(AddChefConfigurationPreferencePage.URL_PREFIX)){
+			return Messages.AddChefConfigurationPreferencePage_ValidURL;
+		}
+		if (!urlValidator.isValid(urlValue)){
+			return Messages.AddChefConfigurationPreferencePage_ValidURL;
+		}
+		return null;
 	}
 
 	@Override
 	public void updateTitle() {
 		
+	}
+
+	public boolean isValid() {
+		return valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
 	}
 	
 }

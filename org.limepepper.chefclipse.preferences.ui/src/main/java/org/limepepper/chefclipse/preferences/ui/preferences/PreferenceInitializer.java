@@ -17,9 +17,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		store.setDefault("cache_type", "'BasicFile'");
-		store.setDefault("cache_options", ":path => \"#{ENV['HOME']}/.chef/checksums\"");
-		store.setDefault("ssl_verify_mode", ":verify_none");
+		store.setDefault("cache_type", "'BasicFile'"); //$NON-NLS-1$
+		store.setDefault("cache_options", ":path => \"#{ENV['HOME']}/.chef/checksums\""); //$NON-NLS-1$
+		store.setDefault("ssl_verify_mode", ":verify_none"); //$NON-NLS-1$
 	}
 
 }
