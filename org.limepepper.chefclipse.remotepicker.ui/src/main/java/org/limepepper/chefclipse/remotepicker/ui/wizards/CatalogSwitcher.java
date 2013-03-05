@@ -31,6 +31,7 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 
@@ -79,8 +80,16 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 		scrollArea.setBackground(listBackground);
 
 		List<CatalogDescriptor> catalogDescriptors = configuration.getCatalogDescriptors();
+		CatalogDescriptor compositeAndLastRepo = null;
 		for (CatalogDescriptor catalogDescriptor : catalogDescriptors) {
-			createCookbooRepositories(repositoriesArea, catalogDescriptor);
+			if (!catalogDescriptor.getId().equals(CookbookRepositoryManager.COMPOSITE_REPOSITORY_ID)){
+				createCookbookRepositories(repositoriesArea, catalogDescriptor);
+			} else {
+				compositeAndLastRepo = catalogDescriptor;
+			}
+		}
+		if (compositeAndLastRepo != null){
+			createCookbookRepositories(repositoriesArea, compositeAndLastRepo);
 		}
 
 		scrollArea.setContent(repositoriesArea);
@@ -97,7 +106,7 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 		});
 	}
 
-	private void createCookbooRepositories(Composite composite, final CatalogDescriptor catalogDescriptor) {
+	private void createCookbookRepositories(Composite composite, final CatalogDescriptor catalogDescriptor) {
 		Composite container = new Composite(composite, SWT.NONE);
 		Color listBackground = getDisplay().getSystemColor(SWT.COLOR_LIST_BACKGROUND);
 		container.setBackground(listBackground);

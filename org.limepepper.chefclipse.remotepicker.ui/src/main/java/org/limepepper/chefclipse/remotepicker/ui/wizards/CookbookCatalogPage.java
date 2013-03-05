@@ -106,6 +106,7 @@ public class CookbookCatalogPage extends CatalogPage {
 				lastSelection = descriptor;
 				configuration.setCatalogDescriptor(descriptor);
 				getWizard().initializeCatalog();
+				getViewer().setSelection(new StructuredSelection());
 				getViewer().updateCatalog();
 				updateTitle();
 			}
@@ -195,7 +196,7 @@ public class CookbookCatalogPage extends CatalogPage {
 
 		private final class CoookbookControlListViewer extends ControlListViewer {
 
-			private int pageSize = 50;
+			private int pageSize = 100;
 
 			private int pagesLoaded = 0;
 			

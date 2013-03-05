@@ -258,4 +258,18 @@
          install-size="0"
          version="0.0.0"/>
 
+   <plugin
+         id="org.limepepper.chefclipse.preferences.api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.limepepper.chefclipse.preferences.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

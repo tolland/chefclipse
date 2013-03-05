@@ -2,6 +2,9 @@ package org.limepepper.chefclipse.remotepicker.extpoint;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
@@ -15,12 +18,18 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.progress.IProgressConstants;
+import org.eclipse.ui.progress.IProgressConstants2;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 import org.osgi.framework.Bundle;
 
+/**
+ * Extension Point reader.
+ * 
+ * @author Guillermo Zunino
+ */
 public class ExtensionPointHandler {
 	private static final String POINT_ID = "org.limepepper.chefclipse.cookbook.repository";
 
@@ -69,6 +78,7 @@ public class ExtensionPointHandler {
 				}
 			}
 			retrieveAndCacheCookbooks();
+			getRepoManager().createCompositeRepository();
 		} catch (CoreException ex) {
 			IStatus status = new Status(Status.ERROR, Activator.PLUGIN_ID, ex.getMessage(), ex);
 			Platform.getLog(Activator.getContext().getBundle()).log(status );
@@ -81,7 +91,22 @@ public class ExtensionPointHandler {
 				@Override
 				protected IStatus run(IProgressMonitor monitor) {
 					monitor.beginTask("Retrieving cookbooks", IProgressMonitor.UNKNOWN);
-					getRepoManager().loadRepository(repo.getId());
+					ExecutorService ex = Executors.newSingleThreadExecutor();
+					ex.execute(new Runnable() {
+						@Override public void run() {
+							getRepoManager().loadRepository(repo.getId());
+						}
+					});
+					ex.shutdown();
+					try {
+						while (!ex.awaitTermination(300, TimeUnit.MILLISECONDS)) {
+							if (monitor.isCanceled()) 
+								throw new InterruptedException();
+						}
+					} catch (InterruptedException e) {
+						ex.shutdownNow();
+						return Status.CANCEL_STATUS;
+					}
 					monitor.done();
 					return Status.OK_STATUS;
 				}
@@ -95,12 +120,9 @@ public class ExtensionPointHandler {
 			try {
 				ImageDescriptor image = ImageDescriptor.createFromURL(new URL(repo.getIcon()));
 				job.setProperty(IProgressConstants.ICON_PROPERTY, image);
-			} catch (MalformedURLException e) {
-			}
-//			job.setProperty(IProgressConstants.KEEP_PROPERTY, Boolean.TRUE);
-			job.setProperty(IProgressConstants.KEEPONE_PROPERTY, JOBS_FAMILY);
-//			job.setProperty(IProgressConstants.ACTION_PROPERTY, action);
-			job.schedule();			
+			} catch (MalformedURLException e) {}
+			job.setProperty(IProgressConstants2.SHOW_IN_TASKBAR_ICON_PROPERTY, Boolean.TRUE);
+			job.schedule();
 		}
 	}
 }

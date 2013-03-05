@@ -78,7 +78,7 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 
 		while ((zipEntry = zipInputStream.getNextEntry()) != null) {
 
-			if (zipEntry.getName().endsWith(File.separator)) {
+			if (zipEntry.isDirectory() || zipEntry.getName().endsWith(File.separator)) {
 				targetDirectory = new File(absolutePath, zipEntry.getName());
 				if (!targetDirectory.exists()) {
 					final boolean mkdirs = targetDirectory.mkdirs();

@@ -138,7 +138,6 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			pool.shutdown();
 			pool.awaitTermination(20, TimeUnit.MINUTES);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 		return list;
 	}
