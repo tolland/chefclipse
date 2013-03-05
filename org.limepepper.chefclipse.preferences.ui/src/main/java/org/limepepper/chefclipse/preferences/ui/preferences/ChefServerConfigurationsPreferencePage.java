@@ -158,12 +158,14 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	private void setDefaultConfig() {
 		
 		KnifeConfig defaultChefConfiguration = ChefConfigManager.instance().retrieveDefaultChefConfig();
-		Config[] chefConfigs = chefConfigurationsViewer.getChefConfigs();
-		for (Config config : chefConfigs) {
-			boolean equalsUrl = defaultChefConfiguration.getChef_server_url().toExternalForm().equals(config.getChef_server_url().toExternalForm());
-			if (defaultChefConfiguration.getNode_name().equals(config.getNode_name()) && equalsUrl){
-				chefConfigurationsViewer.setCheckedConfig(config);
-				return;
+		if (defaultChefConfiguration != null) {
+			Config[] chefConfigs = chefConfigurationsViewer.getChefConfigs();
+			for (Config config : chefConfigs) {
+				boolean equalsUrl = defaultChefConfiguration.getChef_server_url().toExternalForm().equals(config.getChef_server_url().toExternalForm());
+				if (defaultChefConfiguration.getNode_name().equals(config.getNode_name()) && equalsUrl){
+					chefConfigurationsViewer.setCheckedConfig(config);
+					return;
+				}
 			}
 		}
 	}

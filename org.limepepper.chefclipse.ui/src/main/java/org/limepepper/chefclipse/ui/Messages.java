@@ -45,6 +45,17 @@ public class Messages extends NLS {
 	public static String ChefConfigurationPreferencePage_EditButton;
 	public static String ChefConfigurationPreferencePage_RemoveButton;
 	
+	public static String ChefConfigSelectWizardPage_SelectTitle;
+	public static String ChefConfigSelectWizardPage_SelectDescription;
+	
+	public static String ChefProjectWizardPage_Title;
+	public static String ChefProjectWizardPage_Description;
+	
+	public static String ChefRepositoryWizardPage_SelectLocation;
+	public static String ChefRepositoryWizardPage_LocationRequired;
+	public static String ChefRepositoryWizardPage_AddChefRepo;
+    public static String ChefRepositoryWizardPage_ChefRepo;
+	
 //	public static String ChefConfigurationPreferencePage_ADD_CHEF_SERVER_CONFIGURATION = "Add Chef server configuration";
 	static {
 		// initialize resource bundle

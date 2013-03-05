@@ -40,8 +40,8 @@ import org.limepepper.chefclipse.ui.Messages;
  */
 public class ChefConfigurationPropertyPage extends PropertyPage {
 
-	private static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
-	private static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
+	public static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
+	public static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
 	
 	private IProject project;
 	private boolean modified = false;
@@ -81,7 +81,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		configsViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				modified = true;
+				setModified(true);
 				Config current = configsViewer.getCheckedConfig();
 				if (current == null) {
 					setValid(false);
@@ -108,7 +108,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 * @param parent {@link Composite}
 	 * @return the created composite to host label and link
 	 */
-	private Composite createHeader(Composite parent) {
+	protected Composite createHeader(Composite parent) {
 		Composite composite = new Composite(parent, SWT.NONE);
 		composite.setFont(parent.getFont());
 		GridLayout layout = new GridLayout();
@@ -140,7 +140,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	/**
 	 * Initialize dialog.
 	 */
-	private void initialize() {
+	protected void initialize() {
 		project = (IProject) getElement().getAdapter(IResource.class);
 		setDescription(Messages.ChefConfigurationPropertyPage_Description);
 	}
@@ -159,14 +159,15 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	private void setDefaultProjectConfig() {
 		
 		Config projectConfig = ChefConfigManager.instance().retrieveProjectChefConfig(project);
-		
-		Config[] chefConfigs = configsViewer.getChefConfigs();
-		for (Config config : chefConfigs) {
-			boolean equalsUrl = projectConfig.getChef_server_url().toExternalForm().equals(config.getChef_server_url().toExternalForm());
-			if (projectConfig.getNode_name().equals(config.getNode_name()) && equalsUrl){
-				configsViewer.setCheckedConfig(config);
-				return;
-			}
+		if (projectConfig != null) {
+		    Config[] chefConfigs = configsViewer.getChefConfigs();
+	        for (Config config : chefConfigs) {
+	            boolean equalsUrl = projectConfig.getChef_server_url().toExternalForm().equals(config.getChef_server_url().toExternalForm());
+	            if (projectConfig.getNode_name().equals(config.getNode_name()) && equalsUrl){
+	                configsViewer.setCheckedConfig(config);
+	                return;
+	            }
+	        }
 		}
 	}
 	
@@ -200,7 +201,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	
 	@Override
 	public boolean performOk() {
-		if (!modified) {
+		if (!isModified()) {
 			return true;
 		}
 		savePreference(configsViewer.getCheckedConfig());
@@ -218,5 +219,13 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	private void savePreference(Config selected) {
 		ChefConfigManager.instance().saveProjectChefConfig(this.project, selected);
 	}
+
+    public boolean isModified() {
+        return modified;
+    }
+
+    public void setModified(boolean modified) {
+        this.modified = modified;
+    }
 
 }
