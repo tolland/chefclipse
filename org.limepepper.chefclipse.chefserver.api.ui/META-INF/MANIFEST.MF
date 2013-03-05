@@ -38,5 +38,4 @@ Export-Package: org.limepepper.chefclipse.chefserver.api.ui;uses:="org.eclipse.j
    org.limepepper.chefclipse.common.ui.resources,
    org.eclipse.ui,
    org.eclipse.ui.actions,
-   org.eclipse.core.commands",
- org.limepepper.chefclipse.chefserver.api.ui.preferences;uses:="org.eclipse.jface.preference,org.eclipse.ui,org.eclipse.core.runtime.preferences"
+   org.eclipse.core.commands"
