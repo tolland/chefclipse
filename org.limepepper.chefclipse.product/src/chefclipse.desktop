@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Chefclipse
+Comment=Chefclipse Integrated Development Environment
+Icon=chefclipse
+Exec=chefclipse
+Terminal=false
+Categories=Development;IDE;Java;Ruby;Chef;

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="Juno 4.2 Platform" sequenceNumber="75">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="jsonedit-feature.feature.group" version="0.9.5"/>
+<repository location="http://limepepper.github.com/Json-Eclipse-Plugin/p2"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.zest.sdk.feature.group" version="2.0.0.201208101920"/>
+<repository location="https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.codehaus.jackson.feature.feature.group" version="1.9.5.201204111326"/>
+<repository location="http://ghillairet.github.com/p2"/>
+</location>
+<location path="${workspace_loc}" type="Directory"/>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="epp.package.jee" version="1.5.1.20121004-1506"/>
+<unit id="org.eclipse.jst.enterprise_ui.feature.feature.group" version="3.4.0.v201107072300-7b7JIM0FSK2WM1PS9Ar7AKUz0TrWn"/>
+<unit id="epp.package.modeling" version="1.5.1.20121004-1506"/>
+<unit id="org.eclipse.equinox.executable.feature.group" version="3.6.0.v20120522-1813-7P7OG2BFLWUl7UmbVUO9iCm"/>
+<unit id="org.eclipse.platform.sdk" version="4.2.1.M20120914-1800"/>
+<unit id="org.eclipse.rcp.sdk.id" version="4.2.1.M20120914-1800"/>
+<unit id="org.eclipse.sdk.ide" version="4.2.1.M20120914-1800"/>
+<unit id="org.eclipse.dltk.core.feature.group" version="4.0.0.201206120848"/>
+<unit id="org.eclipse.dltk.ruby.feature.group" version="4.0.0.201206120848"/>
+<unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.0.100.v20120524-0542-4-Bh9oB58A5N9L28PCQ"/>
+<unit id="org.eclipse.equinox.p2.extras.feature.source.feature.group" version="1.1.0.v20120524-0542-7A6FEcDiVOTg1Q_HuZrEuBty3dqr"/>
+<unit id="org.eclipse.equinox.p2.rcp.feature.source.feature.group" version="1.1.0.v20120524-0542-785EoBqNKNYz-GX2sUgCaBty3dqr"/>
+<unit id="org.eclipse.equinox.p2.sdk.feature.group" version="3.8.0.v20120524-0542-9N89H_oGMMn84Qsz0iIohu4jLeQD"/>
+<unit id="org.eclipse.equinox.serverside.sdk.feature.group" version="3.8.0.v20120522-1841-9Q7dFszFYGis9uZsz0QodZP4fL9p"/>
+<repository location="http://download.eclipse.org/releases/juno"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.junit" version="4.10.0.v4_10_0_v20120426-0900"/>
+<unit id="org.junit.source" version="4.10.0.v4_10_0_v20120426-0900"/>
+<unit id="ch.qos.logback.classic" version="1.0.0.v20111214-2030"/>
+<unit id="ch.qos.logback.classic.source" version="1.0.0.v20111214-2030"/>
+<unit id="ch.qos.logback.core" version="1.0.0.v20111214-2030"/>
+<unit id="ch.qos.logback.core.source" version="1.0.0.v20111214-2030"/>
+<unit id="ch.qos.logback.slf4j" version="1.0.0.v20120123-1500"/>
+<unit id="ch.qos.logback.slf4j.source" version="1.0.0.v20120123-1500"/>
+<unit id="org.slf4j.api" version="1.6.4.v20120130-2120"/>
+<unit id="org.slf4j.ext" version="1.6.4.v20120130-2120"/>
+<unit id="org.slf4j.jul" version="1.6.4.v20120130-2120"/>
+<unit id="org.slf4j.jcl" version="1.6.4.v20120130-2120"/>
+<unit id="org.slf4j.log4j" version="1.6.4.v20120130-2120"/>
+<unit id="org.apache.commons.io" version="2.0.1.v201105210651"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipselabs.emfjson.feature.feature.group" version="0.5.0.201212190305"/>
+<repository location="http://limepepper.github.com/emfjson/p2/"/>
+</location>
+</locations>
+<launcherArgs>
+<vmArgs>-Dsun.awt.disablegrab=true -Dosgi.requiredJavaVersion=1.5 -Dhelp.lucene.tokenizer=standard -XX:MaxPermSize=512m -Xms96m -Xmx1524m</vmArgs>
+</launcherArgs>
+</target>
