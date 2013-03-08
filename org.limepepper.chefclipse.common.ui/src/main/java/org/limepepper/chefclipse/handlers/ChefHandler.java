@@ -1,15 +1,5 @@
 package org.limepepper.chefclipse.handlers;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Properties;
-
 import org.eclipse.compare.CompareUI;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -27,12 +17,12 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.ui.Activator;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.compare.CookbookCompareInput;
 import org.limepepper.chefclipse.compare.Utilities;
 import org.limepepper.chefclipse.model.CookbookFolder;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -74,7 +64,8 @@ public class ChefHandler extends AbstractHandler implements
      * from the application context.
      * 
      */
-    public Object execute(ExecutionEvent event) throws ExecutionException {
+    @Override
+    public Object execute(final ExecutionEvent event) throws ExecutionException {
         IWorkbenchWindow window = HandlerUtil
                 .getActiveWorkbenchWindowChecked(event);
 
@@ -134,28 +125,8 @@ public class ChefHandler extends AbstractHandler implements
 
                     IResource sel1 = (IResource) selection.toArray()[0];
 
-                    Properties props = new Properties();
-                    try {
-                        props.load(new FileInputStream(
-                                "opscode-tests.properties"));
-
-                        KnifeConfig knifeConfig = KnifeFactory.eINSTANCE
-                                .createKnifeConfig();
-                        knifeConfig.setChef_server_url(new URL(props
-                                .getProperty("chef_server_url")));
-                        knifeConfig.setClient_key(new File(props
-                                .getProperty("client_key")));
-                        knifeConfig.setNode_name(props
-                                .getProperty("client_name"));
-
-                        assertNotNull(props);
-                        assertTrue(knifeConfig.getClient_key().exists());
-                        assertTrue(knifeConfig.getNode_name().length() > 0);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    KnifeConfig knifeConfig = ChefConfigManager.instance()
+                            .retrieveProjectChefConfig(sel1);
                 }
 
             }
@@ -183,8 +154,9 @@ public class ChefHandler extends AbstractHandler implements
      * @return IWorkbenchPage
      */
     protected IWorkbenchPage getTargetPage() {
-        if (getTargetPart() == null)
+        if (getTargetPart() == null) {
             return TeamUIPlugin.getActivePage();
+        }
         return getTargetPart().getSite().getPage();
     }
 
@@ -203,15 +175,15 @@ public class ChefHandler extends AbstractHandler implements
     }
 
     @Override
-    public void run(IAction action) {
+    public void run(final IAction action) {
     }
 
     @Override
-    public void selectionChanged(IAction action, ISelection selection) {
+    public void selectionChanged(final IAction action, final ISelection selection) {
     }
 
     @Override
-    public void setActivePart(IAction action, IWorkbenchPart targetPart) {
+    public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
     }
 
 }

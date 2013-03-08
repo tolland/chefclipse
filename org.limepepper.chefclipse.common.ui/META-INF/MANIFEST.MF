@@ -29,7 +29,8 @@ Require-Bundle: org.eclipse.ui,
  org.codehaus.jackson.mapper;bundle-version="1.9.5",
  org.eclipse.core.filesystem;bundle-version="1.3.200",
  org.eclipse.jdt.annotation;bundle-version="1.0.0",
- org.limepepper.chefclipse.utils;bundle-version="1.0.0"
+ org.limepepper.chefclipse.utils;bundle-version="1.0.0",
+ org.limepepper.chefclipse.preferences.api;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.limepepper.chefclipse.common.ui,

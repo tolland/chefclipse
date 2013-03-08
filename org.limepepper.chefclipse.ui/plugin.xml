@@ -35,21 +35,23 @@
       </perspectiveExtension>
    </extension>
    <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
-            class="org.limepepper.chefclipse.ui.preferences.TemplateProjectPreferencePage"
-            id="org.limepepper.chefclipse.ui.preferences.chefclipsePreferencePage"
-            name="Chefclipse">
-      </page>
-   </extension>
-   <extension
-         point="org.eclipse.core.runtime.preferences">
-      <initializer
-            class="org.limepepper.chefclipse.ui.preferences.PreferenceInitializer">
-      </initializer>
-   </extension>
-   <extension
          point="org.eclipse.ui.navigator.navigatorContent">
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage"
+            id="org.limepepper.chefclipse.ui.properties.pages.chef.configuration"
+            name="Chef server configuration">
+         <filter
+               name="projectNature"
+               value="org.limepepper.chefclipse.ChefProjectNature"/>
+         <enabledWhen>
+            <adapt
+                  type="org.eclipse.core.resources.IProject">
+            </adapt>
+         </enabledWhen>
+      </page>
    </extension>
 
 </plugin>

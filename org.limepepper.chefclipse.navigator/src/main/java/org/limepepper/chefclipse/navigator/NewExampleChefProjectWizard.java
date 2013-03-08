@@ -8,12 +8,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
@@ -27,7 +30,10 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.osgi.framework.Bundle;
 
 public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
@@ -38,7 +44,7 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
     }
 
     @Override
-    public void init(IWorkbench workbench, IStructuredSelection selection) {
+    public void init(final IWorkbench workbench, final IStructuredSelection selection) {
     }
 
     @Override
@@ -58,19 +64,20 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
          * root.findMember("rules/setup.txt");
          * File file = new File(resourceInRuntimeWorkspace.getLocationURI());
          */
-/*
- * try {
- * getZipFiles(FileLocator.toFileURL(setupUrl).getPath(),
- * ResourcesPlugin.getWorkspace().getRoot().getLocation()
- * .toString()
- * + "/");
- * } catch (IOException e) {
- * e.printStackTrace();
- * }
- */
+        /*
+         * try {
+         * getZipFiles(FileLocator.toFileURL(setupUrl).getPath(),
+         * ResourcesPlugin.getWorkspace().getRoot().getLocation()
+         * .toString()
+         * + "/");
+         * } catch (IOException e) {
+         * e.printStackTrace();
+         * }
+         */
 
         IRunnableWithProgress op = new IRunnableWithProgress() {
-            public void run(IProgressMonitor monitor)
+            @Override
+            public void run(final IProgressMonitor monitor)
                     throws InvocationTargetException {
                 try {
 
@@ -96,6 +103,8 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
                     if (!proj.isOpen()) {
                         proj.open(monitor);
                     }
+
+                    importKnivesToChefConfig(proj);
                 } catch (CoreException e) {
                     e.printStackTrace();
                     throw new InvocationTargetException(e);
@@ -120,12 +129,37 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
         return true;
     }
 
+    /**
+     * Saves knives of the project to Chef-server configuration.
+     * 
+     * @param proj
+     */
+    private void importKnivesToChefConfig(final IProject proj) {
+        ChefConfigManager configManager = ChefConfigManager.instance();
+        Collection<KnifeConfig> knives = ChefRepositoryManager.INSTANCE.getKnives(proj);
+        if (!knives.isEmpty()) {
+            List<KnifeConfig> configs = configManager.retrieveChefConfigurations();
+            KnifeConfig projectConfig = knives.iterator().next();
+
+            IResource clientKeyRes = proj.findMember(projectConfig.getClient_key()
+                    .getPath());
+            projectConfig.setClient_key(clientKeyRes.getLocation().toFile());
+            if (configs.isEmpty()) {
+                configManager.saveDefaultChefConfig(projectConfig);
+            }
+            configs.addAll(knives);
+            configManager.saveChefConfigs(configs);
+            configManager.saveProjectChefConfig(proj, projectConfig);
+        }
+    }
+
+    @Override
     public void addPages() {
 
         addPage(repoPage);
     }
 
-    public static void copyFolder(File src, File dest) throws IOException {
+    public static void copyFolder(final File src, final File dest) throws IOException {
 
         if (src.isDirectory()) {
 
@@ -163,11 +197,11 @@ public class NewExampleChefProjectWizard extends Wizard implements INewWizard {
 
             in.close();
             out.close();
-          //  System.out.println("File copied from " + src + " to " + dest);
+            //  System.out.println("File copied from " + src + " to " + dest);
         }
     }
 
-    public static void getZipFiles(String filename, String destinationname) {
+    public static void getZipFiles(final String filename, final String destinationname) {
         try {
             byte[] buf = new byte[1024];
             ZipInputStream zipinputstream = null;

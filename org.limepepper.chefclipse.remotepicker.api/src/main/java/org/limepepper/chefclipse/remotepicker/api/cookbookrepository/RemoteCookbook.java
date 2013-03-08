@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#isDeprecated <em>Deprecated</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getReplacement <em>Replacement</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getInstalledAt <em>Installed At</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getRepositoryId <em>Repository Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -312,6 +313,18 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 	 * @ordered
 	 */
 	protected Date installedAt = INSTALLED_AT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRepositoryId() <em>Repository Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRepositoryId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REPOSITORY_ID_EDEFAULT = null;
+
+	protected String repositoryId;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -783,6 +796,39 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Repository Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Repository Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Repository Id</em>' attribute.
+	 * @see #setRepositoryId(String)
+	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteCookbook_RepositoryId()
+	 * @model
+	 * @generated
+	 */
+	public String getRepositoryId() {
+		return repositoryId;
+	}
+
+	/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getRepositoryId <em>Repository Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Repository Id</em>' attribute.
+	 * @see #getRepositoryId()
+	 * @generated
+	 */
+	public void setRepositoryId(String newRepositoryId) {
+		String oldRepositoryId = repositoryId;
+		repositoryId = newRepositoryId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_COOKBOOK__REPOSITORY_ID, oldRepositoryId, repositoryId));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -818,6 +864,8 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 				return getReplacement();
 			case CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT:
 				return getInstalledAt();
+			case CookbookrepositoryPackage.REMOTE_COOKBOOK__REPOSITORY_ID:
+				return getRepositoryId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -874,6 +922,9 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 			case CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT:
 				setInstalledAt((Date)newValue);
 				return;
+			case CookbookrepositoryPackage.REMOTE_COOKBOOK__REPOSITORY_ID:
+				setRepositoryId((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -928,6 +979,9 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 			case CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT:
 				setInstalledAt(INSTALLED_AT_EDEFAULT);
 				return;
+			case CookbookrepositoryPackage.REMOTE_COOKBOOK__REPOSITORY_ID:
+				setRepositoryId(REPOSITORY_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -968,6 +1022,8 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 				return REPLACEMENT_EDEFAULT == null ? replacement != null : !REPLACEMENT_EDEFAULT.equals(replacement);
 			case CookbookrepositoryPackage.REMOTE_COOKBOOK__INSTALLED_AT:
 				return INSTALLED_AT_EDEFAULT == null ? installedAt != null : !INSTALLED_AT_EDEFAULT.equals(installedAt);
+			case CookbookrepositoryPackage.REMOTE_COOKBOOK__REPOSITORY_ID:
+				return REPOSITORY_ID_EDEFAULT == null ? repositoryId != null : !REPOSITORY_ID_EDEFAULT.equals(repositoryId);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1010,6 +1066,8 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 		result.append(replacement);
 		result.append(", installedAt: ");
 		result.append(installedAt);
+		result.append(", repositoryId: ");
+		result.append(repositoryId);
 		result.append(')');
 		return result.toString();
 	}

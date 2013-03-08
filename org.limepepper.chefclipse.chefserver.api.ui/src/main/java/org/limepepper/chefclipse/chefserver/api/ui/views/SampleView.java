@@ -2,6 +2,8 @@ package org.limepepper.chefclipse.chefserver.api.ui.views;
 
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -36,9 +38,12 @@ import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProviderAdapterFactory;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory;
+import org.limepepper.chefclipse.tools.EMFUtils;
 
 /**
  * This sample class demonstrates how to plug-in a new
@@ -81,16 +86,24 @@ public class SampleView extends ViewPart {
      */
 
     class ViewContentProvider implements IStructuredContentProvider {
-        public void inputChanged(Viewer v, Object oldInput, Object newInput) {
+        @Override
+        public void inputChanged(final Viewer v, final Object oldInput, final Object newInput) {
         }
 
+        @Override
         public void dispose() {
         }
 
-        public Object[] getElements(Object parent) {
+        @Override
+        public Object[] getElements(final Object parent) {
 
             try {
-                ChefServerApi api = configController.getServer(null);
+                KnifeConfig config = null;
+                if (parent instanceof EObject) {
+                    IFile iFile = EMFUtils.getIFileFromEObject((EObject) parent);
+                    ChefConfigManager.instance().retrieveProjectChefConfig(iFile);
+                }
+                ChefServerApi api = configController.getServer(config);
                 return api.getNodes().toArray();
             } finally {
 
@@ -101,16 +114,19 @@ public class SampleView extends ViewPart {
     }
 
     class ViewLabelProvider extends LabelProvider implements
-            ITableLabelProvider {
-        public String getColumnText(Object obj, int index) {
+    ITableLabelProvider {
+        @Override
+        public String getColumnText(final Object obj, final int index) {
             return getText(obj);
         }
 
-        public Image getColumnImage(Object obj, int index) {
+        @Override
+        public Image getColumnImage(final Object obj, final int index) {
             return getImage(obj);
         }
 
-        public Image getImage(Object obj) {
+        @Override
+        public Image getImage(final Object obj) {
             return PlatformUI.getWorkbench().getSharedImages()
                     .getImage(ISharedImages.IMG_OBJ_ELEMENT);
         }
@@ -131,19 +147,23 @@ public class SampleView extends ViewPart {
             super(ChefProjectAdapterFactory.getAdapterFactory());
         }
 
-        public String getText(Object element) {
+        @Override
+        public String getText(final Object element) {
 
             return super.getText(element);
         }
 
-        public String getColumnText(Object obj, int index) {
+        @Override
+        public String getColumnText(final Object obj, final int index) {
             return getText(obj);
         }
 
-        public Image getColumnImage(Object obj, int index) {
+        @Override
+        public Image getColumnImage(final Object obj, final int index) {
             return getImage(obj);
         }
-        public Image getImage(Object obj) {
+        @Override
+        public Image getImage(final Object obj) {
             return PlatformUI.getWorkbench().getSharedImages()
                     .getImage(ISharedImages.IMG_OBJ_ELEMENT);
         }
@@ -153,7 +173,7 @@ public class SampleView extends ViewPart {
 
         List<Node> nodes;
 
-        NodeContentProvider(List<Node> nodes) {
+        NodeContentProvider(final List<Node> nodes) {
             super(ChefProjectAdapterFactory.getAdapterFactory());
             this.nodes = nodes;
         }
@@ -163,11 +183,11 @@ public class SampleView extends ViewPart {
         }
 
         @Override
-        public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+        public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
         }
 
         @Override
-        public Object[] getElements(Object inputElement) {
+        public Object[] getElements(final Object inputElement) {
             if (inputElement instanceof NodeContentProvider) {
                 return nodes.toArray();
             }
@@ -179,25 +199,24 @@ public class SampleView extends ViewPart {
      * This is a callback that will allow us
      * to create the viewer and initialize it.
      */
-    public void createPartControl(Composite parent) {
+    @Override
+    public void createPartControl(final Composite parent) {
         viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
                 | SWT.V_SCROLL);
 
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
                 ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-        adapterFactory
-                .addAdapterFactory(new ChefclipseItemProviderAdapterFactory());
-        adapterFactory
-                .addAdapterFactory(new ChefserverItemProviderAdapterFactory());
-        adapterFactory
-                .addAdapterFactory(new WorkstationItemProviderAdapterFactory());
-        adapterFactory
-                .addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new ChefclipseItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new ChefserverItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new WorkstationItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
         viewer.setSorter(new NameSorter());
 
-        ChefServerApi api = configController.getServer(null);
+        // TODO replace with project chef config, selected or input for this view.
+        KnifeConfig config = ChefConfigManager.instance().retrieveDefaultChefConfig();
+        ChefServerApi api = configController.getServer(config);
         NodeContentProvider nodeContentProvider = new NodeContentProvider(
                 api.getNodes());
         NodeLabelProvider nodeLabelProvider = new NodeLabelProvider();
@@ -209,10 +228,10 @@ public class SampleView extends ViewPart {
 
         // Create the help context id for the viewer's control
         PlatformUI
-                .getWorkbench()
-                .getHelpSystem()
-                .setHelp(viewer.getControl(),
-                        "org.limepepper.chefclipse.chefserver.api.ui.viewer");
+        .getWorkbench()
+        .getHelpSystem()
+        .setHelp(viewer.getControl(),
+                "org.limepepper.chefclipse.chefserver.api.ui.viewer");
         makeActions();
         hookContextMenu();
         hookDoubleClickAction();
@@ -223,7 +242,8 @@ public class SampleView extends ViewPart {
         MenuManager menuMgr = new MenuManager("#PopupMenu");
         menuMgr.setRemoveAllWhenShown(true);
         menuMgr.addMenuListener(new IMenuListener() {
-            public void menuAboutToShow(IMenuManager manager) {
+            @Override
+            public void menuAboutToShow(final IMenuManager manager) {
                 SampleView.this.fillContextMenu(manager);
             }
         });
@@ -238,26 +258,27 @@ public class SampleView extends ViewPart {
         fillLocalToolBar(bars.getToolBarManager());
     }
 
-    private void fillLocalPullDown(IMenuManager manager) {
+    private void fillLocalPullDown(final IMenuManager manager) {
         manager.add(action1);
         manager.add(new Separator());
         manager.add(action2);
     }
 
-    private void fillContextMenu(IMenuManager manager) {
+    private void fillContextMenu(final IMenuManager manager) {
         manager.add(action1);
         manager.add(action2);
         // Other plug-ins can contribute there actions here
         manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
     }
 
-    private void fillLocalToolBar(IToolBarManager manager) {
+    private void fillLocalToolBar(final IToolBarManager manager) {
         manager.add(action1);
         manager.add(action2);
     }
 
     private void makeActions() {
         action1 = new Action() {
+            @Override
             public void run() {
                 showMessage("Action 1 executed");
             }
@@ -268,6 +289,7 @@ public class SampleView extends ViewPart {
                 .getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
 
         action2 = new Action() {
+            @Override
             public void run() {
                 showMessage("Action 2 executed");
             }
@@ -277,6 +299,7 @@ public class SampleView extends ViewPart {
         action2.setImageDescriptor(PlatformUI.getWorkbench().getSharedImages()
                 .getImageDescriptor(ISharedImages.IMG_OBJS_INFO_TSK));
         doubleClickAction = new Action() {
+            @Override
             public void run() {
                 ISelection selection = viewer.getSelection();
                 Object obj = ((IStructuredSelection) selection)
@@ -288,13 +311,14 @@ public class SampleView extends ViewPart {
 
     private void hookDoubleClickAction() {
         viewer.addDoubleClickListener(new IDoubleClickListener() {
-            public void doubleClick(DoubleClickEvent event) {
+            @Override
+            public void doubleClick(final DoubleClickEvent event) {
                 doubleClickAction.run();
             }
         });
     }
 
-    private void showMessage(String message) {
+    private void showMessage(final String message) {
         MessageDialog.openInformation(viewer.getControl().getShell(),
                 "Sample View", message);
     }
@@ -302,6 +326,7 @@ public class SampleView extends ViewPart {
     /**
      * Passing the focus request to the viewer's control.
      */
+    @Override
     public void setFocus() {
         viewer.getControl().setFocus();
     }

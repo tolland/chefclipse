@@ -14,7 +14,8 @@ Require-Bundle: org.junit4;bundle-version="4.8.1",
  org.eclipse.jdt.annotation;bundle-version="1.0.0",
  com.sun.jersey.bundle;bundle-version="1.0.0",
  org.limepepper.chefclipse.common;bundle-version="1.0.0";visibility:=reexport,
- org.limepepper.chefclipse.logger;bundle-version="1.0.0"
+ org.limepepper.chefclipse.logger;bundle-version="1.0.0",
+ org.limepepper.chefclipse.preferences.api;bundle-version="1.0.0"
 Bundle-Classpath: .,
  lib/bcprov-jdk16.jar,
  lib/org.eclipselabs.emfjson.jar
