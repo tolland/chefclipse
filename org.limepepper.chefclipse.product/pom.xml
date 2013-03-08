@@ -16,6 +16,13 @@
   <artifactId>org.limepepper.chefclipse.product</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-repository</packaging>
+    <description>
+This is the installer for the chefclipse RCP app
+    </description>
+    <organization>
+        <name>Lime Pepper Ltd</name>
+        <url>http://www.limepepper.co.uk</url>
+    </organization>
 
   <build>
     <plugins>
@@ -31,12 +38,12 @@
               <goal>materialize-products</goal>
             </goals>
           </execution>
-          <execution>
+          <!--execution>
             <id>archive-products</id>
             <goals>
               <goal>archive-products</goal>
             </goals>
-          </execution>
+          </execution-->
         </executions>
         <configuration>
           <products>
@@ -54,6 +61,7 @@
         </configuration>
       </plugin>
 
+<<<<<<< HEAD
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
@@ -155,6 +163,89 @@
 		</dependencies>
         
       </plugin>
+=======
+               <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.1-alpha-2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <copyright>2013, Lime Pepper Ltd</copyright>
+                    <distribution>Trash 2013</distribution>
+                    <group>Text Editors/Integrated Development Environments (IDE)</group>
+                    <icon>icons/48x48.xpm</icon>
+                    <packager>tolland</packager>
+                    <needarch>x86_64</needarch>
+                    <prefix>/usr/share</prefix>
+                    <changelogFile>src/CHANGELOG</changelogFile>
+                    <defineStatements>
+						<defineStatement>_unpackaged_files_terminate_build 0</defineStatement>
+						<defineStatement>QA_RPATHS [ 0x0001|0x0010 ]</defineStatement>
+						<defineStatement>QA_CHECK_RPATHS 0</defineStatement>
+						<defineStatement>__spec_install_post %{nil}</defineStatement>
+						<defineStatement>debug_package %{nil}</defineStatement>
+						<defineStatement>__os_install_post %{_dbpath}/brp-compress</defineStatement>
+                       
+                    </defineStatements>
+                    <mappings>
+                        <mapping>
+                            <directory>/usr/share/chefclipse</directory>
+                            <filemode>755</filemode>
+                            <username>root</username>
+                            <groupname>root</groupname>
+                            <sources>
+                                <source>
+                                    <location>target/products/org.limepepper.chefclipse.product/linux/gtk/x86_64</location>
+                                </source>
+                            </sources>
+                        </mapping>
+                        
+                       <mapping>
+                            <directory>/usr/share/applications/</directory>
+                            <filemode>644</filemode>
+                            <username>root</username>
+                            <groupname>root</groupname>
+                            <sources>
+                            <source>
+                                <location>src/chefclipse.desktop</location>
+                                <targetArchitecture>x86_64</targetArchitecture>
+                            </source>
+                            <!--source>
+                                <location>src/main/native/i586</location>
+                                <targetArchitecture>i586</targetArchitecture>
+                            </source-->
+                                <!--softlinkSource>
+                                    <location>/usr/local/bin/new.sh</location>
+                                    <destination>old.sh</destination>
+                                </softlinkSource-->
+                            </sources>
+                        </mapping>
+                    </mappings>
+                    <preinstallScriptlet>
+                        <script>echo "installing now"</script>
+                    </preinstallScriptlet>
+                    <postinstallScriptlet>
+                        <scriptFile>src/main/scripts/postinstall</scriptFile>
+                        <fileEncoding>utf-8</fileEncoding>
+                    </postinstallScriptlet>
+                    <!--preremoveScriptlet>
+                        <scriptFile>src/main/scripts/preremove</scriptFile>
+                        <fileEncoding>utf-8</fileEncoding>
+                    </preremoveScriptlet-->
+                    <requires>
+						<require>java-devel &gt;= 1.7.0</require>
+						<require>git &gt;= 1.7.0</require>
+						<require>ruby</require>
+				</requires>
+                </configuration>
+            </plugin>
+>>>>>>> dev
     </plugins>
   </build>
 

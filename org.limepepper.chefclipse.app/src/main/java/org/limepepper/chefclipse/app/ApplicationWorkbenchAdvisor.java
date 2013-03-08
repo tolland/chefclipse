@@ -15,4 +15,15 @@ public class ApplicationWorkbenchAdvisor extends WorkbenchAdvisor {
 	public String getInitialWindowPerspectiveId() {
 		return PERSPECTIVE_ID;
 	}
+
+    @Override
+    public void preStartup() {
+        super.preStartup();
+        
+     //   P2Util.checkForUpdates();
+    }
+	
+	
+	
+	
 }

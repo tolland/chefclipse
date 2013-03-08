@@ -1,5 +1,6 @@
 package org.limepepper.chefclipse.app;
 
+import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -27,7 +28,11 @@ public class Activator extends AbstractUIPlugin {
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
-		plugin = this;
+		plugin = this;		
+	      
+    //    Preferences node = new DefaultScope().getNode(AutomaticUpdatePlugin.PLUGIN_ID);
+    //    node.putBoolean(PreferenceConstants.PREF_AUTO_UPDATE_ENABLED, true);
+		
 	}
 
 	/*

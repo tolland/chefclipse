@@ -1,0 +1,4 @@
+
+
+#desktop-file-install --dir=${RPM_BUILD_ROOT}%{_datadir}/applications %{SOURCE1}
+
