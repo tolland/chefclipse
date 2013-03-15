@@ -1,7 +1,8 @@
 package org.limepepper.chefclipse.preferences.ui.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
-import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.core.runtime.preferences.ConfigurationScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.limepepper.chefclipse.preferences.ui.Activator;
 
 /**
@@ -9,17 +10,17 @@ import org.limepepper.chefclipse.preferences.ui.Activator;
  */
 public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
-	/*
+    /*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-		store.setDefault("cache_type", "'BasicFile'"); //$NON-NLS-1$
-		store.setDefault("cache_options", ":path => \"#{ENV['HOME']}/.chef/checksums\""); //$NON-NLS-1$
-		store.setDefault("ssl_verify_mode", ":verify_none"); //$NON-NLS-1$
+	    IEclipsePreferences node = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+	    node.put(PreferenceConstants.P_CACHE_TYPE, "'BasicFile'"); //$NON-NLS-1$
+	    node.put(PreferenceConstants.P_CACHE_OPTIONS, ":path => \"#{ENV['HOME']}/.chef/checksums\""); //$NON-NLS-1$
+	    node.put(PreferenceConstants.P_SSL_VERIFY_MODE, ":verify_none"); //$NON-NLS-1$
 	}
 
 }

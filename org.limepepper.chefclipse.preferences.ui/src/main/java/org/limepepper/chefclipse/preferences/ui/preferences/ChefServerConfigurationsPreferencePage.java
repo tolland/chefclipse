@@ -36,6 +36,7 @@ import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+import org.limepepper.chefclipse.preferences.ui.actions.SearchKnifeConfigAction;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 import org.limepepper.chefclipse.ui.Activator;
@@ -56,6 +57,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	private Button addButton;
 	private Button removeButton;
 	private Button duplicateButton;
+    private Button searchButton;
 	/**
 	 * 
 	 */
@@ -131,16 +133,16 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 			}
 		});
 		
+        searchButton = SWTFactory.createPushButton(buttons,
+                Messages.ChefConfigurationPreferencePage_SearchButton, null);
+        searchButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event evt) {
+                search();
+            }
+        });
+		
 //		SWTFactory.createVerticalSpacer(parent, 1);
 
-//		fSearchButton = SWTFactory.createPushButton(buttons,
-//				JREMessages.InstalledJREsBlock_6, null);
-//		fSearchButton.addListener(SWT.Selection, new Listener() {
-//			public void handleEvent(Event evt) {
-//				search();
-//			}
-//		});
-		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(ancestor, PREFERENCE_PAGE);		
 		chefConfigurationsViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -278,6 +280,9 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		chefConfigurationsViewer.removeChefConfigs(chefConfigs);
 	}
 	
+	/**
+	 * Add a duplicate of the selected config to the table.
+	 */
 	private void duplicateChefConfig() {
 		IStructuredSelection selection = (IStructuredSelection) chefConfigurationsViewer.getSelection();
 		KnifeConfig config = (KnifeConfig) selection.getFirstElement();
@@ -295,5 +300,20 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 			}
 		}
 	}
+	
+	/**
+     * Search for Knife config files (.rb) and create a Knife config from the selected file.
+     * The created config will be the default one.
+     * 
+     */
+	private void search() {
+	    SearchKnifeConfigAction searchAction = new SearchKnifeConfigAction(getShell());
+	    searchAction.run();
+	    KnifeConfig generatedKnifeConfig = searchAction.getGeneratedKnifeConfig();
+        if (generatedKnifeConfig != null) {
+	        chefConfigurationsViewer.add(generatedKnifeConfig);
+	        chefConfigurationsViewer.setCheckedConfig(generatedKnifeConfig);
+	    }
+    }
 
 }

@@ -45,6 +45,8 @@ public class Messages extends NLS {
 	public static String ChefConfigurationPreferencePage_EditButton;
 	public static String ChefConfigurationPreferencePage_RemoveButton;
 	public static String ChefConfigurationPreferencePage_DuplicateButton;
+	public static String ChefConfigurationPreferencePage_SearchButton;
+	public static String ChefConfigurationPreferencePage_SearchFile;
 	
 	public static String ChefConfigSelectWizardPage_SelectTitle;
 	public static String ChefConfigSelectWizardPage_SelectDescription;
