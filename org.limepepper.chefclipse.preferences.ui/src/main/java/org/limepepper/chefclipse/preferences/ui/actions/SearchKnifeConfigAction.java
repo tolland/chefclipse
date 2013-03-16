@@ -16,6 +16,9 @@ import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.FileDialog;
@@ -23,6 +26,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
+import org.limepepper.chefclipse.preferences.ui.Activator;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
 import org.limepepper.chefclipse.ui.Messages;
@@ -44,14 +48,16 @@ public class SearchKnifeConfigAction extends Action {
     
     private KnifeConfig generatedKnifeConfig;
 
-    /**
-     * 
-     */
+    public SearchKnifeConfigAction() {
+
+    }
+    
     public SearchKnifeConfigAction(Shell shell) {
         this.shell = shell;
         this.setText(Messages.ChefConfigurationPreferencePage_SearchButton);
     }
     
+
     @Override
     public void run() {
         FileDialog dialog = new FileDialog(shell);
@@ -79,7 +85,6 @@ public class SearchKnifeConfigAction extends Action {
             }
         }
         setGeneratedKnifeConfig(null);
-        System.out.println(selected);
     }
 
     /**
@@ -88,7 +93,7 @@ public class SearchKnifeConfigAction extends Action {
      * @param knifeConfigFile
      * @return a knifeConfig
      */
-    private KnifeConfig parse(File knifeConfigFile) {
+    public KnifeConfig parse(File knifeConfigFile) {
         KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
         knifeConfig.setCache_option(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_CACHE_OPTIONS));
         knifeConfig.setCache_type(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_CACHE_TYPE));
@@ -98,8 +103,9 @@ public class SearchKnifeConfigAction extends Action {
         try {
             chefServerUrl = new URL(urlValue);
             knifeConfig.setChef_server_url(chefServerUrl);
-        } catch (MalformedURLException e1) {
-            e1.printStackTrace();
+        } catch (MalformedURLException ex) {
+            IStatus status = new Status(Status.ERROR, Activator.PLUGIN_ID, ex.getMessage(), ex);
+            Platform.getLog(Activator.getDefault().getBundle()).log(status );
         }
         knifeConfig.setNode_name(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_NODE_NAME));
         
@@ -119,46 +125,14 @@ public class SearchKnifeConfigAction extends Action {
         String validationKeyValue = parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_VALIDATION_KEY);
         File validationKeyFile = new File(validationKeyValue);
         knifeConfig.setValidation_key(validationKeyFile);
-//        Path path = Paths.get(knifeConfigFile.getAbsolutePath());
-//        try (BufferedReader reader = Files.newBufferedReader(path, ENCODING)){
-//          String line = null;
-//          while ((line = reader.readLine()) != null) {
-//              if (!line.startsWith("#")){ //# is used to start a comment
-//                  String variableValue = parseLine(line);
-//                  if (!variableValue.isEmpty()) {
-//                      
-//                  }
-//              }
-//          }      
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
         return knifeConfig;
     }
-
-//    private String parseFileAndGetPropertyValue(File knifeConfigFile, String variable) {
-//        Path path = Paths.get(knifeConfigFile.getAbsolutePath());
-//        try (BufferedReader reader = Files.newBufferedReader(path, ENCODING)) {
-//            String line = "";
-//            while ((line = reader.readLine()) != null) {
-//                if (line.matches("\\s*" + variable + ".*")) {
-//                    String varValue = parseLine(line, variable);
-//                    if (varValue.contains("#{current_dir}")) {
-//                        varValue = varValue.replace("#{current_dir}", knifeConfigFile.getParent());
-//                    }
-//                    return varValue;
-//                }
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return "";
-//    }
     
     private String parseFileAndGetPropertyValue(File knifeConfigFile, String variable) {
         Path path = Paths.get(knifeConfigFile.getAbsolutePath());
-        Pattern pattern = Pattern.compile("\\s*" + variable + "\\s+?\\[?\"(.+?)\\]?\"");
-        Pattern cacheOptionsPattern = Pattern.compile("\\s*" + PreferenceConstants.P_CACHE_OPTIONS + "\\(\\{?\\s+?(:path.+?)\\}?\\)");
+        Pattern pattern = Pattern.compile("\\s*" + variable + "\\s+?\\[?[\\s]*?\"(.+?)[\\s]*?\\]?\"");
+        Pattern cacheOptionsPattern = Pattern.compile("\\s*" + PreferenceConstants.P_CACHE_OPTIONS + "\\(\\{?\\s+?(:path.+?)\\s?\\}?\\)");
         Pattern cacheTypePattern = Pattern.compile("\\s*" + PreferenceConstants.P_CACHE_TYPE + "\\s+?('.+?')");
         try (BufferedReader reader = Files.newBufferedReader(path, ENCODING)) {
             String line = "";
@@ -179,8 +153,9 @@ public class SearchKnifeConfigAction extends Action {
                     }
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            IStatus status = new Status(Status.ERROR, Activator.PLUGIN_ID, ex.getMessage(), ex);
+            Platform.getLog(Activator.getDefault().getBundle()).log(status );
         }
         return "";
     }
@@ -195,29 +170,6 @@ public class SearchKnifeConfigAction extends Action {
         }
         return varValue;
     }
-
-//    private String parseLine(String line, String variable) {
-//        String[] splittedVar = line.split("\\s+");
-//        if (splittedVar.length > 1) {
-//            StringBuilder stringBuilder = new StringBuilder();
-//            for (int i = 1; i < splittedVar.length && !splittedVar[i].equals(")"); i++) {
-//                stringBuilder.append(splittedVar[i]);
-//                if (i < splittedVar.length - 1) {
-//                    stringBuilder.append(" ");
-//                }
-//            }
-//            String varValue = stringBuilder.toString();
-//            if (varValue.startsWith("[")){
-//                varValue.replaceAll("\\s+", "");
-//                varValue = varValue.substring(1, varValue.length() - 1);
-//            }
-//            if (varValue.startsWith("\"")) {
-//                varValue = varValue.substring(1, varValue.length() - 1);
-//            }
-//            return varValue;
-//        }
-//        return "";
-//    }
 
     public KnifeConfig getGeneratedKnifeConfig() {
         return generatedKnifeConfig;
