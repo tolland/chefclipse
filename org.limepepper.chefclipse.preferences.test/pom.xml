@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.limepepper.chefclipse</groupId>
-    <artifactId>org.limepepper.chefclipse</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../</relativePath>
-  </parent>
-  <groupId>org.limepepper.chefclipse</groupId>
-  <artifactId>org.limepepper.chefclipse.preferences.test</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>eclipse-test-plugin</packaging>  
-  <properties>
-		<lib-dir>lib</lib-dir>
-	</properties>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.limepepper.chefclipse</groupId>
+		<artifactId>org.limepepper.chefclipse</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+	<groupId>org.limepepper.chefclipse</groupId>
+	<artifactId>org.limepepper.chefclipse.preferences.test</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>eclipse-test-plugin</packaging>
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>${tycho.groupid}</groupId>
+				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
 				<configuration>
 					<argLine>${surefire.argline}</argLine>
 					<systemProperties>
@@ -33,6 +32,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.6</version>
 				<executions>
 					<execution>
 						<id>copy-bundle-classpath-libs</id>
@@ -41,17 +41,22 @@
 							<goal>copy</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${lib-dir}</outputDirectory>
+							<outputDirectory>${basedir}/lib</outputDirectory>
 							<overWriteReleases>true</overWriteReleases>
 							<overWriteSnapshots>true</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
 							<stripVersion>true</stripVersion>
-							<artifactItems>							
+							<artifactItems>
 								<artifactItem>
 									<groupId>org.mockito</groupId>
 									<artifactId>mockito-all</artifactId>
-									<version>1.8.4</version>
-								</artifactItem>							
+									<version>1.9.5</version>
+								</artifactItem>
+								<artifactItem>
+								<groupId>org.hamcrest</groupId>
+									<artifactId>hamcrest-all</artifactId>
+									<version>1.3</version>
+								</artifactItem>
 							</artifactItems>
 						</configuration>
 					</execution>
