@@ -17,8 +17,6 @@ import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogConfiguration
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogPage;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogViewer;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CategoryItem;
-import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryItem;
-import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryResources;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.operation.IRunnableContext;
@@ -180,18 +178,11 @@ public class CookbookCatalogPage extends CatalogPage {
 		getControl().notifyListeners(SWT.Help, new Event());
 	}
 
-	private final class CookbookCatalogViewer extends CatalogViewer {
-		private final class DiscoveryItemC extends DiscoveryItem<CatalogItem> {
-			private DiscoveryItemC(Composite parent, int style,
-					DiscoveryResources resources, IShellProvider shellProvider,
-					CatalogItem item, CatalogViewer viewer) {
-				super(parent, style, resources, shellProvider, item, viewer);
-			}
-
-			@Override
-			public void refresh() {
-				super.refresh();
-			}
+	public final class CookbookCatalogViewer extends CatalogViewer {
+		
+		@Override
+		public void modifySelection(final CatalogItem connector, boolean selected) {
+		    super.modifySelection(connector, selected);
 		}
 
 		private final class CoookbookControlListViewer extends ControlListViewer {
@@ -233,7 +224,8 @@ public class CookbookCatalogPage extends CatalogPage {
 				doUpdateContent();
 			}
 
-			@Override
+			@SuppressWarnings("unchecked")
+            @Override
 			protected void internalRefresh(Object element) {
 				if (element == null) {
 					return;
@@ -248,8 +240,8 @@ public class CookbookCatalogPage extends CatalogPage {
 					add(new Object[] {element});
 					return;
 				}
-				if (widget instanceof DiscoveryItemC)
-					((DiscoveryItemC) widget).refresh();
+				if (widget instanceof CookbookDiscoveryItem)
+					((CookbookDiscoveryItem<CatalogItem>) widget).refresh();
 
 				updateSize(getControl());
 			}
@@ -322,7 +314,8 @@ public class CookbookCatalogPage extends CatalogPage {
 			 * @param element
 			 * @return ControlListItem
 			 */
-			private ControlListItem<? extends AbstractCatalogItem> createNewItem(Object element) {
+			@SuppressWarnings("unchecked")
+            private ControlListItem<? extends AbstractCatalogItem> createNewItem(Object element) {
 				Composite control = (Composite) getControl().getContent();
 				final ControlListItem<? extends AbstractCatalogItem> item = doCreateItem(control, element);
 //				item.setIndexListener(new ControlListItem.IndexListener() {
@@ -361,8 +354,8 @@ public class CookbookCatalogPage extends CatalogPage {
 //				});
 				GridDataFactory.fillDefaults().grab(true, false).applyTo(item);
 //				// Refresh to populate with the current tasks
-				if (item instanceof DiscoveryItemC)
-					((DiscoveryItemC) item).refresh();
+				if (item instanceof CookbookDiscoveryItem)
+					((CookbookDiscoveryItem<CatalogItem>) item).refresh();
 				return item;
 			}
 		}
@@ -384,7 +377,7 @@ public class CookbookCatalogPage extends CatalogPage {
 		protected ControlListItem<? extends AbstractCatalogItem> doCreateViewerItem(Composite parent, Object element) {
 			if (element instanceof CatalogItem) {
 				resources.setCurrentCatalogItem((CatalogItem) element);
-				return new DiscoveryItemC(parent, SWT.NONE, resources, shellProvider,
+				return new CookbookDiscoveryItem<CatalogItem>(parent, SWT.NONE, resources, shellProvider,
 						(CatalogItem) element, this);
 			} else if (element instanceof CatalogCategory) {
 				resources.setCurrentCatalogItem((CatalogCategory) element);
