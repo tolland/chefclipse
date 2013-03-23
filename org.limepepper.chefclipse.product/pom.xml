@@ -1,126 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
 
-   <parent>
-    <groupId>org.limepepper.chefclipse</groupId>
-    <artifactId>org.limepepper.chefclipse</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../</relativePath>
-  </parent>
+	<parent>
+		<groupId>org.limepepper.chefclipse</groupId>
+		<artifactId>org.limepepper.chefclipse</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
 
-  <groupId>org.limepepper.chefclipse</groupId>
-  <artifactId>org.limepepper.chefclipse.product</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>eclipse-repository</packaging>
+	<groupId>org.limepepper.chefclipse</groupId>
+	<artifactId>org.limepepper.chefclipse.product</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>eclipse-repository</packaging>
 
-  <build>
-    <plugins>
-       <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-p2-director-plugin</artifactId>
-        <version>${tycho-version}</version>
 
-        <executions>
-          <execution>
-            <id>materialize-products</id>
-            <goals>
-              <goal>materialize-products</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>archive-products</id>
-            <goals>
-              <goal>archive-products</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <products>
-            <product>
-              <id>org.limepepper.chefclipse.product</id>
-              <attachId>other</attachId>
+	<profiles>
+		<profile>
+			<id>DefaultProfile</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
 
-              <!-- optional parameters (with default values)  -->
-              <rootFolder></rootFolder>
-            </product>
-          </products>
-          <!-- global optional parameters (with default values) -->
-          <installFeatures>true</installFeatures>
-          <profile>DefaultProfile</profile>
-        </configuration>
-      </plugin>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-director-plugin</artifactId>
+						<version>${tycho-version}</version>
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>izpack</id>
-             <phase>package</phase>
-            <configuration>
-              <tasks>
-               <echo message="Starting Ant izPack build ..." />
-               <property name="plugin_classpath" refid="maven.plugin.classpath"/>
-               <property name="project.build.dir" value="${project.build.directory}" />
-               
-               <ant antfile="${basedir}/src/main/izpack/izpack-build.xml" inheritAll="true" inheritRefs="true">
-                  <target name="build.bundles"/>
-                </ant>
-                <exec executable="fpm">
-                	<arg line="-s dir -t deb -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86_64/ -a amd64 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_amd64.deb ." />
-                </exec>
-                <exec executable="fpm">
-                	<arg line="-s dir -t deb -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86/ -a i386 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_i386.deb ." />
-                </exec>
-                <exec executable="fpm">
-                	<arg line="-s dir -t rpm -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86_64/ -a x86_64 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_amd64.rpm ." />
-                </exec>
-                <exec executable="fpm">
-                	<arg line="-s dir -t rpm -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86/ -a i686 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_i686.rpm ." />
-                </exec>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-		<dependencies>
-			<dependency>
-				<groupId>ant-contrib</groupId>
-				<artifactId>ant-contrib</artifactId>
-				<version>1.0b3</version>
-				<exclusions>
-					<exclusion>
-						<groupId>ant</groupId>
-						<artifactId>ant</artifactId>
-					</exclusion>
-				</exclusions>
-			</dependency>
-			<dependency>
-				<groupId>ant</groupId>
-				<artifactId>ant-nodeps</artifactId>
-				<version>1.6.5</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.izpack</groupId>
-				<artifactId>izpack-maven-plugin</artifactId>
-				<version>5.0.0-beta11</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.izpack</groupId>
-				<artifactId>izpack-ant</artifactId>
-				<version>5.0.0-beta11</version>
-			</dependency>
-	
-		</dependencies>
-        
-      </plugin>
-    </plugins>
-  </build>
+						<executions>
+							<execution>
+								<id>materialize-products</id>
+								<goals>
+									<goal>materialize-products</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>archive-products</id>
+								<goals>
+									<goal>archive-products</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<products>
+								<product>
+									<id>org.limepepper.chefclipse.product</id>
+									<attachId>other</attachId>
+
+									<!-- optional parameters (with default values) -->
+									<rootFolder></rootFolder>
+								</product>
+							</products>
+							<!-- global optional parameters (with default values) -->
+							<installFeatures>true</installFeatures>
+							<profile>DefaultProfile</profile>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>MakeDistroPackages</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>izpack</id>
+								<phase>package</phase>
+								<configuration>
+									<tasks>
+										<echo message="Starting Ant izPack build ..." />
+										<property name="plugin_classpath" refid="maven.plugin.classpath" />
+										<property name="project.build.dir" value="${project.build.directory}" />
+
+										<ant antfile="${basedir}/src/main/izpack/izpack-build.xml"
+											inheritAll="true" inheritRefs="true">
+											<target name="build.bundles" />
+										</ant>
+										<exec executable="fpm">
+											<arg
+												line="-s dir -t deb -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86_64/ -a amd64 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_amd64.deb ." />
+										</exec>
+										<exec executable="fpm">
+											<arg
+												line="-s dir -t deb -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86/ -a i386 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_i386.deb ." />
+										</exec>
+										<exec executable="fpm">
+											<arg
+												line="-s dir -t rpm -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86_64/ -a x86_64 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_amd64.rpm ." />
+										</exec>
+										<exec executable="fpm">
+											<arg
+												line="-s dir -t rpm -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86/ -a i686 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_i686.rpm ." />
+										</exec>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>ant-contrib</groupId>
+								<artifactId>ant-contrib</artifactId>
+								<version>1.0b3</version>
+								<exclusions>
+									<exclusion>
+										<groupId>ant</groupId>
+										<artifactId>ant</artifactId>
+									</exclusion>
+								</exclusions>
+							</dependency>
+							<dependency>
+								<groupId>ant</groupId>
+								<artifactId>ant-nodeps</artifactId>
+								<version>1.6.5</version>
+							</dependency>
+							<dependency>
+								<groupId>org.codehaus.izpack</groupId>
+								<artifactId>izpack-maven-plugin</artifactId>
+								<version>5.0.0-beta11</version>
+							</dependency>
+							<dependency>
+								<groupId>org.codehaus.izpack</groupId>
+								<artifactId>izpack-ant</artifactId>
+								<version>5.0.0-beta11</version>
+							</dependency>
+
+						</dependencies>
+
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
+	</profiles>
 
 </project>
