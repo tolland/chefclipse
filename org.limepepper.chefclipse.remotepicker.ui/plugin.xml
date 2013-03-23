@@ -41,7 +41,7 @@
 			      			<adapt type="org.eclipse.core.resources.IProject">
 			      			<or>
 			                	<test property="org.eclipse.core.resources.projectNature" 
-			           	   			value="org.limepepper.chefclipse.common.ui.resources.ChefProjectNature"/>
+			           	   			value="org.limepepper.chefclipse.common.ui.builder.ChefProjectNature"/>
 			               	</or>
 			      			</adapt>
 			   		</iterate>
