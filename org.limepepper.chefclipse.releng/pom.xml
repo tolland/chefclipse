@@ -7,13 +7,17 @@
   <parent>
     <groupId>org.limepepper.chefclipse</groupId>
     <artifactId>org.limepepper.chefclipse</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
   <artifactId>org.limepepper.chefclipse.releng</artifactId>
   <packaging>pom</packaging>
-
+<profiles>
+	<profile>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -98,8 +102,19 @@
 						</dependencies>
 
 					</plugin>
- <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
+
+				</plugins>
+			</build>
+</profile>
+
+  <profile>
+    <id>distribute</id>
+    <activation>
+      <activeByDefault>false</activeByDefault>
+    </activation>
+    <build>
+ <plugins>
+         <plugin>   <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-deploy-plugin</artifactId>
             <version>2.7</version>
             <executions>
@@ -112,19 +127,21 @@
                 <configuration>
                   <url>s3://chefclipse-packages/snapshot</url>
                   <repositoryId>aws-snapshot</repositoryId>
-                  <file>${project.build.directory}/../../org.limepepper.chefclipse.product/target/Chefclipse-win32-x86_64.exe</file>
-                  <files>${project.build.directory}/../../org.limepepper.chefclipse.product/target/Chefclipse-win32-x86.exe</files>
-                  <version>${project.version}</version>
+                  <file>${basedir}/../org.limepepper.chefclipse.product/target/Chefclipse-win32-x86_64.exe</file>
+                  <files>${basedir}/../org.limepepper.chefclipse.product/target/Chefclipse-win32-x86.exe</files>
+                  <version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}</version>
                   <groupId>${project.groupId}</groupId>
                   <artifactId>Chefclipse-win32-x86_64.exe</artifactId>
                   <generatePom>false</generatePom>
+                  <uniqueVersion>false</uniqueVersion>
+                  
                 </configuration>
               </execution>
             </executions>
           </plugin>
-				</plugins>
-			</build>
+          </plugins>
+              </build>
+    </profile>
 
-
-
+</profiles>
 </project>
