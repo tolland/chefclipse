@@ -11,6 +11,18 @@
     <tycho-version>0.16.0</tycho-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+    <distributionManagement>
+      <repository>
+          <id>aws-release</id>
+          <name>AWS Release Repository</name>
+          <url>s3://distribution.bucket/release</url>
+      </repository>
+      <snapshotRepository>
+          <id>aws-development</id>
+          <name>AWS development Repository</name>
+          <url>s3://distribution.bucket/snapshot</url>
+      </snapshotRepository>
+  </distributionManagement>
   <!--repositories>
     <repository>
       <id>eclipse-juno</id>
@@ -68,6 +80,7 @@
   <module>org.limepepper.chefclipse.ui</module>
   <module>org.limepepper.chefclipse.p2</module>
   <module>org.limepepper.chefclipse.product</module>
+  <module>org.limepepper.chefclipse.releng</module>
   <module>org.limepepper.chefclipse.remotepicker.api</module>
   <module>org.limepepper.chefclipse.remotepicker.repositories</module>
   <module>org.limepepper.chefclipse.remotepicker.extpoint</module>
@@ -142,6 +155,13 @@
       </configuration>
     </plugin>
   </plugins>
+          <extensions>
+            <extension>
+                <groupId>org.springframework.build</groupId>
+                <artifactId>aws-maven</artifactId>
+                <version>4.4.0.RELEASE</version>
+            </extension>
+        </extensions>
 </build>
 </project>
 
