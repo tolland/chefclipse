@@ -11,9 +11,7 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	<groupId>org.limepepper.chefclipse</groupId>
 	<artifactId>org.limepepper.chefclipse.product</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
 	<packaging>eclipse-repository</packaging>
 
 
@@ -99,6 +97,10 @@
 										<exec executable="fpm">
 											<arg
 												line="-s dir -t rpm -C target/products/org.limepepper.chefclipse.product/linux/gtk/x86/ -a i686 -n chefclipse --prefix /usr/lib/chefclipse -p target/chefclipse_1.0_i686.rpm ." />
+										</exec>
+										<exec executable="python">
+                  <arg
+                    line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx --file=target/Chefclipse-win32-x86_64.jar --output=target/Chefclipse-win32-x86_64.exe" />
 										</exec>
 									</tasks>
 								</configuration>
