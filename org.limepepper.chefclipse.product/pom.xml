@@ -102,6 +102,10 @@
                   <arg
                     line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx --file=target/Chefclipse-win32-x86_64.jar --output=target/Chefclipse-win32-x86_64.exe" />
 										</exec>
+										<exec executable="python">
+                  <arg
+                    line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx --file=target/Chefclipse-win32-x86.jar --output=target/Chefclipse-win32-x86.exe" />
+										</exec>
 									</tasks>
 								</configuration>
 								<goals>

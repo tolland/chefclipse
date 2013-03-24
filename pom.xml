@@ -15,12 +15,12 @@
       <repository>
           <id>aws-release</id>
           <name>AWS Release Repository</name>
-          <url>s3://distribution.bucket/release</url>
+          <url>s3://chefclipse-packages/release</url>
       </repository>
       <snapshotRepository>
-          <id>aws-development</id>
+          <id>aws-snapshot</id>
           <name>AWS development Repository</name>
-          <url>s3://distribution.bucket/snapshot</url>
+          <url>s3://chefclipse-packages/snapshot</url>
       </snapshotRepository>
   </distributionManagement>
   <!--repositories>

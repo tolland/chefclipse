@@ -14,4 +14,13 @@
   <artifactId>org.limepepper.chefclipse.releng</artifactId>
   <packaging>pom</packaging>
 
+  <profiles>
+  	<profile>
+  	<id>deploy-packages-site</id>
+
+
+
+</profile>
+</profiles>
+
 </project>
