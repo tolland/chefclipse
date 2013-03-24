@@ -11,7 +11,7 @@
     <tycho-version>0.16.0</tycho-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <repositories>
+  <!--repositories>
     <repository>
       <id>eclipse-juno</id>
       <url>http://download.eclipse.org/releases/juno</url>
@@ -37,7 +37,7 @@
       <layout>p2</layout>
       <url>http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/</url>
     </repository>
-  </repositories>
+  </repositories-->
   <!--distributionManagement>
     <repository>
       <id>mycompany-repository</id>
@@ -75,6 +75,7 @@
   <module>org.limepepper.chefclipse.remotepicker.test</module>
   <module>org.limepepper.chefclipse.preferences.api</module>
   <module>org.limepepper.chefclipse.preferences.ui</module>
+  <module>org.limepepper.chefclipse.target</module>
   <module>org.limepepper.eclipse.RubyConsole</module>
   <module>com.sun.jersey.bundle</module>
 </modules>
@@ -104,6 +105,13 @@
       <artifactId>target-platform-configuration</artifactId>
       <version>${tycho-version}</version>
       <configuration>
+		  <target>
+			<artifact>
+			  <groupId>org.limepepper.chefclipse</groupId>
+			  <artifactId>juno42</artifactId>
+			  <version>${project.version}</version>
+			</artifact>
+		  </target>
         <environments>
           <environment>
             <os>win32</os>

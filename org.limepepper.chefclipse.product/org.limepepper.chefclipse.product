@@ -103,8 +103,6 @@ END OF TERMS AND CONDITIONS
       <feature id="org.eclipse.equinox.p2.core.feature"/>
       <feature id="org.eclipse.e4.rcp" version="1.1.0.v20120521-2329-8yFTIGIbGGduEZ6-7-jLx41nXj"/>
       <feature id="org.eclipse.rcp" version="4.2.1.v20120814-120134-7IAPA8BrHQicS-rjP0GbqK780kMy"/>
-      <feature id="org.eclipse.core.runtime.feature" version="1.1.0.v20120521-2346-7H7NFHlBpeIm_Y1_WXrenz0P9ad9"/>
-      <feature id="org.eclipse.equinox.core.feature"/>
       <feature id="org.eclipse.platform" version="4.2.1.v20120814-120134-9JF7BHVGFyMveli1uX6aTH0q-eAap6PAgOP5mO"/>
       <feature id="org.eclipse.help"/>
       <feature id="org.eclipse.equinox.p2.rcp.feature"/>
