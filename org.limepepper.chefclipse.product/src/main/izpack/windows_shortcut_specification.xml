@@ -29,7 +29,7 @@
         applications="no"
         startMenu="no"
         startup="no"
-        target="$INSTALL_PATH\Uninstall"
+        target="$INSTALL_PATH\Uninstall\uninstaller.jar"
         workingDirectory="$INSTALL_PATH\bin"
         commandLine=""
         initialState="normal"
