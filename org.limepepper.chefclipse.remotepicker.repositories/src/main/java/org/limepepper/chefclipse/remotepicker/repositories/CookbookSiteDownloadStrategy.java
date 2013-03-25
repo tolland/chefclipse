@@ -30,38 +30,48 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookb
 
 /**
  * @author Sebastian Sampaoli
- *
+ * 
  */
-public class CookbookSiteDownloadStrategy implements
-		IDownloadCookbookStrategy {
+public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 
 	private String repositoryURI;
 
-	public CookbookSiteDownloadStrategy(String repositoryURI){
-		
+	public CookbookSiteDownloadStrategy(String repositoryURI) {
+
 		this.repositoryURI = repositoryURI;
 	}
-	/* (non-Javadoc)
-	 * @see org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy#downloadCookbook(org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy#
+	 * downloadCookbook
+	 * (org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook)
 	 */
 	@Override
-	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
-		
+	public File downloadCookbook(RemoteCookbook cookbook)
+			throws InstallCookbookException {
+
 		URLConnection connection = null;
 		try {
 			String latestVersion = cookbook.getLatestVersion();
-			String lastVersion = latestVersion
-					.substring(latestVersion.lastIndexOf("/")+1);
+			String lastVersion = latestVersion.substring(latestVersion
+					.lastIndexOf("/") + 1);
+			String separator = "/";
 			URL cookbookURL = new URL(repositoryURI + File.separator
-					+ "cookbooks" + File.separator + cookbook.getName()
+					+ "cookbooks" + separator + cookbook.getName()
 					+ File.separator + "versions" + File.separator
 					+ lastVersion + File.separator + "downloads");
 			connection = cookbookURL.openConnection();
 			InputStream stream = connection.getInputStream();
 			BufferedInputStream in = new BufferedInputStream(stream);
-			File tempZipFile = File.createTempFile("temp", Long.toString(System.nanoTime()) + ".gz");
-			FileOutputStream fileOutputStream = new FileOutputStream(tempZipFile);
-			BufferedOutputStream out = new BufferedOutputStream(fileOutputStream);
+			File tempZipFile = File.createTempFile("temp",
+					Long.toString(System.nanoTime()) + ".gz");
+			FileOutputStream fileOutputStream = new FileOutputStream(
+					tempZipFile);
+			BufferedOutputStream out = new BufferedOutputStream(
+					fileOutputStream);
 			int i;
 			while ((i = in.read()) != -1) {
 				out.write(i);
@@ -71,24 +81,43 @@ public class CookbookSiteDownloadStrategy implements
 			File decompressedCookbook = decompressCookbook(tempZipFile);
 			return new File(decompressedCookbook, cookbook.getName());
 		} catch (FileNotFoundException e) {
-			if (connection != null){
-				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ".\nThe file " + connection.getURL().toString() + " could not be found.", e);
+			if (connection != null) {
+				throw new InstallCookbookException(
+						InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE
+								+ cookbook.getName()
+								+ ".\nThe file "
+								+ connection.getURL().toString()
+								+ " could not be found.", e);
 			} else {
-				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ".\nThe cookbook related file could not be found.", e);
+				throw new InstallCookbookException(
+						InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE
+								+ cookbook.getName()
+								+ ".\nThe cookbook related file could not be found.",
+						e);
 			}
 		} catch (UnknownHostException e) {
-			throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ".\nThe host " + e.getMessage() + " is unknown.", e);
+			throw new InstallCookbookException(
+					InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE
+							+ cookbook.getName()
+							+ ".\nThe host "
+							+ e.getMessage() + " is unknown.", e);
 		} catch (IOException e) {
-			throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName(), e);
+			throw new InstallCookbookException(
+					InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE
+							+ cookbook.getName(), e);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy#decompressCookbook(java.io.File)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy#
+	 * decompressCookbook(java.io.File)
 	 */
 	@Override
 	public File decompressCookbook(File compressedFile) throws IOException {
-		
+
 		String absolutePath = compressedFile.getParent() + File.separator;
 		try {
 			File unGzip = unGzip(compressedFile);
@@ -97,90 +126,113 @@ public class CookbookSiteDownloadStrategy implements
 			return outputDir;
 		} catch (ArchiveException e1) {
 			throw new IOException(e1.getMessage(), e1);
-		} 
+		}
 	}
-	
-	/** Untar an input file into an output file.
 
-	 * The output file is created in the output folder, having the same name
-	 * as the input file, minus the '.tar' extension. 
+	/**
+	 * Untar an input file into an output file.
 	 * 
-	 * @param inputFile     the input .tar file
-	 * @param outputDir     the output directory file. 
-	 * @throws IOException 
+	 * The output file is created in the output folder, having the same name as
+	 * the input file, minus the '.tar' extension.
+	 * 
+	 * @param inputFile
+	 *            the input .tar file
+	 * @param outputDir
+	 *            the output directory file.
+	 * @throws IOException
 	 * @throws FileNotFoundException
-	 *  
-	 * @return  The {@link List} of {@link File}s with the untared content.
-	 * @throws ArchiveException 
+	 * 
+	 * @return The {@link List} of {@link File}s with the untared content.
+	 * @throws ArchiveException
 	 */
-	private List<File> unTar(final File inputFile, final File outputDir) throws FileNotFoundException, IOException, ArchiveException {
+	private List<File> unTar(final File inputFile, final File outputDir)
+			throws FileNotFoundException, IOException, ArchiveException {
 
-//	    System.out.println("Untaring %s to dir %s." + inputFile.getAbsolutePath() + outputDir.getAbsolutePath());
-		//LOG.info(String.format("Untaring %s to dir %s.", inputFile.getAbsolutePath(), outputDir.getAbsolutePath()));
+		// System.out.println("Untaring %s to dir %s." +
+		// inputFile.getAbsolutePath() + outputDir.getAbsolutePath());
+		// LOG.info(String.format("Untaring %s to dir %s.",
+		// inputFile.getAbsolutePath(), outputDir.getAbsolutePath()));
 
-	    final List<File> untaredFiles = new LinkedList<File>();
-	    final InputStream is = new FileInputStream(inputFile); 
-	    final TarArchiveInputStream debInputStream = (TarArchiveInputStream) new ArchiveStreamFactory().createArchiveInputStream("tar", is);
-	    TarArchiveEntry entry = null; 
-	    while ((entry = (TarArchiveEntry)debInputStream.getNextEntry()) != null) {
-	        final File outputFile = new File(outputDir, entry.getName());
-	        if (entry.isDirectory() || entry.getName().endsWith(File.separator)) {
-	            //LOG.info(String.format("Attempting to write output directory %s.", outputFile.getAbsolutePath()));
-	            if (!outputFile.exists()) {
-	                //LOG.info(String.format("Attempting to create output directory %s.", outputFile.getAbsolutePath()));
-	                if (!outputFile.mkdirs()) {
-	                    throw new IllegalStateException(String.format("Couldn't create directory %s.", outputFile.getAbsolutePath()));
-	                }
-	            }
-	        } else {
-	            //LOG.info(String.format("Creating output file %s.", outputFile.getAbsolutePath()));
-	        	if (!outputFile.getParentFile().exists()){
-	        		if (!outputFile.getParentFile().mkdirs()) {
-	                    throw new IllegalStateException(String.format("Couldn't create directory %s.", outputFile.getAbsolutePath()));
-	                }
-	        	}
-	            final OutputStream outputFileStream = new FileOutputStream(outputFile); 
-	            IOUtils.copy(debInputStream, outputFileStream);
-	            outputFileStream.close();
-	        }
-	        untaredFiles.add(outputFile);
-	    }
-	    debInputStream.close(); 
+		final List<File> untaredFiles = new LinkedList<File>();
+		final InputStream is = new FileInputStream(inputFile);
+		final TarArchiveInputStream debInputStream = (TarArchiveInputStream) new ArchiveStreamFactory()
+				.createArchiveInputStream("tar", is);
+		TarArchiveEntry entry = null;
+		while ((entry = (TarArchiveEntry) debInputStream.getNextEntry()) != null) {
+			final File outputFile = new File(outputDir, entry.getName());
+			if (entry.isDirectory() || entry.getName().endsWith(File.separator)) {
+				// LOG.info(String.format("Attempting to write output directory %s.",
+				// outputFile.getAbsolutePath()));
+				if (!outputFile.exists()) {
+					// LOG.info(String.format("Attempting to create output directory %s.",
+					// outputFile.getAbsolutePath()));
+					if (!outputFile.mkdirs()) {
+						throw new IllegalStateException(String.format(
+								"Couldn't create directory %s.",
+								outputFile.getAbsolutePath()));
+					}
+				}
+			} else {
+				// LOG.info(String.format("Creating output file %s.",
+				// outputFile.getAbsolutePath()));
+				if (!outputFile.getParentFile().exists()) {
+					if (!outputFile.getParentFile().mkdirs()) {
+						throw new IllegalStateException(String.format(
+								"Couldn't create directory %s.",
+								outputFile.getAbsolutePath()));
+					}
+				}
+				final OutputStream outputFileStream = new FileOutputStream(
+						outputFile);
+				IOUtils.copy(debInputStream, outputFileStream);
+				outputFileStream.close();
+			}
+			untaredFiles.add(outputFile);
+		}
+		debInputStream.close();
 
-	    return untaredFiles;
+		return untaredFiles;
 	}
 
 	/**
 	 * Ungzip an input file into an output file.
 	 * <p>
-	 * The output file is created in the output folder, having the same name
-	 * as the input file, minus the '.gz' extension. 
+	 * The output file is created in the output folder, having the same name as
+	 * the input file, minus the '.gz' extension.
 	 * 
-	 * @param inputFile     the input .gz file
-	 * @param outputDir     the output directory file. 
-	 * @throws IOException 
+	 * @param inputFile
+	 *            the input .gz file
+	 * @param outputDir
+	 *            the output directory file.
+	 * @throws IOException
 	 * @throws FileNotFoundException
-	 *  
-	 * @return  The {@File} with the ungzipped content.
+	 * 
+	 * @return The {@File} with the ungzipped content.
 	 */
-	private File unGzip(final File inputFile) throws FileNotFoundException, IOException {
-		
-//		System.out.println("Ungzipping %s to dir %s." + inputFile.getParent() + inputFile.getName().substring(0, inputFile.getName().length() - 3));
-	    //LOG.info(String.format("Ungzipping %s to dir %s.", inputFile.getAbsolutePath(), outputDir.getAbsolutePath()));
+	private File unGzip(final File inputFile) throws FileNotFoundException,
+			IOException {
 
-	    final File outputFile = new File(inputFile.getParent(), inputFile.getName().substring(0, inputFile.getName().length() - 3));
+		// System.out.println("Ungzipping %s to dir %s." + inputFile.getParent()
+		// + inputFile.getName().substring(0, inputFile.getName().length() -
+		// 3));
+		// LOG.info(String.format("Ungzipping %s to dir %s.",
+		// inputFile.getAbsolutePath(), outputDir.getAbsolutePath()));
 
-	    final GZIPInputStream in = new GZIPInputStream(new FileInputStream(inputFile));
-	    final FileOutputStream out = new FileOutputStream(outputFile);
+		final File outputFile = new File(inputFile.getParent(), inputFile
+				.getName().substring(0, inputFile.getName().length() - 3));
 
-	    for (int c = in.read(); c != -1; c = in.read()) {
-	        out.write(c);
-	    }
+		final GZIPInputStream in = new GZIPInputStream(new FileInputStream(
+				inputFile));
+		final FileOutputStream out = new FileOutputStream(outputFile);
 
-	    in.close();
-	    out.close();
+		for (int c = in.read(); c != -1; c = in.read()) {
+			out.write(c);
+		}
 
-	    return outputFile;
+		in.close();
+		out.close();
+
+		return outputFile;
 	}
 
 }

@@ -8,13 +8,13 @@
     <parent>
     <groupId>org.limepepper.chefclipse</groupId>
     <artifactId>org.limepepper.chefclipse</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <relativePath>../</relativePath>
   </parent>
 
   <groupId>org.limepepper.eclipse</groupId>
   <artifactId>org.limepepper.eclipse.RubyConsole</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 
 

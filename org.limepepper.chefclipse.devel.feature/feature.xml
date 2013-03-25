@@ -2,7 +2,7 @@
 <feature
       id="org.limepepper.chefclipse.devel.feature"
       label="Chefclipse developer addins"
-      version="1.0.0.qualifier">
+      version="1.0.1.qualifier">
 
    <description url="http://www.limepepper.co.uk/chefclipse">
       [Enter Feature Description here.]

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.chefserver.api.ui
 Bundle-SymbolicName: org.limepepper.chefclipse.chefserver.api.ui;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.limepepper.chefclipse.chefserver.api.ui.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.jface.text,
@@ -39,3 +39,4 @@ Export-Package: org.limepepper.chefclipse.chefserver.api.ui;uses:="org.eclipse.j
    org.eclipse.ui,
    org.eclipse.ui.actions,
    org.eclipse.core.commands"
+Bundle-Vendor: %providerName

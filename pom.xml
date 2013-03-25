@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.limepepper.chefclipse</groupId>
   <artifactId>org.limepepper.chefclipse</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
     <tycho-version>0.16.0</tycho-version>
@@ -51,7 +51,6 @@
   <module>org.limepepper.chefclipse.model</module>
   <module>org.limepepper.chefclipse.navigator</module>
   <module>org.limepepper.chefclipse.ui</module>
-  <module>org.limepepper.chefclipse.p2</module>
   <module>org.limepepper.chefclipse.product</module>
   <module>org.limepepper.chefclipse.releng</module>
   <module>org.limepepper.chefclipse.remotepicker.api</module>
@@ -213,6 +212,71 @@
   </plugins>
 </build>
     </profile>
+    
+    
+  
+    
+    
+    
+    <profile>
+    <id>p2</id>
+    <activation>
+      <activeByDefault>false</activeByDefault>
+    </activation>
+    <modules>
+  <module>org.limepepper.chefclipse.p2</module>
+</modules>
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.eclipse.tycho</groupId>
+      <artifactId>tycho-maven-plugin</artifactId>
+      <version>${tycho-version}</version>
+      <extensions>true</extensions>
+    </plugin>
+    <plugin>
+      <groupId>org.eclipse.tycho</groupId>
+      <artifactId>target-platform-configuration</artifactId>
+      <version>${tycho-version}</version>
+      <configuration>
+		  <target>
+			<artifact>
+			  <groupId>org.limepepper.chefclipse</groupId>
+			  <artifactId>juno42</artifactId>
+			  <version>${project.version}</version>
+			</artifact>
+		  </target>
+        <environments>
+          <environment>
+            <os>linux</os>
+            <ws>gtk</ws>
+            <arch>x86_64</arch>
+          </environment>
+        </environments>
+      </configuration>
+    </plugin>
+          <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.7</version>
+        		<configuration>
+         			<skip>true</skip>       
+        		</configuration>
+    
+      </plugin>
+  </plugins>
+</build>
+    </profile>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <profile>
     <id>dev-1</id>
     <activation>

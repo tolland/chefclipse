@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.app
 Bundle-SymbolicName: org.limepepper.chefclipse.app;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.limepepper.chefclipse.app.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -36,3 +36,4 @@ Require-Bundle: org.eclipse.ui,
  org.slf4j.log4j;bundle-version="1.6.4"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
+Bundle-Vendor: %providerName

@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.chefserver.api
 Bundle-SymbolicName: org.limepepper.chefclipse.chefserver.api;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.limepepper.chefclipse.chefserver.api.ServerApiActivator
-Bundle-Vendor: Lime Pepper Ltd
+Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.8.1",

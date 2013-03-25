@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: RubyConsole Plug-in
 Bundle-SymbolicName: org.limepepper.eclipse.RubyConsole;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: rubyconsole.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
@@ -18,4 +18,4 @@ Export-Package: org.jruby,
  org.jruby.demo.ext,
  rubyconsole,
  rubyconsole.actions
-Bundle-Vendor: Lime Pepper Ltd
+Bundle-Vendor: %providerName
