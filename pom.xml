@@ -62,7 +62,7 @@
   <module>org.limepepper.chefclipse.preferences.api</module>
   <module>org.limepepper.chefclipse.preferences.ui</module>
   <module>org.limepepper.chefclipse.target</module>
-  <module>org.limepepper.eclipse.RubyConsole</module>
+  <!--module>org.limepepper.eclipse.RubyConsole</module-->
   <module>com.sun.jersey.bundle</module>
 </modules>
 <build>
@@ -196,6 +196,68 @@
           <environment>
             <os>macosx</os>
             <ws>cocoa</ws>
+            <arch>x86_64</arch>
+          </environment>
+        </environments>
+      </configuration>
+    </plugin>
+          <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <version>2.7</version>
+        		<configuration>
+         			<skip>true</skip>       
+        		</configuration>
+    
+      </plugin>
+  </plugins>
+</build>
+    </profile>
+    <profile>
+    <id>dev-1</id>
+    <activation>
+      <activeByDefault>false</activeByDefault>
+    </activation>
+    <modules>
+  <module>org.limepepper.chefclipse.releng</module>
+</modules>
+<build>
+  <plugins>
+    <plugin>
+      <groupId>com.github.koraktor</groupId>
+      <artifactId>mavanagaiata</artifactId>
+      <version>0.5.0</version>
+      <executions>
+        <execution>
+          <id>load-git-branch</id>
+          <goals>
+            <goal>branch</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+    <plugin>
+      <groupId>org.eclipse.tycho</groupId>
+      <artifactId>tycho-maven-plugin</artifactId>
+      <version>${tycho-version}</version>
+      <extensions>true</extensions>
+    </plugin>
+    <plugin>
+      <groupId>org.eclipse.tycho</groupId>
+      <artifactId>target-platform-configuration</artifactId>
+      <version>${tycho-version}</version>
+      <configuration>
+		  <target>
+			<artifact>
+			  <groupId>org.limepepper.chefclipse</groupId>
+			  <artifactId>juno42</artifactId>
+			  <version>${project.version}</version>
+			</artifact>
+		  </target>
+        <environments>
+          <environment>
+            <os>linux</os>
+            <ws>gtk</ws>
             <arch>x86_64</arch>
           </environment>
         </environments>
