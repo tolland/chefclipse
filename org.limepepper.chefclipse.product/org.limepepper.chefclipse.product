@@ -101,11 +101,6 @@ END OF TERMS AND CONDITIONS
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.equinox.p2.extras.feature"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
-      <feature id="org.eclipse.e4.rcp" version="1.1.0.v20120521-2329-8yFTIGIbGGduEZ6-7-jLx41nXj"/>
-      <feature id="org.eclipse.rcp" version="4.2.1.v20120814-120134-7IAPA8BrHQicS-rjP0GbqK780kMy"/>
-      <feature id="org.eclipse.core.runtime.feature" version="1.1.0.v20120521-2346-7H7NFHlBpeIm_Y1_WXrenz0P9ad9"/>
-      <feature id="org.eclipse.equinox.core.feature"/>
-      <feature id="org.eclipse.platform" version="4.2.1.v20120814-120134-9JF7BHVGFyMveli1uX6aTH0q-eAap6PAgOP5mO"/>
       <feature id="org.eclipse.help"/>
       <feature id="org.eclipse.equinox.p2.rcp.feature"/>
       <feature id="org.eclipse.equinox.p2.user.ui"/>
@@ -115,6 +110,8 @@ END OF TERMS AND CONDITIONS
       <feature id="org.limepepper.chefclipse.app.feature" version="1.0.0.qualifier"/>
       <feature id="org.limepepper.chefclipse.devel.feature" version="1.0.0.qualifier"/>
       <feature id="org.limepepper.chefclipse.doc.feature" version="1.0.0.qualifier"/>
+      <feature id="org.eclipse.platform" version="4.2.1.v20130118-173121-9MF7GHYdG0B5kx4E_SkfZV-1mNjVATf67ZAb7"/>
+      <feature id="org.eclipse.rcp" version="4.2.2.v20130129-152330-7IARAABrMQkGSvMgQnUlz-DQz00h"/>
    </features>
 
    <configurations>

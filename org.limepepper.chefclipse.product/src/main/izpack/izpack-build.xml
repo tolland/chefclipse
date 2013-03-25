@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project name="izPack bundles build">
 
-	<property name="izpack.staging.dir" location="${project.build.dir}/products/org.limepepper.chefclipse.product"/>
+	<property name="izpack.staging.dir" location="${base.dir}/target/products/org.limepepper.chefclipse.product"/>
 	<property name="icons.dir" value="${izpack.staging.dir}/icons"/>
 
 	<property name="product.name" value="Chefclipse"/>
@@ -17,7 +17,7 @@
 		<attribute name="arch"/>
 		<sequential>
 			<izpack input="${izpack.scripts.dir}/install-@{platform}.xml" 
-				output="${project.build.dir}/${product.name}-@{platform}-@{arch}.jar" 
+				output="${build.dir}/${product.name}-@{platform}-@{arch}.jar" 
 				installerType="standard" 
 				inheritAll="true" 
 				basedir="${izpack.staging.dir}" 
@@ -32,7 +32,7 @@
          - - - - - - - - - - - - - - - - - -->
 	<target name="prepare">
 		<copy todir="${icons.dir}">
-			<fileset dir="../org.limepepper.chefclipse.app/icons" includes="*.*" />
+			<fileset dir="${base.dir}/../org.limepepper.chefclipse.app/icons" includes="*.*" />
 		</copy>
 	</target>
 
