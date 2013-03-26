@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Remote Picker Test Plugin
 Bundle-SymbolicName: org.limepepper.chefclipse.remotepicker.test;singleton:=true
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 0.1.0.qualifier
 Export-Package: org.limepepper.chefclipse.remotepicker.test.api
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.ui,
@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.junit,
  org.eclipse.emf.ecore;bundle-version="2.8.0",
- org.limepepper.chefclipse.remotepicker.api;bundle-version="1.0.0",
- org.limepepper.chefclipse.remotepicker.repositories;bundle-version="1.0.0"
+ org.limepepper.chefclipse.remotepicker.api;bundle-version="[0.1.0,1.0.0)",
+ org.limepepper.chefclipse.remotepicker.repositories;bundle-version="[0.1.0,1.0.0)"
 Bundle-ClassPath: lib/hamcrest-all.jar,
  lib/mockito-all.jar

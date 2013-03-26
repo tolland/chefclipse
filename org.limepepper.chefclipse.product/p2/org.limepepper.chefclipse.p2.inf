@@ -1,7 +1,6 @@
 instructions.configure=\
   addRepository(type:0,location:http${#58}//github.com/limepepper/p2/raw/master/chefclipse/${mvngit.branch}/update-site);\
   addRepository(type:1,location:http${#58}//github.com/limepepper/p2/raw/master/chefclipse/${mvngit.branch}/update-site);
-  setProgramProperty(propName:osgi.instance.area.default,propValue:@user.home/workspace-chefclipse);
   requires.1.namespace = org.eclipse.equinox.p2.iu
   requires.1.name = org.limepepper.chefclipse.ui.feature.feature.group
   requires.1.range = (0.0.0, 2.0.0)

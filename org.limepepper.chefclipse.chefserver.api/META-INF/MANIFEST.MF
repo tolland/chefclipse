@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.chefserver.api
 Bundle-SymbolicName: org.limepepper.chefclipse.chefserver.api;singleton:=true
-Bundle-Version: 1.0.1.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.chefserver.api.ServerApiActivator
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
@@ -11,10 +11,10 @@ Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.8.1",
  org.eclipse.core.runtime;bundle-version="3.8.0",
  com.ibm.icu;bundle-version="4.4.2",
  org.eclipse.jdt.annotation;bundle-version="1.0.0",
- com.sun.jersey.bundle;bundle-version="1.0.0",
- org.limepepper.chefclipse.common;bundle-version="1.0.0";visibility:=reexport,
- org.limepepper.chefclipse.logger;bundle-version="1.0.0",
- org.limepepper.chefclipse.preferences.api;bundle-version="1.0.0",
+ com.sun.jersey.bundle;bundle-version="[0.1.0,1.0.0)",
+ org.limepepper.chefclipse.common;bundle-version="[0.1.0,1.0.0)";visibility:=reexport,
+ org.limepepper.chefclipse.logger;bundle-version="[0.1.0,1.0.0)",
+ org.limepepper.chefclipse.preferences.api;bundle-version="[0.1.0,1.0.0)",
  org.junit;bundle-version="4.10.0"
 Bundle-Classpath: .,
  lib/bcprov-jdk16.jar,

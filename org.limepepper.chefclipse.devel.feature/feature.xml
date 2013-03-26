@@ -2,7 +2,7 @@
 <feature
       id="org.limepepper.chefclipse.devel.feature"
       label="Chefclipse developer addins"
-      version="1.0.1.qualifier">
+      version="0.1.0.qualifier">
 
    <description url="http://www.limepepper.co.uk/chefclipse">
       [Enter Feature Description here.]
@@ -58,13 +58,6 @@
 
    <plugin
          id="org.eclipse.pde.runtime"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.limepepper.eclipse.RubyConsole"
          download-size="0"
          install-size="0"
          version="0.0.0"
