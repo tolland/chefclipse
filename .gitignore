@@ -2,3 +2,4 @@
 target
 bin
 .settings
+org.limepepper.chefclipse.product/org.limepepper.chefclipse.p2.inf

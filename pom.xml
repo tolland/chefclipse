@@ -224,6 +224,7 @@
       <activeByDefault>false</activeByDefault>
     </activation>
     <modules>
+  <module>org.limepepper.chefclipse.target</module>
   <module>org.limepepper.chefclipse.p2</module>
 </modules>
 <build>
