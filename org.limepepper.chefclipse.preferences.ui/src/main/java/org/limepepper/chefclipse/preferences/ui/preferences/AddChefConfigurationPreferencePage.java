@@ -73,15 +73,11 @@ public class AddChefConfigurationPreferencePage extends FieldEditorPreferencePag
 		addField(cookbookPathEditor);
 		
 		validationClientNameEditor = new StringFieldEditor(PreferenceConstants.P_VALIDATION_CLIENT_NAME, Messages.AddChefConfigurationPreferencePage_ValidationClientName, getFieldEditorParent());
-		validationClientNameEditor.getTextControl(getFieldEditorParent()).addModifyListener(new ModifyListener() {
-			@Override
-			public void modifyText(ModifyEvent e) {
-				getContainer().updateMessage();
-			}
-		});
+		validationClientNameEditor.setEmptyStringAllowed(true);
 		addField(validationClientNameEditor);
 		
 		validationKeyEditor = new FileFieldEditor(PreferenceConstants.P_VALIDATION_KEY, Messages.AddChefConfigurationPreferencePage_ValidationKey, true, getFieldEditorParent());
+		validationKeyEditor.setErrorMessage(Messages.AddChefConfigurationPreferencePage_InvalidValidationKey);
 		addField(validationKeyEditor);
 		
 		noDefaultAndApplyButton();
@@ -93,26 +89,12 @@ public class AddChefConfigurationPreferencePage extends FieldEditorPreferencePag
 		if (urlValue.isEmpty() || urlValue.equals(AddChefConfigurationPreferencePage.URL_PREFIX) || !urlValidator.isValid(urlValue)) {
 			return false;
 		}
-		String validationValue = validationClientNameEditor.getTextControl(getFieldEditorParent()).getText();
-		if (!validationValue.startsWith("#{ENV[")){
-			return false;
-		}
-		if (!validationValue.endsWith("]}")){ //$NON-NLS-1$
-			return false;
-		}
 		return super.isValid();
 	}
 	
 	public String getURLText() {
 		if (chefServerUrlEditor != null) {
 			return chefServerUrlEditor.getTextControl(getFieldEditorParent()).getText();
-		}
-		return DEFAULT_VALUE;
-	}
-	
-	public String getValidationClientNameText() {
-		if (validationClientNameEditor != null) {
-			return validationClientNameEditor.getTextControl(getFieldEditorParent()).getText();
 		}
 		return DEFAULT_VALUE;
 	}

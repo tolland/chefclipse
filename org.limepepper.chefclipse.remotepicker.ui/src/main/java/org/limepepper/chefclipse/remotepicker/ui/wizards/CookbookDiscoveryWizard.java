@@ -302,13 +302,15 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 		for (IProject iProject : projects) {
 			IProjectNature nature;
 			try {
-				nature = iProject
-						.getNature(ChefProjectNature.NATURE_ID);
-				if (nature != null) {
-					ArrayList<IProject> projectWithChefclipseNature = new ArrayList<IProject>();
-					projectWithChefclipseNature.add(iProject);
-					return projectWithChefclipseNature;
-				}
+			    if (iProject.isOpen()) {
+			        nature = iProject
+	                        .getNature(ChefProjectNature.NATURE_ID);
+	                if (nature != null) {
+	                    ArrayList<IProject> projectWithChefclipseNature = new ArrayList<IProject>();
+	                    projectWithChefclipseNature.add(iProject);
+	                    return projectWithChefclipseNature;
+	                }
+			    }
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}

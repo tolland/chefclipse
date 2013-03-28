@@ -19,6 +19,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
+import javax.ws.rs.core.UriBuilder;
+
 import org.apache.commons.compress.archivers.ArchiveException;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
@@ -50,12 +52,12 @@ public class CookbookSiteDownloadStrategy implements
 		URLConnection connection = null;
 		try {
 			String latestVersion = cookbook.getLatestVersion();
-			String lastVersion = latestVersion
-					.substring(latestVersion.lastIndexOf("/")+1);
-			URL cookbookURL = new URL(repositoryURI + File.separator
-					+ "cookbooks" + File.separator + cookbook.getName()
-					+ File.separator + "versions" + File.separator
-					+ lastVersion + File.separator + "downloads");
+            String lastVersion = latestVersion
+                    .substring(latestVersion.lastIndexOf("/") + 1);
+            String url = UriBuilder.fromUri(repositoryURI).path("cookbooks")
+                    .path(cookbook.getName()).path("versions").path(lastVersion).path("downloads")
+                    .build().toString();
+            URL cookbookURL = new URL(url);
 			connection = cookbookURL.openConnection();
 			InputStream stream = connection.getInputStream();
 			BufferedInputStream in = new BufferedInputStream(stream);

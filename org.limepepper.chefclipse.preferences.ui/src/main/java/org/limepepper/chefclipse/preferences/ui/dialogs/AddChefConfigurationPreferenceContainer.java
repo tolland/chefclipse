@@ -10,6 +10,8 @@ import java.net.URL;
 
 import org.apache.commons.validator.UrlValidator;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.preferences.ConfigurationScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
@@ -30,6 +32,7 @@ import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
+import org.limepepper.chefclipse.preferences.ui.Activator;
 import org.limepepper.chefclipse.preferences.ui.preferences.AddChefConfigurationPreferencePage;
 import org.limepepper.chefclipse.preferences.ui.preferences.ChefConfigurationPreferenceStore;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
@@ -135,6 +138,26 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		
 		String validationKey = preferenceStore.getString(PreferenceConstants.P_VALIDATION_KEY);
 		createdKnifeConfig.setValidation_key(getFileOrNull(validationKey));
+		
+		IEclipsePreferences workspacePreferences = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+		String cookbookCopyright = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_COPYRIGHT, "");
+		createdKnifeConfig.setCookbook_copyright(cookbookCopyright);
+		
+		String cookbookEmail = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_EMAIL, "");
+        createdKnifeConfig.setCookbook_email(cookbookEmail);
+        
+        String cookbookLicense = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_LICENSE, "");
+        createdKnifeConfig.setCookbook_license(cookbookLicense);
+        
+        String cacheType = workspacePreferences.get(PreferenceConstants.P_CACHE_TYPE, "");
+        createdKnifeConfig.setCache_type(cacheType);
+        
+        String cacheOptions = workspacePreferences.get(PreferenceConstants.P_CACHE_OPTIONS, "");
+        createdKnifeConfig.setCache_option(cacheOptions);
+        
+//      TODO there is a lack of the attribute below in the model (add it?)...
+//        String sslVerifyMode = workspacePreferences.get(PreferenceConstants.P_SSL_VERIFY_MODE, "");
+//        createdKnifeConfig.set
 		
 		return createdKnifeConfig;
 	}
@@ -268,24 +291,10 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 			}
 			if (!preferencePage.isValid() && getErrorMessage() == null){
 				String errorMessage = getUrlErrorMessage();
-				if (errorMessage == null){
-					errorMessage = getValidationClientNameErrorMessage();
-				}
 				setErrorMessage(errorMessage);
 			}
 			updateButtons();
 	    }
-	}
-
-	private String getValidationClientNameErrorMessage() {
-		String validationValue = preferencePage.getValidationClientNameText();
-		if (!validationValue.startsWith("#{ENV[")){ //$NON-NLS-1$
-			return Messages.AddChefConfigurationPreferencePage_InvalidValidationKey;
-		}
-		if (!validationValue.endsWith("]}")){
-			return Messages.AddChefConfigurationPreferencePage_InvalidValidationKey;
-		}
-		return null;
 	}
 
 	private String getUrlErrorMessage() {

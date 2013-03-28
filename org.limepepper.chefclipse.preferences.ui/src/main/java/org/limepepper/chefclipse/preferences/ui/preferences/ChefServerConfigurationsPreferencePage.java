@@ -36,6 +36,7 @@ import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+import org.limepepper.chefclipse.preferences.ui.actions.SearchKnifeConfigAction;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 import org.limepepper.chefclipse.ui.Activator;
@@ -55,6 +56,8 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	private Button editButton;
 	private Button addButton;
 	private Button removeButton;
+	private Button duplicateButton;
+    private Button searchButton;
 	/**
 	 * 
 	 */
@@ -105,7 +108,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 				addChefConfig();
 			}
 		});
-
+		
 		editButton = SWTFactory.createPushButton(buttons,
 				Messages.ChefConfigurationPreferencePage_EditButton, null);
 		editButton.addListener(SWT.Selection, new Listener() {
@@ -113,7 +116,15 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 				editChefConfig();
 			}
 		});
-
+		
+		duplicateButton = SWTFactory.createPushButton(buttons,
+				Messages.ChefConfigurationPreferencePage_DuplicateButton, null);
+		duplicateButton.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event evt) {
+				duplicateChefConfig();
+			}
+		});
+		
 		removeButton = SWTFactory.createPushButton(buttons,
 				Messages.ChefConfigurationPreferencePage_RemoveButton, null);
 		removeButton.addListener(SWT.Selection, new Listener() {
@@ -121,17 +132,17 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 				removeChefConfigs();
 			}
 		});
-
+		
+        searchButton = SWTFactory.createPushButton(buttons,
+                Messages.ChefConfigurationPreferencePage_SearchButton, null);
+        searchButton.addListener(SWT.Selection, new Listener() {
+            public void handleEvent(Event evt) {
+                search();
+            }
+        });
+		
 //		SWTFactory.createVerticalSpacer(parent, 1);
 
-//		fSearchButton = SWTFactory.createPushButton(buttons,
-//				JREMessages.InstalledJREsBlock_6, null);
-//		fSearchButton.addListener(SWT.Selection, new Listener() {
-//			public void handleEvent(Event evt) {
-//				search();
-//			}
-//		});
-		
 		PlatformUI.getWorkbench().getHelpSystem().setHelp(ancestor, PREFERENCE_PAGE);		
 		chefConfigurationsViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
@@ -209,6 +220,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		IStructuredSelection selection = (IStructuredSelection) chefConfigurationsViewer.getSelection();
 		int selectionCount= selection.size();
 		editButton.setEnabled(selectionCount == 1);
+		duplicateButton.setEnabled(selectionCount == 1);
 		if (selectionCount > 0 && selectionCount < chefConfigurationsViewer.getItemCount()) {
 			removeButton.setEnabled(true);
 		} else {
@@ -217,7 +229,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	}
 	
 	/**
-	 * Bring up a wizard that lets the user create a new VM definition.
+	 * Bring up a wizard that lets the user create a new knife config.
 	 */
 	private void addChefConfig() {
 		KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
@@ -227,14 +239,12 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 			Config config = dialog.getCreatedChefConfig();
 			if (config != null) {
 				chefConfigurationsViewer.add(config);
-				chefConfigurationsViewer.setChefConfigs(chefConfigurationsViewer.getChefConfigs());
-				chefConfigurationsViewer.setSelection(new StructuredSelection(config));
 			}
 		}
 	}
 	
 	/**
-	 * Performs the edit VM action when the Edit... button is pressed
+	 * Performs the edit action when the Edit... button is pressed
 	 */
 	private void editChefConfig() {
 		IStructuredSelection selection = (IStructuredSelection) chefConfigurationsViewer.getSelection();
@@ -255,7 +265,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 	}
 	
 	/**
-	 * Performs the remove VM(s) action when the Remove... button is pressed
+	 * Performs the remove knife configs action when the Remove... button is pressed
 	 */
 	@SuppressWarnings("unchecked") //$NON-NLS-1$
 	private void removeChefConfigs() {
@@ -268,6 +278,42 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 			i++;
 		}
 		chefConfigurationsViewer.removeChefConfigs(chefConfigs);
-	}	
+	}
+	
+	/**
+	 * Add a duplicate of the selected config to the table.
+	 */
+	private void duplicateChefConfig() {
+		IStructuredSelection selection = (IStructuredSelection) chefConfigurationsViewer.getSelection();
+		KnifeConfig config = (KnifeConfig) selection.getFirstElement();
+		if (config == null) {
+			return;
+		}
+		Config clonedConfig = chefConfigurationsViewer.clone(config);
+		clonedConfig.setNode_name(chefConfigurationsViewer.generateName(clonedConfig.getNode_name()));
+		
+		AddChefConfigurationPreferenceContainer dialog = new AddChefConfigurationPreferenceContainer(this.getShell(), (KnifeConfig) clonedConfig, true);
+		if (dialog.open() == Window.OK) {
+			Config editedConfig = dialog.getCreatedChefConfig();
+			if (editedConfig != null) {
+				chefConfigurationsViewer.add(editedConfig);
+			}
+		}
+	}
+	
+	/**
+     * Search for Knife config files (.rb) and create a Knife config from the selected file.
+     * The created config will be the default one.
+     * 
+     */
+	private void search() {
+	    SearchKnifeConfigAction searchAction = new SearchKnifeConfigAction(getShell());
+	    searchAction.run();
+	    KnifeConfig generatedKnifeConfig = searchAction.getGeneratedKnifeConfig();
+        if (generatedKnifeConfig != null) {
+	        chefConfigurationsViewer.add(generatedKnifeConfig);
+	        chefConfigurationsViewer.setCheckedConfig(generatedKnifeConfig);
+	    }
+    }
 
 }

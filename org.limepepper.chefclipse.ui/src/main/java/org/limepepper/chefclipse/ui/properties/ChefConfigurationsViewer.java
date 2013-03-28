@@ -3,6 +3,8 @@
  */
 package org.limepepper.chefclipse.ui.properties;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.ui.Activator;
 import org.limepepper.chefclipse.ui.Messages;
 
@@ -454,6 +458,8 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 
 	public void add(Config config) {
 		configs.add(config);
+		setChefConfigs(getChefConfigs());
+		setSelection(new StructuredSelection(config));
 	}
 
 	public void replace(Config config, Config editedConfig) {
@@ -496,5 +502,74 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 				fireSelectionChanged();
 			}
 		}
+	}
+
+	public Config clone(KnifeConfig config) {
+		KnifeConfig clonedConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
+		URL chef_server_url = config.getChef_server_url();
+		try {
+			clonedConfig.setChef_server_url(chef_server_url != null ? new URL(chef_server_url.toExternalForm()) : null);
+		} catch (MalformedURLException e) {
+
+		}
+		clonedConfig.setNode_name(config.getNode_name());
+		File cookbook_path = config.getCookbook_path();
+		clonedConfig.setCookbook_path(cookbook_path != null ? new File(cookbook_path.getAbsolutePath()) : null);
+		clonedConfig.setCookbook_copyright(config.getCookbook_copyright());
+		clonedConfig.setCookbook_email(config.getCookbook_email());
+		clonedConfig.setCookbook_license(config.getCookbook_license());
+		File client_key = config.getClient_key();
+		clonedConfig.setClient_key(client_key != null ? new File(client_key.getAbsolutePath()) : null);
+		clonedConfig.setValidation_client_name(config.getValidation_client_name());
+		File validation_key = config.getValidation_key();
+		clonedConfig.setValidation_key(validation_key != null ? new File(validation_key.getAbsolutePath()) : null);
+		
+		clonedConfig.setCache_option(config.getCache_option());
+		clonedConfig.setCache_type(config.getCache_type());
+		clonedConfig.setLog_level(config.getLog_level());
+		File path = config.getPath();
+		clonedConfig.setPath(path != null ? new File(path.getAbsolutePath()) : null);
+		clonedConfig.setVersion(config.getVersion());
+		clonedConfig.setServer(config.getServer());
+		
+		return clonedConfig;
+	}
+	
+	/**
+	 * Compares the given name against current names and adds the appropriate
+	 * numerical suffix to ensure that it is unique.
+	 * 
+	 * @param name
+	 *            the name with which to ensure uniqueness
+	 * @return the unique version of the given name
+	 * @since 3.2
+	 */
+	public String generateName(String name) {
+		if (!isDuplicateName(name)) {
+			return name;
+		}
+		if (name.matches(".*\\(\\d*\\)")) { //$NON-NLS-1$
+			int start = name.lastIndexOf('(');
+			int end = name.lastIndexOf(')');
+			String stringInt = name.substring(start + 1, end);
+			int numericValue = Integer.parseInt(stringInt);
+			String newName = name.substring(0, start + 1) + (numericValue + 1)
+					+ ")"; //$NON-NLS-1$
+			return generateName(newName);
+		}
+		return generateName(name + " (1)"); //$NON-NLS-1$
+	}
+	
+	/**
+	 * @see IAddVMDialogRequestor#isDuplicateName(String)
+	 */
+	public boolean isDuplicateName(String name) {
+		for (int i = 0; i < configs.size(); i++) {
+			Config config = (Config) configs.get(i);
+			if (config.getNode_name().equals(name)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
