@@ -347,23 +347,19 @@
 
   <build>
     <plugins>
-      <!--plugin>
+      <plugin>
         <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-versions-plugin</artifactId>
+        <artifactId>tycho-packaging-plugin</artifactId>
         <version>${tycho-version}</version>
-        <executions>
-          <execution>
-            <phase>initialize</phase>
-            <id>set-newVersion</id>
-            <goals>
-              <goal>set-version</goal>
-            </goals>
-            <configuration>
-              <newVersion>${build-version}</newVersion>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin-->
+        <configuration>
+          <format>yyyyMMdd</format>
+        </configuration>
+      </plugin>
+      <!--plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-versions-plugin</artifactId> 
+        <version>${tycho-version}</version> <executions> <execution> <phase>initialize</phase> 
+        <id>set-newVersion</id> <goals> <goal>set-version</goal> </goals> <configuration> 
+        <newVersion>${build-version}</newVersion> </configuration> </execution> </executions> 
+        </plugin -->
       <plugin>
         <groupId>com.github.koraktor</groupId>
         <artifactId>mavanagaiata</artifactId>
