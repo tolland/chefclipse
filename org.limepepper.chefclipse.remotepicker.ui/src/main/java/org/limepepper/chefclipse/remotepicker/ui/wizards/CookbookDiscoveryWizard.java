@@ -180,8 +180,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 									.downloadCookbook(
 											remoteCookbook, remoteCookbook.getRepositoryId());
 							for (IProject iProject : selectedProjects) {
-								repoManager.installCookbook(catalogItem
-										.getName(), downloadCookbook, iProject
+								repoManager.installCookbook(remoteCookbook, downloadCookbook, iProject
 										.getLocation().toString());
 							}
 							refreshProjects(selectedProjects);

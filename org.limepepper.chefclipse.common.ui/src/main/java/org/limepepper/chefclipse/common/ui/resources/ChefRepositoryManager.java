@@ -21,40 +21,44 @@ import org.limepepper.chefclipse.common.workstation.Repository;
  */
 public interface ChefRepositoryManager {
 
-    public static ChefRepositoryManager INSTANCE = ChefRepositoryManagerImpl.instance(); 
-    
-    /**
-     * So i guess the idea here is to cause a full refresh of all the resouces
-     * in the local repo
-     *
-     */
-    public void add(IResource resource);
+	public static ChefRepositoryManager INSTANCE = ChefRepositoryManagerImpl.instance();
 
-    /**
-     * opens the repo corresponding to this project, sets the parent element of
-     * the model to the IProject resource or if not exists
-     * then Initializes a repository in the project
-     *
-     */
-    public void remove(IResource resource);
+	/**
+	 * So i guess the idea here is to cause a full refresh of all the resouces
+	 * in the local repo
+	 *
+	 */
+	public void add(IResource resource);
 
-    
-    public void updateDependsLists(CookbookVersion cookbook);
+	/**
+	 * opens the repo corresponding to this project, sets the parent element of
+	 * the model to the IProject resource or if not exists
+	 * then Initializes a repository in the project
+	 *
+	 */
+	public void remove(IResource resource);
 
-    public Resource openEcoreResource(IResource resource);
 
-    public void resetRepository(IResource item);
+	public void updateDependsLists(CookbookVersion cookbook);
 
-    public void readInKnifeConfigs(IProject project);
+	public Resource openEcoreResource(IResource resource);
 
-    public Repository getRepository(IProject project);
+	public void resetRepository(IResource item);
 
-    public Collection<KnifeConfig> getKnives(IProject iProject);
+	public void readInKnifeConfigs(IProject project);
 
-    public IFolder getResource(CookbookVersion cookbook);
+	public Repository getRepository(IProject project);
 
-    public EObject getElement(IResource resource);
-    
-    
-    
+	public Collection<KnifeConfig> getKnives(IProject iProject);
+
+	public IResource getResource(EObject element);
+
+	public IFolder getResource(CookbookVersion cookbook);
+
+	public IResource getCookbookForResource(IResource resource);
+
+	public EObject getElement(IResource resource);
+
+
+
 }
