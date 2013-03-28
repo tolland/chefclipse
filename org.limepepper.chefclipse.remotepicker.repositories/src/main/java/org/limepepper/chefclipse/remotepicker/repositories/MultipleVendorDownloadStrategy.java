@@ -17,6 +17,8 @@ import java.net.UnknownHostException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import javax.ws.rs.core.UriBuilder;
+
 import org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -31,10 +33,10 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 
 	@Override
 	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
-		
-		URLConnection connection = null;
+	    URLConnection connection = null;
 		try {
-			URL cookbookURL = new URL(cookbook.getUrl() + File.separator + "archive" + File.separator + "master.zip");
+		    String url = UriBuilder.fromUri(cookbook.getUrl()).path("archive").path("master.zip").build().toString();
+		    URL cookbookURL = new URL(url);
 			connection = cookbookURL.openConnection();
 			InputStream stream = connection.getInputStream();
 			BufferedInputStream in = new BufferedInputStream(stream);

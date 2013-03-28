@@ -50,7 +50,14 @@ public class CookbookSiteRepositoryTest {
 	public void testDownloadCookbook() throws InstallCookbookException {
 		RemoteCookbook result = repo.getCookbook("apache");
 		File downloadCookbook = repo.downloadCookbook(result);
-		
-		assertThat(downloadCookbook.getPath(), equalTo("/tmp/apache"));
+		String tmpDirectory = System.getProperty("java.io.tmpdir");		
+		assertThat(downloadCookbook.getPath(), equalTo(tmpDirectory + "apache"));
 	}
+	
+	@Test
+    public void testCookbookVersion() throws InstallCookbookException {
+        RemoteCookbook result = repo.getCookbook("apache");
+        String latestVersion = result.getLatestVersion().replaceAll(".+?versions/", "").replace("_", ".");
+        assertThat(latestVersion, equalTo("0.0.5"));
+    }
 }
