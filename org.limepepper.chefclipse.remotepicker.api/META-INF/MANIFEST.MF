@@ -11,5 +11,4 @@ Export-Package: org.limepepper.chefclipse.remotepicker.api,
  org.limepepper.chefclipse.remotepicker.api.cookbookrepository,
  org.limepepper.chefclipse.remotepicker.api.cookbookrepository.util
 Bundle-ActivationPolicy: lazy
-Bundle-ClassPath: .,
- lib/commons-io.jar
+Bundle-ClassPath: .

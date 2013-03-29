@@ -200,7 +200,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
 
             e.printStackTrace();
         } finally {
-            persistRepo((IResource) resource);
+            //persistRepo((IResource) resource);
         }
 
         if ((eObject != null) && (eObject instanceof NamedObject)) {

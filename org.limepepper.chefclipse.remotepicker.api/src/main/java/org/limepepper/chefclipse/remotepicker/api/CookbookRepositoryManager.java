@@ -16,11 +16,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -45,18 +48,19 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepos
  * @author Guillermo Zunino
  */
 public class CookbookRepositoryManager {
-	
+
+	private static final String COOKBOOKSOURCE = ".cookbooksource";
 	public static final String COMPOSITE_REPOSITORY_ID = "composite.repository";
 	private static final String CACHE_EXT = "cookbookrepository";
 	private static final String COOKBOOKS_PROJECT_DIRECTORY = "cookbooks";
 
 	private static CookbookRepositoryManager instance;
 
-	private ResourceSet resSet = new ResourceSetImpl();
-	private Map<String, RemoteRepository> repositories = new HashMap<String, RemoteRepository>();
-	private Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
-	private Map<String, PropertyChangeSupport> listeners = new HashMap<String, PropertyChangeSupport>();
-	private Lock lock = new ReentrantLock();
+	private final ResourceSet resSet = new ResourceSetImpl();
+	private final Map<String, RemoteRepository> repositories = new HashMap<String, RemoteRepository>();
+	private final Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
+	private final Map<String, PropertyChangeSupport> listeners = new HashMap<String, PropertyChangeSupport>();
+	private final Lock lock = new ReentrantLock();
 	private String cacheFolder;
 
 	CookbookRepositoryManager() {
@@ -92,20 +96,20 @@ public class CookbookRepositoryManager {
 	 * @param id the repository Id
 	 * @return a {@link RemoteCookbook}
 	 */
-	public RemoteRepository getRepository(String id) {
+	public RemoteRepository getRepository(final String id) {
 		return repositories.get(id);
 	}
 
 	/**
 	 * Registers a repository of cookbooks to managed by this manager.
 	 * @param repo the {@link RemoteRepository} instance.
-	 * @param retriever an implementation of {@link ICookbooksRepository} to download 
+	 * @param retriever an implementation of {@link ICookbooksRepository} to download
 	 * cookbooks (eg. contacting a REST service)
-	 * @return a managed instance of {@link RemoteRepository}, possible different than the given if this 
-	 * was previously registered 
+	 * @return a managed instance of {@link RemoteRepository}, possible different than the given if this
+	 * was previously registered
 	 */
-	public RemoteRepository registerRepository(RemoteRepository repo,
-			ICookbooksRepository retriever) {
+	public RemoteRepository registerRepository(final RemoteRepository repo,
+			final ICookbooksRepository retriever) {
 		lock.lock(); // block until condition holds
 		try {
 			if (repositories.isEmpty()) {
@@ -168,7 +172,7 @@ public class CookbookRepositoryManager {
 		listeners.clear();
 	}
 
-	private void cacheRepository(RemoteRepository repo) {
+	private void cacheRepository(final RemoteRepository repo) {
 		ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
 		Collection<RemoteCookbook> cookbooks = cookbookRepository
 				.getCookbooks();
@@ -196,12 +200,13 @@ public class CookbookRepositoryManager {
 			lock.unlock();
 		}
 
-		if (listeners.containsKey(repo.getId()))
+		if (listeners.containsKey(repo.getId())) {
 			listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks);
+		}
 		saveCacheModel(repo);
 	}
 
-	private void saveCacheModel(RemoteRepository repo) {
+	private void saveCacheModel(final RemoteRepository repo) {
 		Calendar cal = Calendar.getInstance();
 		repo.setUpdatedAt(cal.getTime());
 		// get or create the main cache resource
@@ -214,7 +219,7 @@ public class CookbookRepositoryManager {
 		if (repo.eResource() == null) {
 			cacheRes.getContents().add(repo);
 		}
-		
+
 		// Create a resource
 		Resource resource = resSet.createResource(URI
 				.createFileURI(getCacheFile(repo.getId())));
@@ -233,11 +238,11 @@ public class CookbookRepositoryManager {
 	 * Sets the folder used as cache.
 	 * @param stateLocation the cache folder path
 	 */
-	public void setCacheFolder(String stateLocation) {
+	public void setCacheFolder(final String stateLocation) {
 		cacheFolder = stateLocation;
 	}
 
-	private String getCacheFile(String repoId) {
+	private String getCacheFile(final String repoId) {
 		return new StringBuilder(cacheFolder)
 			.append(File.separatorChar)
 			.append(repoId).append(".")
@@ -251,7 +256,7 @@ public class CookbookRepositoryManager {
 			.append(CACHE_EXT).toString();
 	}
 
-	private boolean isCached(RemoteRepository repo) {
+	private boolean isCached(final RemoteRepository repo) {
 		File file = new File(getCacheFile(repo.getId()));
 		return file.exists() && file.canRead();
 	}
@@ -267,10 +272,10 @@ public class CookbookRepositoryManager {
 	 * {@link RemoteRepository#getCookbooks()} after this method returns.
 	 * @param repoId the repository Id to load.
 	 */
-	public void loadRepository(String repoId) {
+	public void loadRepository(final String repoId) {
 		RemoteRepository repo = repositories.get(repoId);
 		ICookbooksRepository cookbookRepository = retrievers.get(repoId);
-		
+
 		if (cookbookRepository == null || repo == null) {
 			throw new RuntimeException("Invalid repoId " + repoId);
 		}
@@ -280,8 +285,8 @@ public class CookbookRepositoryManager {
 		}
 	}
 
-	private void addRepositoryIds(RemoteRepository repo) {
-		
+	private void addRepositoryIds(final RemoteRepository repo) {
+
 		for (RemoteCookbook cookbook : repo.getCookbooks()) {
 			cookbook.setRepositoryId(repo.getId());
 		}
@@ -294,13 +299,12 @@ public class CookbookRepositoryManager {
 	 * @return
 	 * @throws InstallCookbookException
 	 */
-	public File downloadCookbook(RemoteCookbook remoteCookbook, String repositoryId) throws InstallCookbookException{
+	public File downloadCookbook(final RemoteCookbook remoteCookbook, final String repositoryId) throws InstallCookbookException{
 		ICookbooksRepository cookbooksRepository = retrievers.get(repositoryId);
 		File downloadCookbook = cookbooksRepository.downloadCookbook(remoteCookbook);
-		updateInstalledDate(remoteCookbook);
 		return downloadCookbook;
 	}
-	
+
 	/**
 	 * Installs a chef cookbook under the given chef projectPath.
 	 * @param cookbookName the cookbook name to instakk
@@ -308,21 +312,50 @@ public class CookbookRepositoryManager {
 	 * @param projectPath the path to install to
 	 * @throws InstallCookbookException if cannot be done.
 	 */
-	public void installCookbook(String cookbookName, File downloadCookbook, String projectPath) throws InstallCookbookException {
-		
+	public void installCookbook(final RemoteCookbook cookbook, final File downloadCookbook, final String projectPath) throws InstallCookbookException {
+
 		File targetDirectory = new File(projectPath, COOKBOOKS_PROJECT_DIRECTORY);
 		if (!targetDirectory.exists()) {
 			boolean mkdirs = targetDirectory.mkdirs();
 			if (!mkdirs){
-				throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbookName);
+				throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName());
 			}
 		}
-		try {					
+		try {
 			FileUtils.copyDirectoryToDirectory(downloadCookbook, targetDirectory);
+			updateInstalledDate(cookbook);
+			
+			File source = new File(new File(targetDirectory, downloadCookbook.getName()), COOKBOOKSOURCE);
+			source.createNewFile();
+			Collection<String> lines = new ArrayList<String>(3);
+			lines.add(cookbook.getRepositoryId());
+			lines.add(cookbook.getName());
+			lines.add(cookbook.getLatestVersion());
+			FileUtils.writeLines(source, lines);
 		} catch (IOException e) {
-			throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbookName, e);
+			throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName(), e);
 		}
-		
+	}
+
+	public RemoteCookbook getSourceCookbook(final File cookbookFolder) {
+		assert cookbookFolder.isDirectory();
+		Iterator<File> files = FileUtils.iterateFiles(cookbookFolder,
+				FileFilterUtils.nameFileFilter(COOKBOOKSOURCE), null);
+		if (files.hasNext()) {
+			File source = files.next();
+
+			try {
+				List<String> lines = FileUtils.readLines(source);
+				String repoId = lines.get(0);
+				String cookbookName = lines.get(1);
+				String version = lines.get(2);
+
+				RemoteRepository sourceRepo = this.getRepository(repoId);
+				return getCookbook(cookbookName, sourceRepo);
+			} catch (IOException e) {
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -331,7 +364,7 @@ public class CookbookRepositoryManager {
 	 * @param repoId the {@link RemoteRepository} id.
 	 * @param listener a {@link PropertyChangeListener}
 	 */
-	public void addRepositoryListener(String repoId, PropertyChangeListener listener) {
+	public void addRepositoryListener(final String repoId, final PropertyChangeListener listener) {
 		listeners.get(repoId).addPropertyChangeListener(listener);
 		if (isRepositoryReady(repoId)) {
 			RemoteRepository repo = repositories.get(repoId);
@@ -340,12 +373,12 @@ public class CookbookRepositoryManager {
 	}
 
 	/**
-	 * Remove a previously registered listener for the given {@link RemoteRepository} id. 
+	 * Remove a previously registered listener for the given {@link RemoteRepository} id.
 	 * @param repoId the repository id
 	 * @param listener the {@link PropertyChangeListener}
 	 */
-	public void removeRepositoryListener(String repoId, 
-			PropertyChangeListener listener) {
+	public void removeRepositoryListener(final String repoId,
+			final PropertyChangeListener listener) {
 		listeners.get(repoId).removePropertyChangeListener(listener);
 	}
 
@@ -354,7 +387,7 @@ public class CookbookRepositoryManager {
 	 * @param repoId the {@link RemoteRepository} id.
 	 * @return true if repository is ready.
 	 */
-	public boolean isRepositoryReady(String repoId) {
+	public boolean isRepositoryReady(final String repoId) {
 		lock.lock();
 		try {
 			return !repositories.get(repoId).getCookbooks().isEmpty();
@@ -363,11 +396,11 @@ public class CookbookRepositoryManager {
 		}
 	}
 
-	private void updateInstalledDate(RemoteCookbook remoteCookbook) {
-	
+	private void updateInstalledDate(final RemoteCookbook remoteCookbook) {
+
 		Calendar cal = Calendar.getInstance();
 		remoteCookbook.setInstalledAt(cal.getTime());
-		
+
 		Resource resource = remoteCookbook.eResource();
 		try {
 			resource.save(Collections.EMPTY_MAP);
@@ -381,23 +414,23 @@ public class CookbookRepositoryManager {
 	 * This method must be called after registering all the concrete repositories.
 	 */
 	public void createCompositeRepository() {
-		
+
 		final RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
 		repo.setId(COMPOSITE_REPOSITORY_ID);
 		repo.setName("Composite Repository");
 		repo.setDescription("Contains all the cookbooks of all registered repositories.");
 		repo.setUri("http:/www.chefclipse.com/compositeRespository.html");
-		
+
 		final RemoteRepository registeredRepository = registerCompositeRepository(repo);
-		
+
 		URL iconURL = this.getClass().getClassLoader().getResource("icons/composite.png");
 		registeredRepository.setIcon(iconURL.toString());
-		
+
 		for (final RemoteRepository remoteRepository : getRepositories()){
 			this.addRepositoryListener(remoteRepository.getId(), new PropertyChangeListener() {
-				
+
 				@Override
-				public void propertyChange(PropertyChangeEvent evt) {
+				public void propertyChange(final PropertyChangeEvent evt) {
 					EList<RemoteCookbook> cookbooks = remoteRepository.getCookbooks();
 					registeredRepository.getCookbooks().addAll(cookbooks);
 					removeRepositoryListener(remoteRepository.getId(), this);
@@ -413,7 +446,23 @@ public class CookbookRepositoryManager {
 				}
 			});
 		}
-		
+
+	}
+
+	/**
+	 * Searches a cookbook by name on given repo.
+	 * @param name the name of the cookbook to find
+	 * @param repository the repository
+	 * @return the found cookbook or null
+	 */
+	protected RemoteCookbook getCookbook(final String name, final RemoteRepository repository) {
+		EList<RemoteCookbook> cookbooks = repository.getCookbooks();
+		for (RemoteCookbook cookbook : cookbooks){
+			if (cookbook.getName().equals(name)) {
+				return cookbook;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -424,15 +473,15 @@ public class CookbookRepositoryManager {
 	 */
 	private RemoteRepository registerCompositeRepository(
 			final RemoteRepository repo) {
-		
+
 		RemoteRepository registeredRepository = registerRepository(repo, new ICookbooksRepository() {
-			
+
 			@Override
-			public boolean isUpdated(RemoteRepository repo) {
+			public boolean isUpdated(final RemoteRepository repo) {
 				//as it's only use to cache purposes.
 				return false;
 			}
-			
+
 			@Override
 			public java.net.URI getRepositoryURI() {
 				try {
@@ -442,35 +491,32 @@ public class CookbookRepositoryManager {
 				}
 				return null;
 			}
-			
+
 			@Override
 			public String getRepositoryId() {
 				return repo.getId();
 			}
-			
+
 			@Override
 			public Collection<RemoteCookbook> getCookbooks() {
 				return Collections.emptyList();
 			}
-			
+
 			@Override
-			public RemoteCookbook getCookbook(String name) {
-				
+			public RemoteCookbook getCookbook(final String name) {
 				for (RemoteRepository repository : getRepositories()) {
-					EList<RemoteCookbook> cookbooks = repository.getCookbooks();
-					for (RemoteCookbook cookbook : cookbooks){
-						if (cookbook.getName().equals(name)){
-							return cookbook;
-						}
+					RemoteCookbook c = CookbookRepositoryManager.this.getCookbook(name, repository);
+					if (c != null) {
+						return c;
 					}
 				}
 				return null;
 			}
-			
+
 			@Override
-			public File downloadCookbook(RemoteCookbook remoteCookbook)
+			public File downloadCookbook(final RemoteCookbook remoteCookbook)
 					throws InstallCookbookException {
-				
+
 				String repositoryId = remoteCookbook.getRepositoryId();
 				File downloadedCookbook = CookbookRepositoryManager.getInstance().downloadCookbook(remoteCookbook, repositoryId);
 				return downloadedCookbook;
