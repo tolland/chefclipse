@@ -13,4 +13,16 @@
 
   <artifactId>juno42</artifactId>
   <packaging>eclipse-target-definition</packaging>
+ 
+    <build>
+
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho.extras</groupId>
+        <artifactId>target-platform-validation-plugin</artifactId>
+        <version>0.17.0</version>
+      </plugin>
+    </plugins>
+  </build>
+  
 </project>

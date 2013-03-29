@@ -12,7 +12,6 @@
   </parent>
   <groupId>org.limepepper.chefclipse</groupId>
   <artifactId>org.limepepper.chefclipse.p2</artifactId>
-  <version>${project.parent.version}</version>
 
   <packaging>eclipse-repository</packaging>
 

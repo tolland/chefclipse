@@ -3,7 +3,9 @@
 
 <toc label="Sample Table of Contents">
 	<topic label="Main Topic"  href="html/maintopic.html"> 
-		<topic label="Sub Topic" href="html/subtopic.html"/> 
+		<topic label="Sub Topic" href="html/subtopic.html"/>
+  <topic label="Installation">
+  </topic> 
 	</topic>
 	<topic label="Main Topic 2"/>
 </toc>

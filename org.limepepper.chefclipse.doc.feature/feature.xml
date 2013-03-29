@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.limepepper.chefclipse.doc.feature"
-      label="Chefclispe Docs feature"
-      version="0.1.0.qualifier"
-      provider-name="%providerName">
+      label="Chefclipse Docs feature"
+      version="0.1.2.qualifier"
+      provider-name="%providerName"
+      plugin="org.limepepper.chefclipse.app">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]

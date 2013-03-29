@@ -59,11 +59,11 @@
 										</exec>
 										<exec executable="python" dir="${build.dir}">
                   <arg
-                    line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx --prompt --file=Chefclipse-win32-x86_64.jar --launch-file=Chefclipse-win32-x86_64.jar --output=Chefclipse-win32-x86_64.exe" />
+                    line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx  --file=Chefclipse-win32-x86_64.jar --launch-file=Chefclipse-win32-x86_64.jar --output=Chefclipse-win32-x86_64.exe" />
 										</exec>
 										<exec executable="python"  dir="${build.dir}">
                   <arg
-                    line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx --prompt --launch-file=Chefclipse-win32-x86.jar  --file=Chefclipse-win32-x86.jar --output=Chefclipse-win32-x86.exe" />
+                    line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx  --launch-file=Chefclipse-win32-x86.jar  --file=Chefclipse-win32-x86.jar --output=Chefclipse-win32-x86.exe" />
 										</exec>
 									</tasks>
 								</configuration>

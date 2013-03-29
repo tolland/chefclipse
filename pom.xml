@@ -33,6 +33,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <modules>
+        <module>org.eclipselabs.p2.rcpupdate.utils</module>
         <module>org.limepepper.chefclipse.ui.feature</module>
         <module>org.limepepper.chefclipse.doc.feature</module>
         <module>org.limepepper.chefclipse.app.feature</module>
@@ -87,47 +88,6 @@
             <version>${tycho-version}</version>
             <extensions>true</extensions>
           </plugin>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>target-platform-configuration</artifactId>
-            <version>${tycho-version}</version>
-            <configuration>
-              <target>
-                <artifact>
-                  <groupId>org.limepepper.chefclipse</groupId>
-                  <artifactId>juno42</artifactId>
-                  <version>${project.version}</version>
-                </artifact>
-              </target>
-              <environments>
-                <environment>
-                  <os>win32</os>
-                  <ws>win32</ws>
-                  <arch>x86</arch>
-                </environment>
-                <environment>
-                  <os>win32</os>
-                  <ws>win32</ws>
-                  <arch>x86_64</arch>
-                </environment>
-                <environment>
-                  <os>linux</os>
-                  <ws>gtk</ws>
-                  <arch>x86</arch>
-                </environment>
-                <environment>
-                  <os>linux</os>
-                  <ws>gtk</ws>
-                  <arch>x86_64</arch>
-                </environment>
-                <environment>
-                  <os>macosx</os>
-                  <ws>cocoa</ws>
-                  <arch>x86_64</arch>
-                </environment>
-              </environments>
-            </configuration>
-          </plugin>
         </plugins>
       </build>
     </profile>
@@ -166,13 +126,6 @@
             <artifactId>target-platform-configuration</artifactId>
             <version>${tycho-version}</version>
             <configuration>
-              <target>
-                <artifact>
-                  <groupId>org.limepepper.chefclipse</groupId>
-                  <artifactId>juno42</artifactId>
-                  <version>${project.version}</version>
-                </artifact>
-              </target>
               <environments>
                 <environment>
                   <os>win32</os>
@@ -226,6 +179,10 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
+        <module>org.limepepper.chefclipse.ui.feature</module>
+        <module>org.limepepper.chefclipse.doc.feature</module>
+        <module>org.limepepper.chefclipse.app.feature</module>
+        <module>org.limepepper.chefclipse.devel.feature</module>
         <module>org.limepepper.chefclipse.target</module>
         <module>org.limepepper.chefclipse.p2</module>
       </modules>
@@ -242,13 +199,6 @@
             <artifactId>target-platform-configuration</artifactId>
             <version>${tycho-version}</version>
             <configuration>
-              <target>
-                <artifact>
-                  <groupId>org.limepepper.chefclipse</groupId>
-                  <artifactId>juno42</artifactId>
-                  <version>${project.version}</version>
-                </artifact>
-              </target>
               <environments>
                 <environment>
                   <os>linux</os>
@@ -384,13 +334,13 @@
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho-version}</version>
         <configuration>
-          <target>
-            <artifact>
-              <groupId>org.limepepper.chefclipse</groupId>
-              <artifactId>juno42</artifactId>
-              <version>${project.version}</version>
-            </artifact>
-          </target>
+             <target>
+                <artifact>
+                  <groupId>org.limepepper.chefclipse</groupId>
+                  <artifactId>juno42</artifactId>
+                  <version>0.1.0-SNAPSHOT</version>
+                </artifact>
+              </target>
           <environments>
             <environment>
               <os>win32</os>

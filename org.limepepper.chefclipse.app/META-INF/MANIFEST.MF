@@ -33,7 +33,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.swt,
  org.eclipse.jface,
  org.eclipse.ui.workbench,
- org.slf4j.log4j;bundle-version="1.6.4"
+ org.slf4j.log4j;bundle-version="1.6.4",
+ org.eclipselabs.p2.rcpupdate.utils;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
+Import-Package: org.eclipse.equinox.p2.operations
