@@ -31,8 +31,7 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 
 	@Override
 	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
-		
-		URLConnection connection = null;
+	    URLConnection connection = null;
 		try {
 			URL cookbookURL = new URL(cookbook.getUrl() + File.separator + "archive" + File.separator + "master.zip");
 			connection = cookbookURL.openConnection();

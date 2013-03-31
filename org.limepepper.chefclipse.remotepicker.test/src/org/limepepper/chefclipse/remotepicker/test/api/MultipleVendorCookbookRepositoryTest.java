@@ -53,7 +53,9 @@ public class MultipleVendorCookbookRepositoryTest {
 		c.setName("ap-cookbook-oracle");
 		File downloadCookbook = repo.downloadCookbook(c);
 		
-		assertThat(downloadCookbook.getPath(), equalTo("/tmp/ap-cookbook-oracle-master"));
+		String tmpDirectory = System.getProperty("java.io.tmpdir");
+		
+		assertThat(downloadCookbook.getPath(), equalTo(tmpDirectory + "ap-cookbook-oracle-master"));
 	}
 
 }

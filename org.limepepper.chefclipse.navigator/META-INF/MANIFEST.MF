@@ -35,3 +35,4 @@ Export-Package: org.limepepper.chefclipse.navigator,
  org.limepepper.chefclipse.navigator.providers,
  org.limepepper.chefclipse.navigator.testers,
  org.limepepper.chefclipse.ui.navigator
+Bundle-Vendor: Lime Pepper Ltd

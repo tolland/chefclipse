@@ -8,11 +8,14 @@
   <artifactId>org.limepepper.chefclipse</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+
   <properties>
     <tycho-version>0.16.0</tycho-version>
-    <build-version>0.1.0</build-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+
+
   <distributionManagement>
     <repository>
       <id>aws-release</id>
@@ -32,44 +35,77 @@
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
+
       <modules>
+        <!-- developer bundles -->
+        <module>org.limepepper.chefclipse.devel.feature</module>
+        <module>org.limepepper.chefclipse.releng</module>
+        <module>org.limepepper.chefclipse.target</module>
+        <!--module>org.limepepper.eclipse.RubyConsole</module -->
+
+        <!-- docs - currently placeholders -->
+        <module>org.limepepper.chefclipse.doc.feature</module>
+        <module>org.limepepper.chefclipse.doc</module>
+
+        <!-- product -->
+        <module>org.limepepper.chefclipse.product</module>
+
+        <!-- releng stuff -->
         <module>org.eclipselabs.p2.rcpupdate.utils</module>
         <module>org.limepepper.chefclipse.ui.feature</module>
-        <module>org.limepepper.chefclipse.doc.feature</module>
-        <module>org.limepepper.chefclipse.app.feature</module>
-        <module>org.limepepper.chefclipse.devel.feature</module>
-        <module>org.limepepper.chefclipse.doc</module>
-        <module>org.limepepper.chefclipse.api</module>
-        <module>org.limepepper.chefclipse.app</module>
+
+        <!-- headless api stuff -->
         <module>org.limepepper.chefclipse.chefserver.api</module>
         <module>org.limepepper.chefclipse.chefserver.api.ui</module>
+
+        <!-- this contains the ecore model and genmodel -->
+        <module>org.limepepper.chefclipse.model</module>
+
+        <!-- generated model stuff -->
         <module>org.limepepper.chefclipse.common</module>
         <module>org.limepepper.chefclipse.common.edit</module>
         <module>org.limepepper.chefclipse.common.editor</module>
+
+        <!-- api -->
+        <module>org.limepepper.chefclipse.api</module>
+
+        <!-- app bundles -->
+        <module>org.limepepper.chefclipse.app.feature</module>
+        <module>org.limepepper.chefclipse.app</module>
         <module>org.limepepper.chefclipse.common.ui</module>
         <module>org.limepepper.chefclipse.utils</module>
         <module>org.limepepper.chefclipse.editors.cookbook</module>
         <module>org.limepepper.chefclipse.graphviewer</module>
         <module>org.limepepper.chefclipse.logger</module>
-        <module>org.limepepper.chefclipse.model</module>
-        <module>org.limepepper.chefclipse.navigator</module>
+
         <module>org.limepepper.chefclipse.ui</module>
-        <module>org.limepepper.chefclipse.product</module>
-        <module>org.limepepper.chefclipse.releng</module>
+
+
+        <!-- chefclipse repository explorer -->
+        <module>org.limepepper.chefclipse.navigator</module>
+
+        <!-- picker -->
         <module>org.limepepper.chefclipse.remotepicker.api</module>
         <module>org.limepepper.chefclipse.remotepicker.repositories</module>
         <module>org.limepepper.chefclipse.remotepicker.extpoint</module>
         <module>org.limepepper.chefclipse.remotepicker.ui</module>
         <module>org.limepepper.chefclipse.remotepicker.test</module>
+
+        <!-- prefs -->
         <module>org.limepepper.chefclipse.preferences.api</module>
         <module>org.limepepper.chefclipse.preferences.ui</module>
-        <module>org.limepepper.chefclipse.target</module>
-        <!--module>org.limepepper.eclipse.RubyConsole</module -->
+        <module>org.limepepper.chefclipse.preferences.test</module>
+
+        <!-- missing form orbit bundles -->
         <module>com.sun.jersey.bundle</module>
       </modules>
+
       <build>
+
         <plugins>
+
           <plugin>
+
             <groupId>com.github.koraktor</groupId>
             <artifactId>mavanagaiata</artifactId>
             <version>0.5.0</version>
@@ -88,6 +124,16 @@
             <version>${tycho-version}</version>
             <extensions>true</extensions>
           </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.7</version>
+            <configuration>
+              <sourcepath>src/main/java</sourcepath>
+            </configuration>
+          </plugin>
+
         </plugins>
       </build>
     </profile>
@@ -305,11 +351,11 @@
           <format>yyyyMMdd</format>
         </configuration>
       </plugin>
-      <!--plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-versions-plugin</artifactId> 
+      <!-- <plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-versions-plugin</artifactId> 
         <version>${tycho-version}</version> <executions> <execution> <phase>initialize</phase> 
         <id>set-newVersion</id> <goals> <goal>set-version</goal> </goals> <configuration> 
         <newVersion>${build-version}</newVersion> </configuration> </execution> </executions> 
-        </plugin -->
+        </plugin> -->
       <plugin>
         <groupId>com.github.koraktor</groupId>
         <artifactId>mavanagaiata</artifactId>
@@ -334,13 +380,13 @@
         <artifactId>target-platform-configuration</artifactId>
         <version>${tycho-version}</version>
         <configuration>
-             <target>
-                <artifact>
-                  <groupId>org.limepepper.chefclipse</groupId>
-                  <artifactId>juno42</artifactId>
-                  <version>0.1.0-SNAPSHOT</version>
-                </artifact>
-              </target>
+          <target>
+            <artifact>
+              <groupId>org.limepepper.chefclipse</groupId>
+              <artifactId>juno42</artifactId>
+              <version>0.1.0-SNAPSHOT</version>
+            </artifact>
+          </target>
           <environments>
             <environment>
               <os>win32</os>
@@ -394,4 +440,3 @@
     </extensions>
   </build>
 </project>
-

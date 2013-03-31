@@ -180,8 +180,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 									.downloadCookbook(
 											remoteCookbook, remoteCookbook.getRepositoryId());
 							for (IProject iProject : selectedProjects) {
-								repoManager.installCookbook(catalogItem
-										.getName(), downloadCookbook, iProject
+								repoManager.installCookbook(remoteCookbook, downloadCookbook, iProject
 										.getLocation().toString());
 							}
 							refreshProjects(selectedProjects);
@@ -302,13 +301,15 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 		for (IProject iProject : projects) {
 			IProjectNature nature;
 			try {
-				nature = iProject
-						.getNature(ChefProjectNature.NATURE_ID);
-				if (nature != null) {
-					ArrayList<IProject> projectWithChefclipseNature = new ArrayList<IProject>();
-					projectWithChefclipseNature.add(iProject);
-					return projectWithChefclipseNature;
-				}
+			    if (iProject.isOpen()) {
+			        nature = iProject
+	                        .getNature(ChefProjectNature.NATURE_ID);
+	                if (nature != null) {
+	                    ArrayList<IProject> projectWithChefclipseNature = new ArrayList<IProject>();
+	                    projectWithChefclipseNature.add(iProject);
+	                    return projectWithChefclipseNature;
+	                }
+			    }
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
