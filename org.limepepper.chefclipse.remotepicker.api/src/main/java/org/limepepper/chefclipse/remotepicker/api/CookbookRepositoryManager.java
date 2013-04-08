@@ -35,6 +35,8 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.Cookbookrep
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Manager for Cookbook Repositories.
@@ -49,7 +51,9 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepos
  */
 public class CookbookRepositoryManager {
 
-	private static final String COOKBOOKSOURCE = ".cookbooksource";
+	static final Logger logger = LoggerFactory.getLogger(CookbookRepositoryManager.class);
+	
+	public static final String COOKBOOKSOURCE = ".cookbooksource";
 	public static final String COMPOSITE_REPOSITORY_ID = "composite.repository";
 	private static final String CACHE_EXT = "cookbookrepository";
 	private static final String COOKBOOKS_PROJECT_DIRECTORY = "cookbooks";
@@ -230,7 +234,7 @@ public class CookbookRepositoryManager {
 			cacheRes.save(Collections.EMPTY_MAP);
 			resource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error saving model cache", e);
 		}
 	}
 
@@ -296,13 +300,25 @@ public class CookbookRepositoryManager {
 	 * Download and expand a chef cookbook tree structure from remote in a local tmp folder.
 	 * @param remoteCookbook
 	 * @param repositoryId
+	 * @param version
+	 * @return
+	 * @throws InstallCookbookException
+	 */
+	public File downloadCookbook(final RemoteCookbook remoteCookbook, String version, final String repositoryId) throws InstallCookbookException{
+		ICookbooksRepository cookbooksRepository = retrievers.get(repositoryId);
+		File downloadCookbook = cookbooksRepository.downloadCookbook(remoteCookbook, version);
+		return downloadCookbook;
+	}
+
+	/**
+	 * Download and expand a chef cookbook tree structure from remote in a local tmp folder.
+	 * @param remoteCookbook
+	 * @param repositoryId
 	 * @return
 	 * @throws InstallCookbookException
 	 */
 	public File downloadCookbook(final RemoteCookbook remoteCookbook, final String repositoryId) throws InstallCookbookException{
-		ICookbooksRepository cookbooksRepository = retrievers.get(repositoryId);
-		File downloadCookbook = cookbooksRepository.downloadCookbook(remoteCookbook);
-		return downloadCookbook;
+		return downloadCookbook(remoteCookbook, remoteCookbook.getLatestVersion(), repositoryId);
 	}
 
 	/**
@@ -324,7 +340,7 @@ public class CookbookRepositoryManager {
 		try {
 			FileUtils.copyDirectoryToDirectory(downloadCookbook, targetDirectory);
 			updateInstalledDate(cookbook);
-			
+
 			File source = new File(new File(targetDirectory, downloadCookbook.getName()), COOKBOOKSOURCE);
 			source.createNewFile();
 			Collection<String> lines = new ArrayList<String>(3);
@@ -351,8 +367,11 @@ public class CookbookRepositoryManager {
 				String version = lines.get(2);
 
 				RemoteRepository sourceRepo = this.getRepository(repoId);
-				return getCookbook(cookbookName, sourceRepo);
+				RemoteCookbook c = getCookbook(cookbookName, sourceRepo);
+				c.setLatestVersion(version);
+				return c;
 			} catch (IOException e) {
+				logger.error("Error getting source cookbook", e);
 			}
 		}
 		return null;
@@ -405,7 +424,7 @@ public class CookbookRepositoryManager {
 		try {
 			resource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Error saving resource cache", e);
 		}
 	}
 
@@ -465,6 +484,11 @@ public class CookbookRepositoryManager {
 		return null;
 	}
 
+	public String getReadableVersion(RemoteCookbook cookbook, String version) {
+		ICookbooksRepository cookbooksRepository = retrievers.get(cookbook.getRepositoryId());
+		return cookbooksRepository.getReadableVersion(cookbook, version);
+	}
+
 	/**
 	 * Create and register a composite repository.
 	 * 
@@ -487,7 +511,7 @@ public class CookbookRepositoryManager {
 				try {
 					return new java.net.URI(repo.getUri());
 				} catch (URISyntaxException e) {
-					e.printStackTrace();
+					logger.error("Invalid URL", e);
 				}
 				return null;
 			}
@@ -514,12 +538,16 @@ public class CookbookRepositoryManager {
 			}
 
 			@Override
-			public File downloadCookbook(final RemoteCookbook remoteCookbook)
+			public File downloadCookbook(final RemoteCookbook remoteCookbook, String version)
 					throws InstallCookbookException {
-
 				String repositoryId = remoteCookbook.getRepositoryId();
-				File downloadedCookbook = CookbookRepositoryManager.getInstance().downloadCookbook(remoteCookbook, repositoryId);
+				File downloadedCookbook = CookbookRepositoryManager.getInstance().downloadCookbook(remoteCookbook, version, repositoryId);
 				return downloadedCookbook;
+			}
+
+			@Override
+			public String getReadableVersion(RemoteCookbook cookbook, String version) {
+				return CookbookRepositoryManager.getInstance().getReadableVersion(cookbook, version);
 			}
 		});
 		return registeredRepository;

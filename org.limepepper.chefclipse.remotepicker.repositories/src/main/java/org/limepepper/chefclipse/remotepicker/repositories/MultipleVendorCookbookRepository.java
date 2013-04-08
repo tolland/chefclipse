@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
@@ -26,6 +27,8 @@ import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientHandlerException;
@@ -42,6 +45,8 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
  */
 public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 
+	static final Logger logger = LoggerFactory.getLogger(MultipleVendorCookbookRepository.class);
+	
 	private WebResource service;
 	
 	private static final String REPOSITORY_URI = "https://api.github.com";
@@ -66,7 +71,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 		Client client = Client.create(config);
 		service = client.resource(getRepositoryURI());
 		
-		downloadCookbookStrategy = new MultipleVendorDownloadStrategy();
+		downloadCookbookStrategy = new MultipleVendorDownloadStrategy(this);
 	}
 
 	/* (non-Javadoc)
@@ -102,13 +107,15 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 						JSONObject cookbookJson = jsonArray.getJSONObject(i);
 						cookbooks.add(createCookbook(cookbookJson));
 					} catch (JSONException e) {
-						e.printStackTrace();
+						logger.error("Error getting cookbooks", e);
 					}
 				}
 				more = jsonArray.length() > 0;
 			} while (more);
-		} catch (ClientHandlerException e2) {
-		} catch (UniformInterfaceException e3) {
+		} catch (ClientHandlerException e) {
+			logger.error("Error getting cookbooks", e);
+		} catch (UniformInterfaceException e) {
+			logger.error("Error getting cookbooks", e);
 		}
 		return cookbooks;
 	}
@@ -125,21 +132,40 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 			cookbook.setUpdatedAt(format.parse(cookbookJson.getString("updated_at")));
 			cookbook.setCreatedAt(format.parse(cookbookJson.getString("created_at")));
 			cookbook.setExternalUrl(cookbookJson.optString("html_url"));
-//			cookbook.setLatestVersion(cookbookJson.getString("latest_version"));
 			cookbook.setMaintainer(cookbookJson.getJSONObject("owner").getString("login"));
 			cookbook.setRating(cookbookJson.optDouble("watchers_count"));
-//			JSONArray versionsJson = cookbookJson.optJSONArray("versions");
-//			String[] versions = new String[versionsJson.length()];
-//			for (int i = 0; i < versionsJson.length(); i++) {
-//				versions[i] = versionsJson.getString(i);
-//			}
-//			cookbook.getVersions().addAll(Arrays.asList(versions));
+			
+			fillVersions(cookbook, cookbookJson);
 		} catch (JSONException e) {
-			e.printStackTrace();
-		} catch (ParseException e1){
-			e1.printStackTrace();
+			logger.error("Error getting cookbooks", e);
+		} catch (ParseException e){
+			logger.error("Error getting cookbooks", e);
 		}
 		return cookbook;
+	}
+
+	protected void fillVersions(RemoteCookbook cookbook, JSONObject cookbookJson)
+			throws JSONException {
+		String tags_url = cookbookJson.getString("tags_url");
+		tags_url = tags_url.replace(REPOSITORY_URI, "").replace("{/tag}", "");
+		
+		String latest = cookbook.getUrl() + "/archive/" + cookbookJson.getString("default_branch") + ".zip";
+		cookbook.setLatestVersion(latest);
+		
+		JSONArray tags = getService().path(tags_url)
+			.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONArray.class);
+		
+		String[] versions = new String[tags.length()+1];
+		versions[0] = latest;
+		for (int i = 0; i < tags.length(); i++) {
+			try {
+				JSONObject tagJson = tags.getJSONObject(i);
+				versions[i+1] = tagJson.getString("zipball_url");
+			} catch (JSONException e) {
+				logger.error("Error getting cookbooks", e);
+			}
+		}
+		cookbook.getVersions().addAll(Arrays.asList(versions));
 	}
 
 	private JSONArray getRestCookbooks(int page, int items) {
@@ -167,9 +193,11 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 					.path("users").path("cookbooks").path("repos")
 					.header("If-Modified-Since", date)
 					.get(ClientResponse.class);
-		} catch (ClientHandlerException e2) {
+		} catch (ClientHandlerException e) {
+			logger.error("Error checking isUpdated", e);
 			return false;
-		} catch (UniformInterfaceException e3) {
+		} catch (UniformInterfaceException e) {
+			logger.error("Error checking isUpdated", e);
 			return false;
 		}
 		if (response != null){
@@ -199,9 +227,13 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	}
 	
 	@Override
-	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
-		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(cookbook);
+	public File downloadCookbook(RemoteCookbook cookbook, String version) throws InstallCookbookException {
+		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(cookbook, version);
 		return downloadedCookbook;
 	}
 
+	@Override
+	public String getReadableVersion(RemoteCookbook cookbook, String version) {
+		return version.substring(version.lastIndexOf("/")+1).replace(".zip", "");
+	}
 }

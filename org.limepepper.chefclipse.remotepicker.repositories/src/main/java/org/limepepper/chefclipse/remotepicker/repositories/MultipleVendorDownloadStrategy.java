@@ -17,8 +17,8 @@ import java.net.UnknownHostException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import javax.ws.rs.core.UriBuilder;
-
+import org.apache.commons.io.FileUtils;
+import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -30,12 +30,17 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookb
 
 public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy{
 
+	private ICookbooksRepository repo;
+
+	public MultipleVendorDownloadStrategy(ICookbooksRepository repo) {
+		this.repo = repo;
+	}
 
 	@Override
-	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
+	public File downloadCookbook(RemoteCookbook cookbook, String version) throws InstallCookbookException {
 	    URLConnection connection = null;
 		try {
-		    String url = UriBuilder.fromUri(cookbook.getUrl()).path("archive").path("master.zip").build().toString();
+			String url = version;
 		    URL cookbookURL = new URL(url);
 			connection = cookbookURL.openConnection();
 			InputStream stream = connection.getInputStream();
@@ -50,7 +55,14 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 			out.flush();
 			out.close();
 			decompressCookbook(tempZipFile);
-			return new File(tempZipFile.getParentFile(), cookbook.getName() + "-master");
+			
+			String readableVersion = repo.getReadableVersion(cookbook, version);
+			File decompressedCookbook = new File(tempZipFile.getParentFile(), cookbook.getName() + "-" + readableVersion);
+			File tmpCookbook = new File(decompressedCookbook.getParentFile(), cookbook.getName() + "_" + readableVersion);
+			FileUtils.deleteDirectory(tmpCookbook);
+			if (!decompressedCookbook.renameTo(tmpCookbook))
+				throw new IOException("Could not rename folder " + decompressedCookbook + " to " + tmpCookbook );
+			return tmpCookbook;
 		} catch (FileNotFoundException e) {
 			if (connection != null){
 				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ".\nThe file " + connection.getURL().toString() + " could not be found.", e);
@@ -103,8 +115,6 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 		}
 		closeResources(fileInputStream, zipInputStream);
 		return targetDirectory;
-	
-	
 	}
 
 	private void closeResources(InputStream fileInputStream,

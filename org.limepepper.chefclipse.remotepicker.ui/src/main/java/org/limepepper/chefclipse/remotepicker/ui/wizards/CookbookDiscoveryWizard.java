@@ -311,7 +311,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	                }
 			    }
 			} catch (CoreException e) {
-				e.printStackTrace();
+				Activator.log(e);
 			}
 		}
 		return null;

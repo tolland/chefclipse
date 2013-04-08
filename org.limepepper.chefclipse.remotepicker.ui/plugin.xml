@@ -43,7 +43,7 @@
       	</menuContribution>
       	<menuContribution
              allPopups="true"
-             locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
             <menu
                   label="Compare With">
                <command
@@ -51,27 +51,49 @@
                      label="Origin cookbook (remote picker)">
                   <visibleWhen
                         checkEnabled="false">
-                    <count
-                          value="1">
-                    </count>
+					 <with variable="selection">
+         <and>
+            <iterate
+                  ifEmpty="false">
+               <or>
+                  <adapt
+                        type="org.limepepper.chefclipse.common.cookbook.CookbookVersion">
+                  </adapt>
+                  <adapt
+                        type="org.limepepper.chefclipse.model.CookbookFolder">
+                  </adapt>
+                  <adapt
+                        type="org.eclipse.core.resources.mapping.ResourceMapping">
+                     <test
+                           property="org.limepepper.chefclipse.isCookbook"
+                           value="true">
+                     </test>
+                  </adapt>
+               </or>
+            </iterate>
+            <count
+                  value="1">
+            </count>
+         </and>
+					 </with>
                   </visibleWhen>
                </command>
             </menu>
         </menuContribution>
-      	<menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+      	<menuContribution locationURI="popup:org.eclipse.ui.popup.any?before=additions">
             <command
                 label="Open Remote Picker Wizard"
                 commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
                 icon="icons/opscode_16.png">
                	<visibleWhen>
-			   		<iterate operator="and" ifEmpty="false">
+					<with variable="selection">
+			   		    <iterate operator="and" ifEmpty="false">
 			      			<adapt type="org.eclipse.core.resources.IProject">
-			      			<or>
 			                	<test property="org.eclipse.core.resources.projectNature" 
-			           	   			value="org.limepepper.chefclipse.common.ui.builder.ChefProjectNature"/>
-			               	</or>
+			           	   			value="org.limepepper.chefclipse.ChefProjectNature"/>
 			      			</adapt>
-			   		</iterate>
+			   		    </iterate>
+					</with>
         		</visibleWhen>
             </command>
         </menuContribution>

@@ -41,7 +41,7 @@ public class CatalogRegistry {
 				descriptor.setUrl(new URL(remoteRepository.getUri()));
 				descriptor.setIcon(ImageDescriptor.createFromURL(new URL(remoteRepository.getIcon())));
 			} catch (MalformedURLException e) {
-				e.printStackTrace();
+				Activator.log(e);
 			}
 			descriptor.setDescription(remoteRepository.getDescription());
 			catalogDescriptors.add(descriptor);

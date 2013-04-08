@@ -139,6 +139,7 @@ public final class CatalogDescriptor {
 		try {
 			return url1.toURI().equals(url2.toURI());
 		} catch (URISyntaxException e) {
+			Activator.log(e);
 			return false;
 		}
 	}

@@ -15,7 +15,9 @@ package org.limepepper.chefclipse.remotepicker.ui.handlers;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.compare.CompareConfiguration;
@@ -49,6 +51,7 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
@@ -60,11 +63,15 @@ import org.limepepper.chefclipse.model.CookbookFolder;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
+import org.limepepper.chefclipse.remotepicker.ui.Activator;
 
 /**
  * A two-way compare for arbitrary IResources.
  */
+@SuppressWarnings("restriction")
 public class ResourceCompareInput extends CompareEditorInput {
+
+	public static final String EXTERNAL_FILES = "External_Files";
 
 	private static final boolean NORMALIZE_CASE= true;
 
@@ -130,7 +137,9 @@ public class ResourceCompareInput extends CompareEditorInput {
 		@Override
 		protected IStructureComparator createChild(final IResource child) {
 			String name= child.getName();
-			if (CompareUIPlugin.getDefault().filter(name, child instanceof IContainer, false)) {
+			if (CompareUIPlugin.getDefault().filter(name, child instanceof IContainer, false)
+					|| CookbookRepositoryManager.COOKBOOKSOURCE.equalsIgnoreCase(child.getName())
+					|| ".cookbook".equalsIgnoreCase(child.getName())) {
 				return null;
 			}
 			return new FilteredBufferedResourceNode(child);
@@ -197,10 +206,18 @@ public class ResourceCompareInput extends CompareEditorInput {
 			return showCompareWithOtherResourceDialog(shell, s);
 		}
 
-		IResource[] selection = getResources((IStructuredSelection) s);
+		final IResource[] selection = getResources((IStructuredSelection) s);
+		if (selection.length == 1) {
+			shell.getDisplay().asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					MessageDialog.openInformation(shell, "Cannot compare with origin cookbook", "Cookbook " + selection[0].getName() + " was not installed from remote picker cookbook.");
+				}
+			});
+			return false;
+		}
 
-		// fThreeWay= selection.length == 3;
-		fThreeWay = false;
+		fThreeWay = selection.length == 3;
 
 		if (fThreeWay) {
 			// SelectAncestorDialog dialog =
@@ -211,9 +228,12 @@ public class ResourceCompareInput extends CompareEditorInput {
 			// }
 			//
 			// fAncestorResource= dialog.ancestorResource;
-			// fAncestor= getStructure(fAncestorResource);
-			// fLeftResource= dialog.leftResource;
-			// fRightResource= dialog.rightResource;
+			fAncestorResource= selection[2];
+			fAncestor = getStructure(fAncestorResource);
+			fLeftResource = selection[0];
+			fRightResource = selection[1];
+//			fLeftResource= dialog.leftResource;
+//			fRightResource= dialog.rightResource;
 		} else {
 			fAncestorResource= null;
 			fAncestor= null;
@@ -226,58 +246,78 @@ public class ResourceCompareInput extends CompareEditorInput {
 	}
 
 	private IResource[] getResources(final IStructuredSelection selection) {
-		IResource[] res = new IResource[3];
+		List<IResource> res = new ArrayList<IResource>(3);
 		Object selected = selection.getFirstElement();
 
 		ChefRepositoryManager repoManager = ChefRepositoryManager.INSTANCE;
 		CookbookRepositoryManager cookbookManager = CookbookRepositoryManager.getInstance();
 
 		if (selected instanceof IResource) {
-			res[0] = repoManager.getCookbookForResource((IResource) selected);
+			res.add(repoManager.getCookbookForResource((IResource) selected));
 		} else if (selected instanceof CookbookVersion) {
-			res[0] = repoManager.getResource((EObject) selected);
+			res.add(repoManager.getResource((EObject) selected));
 		} else if (selected instanceof CookbookFolder) {
-			res[0] = repoManager.getResource((EObject) selected);
+			res.add(((CookbookFolder) selected).getResource());
 		}
 
-		if (res[0] == null) {
-			return null;
+		if (res.size() == 0) {
+			throw new IllegalArgumentException("Could not get cookbook from selection : " + selection);
 		}
 
-		RemoteCookbook sourceCookbook = cookbookManager.getSourceCookbook(res[0]
+		//get installed version
+		RemoteCookbook sourceCookbook = cookbookManager.getSourceCookbook(res.get(0)
 				.getRawLocation().toFile());
-		if (sourceCookbook == null) {
-			return null;
+		if (sourceCookbook != null) {
+			try {
+				String installedVersion = sourceCookbook.getLatestVersion();
+				String latestVersion = sourceCookbook.getVersions().get(0);
+				
+				res.add(downloadCookbook(cookbookManager, sourceCookbook, latestVersion));
+	
+				if (!installedVersion.equals(latestVersion)) {
+					res.add(downloadCookbook(cookbookManager, sourceCookbook, installedVersion));
+				}
+			} catch (InstallCookbookException e) {
+				Activator.log(e);
+			} catch (CoreException e) {
+				Activator.log(e);
+			}
 		}
-		try {
-			File tmpCookbook = cookbookManager.downloadCookbook(sourceCookbook,
-					sourceCookbook.getRepositoryId());
+		return res.toArray(new IResource[0]);
+	}
 
-			IWorkspace ws = ResourcesPlugin.getWorkspace();
-			IProject project = ws.getRoot().getProject("External Files");
-			if (!project.exists()) {
-				project.create(null);
-			}
-			if (!project.isOpen()) {
-				project.open(null);
-			}
+	/**
+	 * @param cookbookManager
+	 * @param cookbook
+	 * @param version
+	 * @return
+	 * @throws InstallCookbookException
+	 * @throws CoreException
+	 */
+	protected IFolder downloadCookbook(CookbookRepositoryManager cookbookManager,
+			RemoteCookbook cookbook, String version) throws InstallCookbookException, CoreException {
+		File tmpCookbook = cookbookManager.downloadCookbook(cookbook, version,
+				cookbook.getRepositoryId());
 
-			IPath location = new Path(tmpCookbook.getAbsolutePath());
-			IFolder file = project.getFolder(location.lastSegment());
-			if (!file.exists()) {
-				file.createLink(location, IResource.NONE, null);
-			}
-
-			res[1] = file;
-		} catch (InstallCookbookException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (CoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		IWorkspace ws = ResourcesPlugin.getWorkspace();
+		IProject project = ws.getRoot().getProject(EXTERNAL_FILES);
+		if (!project.exists()) {
+			project.create(null);
+		}
+		if (!project.isOpen()) {
+			project.open(null);
+			project.setHidden(true);
+		} else {
+			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		}
 
-		return res;
+		IPath location = new Path(tmpCookbook.getAbsolutePath());
+		String v = cookbookManager.getReadableVersion(cookbook, version);
+		IFolder file = project.getFolder(cookbook.getName()+"_"+v);
+		if (!file.exists()) {
+			file.createLink(location, IResource.NONE, null);
+		}
+		return file;
 	}
 
 	private boolean showCompareWithOtherResourceDialog(final Shell shell, final ISelection s) {
@@ -435,10 +475,10 @@ public class ResourceCompareInput extends CompareEditorInput {
 			if (fThreeWay) {
 				String format= Utilities.getString("ResourceCompare.threeWay.title"); //$NON-NLS-1$
 				String ancestorLabel= fAncestorResource.getName();
-				title= MessageFormat.format(format, new String[] {ancestorLabel, leftLabel, rightLabel});
+				title= MessageFormat.format(format, ancestorLabel, leftLabel, rightLabel);
 			} else {
 				String format= Utilities.getString("ResourceCompare.twoWay.title"); //$NON-NLS-1$
-				title= MessageFormat.format(format, new String[] {leftLabel, rightLabel});
+				title= MessageFormat.format(format, leftLabel, rightLabel);
 			}
 			setTitle(title);
 
@@ -467,10 +507,10 @@ public class ResourceCompareInput extends CompareEditorInput {
 			if (fThreeWay) {
 				String format= Utilities.getString("ResourceCompare.threeWay.tooltip"); //$NON-NLS-1$
 				String ancestorLabel= fAncestorResource.getFullPath().makeRelative().toString();
-				return MessageFormat.format(format, new String[] {ancestorLabel, leftLabel, rightLabel});
+				return MessageFormat.format(format, ancestorLabel, leftLabel, rightLabel);
 			}
 			String format= Utilities.getString("ResourceCompare.twoWay.tooltip"); //$NON-NLS-1$
-			return MessageFormat.format(format, new String[] {leftLabel, rightLabel});
+			return MessageFormat.format(format, leftLabel, rightLabel);
 		}
 		// fall back
 		return super.getToolTipText();
@@ -479,7 +519,7 @@ public class ResourceCompareInput extends CompareEditorInput {
 	private String buildLabel(final IResource r) {
 		// for a linked resource in a hidden project use its local file system location
 		if (r.isLinked() && r.getProject().isHidden()) {
-			return r.getLocation().toString();
+			return r.getName();
 		}
 		String n= r.getFullPath().toString();
 		if (n.charAt(0) == IPath.SEPARATOR) {

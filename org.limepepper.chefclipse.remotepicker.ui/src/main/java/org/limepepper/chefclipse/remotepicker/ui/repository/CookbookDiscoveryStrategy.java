@@ -54,6 +54,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 				try {
 					fullPathString = new URL(resourceName);
 				} catch (MalformedURLException e) {
+					Activator.log(e);
 					return null;
 				}
 			}
@@ -128,7 +129,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 				Thread.sleep(400);
 				mon.worked(20);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				Activator.log(e);
 			}
 		}
 		mon.done();

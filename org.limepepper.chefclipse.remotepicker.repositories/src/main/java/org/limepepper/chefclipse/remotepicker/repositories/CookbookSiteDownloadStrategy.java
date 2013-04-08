@@ -25,7 +25,9 @@ import org.apache.commons.compress.archivers.ArchiveException;
 import org.apache.commons.compress.archivers.ArchiveStreamFactory;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -38,20 +40,21 @@ public class CookbookSiteDownloadStrategy implements
 		IDownloadCookbookStrategy {
 
 	private String repositoryURI;
+	private ICookbooksRepository repo;
 
-	public CookbookSiteDownloadStrategy(String repositoryURI){
-		
+	public CookbookSiteDownloadStrategy(String repositoryURI, ICookbooksRepository repo) {
+		this.repo = repo;
 		this.repositoryURI = repositoryURI;
 	}
 	/* (non-Javadoc)
 	 * @see org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy#downloadCookbook(org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook)
 	 */
 	@Override
-	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
+	public File downloadCookbook(RemoteCookbook cookbook, String version) throws InstallCookbookException {
 		
 		URLConnection connection = null;
 		try {
-			String latestVersion = cookbook.getLatestVersion();
+			String latestVersion = version;
             String lastVersion = latestVersion
                     .substring(latestVersion.lastIndexOf("/") + 1);
             String url = UriBuilder.fromUri(repositoryURI).path("cookbooks")
@@ -71,7 +74,11 @@ public class CookbookSiteDownloadStrategy implements
 			out.flush();
 			out.close();
 			File decompressedCookbook = decompressCookbook(tempZipFile);
-			return new File(decompressedCookbook, cookbook.getName());
+			File tmpCookbook = new File(decompressedCookbook.getParentFile(), cookbook.getName() + "_" + repo.getReadableVersion(cookbook, version));
+			FileUtils.deleteDirectory(tmpCookbook);
+			if (!decompressedCookbook.renameTo(tmpCookbook))
+				throw new IOException("Could not rename folder " + decompressedCookbook + " to " + tmpCookbook );
+			return tmpCookbook;
 		} catch (FileNotFoundException e) {
 			if (connection != null){
 				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ".\nThe file " + connection.getURL().toString() + " could not be found.", e);
@@ -95,8 +102,8 @@ public class CookbookSiteDownloadStrategy implements
 		try {
 			File unGzip = unGzip(compressedFile);
 			File outputDir = new File(absolutePath);
-			unTar(unGzip, outputDir);
-			return outputDir;
+			List<File> files = unTar(unGzip, outputDir);
+			return files.get(0);
 		} catch (ArchiveException e1) {
 			throw new IOException(e1.getMessage(), e1);
 		} 

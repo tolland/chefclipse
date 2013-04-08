@@ -34,6 +34,7 @@ import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
+import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.ui.wizards.CookbookCatalogPage.CookbookCatalogViewer;
 
@@ -96,13 +97,6 @@ public class CookbookDiscoveryItem<T extends CatalogItem> extends AbstractDiscov
 		checkbox.setText(" "); //$NON-NLS-1$
 		// help UI tests
 		checkbox.setData("connectorId", item.getId()); //$NON-NLS-1$
-		// FIXME
-		//		checkbox.addFocusListener(new FocusAdapter() {
-		//			@Override
-		//			public void focusGained(FocusEvent e) {
-		//				bodyScrolledComposite.showControl(this);
-		//			}
-		//		});
 		GridDataFactory.swtDefaults().align(SWT.CENTER, SWT.CENTER).applyTo(checkbox);
 
 		iconLabel = new Label(checkboxContainer, SWT.NONE);
@@ -158,7 +152,8 @@ public class CookbookDiscoveryItem<T extends CatalogItem> extends AbstractDiscov
         RemoteCookbook cookbookInfo = (RemoteCookbook) cookbookItem.getData();
         String latestVersion = cookbookInfo.getLatestVersion();
         if (latestVersion != null) {
-            return "Version " + latestVersion.replaceAll(".+?versions/", "").replace("_", ".");
+        	String v = CookbookRepositoryManager.getInstance().getReadableVersion(cookbookInfo, latestVersion);
+            return "Version " + v;
         } 
         return "";
     }

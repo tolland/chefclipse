@@ -28,6 +28,8 @@ import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientHandlerException;
@@ -41,6 +43,8 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
  *
  */
 public class CookbookSiteRepository implements ICookbooksRepository {
+	
+	static final Logger logger = LoggerFactory.getLogger(CookbookSiteRepository.class);
 	
 	private final class GetTaks implements Runnable {
 		private final int start;
@@ -62,13 +66,15 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 						String name = createCookbook(cookbookJson).getName();
 						cookbooks.add(getCookbook(name));
 					} catch (JSONException e) {
-						e.printStackTrace();
+						logger.error("Error getting cookbooks", e);
 					}
 				}
 			} catch (JSONException e1) {
-				e1.printStackTrace();
+				logger.error("Error getting cookbooks", e1);
 			} catch (ClientHandlerException e2) {
+				logger.error("Error getting cookbooks", e2);
 			} catch (UniformInterfaceException e3) {
+				logger.error("Error getting cookbooks", e3);
 			}
 		}
 	}
@@ -93,7 +99,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 		Client client = Client.create(config);
 		service = client.resource(getRepositoryURI());
 		
-		downloadCookbookStrategy = new CookbookSiteDownloadStrategy(REPOSITORY_URI);
+		downloadCookbookStrategy = new CookbookSiteDownloadStrategy(REPOSITORY_URI, this);
 	}
 
 	/**
@@ -125,9 +131,11 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			JSONObject json = getRestCookbooks(0, 1);
 			total = json.getInt("total");
 		} catch (JSONException e2) {
-			e2.printStackTrace();
+			logger.error("Error getting cookbooks", e2);
 		} catch (ClientHandlerException e2) {
+			logger.error("Error getting cookbooks", e2);
 		} catch (UniformInterfaceException e3) {
+			logger.error("Error getting cookbooks", e3);
 		}
 		do {
 			pool.submit(new GetTaks(start, cookbooks));
@@ -138,6 +146,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			pool.shutdown();
 			pool.awaitTermination(20, TimeUnit.MINUTES);
 		} catch (InterruptedException e) {
+			logger.error("Error getting cookbooks", e);
 		}
 		return list;
 	}
@@ -150,7 +159,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			cookbook.setDescription(cookbookJson.getString("cookbook_description"));
 			cookbook.setMaintainer(cookbookJson.getString("cookbook_maintainer"));
 		} catch (JSONException e) {
-			e.printStackTrace();
+			logger.error("Error getting cookbooks", e);
 		}
 		return cookbook;
 	}
@@ -207,9 +216,9 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			}
 			cookbook.getVersions().addAll(Arrays.asList(versions));
 		} catch (JSONException e) {
-			e.printStackTrace();
-		} catch (ParseException e1){
-			e1.printStackTrace();
+			logger.error("Error getting cookbooks", e);
+		} catch (ParseException e) {
+			logger.error("Error getting cookbooks", e);
 		}
 		return cookbook;
 	}
@@ -233,17 +242,25 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			int total = json.getInt("total");
 			if (total != repo.getCookbooks().size())
 				return true;
-		} catch (JSONException e1) {
-		} catch (ClientHandlerException e2) {
-		} catch (UniformInterfaceException e3) {
+		} catch (JSONException e) {
+			logger.error("Error checking isUpdated", e);
+		} catch (ClientHandlerException e) {
+			logger.error("Error checking isUpdated", e);
+		} catch (UniformInterfaceException e) {
+			logger.error("Error checking isUpdated", e);
 		}
 		return false;
 	}
 
 	@Override
-	public File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException {
-		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(cookbook);
+	public File downloadCookbook(RemoteCookbook cookbook, String version) throws InstallCookbookException {
+		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(cookbook, version);
 		return downloadedCookbook;
+	}
+
+	@Override
+	public String getReadableVersion(RemoteCookbook cookbook, String version) {
+		return version.replaceAll(".+?versions/", "").replace("_", ".");
 	}
 
 }

@@ -18,6 +18,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.mapping.ModelProvider;
 import org.eclipse.core.runtime.CoreException;
+import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.navigator.testers.ChefTester;
@@ -114,7 +115,8 @@ public class ChefModelProvider extends ModelProvider implements
         final IResource resource = delta.getResource();
         int flags = delta.getFlags();
 
-        if (resource != null) {
+        if (resource != null && resource.getProject() != null 
+        		&& resource.getProject().isNatureEnabled(ChefProjectNature.NATURE_ID)) {
 
             // seems to send an emtpy workspace notification and work down.
             if (resource instanceof IWorkspaceRoot) {

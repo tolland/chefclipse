@@ -3,16 +3,17 @@
  */
 package org.limepepper.chefclipse.remotepicker.test.api;
 
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.util.List;
 
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.repositories.CookbookSiteRepository;
-
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 /**
  * @author Guillermo Zunino
@@ -43,13 +44,14 @@ public class CookbookSiteRepositoryTest {
 		assertThat(result.getDescription(), equalTo("various apache server related resource provides (LWRP)"));
 		assertThat(result.getMaintainer(), equalTo("melezhik"));
 		assertThat(result.getLatestVersion(), equalTo("http://cookbooks.opscode.com/api/v1/cookbooks/apache/versions/0_0_5"));
+		assertThat(result.getVersions(), Matchers.hasItem("http://cookbooks.opscode.com/api/v1/cookbooks/apache/versions/0_0_5"));
 //		,"updated_at":"2012-03-13T13:46:24Z","created_at":"2011-11-08T13:52:21Z",
 	}
 	
 	@Test
 	public void testDownloadCookbook() throws InstallCookbookException {
 		RemoteCookbook result = repo.getCookbook("apache");
-		File downloadCookbook = repo.downloadCookbook(result);
+		File downloadCookbook = repo.downloadCookbook(result, result.getLatestVersion());
 		String tmpDirectory = System.getProperty("java.io.tmpdir");		
 		assertThat(downloadCookbook.getPath(), equalTo(tmpDirectory + "apache"));
 	}
@@ -60,4 +62,11 @@ public class CookbookSiteRepositoryTest {
         String latestVersion = result.getLatestVersion().replaceAll(".+?versions/", "").replace("_", ".");
         assertThat(latestVersion, equalTo("0.0.5"));
     }
+
+	@Test
+	public void testCookbookReadableVersion() throws InstallCookbookException {
+		RemoteCookbook result = repo.getCookbook("apache");
+		String v = repo.getReadableVersion(result, result.getLatestVersion());
+		assertThat(v, equalTo("0.0.5"));
+	}
 }

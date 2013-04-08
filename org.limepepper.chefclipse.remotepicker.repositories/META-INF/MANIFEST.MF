@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.limepepper.chefclipse.remotepicker.repositories;singlet
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.8.1",
  org.limepepper.chefclipse.remotepicker.api,
- com.sun.jersey.bundle;bundle-version="1.0.0"
+ com.sun.jersey.bundle;bundle-version="1.0.0",
+ org.limepepper.chefclipse.logger;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse.remotepicker.repositories

@@ -50,12 +50,21 @@ public interface ICookbooksRepository {
 	boolean isUpdated(RemoteRepository repo);
 	
 	/**
-	 * Downloads a {@link RemoteCookbook} on the local file system.
+	 * Downloads a specific version of {@link RemoteCookbook} on the local file system.
 	 * Possible on temporary location.
+	 * @param version a valid version for this cookbook.
 	 * @param remoteCookbook the cookbook to download.
 	 * @return The file representing the local copy of the cookbook.
 	 * @throws InstallCookbookException if {@link RemoteCookbook} cannot be downloaded.
 	 */
-	File downloadCookbook(RemoteCookbook remoteCookbook) throws InstallCookbookException;
+	File downloadCookbook(RemoteCookbook remoteCookbook, String version) throws InstallCookbookException;
+
+	/**
+	 * Returns a user friendly version number for the given version.
+	 * @param cookbook the RemoteCookbook
+	 * @param version a version number to translate
+	 * @return A string representing the version
+	 */
+	String getReadableVersion(RemoteCookbook cookbook, String version);
 
 }

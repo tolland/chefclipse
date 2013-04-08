@@ -13,20 +13,20 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookb
  *
  */
 public interface IDownloadCookbookStrategy {
-	
+
 	/**
 	 * Download the cookbook specified as parameter and returns the cookbook
 	 * root directory as a file.
-	 * @throws InstallCookbookException 
+	 * @throws InstallCookbookException
 	 **/
-	File downloadCookbook(RemoteCookbook cookbook) throws InstallCookbookException;
+	File downloadCookbook(RemoteCookbook cookbook, String version) throws InstallCookbookException;
 
 	/**
-	* Decompress a cookbook (compressed in a file) in a root hierarchy directory in the temp directory.
-	* This method should be called by downloadCookbook to decompress a file.
-	 * @throws IOException 
-	 * @throws InstallCookbookException 
-	**/
+	 * Decompress a cookbook (compressed in a file) in a root hierarchy directory in the temp directory.
+	 * This method should be called by downloadCookbook to decompress a file.
+	 * @throws IOException
+	 * @throws InstallCookbookException
+	 **/
 	File decompressCookbook(File compressedFile) throws IOException;
 
 }
