@@ -9,12 +9,22 @@ Require-Bundle: org.eclipse.core.runtime,
  org.slf4j.api;bundle-version="1.6.4",
  org.slf4j.log4j;bundle-version="1.6.4",
  org.junit;bundle-version="4.10.0",
- org.limepepper.chefclipse.common;bundle-version="0.1.0";visibility:=reexport
+ org.limepepper.chefclipse.common;bundle-version="0.1.0";visibility:=reexport,
+ org.limepepper.chefclipse.common.edit;bundle-version="0.1.0",
+ org.limepepper.chefclipse.common.editor;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: chefclipse.core,
+ org.eclipse.core.expressions,
  org.eclipse.core.resources,
- org.eclipse.swt.widgets
+ org.eclipse.core.resources.mapping,
+ org.eclipse.emf.edit.provider,
+ org.eclipse.swt.widgets,
+ org.limepepper.chefclipse.common.chefclient.provider,
+ org.limepepper.chefclipse.common.chefserver.provider,
+ org.limepepper.chefclipse.common.cookbook.provider,
+ org.limepepper.chefclipse.common.knife.provider,
+ org.limepepper.chefclipse.common.workstation.provider
 Export-Package: chefclipse.core;
   uses:="org.eclipse.core.runtime,
    org.eclipse.core.resources,
@@ -28,7 +38,10 @@ Export-Package: chefclipse.core;
    org.eclipse.core.runtime,
    org.eclipse.emf.ecore,
    org.limepepper.chefclipse.common.cookbook,
-   org.eclipse.core.resources"
+   org.eclipse.core.resources",
+ chefclipse.core.providers,
+ chefclipse.core.testers
 Bundle-ClassPath: lib/jackson-core-asl.jar,
  lib/jackson-mapper-asl.jar,
- .
+ .,
+ lib/org.eclipselabs.emfjson.jar

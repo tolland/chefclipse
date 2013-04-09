@@ -17,9 +17,8 @@ public class ChefPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "chefclipse.ui"; //$NON-NLS-1$
-	
-    static Logger                     logger    = LoggerFactory
-            .getLogger(ChefPlugin.class);
+
+	static Logger logger = LoggerFactory.getLogger(ChefPlugin.class);
 
 	// The shared instance
 	private static ChefPlugin plugin;
@@ -44,7 +43,7 @@ public class ChefPlugin extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		System.err.println("here");
+		log("creating the workspaceRoot will trigger a walk of each of the open projects");
 		ChefCore.create(ResourcesPlugin.getWorkspace().getRoot());
 	}
 
@@ -80,18 +79,17 @@ public class ChefPlugin extends AbstractUIPlugin {
 	public static ImageDescriptor getImageDescriptor(String path) {
 		return imageDescriptorFromPlugin(PLUGIN_ID, path);
 	}
-	
-    public static void log(CoreException e) {
-        logger.debug("exception was: {}", e);
-    }
 
-    public static void log(String string) {
-        logger.debug("exception was: {}", string);
-    }
+	public static void log(CoreException e) {
+		logger.debug("exception was: {}", e);
+	}
 
-    public static void debug(Object class1) {
-        logger.debug("exception was: {}", class1);
-    }
-	
-	
+	public static void log(String string) {
+		logger.debug("exception was: {}", string);
+	}
+
+	public static void debug(Object class1) {
+		logger.debug("exception was: {}", class1);
+	}
+
 }

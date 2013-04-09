@@ -1,16 +1,14 @@
 package chefclipse.core;
 
-public class ChefResource implements IChefResource {
+public class ChefResource implements IChefResource, IChefElement {
 
 	@Override
 	public boolean exists() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public chefclipse.core.IChefElement getParent() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

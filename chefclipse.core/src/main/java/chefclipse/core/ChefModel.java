@@ -12,39 +12,33 @@ import org.eclipse.core.runtime.IProgressMonitor;
 
 public class ChefModel extends Openable implements IChefModel {
 
+	public ChefModel(ChefModel parent) {
+		super(parent);
+		try {
+			buildStructure(null, null, null, null);
+		} catch (ChefModelException e) {
+			e.printStackTrace();
+		}
+	}
+
 	@Override
 	public IWorkspace getWorkspace() {
-		// TODO Auto-generated method stub
-		return null;
+		return ResourcesPlugin.getWorkspace();
 	}
 
 	@Override
 	public boolean exists() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
+	/**
+	 * parent of self...
+	 * 
+	 */
+	// @todo is this the correct way?
 	@Override
 	public IChefElement getParent() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	protected boolean buildStructure(IProgressMonitor pm, Map newElements,
-			IResource underlyingResource) /* throws JavaModelException */{
-
-		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot()
-				.getProjects();
-		int length = projects.length;
-		IChefElement[] children = new IChefElement[length];
-		int index = 0;
-		for (int i = 0; i < length; i++) {
-			IProject project = projects[i];
-			if (ChefProject.hasChefNature(project)) {
-				children[index++] = getChefProject(project);
-			}
-		}
-		return true;
+		return this;
 	}
 
 	/**
@@ -55,7 +49,7 @@ public class ChefModel extends Openable implements IChefModel {
 	 *                if the given resource is not one of an IProject, IFolder,
 	 *                or IFile.
 	 */
-	public IChefElement getChefProject(IResource resource) {
+	public IChefProject getChefProject(IResource resource) {
 		switch (resource.getType()) {
 		case IResource.FOLDER:
 			return new ChefProject(((IFolder) resource).getProject(), this);
@@ -70,9 +64,21 @@ public class ChefModel extends Openable implements IChefModel {
 	}
 
 	@Override
-	public IChefProject getChefProject(IProject project) {
-
-		return getChefProject(project);
+	protected boolean buildStructure(OpenableElementInfo info,
+			IProgressMonitor pm, Map newElements, IResource underlyingResource)
+			throws ChefModelException {
+		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot()
+				.getProjects();
+		int length = projects.length;
+		IChefElement[] children = new IChefElement[length];
+		int index = 0;
+		for (int i = 0; i < length; i++) {
+			IProject project = projects[i];
+			if (ChefProject.hasChefNature(project)) {
+				children[index++] = getChefProject(project);
+			}
+		}
+		return true;
 	}
 
 }

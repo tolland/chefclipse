@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.navigator
 Bundle-SymbolicName: org.limepepper.chefclipse.navigator;singleton:=true
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: org.limepepper.chefclipse.navigator.NavigatorActivator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources;bundle-version="3.8.0",

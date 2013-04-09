@@ -22,7 +22,6 @@ import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryWizard;
-import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -37,7 +36,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WizardNewProjectReferencePage;
-import chefclipse.core.builders.ChefProjectNature;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -46,13 +44,15 @@ import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.limepepper.chefclipse.remotepicker.ui.preferences.IRemotePickerPreferences;
 import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStrategy;
 
+import chefclipse.core.builders.ChefProjectNature;
+
 /**
  * A wizard for interacting with cookbooks repositories.
- *
+ * 
  * @author Sebastian Sampaoli
  */
 @SuppressWarnings("restriction")
-public class CookbookDiscoveryWizard extends DiscoveryWizard{
+public class CookbookDiscoveryWizard extends DiscoveryWizard {
 
 	private static final String INSTALL_COOKBOOKS = "Install Cookbooks";
 
@@ -67,10 +67,12 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 
 	private List<IProject> selectedProjects;
 
-	public CookbookDiscoveryWizard(Catalog catalog, CookbookCatalogConfiguration configuration) {
+	public CookbookDiscoveryWizard(Catalog catalog,
+			CookbookCatalogConfiguration configuration) {
 		super(catalog, configuration);
 		setWindowTitle(INSTALL_COOKBOOKS);
-		CookbookRepositoryManager repoManager = CookbookRepositoryManager.getInstance();
+		CookbookRepositoryManager repoManager = CookbookRepositoryManager
+				.getInstance();
 		setRepoManager(repoManager);
 	}
 
@@ -88,7 +90,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 			@Override
 			public void createControl(Composite parent) {
 				super.createControl(parent);
-				Control[] children = ((Composite)getControl()).getChildren();
+				Control[] children = ((Composite) getControl()).getChildren();
 				final Table checkboxTable = (Table) children[1];
 				setPageComplete(false);
 				checkboxTable.addSelectionListener(new SelectionListener() {
@@ -115,22 +117,24 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	}
 
 	/**
-	 * Select the default repository to be shown in the wizard. This default repository is chosen
-	 * from a preference page.
-	 *
+	 * Select the default repository to be shown in the wizard. This default
+	 * repository is chosen from a preference page.
+	 * 
 	 */
 	private void doDefaultCatalogSelection() {
 
 		if (getConfiguration().getCatalogDescriptor() == null) {
 
 			IPreferenceStore preferenceStore = Activator.getDefault()
-			        .getPreferenceStore();
-			String repositoryId = preferenceStore.getString(IRemotePickerPreferences.DEFAULT_REPOSITORY);
+					.getPreferenceStore();
+			String repositoryId = preferenceStore
+					.getString(IRemotePickerPreferences.DEFAULT_REPOSITORY);
 
-			List<CatalogDescriptor> catalogDescriptors = getConfiguration().getCatalogDescriptors();
+			List<CatalogDescriptor> catalogDescriptors = getConfiguration()
+					.getCatalogDescriptors();
 
 			for (CatalogDescriptor catalogDescriptor : catalogDescriptors) {
-				if (catalogDescriptor.getId().equals(repositoryId)){
+				if (catalogDescriptor.getId().equals(repositoryId)) {
 					getConfiguration().setCatalogDescriptor(catalogDescriptor);
 					return;
 				}
@@ -177,11 +181,12 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 							RemoteCookbook remoteCookbook = (RemoteCookbook) catalogItem
 									.getData();
 							File downloadCookbook = repoManager
-									.downloadCookbook(
-											remoteCookbook, remoteCookbook.getRepositoryId());
+									.downloadCookbook(remoteCookbook,
+											remoteCookbook.getRepositoryId());
 							for (IProject iProject : selectedProjects) {
-								repoManager.installCookbook(remoteCookbook, downloadCookbook, iProject
-										.getLocation().toString());
+								repoManager.installCookbook(remoteCookbook,
+										downloadCookbook, iProject
+												.getLocation().toString());
 							}
 							refreshProjects(selectedProjects);
 						} catch (InstallCookbookException e) {
@@ -214,16 +219,22 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	}
 
 	/**
-	 * Refresh the selected workspace projects after the installation of cookbooks to them.
-	 *
+	 * Refresh the selected workspace projects after the installation of
+	 * cookbooks to them.
+	 * 
 	 * @param selectedProjects
 	 */
 	private void refreshProjects(List<IProject> selectedProjects) {
 		for (IProject iProject : selectedProjects) {
 			try {
-				iProject.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+				iProject.refreshLocal(IResource.DEPTH_INFINITE,
+						new NullProgressMonitor());
 			} catch (CoreException e) {
-				Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, Status.ERROR, e.getMessage(), e));
+				Activator
+						.getDefault()
+						.getLog()
+						.log(new Status(Status.ERROR, Activator.PLUGIN_ID,
+								Status.ERROR, e.getMessage(), e));
 			}
 		}
 	}
@@ -234,8 +245,14 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 
 			@Override
 			public void run() {
-				MessageDialog.openError(activeShell, "Error while trying to install cookbook.", e.getMessage());
-				Activator.getDefault().getLog().log(new Status(Status.ERROR, Activator.PLUGIN_ID, Status.ERROR, e.getMessage(), e));
+				MessageDialog.openError(activeShell,
+						"Error while trying to install cookbook.",
+						e.getMessage());
+				Activator
+						.getDefault()
+						.getLog()
+						.log(new Status(Status.ERROR, Activator.PLUGIN_ID,
+								Status.ERROR, e.getMessage(), e));
 				setPerformFinishStatus(false);
 			}
 		});
@@ -247,22 +264,26 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	}
 
 	/**
-	 * Initialize the catalog to be shown and create the catalog items and categories.
+	 * Initialize the catalog to be shown and create the catalog items and
+	 * categories.
 	 */
 	void initializeCatalog() {
-		for (AbstractDiscoveryStrategy strategy : getCatalog().getDiscoveryStrategies()) {
+		for (AbstractDiscoveryStrategy strategy : getCatalog()
+				.getDiscoveryStrategies()) {
 			strategy.dispose();
 		}
 		getCatalog().getDiscoveryStrategies().clear();
 		if (getConfiguration().getCatalogDescriptor() != null) {
 			getCatalog().getDiscoveryStrategies().add(
-					new CookbookDiscoveryStrategy(getConfiguration().getCatalogDescriptor()));
+					new CookbookDiscoveryStrategy(getConfiguration()
+							.getCatalogDescriptor()));
 		}
 	}
 
 	/**
-	 * Can perform the installation if at least one project exists in the workspace, or the user has selected
-	 * projects in the next project selection page.
+	 * Can perform the installation if at least one project exists in the
+	 * workspace, or the user has selected projects in the next project
+	 * selection page.
 	 */
 	@Override
 	public boolean canFinish() {
@@ -297,19 +318,19 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 		return false;
 	}
 
-	private ArrayList<IProject> getProjectWithChefclipseNature(IProject[] projects) {
+	private ArrayList<IProject> getProjectWithChefclipseNature(
+			IProject[] projects) {
 		for (IProject iProject : projects) {
 			IProjectNature nature;
 			try {
-			    if (iProject.isOpen()) {
-			        nature = iProject
-	                        .getNature(ChefProjectNature.NATURE_ID);
-	                if (nature != null) {
-	                    ArrayList<IProject> projectWithChefclipseNature = new ArrayList<IProject>();
-	                    projectWithChefclipseNature.add(iProject);
-	                    return projectWithChefclipseNature;
-	                }
-			    }
+				if (iProject.isOpen()) {
+					nature = iProject.getNature(ChefProjectNature.NATURE_ID);
+					if (nature != null) {
+						ArrayList<IProject> projectWithChefclipseNature = new ArrayList<IProject>();
+						projectWithChefclipseNature.add(iProject);
+						return projectWithChefclipseNature;
+					}
+				}
 			} catch (CoreException e) {
 				e.printStackTrace();
 			}
@@ -318,31 +339,33 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	}
 
 	private List<IProject> getSelectedProjectFromPackageExplorer() {
-		ISelectionService service = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService();
-        IStructuredSelection selection = (IStructuredSelection) service
-                .getSelection("org.eclipse.jdt.ui.PackageExplorer");
-        if (selection != null){
-        	Object firstElement = selection.getFirstElement();
-        	if (firstElement == null){
-        		return null;
-        	}
-        	IProject project = null;
-        	if (firstElement instanceof IJavaProject){
-        		project = ((IJavaProject) firstElement).getProject();
-        	} else if (firstElement instanceof IProject){
-        		project = (IProject) firstElement;
-        	} else {
-        		return null;
-        	}
-            if (project != null){
-            	ArrayList<IProject> projectFromPackageExplorer = new ArrayList<IProject>();
-            	projectFromPackageExplorer.add(project);
-            	return projectFromPackageExplorer;
-            }
-        }
-        return null;
+		ISelectionService service = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getSelectionService();
+		IStructuredSelection selection = (IStructuredSelection) service
+				.getSelection("org.eclipse.jdt.ui.PackageExplorer");
+		if (selection != null) {
+			Object firstElement = selection.getFirstElement();
+			if (firstElement == null) {
+				return null;
+			}
+			IProject project = null;
+			/*
+			 * if (firstElement instanceof IJavaProject){ project =
+			 * ((IJavaProject) firstElement).getProject(); } else
+			 */
+			if (firstElement instanceof IProject) {
+				project = (IProject) firstElement;
+			} else {
+				return null;
+			}
+			if (project != null) {
+				ArrayList<IProject> projectFromPackageExplorer = new ArrayList<IProject>();
+				projectFromPackageExplorer.add(project);
+				return projectFromPackageExplorer;
+			}
+		}
+		return null;
 	}
-
 
 	/**
 	 * @return the repoManager
@@ -352,7 +375,8 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard{
 	}
 
 	/**
-	 * @param repoManager the repoManager to set
+	 * @param repoManager
+	 *            the repoManager to set
 	 */
 	public void setRepoManager(CookbookRepositoryManager repoManager) {
 		this.repoManager = repoManager;

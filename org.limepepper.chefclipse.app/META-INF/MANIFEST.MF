@@ -33,9 +33,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface,
  org.eclipse.ui.workbench,
  org.slf4j.log4j;bundle-version="1.6.4",
- chefclipse.ui;bundle-version="0.1.0"
+ chefclipse.ui;bundle-version="0.1.0",
+ org.eclipse.equinox.p2.operations;bundle-version="2.2.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
-Import-Package: org.eclipse.equinox.p2.operations
 Bundle-ActivationPolicy: lazy

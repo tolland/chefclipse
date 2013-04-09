@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Utils
-Bundle-SymbolicName: org.limepepper.chefclipse.common.utils;singleton:=true
-Bundle-Version: 0.1.0.qualifier
-Fragment-Host: org.limepepper.chefclipse.common;bundle-version="0.1.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.limepepper.chefclipse.tools
-Bundle-Vendor: %providerName

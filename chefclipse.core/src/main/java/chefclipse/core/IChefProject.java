@@ -1,6 +1,7 @@
 package chefclipse.core;
 
 import org.eclipse.core.resources.IProject;
+import org.limepepper.chefclipse.common.workstation.Repository;
 
 /**
  * 
@@ -12,5 +13,7 @@ import org.eclipse.core.resources.IProject;
 public interface IChefProject extends IChefElement, IOpenable {
 
 	IProject getProject();
+
+	Repository getRepository();
 
 }

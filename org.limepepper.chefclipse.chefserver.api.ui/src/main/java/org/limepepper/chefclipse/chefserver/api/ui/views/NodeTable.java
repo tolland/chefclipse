@@ -31,7 +31,9 @@ import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
-import org.limepepper.chefclipse.navigator.testers.ChefTester;
+
+import chefclipse.core.testers.ChefTester;
+
 
 public class NodeTable extends Composite {
 	

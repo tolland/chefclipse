@@ -2,7 +2,7 @@
  */
 package chefclipse.core;
 
-import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 
 /**
@@ -16,7 +16,8 @@ import org.eclipse.core.resources.IWorkspace;
  */
 public interface IChefModel extends IChefElement {
 
-	public IChefProject getChefProject(IProject project);
+	public IChefProject getChefProject(IResource project);
+
 	IWorkspace getWorkspace();
 
 } // ChefModel

@@ -133,7 +133,7 @@
             id="chefclipse.navigatorContent"
             labelProvider="chefclipse.internal.ui.navigator.ChefNavigatorLabelProvider"
             name="name"
-            priority="highest">
+            priority="higher">
          <triggerPoints>
             <or>
                <instanceof
@@ -145,5 +145,77 @@
             </or></triggerPoints>
       </navigatorContent>
    </extension>
+
+
+<!-- =================================================================================== -->
+<!-- the perspective stuff  -->
+<!-- =================================================================================== -->
+
+
+<extension
+         point="org.eclipse.ui.decorators">
+   <decorator
+         adaptable="true"
+         icon="icons/16x16.png"
+         id="chefclipse.decorators.projectdecorator"
+         label="%ChefProjectDecorator.name"
+         lightweight="true"
+         location="REPLACE"
+         state="true">
+         <enablement>
+            <and>
+            	<objectClass name="org.eclipse.core.resources.IProject"/>
+             <objectState
+                   name="nature"
+                   value="chefclipse.chefnature">
+             </objectState>
+             <objectState
+                   name="name"
+                   value="badger">
+             </objectState>
+            </and>
+         </enablement>
+      </decorator>
+ </extension>
+ 
+ <!-- =================================================================================== -->
+<!-- sort the items in the CNF, put the repo virtual object at the top  -->
+<!-- =================================================================================== -->
+ 
+ 
+<extension  
+  point="org.eclipse.ui.navigator.navigatorContent">
+ <navigatorContent
+       id="chefclipse.ui.navigatorContent1"
+       name="name"
+       sortOnly="true">
+    <commonSorter
+          class="chefclipse.internal.ui.navigator.ChefResourceExtensionSorter"
+          id="chefclipse.ui.defaultSorter">
+       <parentExpression>
+          <or>
+             <instanceof
+                   value="org.eclipse.core.resources.IWorkspaceRoot">
+             </instanceof>
+             <instanceof
+                   value="org.eclipse.core.resources.IProject">
+             </instanceof>
+             <instanceof
+                   value="org.eclipse.core.resources.IResource">
+             </instanceof>
+             <instanceof
+                   value="org.eclipse.core.resources.IFolder">
+             </instanceof>
+             <instanceof
+                   value="org.eclipse.core.resources.IFile">
+             </instanceof>
+             <instanceof
+                   value="org.limepepper.chefclipse.common.workstation.Repository">
+             </instanceof>
+          </or>
+       </parentExpression>
+    </commonSorter>
+ </navigatorContent>
+</extension>
 
 </plugin>

@@ -74,7 +74,6 @@
       <import plugin="ch.qos.logback.classic"/>
       <import plugin="org.limepepper.chefclipse.common" version="0.1.0" match="compatible"/>
       <import plugin="org.limepepper.chefclipse.api" version="0.1.0" match="compatible"/>
-      <import plugin="org.limepepper.chefclipse.common.ui" version="0.1.0" match="compatible"/>
       <import plugin="org.limepepper.chefclipse.remotepicker.api" version="0.1.0" match="compatible"/>
       <import plugin="org.limepepper.chefclipse.preferences.api" version="0.1.0" match="compatible"/>
       <import plugin="org.junit" version="4.10.0" match="greaterOrEqual"/>
@@ -120,13 +119,6 @@
 
    <plugin
          id="org.limepepper.chefclipse.graphviewer"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.limepepper.chefclipse.common.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

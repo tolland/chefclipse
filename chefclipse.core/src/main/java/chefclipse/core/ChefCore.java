@@ -8,6 +8,8 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
 
+import chefclipse.core.managers.ChefModelManager;
+
 // copied from org.eclipse.jdt.JavaCore
 
 /**
@@ -82,44 +84,6 @@ public class ChefCore extends Plugin {
 		return ChefModelManager.getChefModelManager().getChefModel();
 	}
 
-	public static ChefResource create(IResource resource) {
-
-		/*
-		 * try { if (resource instanceof IProject) {
-		 * 
-		 * for (IResource member : ((IProject) resource).members()) {
-		 * ChefResource child = create(member);
-		 * //eObject.getMembers().add(child); } return eObject; } else if
-		 * (resource instanceof IFolder) { ChefFolder eObject =
-		 * ModelFactory.eINSTANCE.createChefFolder();
-		 * eObject.setResource(resource); for (IResource member : ((IFolder)
-		 * resource).members()) { ChefResource child = create(member);
-		 * eObject.getMembers().add(child); } return eObject; } else if
-		 * (resource instanceof IFile) { ChefFile eObject =
-		 * ModelFactory.eINSTANCE.createChefFile();
-		 * eObject.setResource(resource); return eObject; } } catch
-		 * (CoreException e) { Activator.log(e.getMessage());
-		 * 
-		 * }
-		 */
-		return null;
-	}
-
-	public static Object createCookbook(IFolder resource) {
-
-		/*
-		 * try { if (resource instanceof IFolder) { CookbookFolder eObject =
-		 * ModelFactory.eINSTANCE.createCookbookFolder();
-		 * eObject.setResource(resource); for (IResource member : ((IFolder)
-		 * resource).members()) { ChefResource child = create(member);
-		 * eObject.getMembers().add(child); } return eObject; } } catch
-		 * (CoreException e) { Activator.log(e.getMessage());
-		 * 
-		 * }
-		 */
-		return null;
-	}
-
 	/*
 	 * (non-Javadoc) Shutdown the JavaCore plug-in. <p> De-registers the
 	 * JavaModelManager as a resource changed listener and save participant. <p>
@@ -149,6 +113,22 @@ public class ChefCore extends Plugin {
 		super.start(context);
 		ChefModelManager.getChefModelManager().startup();
 		System.err.println("this is a test");
+	}
+
+	public static Object create(IResource resource) {
+
+		switch (resource.getType()) {
+		case IResource.FOLDER:
+			return create((IFolder) resource);
+		case IResource.FILE:
+			return create((IFile) resource);
+		case IResource.PROJECT:
+			return create((IProject) resource);
+		default:
+			throw new IllegalArgumentException(
+					"Messages.element_invalidResourceForProject");
+		}
+
 	}
 
 }

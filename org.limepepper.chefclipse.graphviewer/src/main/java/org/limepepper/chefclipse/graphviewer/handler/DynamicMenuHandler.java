@@ -15,7 +15,8 @@ import org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor;
 import org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditorInput;
 import org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditor;
 import org.limepepper.chefclipse.graphviewer.ui.DependencyGraphEditorInput;
-import org.limepepper.chefclipse.model.CookbookFolder;
+
+import chefclipse.core.CookbookFolder;
 
 public class DynamicMenuHandler extends AbstractHandler {
 
