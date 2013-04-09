@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+<!-- =================================================================================== -->
+<!-- adapter factory to allow the eIDE objects to be mapped to the ModelObjects	-->
+<!-- this block contains the m... -->
+<!-- =================================================================================== -->
+
+
+      <extension point="org.eclipse.core.runtime.adapters">
+         <factory 
+            class="chefclipse.internal.ui.ChefAdapterFactory" 
+            adaptableType="org.eclipse.core.resources.IResource">
+            <adapter type="chefclipse.core.ChefResource"/>
+         </factory>
+      </extension>
+
+<!-- =================================================================================== -->
+<!-- This is the dynamic menu  -->
+<!-- apparently support for dynamic menus is only new to e4 as of 8/Apr -->
+<!-- =================================================================================== -->
+
+   <extension
+         point="org.eclipse.ui.menus">
+
+   <menuContribution
+            allPopups="true"
+            locationURI="popup:chefclipse.navigatorview?after=additions">
+        <menu label="Chefclipse Menu 2"
+               mnemonic="C"
+               id="chefclipse.menus.contextgroup">
+         <dynamic
+               class="chefclipse.ui.menu.ContributionItemDynamic"
+               id="chefclipse.menu.dynamic">
+        <visibleWhen checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate>
+                     <or>
+                        <adapt
+                              type="org.eclipse.core.resources.IResource">
+                        </adapt>
+                     </or>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </dynamic>
+         </menu>
+      </menuContribution>
+   </extension>
+
+<!-- =================================================================================== -->
+<!-- the navigator content  -->
+<!-- =================================================================================== -->
+
+
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            name="Chefclipse Project Navigator"
+            icon="icons/sample.gif"
+            class="org.eclipse.ui.navigator.CommonNavigator"
+            id="chefclipse.navigatorview">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="chefclipse.navigatorview">
+         <includes>
+       	     <contentExtension pattern="chefclipse.navigatorContent" />	
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resourceContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.filters.*">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.linkHelper">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.workingSets">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="chefclipse.perspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.navigator.ProjectExplorer"
+               relationship="stack"
+               id="chefclipse.navigatorview">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+
+<!-- =================================================================================== -->
+<!-- the perspective stuff  -->
+<!-- =================================================================================== -->
+
+
+
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="chefclipse.ui.perspectives.ChefPerspectiveFactory"
+            icon="icons/32x32.png"
+            id="chefclipse.perspective"
+            name="Chef">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="chefclipse.perspective">
+         <showInPart
+               id="org.eclipse.ui.navigator.ProjectExplorer">
+         </showInPart>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="chefclipse.internal.ui.navigator.ChefNavigatorContentProvider"
+            id="chefclipse.navigatorContent"
+            labelProvider="chefclipse.internal.ui.navigator.ChefNavigatorLabelProvider"
+            name="name"
+            priority="highest">
+         <triggerPoints>
+            <or>
+               <instanceof
+                     value="org.eclipse.core.resources.IProject">
+               </instanceof>
+               <instanceof
+                     value="org.eclipse.core.resources.IWorkspaceRoot">
+               </instanceof>
+            </or></triggerPoints>
+      </navigatorContent>
+   </extension>
+
+</plugin>

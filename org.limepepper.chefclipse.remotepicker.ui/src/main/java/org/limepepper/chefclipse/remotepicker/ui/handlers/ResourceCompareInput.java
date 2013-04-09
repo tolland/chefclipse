@@ -55,11 +55,11 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
-import org.limepepper.chefclipse.model.CookbookFolder;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
+
+import chefclipse.core.managers.ChefRepositoryManager;
 
 /**
  * A two-way compare for arbitrary IResources.
@@ -236,9 +236,9 @@ public class ResourceCompareInput extends CompareEditorInput {
 			res[0] = repoManager.getCookbookForResource((IResource) selected);
 		} else if (selected instanceof CookbookVersion) {
 			res[0] = repoManager.getResource((EObject) selected);
-		} else if (selected instanceof CookbookFolder) {
-			res[0] = repoManager.getResource((EObject) selected);
-		}
+		} //else if (selected instanceof CookbookFolder) {
+	//		res[0] = repoManager.getResource((EObject) selected);
+		//}
 
 		if (res[0] == null) {
 			return null;

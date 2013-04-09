@@ -58,12 +58,12 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 		URLConnection connection = null;
 		try {
 			String latestVersion = cookbook.getLatestVersion();
-            String lastVersion = latestVersion
-                    .substring(latestVersion.lastIndexOf("/") + 1);
-            String url = UriBuilder.fromUri(repositoryURI).path("cookbooks")
-                    .path(cookbook.getName()).path("versions").path(lastVersion).path("downloads")
-                    .build().toString();
-            URL cookbookURL = new URL(url);
+			String lastVersion = latestVersion.substring(latestVersion
+					.lastIndexOf("/") + 1);
+			String url = UriBuilder.fromUri(repositoryURI).path("cookbooks")
+					.path(cookbook.getName()).path("versions")
+					.path(lastVersion).path("downloads").build().toString();
+			URL cookbookURL = new URL(url);
 			connection = cookbookURL.openConnection();
 			InputStream stream = connection.getInputStream();
 			BufferedInputStream in = new BufferedInputStream(stream);
@@ -80,6 +80,7 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 			out.flush();
 			out.close();
 			File decompressedCookbook = decompressCookbook(tempZipFile);
+			in.close();
 			return new File(decompressedCookbook, cookbook.getName());
 		} catch (FileNotFoundException e) {
 			if (connection != null) {
@@ -168,6 +169,8 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 					// LOG.info(String.format("Attempting to create output directory %s.",
 					// outputFile.getAbsolutePath()));
 					if (!outputFile.mkdirs()) {
+						is.close();
+						debInputStream.close();
 						throw new IllegalStateException(String.format(
 								"Couldn't create directory %s.",
 								outputFile.getAbsolutePath()));
@@ -178,6 +181,8 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 				// outputFile.getAbsolutePath()));
 				if (!outputFile.getParentFile().exists()) {
 					if (!outputFile.getParentFile().mkdirs()) {
+						is.close();
+						debInputStream.close();
 						throw new IllegalStateException(String.format(
 								"Couldn't create directory %s.",
 								outputFile.getAbsolutePath()));
@@ -191,7 +196,7 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 			untaredFiles.add(outputFile);
 		}
 		debInputStream.close();
-
+		is.close();
 		return untaredFiles;
 	}
 

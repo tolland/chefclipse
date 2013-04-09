@@ -44,8 +44,6 @@ import org.limepepper.chefclipse.REST.CookbookListVersionResp;
 import org.limepepper.chefclipse.REST.CookbookMetadata;
 import org.limepepper.chefclipse.REST.CookbookVersionResp;
 import org.limepepper.chefclipse.REST.RESTFactory;
-import org.limepepper.chefclipse.REST.RoleListResp;
-import org.limepepper.chefclipse.REST.RoleResp;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Environment;

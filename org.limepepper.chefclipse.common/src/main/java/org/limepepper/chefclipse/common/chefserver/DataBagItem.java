@@ -22,29 +22,29 @@ import org.limepepper.chefclipse.NamedObject;
  */
 public interface DataBagItem extends NamedObject {
     /**
-     * Returns the value of the '<em><b>Data Bag</b></em>' reference.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Data Bag</b></em>' reference.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Data Bag</em>' reference isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Data Bag</em>' reference.
-     * @see #setDataBag(DataBag)
-     * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBagItem_DataBag()
-     * @model required="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Data Bag</em>' reference.
+	 * @see #setDataBag(DataBag)
+	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBagItem_DataBag()
+	 * @model required="true"
+	 * @generated
+	 */
     DataBag getDataBag();
 
     /**
-     * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getDataBag <em>Data Bag</em>}' reference.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getDataBag <em>Data Bag</em>}' reference.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Data Bag</em>' reference.
-     * @see #getDataBag()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Data Bag</em>' reference.
+	 * @see #getDataBag()
+	 * @generated
+	 */
     void setDataBag(DataBag value);
 
 } // DataBagItem

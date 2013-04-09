@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.common.chefserver.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 /**
@@ -15,14 +14,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  */
 public class ChefserverResourceImpl extends XMIResourceImpl {
     /**
-     * Creates an instance of the resource.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param uri the URI of the new resource.
-     * @generated
-     */
+	 * @param uri the URI of the new resource.
+	 * @generated
+	 */
     public ChefserverResourceImpl(URI uri) {
-        super(uri);
-    }
+		super(uri);
+	}
 
 } //ChefserverResourceImpl

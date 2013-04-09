@@ -3,9 +3,6 @@
 package org.limepepper.chefclipse.common.workstation.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.common.workstation.RolesFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
@@ -18,34 +15,24 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  *
  * @generated
  */
-public class RolesFolderImpl extends EObjectImpl implements RolesFolder {
+public class RolesFolderImpl extends WorkstationFolderImpl implements RolesFolder {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public RolesFolderImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return WorkstationPackage.Literals.ROLES_FOLDER;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return WorkstationPackage.Literals.ROLES_FOLDER;
+	}
 
 } //RolesFolderImpl

@@ -37,7 +37,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WizardNewProjectReferencePage;
-import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
+import chefclipse.core.builders.ChefProjectNature;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;

@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.Cookbook;
 
@@ -25,68 +23,68 @@ import org.limepepper.chefclipse.Cookbook;
  */
 public class CookbookImpl extends EObjectImpl implements Cookbook {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.COOKBOOK;
-    }
+		return ChefclipsePackage.Literals.COOKBOOK;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getJson_class() {
-        return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setJson_class(String newJson_class) {
-        eSet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, newJson_class);
-    }
+		eSet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, newJson_class);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getChef_type() {
-        return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setChef_type(String newChef_type) {
-        eSet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, newChef_type);
-    }
+		eSet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, newChef_type);
+	}
 
 } //CookbookImpl

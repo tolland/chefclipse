@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.common.knife.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
 
@@ -20,32 +18,32 @@ import org.limepepper.chefclipse.common.knife.KnifeSearch;
  */
 public class KnifeSearchImpl extends EObjectImpl implements KnifeSearch {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public KnifeSearchImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return KnifePackage.Literals.KNIFE_SEARCH;
-    }
+		return KnifePackage.Literals.KNIFE_SEARCH;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //KnifeSearchImpl

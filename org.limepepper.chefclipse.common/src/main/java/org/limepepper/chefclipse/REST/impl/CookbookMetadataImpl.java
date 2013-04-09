@@ -3,11 +3,8 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.REST.CookbookMetadata;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -29,88 +26,88 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class CookbookMetadataImpl extends EObjectImpl implements CookbookMetadata {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookMetadataImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return RESTPackage.Literals.COOKBOOK_METADATA;
-    }
+		return RESTPackage.Literals.COOKBOOK_METADATA;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getMaintainer() {
-        return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, true);
-    }
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setMaintainer(String newMaintainer) {
-        eSet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, newMaintainer);
-    }
+		eSet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, newMaintainer);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<String> getPlatforms() {
-        return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__PLATFORMS, true);
-    }
+		return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__PLATFORMS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getVersion() {
-        return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, true);
-    }
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setVersion(String newVersion) {
-        eSet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, newVersion);
-    }
+		eSet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, newVersion);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<String> getDependencies() {
-        return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__DEPENDENCIES, true);
-    }
+		return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__DEPENDENCIES, true);
+	}
 
 } //CookbookMetadataImpl

@@ -5,9 +5,7 @@ package org.limepepper.chefclipse.impl;
 import java.net.URL;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.SandboxedObject;
 
@@ -26,50 +24,50 @@ import org.limepepper.chefclipse.SandboxedObject;
  */
 public class SandboxedObjectImpl extends EObjectImpl implements SandboxedObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public SandboxedObjectImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.SANDBOXED_OBJECT;
-    }
+		return ChefclipsePackage.Literals.SANDBOXED_OBJECT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public URL getUrl() {
-        return (URL)eGet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, true);
-    }
+		return (URL)eGet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setUrl(URL newUrl) {
-        eSet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, newUrl);
-    }
+		eSet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, newUrl);
+	}
 
 } //SandboxedObjectImpl

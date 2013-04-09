@@ -35,7 +35,8 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.StatusUtil;
 import org.eclipse.ui.internal.ide.application.DelayedEventsProcessor;
 import org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor;
-import org.limepepper.chefclipse.ui.perspective.ChefPerspectiveFactory;
+
+import chefclipse.ui.perspectives.ChefPerspectiveFactory;
 
 public class Application implements IApplication, IExecutableExtension {
 
@@ -43,13 +44,9 @@ public class Application implements IApplication, IExecutableExtension {
      * The name of the folder containing metadata information for the workspace.
      */
     public static final String   METADATA_FOLDER         = ".metadata";                    //$NON-NLS-1$
-
     private static final String  VERSION_FILENAME        = "version.ini";                  //$NON-NLS-1$
-
     private static final String  WORKSPACE_VERSION_KEY   = "org.eclipse.core.runtime";     //$NON-NLS-1$
-
     private static final String  WORKSPACE_VERSION_VALUE = "1";                            //$NON-NLS-1$
-
     private static final String  PROP_EXIT_CODE          = "eclipse.exitcode";             //$NON-NLS-1$
 
     /**

@@ -69,7 +69,7 @@ public class ChefRepositoryWizardPage extends WizardPage {
 			return;
 		}
 		
-		updateStatus(null);
+		updateStatus("is good!");
 	}
 	
 	private void handleLocationBrowse() {
@@ -83,7 +83,8 @@ public class ChefRepositoryWizardPage extends WizardPage {
 	
 	private void updateStatus(String message) {
 		setErrorMessage(message);
-		setPageComplete(message == null);
+		setPageComplete(message != null);
+		
 	}
 			
 	public String getLocationPath() {

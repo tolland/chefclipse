@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+<!-- =================================================================================== -->
+<!-- This is the chefclipse code, the above is mostly remainder of the example, @todo migrate down	-->
+<!-- this block contains the model mappings and providers, and the builder and nature -->
+<!-- =================================================================================== -->
+
+
+
+   <extension
+         id="chefclipse.chefnature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="chefclipse.core.builders.ChefProjectNature">
+         </run>
+      </runtime>
+   </extension>
+</plugin>

@@ -3,6 +3,12 @@
  */
 package org.limepepper.chefclipse.remotepicker.test.api;
 
+import static org.hamcrest.Matchers.both;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
+
 import java.io.File;
 import java.util.List;
 
@@ -10,9 +16,6 @@ import org.junit.Test;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.repositories.CookbookSiteRepository;
-
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
 
 /**
  * @author Guillermo Zunino

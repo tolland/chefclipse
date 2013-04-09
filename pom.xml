@@ -72,7 +72,6 @@
         <!-- app bundles -->
         <module>org.limepepper.chefclipse.app.feature</module>
         <module>org.limepepper.chefclipse.app</module>
-        <module>org.limepepper.chefclipse.common.ui</module>
         <module>org.limepepper.chefclipse.utils</module>
         <module>org.limepepper.chefclipse.editors.cookbook</module>
         <module>org.limepepper.chefclipse.graphviewer</module>
@@ -125,6 +124,17 @@
             <extensions>true</extensions>
           </plugin>
 
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>docs</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
@@ -138,8 +148,9 @@
       </build>
     </profile>
 
+
     <profile>
-      <id>profile-2</id>
+      <id>releng</id>
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
@@ -439,4 +450,10 @@
       </extension>
     </extensions>
   </build>
+  <organization>
+    <name>Lime Pepper Ltd</name>
+    <url>http://www.limepepper.co.uk</url>
+  </organization>
+  <name>Chefclipse</name>
+  <url>https://github.com/limepepper/chefclipse</url>
 </project>

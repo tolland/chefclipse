@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -25,45 +24,45 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface VersionUrl extends EObject {
     /**
-     * Returns the value of the '<em><b>Url</b></em>' attribute.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Url</em>' attribute isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Url</em>' attribute.
-     * @see #setUrl(String)
-     * @see org.limepepper.chefclipse.ChefclipsePackage#getVersionUrl_Url()
-     * @model required="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Url</em>' attribute.
+	 * @see #setUrl(String)
+	 * @see org.limepepper.chefclipse.ChefclipsePackage#getVersionUrl_Url()
+	 * @model required="true"
+	 * @generated
+	 */
     String getUrl();
 
     /**
-     * Sets the value of the '{@link org.limepepper.chefclipse.VersionUrl#getUrl <em>Url</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link org.limepepper.chefclipse.VersionUrl#getUrl <em>Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @param value the new value of the '<em>Url</em>' attribute.
-     * @see #getUrl()
-     * @generated
-     */
+	 * @param value the new value of the '<em>Url</em>' attribute.
+	 * @see #getUrl()
+	 * @generated
+	 */
     void setUrl(String value);
 
     /**
-     * Returns the value of the '<em><b>Versions</b></em>' reference list.
-     * The list contents are of type {@link org.limepepper.chefclipse.URLEntryTest}.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Versions</b></em>' reference list.
+	 * The list contents are of type {@link org.limepepper.chefclipse.URLEntryTest}.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Versions</em>' reference list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Versions</em>' reference list.
-     * @see org.limepepper.chefclipse.ChefclipsePackage#getVersionUrl_Versions()
-     * @model required="true"
-     * @generated
-     */
+	 * @return the value of the '<em>Versions</em>' reference list.
+	 * @see org.limepepper.chefclipse.ChefclipsePackage#getVersionUrl_Versions()
+	 * @model required="true"
+	 * @generated
+	 */
     EList<URLEntryTest> getVersions();
 
 } // VersionUrl

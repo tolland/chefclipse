@@ -27,7 +27,6 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.ui.Activator;
 import org.limepepper.chefclipse.ui.Messages;
 

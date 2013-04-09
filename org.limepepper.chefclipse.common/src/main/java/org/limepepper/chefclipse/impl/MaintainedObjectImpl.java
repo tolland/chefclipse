@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.MaintainedObject;
 
@@ -26,86 +24,86 @@ import org.limepepper.chefclipse.MaintainedObject;
  */
 public class MaintainedObjectImpl extends EObjectImpl implements MaintainedObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public MaintainedObjectImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.MAINTAINED_OBJECT;
-    }
+		return ChefclipsePackage.Literals.MAINTAINED_OBJECT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getMaintainer() {
-        return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setMaintainer(String newMaintainer) {
-        eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER, newMaintainer);
-    }
+		eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER, newMaintainer);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getMaintainer_email() {
-        return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setMaintainer_email(String newMaintainer_email) {
-        eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL, newMaintainer_email);
-    }
+		eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL, newMaintainer_email);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getLicense() {
-        return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__LICENSE, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__LICENSE, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setLicense(String newLicense) {
-        eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__LICENSE, newLicense);
-    }
+		eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__LICENSE, newLicense);
+	}
 
 } //MaintainedObjectImpl

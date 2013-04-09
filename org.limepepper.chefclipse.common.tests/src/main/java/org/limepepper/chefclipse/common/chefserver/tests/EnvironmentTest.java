@@ -2,8 +2,6 @@
  */
 package org.limepepper.chefclipse.common.chefserver.tests;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
@@ -19,55 +17,55 @@ import org.limepepper.chefclipse.tests.DescribedObjectTest;
 public class EnvironmentTest extends DescribedObjectTest {
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-        TestRunner.run(EnvironmentTest.class);
-    }
+		TestRunner.run(EnvironmentTest.class);
+	}
 
 	/**
-     * Constructs a new Environment test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Environment test case with the given name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EnvironmentTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
 	/**
-     * Returns the fixture for this Environment test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Environment test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
     protected Environment getFixture() {
-        return (Environment)fixture;
-    }
+		return (Environment)fixture;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
 	@Override
 	protected void setUp() throws Exception {
-        setFixture(ChefserverFactory.eINSTANCE.createEnvironment());
-    }
+		setFixture(ChefserverFactory.eINSTANCE.createEnvironment());
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
 	@Override
 	protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //EnvironmentTest

@@ -6,7 +6,6 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
-
 import org.limepepper.chefclipse.tests.NamedObjectTest;
 
 /**
@@ -18,55 +17,55 @@ import org.limepepper.chefclipse.tests.NamedObjectTest;
 public class ServerCookbookFileTest extends NamedObjectTest {
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(ServerCookbookFileTest.class);
-    }
+		TestRunner.run(ServerCookbookFileTest.class);
+	}
 
     /**
-     * Constructs a new Server Cookbook File test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Server Cookbook File test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ServerCookbookFileTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Returns the fixture for this Server Cookbook File test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Server Cookbook File test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected ServerCookbookFile getFixture() {
-        return (ServerCookbookFile)fixture;
-    }
+		return (ServerCookbookFile)fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ChefserverFactory.eINSTANCE.createServerCookbookFile());
-    }
+		setFixture(ChefserverFactory.eINSTANCE.createServerCookbookFile());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //ServerCookbookFileTest

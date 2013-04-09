@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.REST.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 
 /**
@@ -17,25 +15,25 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  */
 public class RESTResourceFactoryImpl extends ResourceFactoryImpl {
     /**
-     * Creates an instance of the resource factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the resource factory.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public RESTResourceFactoryImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * Creates an instance of the resource.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Resource createResource(URI uri) {
-        Resource result = new RESTResourceImpl(uri);
-        return result;
-    }
+		Resource result = new RESTResourceImpl(uri);
+		return result;
+	}
 
 } //RESTResourceFactoryImpl

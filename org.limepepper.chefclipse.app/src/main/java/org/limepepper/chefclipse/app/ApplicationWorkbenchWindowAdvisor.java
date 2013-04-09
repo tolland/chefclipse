@@ -21,7 +21,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
         configurer.setInitialSize(new Point(400, 300));
         configurer.setShowCoolBar(false);
         //configurer.setShowStatusLine(false);
-        configurer.setTitle("Template Project RCP"); //$NON-NLS-1$
+        configurer.setTitle("Chefclipse"); //$NON-NLS-1$
         
         // XXX We set the status line and progress indicator so that update
         // information can be shown there

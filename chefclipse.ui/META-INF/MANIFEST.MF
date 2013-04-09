@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ui
+Bundle-SymbolicName: chefclipse.ui; singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: chefclipse.ui.ChefPlugin
+Bundle-Vendor: Lime Pepper Ltd
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.ui.navigator,
+ org.eclipse.ui.navigator.resources,
+ chefclipse.core;bundle-version="0.1.0",
+ org.eclipse.ui.ide;bundle-version="3.8.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: chefclipse.internal.ui;uses:="org.eclipse.core.runtime",
+ chefclipse.internal.ui.navigator;
+  uses:="org.eclipse.ui.navigator,
+   org.eclipse.ui,
+   org.eclipse.swt.graphics,
+   org.eclipse.jface.viewers",
+ chefclipse.ui;uses:="org.eclipse.jface.resource,org.eclipse.ui.plugin,org.osgi.framework",
+ chefclipse.ui.menu;uses:="org.eclipse.jface.action,org.eclipse.ui,org.eclipse.ui.actions",
+ chefclipse.ui.perspectives;uses:="org.eclipse.ui"
+Import-Package: org.slf4j

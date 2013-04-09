@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.common.cookbook.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
@@ -25,50 +23,50 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
  */
 public abstract class CookbookFileImpl extends EObjectImpl implements CookbookFile {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookFileImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return CookbookPackage.Literals.COOKBOOK_FILE;
-    }
+		return CookbookPackage.Literals.COOKBOOK_FILE;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookVersion getCookbook() {
-        return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
-    }
+		return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setCookbook(CookbookVersion newCookbook) {
-        eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
-    }
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
+	}
 
 } //CookbookFileImpl

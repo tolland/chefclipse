@@ -4,12 +4,9 @@ package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.common.util.BasicEMap;
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.VersionUrl;
 
@@ -29,146 +26,146 @@ import org.limepepper.chefclipse.VersionUrl;
  */
 public class EStringToVersionUrlMapImpl extends EObjectImpl implements BasicEMap.Entry<String,VersionUrl> {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public EStringToVersionUrlMapImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP;
-    }
+		return ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getTypedKey() {
-        return (String)eGet(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP__KEY, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP__KEY, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setTypedKey(String newKey) {
-        eSet(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP__KEY, newKey);
-    }
+		eSet(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP__KEY, newKey);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public VersionUrl getTypedValue() {
-        return (VersionUrl)eGet(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE, true);
-    }
+		return (VersionUrl)eGet(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setTypedValue(VersionUrl newValue) {
-        eSet(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE, newValue);
-    }
+		eSet(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE, newValue);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected int hash = -1;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public int getHash() {
-        if (hash == -1) {
-            Object theKey = getKey();
-            hash = (theKey == null ? 0 : theKey.hashCode());
-        }
-        return hash;
-    }
+		if (hash == -1) {
+			Object theKey = getKey();
+			hash = (theKey == null ? 0 : theKey.hashCode());
+		}
+		return hash;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setHash(int hash) {
-        this.hash = hash;
-    }
+		this.hash = hash;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getKey() {
-        return getTypedKey();
-    }
+		return getTypedKey();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setKey(String key) {
-        setTypedKey(key);
-    }
+		setTypedKey(key);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public VersionUrl getValue() {
-        return getTypedValue();
-    }
+		return getTypedValue();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public VersionUrl setValue(VersionUrl value) {
-        VersionUrl oldValue = getValue();
-        setTypedValue(value);
-        return oldValue;
-    }
+		VersionUrl oldValue = getValue();
+		setTypedValue(value);
+		return oldValue;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EMap<String, VersionUrl> getEMap() {
-        EObject container = eContainer();
-        return container == null ? null : (EMap<String, VersionUrl>)container.eGet(eContainmentFeature());
-    }
+		EObject container = eContainer();
+		return container == null ? null : (EMap<String, VersionUrl>)container.eGet(eContainmentFeature());
+	}
 
 } //EStringToVersionUrlMapImpl

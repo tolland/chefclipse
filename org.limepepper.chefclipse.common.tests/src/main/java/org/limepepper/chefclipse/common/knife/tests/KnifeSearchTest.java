@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.common.knife.tests;
 
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
@@ -18,72 +17,72 @@ import org.limepepper.chefclipse.common.knife.KnifeSearch;
 public class KnifeSearchTest extends TestCase {
 
 	/**
-     * The fixture for this Search test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this Search test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected KnifeSearch fixture = null;
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-        TestRunner.run(KnifeSearchTest.class);
-    }
+		TestRunner.run(KnifeSearchTest.class);
+	}
 
 	/**
-     * Constructs a new Search test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Search test case with the given name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public KnifeSearchTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
 	/**
-     * Sets the fixture for this Search test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this Search test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected void setFixture(KnifeSearch fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
 	/**
-     * Returns the fixture for this Search test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Search test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected KnifeSearch getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
 	@Override
 	protected void setUp() throws Exception {
-        setFixture(KnifeFactory.eINSTANCE.createKnifeSearch());
-    }
+		setFixture(KnifeFactory.eINSTANCE.createKnifeSearch());
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
 	@Override
 	protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //KnifeSearchTest

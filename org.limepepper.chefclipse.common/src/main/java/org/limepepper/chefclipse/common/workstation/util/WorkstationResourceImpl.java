@@ -14,15 +14,15 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  * @generated
  */
 public class WorkstationResourceImpl extends XMIResourceImpl {
-    /**
-     * Creates an instance of the resource.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @param uri the URI of the new resource.
-     * @generated
-     */
-    public WorkstationResourceImpl(URI uri) {
-        super(uri);
-    }
+	/**
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param uri the URI of the new resource.
+	 * @generated
+	 */
+	public WorkstationResourceImpl(URI uri) {
+		super(uri);
+	}
 
 } //WorkstationResourceImpl

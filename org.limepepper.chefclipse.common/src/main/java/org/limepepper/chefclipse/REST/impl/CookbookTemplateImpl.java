@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.REST.CookbookTemplate;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -20,32 +18,32 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class CookbookTemplateImpl extends EObjectImpl implements CookbookTemplate {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookTemplateImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return RESTPackage.Literals.COOKBOOK_TEMPLATE;
-    }
+		return RESTPackage.Literals.COOKBOOK_TEMPLATE;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //CookbookTemplateImpl

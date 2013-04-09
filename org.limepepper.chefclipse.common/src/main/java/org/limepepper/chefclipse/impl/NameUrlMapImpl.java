@@ -3,11 +3,8 @@
 package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.common.util.EMap;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NameUrlMap;
 
@@ -26,42 +23,42 @@ import org.limepepper.chefclipse.NameUrlMap;
  */
 public class NameUrlMapImpl extends EObjectImpl implements NameUrlMap {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public NameUrlMapImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.NAME_URL_MAP;
-    }
+		return ChefclipsePackage.Literals.NAME_URL_MAP;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EMap<String, String> getEntries() {
-        return (EMap<String, String>)eGet(ChefclipsePackage.Literals.NAME_URL_MAP__ENTRIES, true);
-    }
+		return (EMap<String, String>)eGet(ChefclipsePackage.Literals.NAME_URL_MAP__ENTRIES, true);
+	}
 
 } //NameUrlMapImpl

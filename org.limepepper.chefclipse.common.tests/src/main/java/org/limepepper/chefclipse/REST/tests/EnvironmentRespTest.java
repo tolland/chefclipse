@@ -16,55 +16,55 @@ import org.limepepper.chefclipse.REST.RESTFactory;
 public class EnvironmentRespTest extends JSONObjectRespTest {
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-        TestRunner.run(EnvironmentRespTest.class);
-    }
+		TestRunner.run(EnvironmentRespTest.class);
+	}
 
 	/**
-     * Constructs a new Environment Resp test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Environment Resp test case with the given name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EnvironmentRespTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
 	/**
-     * Returns the fixture for this Environment Resp test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Environment Resp test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EnvironmentResp getFixture() {
-        return (EnvironmentResp)fixture;
-    }
+		return (EnvironmentResp)fixture;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
 	@Override
 	protected void setUp() throws Exception {
-        setFixture(RESTFactory.eINSTANCE.createEnvironmentResp());
-    }
+		setFixture(RESTFactory.eINSTANCE.createEnvironmentResp());
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
 	@Override
 	protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //EnvironmentRespTest

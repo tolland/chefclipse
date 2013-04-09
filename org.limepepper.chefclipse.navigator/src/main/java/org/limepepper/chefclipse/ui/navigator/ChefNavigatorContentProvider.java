@@ -23,8 +23,6 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
 import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
-import org.limepepper.chefclipse.model.CookbookFolder;
-import org.limepepper.chefclipse.model.mapping.ChefCore;
 import org.limepepper.chefclipse.navigator.NavigatorActivator;
 
 public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider

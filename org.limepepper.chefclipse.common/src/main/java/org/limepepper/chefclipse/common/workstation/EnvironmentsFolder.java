@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.workstation;
 
-import org.limepepper.chefclipse.NamedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +13,5 @@ import org.limepepper.chefclipse.NamedObject;
  * @model
  * @generated
  */
-public interface EnvironmentsFolder extends NamedObject {
+public interface EnvironmentsFolder extends WorkstationFolder {
 } // EnvironmentsFolder

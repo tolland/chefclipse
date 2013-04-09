@@ -2,8 +2,6 @@
  */
 package org.limepepper.chefclipse.common.chefserver.tests;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
@@ -19,55 +17,55 @@ import org.limepepper.chefclipse.tests.DescribedObjectTest;
 public class DataBagTest extends DescribedObjectTest {
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-        TestRunner.run(DataBagTest.class);
-    }
+		TestRunner.run(DataBagTest.class);
+	}
 
 	/**
-     * Constructs a new Data Bag test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Data Bag test case with the given name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public DataBagTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
 	/**
-     * Returns the fixture for this Data Bag test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Data Bag test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
     protected DataBag getFixture() {
-        return (DataBag)fixture;
-    }
+		return (DataBag)fixture;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
 	@Override
 	protected void setUp() throws Exception {
-        setFixture(ChefserverFactory.eINSTANCE.createDataBag());
-    }
+		setFixture(ChefserverFactory.eINSTANCE.createDataBag());
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
 	@Override
 	protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //DataBagTest

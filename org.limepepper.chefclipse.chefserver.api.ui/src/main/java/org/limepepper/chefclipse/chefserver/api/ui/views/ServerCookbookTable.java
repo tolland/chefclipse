@@ -15,7 +15,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
-import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 

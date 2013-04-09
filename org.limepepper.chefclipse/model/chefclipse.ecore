@@ -312,13 +312,20 @@
           eType="#//cookbook/CookbookVersion" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="knife" upperBound="-1"
           eType="#//knife/KnifeConfig"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cookbookFolders" lowerBound="1"
+          upperBound="-1" eType="#//workstation/CookbooksFolder"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ConfigFolder"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CertificatesFolder"/>
-    <eClassifiers xsi:type="ecore:EClass" name="DataBagsFolder"/>
-    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentsFolder" eSuperTypes="#//NamedObject"/>
-    <eClassifiers xsi:type="ecore:EClass" name="RolesFolder"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ConfigFolder" eSuperTypes="#//workstation/WorkstationFolder"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CertificatesFolder" eSuperTypes="#//workstation/WorkstationFolder"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DataBagsFolder" eSuperTypes="#//workstation/WorkstationFolder"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EnvironmentsFolder" eSuperTypes="#//workstation/WorkstationFolder"/>
+    <eClassifiers xsi:type="ecore:EClass" name="RolesFolder" eSuperTypes="#//workstation/WorkstationFolder"/>
     <eClassifiers xsi:type="ecore:EClass" name="Rakefile"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CookbooksFolder" eSuperTypes="#//workstation/WorkstationFolder">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cookbooks" upperBound="-1"
+          eType="#//cookbook/CookbookVersion"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="WorkstationFolder" eSuperTypes="#//NamedObject"/>
   </eSubpackages>
   <eSubpackages name="knife" nsURI="http://limepepper.org/v1/chefclipse/knife" nsPrefix="org.limepepper.chefclipse">
     <eClassifiers xsi:type="ecore:EClass" name="KnifeConfig" eSuperTypes="#//Config">

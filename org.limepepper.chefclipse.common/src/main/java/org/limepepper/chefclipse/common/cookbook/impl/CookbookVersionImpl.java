@@ -5,17 +5,12 @@ package org.limepepper.chefclipse.common.cookbook.impl;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.Cookbook;
 import org.limepepper.chefclipse.NamedObject;
-
 import org.limepepper.chefclipse.common.chefserver.Environment;
-
 import org.limepepper.chefclipse.common.cookbook.Attributes;
-import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Definition;
@@ -27,7 +22,6 @@ import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.Resource;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.cookbook.Template;
-
 import org.limepepper.chefclipse.impl.DescribedObjectImpl;
 
 /**
@@ -62,306 +56,306 @@ import org.limepepper.chefclipse.impl.DescribedObjectImpl;
  */
 public class CookbookVersionImpl extends DescribedObjectImpl implements CookbookVersion {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookVersionImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return CookbookPackage.Literals.COOKBOOK_VERSION;
-    }
+		return CookbookPackage.Literals.COOKBOOK_VERSION;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getName() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setName(String newName) {
-        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
-    }
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getID() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setID(String newID) {
-        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
-    }
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getJson_class() {
-        return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setJson_class(String newJson_class) {
-        eSet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, newJson_class);
-    }
+		eSet(ChefclipsePackage.Literals.COOKBOOK__JSON_CLASS, newJson_class);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Environment getEnvironment() {
-        return (Environment)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__ENVIRONMENT, true);
-    }
+		return (Environment)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__ENVIRONMENT, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setEnvironment(Environment newEnvironment) {
-        eSet(CookbookPackage.Literals.COOKBOOK_VERSION__ENVIRONMENT, newEnvironment);
-    }
+		eSet(CookbookPackage.Literals.COOKBOOK_VERSION__ENVIRONMENT, newEnvironment);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Template> getTemplates() {
-        return (EList<Template>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__TEMPLATES, true);
-    }
+		return (EList<Template>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__TEMPLATES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Recipe> getRecipes() {
-        return (EList<Recipe>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__RECIPES, true);
-    }
+		return (EList<Recipe>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__RECIPES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Definition> getDefinitions() {
-        return (EList<Definition>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__DEFINITIONS, true);
-    }
+		return (EList<Definition>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__DEFINITIONS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<File> getFiles() {
-        return (EList<File>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__FILES, true);
-    }
+		return (EList<File>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__FILES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Resource> getResources() {
-        return (EList<Resource>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__RESOURCES, true);
-    }
+		return (EList<Resource>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__RESOURCES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Library> getLibraries() {
-        return (EList<Library>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__LIBRARIES, true);
-    }
+		return (EList<Library>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__LIBRARIES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Metadata getMetadata() {
-        return (Metadata)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__METADATA, true);
-    }
+		return (Metadata)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__METADATA, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setMetadata(Metadata newMetadata) {
-        eSet(CookbookPackage.Literals.COOKBOOK_VERSION__METADATA, newMetadata);
-    }
+		eSet(CookbookPackage.Literals.COOKBOOK_VERSION__METADATA, newMetadata);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Provider> getProviders() {
-        return (EList<Provider>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__PROVIDERS, true);
-    }
+		return (EList<Provider>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__PROVIDERS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Root_file> getRoot_files() {
-        return (EList<Root_file>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES, true);
-    }
+		return (EList<Root_file>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Attributes> getAttributes() {
-        return (EList<Attributes>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__ATTRIBUTES, true);
-    }
+		return (EList<Attributes>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__ATTRIBUTES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getChef_type() {
-        return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setChef_type(String newChef_type) {
-        eSet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, newChef_type);
-    }
+		eSet(ChefclipsePackage.Literals.COOKBOOK__CHEF_TYPE, newChef_type);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getCatalog() {
-        return (String)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__CATALOG, true);
-    }
+		return (String)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__CATALOG, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setCatalog(String newCatalog) {
-        eSet(CookbookPackage.Literals.COOKBOOK_VERSION__CATALOG, newCatalog);
-    }
+		eSet(CookbookPackage.Literals.COOKBOOK_VERSION__CATALOG, newCatalog);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<CookbookVersion> getDepends() {
-        return (EList<CookbookVersion>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__DEPENDS, true);
-    }
+		return (EList<CookbookVersion>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__DEPENDS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<Map.Entry<String, String>> getMissing() {
-        return (EList<Map.Entry<String, String>>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__MISSING, true);
-    }
+		return (EList<Map.Entry<String, String>>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__MISSING, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == NamedObject.class) {
-            switch (derivedFeatureID) {
-                case CookbookPackage.COOKBOOK_VERSION__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-                case CookbookPackage.COOKBOOK_VERSION__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
-                default: return -1;
-            }
-        }
-        if (baseClass == Cookbook.class) {
-            switch (derivedFeatureID) {
-                case CookbookPackage.COOKBOOK_VERSION__JSON_CLASS: return ChefclipsePackage.COOKBOOK__JSON_CLASS;
-                case CookbookPackage.COOKBOOK_VERSION__CHEF_TYPE: return ChefclipsePackage.COOKBOOK__CHEF_TYPE;
-                default: return -1;
-            }
-        }
-        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-    }
+		if (baseClass == NamedObject.class) {
+			switch (derivedFeatureID) {
+				case CookbookPackage.COOKBOOK_VERSION__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+				case CookbookPackage.COOKBOOK_VERSION__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				default: return -1;
+			}
+		}
+		if (baseClass == Cookbook.class) {
+			switch (derivedFeatureID) {
+				case CookbookPackage.COOKBOOK_VERSION__JSON_CLASS: return ChefclipsePackage.COOKBOOK__JSON_CLASS;
+				case CookbookPackage.COOKBOOK_VERSION__CHEF_TYPE: return ChefclipsePackage.COOKBOOK__CHEF_TYPE;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == NamedObject.class) {
-            switch (baseFeatureID) {
-                case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.COOKBOOK_VERSION__NAME;
-                case ChefclipsePackage.NAMED_OBJECT__ID: return CookbookPackage.COOKBOOK_VERSION__ID;
-                default: return -1;
-            }
-        }
-        if (baseClass == Cookbook.class) {
-            switch (baseFeatureID) {
-                case ChefclipsePackage.COOKBOOK__JSON_CLASS: return CookbookPackage.COOKBOOK_VERSION__JSON_CLASS;
-                case ChefclipsePackage.COOKBOOK__CHEF_TYPE: return CookbookPackage.COOKBOOK_VERSION__CHEF_TYPE;
-                default: return -1;
-            }
-        }
-        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-    }
+		if (baseClass == NamedObject.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.COOKBOOK_VERSION__NAME;
+				case ChefclipsePackage.NAMED_OBJECT__ID: return CookbookPackage.COOKBOOK_VERSION__ID;
+				default: return -1;
+			}
+		}
+		if (baseClass == Cookbook.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.COOKBOOK__JSON_CLASS: return CookbookPackage.COOKBOOK_VERSION__JSON_CLASS;
+				case ChefclipsePackage.COOKBOOK__CHEF_TYPE: return CookbookPackage.COOKBOOK_VERSION__CHEF_TYPE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 } //CookbookVersionImpl

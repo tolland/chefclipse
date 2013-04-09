@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.common.workstation.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 
 /**
@@ -17,25 +15,25 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  */
 public class WorkstationResourceFactoryImpl extends ResourceFactoryImpl {
     /**
-     * Creates an instance of the resource factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the resource factory.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public WorkstationResourceFactoryImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * Creates an instance of the resource.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public Resource createResource(URI uri) {
-        Resource result = new WorkstationResourceImpl(uri);
-        return result;
-    }
+		Resource result = new WorkstationResourceImpl(uri);
+		return result;
+	}
 
 } //WorkstationResourceFactoryImpl

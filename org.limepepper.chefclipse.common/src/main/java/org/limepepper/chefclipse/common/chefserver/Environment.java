@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 
 /**
@@ -25,18 +24,18 @@ import org.limepepper.chefclipse.NamedDescribedObject;
 public interface Environment extends NamedDescribedObject {
 
     /**
-     * Returns the value of the '<em><b>Override attributes</b></em>' attribute list.
-     * The list contents are of type {@link java.lang.String}.
-     * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Override attributes</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Override attributes</em>' attribute list isn't clear,
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
-     * @return the value of the '<em>Override attributes</em>' attribute list.
-     * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getEnvironment_Override_attributes()
-     * @model
-     * @generated
-     */
+	 * @return the value of the '<em>Override attributes</em>' attribute list.
+	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getEnvironment_Override_attributes()
+	 * @model
+	 * @generated
+	 */
     EList<String> getOverride_attributes();
 } // Environment

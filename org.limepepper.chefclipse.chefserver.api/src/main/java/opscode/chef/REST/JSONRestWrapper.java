@@ -1,5 +1,6 @@
 package opscode.chef.REST;
 
+import java.awt.PageAttributes.MediaType;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -10,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
 import org.codehaus.jackson.JsonGenerationException;
@@ -19,13 +19,13 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jettison.json.JSONObject;
 import org.eclipse.jdt.annotation.NonNull;
+import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.sun.jersey.api.client.filter.LoggingFilter;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
@@ -58,8 +58,8 @@ public class JSONRestWrapper {
     public JSONRestWrapper(@NonNull AuthCredentials auth, URL url) {
         this.auth = auth;
         this.url = url;
-        ClientConfig cc = new DefaultClientConfig();
-        Client client = Client.create(cc);
+        com.sun.jersey.api.client.config.ClientConfig cc = new DefaultClientConfig();
+        com.sun.jersey.api.client.Client client = com.sun.jersey.api.client.Client.create(cc);
         client.addFilter(new LoggingFilter(System.out));
         service = client.resource(url.toString());
 
@@ -122,7 +122,7 @@ public class JSONRestWrapper {
                 builder.header(key, auth_headers.get(key));
             }
 
-            builder.accept(MediaType.APPLICATION_JSON_TYPE);
+            builder.accept(javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE);
 
             JSONObject response = builder.get(JSONObject.class);
 
@@ -169,7 +169,7 @@ public class JSONRestWrapper {
             e.printStackTrace();
         }
 
-        return builder.accept(MediaType.APPLICATION_JSON_TYPE).head();
+        return builder.accept(javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE).head();
 
     }
 

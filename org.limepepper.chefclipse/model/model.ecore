@@ -7,7 +7,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChefFile" eSuperTypes="#//ChefResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="ChefFolder" eSuperTypes="#//ChefContainer"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ChefObject">
+  <eClassifiers xsi:type="ecore:EClass" name="ChefObject" eSuperTypes="#//ChefElement">
     <eOperations name="create">
       <eParameters name="resource" lowerBound="1" eType="#//ChefResource"/>
     </eOperations>
@@ -35,5 +35,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="CookbookFolder" eSuperTypes="#//ChefFolder">
     <eStructuralFeatures xsi:type="ecore:EReference" name="cookbookVersion" lowerBound="1"
         eType="ecore:EClass chefclipse.ecore#//cookbook/CookbookVersion"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChefElement">
+    <eOperations name="exists" lowerBound="1"/>
   </eClassifiers>
 </ecore:EPackage>

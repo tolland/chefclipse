@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.URLEntryTest;
 
@@ -24,50 +22,50 @@ import org.limepepper.chefclipse.URLEntryTest;
  */
 public class URLEntryTestImpl extends EObjectImpl implements URLEntryTest {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public URLEntryTestImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.URL_ENTRY_TEST;
-    }
+		return ChefclipsePackage.Literals.URL_ENTRY_TEST;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getUrl() {
-        return (String)eGet(ChefclipsePackage.Literals.URL_ENTRY_TEST__URL, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.URL_ENTRY_TEST__URL, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setUrl(String newUrl) {
-        eSet(ChefclipsePackage.Literals.URL_ENTRY_TEST__URL, newUrl);
-    }
+		eSet(ChefclipsePackage.Literals.URL_ENTRY_TEST__URL, newUrl);
+	}
 
 } //URLEntryTestImpl
