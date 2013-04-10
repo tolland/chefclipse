@@ -36,7 +36,8 @@ import org.limepepper.chefclipse.preferences.ui.Activator;
 import org.limepepper.chefclipse.preferences.ui.preferences.AddChefConfigurationPreferencePage;
 import org.limepepper.chefclipse.preferences.ui.preferences.ChefConfigurationPreferenceStore;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.messages.Messages;
 
 /**
  * Dialog which allow to create and add a new Chef configuration or edit an

@@ -5,7 +5,6 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
 
 import chefclipse.core.providers.ChefProjectAdapterFactory;
-import chefclipse.internal.ui.navigator.ChefNavigatorContentProvider.MenuLevelHolder;
 import chefclipse.ui.ChefPlugin;
 
 public class ChefNavigatorLabelProvider extends AdapterFactoryLabelProvider {

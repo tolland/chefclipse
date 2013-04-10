@@ -103,15 +103,6 @@ public interface ChefclipseFactory extends EFactory {
     NameUrlMap createNameUrlMap();
 
     /**
-	 * Returns a new object of class '<em>Cookbook</em>'.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Cookbook</em>'.
-	 * @generated
-	 */
-    Cookbook createCookbook();
-
-    /**
 	 * Returns a new object of class '<em>Map Test Container</em>'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

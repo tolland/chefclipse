@@ -5,14 +5,17 @@ package org.limepepper.chefclipse.common.cookbook.impl;
 import java.net.URL;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Resource;
+
 import org.limepepper.chefclipse.impl.RubyFileImpl;
 
 /**
@@ -35,158 +38,158 @@ import org.limepepper.chefclipse.impl.RubyFileImpl;
  * @generated
  */
 public class ResourceImpl extends RubyFileImpl implements Resource {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ResourceImpl() {
+	public ResourceImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.RESOURCE;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public URL getUrl() {
+	public URL getUrl() {
 		return (URL)eGet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setUrl(URL newUrl) {
+	public void setUrl(URL newUrl) {
 		eSet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, newUrl);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getChecksum() {
+	public String getChecksum() {
 		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__CHECKSUM, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setChecksum(String newChecksum) {
+	public void setChecksum(String newChecksum) {
 		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__CHECKSUM, newChecksum);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getPath() {
+	public String getPath() {
 		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__PATH, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setPath(String newPath) {
+	public void setPath(String newPath) {
 		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__PATH, newPath);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getSpecificity() {
+	public String getSpecificity() {
 		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setSpecificity(String newSpecificity) {
+	public void setSpecificity(String newSpecificity) {
 		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY, newSpecificity);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getID() {
+	public String getID() {
 		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setID(String newID) {
+	public void setID(String newID) {
 		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookVersion getCookbook() {
+	public CookbookVersion getCookbook() {
 		return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setCookbook(CookbookVersion newCookbook) {
+	public void setCookbook(CookbookVersion newCookbook) {
 		eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == SandboxedObject.class) {
 			switch (derivedFeatureID) {
 				case CookbookPackage.RESOURCE__URL: return ChefclipsePackage.SANDBOXED_OBJECT__URL;
@@ -217,13 +220,13 @@ public class ResourceImpl extends RubyFileImpl implements Resource {
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == SandboxedObject.class) {
 			switch (baseFeatureID) {
 				case ChefclipsePackage.SANDBOXED_OBJECT__URL: return CookbookPackage.RESOURCE__URL;

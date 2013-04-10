@@ -16,7 +16,8 @@ import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.Messages;
 
 public class ChefRepositoryWizardPage extends WizardPage {
 	

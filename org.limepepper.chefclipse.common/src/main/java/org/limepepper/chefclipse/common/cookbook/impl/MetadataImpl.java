@@ -3,15 +3,19 @@
 package org.limepepper.chefclipse.common.cookbook.impl;
 
 import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Metadata;
+
 import org.limepepper.chefclipse.impl.RubyFileImpl;
 
 /**
@@ -43,264 +47,264 @@ import org.limepepper.chefclipse.impl.RubyFileImpl;
  * @generated
  */
 public class MetadataImpl extends RubyFileImpl implements Metadata {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public MetadataImpl() {
+	public MetadataImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.METADATA;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getMaintainer() {
+	public String getMaintainer() {
 		return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setMaintainer(String newMaintainer) {
+	public void setMaintainer(String newMaintainer) {
 		eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER, newMaintainer);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getMaintainer_email() {
+	public String getMaintainer_email() {
 		return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setMaintainer_email(String newMaintainer_email) {
+	public void setMaintainer_email(String newMaintainer_email) {
 		eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL, newMaintainer_email);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getLicense() {
+	public String getLicense() {
 		return (String)eGet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__LICENSE, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setLicense(String newLicense) {
+	public void setLicense(String newLicense) {
 		eSet(ChefclipsePackage.Literals.MAINTAINED_OBJECT__LICENSE, newLicense);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getDescription() {
+	public String getDescription() {
 		return (String)eGet(ChefclipsePackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setDescription(String newDescription) {
+	public void setDescription(String newDescription) {
 		eSet(ChefclipsePackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, newDescription);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
+	public String getName() {
 		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getID() {
+	public String getID() {
 		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setID(String newID) {
+	public void setID(String newID) {
 		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookVersion getCookbookVersion() {
+	public CookbookVersion getCookbookVersion() {
 		return (CookbookVersion)eGet(CookbookPackage.Literals.METADATA__COOKBOOK_VERSION, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setCookbookVersion(CookbookVersion newCookbookVersion) {
+	public void setCookbookVersion(CookbookVersion newCookbookVersion) {
 		eSet(CookbookPackage.Literals.METADATA__COOKBOOK_VERSION, newCookbookVersion);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getLong_description() {
+	public String getLong_description() {
 		return (String)eGet(CookbookPackage.Literals.METADATA__LONG_DESCRIPTION, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setLong_description(String newLong_description) {
+	public void setLong_description(String newLong_description) {
 		eSet(CookbookPackage.Literals.METADATA__LONG_DESCRIPTION, newLong_description);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getVersion() {
+	public String getVersion() {
 		return (String)eGet(CookbookPackage.Literals.METADATA__VERSION, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setVersion(String newVersion) {
+	public void setVersion(String newVersion) {
 		eSet(CookbookPackage.Literals.METADATA__VERSION, newVersion);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EMap<String, String> getReplaces() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getReplaces() {
 		return (EMap<String, String>)eGet(CookbookPackage.Literals.METADATA__REPLACES, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EMap<String, String> getProvides() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getProvides() {
 		return (EMap<String, String>)eGet(CookbookPackage.Literals.METADATA__PROVIDES, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EMap<String, String> getConflicts() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getConflicts() {
 		return (EMap<String, String>)eGet(CookbookPackage.Literals.METADATA__CONFLICTS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EMap<String, String> getSuggests() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getSuggests() {
 		return (EMap<String, String>)eGet(CookbookPackage.Literals.METADATA__SUGGESTS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EMap<String, String> getDependencies() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getDependencies() {
 		return (EMap<String, String>)eGet(CookbookPackage.Literals.METADATA__DEPENDENCIES, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EMap<String, String> getPlatforms() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getPlatforms() {
 		return (EMap<String, String>)eGet(CookbookPackage.Literals.METADATA__PLATFORMS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EMap<String, String> getRecipes() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getRecipes() {
 		return (EMap<String, String>)eGet(CookbookPackage.Literals.METADATA__RECIPES, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == MaintainedObject.class) {
 			switch (derivedFeatureID) {
 				case CookbookPackage.METADATA__MAINTAINER: return ChefclipsePackage.MAINTAINED_OBJECT__MAINTAINER;
@@ -330,13 +334,13 @@ public class MetadataImpl extends RubyFileImpl implements Metadata {
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == MaintainedObject.class) {
 			switch (baseFeatureID) {
 				case ChefclipsePackage.MAINTAINED_OBJECT__MAINTAINER: return CookbookPackage.METADATA__MAINTAINER;

@@ -8,6 +8,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -20,6 +21,7 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.limepepper.chefclipse.util.ChefclipseAdapterFactory;
 
 /**
@@ -32,37 +34,37 @@ import org.limepepper.chefclipse.util.ChefclipseAdapterFactory;
  * @generated
  */
 public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-    /**
+	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ComposedAdapterFactory parentAdapterFactory;
+	protected ComposedAdapterFactory parentAdapterFactory;
 
-    /**
+	/**
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected IChangeNotifier changeNotifier = new ChangeNotifier();
+	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-    /**
+	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Collection<Object> supportedTypes = new ArrayList<Object>();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-    /**
+	/**
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ChefclipseItemProviderAdapterFactory() {
+	public ChefclipseItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
@@ -71,22 +73,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		supportedTypes.add(ITableItemLabelProvider.class);
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.VersionedObject} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected VersionedObjectItemProvider versionedObjectItemProvider;
+	protected VersionedObjectItemProvider versionedObjectItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.VersionedObject}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createVersionedObjectAdapter() {
+	@Override
+	public Adapter createVersionedObjectAdapter() {
 		if (versionedObjectItemProvider == null) {
 			versionedObjectItemProvider = new VersionedObjectItemProvider(this);
 		}
@@ -94,22 +96,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return versionedObjectItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.SandboxedObject} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected SandboxedObjectItemProvider sandboxedObjectItemProvider;
+	protected SandboxedObjectItemProvider sandboxedObjectItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.SandboxedObject}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createSandboxedObjectAdapter() {
+	@Override
+	public Adapter createSandboxedObjectAdapter() {
 		if (sandboxedObjectItemProvider == null) {
 			sandboxedObjectItemProvider = new SandboxedObjectItemProvider(this);
 		}
@@ -117,22 +119,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return sandboxedObjectItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.RubyFile} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected RubyFileItemProvider rubyFileItemProvider;
+	protected RubyFileItemProvider rubyFileItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.RubyFile}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createRubyFileAdapter() {
+	@Override
+	public Adapter createRubyFileAdapter() {
 		if (rubyFileItemProvider == null) {
 			rubyFileItemProvider = new RubyFileItemProvider(this);
 		}
@@ -140,22 +142,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return rubyFileItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.NamedObject} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected NamedObjectItemProvider namedObjectItemProvider;
+	protected NamedObjectItemProvider namedObjectItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.NamedObject}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createNamedObjectAdapter() {
+	@Override
+	public Adapter createNamedObjectAdapter() {
 		if (namedObjectItemProvider == null) {
 			namedObjectItemProvider = new NamedObjectItemProvider(this);
 		}
@@ -163,22 +165,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return namedObjectItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.DescribedObject} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DescribedObjectItemProvider describedObjectItemProvider;
+	protected DescribedObjectItemProvider describedObjectItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.DescribedObject}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createDescribedObjectAdapter() {
+	@Override
+	public Adapter createDescribedObjectAdapter() {
 		if (describedObjectItemProvider == null) {
 			describedObjectItemProvider = new DescribedObjectItemProvider(this);
 		}
@@ -186,22 +188,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return describedObjectItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.ChecksumFile} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ChecksumFileItemProvider checksumFileItemProvider;
+	protected ChecksumFileItemProvider checksumFileItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.ChecksumFile}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createChecksumFileAdapter() {
+	@Override
+	public Adapter createChecksumFileAdapter() {
 		if (checksumFileItemProvider == null) {
 			checksumFileItemProvider = new ChecksumFileItemProvider(this);
 		}
@@ -209,22 +211,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return checksumFileItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.MaintainedObject} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected MaintainedObjectItemProvider maintainedObjectItemProvider;
+	protected MaintainedObjectItemProvider maintainedObjectItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.MaintainedObject}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createMaintainedObjectAdapter() {
+	@Override
+	public Adapter createMaintainedObjectAdapter() {
 		if (maintainedObjectItemProvider == null) {
 			maintainedObjectItemProvider = new MaintainedObjectItemProvider(this);
 		}
@@ -232,22 +234,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return maintainedObjectItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.Config} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ConfigItemProvider configItemProvider;
+	protected ConfigItemProvider configItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.Config}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createConfigAdapter() {
+	@Override
+	public Adapter createConfigAdapter() {
 		if (configItemProvider == null) {
 			configItemProvider = new ConfigItemProvider(this);
 		}
@@ -255,22 +257,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return configItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.NameUrlMap} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected NameUrlMapItemProvider nameUrlMapItemProvider;
+	protected NameUrlMapItemProvider nameUrlMapItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.NameUrlMap}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createNameUrlMapAdapter() {
+	@Override
+	public Adapter createNameUrlMapAdapter() {
 		if (nameUrlMapItemProvider == null) {
 			nameUrlMapItemProvider = new NameUrlMapItemProvider(this);
 		}
@@ -278,45 +280,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return nameUrlMapItemProvider;
 	}
 
-    /**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.Cookbook} instances.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected CookbookItemProvider cookbookItemProvider;
-
-    /**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.Cookbook}.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-    public Adapter createCookbookAdapter() {
-		if (cookbookItemProvider == null) {
-			cookbookItemProvider = new CookbookItemProvider(this);
-		}
-
-		return cookbookItemProvider;
-	}
-
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.MapTestContainer} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected MapTestContainerItemProvider mapTestContainerItemProvider;
+	protected MapTestContainerItemProvider mapTestContainerItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.MapTestContainer}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createMapTestContainerAdapter() {
+	@Override
+	public Adapter createMapTestContainerAdapter() {
 		if (mapTestContainerItemProvider == null) {
 			mapTestContainerItemProvider = new MapTestContainerItemProvider(this);
 		}
@@ -324,22 +303,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return mapTestContainerItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link java.util.Map.Entry} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected EStringToVersionUrlMapItemProvider eStringToVersionUrlMapItemProvider;
+	protected EStringToVersionUrlMapItemProvider eStringToVersionUrlMapItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link java.util.Map.Entry}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createEStringToVersionUrlMapAdapter() {
+	@Override
+	public Adapter createEStringToVersionUrlMapAdapter() {
 		if (eStringToVersionUrlMapItemProvider == null) {
 			eStringToVersionUrlMapItemProvider = new EStringToVersionUrlMapItemProvider(this);
 		}
@@ -347,22 +326,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return eStringToVersionUrlMapItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.VersionUrl} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected VersionUrlItemProvider versionUrlItemProvider;
+	protected VersionUrlItemProvider versionUrlItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.VersionUrl}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createVersionUrlAdapter() {
+	@Override
+	public Adapter createVersionUrlAdapter() {
 		if (versionUrlItemProvider == null) {
 			versionUrlItemProvider = new VersionUrlItemProvider(this);
 		}
@@ -370,22 +349,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return versionUrlItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.URLEntryTest} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected URLEntryTestItemProvider urlEntryTestItemProvider;
+	protected URLEntryTestItemProvider urlEntryTestItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.URLEntryTest}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createURLEntryTestAdapter() {
+	@Override
+	public Adapter createURLEntryTestAdapter() {
 		if (urlEntryTestItemProvider == null) {
 			urlEntryTestItemProvider = new URLEntryTestItemProvider(this);
 		}
@@ -393,22 +372,22 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return urlEntryTestItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.NameVersionMap} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected NameVersionMapItemProvider nameVersionMapItemProvider;
+	protected NameVersionMapItemProvider nameVersionMapItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.NameVersionMap}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createNameVersionMapAdapter() {
+	@Override
+	public Adapter createNameVersionMapAdapter() {
 		if (nameVersionMapItemProvider == null) {
 			nameVersionMapItemProvider = new NameVersionMapItemProvider(this);
 		}
@@ -416,54 +395,54 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return nameVersionMapItemProvider;
 	}
 
-    /**
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ComposeableAdapterFactory getRootAdapterFactory() {
+	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
-    /**
+	/**
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public boolean isFactoryForType(Object type) {
+	@Override
+	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
 
-    /**
+	/**
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter adapt(Notifier notifier, Object type) {
+	@Override
+	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Object adapt(Object object, Object type) {
+	@Override
+	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
@@ -474,33 +453,33 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		return null;
 	}
 
-    /**
+	/**
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void addListener(INotifyChangedListener notifyChangedListener) {
+	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
 
-    /**
+	/**
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void removeListener(INotifyChangedListener notifyChangedListener) {
+	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
 
-    /**
+	/**
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void fireNotifyChanged(Notification notification) {
+	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
 		if (parentAdapterFactory != null) {
@@ -508,13 +487,13 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		}
 	}
 
-    /**
+	/**
 	 * This disposes all of the item providers created by this factory. 
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void dispose() {
+	public void dispose() {
 		if (versionedObjectItemProvider != null) versionedObjectItemProvider.dispose();
 		if (sandboxedObjectItemProvider != null) sandboxedObjectItemProvider.dispose();
 		if (rubyFileItemProvider != null) rubyFileItemProvider.dispose();
@@ -524,7 +503,6 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		if (maintainedObjectItemProvider != null) maintainedObjectItemProvider.dispose();
 		if (configItemProvider != null) configItemProvider.dispose();
 		if (nameUrlMapItemProvider != null) nameUrlMapItemProvider.dispose();
-		if (cookbookItemProvider != null) cookbookItemProvider.dispose();
 		if (mapTestContainerItemProvider != null) mapTestContainerItemProvider.dispose();
 		if (eStringToVersionUrlMapItemProvider != null) eStringToVersionUrlMapItemProvider.dispose();
 		if (versionUrlItemProvider != null) versionUrlItemProvider.dispose();

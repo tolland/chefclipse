@@ -5,6 +5,7 @@ package org.limepepper.chefclipse.common.cookbook.tests;
 import junit.framework.TestCase;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
+import org.limepepper.chefclipse.tests.NamedObjectTest;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,15 +13,7 @@ import org.limepepper.chefclipse.common.cookbook.CookbookFile;
  * <!-- end-user-doc -->
  * @generated
  */
-public abstract class CookbookFileTest extends TestCase {
-
-	/**
-	 * The fixture for this File test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected CookbookFile fixture = null;
+public abstract class CookbookFileTest extends NamedObjectTest {
 
 	/**
 	 * Constructs a new File test case with the given name.
@@ -33,23 +26,14 @@ public abstract class CookbookFileTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this File test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(CookbookFile fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this File test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected CookbookFile getFixture() {
-		return fixture;
+		return (CookbookFile)fixture;
 	}
 
 } //CookbookFileTest

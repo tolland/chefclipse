@@ -3,8 +3,11 @@
 package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.common.util.EMap;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NameUrlMap;
 
@@ -22,42 +25,42 @@ import org.limepepper.chefclipse.NameUrlMap;
  * @generated
  */
 public class NameUrlMapImpl extends EObjectImpl implements NameUrlMap {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NameUrlMapImpl() {
+	public NameUrlMapImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefclipsePackage.Literals.NAME_URL_MAP;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EMap<String, String> getEntries() {
+	@SuppressWarnings("unchecked")
+	public EMap<String, String> getEntries() {
 		return (EMap<String, String>)eGet(ChefclipsePackage.Literals.NAME_URL_MAP__ENTRIES, true);
 	}
 

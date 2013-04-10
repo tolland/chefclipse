@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.common.ui.popup.actions;
+package chefclipse.ui.compare;
 
 import org.eclipse.compare.CompareConfiguration;
 import org.eclipse.compare.CompareEditorInput;

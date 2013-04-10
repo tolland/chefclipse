@@ -13,48 +13,48 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface KnifeFactory extends EFactory {
-    /**
+	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    KnifeFactory eINSTANCE = org.limepepper.chefclipse.common.knife.impl.KnifeFactoryImpl.init();
+	KnifeFactory eINSTANCE = org.limepepper.chefclipse.common.knife.impl.KnifeFactoryImpl.init();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Config</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Config</em>'.
 	 * @generated
 	 */
-    KnifeConfig createKnifeConfig();
+	KnifeConfig createKnifeConfig();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Plugin</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Plugin</em>'.
 	 * @generated
 	 */
-    Plugin createPlugin();
+	Plugin createPlugin();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Search</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Search</em>'.
 	 * @generated
 	 */
-    KnifeSearch createKnifeSearch();
+	KnifeSearch createKnifeSearch();
 
-    /**
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-    KnifePackage getKnifePackage();
+	KnifePackage getKnifePackage();
 
 } //KnifeFactory

@@ -14,7 +14,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.messages.Messages;
 
 /**
  * Preference page which allow to create and add a new Chef configuration or edit an

@@ -1,13 +1,13 @@
 /**
  */
-package org.limepepper.chefclipse.tests;
+package org.limepepper.chefclipse.common.cookbook.tests;
 
 import junit.framework.TestCase;
 
 import junit.textui.TestRunner;
 
-import org.limepepper.chefclipse.ChefclipseFactory;
-import org.limepepper.chefclipse.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 
 /**
  * <!-- begin-user-doc -->
@@ -72,7 +72,7 @@ public class CookbookTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(ChefclipseFactory.eINSTANCE.createCookbook());
+		setFixture(CookbookFactory.eINSTANCE.createCookbook());
 	}
 
 	/**

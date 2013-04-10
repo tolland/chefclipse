@@ -21,7 +21,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.Messages;
 
 public class ExistingRepoChefProjectWizardPage extends WizardPage {
 

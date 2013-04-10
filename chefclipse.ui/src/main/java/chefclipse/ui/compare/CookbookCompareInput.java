@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.compare;
+package chefclipse.ui.compare;
 
 import org.eclipse.compare.CompareConfiguration;
 import org.eclipse.compare.CompareEditorInput;
@@ -17,8 +17,13 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.swt.widgets.Shell;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+
+import chefclipse.core.CookbookFolder;
+import chefclipse.core.managers.ChefRepositoryManager;
 
 public class CookbookCompareInput extends CompareEditorInput {
 
@@ -32,29 +37,13 @@ public class CookbookCompareInput extends CompareEditorInput {
     private Object               fLeftResource;
     private Object               fRightResource;
 
-    public CookbookCompareInput(IResource item1, IResource item2) {
-        super(new CompareConfiguration());
 
-        fLeftResource = item1;
-        fRightResource = item2;
 
-        fLeft = getStructure(item1);
-        fRight = getStructure(item2);
+    public CookbookCompareInput(CompareConfiguration cc) {
+		super(cc);
+	}
 
-    }
-
-    public CookbookCompareInput(IResource item1, ServerCookbookVersion item2) {
-        super(new CompareConfiguration());
-
-        fLeftResource = item1;
-        fRightResource = item2;
-
-        fLeft = getStructure((IResource) fLeftResource);
-        fRight = getStructure(item2);
-
-    }
-
-    protected Object prepareInput(IProgressMonitor pm) {
+	protected Object prepareInput(IProgressMonitor pm) {
         System.out.println("preparing input");
 
         // ResourceNode ancestor = null;
@@ -158,7 +147,7 @@ public class CookbookCompareInput extends CompareEditorInput {
         return null;
     }
 
-    private IStructureComparator getStructure(ServerCookbookVersion input) {
+    private IStructureComparator getStructure(CookbookVersion input) {
 
         return new CookbookFolderNode(input);
 
@@ -180,5 +169,20 @@ public class CookbookCompareInput extends CompareEditorInput {
             return s.toUpperCase();
         return s;
     }
+
+	public boolean isEnabled(ISelection selection) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean setSelection(ISelection selection, Shell shell, boolean b) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void initializeCompareConfiguration() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

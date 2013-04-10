@@ -5,20 +5,12 @@ package org.limepepper.chefclipse.common.workstation.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.limepepper.chefclipse.common.workstation.*;
-import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
-import org.limepepper.chefclipse.common.workstation.ConfigFolder;
-import org.limepepper.chefclipse.common.workstation.CookbooksFolder;
-import org.limepepper.chefclipse.common.workstation.DataBagsFolder;
-import org.limepepper.chefclipse.common.workstation.EnvironmentsFolder;
-import org.limepepper.chefclipse.common.workstation.Rakefile;
-import org.limepepper.chefclipse.common.workstation.Repository;
-import org.limepepper.chefclipse.common.workstation.RolesFolder;
-import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
-import org.limepepper.chefclipse.common.workstation.WorkstationFolder;
-import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,13 +19,13 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * @generated
  */
 public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationFactory {
-    /**
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static WorkstationFactory init() {
+	public static WorkstationFactory init() {
 		try {
 			WorkstationFactory theWorkstationFactory = (WorkstationFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/workstation"); 
 			if (theWorkstationFactory != null) {
@@ -46,23 +38,23 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationF
 		return new WorkstationFactoryImpl();
 	}
 
-    /**
+	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public WorkstationFactoryImpl() {
+	public WorkstationFactoryImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public EObject create(EClass eClass) {
+	@Override
+	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case WorkstationPackage.REPOSITORY: return createRepository();
 			case WorkstationPackage.CONFIG_FOLDER: return createConfigFolder();
@@ -78,77 +70,77 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationF
 		}
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Repository createRepository() {
+	public Repository createRepository() {
 		RepositoryImpl repository = new RepositoryImpl();
 		return repository;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ConfigFolder createConfigFolder() {
+	public ConfigFolder createConfigFolder() {
 		ConfigFolderImpl configFolder = new ConfigFolderImpl();
 		return configFolder;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CertificatesFolder createCertificatesFolder() {
+	public CertificatesFolder createCertificatesFolder() {
 		CertificatesFolderImpl certificatesFolder = new CertificatesFolderImpl();
 		return certificatesFolder;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public DataBagsFolder createDataBagsFolder() {
+	public DataBagsFolder createDataBagsFolder() {
 		DataBagsFolderImpl dataBagsFolder = new DataBagsFolderImpl();
 		return dataBagsFolder;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EnvironmentsFolder createEnvironmentsFolder() {
+	public EnvironmentsFolder createEnvironmentsFolder() {
 		EnvironmentsFolderImpl environmentsFolder = new EnvironmentsFolderImpl();
 		return environmentsFolder;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RolesFolder createRolesFolder() {
+	public RolesFolder createRolesFolder() {
 		RolesFolderImpl rolesFolder = new RolesFolderImpl();
 		return rolesFolder;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Rakefile createRakefile() {
+	public Rakefile createRakefile() {
 		RakefileImpl rakefile = new RakefileImpl();
 		return rakefile;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -158,7 +150,7 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationF
 		return cookbooksFolder;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -168,23 +160,23 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationF
 		return workstationFolder;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public WorkstationPackage getWorkstationPackage() {
+	public WorkstationPackage getWorkstationPackage() {
 		return (WorkstationPackage)getEPackage();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
-    @Deprecated
-    public static WorkstationPackage getPackage() {
+	@Deprecated
+	public static WorkstationPackage getPackage() {
 		return WorkstationPackage.eINSTANCE;
 	}
 

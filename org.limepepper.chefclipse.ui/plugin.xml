@@ -224,7 +224,7 @@
          <action
                label="&amp;Compare Cookbook"
                icon="icons/sample.gif"
-               class="org.limepepper.chefclipse.compare.actions.CompareAction"
+               class="org.limepepper.chefclipse.compare.actions.CompareAction2"
                tooltip="Hello, Eclipse world"
                menubarPath="compare.actionset/sampleGroup.compare.cookbook"
                toolbarPath="sampleGroup"

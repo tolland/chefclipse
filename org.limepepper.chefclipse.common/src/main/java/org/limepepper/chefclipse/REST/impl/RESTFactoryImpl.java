@@ -5,36 +5,12 @@ package org.limepepper.chefclipse.REST.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.limepepper.chefclipse.REST.*;
-import org.limepepper.chefclipse.REST.ClientListResp;
-import org.limepepper.chefclipse.REST.ClientResp;
-import org.limepepper.chefclipse.REST.CookbookAttributes;
-import org.limepepper.chefclipse.REST.CookbookDefinition;
-import org.limepepper.chefclipse.REST.CookbookFile;
-import org.limepepper.chefclipse.REST.CookbookLibrary;
-import org.limepepper.chefclipse.REST.CookbookListResp;
-import org.limepepper.chefclipse.REST.CookbookListVersionResp;
-import org.limepepper.chefclipse.REST.CookbookMaintainer;
-import org.limepepper.chefclipse.REST.CookbookMetadata;
-import org.limepepper.chefclipse.REST.CookbookMetadataDependency;
-import org.limepepper.chefclipse.REST.CookbookProviders;
-import org.limepepper.chefclipse.REST.CookbookRecipe;
-import org.limepepper.chefclipse.REST.CookbookResource;
-import org.limepepper.chefclipse.REST.CookbookRootFile;
-import org.limepepper.chefclipse.REST.CookbookTemplate;
-import org.limepepper.chefclipse.REST.CookbookVersionResp;
-import org.limepepper.chefclipse.REST.EnvironmentResp;
-import org.limepepper.chefclipse.REST.JSONObjectResp;
-import org.limepepper.chefclipse.REST.NodeListResp;
-import org.limepepper.chefclipse.REST.NodeResp;
-import org.limepepper.chefclipse.REST.RESTFactory;
-import org.limepepper.chefclipse.REST.RESTPackage;
-import org.limepepper.chefclipse.REST.RoleListResp;
-import org.limepepper.chefclipse.REST.RoleResp;
-import org.limepepper.chefclipse.REST.SearchIndexResp;
-import org.limepepper.chefclipse.REST.SearchResultResp;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,13 +19,13 @@ import org.limepepper.chefclipse.REST.SearchResultResp;
  * @generated
  */
 public class RESTFactoryImpl extends EFactoryImpl implements RESTFactory {
-    /**
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static RESTFactory init() {
+	public static RESTFactory init() {
 		try {
 			RESTFactory theRESTFactory = (RESTFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/REST"); 
 			if (theRESTFactory != null) {
@@ -62,23 +38,23 @@ public class RESTFactoryImpl extends EFactoryImpl implements RESTFactory {
 		return new RESTFactoryImpl();
 	}
 
-    /**
+	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RESTFactoryImpl() {
+	public RESTFactoryImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public EObject create(EClass eClass) {
+	@Override
+	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case RESTPackage.COOKBOOK_LIST_RESP: return createCookbookListResp();
 			case RESTPackage.COOKBOOK_VERSION_RESP: return createCookbookVersionResp();
@@ -110,273 +86,273 @@ public class RESTFactoryImpl extends EFactoryImpl implements RESTFactory {
 		}
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookListResp createCookbookListResp() {
+	public CookbookListResp createCookbookListResp() {
 		CookbookListRespImpl cookbookListResp = new CookbookListRespImpl();
 		return cookbookListResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookVersionResp createCookbookVersionResp() {
+	public CookbookVersionResp createCookbookVersionResp() {
 		CookbookVersionRespImpl cookbookVersionResp = new CookbookVersionRespImpl();
 		return cookbookVersionResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookMetadata createCookbookMetadata() {
+	public CookbookMetadata createCookbookMetadata() {
 		CookbookMetadataImpl cookbookMetadata = new CookbookMetadataImpl();
 		return cookbookMetadata;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookDefinition createCookbookDefinition() {
+	public CookbookDefinition createCookbookDefinition() {
 		CookbookDefinitionImpl cookbookDefinition = new CookbookDefinitionImpl();
 		return cookbookDefinition;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookFile createCookbookFile() {
+	public CookbookFile createCookbookFile() {
 		CookbookFileImpl cookbookFile = new CookbookFileImpl();
 		return cookbookFile;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookLibrary createCookbookLibrary() {
+	public CookbookLibrary createCookbookLibrary() {
 		CookbookLibraryImpl cookbookLibrary = new CookbookLibraryImpl();
 		return cookbookLibrary;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookTemplate createCookbookTemplate() {
+	public CookbookTemplate createCookbookTemplate() {
 		CookbookTemplateImpl cookbookTemplate = new CookbookTemplateImpl();
 		return cookbookTemplate;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookRootFile createCookbookRootFile() {
+	public CookbookRootFile createCookbookRootFile() {
 		CookbookRootFileImpl cookbookRootFile = new CookbookRootFileImpl();
 		return cookbookRootFile;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookRecipe createCookbookRecipe() {
+	public CookbookRecipe createCookbookRecipe() {
 		CookbookRecipeImpl cookbookRecipe = new CookbookRecipeImpl();
 		return cookbookRecipe;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookResource createCookbookResource() {
+	public CookbookResource createCookbookResource() {
 		CookbookResourceImpl cookbookResource = new CookbookResourceImpl();
 		return cookbookResource;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookProviders createCookbookProviders() {
+	public CookbookProviders createCookbookProviders() {
 		CookbookProvidersImpl cookbookProviders = new CookbookProvidersImpl();
 		return cookbookProviders;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookAttributes createCookbookAttributes() {
+	public CookbookAttributes createCookbookAttributes() {
 		CookbookAttributesImpl cookbookAttributes = new CookbookAttributesImpl();
 		return cookbookAttributes;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookMaintainer createCookbookMaintainer() {
+	public CookbookMaintainer createCookbookMaintainer() {
 		CookbookMaintainerImpl cookbookMaintainer = new CookbookMaintainerImpl();
 		return cookbookMaintainer;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RoleResp createRoleResp() {
+	public RoleResp createRoleResp() {
 		RoleRespImpl roleResp = new RoleRespImpl();
 		return roleResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RoleListResp createRoleListResp() {
+	public RoleListResp createRoleListResp() {
 		RoleListRespImpl roleListResp = new RoleListRespImpl();
 		return roleListResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookListVersionResp createCookbookListVersionResp() {
+	public CookbookListVersionResp createCookbookListVersionResp() {
 		CookbookListVersionRespImpl cookbookListVersionResp = new CookbookListVersionRespImpl();
 		return cookbookListVersionResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NodeResp createNodeResp() {
+	public NodeResp createNodeResp() {
 		NodeRespImpl nodeResp = new NodeRespImpl();
 		return nodeResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public NodeListResp createNodeListResp() {
+	public NodeListResp createNodeListResp() {
 		NodeListRespImpl nodeListResp = new NodeListRespImpl();
 		return nodeListResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public SearchResultResp createSearchResultResp() {
+	public SearchResultResp createSearchResultResp() {
 		SearchResultRespImpl searchResultResp = new SearchResultRespImpl();
 		return searchResultResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public SearchIndexResp createSearchIndexResp() {
+	public SearchIndexResp createSearchIndexResp() {
 		SearchIndexRespImpl searchIndexResp = new SearchIndexRespImpl();
 		return searchIndexResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookMetadataDependency createCookbookMetadataDependency() {
+	public CookbookMetadataDependency createCookbookMetadataDependency() {
 		CookbookMetadataDependencyImpl cookbookMetadataDependency = new CookbookMetadataDependencyImpl();
 		return cookbookMetadataDependency;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EnvironmentResp createEnvironmentResp() {
+	public EnvironmentResp createEnvironmentResp() {
 		EnvironmentRespImpl environmentResp = new EnvironmentRespImpl();
 		return environmentResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public JSONObjectResp createJSONObjectResp() {
+	public JSONObjectResp createJSONObjectResp() {
 		JSONObjectRespImpl jsonObjectResp = new JSONObjectRespImpl();
 		return jsonObjectResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ClientResp createClientResp() {
+	public ClientResp createClientResp() {
 		ClientRespImpl clientResp = new ClientRespImpl();
 		return clientResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ClientListResp createClientListResp() {
+	public ClientListResp createClientListResp() {
 		ClientListRespImpl clientListResp = new ClientListRespImpl();
 		return clientListResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RESTPackage getRESTPackage() {
+	public RESTPackage getRESTPackage() {
 		return (RESTPackage)getEPackage();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
-    @Deprecated
-    public static RESTPackage getPackage() {
+	@Deprecated
+	public static RESTPackage getPackage() {
 		return RESTPackage.eINSTANCE;
 	}
 

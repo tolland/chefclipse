@@ -3,8 +3,11 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.REST.CookbookMetadata;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -25,88 +28,88 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  * @generated
  */
 public class CookbookMetadataImpl extends EObjectImpl implements CookbookMetadata {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookMetadataImpl() {
+	public CookbookMetadataImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RESTPackage.Literals.COOKBOOK_METADATA;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getMaintainer() {
+	public String getMaintainer() {
 		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setMaintainer(String newMaintainer) {
+	public void setMaintainer(String newMaintainer) {
 		eSet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, newMaintainer);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<String> getPlatforms() {
+	@SuppressWarnings("unchecked")
+	public EList<String> getPlatforms() {
 		return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__PLATFORMS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getVersion() {
+	public String getVersion() {
 		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setVersion(String newVersion) {
+	public void setVersion(String newVersion) {
 		eSet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, newVersion);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<String> getDependencies() {
+	@SuppressWarnings("unchecked")
+	public EList<String> getDependencies() {
 		return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__DEPENDENCIES, true);
 	}
 

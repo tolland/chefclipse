@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.ui.properties;
+package org.limepepper.chefclipse.properties;
 
 import java.util.List;
 
@@ -27,8 +27,11 @@ import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.ui.Activator;
-import org.limepepper.chefclipse.ui.Messages;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+
+import chefclipse.ui.ChefPlugin;
+
+import chefclipse.ui.messages.Messages;
 
 /**
  * Project property page to select Chef-server configuration for chef project.
@@ -40,7 +43,7 @@ import org.limepepper.chefclipse.ui.Messages;
 public class ChefConfigurationPropertyPage extends PropertyPage {
 
 	public static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
-	public static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
+	public static final String PROPERTIES_PAGE = ChefPlugin.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
 	
 	private IProject project;
 	private boolean modified = false;
@@ -75,7 +78,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		data.horizontalSpan = 1;
 		control.setLayoutData(data);
 		
-		configsViewer.restoreColumnSettings(Activator.getDefault().getDialogSettings(), PROPERTIES_PAGE);
+		configsViewer.restoreColumnSettings(ChefPlugin.getDefault().getDialogSettings(), PROPERTIES_PAGE);
 
 		configsViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			@Override
@@ -206,7 +209,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		savePreference(configsViewer.getCheckedConfig());
 		
 		// save column widths
-		IDialogSettings settings = Activator.getDefault().getDialogSettings();
+		IDialogSettings settings = ChefPlugin.getDefault().getDialogSettings();
 		configsViewer.saveColumnSettings(settings, PROPERTIES_PAGE);
 		return super.performOk();
 	}

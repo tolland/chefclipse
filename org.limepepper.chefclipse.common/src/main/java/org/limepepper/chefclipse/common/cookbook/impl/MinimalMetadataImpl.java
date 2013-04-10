@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse.common.cookbook.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
 
@@ -16,22 +17,22 @@ import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
  * @generated
  */
 public class MinimalMetadataImpl extends MetadataImpl implements MinimalMetadata {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public MinimalMetadataImpl() {
+	public MinimalMetadataImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.MINIMAL_METADATA;
 	}
 

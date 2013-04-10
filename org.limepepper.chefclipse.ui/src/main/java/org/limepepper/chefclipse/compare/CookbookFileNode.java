@@ -10,8 +10,9 @@ import org.eclipse.compare.ITypedElement;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
-import org.limepepper.chefclipse.compare.CookbookCompareInput.FilteredBufferedResourceNode;
 import org.limepepper.chefclipse.ui.Activator;
+
+import chefclipse.ui.compare.CookbookCompareInput.FilteredBufferedResourceNode;
 
 class CookbookFileNode extends CookbookResourceNode implements
         IStreamContentAccessor, ITypedElement {

@@ -110,10 +110,6 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
 				return createNameUrlMapAdapter();
 			}
 			@Override
-			public Adapter caseCookbook(Cookbook object) {
-				return createCookbookAdapter();
-			}
-			@Override
 			public Adapter caseMapTestContainer(MapTestContainer object) {
 				return createMapTestContainerAdapter();
 			}
@@ -290,20 +286,6 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNameUrlMapAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Cookbook <em>Cookbook</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.Cookbook
-	 * @generated
-	 */
-	public Adapter createCookbookAdapter() {
 		return null;
 	}
 

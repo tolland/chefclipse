@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse.REST;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,72 +25,72 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface CookbookListResp extends EObject {
-    /**
+	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.limepepper.chefclipse.REST.RESTPackage#getCookbookListResp_Name()
 	 * @model required="true"
 	 * @generated
 	 */
-    String getName();
+	String getName();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.REST.CookbookListResp#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
-    void setName(String value);
+	void setName(String value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Versions</b></em>' containment reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.REST.CookbookListVersionResp}.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Versions</em>' containment reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Versions</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Versions</em>' containment reference list.
 	 * @see org.limepepper.chefclipse.REST.RESTPackage#getCookbookListResp_Versions()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-    EList<CookbookListVersionResp> getVersions();
+	EList<CookbookListVersionResp> getVersions();
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Url</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Url</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Url</em>' attribute.
 	 * @see #setUrl(String)
 	 * @see org.limepepper.chefclipse.REST.RESTPackage#getCookbookListResp_Url()
 	 * @model required="true"
 	 * @generated
 	 */
-    String getUrl();
+	String getUrl();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.REST.CookbookListResp#getUrl <em>Url</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Url</em>' attribute.
 	 * @see #getUrl()
 	 * @generated
 	 */
-    void setUrl(String value);
+	void setUrl(String value);
 
 } // CookbookListResp

@@ -3,7 +3,9 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.REST.RESTPackage;
 import org.limepepper.chefclipse.REST.SearchResultResp;
 
@@ -17,32 +19,32 @@ import org.limepepper.chefclipse.REST.SearchResultResp;
  * @generated
  */
 public class SearchResultRespImpl extends EObjectImpl implements SearchResultResp {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public SearchResultRespImpl() {
+	public SearchResultRespImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RESTPackage.Literals.SEARCH_RESULT_RESP;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 

@@ -1,4 +1,4 @@
-package chefclipse.internal.ui;
+package chefclipse.core.adapters;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IAdapterFactory;

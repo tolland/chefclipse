@@ -5,7 +5,8 @@ import org.eclipse.compare.CompareUI;
 import org.eclipse.compare.ITypedElement;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
-import org.limepepper.chefclipse.compare.actions.CookbookCompareEditorInput;
+
+import chefclipse.ui.compare.CookbookCompareEditorInput;
 
 public class CompareManagerImpl {
 

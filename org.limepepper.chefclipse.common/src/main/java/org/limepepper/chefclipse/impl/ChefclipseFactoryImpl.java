@@ -73,7 +73,6 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
 			case ChefclipsePackage.MAINTAINED_OBJECT: return createMaintainedObject();
 			case ChefclipsePackage.CONFIG: return createConfig();
 			case ChefclipsePackage.NAME_URL_MAP: return createNameUrlMap();
-			case ChefclipsePackage.COOKBOOK: return createCookbook();
 			case ChefclipsePackage.MAP_TEST_CONTAINER: return createMapTestContainer();
 			case ChefclipsePackage.ESTRING_TO_VERSION_URL_MAP: return (EObject)createEStringToVersionUrlMap();
 			case ChefclipsePackage.VERSION_URL: return createVersionUrl();
@@ -242,16 +241,6 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
 	public NameUrlMap createNameUrlMap() {
 		NameUrlMapImpl nameUrlMap = new NameUrlMapImpl();
 		return nameUrlMap;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Cookbook createCookbook() {
-		CookbookImpl cookbook = new CookbookImpl();
-		return cookbook;
 	}
 
 	/**

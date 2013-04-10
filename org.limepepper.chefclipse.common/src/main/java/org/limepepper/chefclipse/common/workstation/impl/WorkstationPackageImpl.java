@@ -6,18 +6,31 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
+
 import org.limepepper.chefclipse.REST.RESTPackage;
+
 import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
+
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
+
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
+
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+
 import org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+
 import org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl;
+
 import org.limepepper.chefclipse.common.knife.KnifePackage;
+
 import org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl;
+
 import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
 import org.limepepper.chefclipse.common.workstation.ConfigFolder;
 import org.limepepper.chefclipse.common.workstation.CookbooksFolder;
@@ -29,6 +42,7 @@ import org.limepepper.chefclipse.common.workstation.RolesFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.common.workstation.WorkstationFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
+
 import org.limepepper.chefclipse.impl.ChefclipsePackageImpl;
 
 /**
@@ -38,70 +52,70 @@ import org.limepepper.chefclipse.impl.ChefclipsePackageImpl;
  * @generated
  */
 public class WorkstationPackageImpl extends EPackageImpl implements WorkstationPackage {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass repositoryEClass = null;
+	private EClass repositoryEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass configFolderEClass = null;
+	private EClass configFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass certificatesFolderEClass = null;
+	private EClass certificatesFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass dataBagsFolderEClass = null;
+	private EClass dataBagsFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass environmentsFolderEClass = null;
+	private EClass environmentsFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass rolesFolderEClass = null;
+	private EClass rolesFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass rakefileEClass = null;
+	private EClass rakefileEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass cookbooksFolderEClass = null;
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass workstationFolderEClass = null;
 
-				/**
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -110,36 +124,36 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 	 * initialization of the package, or returns the registered package,
 	 * if one already exists.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-    private WorkstationPackageImpl() {
+	private WorkstationPackageImpl() {
 		super(eNS_URI, WorkstationFactory.eINSTANCE);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private static boolean isInited = false;
+	private static boolean isInited = false;
 
-    /**
+	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
 	 * <p>This method is used to initialize {@link WorkstationPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-    public static WorkstationPackage init() {
+	public static WorkstationPackage init() {
 		if (isInited) return (WorkstationPackage)EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI);
 
 		// Obtain or create and register package
@@ -182,52 +196,52 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		return theWorkstationPackage;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getRepository() {
+	public EClass getRepository() {
 		return repositoryEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getRepository_OS() {
+	public EAttribute getRepository_OS() {
 		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getRepository_Basepath() {
+	public EAttribute getRepository_Basepath() {
 		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(1);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRepository_Cookbooks() {
+	public EReference getRepository_Cookbooks() {
 		return (EReference)repositoryEClass.getEStructuralFeatures().get(2);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRepository_Knife() {
+	public EReference getRepository_Knife() {
 		return (EReference)repositoryEClass.getEStructuralFeatures().get(3);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -236,61 +250,61 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		return (EReference)repositoryEClass.getEStructuralFeatures().get(4);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getConfigFolder() {
+	public EClass getConfigFolder() {
 		return configFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getCertificatesFolder() {
+	public EClass getCertificatesFolder() {
 		return certificatesFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getDataBagsFolder() {
+	public EClass getDataBagsFolder() {
 		return dataBagsFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getEnvironmentsFolder() {
+	public EClass getEnvironmentsFolder() {
 		return environmentsFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getRolesFolder() {
+	public EClass getRolesFolder() {
 		return rolesFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getRakefile() {
+	public EClass getRakefile() {
 		return rakefileEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -299,7 +313,7 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		return cookbooksFolderEClass;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -308,7 +322,7 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		return (EReference)cookbooksFolderEClass.getEStructuralFeatures().get(0);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -317,30 +331,30 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		return workstationFolderEClass;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public WorkstationFactory getWorkstationFactory() {
+	public WorkstationFactory getWorkstationFactory() {
 		return (WorkstationFactory)getEFactoryInstance();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private boolean isCreated = false;
+	private boolean isCreated = false;
 
-    /**
+	/**
 	 * Creates the meta-model objects for the package.  This method is
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void createPackageContents() {
+	public void createPackageContents() {
 		if (isCreated) return;
 		isCreated = true;
 
@@ -370,21 +384,21 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		workstationFolderEClass = createEClass(WORKSTATION_FOLDER);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private boolean isInitialized = false;
+	private boolean isInitialized = false;
 
-    /**
+	/**
 	 * Complete the initialization of the package and its meta-model.  This
 	 * method is guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void initializePackageContents() {
+	public void initializePackageContents() {
 		if (isInitialized) return;
 		isInitialized = true;
 

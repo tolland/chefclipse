@@ -8,6 +8,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -20,6 +21,7 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.limepepper.chefclipse.common.chefserver.util.ChefserverAdapterFactory;
 
 /**
@@ -32,37 +34,37 @@ import org.limepepper.chefclipse.common.chefserver.util.ChefserverAdapterFactory
  * @generated
  */
 public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-    /**
+	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ComposedAdapterFactory parentAdapterFactory;
+	protected ComposedAdapterFactory parentAdapterFactory;
 
-    /**
+	/**
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected IChangeNotifier changeNotifier = new ChangeNotifier();
+	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-    /**
+	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected Collection<Object> supportedTypes = new ArrayList<Object>();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-    /**
+	/**
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ChefserverItemProviderAdapterFactory() {
+	public ChefserverItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
@@ -71,22 +73,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		supportedTypes.add(ITableItemLabelProvider.class);
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Environment} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected EnvironmentItemProvider environmentItemProvider;
+	protected EnvironmentItemProvider environmentItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Environment}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createEnvironmentAdapter() {
+	@Override
+	public Adapter createEnvironmentAdapter() {
 		if (environmentItemProvider == null) {
 			environmentItemProvider = new EnvironmentItemProvider(this);
 		}
@@ -94,22 +96,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return environmentItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.DataBag} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DataBagItemProvider dataBagItemProvider;
+	protected DataBagItemProvider dataBagItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.DataBag}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createDataBagAdapter() {
+	@Override
+	public Adapter createDataBagAdapter() {
 		if (dataBagItemProvider == null) {
 			dataBagItemProvider = new DataBagItemProvider(this);
 		}
@@ -117,22 +119,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return dataBagItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Role} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected RoleItemProvider roleItemProvider;
+	protected RoleItemProvider roleItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Role}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createRoleAdapter() {
+	@Override
+	public Adapter createRoleAdapter() {
 		if (roleItemProvider == null) {
 			roleItemProvider = new RoleItemProvider(this);
 		}
@@ -140,22 +142,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return roleItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Node} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected NodeItemProvider nodeItemProvider;
+	protected NodeItemProvider nodeItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Node}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createNodeAdapter() {
+	@Override
+	public Adapter createNodeAdapter() {
 		if (nodeItemProvider == null) {
 			nodeItemProvider = new NodeItemProvider(this);
 		}
@@ -163,22 +165,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return nodeItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Server} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ServerItemProvider serverItemProvider;
+	protected ServerItemProvider serverItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Server}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createServerAdapter() {
+	@Override
+	public Adapter createServerAdapter() {
 		if (serverItemProvider == null) {
 			serverItemProvider = new ServerItemProvider(this);
 		}
@@ -186,22 +188,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return serverItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Platform} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected PlatformItemProvider platformItemProvider;
+	protected PlatformItemProvider platformItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Platform}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createPlatformAdapter() {
+	@Override
+	public Adapter createPlatformAdapter() {
 		if (platformItemProvider == null) {
 			platformItemProvider = new PlatformItemProvider(this);
 		}
@@ -209,22 +211,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return platformItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.RunList} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected RunListItemProvider runListItemProvider;
+	protected RunListItemProvider runListItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.RunList}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createRunListAdapter() {
+	@Override
+	public Adapter createRunListAdapter() {
 		if (runListItemProvider == null) {
 			runListItemProvider = new RunListItemProvider(this);
 		}
@@ -232,22 +234,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return runListItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.ServerConfig} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ServerConfigItemProvider serverConfigItemProvider;
+	protected ServerConfigItemProvider serverConfigItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.ServerConfig}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createServerConfigAdapter() {
+	@Override
+	public Adapter createServerConfigAdapter() {
 		if (serverConfigItemProvider == null) {
 			serverConfigItemProvider = new ServerConfigItemProvider(this);
 		}
@@ -255,22 +257,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return serverConfigItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.DataBagItem} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected DataBagItemItemProvider dataBagItemItemProvider;
+	protected DataBagItemItemProvider dataBagItemItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.DataBagItem}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createDataBagItemAdapter() {
+	@Override
+	public Adapter createDataBagItemAdapter() {
 		if (dataBagItemItemProvider == null) {
 			dataBagItemItemProvider = new DataBagItemItemProvider(this);
 		}
@@ -278,22 +280,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return dataBagItemItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Sandbox} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected SandboxItemProvider sandboxItemProvider;
+	protected SandboxItemProvider sandboxItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Sandbox}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createSandboxAdapter() {
+	@Override
+	public Adapter createSandboxAdapter() {
 		if (sandboxItemProvider == null) {
 			sandboxItemProvider = new SandboxItemProvider(this);
 		}
@@ -301,22 +303,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return sandboxItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.CookbookListResp} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected CookbookListRespItemProvider cookbookListRespItemProvider;
+	protected CookbookListRespItemProvider cookbookListRespItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.CookbookListResp}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createCookbookListRespAdapter() {
+	@Override
+	public Adapter createCookbookListRespAdapter() {
 		if (cookbookListRespItemProvider == null) {
 			cookbookListRespItemProvider = new CookbookListRespItemProvider(this);
 		}
@@ -324,22 +326,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return cookbookListRespItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ServerCookbookFileItemProvider serverCookbookFileItemProvider;
+	protected ServerCookbookFileItemProvider serverCookbookFileItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createServerCookbookFileAdapter() {
+	@Override
+	public Adapter createServerCookbookFileAdapter() {
 		if (serverCookbookFileItemProvider == null) {
 			serverCookbookFileItemProvider = new ServerCookbookFileItemProvider(this);
 		}
@@ -347,22 +349,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return serverCookbookFileItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ServerCookbookVersionItemProvider serverCookbookVersionItemProvider;
+	protected ServerCookbookVersionItemProvider serverCookbookVersionItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createServerCookbookVersionAdapter() {
+	@Override
+	public Adapter createServerCookbookVersionAdapter() {
 		if (serverCookbookVersionItemProvider == null) {
 			serverCookbookVersionItemProvider = new ServerCookbookVersionItemProvider(this);
 		}
@@ -370,22 +372,22 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return serverCookbookVersionItemProvider;
 	}
 
-    /**
+	/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.RunListItem} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected RunListItemItemProvider runListItemItemProvider;
+	protected RunListItemItemProvider runListItemItemProvider;
 
-    /**
+	/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.RunListItem}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createRunListItemAdapter() {
+	@Override
+	public Adapter createRunListItemAdapter() {
 		if (runListItemItemProvider == null) {
 			runListItemItemProvider = new RunListItemItemProvider(this);
 		}
@@ -393,54 +395,54 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return runListItemItemProvider;
 	}
 
-    /**
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ComposeableAdapterFactory getRootAdapterFactory() {
+	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
-    /**
+	/**
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public boolean isFactoryForType(Object type) {
+	@Override
+	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
 
-    /**
+	/**
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter adapt(Notifier notifier, Object type) {
+	@Override
+	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Object adapt(Object object, Object type) {
+	@Override
+	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
@@ -451,33 +453,33 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return null;
 	}
 
-    /**
+	/**
 	 * This adds a listener.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void addListener(INotifyChangedListener notifyChangedListener) {
+	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
 
-    /**
+	/**
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void removeListener(INotifyChangedListener notifyChangedListener) {
+	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
 
-    /**
+	/**
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void fireNotifyChanged(Notification notification) {
+	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
 		if (parentAdapterFactory != null) {
@@ -485,13 +487,13 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		}
 	}
 
-    /**
+	/**
 	 * This disposes all of the item providers created by this factory. 
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void dispose() {
+	public void dispose() {
 		if (environmentItemProvider != null) environmentItemProvider.dispose();
 		if (dataBagItemProvider != null) dataBagItemProvider.dispose();
 		if (roleItemProvider != null) roleItemProvider.dispose();

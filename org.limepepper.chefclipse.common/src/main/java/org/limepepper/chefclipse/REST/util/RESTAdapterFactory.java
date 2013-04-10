@@ -4,35 +4,12 @@ package org.limepepper.chefclipse.REST.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.limepepper.chefclipse.REST.*;
-import org.limepepper.chefclipse.REST.ClientListResp;
-import org.limepepper.chefclipse.REST.ClientResp;
-import org.limepepper.chefclipse.REST.CookbookAttributes;
-import org.limepepper.chefclipse.REST.CookbookDefinition;
-import org.limepepper.chefclipse.REST.CookbookFile;
-import org.limepepper.chefclipse.REST.CookbookLibrary;
-import org.limepepper.chefclipse.REST.CookbookListResp;
-import org.limepepper.chefclipse.REST.CookbookListVersionResp;
-import org.limepepper.chefclipse.REST.CookbookMaintainer;
-import org.limepepper.chefclipse.REST.CookbookMetadata;
-import org.limepepper.chefclipse.REST.CookbookMetadataDependency;
-import org.limepepper.chefclipse.REST.CookbookProviders;
-import org.limepepper.chefclipse.REST.CookbookRecipe;
-import org.limepepper.chefclipse.REST.CookbookResource;
-import org.limepepper.chefclipse.REST.CookbookRootFile;
-import org.limepepper.chefclipse.REST.CookbookTemplate;
-import org.limepepper.chefclipse.REST.CookbookVersionResp;
-import org.limepepper.chefclipse.REST.EnvironmentResp;
-import org.limepepper.chefclipse.REST.JSONObjectResp;
-import org.limepepper.chefclipse.REST.NodeListResp;
-import org.limepepper.chefclipse.REST.NodeResp;
-import org.limepepper.chefclipse.REST.RESTPackage;
-import org.limepepper.chefclipse.REST.RoleListResp;
-import org.limepepper.chefclipse.REST.RoleResp;
-import org.limepepper.chefclipse.REST.SearchIndexResp;
-import org.limepepper.chefclipse.REST.SearchResultResp;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,36 +20,36 @@ import org.limepepper.chefclipse.REST.SearchResultResp;
  * @generated
  */
 public class RESTAdapterFactory extends AdapterFactoryImpl {
-    /**
+	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected static RESTPackage modelPackage;
+	protected static RESTPackage modelPackage;
 
-    /**
+	/**
 	 * Creates an instance of the adapter factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RESTAdapterFactory() {
+	public RESTAdapterFactory() {
 		if (modelPackage == null) {
 			modelPackage = RESTPackage.eINSTANCE;
 		}
 	}
 
-    /**
+	/**
 	 * Returns whether this factory is applicable for the type of the object.
 	 * <!-- begin-user-doc -->
-     * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-     * <!-- end-user-doc -->
+	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
+	 * <!-- end-user-doc -->
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
-    @Override
-    public boolean isFactoryForType(Object object) {
+	@Override
+	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
 		}
@@ -82,14 +59,14 @@ public class RESTAdapterFactory extends AdapterFactoryImpl {
 		return false;
 	}
 
-    /**
+	/**
 	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected RESTSwitch<Adapter> modelSwitch =
-        new RESTSwitch<Adapter>() {
+	protected RESTSwitch<Adapter> modelSwitch =
+		new RESTSwitch<Adapter>() {
 			@Override
 			public Adapter caseCookbookListResp(CookbookListResp object) {
 				return createCookbookListRespAdapter();
@@ -196,379 +173,379 @@ public class RESTAdapterFactory extends AdapterFactoryImpl {
 			}
 		};
 
-    /**
+	/**
 	 * Creates an adapter for the <code>target</code>.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
-    @Override
-    public Adapter createAdapter(Notifier target) {
+	@Override
+	public Adapter createAdapter(Notifier target) {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookListResp <em>Cookbook List Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookListResp
 	 * @generated
 	 */
-    public Adapter createCookbookListRespAdapter() {
+	public Adapter createCookbookListRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookVersionResp <em>Cookbook Version Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookVersionResp
 	 * @generated
 	 */
-    public Adapter createCookbookVersionRespAdapter() {
+	public Adapter createCookbookVersionRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookMetadata <em>Cookbook Metadata</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookMetadata
 	 * @generated
 	 */
-    public Adapter createCookbookMetadataAdapter() {
+	public Adapter createCookbookMetadataAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookDefinition <em>Cookbook Definition</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookDefinition
 	 * @generated
 	 */
-    public Adapter createCookbookDefinitionAdapter() {
+	public Adapter createCookbookDefinitionAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookFile <em>Cookbook File</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookFile
 	 * @generated
 	 */
-    public Adapter createCookbookFileAdapter() {
+	public Adapter createCookbookFileAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookLibrary <em>Cookbook Library</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookLibrary
 	 * @generated
 	 */
-    public Adapter createCookbookLibraryAdapter() {
+	public Adapter createCookbookLibraryAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookTemplate <em>Cookbook Template</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookTemplate
 	 * @generated
 	 */
-    public Adapter createCookbookTemplateAdapter() {
+	public Adapter createCookbookTemplateAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookRootFile <em>Cookbook Root File</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookRootFile
 	 * @generated
 	 */
-    public Adapter createCookbookRootFileAdapter() {
+	public Adapter createCookbookRootFileAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookRecipe <em>Cookbook Recipe</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookRecipe
 	 * @generated
 	 */
-    public Adapter createCookbookRecipeAdapter() {
+	public Adapter createCookbookRecipeAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookResource <em>Cookbook Resource</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookResource
 	 * @generated
 	 */
-    public Adapter createCookbookResourceAdapter() {
+	public Adapter createCookbookResourceAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookProviders <em>Cookbook Providers</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookProviders
 	 * @generated
 	 */
-    public Adapter createCookbookProvidersAdapter() {
+	public Adapter createCookbookProvidersAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookAttributes <em>Cookbook Attributes</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookAttributes
 	 * @generated
 	 */
-    public Adapter createCookbookAttributesAdapter() {
+	public Adapter createCookbookAttributesAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookMaintainer <em>Cookbook Maintainer</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookMaintainer
 	 * @generated
 	 */
-    public Adapter createCookbookMaintainerAdapter() {
+	public Adapter createCookbookMaintainerAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.RoleResp <em>Role Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.RoleResp
 	 * @generated
 	 */
-    public Adapter createRoleRespAdapter() {
+	public Adapter createRoleRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.RoleListResp <em>Role List Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.RoleListResp
 	 * @generated
 	 */
-    public Adapter createRoleListRespAdapter() {
+	public Adapter createRoleListRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookListVersionResp <em>Cookbook List Version Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookListVersionResp
 	 * @generated
 	 */
-    public Adapter createCookbookListVersionRespAdapter() {
+	public Adapter createCookbookListVersionRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.NodeResp <em>Node Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.NodeResp
 	 * @generated
 	 */
-    public Adapter createNodeRespAdapter() {
+	public Adapter createNodeRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.NodeListResp <em>Node List Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.NodeListResp
 	 * @generated
 	 */
-    public Adapter createNodeListRespAdapter() {
+	public Adapter createNodeListRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.SearchResultResp <em>Search Result Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.SearchResultResp
 	 * @generated
 	 */
-    public Adapter createSearchResultRespAdapter() {
+	public Adapter createSearchResultRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.SearchIndexResp <em>Search Index Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.SearchIndexResp
 	 * @generated
 	 */
-    public Adapter createSearchIndexRespAdapter() {
+	public Adapter createSearchIndexRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.CookbookMetadataDependency <em>Cookbook Metadata Dependency</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.CookbookMetadataDependency
 	 * @generated
 	 */
-    public Adapter createCookbookMetadataDependencyAdapter() {
+	public Adapter createCookbookMetadataDependencyAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.EnvironmentResp <em>Environment Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.EnvironmentResp
 	 * @generated
 	 */
-    public Adapter createEnvironmentRespAdapter() {
+	public Adapter createEnvironmentRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.JSONObjectResp <em>JSON Object Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.JSONObjectResp
 	 * @generated
 	 */
-    public Adapter createJSONObjectRespAdapter() {
+	public Adapter createJSONObjectRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.ClientResp <em>Client Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.ClientResp
 	 * @generated
 	 */
-    public Adapter createClientRespAdapter() {
+	public Adapter createClientRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.REST.ClientListResp <em>Client List Resp</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.REST.ClientListResp
 	 * @generated
 	 */
-    public Adapter createClientListRespAdapter() {
+	public Adapter createClientListRespAdapter() {
 		return null;
 	}
 
-    /**
+	/**
 	 * Creates a new adapter for the default case.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @generated
 	 */
-    public Adapter createEObjectAdapter() {
+	public Adapter createEObjectAdapter() {
 		return null;
 	}
 

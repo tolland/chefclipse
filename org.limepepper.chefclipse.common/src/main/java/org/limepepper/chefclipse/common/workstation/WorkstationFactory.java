@@ -13,78 +13,78 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface WorkstationFactory extends EFactory {
-    /**
+	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    WorkstationFactory eINSTANCE = org.limepepper.chefclipse.common.workstation.impl.WorkstationFactoryImpl.init();
+	WorkstationFactory eINSTANCE = org.limepepper.chefclipse.common.workstation.impl.WorkstationFactoryImpl.init();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Repository</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Repository</em>'.
 	 * @generated
 	 */
-    Repository createRepository();
+	Repository createRepository();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Config Folder</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Config Folder</em>'.
 	 * @generated
 	 */
-    ConfigFolder createConfigFolder();
+	ConfigFolder createConfigFolder();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Certificates Folder</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Certificates Folder</em>'.
 	 * @generated
 	 */
-    CertificatesFolder createCertificatesFolder();
+	CertificatesFolder createCertificatesFolder();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Data Bags Folder</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Data Bags Folder</em>'.
 	 * @generated
 	 */
-    DataBagsFolder createDataBagsFolder();
+	DataBagsFolder createDataBagsFolder();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Environments Folder</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Environments Folder</em>'.
 	 * @generated
 	 */
-    EnvironmentsFolder createEnvironmentsFolder();
+	EnvironmentsFolder createEnvironmentsFolder();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Roles Folder</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Roles Folder</em>'.
 	 * @generated
 	 */
-    RolesFolder createRolesFolder();
+	RolesFolder createRolesFolder();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Rakefile</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Rakefile</em>'.
 	 * @generated
 	 */
-    Rakefile createRakefile();
+	Rakefile createRakefile();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Cookbooks Folder</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,7 +93,7 @@ public interface WorkstationFactory extends EFactory {
 	 */
 	CookbooksFolder createCookbooksFolder();
 
-				/**
+	/**
 	 * Returns a new object of class '<em>Folder</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,13 +102,13 @@ public interface WorkstationFactory extends EFactory {
 	 */
 	WorkstationFolder createWorkstationFolder();
 
-				/**
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-    WorkstationPackage getWorkstationPackage();
+	WorkstationPackage getWorkstationPackage();
 
 } //WorkstationFactory

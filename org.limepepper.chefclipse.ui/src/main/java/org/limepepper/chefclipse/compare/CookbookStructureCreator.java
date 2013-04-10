@@ -30,9 +30,10 @@ import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
-import org.limepepper.chefclipse.compare.CookbookCompareInput.FilteredBufferedResourceNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import chefclipse.ui.compare.CookbookCompareInput.FilteredBufferedResourceNode;
 
 public class CookbookStructureCreator implements IStructureCreator {
     static Logger                logger          = LoggerFactory

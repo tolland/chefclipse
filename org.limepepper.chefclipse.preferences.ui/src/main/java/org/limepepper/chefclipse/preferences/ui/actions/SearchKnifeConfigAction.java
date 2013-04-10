@@ -29,7 +29,8 @@ import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.preferences.ui.Activator;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.messages.Messages;
 
 /**
  * Shows a dialog for selecting a knife config file and create

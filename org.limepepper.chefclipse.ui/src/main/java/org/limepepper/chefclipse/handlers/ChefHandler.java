@@ -18,11 +18,12 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
-import org.limepepper.chefclipse.compare.CookbookCompareInput;
 import org.limepepper.chefclipse.compare.Utilities;
 import org.limepepper.chefclipse.ui.Activator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import chefclipse.ui.compare.CookbookCompareInput;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.

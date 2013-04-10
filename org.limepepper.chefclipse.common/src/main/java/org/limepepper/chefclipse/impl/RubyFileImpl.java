@@ -3,7 +3,9 @@
 package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.RubyFile;
 
@@ -21,50 +23,50 @@ import org.limepepper.chefclipse.RubyFile;
  * @generated
  */
 public class RubyFileImpl extends EObjectImpl implements RubyFile {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RubyFileImpl() {
+	public RubyFileImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefclipsePackage.Literals.RUBY_FILE;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getExtension() {
+	public String getExtension() {
 		return (String)eGet(ChefclipsePackage.Literals.RUBY_FILE__EXTENSION, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setExtension(String newExtension) {
+	public void setExtension(String newExtension) {
 		eSet(ChefclipsePackage.Literals.RUBY_FILE__EXTENSION, newExtension);
 	}
 

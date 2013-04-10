@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.compare.structurecreator;
+package chefclipse.ui.compare;
 
 import org.eclipse.compare.CompareConfiguration;
 import org.eclipse.compare.IViewerCreator;

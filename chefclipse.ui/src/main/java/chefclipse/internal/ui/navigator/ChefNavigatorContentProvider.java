@@ -5,11 +5,7 @@ import java.util.Arrays;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.jdt.annotation.NonNull;
-import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.workstation.Repository;
 
@@ -114,33 +110,6 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider 
 			e.printStackTrace();
 		}
 		return super.hasChildren(element);
-	}
-
-	class MenuLevelHolder {
-		EObject parentElement;
-		String label;
-		Object[] children;
-
-		public String getLabel() {
-			return label;
-		}
-
-		public Object[] getChildren() {
-			return children;
-		}
-
-		MenuLevelHolder(@NonNull String name,
-				@NonNull EList<? extends CookbookFile> eList) {
-			label = name;
-			children = eList.toArray();
-		}
-
-		MenuLevelHolder(@NonNull EList<CookbookVersion> eList,
-				@NonNull String name) {
-			label = name;
-			children = eList.toArray();
-		}
-
 	}
 
 }

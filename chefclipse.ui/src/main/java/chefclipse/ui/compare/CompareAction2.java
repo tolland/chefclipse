@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.compare.actions;
+package chefclipse.ui.compare;
 
 import org.eclipse.compare.CompareConfiguration;
 import org.eclipse.compare.internal.CompareEditor;
@@ -9,7 +9,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.actions.ActionDelegate;
 
-public class CompareAction extends ActionDelegate  implements IObjectActionDelegate  {
+public class CompareAction2 extends ActionDelegate  implements IObjectActionDelegate  {
 
     protected IWorkbenchPage fWorkbenchPage;
     ISelection               selection;

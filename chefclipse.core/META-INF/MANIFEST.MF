@@ -30,6 +30,7 @@ Export-Package: chefclipse.core;
    org.eclipse.core.resources,
    org.eclipse.core.runtime.content,
    org.osgi.framework",
+ chefclipse.core.adapters,
  chefclipse.core.builders;uses:="org.eclipse.core.runtime,org.eclipse.core.resources",
  chefclipse.core.factories;uses:="org.eclipse.emf.common.notify",
  chefclipse.core.managers;
@@ -40,7 +41,8 @@ Export-Package: chefclipse.core;
    org.limepepper.chefclipse.common.cookbook,
    org.eclipse.core.resources",
  chefclipse.core.providers,
- chefclipse.core.testers
+ chefclipse.core.testers,
+ chefclipse.core.utils
 Bundle-ClassPath: lib/jackson-core-asl.jar,
  lib/jackson-mapper-asl.jar,
  .,

@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.ui;
+package chefclipse.ui.messages;
 
 import org.eclipse.osgi.util.NLS;
 

@@ -39,9 +39,10 @@ import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.preferences.ui.actions.SearchKnifeConfigAction;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
-import org.limepepper.chefclipse.ui.Activator;
-import org.limepepper.chefclipse.ui.Messages;
-import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
+import org.limepepper.chefclipse.properties.ChefConfigurationsViewer;
+
+import chefclipse.ui.ChefPlugin;
+import chefclipse.ui.messages.Messages;
 
 /**
  * Preference page which allow to add, remove, or edit Chef server configurations.
@@ -51,7 +52,7 @@ import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
 
 public class ChefServerConfigurationsPreferencePage extends PreferencePage implements IWorkbenchPreferencePage{
 
-	private static final String PREFERENCE_PAGE = Activator.PLUGIN_ID + ".chef_configs_preference_page"; //$NON-NLS-1$
+	private static final String PREFERENCE_PAGE = ChefPlugin.PLUGIN_ID + ".chef_configs_preference_page"; //$NON-NLS-1$
 	private ChefConfigurationsViewer chefConfigurationsViewer;
 	private Button editButton;
 	private Button addButton;
@@ -87,7 +88,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		chefConfigurationsViewer.createControl(ancestor);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(chefConfigurationsViewer.getControl());
 		
-		chefConfigurationsViewer.restoreColumnSettings(Activator.getDefault().getDialogSettings(), PREFERENCE_PAGE);
+		chefConfigurationsViewer.restoreColumnSettings(ChefPlugin.getDefault().getDialogSettings(), PREFERENCE_PAGE);
 		
 		chefConfigurationsViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent e) {
@@ -207,7 +208,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 				ChefConfigManager.instance().saveDefaultChefConfig(getCurrentDefaultConfig());
 			}
 		});
-		IDialogSettings settings = Activator.getDefault().getDialogSettings();
+		IDialogSettings settings = ChefPlugin.getDefault().getDialogSettings();
 		chefConfigurationsViewer.saveColumnSettings(settings, PREFERENCE_PAGE);
 		
 		return super.performOk();

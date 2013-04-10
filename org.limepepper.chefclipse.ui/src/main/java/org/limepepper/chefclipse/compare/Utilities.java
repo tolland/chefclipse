@@ -12,6 +12,8 @@ import org.limepepper.chefclipse.ui.Activator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import chefclipse.ui.compare.CookbookCompareInput;
+
 public class Utilities {
 
     static Logger                logger = LoggerFactory

@@ -1,7 +1,8 @@
 package org.limepepper.chefclipse.ui.wizards;
 
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.Messages;
 
 public class ChefProjectWizardPage extends WizardNewProjectCreationPage{
 

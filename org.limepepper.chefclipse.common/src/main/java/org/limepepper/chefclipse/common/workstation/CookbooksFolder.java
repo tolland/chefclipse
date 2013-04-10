@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse.common.workstation;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**

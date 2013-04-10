@@ -21,30 +21,30 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface CookbookRecipe extends EObject {
-    /**
+	/**
 	 * Returns the value of the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Path</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Path</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
 	 * @see org.limepepper.chefclipse.REST.RESTPackage#getCookbookRecipe_Path()
 	 * @model required="true"
 	 * @generated
 	 */
-    String getPath();
+	String getPath();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.REST.CookbookRecipe#getPath <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Path</em>' attribute.
 	 * @see #getPath()
 	 * @generated
 	 */
-    void setPath(String value);
+	void setPath(String value);
 
 } // CookbookRecipe

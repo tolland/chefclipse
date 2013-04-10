@@ -6,23 +6,37 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.limepepper.chefclipse.ChefclipsePackage;
+
 import org.limepepper.chefclipse.REST.RESTPackage;
+
 import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
+
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
+
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
+
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+
 import org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl;
+
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+
 import org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl;
+
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
 import org.limepepper.chefclipse.common.knife.Plugin;
+
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
+
 import org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl;
+
 import org.limepepper.chefclipse.impl.ChefclipsePackageImpl;
 
 /**
@@ -32,28 +46,28 @@ import org.limepepper.chefclipse.impl.ChefclipsePackageImpl;
  * @generated
  */
 public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass knifeConfigEClass = null;
+	private EClass knifeConfigEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass pluginEClass = null;
+	private EClass pluginEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass knifeSearchEClass = null;
+	private EClass knifeSearchEClass = null;
 
-    /**
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -62,36 +76,36 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * initialization of the package, or returns the registered package,
 	 * if one already exists.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-    private KnifePackageImpl() {
+	private KnifePackageImpl() {
 		super(eNS_URI, KnifeFactory.eINSTANCE);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private static boolean isInited = false;
+	private static boolean isInited = false;
 
-    /**
+	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
 	 * <p>This method is used to initialize {@link KnifePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-    public static KnifePackage init() {
+	public static KnifePackage init() {
 		if (isInited) return (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
 
 		// Obtain or create and register package
@@ -134,138 +148,138 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		return theKnifePackage;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getKnifeConfig() {
+	public EClass getKnifeConfig() {
 		return knifeConfigEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getKnifeConfig_Plugins() {
+	public EReference getKnifeConfig_Plugins() {
 		return (EReference)knifeConfigEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getKnifeConfig_Cache_type() {
+	public EAttribute getKnifeConfig_Cache_type() {
 		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(1);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getKnifeConfig_Cache_option() {
+	public EAttribute getKnifeConfig_Cache_option() {
 		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(2);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getKnifeConfig_Cookbook_path() {
+	public EAttribute getKnifeConfig_Cookbook_path() {
 		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(3);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getKnifeConfig_Cookbook_copyright() {
+	public EAttribute getKnifeConfig_Cookbook_copyright() {
 		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(4);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getKnifeConfig_Cookbook_email() {
+	public EAttribute getKnifeConfig_Cookbook_email() {
 		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(5);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getKnifeConfig_Cookbook_license() {
+	public EAttribute getKnifeConfig_Cookbook_license() {
 		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(6);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getKnifeConfig_Path() {
+	public EAttribute getKnifeConfig_Path() {
 		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(7);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getKnifeConfig_Server() {
+	public EReference getKnifeConfig_Server() {
 		return (EReference)knifeConfigEClass.getEStructuralFeatures().get(8);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getPlugin() {
+	public EClass getPlugin() {
 		return pluginEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getKnifeSearch() {
+	public EClass getKnifeSearch() {
 		return knifeSearchEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public KnifeFactory getKnifeFactory() {
+	public KnifeFactory getKnifeFactory() {
 		return (KnifeFactory)getEFactoryInstance();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private boolean isCreated = false;
+	private boolean isCreated = false;
 
-    /**
+	/**
 	 * Creates the meta-model objects for the package.  This method is
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void createPackageContents() {
+	public void createPackageContents() {
 		if (isCreated) return;
 		isCreated = true;
 
@@ -286,21 +300,21 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		knifeSearchEClass = createEClass(KNIFE_SEARCH);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private boolean isInitialized = false;
+	private boolean isInitialized = false;
 
-    /**
+	/**
 	 * Complete the initialization of the package and its meta-model.  This
 	 * method is guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void initializePackageContents() {
+	public void initializePackageContents() {
 		if (isInitialized) return;
 		isInitialized = true;
 

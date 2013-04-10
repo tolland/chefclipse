@@ -42,12 +42,14 @@ import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProviderAdapterFactory;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory;
 import org.limepepper.chefclipse.tools.EMFUtils;
+
+import chefclipse.core.providers.ChefProjectAdapterFactory;
 
 public class RunListEditor extends EditorPart {
 
@@ -58,7 +60,7 @@ public class RunListEditor extends EditorPart {
     private Node selectedNode;
     private ServerCookbookVersion selectedServerCookbook;
     private EList<RunListItem> runListItemList;
-    private EList<ServerCookbookFile> serverCookbookRecipes;
+    private EList<Recipe> serverCookbookRecipes;
     private TableViewer nodeTableviewer;
     private Table nodeTable;
     private TableViewer runlistTableViewer;

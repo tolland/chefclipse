@@ -3,7 +3,9 @@
 package org.limepepper.chefclipse.common.workstation.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.common.workstation.Rakefile;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
@@ -17,32 +19,32 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * @generated
  */
 public class RakefileImpl extends EObjectImpl implements Rakefile {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RakefileImpl() {
+	public RakefileImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return WorkstationPackage.Literals.RAKEFILE;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 

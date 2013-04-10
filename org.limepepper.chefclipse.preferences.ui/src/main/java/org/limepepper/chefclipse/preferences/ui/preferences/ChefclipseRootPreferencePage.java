@@ -7,7 +7,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.limepepper.chefclipse.preferences.ui.Activator;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.messages.Messages;
 
 /**
  * Chefclipse's root preference page.

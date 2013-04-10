@@ -3,6 +3,28 @@
 <plugin>
 
 
+<extension
+      point="org.eclipse.ui.commands">
+      	  <category
+            name="Chefclipse Command Category"
+            id="chefclipse.ui.commands.category">
+      </category>
+            <command
+            categoryId="chefclipse.ui.commands.category"
+            description="Compare with ..."
+            id="chefclipse.ui.commands.compare"
+            name="Compare selected">
+      </command>
+</extension>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="chefclipse.ui.handlers.CompareWithHandler"
+            commandId="chefclipse.ui.commands.compare">
+      </handler>
+   </extension>
+   
 <!-- =================================================================================== -->
 <!-- adapter factory to allow the eIDE objects to be mapped to the ModelObjects	-->
 <!-- this block contains the m... -->
@@ -11,10 +33,43 @@
 
       <extension point="org.eclipse.core.runtime.adapters">
          <factory 
-            class="chefclipse.internal.ui.ChefAdapterFactory" 
-            adaptableType="org.eclipse.core.resources.IResource">
-            <adapter type="chefclipse.core.ChefResource"/>
+            adaptableType="chefclipse.core.IChefElement"
+            class="chefclipse.core.adapters.ChefAdapterFactory" >
+            <adapter type="org.eclipse.core.resources.IResource"/>
          </factory>
+        <!--factory 
+            class="chefclipse.core.adapters.ChefElementAdapterFactory" 
+            adaptableType="chefclipse.core.IChefElement">
+            
+            <adapter type="org.eclipse.core.resources.IResource"/>
+            
+            <adapter type="org.eclipse.ui.IPersistableElement"/>
+            <adapter type="org.eclipse.ui.IContributorResourceAdapter"/>
+            <adapter type="org.eclipse.ui.ide.IContributorResourceAdapter2"/>
+            <adapter type="org.eclipse.ui.IContainmentAdapter"/>
+            
+            <adapter type="org.eclipse.search.ui.ISearchPageScoreComputer"/>
+            
+            <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
+            <adapter type="org.eclipse.ui.views.properties.IPropertySource"/>
+            <adapter type="org.eclipse.ui.views.tasklist.ITaskListResourceAdapter"/>
+            
+            <adapter type="org.eclipse.jdt.internal.ui.IResourceLocator"/>
+            <adapter type="org.eclipse.team.ui.history.IHistoryPageSource"/>
+		</factory-->
+		
+		<factory 
+            class="org.eclipse.jdt.internal.ui.ChefProjectAdapterFactory" 
+            adaptableType="chefclipse.core.IChefProject">
+            <adapter type="org.eclipse.core.resources.IProject"/>
+		</factory>
+		
+		<factory 
+            class="chefclipse.core.adapters.ResourceAdapterFactory" 
+            adaptableType="org.eclipse.core.resources.IResource">
+            <adapter type="chefclipse.core.IChefElement"/>
+		</factory>
+
       </extension>
 
 <!-- =================================================================================== -->
@@ -24,7 +79,23 @@
 
    <extension
          point="org.eclipse.ui.menus">
-
+      	<menuContribution
+             allPopups="true"
+             locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+            <menu
+                  label="Compare With">
+               <command
+                     commandId="chefclipse.ui.commands.compare"
+                     label="Coompare with 2222">
+                  <visibleWhen
+                        checkEnabled="false">
+                    <count
+                          value="2">
+                    </count>
+                  </visibleWhen>
+               </command>
+            </menu>
+        </menuContribution>
    <menuContribution
             allPopups="true"
             locationURI="popup:chefclipse.navigatorview?after=additions">
@@ -37,10 +108,11 @@
         <visibleWhen checkEnabled="false">
                <with
                      variable="activeMenuSelection">
-                  <iterate>
+                  <iterate
+                        operator="and">
                      <or>
                         <adapt
-                              type="org.eclipse.core.resources.IResource">
+                              type="chefclipse.core.IChefElement">
                         </adapt>
                      </or>
                   </iterate>
@@ -143,6 +215,30 @@
                      value="org.eclipse.core.resources.IWorkspaceRoot">
                </instanceof>
             </or></triggerPoints>
+            
+  			
+
+			
+			<actionProvider
+					class="org.eclipse.ui.navigator.resources.GoIntoActionProvider"
+					id="org.eclipse.jdt.ui.navigator.resources.GoIntoActions"
+					overrides="org.eclipse.ui.navigator.resources.GoIntoActions"> 
+				<enablement>
+					<or>
+						<and>
+							<adapt type="org.eclipse.core.resources.IProject" />
+							<test property="org.eclipse.core.resources.open" 
+								value="true"/>
+						</and>
+						<adapt type="org.eclipse.core.resources.IFolder" /> 	
+						<adapt type="org.eclipse.ui.IWorkingSet" /> 	
+						<instanceof value="chefclipse.core.IChefProject" />
+
+					</or>
+				</enablement>
+			</actionProvider>
+            
+            
       </navigatorContent>
    </extension>
 

@@ -641,89 +641,8 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getServerCookbookVersion_Root_files() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(0);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getServerCookbookVersion_Recipes() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(1);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getServerCookbookVersion_Templates() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(2);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getServerCookbookVersion_Libraries() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(3);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getServerCookbookVersion_Providers() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(4);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getServerCookbookVersion_Resources() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(5);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getServerCookbookVersion_Files() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(6);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getServerCookbookVersion_Definitions() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(7);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getServerCookbookVersion_Attributes() {
-		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(8);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EAttribute getServerCookbookVersion_Version() {
-		return (EAttribute)serverCookbookVersionEClass.getEStructuralFeatures().get(9);
+		return (EAttribute)serverCookbookVersionEClass.getEStructuralFeatures().get(0);
 	}
 
     /**
@@ -732,7 +651,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 	 * @generated
 	 */
     public EAttribute getServerCookbookVersion_Cookbook_name() {
-		return (EAttribute)serverCookbookVersionEClass.getEStructuralFeatures().get(10);
+		return (EAttribute)serverCookbookVersionEClass.getEStructuralFeatures().get(1);
 	}
 
     /**
@@ -830,15 +749,6 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		createEReference(serverCookbookFileEClass, SERVER_COOKBOOK_FILE__COOKBOOK);
 
 		serverCookbookVersionEClass = createEClass(SERVER_COOKBOOK_VERSION);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__ROOT_FILES);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__RECIPES);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__TEMPLATES);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__LIBRARIES);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__PROVIDERS);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__RESOURCES);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__FILES);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__DEFINITIONS);
-		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__ATTRIBUTES);
 		createEAttribute(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__VERSION);
 		createEAttribute(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__COOKBOOK_NAME);
 
@@ -888,7 +798,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		serverCookbookFileEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
 		serverCookbookFileEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
 		serverCookbookFileEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
-		serverCookbookVersionEClass.getESuperTypes().add(theChefclipsePackage.getCookbook());
+		serverCookbookVersionEClass.getESuperTypes().add(theCookbookPackage.getCookbookVersion());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(environmentEClass, Environment.class, "Environment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -949,15 +859,6 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		initEReference(getServerCookbookFile_Cookbook(), this.getServerCookbookVersion(), null, "cookbook", null, 1, 1, ServerCookbookFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serverCookbookVersionEClass, ServerCookbookVersion.class, "ServerCookbookVersion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getServerCookbookVersion_Root_files(), this.getServerCookbookFile(), null, "root_files", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServerCookbookVersion_Recipes(), this.getServerCookbookFile(), null, "recipes", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServerCookbookVersion_Templates(), this.getServerCookbookFile(), null, "templates", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServerCookbookVersion_Libraries(), this.getServerCookbookFile(), null, "libraries", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServerCookbookVersion_Providers(), this.getServerCookbookFile(), null, "providers", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServerCookbookVersion_Resources(), this.getServerCookbookFile(), null, "resources", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServerCookbookVersion_Files(), this.getServerCookbookFile(), null, "files", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServerCookbookVersion_Definitions(), this.getServerCookbookFile(), null, "definitions", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServerCookbookVersion_Attributes(), this.getServerCookbookFile(), null, "attributes", null, 0, -1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServerCookbookVersion_Version(), theChefclipsePackage.getVersion(), "version", "0.0.0", 1, 1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServerCookbookVersion_Cookbook_name(), ecorePackage.getEString(), "cookbook_name", null, 1, 1, ServerCookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

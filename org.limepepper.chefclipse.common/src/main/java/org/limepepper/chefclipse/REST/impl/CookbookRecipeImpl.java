@@ -3,7 +3,9 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.limepepper.chefclipse.REST.CookbookRecipe;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -21,50 +23,50 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  * @generated
  */
 public class CookbookRecipeImpl extends EObjectImpl implements CookbookRecipe {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookRecipeImpl() {
+	public CookbookRecipeImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return RESTPackage.Literals.COOKBOOK_RECIPE;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getPath() {
+	public String getPath() {
 		return (String)eGet(RESTPackage.Literals.COOKBOOK_RECIPE__PATH, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setPath(String newPath) {
+	public void setPath(String newPath) {
 		eSet(RESTPackage.Literals.COOKBOOK_RECIPE__PATH, newPath);
 	}
 
