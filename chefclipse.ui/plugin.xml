@@ -266,14 +266,21 @@
   <!-- the perspective extensions  -->
   <!-- =================================================================================== -->
 
+
+    <!-- @todo remove once the properties context menu is fixed -->
+    <!-- confusingly the initial plugin for the navigator/explorer is set in the perspective declaration class as a CONSTANT -->
   <extension point="org.eclipse.ui.perspectiveExtensions">
-    <perspectiveExtension targetID="chefclipse.perspective">
+    <!--perspectiveExtension targetID="chefclipse.perspective">
       <view ratio="0.5" relative="org.eclipse.ui.navigator.ProjectExplorer"
       relationship="stack" id="chefclipse.navigatorview"></view>
-    </perspectiveExtension>
-    <!-- @todo remove once the properties context menu is fixed -->
+    </perspectiveExtension-->
     <perspectiveExtension targetID="chefclipse.perspective">
-      <showInPart id="org.eclipse.ui.navigator.ProjectExplorer"></showInPart>
+       <view
+             closeable="false"
+             id="chefclipse.navigatorview"
+             minimized="false"
+             relationship="stack">
+       </view>
     </perspectiveExtension>
   </extension>
 

@@ -21,6 +21,8 @@ public class ChefPlugin extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "chefclipse.ui"; //$NON-NLS-1$
 
+	public static final String PROJECT_EXPLORER_ID = "chefclipse.navigatorview";
+
 	static Logger logger = LoggerFactory.getLogger(ChefPlugin.class);
 
 	// The shared instance

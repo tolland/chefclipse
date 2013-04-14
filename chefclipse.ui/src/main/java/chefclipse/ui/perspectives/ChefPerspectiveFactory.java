@@ -4,6 +4,8 @@ import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
 
+import chefclipse.ui.ChefPlugin;
+
 public class ChefPerspectiveFactory implements IPerspectiveFactory {
 
     public static final  String ID = "chefclipse.perspective"; //$NON-NLS-1$
@@ -15,7 +17,7 @@ public class ChefPerspectiveFactory implements IPerspectiveFactory {
         // Add Project Explorer view
         IFolderLayout topLeft = layout.createFolder(
                 "topLeft", IPageLayout.LEFT, (float) 0.28, editorArea);
-        topLeft.addView(IPageLayout.ID_PROJECT_EXPLORER);
+        topLeft.addView(ChefPlugin.PROJECT_EXPLORER_ID);
 
         // Add Properties view
         IFolderLayout bottomRight = layout.createFolder(
