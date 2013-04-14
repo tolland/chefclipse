@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+
+  <parent>
+    <groupId>org.limepepper.chefclipse</groupId>
+    <artifactId>org.limepepper.chefclipse</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <artifactId>org.limepepper.chefclipse.releng</artifactId>
+  <packaging>pom</packaging>
+<profiles>
+	<profile>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>izpack</id>
+								<phase>package</phase>
+								<configuration>
+
+									<tasks>
+										<echo>${basedir}</echo>
+										<echo>${project.build.directory}</echo>
+							<property name="base.dir" value="${basedir}/../org.limepepper.chefclipse.product" />
+							<property name="build.dir" value="${basedir}/../org.limepepper.chefclipse.product/target" />			
+										<echo>${base.dir}</echo>
+	
+										<ant antfile="${base.dir}/src/main/izpack/izpack-build.xml"
+											inheritAll="true" inheritRefs="true">
+											<target name="build.bundles" />
+										</ant>
+										<exec executable="fpm">
+											<arg
+												line="-s dir -t deb -C ${build.dir}/products/org.limepepper.chefclipse.product/linux/gtk/x86_64/ -a amd64 -n chefclipse --prefix /usr/lib/chefclipse -p ${build.dir}/chefclipse_1.0_amd64.deb ." />
+										</exec>
+										<exec executable="fpm">
+											<arg
+												line="-s dir -t deb -C ${build.dir}/products/org.limepepper.chefclipse.product/linux/gtk/x86/ -a i386 -n chefclipse --prefix /usr/lib/chefclipse -p ${build.dir}/chefclipse_1.0_i386.deb ." />
+										</exec>
+										<exec executable="fpm">
+											<arg
+												line="-s dir -t rpm -C ${build.dir}/products/org.limepepper.chefclipse.product/linux/gtk/x86_64/ -a x86_64 -n chefclipse --prefix /usr/lib/chefclipse -p ${build.dir}/chefclipse_1.0_amd64.rpm ." />
+										</exec>
+										<exec executable="fpm">
+											<arg
+												line="-s dir -t rpm -C ${build.dir}/products/org.limepepper.chefclipse.product/linux/gtk/x86/ -a i686 -n chefclipse --prefix /usr/lib/chefclipse -p ${build.dir}/chefclipse_1.0_i686.rpm ." />
+										</exec>
+										<exec executable="python" dir="${build.dir}">
+                  <arg
+                    line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx --prompt --file=Chefclipse-win32-x86_64.jar --launch-file=Chefclipse-win32-x86_64.jar --output=Chefclipse-win32-x86_64.exe" />
+										</exec>
+										<exec executable="python"  dir="${build.dir}">
+                  <arg
+                    line="/opt/IzPack/utils/wrappers/izpack2exe/izpack2exe.py --no-upx --prompt --launch-file=Chefclipse-win32-x86.jar  --file=Chefclipse-win32-x86.jar --output=Chefclipse-win32-x86.exe" />
+										</exec>
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>ant-contrib</groupId>
+								<artifactId>ant-contrib</artifactId>
+								<version>1.0b3</version>
+								<exclusions>
+									<exclusion>
+										<groupId>ant</groupId>
+										<artifactId>ant</artifactId>
+									</exclusion>
+								</exclusions>
+							</dependency>
+							<dependency>
+								<groupId>ant</groupId>
+								<artifactId>ant-nodeps</artifactId>
+								<version>1.6.5</version>
+							</dependency>
+							<dependency>
+								<groupId>org.codehaus.izpack</groupId>
+								<artifactId>izpack-maven-plugin</artifactId>
+								<version>5.0.0-beta11</version>
+							</dependency>
+							<dependency>
+								<groupId>org.codehaus.izpack</groupId>
+								<artifactId>izpack-ant</artifactId>
+								<version>5.0.0-beta11</version>
+							</dependency>
+
+						</dependencies>
+
+					</plugin>
+
+				</plugins>
+			</build>
+</profile>
+
+  <profile>
+    <id>distribute</id>
+    <activation>
+      <activeByDefault>false</activeByDefault>
+    </activation>
+    <build>
+ <plugins>
+         <plugin>   <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <version>2.7</version>
+            <executions>
+              <execution>
+                <id>deploy-snapshot</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>deploy-file</goal>
+                </goals>
+                <configuration>
+                  <url>s3://chefclipse-packages/snapshot</url>
+                  <repositoryId>aws-snapshot</repositoryId>
+                  <file>${basedir}/../org.limepepper.chefclipse.product/target/Chefclipse-win32-x86_64.exe</file>
+                  <files>${basedir}/../org.limepepper.chefclipse.product/target/Chefclipse-win32-x86.exe</files>
+                  <version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}</version>
+                  <groupId>${project.groupId}</groupId>
+                  <artifactId>Chefclipse-win32-x86_64.exe</artifactId>
+                  <generatePom>false</generatePom>
+                  <uniqueVersion>false</uniqueVersion>
+                  
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          </plugins>
+              </build>
+    </profile>
+
+</profiles>
+</project>
