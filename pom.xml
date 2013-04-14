@@ -37,7 +37,7 @@
 
 			<modules>
 				<!-- developer bundles -->
-				<module>org.limepepper.chefclipse.devel.feature</module>
+				<module>features/org.limepepper.chefclipse.devel.feature</module>
 				<module>org.limepepper.chefclipse.releng</module>
 				<module>org.limepepper.chefclipse.target</module>
 				<!--module>org.limepepper.eclipse.RubyConsole</module -->
@@ -51,14 +51,15 @@
 
 				<!-- releng stuff -->
 				<!-- module>org.eclipselabs.p2.rcpupdate.utils</module -->
-				<module>org.limepepper.chefclipse.ui.feature</module>
+				<module>features/org.limepepper.chefclipse.ui.feature</module>
 
 				<!-- headless api stuff -->
 				<module>org.limepepper.chefclipse.chefserver.api</module>
 				<module>org.limepepper.chefclipse.chefserver.api.ui</module>
 
 				<!-- this contains the ecore model and genmodel -->
-				<module>org.limepepper.chefclipse.model</module>
+        <!-- merged into main, not ecore atm -->
+				<!--module>org.limepepper.chefclipse.model</module-->
 
 				<!-- generated model stuff -->
 				<module>org.limepepper.chefclipse.common</module>
@@ -71,7 +72,7 @@
 				<!-- app bundles -->
 				<module>chefclipse.core</module>
 				<module>chefclipse.ui</module>
-				<module>org.limepepper.chefclipse.app.feature</module>
+				<module>features/org.limepepper.chefclipse.app.feature</module>
 				<module>org.limepepper.chefclipse.app</module>
 				<module>org.limepepper.chefclipse.utils</module>
 				<module>org.limepepper.chefclipse.editors.cookbook</module>
