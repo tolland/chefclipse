@@ -25,13 +25,14 @@
 
    <splash
       location="org.limepepper.chefclipse.app" />
-   <launcher name="chefclipse">
+   <launcher>
       <linux icon="icons/48x48.xpm"/>
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
+
 
    <vm>
    </vm>
@@ -110,9 +111,9 @@ END OF TERMS AND CONDITIONS
       <feature id="org.eclipse.equinox.p2.user.ui"/>
       <feature id="org.codehaus.jackson.feature" version="1.9.5.201204111326"/>
       <feature id="jsonedit-feature" version="0.9.5"/>
-      <feature id="org.limepepper.chefclipse.ui.feature" version="0.1.0.qualifier"/>
-      <feature id="org.limepepper.chefclipse.app.feature" version="0.1.0.qualifier"/>
-      <feature id="org.limepepper.chefclipse.devel.feature" version="0.1.0.qualifier"/>
+      <feature id="org.limepepper.chefclipse.ui.feature"/>
+      <feature id="org.limepepper.chefclipse.app.feature"/>
+      <feature id="org.limepepper.chefclipse.devel.feature"/>
       <feature id="org.eclipse.platform" version="4.2.1.v20130118-173121-9MF7GHYdG0B5kx4E_SkfZV-1mNjVATf67ZAb7"/>
       <feature id="org.eclipse.rcp" version="4.2.2.v20130129-152330-7IARAABrMQkGSvMgQnUlz-DQz00h"/>
       <feature id="org.eclipse.equinox.p2.discovery.feature"/>

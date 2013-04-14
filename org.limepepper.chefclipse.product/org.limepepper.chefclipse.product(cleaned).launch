@@ -28,7 +28,6 @@
 <setEntry value="org.eclipselabs.emfjson.feature:default"/>
 <setEntry value="org.limepepper.chefclipse.app.feature:default"/>
 <setEntry value="org.limepepper.chefclipse.devel.feature:default"/>
-<setEntry value="org.limepepper.chefclipse.doc.feature:default"/>
 <setEntry value="org.limepepper.chefclipse.ui.feature:default"/>
 </setAttribute>
 <booleanAttribute key="show_selected_only" value="false"/>

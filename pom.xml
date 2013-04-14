@@ -40,26 +40,16 @@
 				<module>features/org.limepepper.chefclipse.devel.feature</module>
 				<module>org.limepepper.chefclipse.releng</module>
 				<module>org.limepepper.chefclipse.target</module>
-				<!--module>org.limepepper.eclipse.RubyConsole</module -->
-
-				<!-- docs - currently placeholders -->
-				<!-- module>org.limepepper.chefclipse.doc.feature</module -->
-				<!-- module>org.limepepper.chefclipse.doc</module -->
 
 				<!-- product -->
 				<module>org.limepepper.chefclipse.product</module>
 
 				<!-- releng stuff -->
-				<!-- module>org.eclipselabs.p2.rcpupdate.utils</module -->
 				<module>features/org.limepepper.chefclipse.ui.feature</module>
 
 				<!-- headless api stuff -->
 				<module>org.limepepper.chefclipse.chefserver.api</module>
 				<module>org.limepepper.chefclipse.chefserver.api.ui</module>
-
-				<!-- this contains the ecore model and genmodel -->
-        <!-- merged into main, not ecore atm -->
-				<!--module>org.limepepper.chefclipse.model</module-->
 
 				<!-- generated model stuff -->
 				<module>org.limepepper.chefclipse.common</module>
@@ -78,12 +68,6 @@
 				<module>org.limepepper.chefclipse.editors.cookbook</module>
 				<module>org.limepepper.chefclipse.graphviewer</module>
 				<module>org.limepepper.chefclipse.logger</module>
-
-				<!-- module>org.limepepper.chefclipse.ui</module-->
-
-
-				<!-- chefclipse repository explorer -->
-				<!--module>org.limepepper.chefclipse.navigator</module -->
 
 				<!-- picker -->
 				<module>org.limepepper.chefclipse.remotepicker.api</module>
@@ -241,7 +225,6 @@
 			</activation>
 			<modules>
 				<module>org.limepepper.chefclipse.ui.feature</module>
-				<module>org.limepepper.chefclipse.doc.feature</module>
 				<module>org.limepepper.chefclipse.app.feature</module>
 				<module>org.limepepper.chefclipse.devel.feature</module>
 				<module>org.limepepper.chefclipse.target</module>
@@ -295,11 +278,6 @@
 				<module>org.limepepper.chefclipse.devel.feature</module>
 				<module>org.limepepper.chefclipse.releng</module>
 				<module>org.limepepper.chefclipse.target</module>
-				<!--module>org.limepepper.eclipse.RubyConsole</module -->
-
-				<!-- docs - currently placeholders -->
-				<module>org.limepepper.chefclipse.doc.feature</module>
-				<module>org.limepepper.chefclipse.doc</module>
 
 				<!-- product -->
 				<module>org.limepepper.chefclipse.product</module>
@@ -449,7 +427,7 @@
 				<artifactId>tycho-packaging-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<format>yyyyMMdd</format>
+					<!--format>yyyyMMdd</format-->
 				</configuration>
 			</plugin>
 			<!-- <plugin> <groupId>org.eclipse.tycho</groupId> <artifactId>tycho-versions-plugin</artifactId>
