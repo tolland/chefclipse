@@ -44,38 +44,54 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
  */
 public class CookbookSiteRepository implements ICookbooksRepository {
 	
+	private static final int THREADS = 10;
+
 	static final Logger logger = LoggerFactory.getLogger(CookbookSiteRepository.class);
 	
-	private final class GetTaks implements Runnable {
+	private final class GetPages implements Runnable {
 		private final int start;
 		private final List<RemoteCookbook> cookbooks;
 
-		private GetTaks(int start, List<RemoteCookbook> cookbooks) {
+		private GetPages(int start, List<RemoteCookbook> cookbooks) {
 			this.start = start;
 			this.cookbooks = cookbooks;
 		}
 
 		@Override
 		public void run() {
+			ExecutorService pool = Executors.newFixedThreadPool(THREADS/2);
 			try {
 				JSONObject json = getRestCookbooks(start, 100);
 				JSONArray items = json.getJSONArray("items");
 				for (int i = 0; i < items.length(); i++) {
 					try {
 						JSONObject cookbookJson = items.getJSONObject(i);
-						String name = createCookbook(cookbookJson).getName();
-						cookbooks.add(getCookbook(name));
+						pool.execute(new GetCookbook(cookbookJson, cookbooks));
 					} catch (JSONException e) {
 						logger.error("Error getting cookbooks", e);
 					}
 				}
-			} catch (JSONException e1) {
-				logger.error("Error getting cookbooks", e1);
-			} catch (ClientHandlerException e2) {
-				logger.error("Error getting cookbooks", e2);
-			} catch (UniformInterfaceException e3) {
-				logger.error("Error getting cookbooks", e3);
+				pool.shutdown();
+				pool.awaitTermination(20, TimeUnit.MINUTES);
+			} catch (JSONException | ClientHandlerException | UniformInterfaceException | InterruptedException e) {
+				logger.error("Error getting cookbooks", e);
 			}
+		}
+	}
+	
+	private final class GetCookbook implements Runnable {
+		private final JSONObject cookbookJson;
+		private final List<RemoteCookbook> cookbooks;
+
+		private GetCookbook(JSONObject cookbookJson, List<RemoteCookbook> cookbooks) {
+			this.cookbookJson = cookbookJson;
+			this.cookbooks = cookbooks;
+		}
+
+		@Override
+		public void run() {
+			String name = createCookbook(cookbookJson).getName();
+			cookbooks.add(getCookbook(name));
 		}
 	}
 
@@ -87,15 +103,13 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	
 	private static final String REPOSITORY_ID = "cookbooks.opscode.com";
 
-
 	protected WebResource getService() {
 		return service;
 	}
 
 	public CookbookSiteRepository() {
 		ClientConfig config = new DefaultClientConfig();
-//	    config.getClasses().add(JacksonJsonProvider.class);
-		
+
 		Client client = Client.create(config);
 		service = client.resource(getRepositoryURI());
 		
@@ -122,7 +136,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	 */
 	@Override
 	public List<RemoteCookbook> getCookbooks() {
-		ExecutorService pool = Executors.newFixedThreadPool(10);
+		ExecutorService pool = Executors.newFixedThreadPool(THREADS);
 		List<RemoteCookbook> list = new ArrayList<RemoteCookbook>();
 		final List<RemoteCookbook> cookbooks = Collections.synchronizedList(list);
 		int start = 0;
@@ -130,18 +144,15 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 		try {
 			JSONObject json = getRestCookbooks(0, 1);
 			total = json.getInt("total");
-		} catch (JSONException e2) {
-			logger.error("Error getting cookbooks", e2);
-		} catch (ClientHandlerException e2) {
-			logger.error("Error getting cookbooks", e2);
-		} catch (UniformInterfaceException e3) {
-			logger.error("Error getting cookbooks", e3);
+		} catch (JSONException | ClientHandlerException | UniformInterfaceException e) {
+			logger.error("Error getting cookbooks", e);
 		}
+		long t1 = System.currentTimeMillis();
 		do {
-			pool.submit(new GetTaks(start, cookbooks));
+			pool.execute(new GetPages(start, cookbooks));
 			start += 100;
 		} while (start < total);
-		
+		logger.info("get Cookbooks info in {}ms", System.currentTimeMillis() - t1);
 		try {
 			pool.shutdown();
 			pool.awaitTermination(20, TimeUnit.MINUTES);
@@ -215,9 +226,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 				versions[i] = versionsJson.getString(i);
 			}
 			cookbook.getVersions().addAll(Arrays.asList(versions));
-		} catch (JSONException e) {
-			logger.error("Error getting cookbooks", e);
-		} catch (ParseException e) {
+		} catch (JSONException | ParseException e) {
 			logger.error("Error getting cookbooks", e);
 		}
 		return cookbook;
@@ -225,7 +234,6 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 	@Override
 	public URI getRepositoryURI() {
-	
 		return UriBuilder.fromUri(REPOSITORY_URI)
 				.build();
 	}
@@ -242,11 +250,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			int total = json.getInt("total");
 			if (total != repo.getCookbooks().size())
 				return true;
-		} catch (JSONException e) {
-			logger.error("Error checking isUpdated", e);
-		} catch (ClientHandlerException e) {
-			logger.error("Error checking isUpdated", e);
-		} catch (UniformInterfaceException e) {
+		} catch (JSONException | ClientHandlerException | UniformInterfaceException e) {
 			logger.error("Error checking isUpdated", e);
 		}
 		return false;

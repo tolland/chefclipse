@@ -7,8 +7,5 @@
 	<classpathentry exported="true" kind="lib" path="lib/jersey-core.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jersey-json.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/jettison.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/log4j.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/slf4j-api.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/slf4j-log4j12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

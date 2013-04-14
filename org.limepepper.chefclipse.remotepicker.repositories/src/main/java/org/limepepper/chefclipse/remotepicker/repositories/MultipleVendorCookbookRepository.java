@@ -11,9 +11,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
@@ -38,12 +44,15 @@ import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
+import com.sun.jersey.core.header.LinkHeader;
 
 /**
  * @author Sebastian Sampaoli
  *
  */
 public class MultipleVendorCookbookRepository implements ICookbooksRepository {
+
+	private static final int THREADS = 10;
 
 	static final Logger logger = LoggerFactory.getLogger(MultipleVendorCookbookRepository.class);
 	
@@ -55,23 +64,64 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	
 	private IDownloadCookbookStrategy downloadCookbookStrategy;
 
-	protected WebResource getService() {
-		return service;
+	private final class GetTask implements Runnable {
+		private final int page;
+		private final List<RemoteCookbook> cookbooks;
+
+		private GetTask(int page, List<RemoteCookbook> cookbooks) {
+			this.page = page;
+			this.cookbooks = cookbooks;
+		}
+
+		@Override
+		public void run() {
+			ExecutorService pool = Executors.newFixedThreadPool(THREADS/3);
+			try {
+				JSONArray jsonArray = getRestCookbooks(page, 100);
+				
+				for (int i = 0; i < jsonArray.length(); i++) {
+					try {
+						JSONObject cookbookJson = jsonArray.getJSONObject(i);
+						pool.execute(new GetCookbook(cookbookJson, cookbooks));
+					} catch (JSONException e) {
+						logger.error("Error getting cookbooks", e);
+					}
+				}
+				pool.shutdown();
+				pool.awaitTermination(20, TimeUnit.MINUTES);
+			} catch (ClientHandlerException | UniformInterfaceException | InterruptedException e) {
+				logger.error("Error getting cookbooks", e);
+			}
+		}
 	}
 	
-	/**
-	 * 
-	 */
+	private final class GetCookbook implements Runnable {
+		private final JSONObject cookbookJson;
+		private final List<RemoteCookbook> cookbooks;
+
+		private GetCookbook(JSONObject cookbookJson, List<RemoteCookbook> cookbooks) {
+			this.cookbookJson = cookbookJson;
+			this.cookbooks = cookbooks;
+		}
+
+		@Override
+		public void run() {
+			cookbooks.add(createCookbook(cookbookJson));
+		}
+	}
+	
 	public MultipleVendorCookbookRepository() {
 		
 		ClientConfig config = new DefaultClientConfig();
-		
-//	    config.getClasses().add(JacksonJsonProvider.class);
 		
 		Client client = Client.create(config);
 		service = client.resource(getRepositoryURI());
 		
 		downloadCookbookStrategy = new MultipleVendorDownloadStrategy(this);
+	}
+
+	protected WebResource getService() {
+		return service;
 	}
 
 	/* (non-Javadoc)
@@ -88,6 +138,8 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	@Override
 	public URI getRepositoryURI() {
 		return UriBuilder.fromUri(REPOSITORY_URI)
+				.queryParam("client_id", "1fbe8bb4c87a918859ac")
+				.queryParam("client_secret", "7fc4d5ba285f4f5897f443589bb1a932dc5bd60d")
 				.build();
 	}
 
@@ -96,31 +148,28 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	 */
 	@Override
 	public Collection<RemoteCookbook> getCookbooks() {
-		List<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
-		int start = 1;
-		boolean more = true;
+		ExecutorService pool = Executors.newFixedThreadPool(THREADS);
+		List<RemoteCookbook> list = new ArrayList<RemoteCookbook>();
+		final List<RemoteCookbook> cookbooks = Collections.synchronizedList(list);
+		
+		int lastPage = getRestCookbooksLast(100);
+		int page = 1;
+		
 		try{
-			do {
-				JSONArray jsonArray = getRestCookbooks(start++, 100);
-				for (int i = 0; i < jsonArray.length(); i++) {
-					try {
-						JSONObject cookbookJson = jsonArray.getJSONObject(i);
-						cookbooks.add(createCookbook(cookbookJson));
-					} catch (JSONException e) {
-						logger.error("Error getting cookbooks", e);
-					}
-				}
-				more = jsonArray.length() > 0;
-			} while (more);
-		} catch (ClientHandlerException e) {
-			logger.error("Error getting cookbooks", e);
-		} catch (UniformInterfaceException e) {
+			long t1 = System.currentTimeMillis();
+			while (page <= lastPage) {
+				pool.execute(new GetTask(page++, cookbooks));
+			}
+			logger.info("get Cookbooks info in {}ms", System.currentTimeMillis() - t1);
+			pool.shutdown();
+			pool.awaitTermination(20, TimeUnit.MINUTES);
+		} catch (InterruptedException | ClientHandlerException | UniformInterfaceException e) {
 			logger.error("Error getting cookbooks", e);
 		}
-		return cookbooks;
+		return list;
 	}
 
-	private RemoteCookbook createCookbook(JSONObject cookbookJson) {
+	private RemoteCookbook createCookbook(final JSONObject cookbookJson) {
 		
 		RemoteCookbook cookbook = CookbookrepositoryFactory.eINSTANCE.createRemoteCookbook();
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
@@ -136,9 +185,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 			cookbook.setRating(cookbookJson.optDouble("watchers_count"));
 			
 			fillVersions(cookbook, cookbookJson);
-		} catch (JSONException e) {
-			logger.error("Error getting cookbooks", e);
-		} catch (ParseException e){
+		} catch (JSONException | ParseException e){
 			logger.error("Error getting cookbooks", e);
 		}
 		return cookbook;
@@ -152,30 +199,57 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 		String latest = cookbook.getUrl() + "/archive/" + cookbookJson.getString("default_branch") + ".zip";
 		cookbook.setLatestVersion(latest);
 		
-		JSONArray tags = getService().path(tags_url)
-			.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONArray.class);
+		try {
+			JSONArray tags = getService().path(tags_url)
+					.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONArray.class);
 		
-		String[] versions = new String[tags.length()+1];
-		versions[0] = latest;
-		for (int i = 0; i < tags.length(); i++) {
-			try {
-				JSONObject tagJson = tags.getJSONObject(i);
-				versions[i+1] = tagJson.getString("zipball_url");
-			} catch (JSONException e) {
-				logger.error("Error getting cookbooks", e);
+			String[] versions = new String[tags.length()+1];
+			versions[0] = latest;
+			for (int i = 0; i < tags.length(); i++) {
+				try {
+					JSONObject tagJson = tags.getJSONObject(i);
+					versions[i+1] = tagJson.getString("zipball_url");
+				} catch (JSONException e) {
+					logger.error("Error getting cookbooks", e);
+				}
 			}
+			cookbook.getVersions().addAll(Arrays.asList(versions));
+		} catch (ClientHandlerException | UniformInterfaceException e) {
+			logger.error("Error checking isUpdated", e);
 		}
-		cookbook.getVersions().addAll(Arrays.asList(versions));
 	}
 
 	private JSONArray getRestCookbooks(int page, int items) {
-		
 		return getService().path("users").path("cookbooks").path("repos")
 				.queryParam("page", String.valueOf(page))
 				.queryParam("per_page", String.valueOf(items))
 				.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONArray.class);
 	}
 
+	protected int getRestCookbooksLast(int items) {
+		ClientResponse r = getService().path("users").path("cookbooks").path("repos")
+				.queryParam("page", String.valueOf(1))
+				.queryParam("per_page", String.valueOf(items))
+				.accept(MediaType.APPLICATION_JSON_TYPE).head();
+		String link = r.getHeaders().get("Link").get(0);
+		String[] links = link.split(",");
+		String lastPage = "10";
+		
+		for (String string : links) {
+			LinkHeader h = LinkHeader.valueOf(string.trim());
+			String rel = h.getRel().iterator().next();
+			if ("last".equals(rel)) {
+				URI uri = h.getUri();
+				String q = uri.getQuery();
+				Matcher matcher = Pattern.compile("page=(.{1,3})&").matcher(q);
+				if (matcher.find()) {
+					lastPage = matcher.group(1);
+				}
+			}
+		}
+		return Integer.valueOf(lastPage);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#isUpdated()
 	 */
@@ -193,10 +267,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 					.path("users").path("cookbooks").path("repos")
 					.header("If-Modified-Since", date)
 					.get(ClientResponse.class);
-		} catch (ClientHandlerException e) {
-			logger.error("Error checking isUpdated", e);
-			return false;
-		} catch (UniformInterfaceException e) {
+		} catch (ClientHandlerException | UniformInterfaceException e) {
 			logger.error("Error checking isUpdated", e);
 			return false;
 		}
@@ -208,7 +279,6 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 
 	@Override
 	public RemoteCookbook getCookbook(String name) {
-		
 		JSONObject cookbookJson = restCookbook(name);
 		RemoteCookbook cookbook = createCookbook(cookbookJson);
 		return cookbook;

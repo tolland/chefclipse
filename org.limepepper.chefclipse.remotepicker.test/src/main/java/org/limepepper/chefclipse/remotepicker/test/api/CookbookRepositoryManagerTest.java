@@ -118,7 +118,7 @@ public class CookbookRepositoryManagerTest {
 		File downloadCookbook = Files.createTempDirectory("testCookbook").toFile();
 		manager.installCookbook(createCookbook("testCookbook"), downloadCookbook,
 				project.getAbsolutePath());
-		File installed = new File(new File(project, "cookbooks"), downloadCookbook.getName());
+		File installed = new File(new File(project, "cookbooks"), "testCookbook");
 
 		RemoteCookbook cookbook = manager.getSourceCookbook(installed);
 

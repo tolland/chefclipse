@@ -338,19 +338,33 @@ public class CookbookRepositoryManager {
 			}
 		}
 		try {
-			FileUtils.copyDirectoryToDirectory(downloadCookbook, targetDirectory);
+			File dest = new File(downloadCookbook.getParentFile(), cookbook.getName());
+			downloadCookbook.renameTo(dest);
+			FileUtils.copyDirectoryToDirectory(dest, targetDirectory);
 			updateInstalledDate(cookbook);
 
-			File source = new File(new File(targetDirectory, downloadCookbook.getName()), COOKBOOKSOURCE);
-			source.createNewFile();
-			Collection<String> lines = new ArrayList<String>(3);
-			lines.add(cookbook.getRepositoryId());
-			lines.add(cookbook.getName());
-			lines.add(cookbook.getLatestVersion());
-			FileUtils.writeLines(source, lines);
+			createSourceFile(cookbook, dest, targetDirectory);
 		} catch (IOException e) {
 			throw new InstallCookbookException(InstallCookbookException.INSTALL_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName(), e);
 		}
+	}
+
+	/**
+	 * Creates a file with information of the remote cookbook.
+	 * @param cookbook
+	 * @param downloadCookbook
+	 * @param targetDirectory
+	 * @throws IOException
+	 */
+	protected void createSourceFile(final RemoteCookbook cookbook, final File downloadCookbook,
+			File targetDirectory) throws IOException {
+		File source = new File(new File(targetDirectory, downloadCookbook.getName()), COOKBOOKSOURCE);
+		source.createNewFile();
+		Collection<String> lines = new ArrayList<String>(3);
+		lines.add(cookbook.getRepositoryId());
+		lines.add(cookbook.getName());
+		lines.add(cookbook.getLatestVersion());
+		FileUtils.writeLines(source, lines);
 	}
 
 	public RemoteCookbook getSourceCookbook(final File cookbookFolder) {
@@ -421,10 +435,12 @@ public class CookbookRepositoryManager {
 		remoteCookbook.setInstalledAt(cal.getTime());
 
 		Resource resource = remoteCookbook.eResource();
-		try {
-			resource.save(Collections.EMPTY_MAP);
-		} catch (IOException e) {
-			logger.error("Error saving resource cache", e);
+		if (resource != null) {
+			try {
+				resource.save(Collections.EMPTY_MAP);
+			} catch (IOException e) {
+				logger.error("Error saving resource cache", e);
+			}
 		}
 	}
 

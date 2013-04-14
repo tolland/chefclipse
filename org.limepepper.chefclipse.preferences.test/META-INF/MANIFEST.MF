@@ -3,6 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.preferences.test
 Bundle-SymbolicName: org.limepepper.chefclipse.preferences.test
 Bundle-Version: 1.0.0.qualifier
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
  lib/hamcrest-all.jar,
  lib/mockito-all.jar
@@ -14,6 +16,4 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.preferences.api;bundle-version="1.0.0",
  org.limepepper.chefclipse.preferences.ui;bundle-version="1.0.0",
  org.junit;bundle-version="4.10.0"
-Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.junit;version="4.10.0"

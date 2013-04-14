@@ -575,6 +575,7 @@ public class ResourceCompareInput extends CompareEditorInput {
 	/* (non Javadoc)
 	 * see IAdaptable.getAdapter
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Object getAdapter(final Class adapter) {
 		if (IFile.class.equals(adapter)) {
@@ -588,14 +589,14 @@ public class ResourceCompareInput extends CompareEditorInput {
 			return null;
 		}
 		if (IFile[].class.equals(adapter)) {
-			HashSet collector= new HashSet();
+			HashSet<IResource> collector= new HashSet<IResource>();
 			collectDirtyResources(fRoot, collector);
 			return collector.toArray(new IFile[collector.size()]);
 		}
 		return super.getAdapter(adapter);
 	}
 
-	private void collectDirtyResources(final Object o, final Set collector) {
+	private void collectDirtyResources(final Object o, final Set<IResource> collector) {
 		if (o instanceof DiffNode) {
 			DiffNode node= (DiffNode) o;
 
