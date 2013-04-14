@@ -8,9 +8,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -22,12 +20,9 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.File;
-
 import org.limepepper.chefclipse.provider.SandboxedObjectItemProvider;
 
 /**
@@ -72,6 +67,7 @@ public class FileItemProvider
 			addNamePropertyDescriptor(object);
 			addIDPropertyDescriptor(object);
 			addCookbookPropertyDescriptor(object);
+			addBytesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -209,6 +205,28 @@ public class FileItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Bytes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBytesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookFile_bytes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_bytes_feature", "_UI_CookbookFile_type"),
+				 CookbookPackage.Literals.COOKBOOK_FILE__BYTES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns File.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -250,6 +268,7 @@ public class FileItemProvider
 			case CookbookPackage.FILE__SPECIFICITY:
 			case CookbookPackage.FILE__NAME:
 			case CookbookPackage.FILE__ID:
+			case CookbookPackage.FILE__BYTES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

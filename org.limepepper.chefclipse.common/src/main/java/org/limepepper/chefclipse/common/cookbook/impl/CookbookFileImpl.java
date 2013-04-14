@@ -2,14 +2,14 @@
  */
 package org.limepepper.chefclipse.common.cookbook.impl;
 
-import org.eclipse.emf.ecore.EClass;
+import java.io.InputStream;
 
+import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-
 import org.limepepper.chefclipse.impl.NamedObjectImpl;
 
 /**
@@ -23,6 +23,7 @@ import org.limepepper.chefclipse.impl.NamedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getSpecificity <em>Specificity</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getBytes <em>Bytes</em>}</li>
  * </ul>
  * </p>
  *
@@ -118,6 +119,53 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 	 */
 	public void setCookbook(CookbookVersion newCookbook) {
 		eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte[] getBytes() {
+		return (byte[])eGet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBytes(byte[] newBytes) {
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, newBytes);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetBytes() {
+		eUnset(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetBytes() {
+		return eIsSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputStream getContentStream() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**

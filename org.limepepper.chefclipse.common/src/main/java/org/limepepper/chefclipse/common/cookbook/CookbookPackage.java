@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 
 /**
@@ -329,13 +328,22 @@ public interface CookbookPackage extends EPackage {
 	int DEFINITION__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFINITION__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DEFINITION_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int DEFINITION_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl <em>Library</em>}' class.
@@ -411,13 +419,22 @@ public interface CookbookPackage extends EPackage {
 	int LIBRARY__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Library</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int LIBRARY_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -539,13 +556,22 @@ public interface CookbookPackage extends EPackage {
 	int RECIPE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECIPE__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
+
+	/**
 	 * The feature id for the '<em><b>Role</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RECIPE__ROLE = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
+	int RECIPE__ROLE = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Runlist</b></em>' reference list.
@@ -554,7 +580,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECIPE__RUNLIST = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 8;
+	int RECIPE__RUNLIST = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Recipe</em>' class.
@@ -563,7 +589,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECIPE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 9;
+	int RECIPE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 10;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeDescriptionImpl <em>Recipe Description</em>}' class.
@@ -694,13 +720,22 @@ public interface CookbookPackage extends EPackage {
 	int RESOURCE__COOKBOOK = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__BYTES = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOURCE_FEATURE_COUNT = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 7;
+	int RESOURCE_FEATURE_COUNT = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.TemplateImpl <em>Template</em>}' class.
@@ -776,13 +811,22 @@ public interface CookbookPackage extends EPackage {
 	int TEMPLATE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Template</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int TEMPLATE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.AttributesImpl <em>Attributes</em>}' class.
@@ -858,13 +902,22 @@ public interface CookbookPackage extends EPackage {
 	int ATTRIBUTES__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTES__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Attributes</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTES_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int ATTRIBUTES_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.FileImpl <em>File</em>}' class.
@@ -940,13 +993,22 @@ public interface CookbookPackage extends EPackage {
 	int FILE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int FILE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.DependencyRelationImpl <em>Dependency Relation</em>}' class.
@@ -1213,13 +1275,22 @@ public interface CookbookPackage extends EPackage {
 	int PROVIDER__COOKBOOK = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDER__BYTES = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Provider</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROVIDER_FEATURE_COUNT = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 4;
+	int PROVIDER_FEATURE_COUNT = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.Root_fileImpl <em>Root file</em>}' class.
@@ -1295,13 +1366,22 @@ public interface CookbookPackage extends EPackage {
 	int ROOT_FILE__COOKBOOK = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT_FILE__BYTES = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Root file</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROOT_FILE_FEATURE_COUNT = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 4;
+	int ROOT_FILE_FEATURE_COUNT = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.MinimalMetadataImpl <em>Minimal Metadata</em>}' class.
@@ -1559,13 +1639,22 @@ public interface CookbookPackage extends EPackage {
 	int COOKBOOK_FILE__COOKBOOK = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK_FILE__BYTES = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK_FILE_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 4;
+	int COOKBOOK_FILE_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookImpl <em>Cookbook</em>}' class.
@@ -2073,6 +2162,17 @@ public interface CookbookPackage extends EPackage {
 	EReference getCookbookFile_Cookbook();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getBytes <em>Bytes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Bytes</em>'.
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookFile#getBytes()
+	 * @see #getCookbookFile()
+	 * @generated
+	 */
+	EAttribute getCookbookFile_Bytes();
+
+	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.Cookbook <em>Cookbook</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2511,6 +2611,14 @@ public interface CookbookPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COOKBOOK_FILE__COOKBOOK = eINSTANCE.getCookbookFile_Cookbook();
+
+		/**
+		 * The meta object literal for the '<em><b>Bytes</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COOKBOOK_FILE__BYTES = eINSTANCE.getCookbookFile_Bytes();
 
 		/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookImpl <em>Cookbook</em>}' class.

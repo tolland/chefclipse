@@ -7,8 +7,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.REST.RESTPackage;
-import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
 import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.Client;
@@ -112,7 +110,6 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
 		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
 		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
 		KnifePackageImpl theKnifePackage = (KnifePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
-		RESTPackageImpl theRESTPackage = (RESTPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI) instanceof RESTPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI) : RESTPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theChefclientPackage.createPackageContents();
@@ -121,7 +118,6 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
 		theCookbookPackage.createPackageContents();
 		theWorkstationPackage.createPackageContents();
 		theKnifePackage.createPackageContents();
-		theRESTPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theChefclientPackage.initializePackageContents();
@@ -130,7 +126,6 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
 		theCookbookPackage.initializePackageContents();
 		theWorkstationPackage.initializePackageContents();
 		theKnifePackage.initializePackageContents();
-		theRESTPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theChefclientPackage.freeze();

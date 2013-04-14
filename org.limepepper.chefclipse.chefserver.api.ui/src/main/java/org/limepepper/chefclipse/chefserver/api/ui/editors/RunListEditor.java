@@ -45,7 +45,7 @@ import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProvid
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory;
-import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+import org.limepepper.chefclipse.knife.api.ChefConfigManager;
 import org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory;
 import org.limepepper.chefclipse.tools.EMFUtils;
 

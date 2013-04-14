@@ -5,6 +5,7 @@ package org.limepepper.chefclipse.common.tests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+import org.limepepper.chefclipse.common.cookbook.tests.CookbookTests;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,6 +31,7 @@ public class ChefclipseAllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new ChefclipseAllTests("Chefclipse Tests");
+		suite.addTest(CookbookTests.suite());
 		return suite;
 	}
 

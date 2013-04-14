@@ -36,7 +36,7 @@ import chefclipse.ui.messages.Messages;
 /**
  * Project property page to select Chef-server configuration for chef project.
  * This property page is only enabled for project with chef nature.
- * 
+ *
  * @author Guillermo Zunino
  *
  */
@@ -44,7 +44,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 
 	public static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
 	public static final String PROPERTIES_PAGE = ChefPlugin.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
-	
+
 	private IProject project;
 	private boolean modified = false;
 	private ChefConfigurationsViewer configsViewer;
@@ -70,14 +70,14 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		initialize();
 
 		createHeader(composite);
-		
+
 		configsViewer = new ChefConfigurationsViewer();
 		configsViewer.createControl(composite);
 		Control control = configsViewer.getControl();
 		GridData data = new GridData(GridData.FILL_BOTH);
 		data.horizontalSpan = 1;
 		control.setLayoutData(data);
-		
+
 		configsViewer.restoreColumnSettings(ChefPlugin.getDefault().getDialogSettings(), PROPERTIES_PAGE);
 
 		configsViewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -87,14 +87,14 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 				Config current = configsViewer.getCheckedConfig();
 				if (current == null) {
 					setValid(false);
-					setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection); 
+					setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection);
 				} else {
 					setValid(true);
 					setErrorMessage(null);
 				}
 			}
 		});
-		
+
 		ChefConfigManager.instance().getPreferences().addPreferenceChangeListener(new IPreferenceChangeListener() {
 
 			@Override
@@ -122,7 +122,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 
 		Label description = createDescriptionLabel(composite);
 		GridDataFactory.fillDefaults().grab(true, false).applyTo(description);
-		
+
 		Hyperlink configurationHyperlink = new Hyperlink(composite, SWT.NONE);
 		configurationHyperlink.setUnderlined(true);
 		configurationHyperlink.setText(Messages.ChefConfigurationPropertyPage_CONFIGURE_WORKSPACE);
@@ -146,20 +146,20 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		project = (IProject) getElement().getAdapter(IResource.class);
 		setDescription(Messages.ChefConfigurationPropertyPage_Description);
 	}
-	
+
 	/**
 	 * Load workspace chef configuration on viewer and select default or saved configuration.
 	 */
 	private void loadChefServerConfigs() {
 		List<KnifeConfig> configs = getChefServerConfigs();
-		
+
 		configsViewer.setChefConfigs(configs.toArray(new KnifeConfig[0]));
-		
+
 		setDefaultProjectConfig();
 	}
-	
+
 	private void setDefaultProjectConfig() {
-		
+
 		Config projectConfig = ChefConfigManager.instance().retrieveProjectChefConfig(project);
 		if (projectConfig != null) {
 		    Config[] chefConfigs = configsViewer.getChefConfigs();
@@ -172,7 +172,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	        }
 		}
 	}
-	
+
 	@Override
 	public void setVisible(boolean visible) {
 		if (visible && configsViewer != null)
@@ -200,14 +200,14 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		super.performDefaults();
 		configsViewer.setCheckedConfig(getDefaultChefServerConfig());
 	}
-	
+
 	@Override
 	public boolean performOk() {
 		if (!isModified()) {
 			return true;
 		}
 		savePreference(configsViewer.getCheckedConfig());
-		
+
 		// save column widths
 		IDialogSettings settings = ChefPlugin.getDefault().getDialogSettings();
 		configsViewer.saveColumnSettings(settings, PROPERTIES_PAGE);

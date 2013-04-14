@@ -655,22 +655,13 @@ public interface ChefserverPackage extends EPackage {
     int COOKBOOK_LIST_RESP__NAME = 0;
 
     /**
-	 * The feature id for the '<em><b>Versions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int COOKBOOK_LIST_RESP__VERSIONS = 1;
-
-    /**
 	 * The feature id for the '<em><b>Url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_LIST_RESP__URL = 2;
+    int COOKBOOK_LIST_RESP__URL = 1;
 
     /**
 	 * The number of structural features of the '<em>Cookbook List Resp</em>' class.
@@ -679,7 +670,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_LIST_RESP_FEATURE_COUNT = 3;
+    int COOKBOOK_LIST_RESP_FEATURE_COUNT = 2;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl <em>Server Cookbook File</em>}' class.
@@ -1433,17 +1424,6 @@ public interface ChefserverPackage extends EPackage {
     EAttribute getCookbookListResp_Name();
 
     /**
-	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getVersions <em>Versions</em>}'.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Versions</em>'.
-	 * @see org.limepepper.chefclipse.common.chefserver.CookbookListResp#getVersions()
-	 * @see #getCookbookListResp()
-	 * @generated
-	 */
-    EReference getCookbookListResp_Versions();
-
-    /**
 	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getUrl <em>Url</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1888,14 +1868,6 @@ public interface ChefserverPackage extends EPackage {
 		 * @generated
 		 */
         EAttribute COOKBOOK_LIST_RESP__NAME = eINSTANCE.getCookbookListResp_Name();
-
-        /**
-		 * The meta object literal for the '<em><b>Versions</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-		 * @generated
-		 */
-        EReference COOKBOOK_LIST_RESP__VERSIONS = eINSTANCE.getCookbookListResp_Versions();
 
         /**
 		 * The meta object literal for the '<em><b>Url</b></em>' attribute feature.

@@ -2,7 +2,6 @@ package chefclipse.ui.handlers;
 
 import org.eclipse.compare.CompareConfiguration;
 import org.eclipse.compare.CompareUI;
-import org.eclipse.compare.internal.CompareEditor;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -16,18 +15,23 @@ public class CompareWithHandler extends AbstractHandler {
 
 	private ResourceCompareInput fInput;
 
+	public final static String CONFIRM_SAVE_PROPERTY = "org.eclipse.compare.internal.CONFIRM_SAVE_PROPERTY"; //$NON-NLS-1$
+
 	@Override
 	public Object execute(final ExecutionEvent event) throws ExecutionException {
-		IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
-		IWorkbenchPage workbenchPage = HandlerUtil.getActiveWorkbenchWindow(event).getActivePage();
+		IStructuredSelection selection = (IStructuredSelection) HandlerUtil
+				.getCurrentSelection(event);
+		IWorkbenchPage workbenchPage = HandlerUtil.getActiveWorkbenchWindow(
+				event).getActivePage();
 
-		CompareConfiguration cc= new CompareConfiguration();
+		CompareConfiguration cc = new CompareConfiguration();
 		// buffered merge mode: don't ask for confirmation
 		// when switching between modified resources
-		cc.setProperty(CompareEditor.CONFIRM_SAVE_PROPERTY, new Boolean(false));
+		cc.setProperty(CONFIRM_SAVE_PROPERTY, new Boolean(false));
 
 		// uncomment following line to have separate outline view
-		//cc.setProperty(CompareConfiguration.USE_OUTLINE_VIEW, new Boolean(true));
+		// cc.setProperty(CompareConfiguration.USE_OUTLINE_VIEW, new
+		// Boolean(true));
 
 		fInput = new ResourceCompareInput(cc);
 
@@ -37,7 +41,7 @@ public class CompareWithHandler extends AbstractHandler {
 			return null;
 		}
 		fInput.getCompareConfiguration();
-		//if (fInput != null) {
+		// if (fInput != null) {
 		// Pass the shell so setSelection can prompt the user for which
 		// resource should be the ancestor
 		// boolean ok = fInput.setSelection(selection, fWorkbenchPage
@@ -47,7 +51,7 @@ public class CompareWithHandler extends AbstractHandler {
 		// }
 		// fInput.initializeCompareConfiguration();
 		CompareUI.openCompareEditorOnPage(fInput, workbenchPage);
-		fInput= null;	// don't reuse this input!
+		fInput = null; // don't reuse this input!
 		return null;
 	}
 

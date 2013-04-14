@@ -5,9 +5,7 @@ package org.limepepper.chefclipse.common.cookbook;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.limepepper.chefclipse.NamedDescribedObject;
-
 import org.limepepper.chefclipse.common.chefserver.Environment;
 
 /**

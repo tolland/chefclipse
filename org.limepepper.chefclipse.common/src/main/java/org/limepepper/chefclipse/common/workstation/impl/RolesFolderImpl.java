@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.common.workstation.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.limepepper.chefclipse.common.workstation.RolesFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 

@@ -3,8 +3,6 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.Cookbook;
 
 /**
  * <!-- begin-user-doc -->

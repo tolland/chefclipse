@@ -3,6 +3,9 @@ package chefclipse.ui;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
@@ -35,7 +38,7 @@ public class ChefPlugin extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
 	 * )
@@ -49,7 +52,7 @@ public class ChefPlugin extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
 	 * )
@@ -60,8 +63,29 @@ public class ChefPlugin extends AbstractUIPlugin {
 	}
 
 	/**
+	 * Returns the currently active workbench window shell or <code>null</code>
+	 * if none.
+	 *
+	 * @return the currently active workbench window shell or <code>null</code>
+	 */
+	public static Shell getShell() {
+		IWorkbenchWindow window = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow();
+		if (window == null) {
+			IWorkbenchWindow[] windows = PlatformUI.getWorkbench()
+					.getWorkbenchWindows();
+			if (windows.length > 0) {
+				return windows[0].getShell();
+			}
+		} else {
+			return window.getShell();
+		}
+		return null;
+	}
+
+	/**
 	 * Returns the shared instance
-	 * 
+	 *
 	 * @return the shared instance
 	 */
 	public static ChefPlugin getDefault() {
@@ -71,7 +95,7 @@ public class ChefPlugin extends AbstractUIPlugin {
 	/**
 	 * Returns an image descriptor for the image file at the given plug-in
 	 * relative path
-	 * 
+	 *
 	 * @param path
 	 *            the path
 	 * @return the image descriptor
@@ -81,15 +105,15 @@ public class ChefPlugin extends AbstractUIPlugin {
 	}
 
 	public static void log(CoreException e) {
-		logger.debug("exception was: {}", e);
+		logger.debug("message was: {}", e);
 	}
 
 	public static void log(String string) {
-		logger.debug("exception was: {}", string);
+		logger.debug("message was: {}", string);
 	}
 
 	public static void debug(Object class1) {
-		logger.debug("exception was: {}", class1);
+		logger.debug("debug was: {}", class1);
 	}
 
 }

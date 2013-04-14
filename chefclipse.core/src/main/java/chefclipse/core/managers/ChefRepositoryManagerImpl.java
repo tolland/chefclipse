@@ -13,9 +13,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
-import java.util.Map.Entry;
 
 import org.codehaus.jackson.JsonParseException;
 import org.eclipse.core.resources.IContainer;
@@ -50,16 +50,15 @@ import org.limepepper.chefclipse.common.cookbook.Metadata;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.cookbook.Template;
+import org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl;
+import org.limepepper.chefclipse.common.cookbook.impl.Root_fileImpl;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import chefclipse.core.ChefCore;
 import chefclipse.core.ChefFile;
-import chefclipse.core.IChefElement;
-import chefclipse.core.IChefResource;
 import chefclipse.core.builders.ChefProjectNature;
 import chefclipse.core.utils.ChefUtils;
 
@@ -70,17 +69,17 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	/**
 	 * so this is a back and forth mapping of the model to resources, its used
 	 * in various places for easy access to the respective object
-	 * 
+	 *
 	 * @todo I am pretty sure there is a better way!
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	private Map<IResource, EObject> elements = new HashMap<IResource, EObject>();
 	private Map<EObject, IResource> resources = new HashMap<EObject, IResource>();
 
 	/**
 	 * @todo no idea!
-	 * 
+	 *
 	 */
 	private ResourceSet resourceSet = new ResourceSetImpl();
 	private Resource masterResource = null;
@@ -256,10 +255,10 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	}
 
 	/**
-	 * 
+	 *
 	 * allows some gui component to ask for the derved list of matching
 	 * cookbooks to be updated
-	 * 
+	 *
 	 * @param cookbook
 	 */
 	public void updateDependsLists(CookbookVersion cookbook) {
@@ -331,6 +330,9 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		eObject.getAttributes();
 		Repository repo = (Repository) getElement(resource.getProject());
 
+		assertNotNull(repo);
+		assertNotNull(eObject);
+
 		repo.getCookbooks().add(eObject);
 
 		Metadata updateMetadata = createCookbookMetadata(resource);
@@ -401,12 +403,26 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		// cookbook.get().getCookbooks().remove(CookbookVersion);
 	}
 
-	public Recipe createRecipe(IFile resource) throws CoreException {
+	public Recipe createRecipe(final IFile resource) throws CoreException {
 
-		Recipe eObject = CookbookFactory.eINSTANCE.createRecipe();
+		// Recipe eObject = CookbookFactory.eINSTANCE.createRecipe();
+
+		Recipe eObject = new RecipeImpl() {
+
+			@Override
+			public InputStream getContentStream() {
+				try {
+					return resource.getContents();
+				} catch (CoreException e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+
+		};
+
 		addCheckSum(resource, (ChecksumFile) eObject);
-		eObject.setName(resource.getName().substring(0,
-				resource.getName().lastIndexOf('.')));
+		eObject.setName(resource.getName());
 		addMapping(resource, eObject);
 
 		try {
@@ -415,8 +431,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 			eObject.setCookbook(cookbookVersion);
 
 		} catch (Exception e) {
-			logger.debug("cookbook not existing1:"
-					+ getCookbookForResource(resource));
 			create(getCookbookForResource(resource));
 		}
 
@@ -431,7 +445,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 	/**
 	 * hack function @todo remove this
-	 * 
+	 *
 	 * @param resource
 	 * @param checksumFile
 	 */
@@ -449,7 +463,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		}
 		/*
 		 * try { checksumFile.setChecksum(new String(checksum,"UTF-8"));
-		 * 
+		 *
 		 * } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
 		 */
 
@@ -459,10 +473,10 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 	/*
 	 * static byte[] md5sum(byte[] filebytes) throws NoSuchAlgorithmException {
-	 * 
+	 *
 	 * MessageDigest md = MessageDigest.getInstance("MD5"); byte[] hash =
 	 * md.digest(filebytes);
-	 * 
+	 *
 	 * logger.debug("hash length is:{}", hash.length); // logger.deb return
 	 * hash; }
 	 */
@@ -493,12 +507,12 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	}
 
 	/*
-	 * 
-	 * 
-	 * 
+	 *
+	 *
+	 *
 	 * def checksum_file(file, digest) File.open(file, 'rb') { |f|
 	 * checksum_io(f, digest) } end
-	 * 
+	 *
 	 * def checksum_io(io, digest) while chunk = io.read(1024 * 8)
 	 * digest.update(chunk) end digest.hexdigest end
 	 */
@@ -516,11 +530,11 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	/**
 	 * so this is a hack function to return the path relative to the cookbook
 	 * not sure how the most appropriate way to populate this field should be
-	 * 
+	 *
 	 * @todo so the main hack is that it wouldn;t support other cookbook dir
 	 *       names which the knife.rb clearly does by using an array for
 	 *       specifying
-	 * 
+	 *
 	 * @return
 	 */
 	private String pathRelativeToCookbook(IFile file) {
@@ -542,7 +556,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	 * "https://s3.amazonaws.com/opscode-platform-production-data/organization-(...)"
 	 * , "checksum": "ba0dadcbca26710a521e0e3160cc5e20", "path":
 	 * "recipes/default.rb", "specificity": "default" }
-	 * 
+	 *
 	 * @todo migrate this to the emf version
 	 */
 
@@ -597,8 +611,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 						+ " not existing:" + getCookbookForResource(resource));
 
 			}
-			eObject.setName(resource.getName().substring(0,
-					resource.getName().lastIndexOf('.')));
+			eObject.setName(resource.getName());
 			eObject.setID(Long.toString(UUID.randomUUID()
 					.getMostSignificantBits()));
 
@@ -618,8 +631,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		} catch (Exception e) {
 			logger.debug("cookbook not existing:" + resource.getParent());
 		}
-		eObject.setName(resource.getName().substring(0,
-				resource.getName().lastIndexOf('.')));
+		eObject.setName(resource.getName());
 		eObject.setID(Long.toString(UUID.randomUUID().getMostSignificantBits()));
 
 		addMapping(resource, eObject);
@@ -649,11 +661,26 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 	}
 
-	public void createRootFile(IFile resource) throws CoreException {
+	public void createRootFile(final IFile resource) throws CoreException {
 
 		logger.info("creating root file:-->" + resource.getName());
 
-		Root_file eObject = CookbookFactory.eINSTANCE.createRoot_file();
+		// Root_file eObject = CookbookFactory.eINSTANCE.createRoot_file();
+
+		Root_file eObject = new Root_fileImpl() {
+
+			@Override
+			public InputStream getContentStream() {
+				try {
+					return resource.getContents();
+				} catch (CoreException e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+
+		};
+
 		addCheckSum(resource, (ChecksumFile) eObject);
 		try {
 			CookbookVersion cookbookVersion = (CookbookVersion) getElement(lookUpForCookbookResource(resource));
@@ -663,12 +690,13 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		} catch (Exception e) {
 			logger.error("cookbook not existing:" + resource.getParent());
 		}
-		if (resource.getName().lastIndexOf('.') != -1) {
-			eObject.setName(resource.getName().substring(0,
-					resource.getName().lastIndexOf('.')));
-		} else {
-			eObject.setName(resource.getName());
-		}
+		/*
+		 * if (resource.getName().lastIndexOf('.') != -1) {
+		 * eObject.setName(resource.getName().substring(0,
+		 * resource.getName().lastIndexOf('.'))); } else {
+		 */
+		eObject.setName(resource.getName());
+		/* } */
 
 		eObject.setID(Long.toString(UUID.randomUUID().getMostSignificantBits()));
 
@@ -687,8 +715,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		} catch (Exception e) {
 			logger.debug("cookbook not existing:" + resource.getParent());
 		}
-		eObject.setName(resource.getName().substring(0,
-				resource.getName().lastIndexOf('.')));
+		eObject.setName(resource.getName());
 		eObject.setID(Long.toString(UUID.randomUUID().getMostSignificantBits()));
 
 		addMapping(resource, eObject);
@@ -707,8 +734,13 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 			} catch (Exception e) {
 				logger.debug("cookbook not existing:" + resource.getParent());
 			}
-			eObject.setName(resource.getName().substring(0,
-					resource.getName().lastIndexOf('.')));
+			/*
+			 * if (resource.getName().lastIndexOf('.') != -1) {
+			 * eObject.setName(resource.getName().substring(0,
+			 * resource.getName().lastIndexOf('.'))); } else {
+			 */
+			eObject.setName(resource.getName());
+			/* } */
 			eObject.setID(Long.toString(UUID.randomUUID()
 					.getMostSignificantBits()));
 			addMapping(resource, eObject);
@@ -723,7 +755,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	 * <a
 	 * href="http://docs.opscode.com/chef/resources.html">http://docs.opscode.
 	 * com/chef/resources.html</a> <br/>
-	 * 
+	 *
 	 * @param file
 	 * @throws CoreException
 	 */
@@ -742,8 +774,13 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 				logger.debug("cookbook not existing:"
 						+ getCookbookForResource(file));
 			}
-			eObject.setName(file.getName().substring(0,
-					file.getName().lastIndexOf('.')));
+			/*
+			 * if (resource.getName().lastIndexOf('.') != -1) {
+			 * eObject.setName(resource.getName().substring(0,
+			 * resource.getName().lastIndexOf('.'))); } else {
+			 */
+			eObject.setName(file.getName());
+			/* } */
 			eObject.setID(Long.toString(UUID.randomUUID()
 					.getMostSignificantBits()));
 
@@ -753,7 +790,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 	/**
 	 * nasty hack
-	 * 
+	 *
 	 * @param file
 	 * @return
 	 */
@@ -802,10 +839,10 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 		/**
 		 * loop over the folders at the top level look for the cookbooks
-		 * 
+		 *
 		 * @todo chef supports multipul cookbook dirs, and alternative locations
 		 *       so this needs to be fixed
-		 * 
+		 *
 		 */
 		for (IResource res : location.members()) {
 			if ((res instanceof IFolder) && res.getName().equals("cookbooks")) {
@@ -1011,6 +1048,10 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 	@Override
 	public IFolder getResource(CookbookVersion cookbook) {
+		IResource resource = resources.get(cookbook);
+		if (resource instanceof IFolder) {
+			return (IFolder) resource;
+		}
 		return null;
 	}
 

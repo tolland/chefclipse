@@ -111,10 +111,10 @@
             point="org.eclipse.ui.navigator.navigatorContent">
         <navigatorContent
                 activeByDefault="true"
-                contentProvider="org.limepepper.chefclipse.ui.navigator.ChefNavigatorContentProvider"
+                contentProvider="org.limepepper.chefclipse.navigator.providers.ChefNavigatorContentProvider"
                 icon="icons/packagefolder_obj.png"
                 id="org.limepepper.chefclipse.ui.chefContent"
-                labelProvider="org.limepepper.chefclipse.ui.navigator.ChefNavigatorLabelProvider"
+                labelProvider="org.limepepper.chefclipse.navigator.providers.ChefNavigatorLabelProvider"
                 name="%commonNavigatorContentName"
                 priority="high">
             <triggerPoints>

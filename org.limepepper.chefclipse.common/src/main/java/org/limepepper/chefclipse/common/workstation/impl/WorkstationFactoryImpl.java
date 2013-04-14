@@ -5,12 +5,19 @@ package org.limepepper.chefclipse.common.workstation.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.limepepper.chefclipse.common.workstation.*;
+import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
+import org.limepepper.chefclipse.common.workstation.ConfigFolder;
+import org.limepepper.chefclipse.common.workstation.CookbooksFolder;
+import org.limepepper.chefclipse.common.workstation.DataBagsFolder;
+import org.limepepper.chefclipse.common.workstation.EnvironmentsFolder;
+import org.limepepper.chefclipse.common.workstation.Rakefile;
+import org.limepepper.chefclipse.common.workstation.Repository;
+import org.limepepper.chefclipse.common.workstation.RolesFolder;
+import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
+import org.limepepper.chefclipse.common.workstation.WorkstationFolder;
+import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 
 /**
  * <!-- begin-user-doc -->

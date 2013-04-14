@@ -19,9 +19,7 @@ Require-Bundle: org.eclipse.ui,
  org.slf4j.log4j;bundle-version="1.6.4",
  org.junit;bundle-version="4.8.0",
  org.limepepper.chefclipse.common.edit;bundle-version="[0.1.0,1.0.0)",
- org.limepepper.chefclipse.ui;bundle-version="[0.1.0,1.0.0)",
  org.limepepper.chefclipse.chefserver.api;bundle-version="[0.1.0,1.0.0)",
- org.limepepper.chefclipse.preferences.api;bundle-version="[0.1.0,1.0.0)",
  org.limepepper.chefclipse.utils;bundle-version="[0.1.0,1.0.0)",
  chefclipse.core;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
@@ -41,6 +39,4 @@ Export-Package: org.limepepper.chefclipse.chefserver.api.ui;uses:="org.eclipse.j
    org.eclipse.ui.actions,
    org.eclipse.core.commands"
 Bundle-Vendor: %providerName
-Import-Package: org.limepepper.chefclipse.common.ui.providers,
- org.limepepper.chefclipse.common.ui.resources,
- org.limepepper.chefclipse.navigator.testers
+

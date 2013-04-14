@@ -16,20 +16,21 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.common.chefserver.Environment;
-import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
+
+import chefclipse.core.providers.ChefProjectAdapterFactory;
 
 public class EnvironmentTable extends Composite {
 
     private TableViewer tableViewer;
     private Table table;
     private ChefServerApi api;
-    
+
 	public EnvironmentTable(Composite parent,ChefServerApi api) {
 		super(parent, SWT.NONE);
         setLayout(new FillLayout());
-        
+
     	this.api=api;
-        
+
         tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
                 | SWT.V_SCROLL);
 
@@ -42,7 +43,7 @@ public class EnvironmentTable extends Composite {
 
     class NameSorter extends ViewerSorter {
     }
-    
+
     class EnvironmentLabelProvider extends AdapterFactoryLabelProvider {
 
         public EnvironmentLabelProvider() {
@@ -66,7 +67,7 @@ public class EnvironmentTable extends Composite {
                     .getImage(ISharedImages.IMG_OBJ_ELEMENT);
         }
     }
-    
+
     class EnvironmentContentProvider extends AdapterFactoryContentProvider {
     	EnvironmentContentProvider() {
             super(ChefProjectAdapterFactory.getAdapterFactory());

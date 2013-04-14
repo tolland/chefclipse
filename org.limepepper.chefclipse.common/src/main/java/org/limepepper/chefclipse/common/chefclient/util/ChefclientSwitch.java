@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.limepepper.chefclipse.Config;
-import org.limepepper.chefclipse.common.chefclient.*;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.Client;
 import org.limepepper.chefclipse.common.chefclient.ClientConfig;

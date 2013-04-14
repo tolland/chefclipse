@@ -2,6 +2,9 @@ package chefclipse.core.adapters;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IAdapterFactory;
+import org.eclipse.emf.ecore.EObject;
+
+import chefclipse.core.managers.ChefRepositoryManager;
 
 public class ChefAdapterFactory implements IAdapterFactory {
 
@@ -12,19 +15,22 @@ public class ChefAdapterFactory implements IAdapterFactory {
 	};
 
 	public Class[] getAdapterList() {
+
 		return ADAPTER_LIST;
 	}
 
 	@Override
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if (IResource.class.equals(adapterType)) {
-			return getResource(adaptableObject);
+			if (adaptableObject instanceof EObject) {
+				System.out.println("adapting :" + adaptableObject.getClass()
+						+ " to " + adapterType.getCanonicalName());
+				return ChefRepositoryManager.INSTANCE
+						.getResource((EObject) adaptableObject);
+			}
+
 		}
 		return null;
-	}
-
-	private Object getResource(Object adaptableObject) {
-		return adaptableObject.toString();
 	}
 
 }

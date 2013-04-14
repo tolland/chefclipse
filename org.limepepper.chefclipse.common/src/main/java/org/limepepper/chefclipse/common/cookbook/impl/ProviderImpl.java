@@ -2,19 +2,17 @@
  */
 package org.limepepper.chefclipse.common.cookbook.impl;
 
+import java.io.InputStream;
 import java.net.URL;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Provider;
-
 import org.limepepper.chefclipse.impl.ChecksumFileImpl;
 
 /**
@@ -28,6 +26,7 @@ import org.limepepper.chefclipse.impl.ChecksumFileImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ProviderImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ProviderImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ProviderImpl#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.ProviderImpl#getBytes <em>Bytes</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,6 +129,53 @@ public class ProviderImpl extends ChecksumFileImpl implements Provider {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public byte[] getBytes() {
+		return (byte[])eGet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBytes(byte[] newBytes) {
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, newBytes);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetBytes() {
+		eUnset(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetBytes() {
+		return eIsSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputStream getContentStream() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
@@ -148,6 +194,7 @@ public class ProviderImpl extends ChecksumFileImpl implements Provider {
 		if (baseClass == CookbookFile.class) {
 			switch (derivedFeatureID) {
 				case CookbookPackage.PROVIDER__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
+				case CookbookPackage.PROVIDER__BYTES: return CookbookPackage.COOKBOOK_FILE__BYTES;
 				default: return -1;
 			}
 		}
@@ -177,6 +224,7 @@ public class ProviderImpl extends ChecksumFileImpl implements Provider {
 		if (baseClass == CookbookFile.class) {
 			switch (baseFeatureID) {
 				case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return CookbookPackage.PROVIDER__COOKBOOK;
+				case CookbookPackage.COOKBOOK_FILE__BYTES: return CookbookPackage.PROVIDER__BYTES;
 				default: return -1;
 			}
 		}

@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="chefclipse.chefserver.api.properties.SamplePropertyPage"
+            id="chefclipse.chefserver.api.properties.samplePropertyPage"
+            name="Sample Page"
+            nameFilter="*.*">
+         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.core.resources.IFile">
+            </instanceof>
+         </enabledWhen>
+      </page>
+   </extension>
 </plugin>

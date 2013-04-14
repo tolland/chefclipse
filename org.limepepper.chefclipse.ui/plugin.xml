@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <category
-            id="org.limepepper.chefclipse.ui.wizards.category"
-            name="Chefclipse">
-      </category>
-      <wizard
-            category="org.limepepper.chefclipse.ui.wizards.category"
-            class="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
-            icon="icons/sample.gif"
-            id="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
-            name="New Chef Project"
-            project="true">
-      </wizard>
-   </extension>
-    <extension
-         point="org.eclipse.ui.newWizards">
-      <category
-            id="org.limepepper.chefclipse.ui.wizards.category"
-            name="Chefclipse">
-      </category>
-      <wizard
-            category="org.limepepper.chefclipse.ui.wizards.category"
-            class="org.limepepper.chefclipse.ui.wizards.ExistingRepoNewChefProjectWizard"
-            icon="icons/sample.gif"
-            id="org.limepepper.chefclipse.ui.wizards.NewExistingRepoChefProjectWizard"
-            name="New Project for existing Repo"
-            project="true">
-      </wizard>
-   </extension>
 
    <extension
          point="org.eclipse.ui.navigator.navigatorContent">
@@ -276,9 +246,6 @@
             <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
             <adapter type="org.eclipse.core.resources.mapping.ResourceMapping"/>
          </factory>
-   </extension>
-   <extension
-         point="org.eclipse.ui.menus">
    </extension>
 
    <extension

@@ -10,7 +10,8 @@ import chefclipse.core.IChefElement;
 
 public class ResourceAdapterFactory implements IAdapterFactory {
 
-	private static Class<?>[] PROPERTIES = new Class[] { IChefElement.class
+	private static Class<?>[] PROPERTIES = new Class[] {
+		IChefElement.class
 
 	};
 

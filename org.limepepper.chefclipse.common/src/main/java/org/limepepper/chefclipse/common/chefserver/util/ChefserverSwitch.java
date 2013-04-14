@@ -4,17 +4,27 @@ package org.limepepper.chefclipse.common.chefserver.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
-
-import org.limepepper.chefclipse.common.chefserver.*;
-
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Platform;
+import org.limepepper.chefclipse.common.chefserver.Role;
+import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
+import org.limepepper.chefclipse.common.chefserver.Sandbox;
+import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerConfig;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 

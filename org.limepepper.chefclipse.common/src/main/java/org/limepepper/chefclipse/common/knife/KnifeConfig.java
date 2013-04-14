@@ -5,9 +5,7 @@ package org.limepepper.chefclipse.common.knife;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.limepepper.chefclipse.Config;
-
 import org.limepepper.chefclipse.common.chefserver.Server;
 
 /**

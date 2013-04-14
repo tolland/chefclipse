@@ -11,11 +11,11 @@
   <groupId>org.limepepper</groupId>
   <artifactId>org.limepepper.chefclipse.graphviewer</artifactId>
   <packaging>eclipse-plugin</packaging>
-  	<repositories>
+  	<!--repositories>
 		<repository>
 			<id>zest2.0</id>
 			<layout>p2</layout>
 			<url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>
 		</repository>
-	</repositories>
+	</repositories-->
 </project>

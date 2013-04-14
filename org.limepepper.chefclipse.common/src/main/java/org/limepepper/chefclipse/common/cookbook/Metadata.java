@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.common.cookbook;
 
 import org.eclipse.emf.common.util.EMap;
-
 import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.RubyFile;

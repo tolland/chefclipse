@@ -28,6 +28,8 @@ import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.cookbook.Root_file;
+import org.limepepper.chefclipse.common.cookbook.Template;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
@@ -161,14 +163,14 @@ public class EmfJsonWrapperTest {
 
             assertNotNull(user);
             assertTrue(user.getCookbook_name() != null);
-            for(ServerCookbookFile file : user.getTemplates()){
+            for(Template file : user.getTemplates()){
                 System.out.println(file.getName());
                 System.out.println(file.getChecksum());
             }
             System.out.println("number of items was"
                     + user.getRoot_files().size());
 
-            for (ServerCookbookFile iterable_element : user.getRoot_files()) {
+            for (Root_file iterable_element : user.getRoot_files()) {
                 System.out.println(iterable_element.getName() + ":val:"
                         + iterable_element.getPath());
             }

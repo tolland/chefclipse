@@ -19,7 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import chefclipse.core.managers.ChefRepositoryManager;
-import chefclipse.core.providers.ChefModelProvider;
 
 public class DeltaProcessingState implements IResourceChangeListener,
 		IResourceDeltaVisitor {
@@ -242,7 +241,7 @@ public class DeltaProcessingState implements IResourceChangeListener,
 
 	/**
 	 * this is stupid, change it!
-	 * 
+	 *
 	 * @param resource
 	 * @return
 	 */

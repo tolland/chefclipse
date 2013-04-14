@@ -8,14 +8,14 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import chefclipse.core.managers.ChefRepositoryManager;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 
 /**
  * this is a cookbook Model, I wonder a cookbook model is
- * 
+ *
  * @author
- * 
+ *
  */
 public class CookbookModel implements IResourceChangeListener  {
 
@@ -28,7 +28,7 @@ public class CookbookModel implements IResourceChangeListener  {
     {
     	ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
     }
-    
+
 	public void setResource(IResource resource)
 	{
 		this.resource=resource;
@@ -36,7 +36,7 @@ public class CookbookModel implements IResourceChangeListener  {
                 .INSTANCE.getElement(resource);
         setDrawableCookbook(new DrawableCookbook(cookbook));
 	}
-    
+
     public void setDrawableCookbook(DrawableCookbook drawableCookbook) {
         this.drawableCookbook = drawableCookbook;
         notifyCookbookChanged();
@@ -98,7 +98,7 @@ public class CookbookModel implements IResourceChangeListener  {
 		}
 		setResource(cookbookDelta.getResource());
 	}
-	
+
 	public void dispose()
 	{
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);

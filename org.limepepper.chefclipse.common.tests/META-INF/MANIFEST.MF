@@ -7,8 +7,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.limepepper.chefclipse.REST.tests,
- org.limepepper.chefclipse.common.chefclient.tests,
+Export-Package: org.limepepper.chefclipse.common.chefclient.tests,
  org.limepepper.chefclipse.common.chefserver.tests,
  org.limepepper.chefclipse.common.cookbook.tests,
  org.limepepper.chefclipse.common.knife.tests,

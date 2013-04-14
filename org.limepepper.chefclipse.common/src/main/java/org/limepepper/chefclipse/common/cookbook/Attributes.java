@@ -2,8 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
 
 /**

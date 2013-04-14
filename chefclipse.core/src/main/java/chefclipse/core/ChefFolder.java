@@ -5,7 +5,7 @@ import org.eclipse.core.resources.IFolder;
 public class ChefFolder extends ChefContainer {
 
 	public ChefFolder(IFolder iFolder, ChefProject chefProject) {
-		super();
+		super(iFolder);
 	}
 
 	@Override

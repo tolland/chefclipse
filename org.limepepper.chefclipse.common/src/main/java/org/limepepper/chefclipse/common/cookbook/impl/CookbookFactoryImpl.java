@@ -5,12 +5,27 @@ package org.limepepper.chefclipse.common.cookbook.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.limepepper.chefclipse.common.cookbook.*;
+import org.limepepper.chefclipse.common.cookbook.Attribute;
+import org.limepepper.chefclipse.common.cookbook.Attributes;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
+import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+import org.limepepper.chefclipse.common.cookbook.Definition;
+import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
+import org.limepepper.chefclipse.common.cookbook.File;
+import org.limepepper.chefclipse.common.cookbook.Library;
+import org.limepepper.chefclipse.common.cookbook.Metadata;
+import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
+import org.limepepper.chefclipse.common.cookbook.Name;
+import org.limepepper.chefclipse.common.cookbook.Provider;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
+import org.limepepper.chefclipse.common.cookbook.RecipeDescription;
+import org.limepepper.chefclipse.common.cookbook.Resource;
+import org.limepepper.chefclipse.common.cookbook.Root_file;
+import org.limepepper.chefclipse.common.cookbook.Template;
 
 /**
  * <!-- begin-user-doc -->

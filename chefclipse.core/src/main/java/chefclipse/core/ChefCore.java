@@ -27,7 +27,7 @@ import chefclipse.core.managers.ChefModelManager;
  * <code>ChefCore.getChefCore()</code>. The Chef model plug-in will be activated
  * automatically if not already active.
  * </p>
- * 
+ *
  * @noinstantiate This class is not intended to be instantiated by clients.
  */
 
@@ -45,6 +45,16 @@ public class ChefCore extends Plugin {
 	public static final String BUILDER_ID = PLUGIN_ID + ".chefbuilder"; //$NON-NLS-1$
 	public static final String MODEL_ID = PLUGIN_ID + ".chefmodel"; //$NON-NLS-1$
 	public static final String NATURE_ID = PLUGIN_ID + ".chefnature"; //$NON-NLS-1$
+
+	private static BundleContext context;
+
+	static BundleContext getContext() {
+		return context;
+	}
+
+	void setContext(BundleContext context) {
+		ChefCore.context = context;
+	}
 
 	public static IChefElement create(IFile file) {
 		return ChefModelManager.create(file, null/* unknown java project */);
@@ -87,7 +97,7 @@ public class ChefCore extends Plugin {
 	/*
 	 * (non-Javadoc) Shutdown the JavaCore plug-in. <p> De-registers the
 	 * JavaModelManager as a resource changed listener and save participant. <p>
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.Plugin#stop(BundleContext)
 	 */
 	public void stop(BundleContext context) throws Exception {
@@ -104,13 +114,14 @@ public class ChefCore extends Plugin {
 	 * JavaModelManager as a resource changed listener and save participant.
 	 * Starts the background indexing, and restore saved classpath variable
 	 * values. <p>
-	 * 
+	 *
 	 * @throws Exception
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.Plugin#start(BundleContext)
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
+		setContext(context);
 		ChefModelManager.getChefModelManager().startup();
 		System.err.println("this is a test");
 	}

@@ -3,7 +3,7 @@
 package org.limepepper.chefclipse.impl;
 
 import java.io.File;
-
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,9 +12,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipseFactory;
 import org.limepepper.chefclipse.ChefclipsePackage;
@@ -26,35 +24,20 @@ import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.NameVersionMap;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
-
-import org.limepepper.chefclipse.REST.RESTPackage;
-
-import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
-
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.URLEntryTest;
 import org.limepepper.chefclipse.VersionUrl;
 import org.limepepper.chefclipse.VersionedObject;
-
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
-
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-
 import org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-
 import org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl;
-
 import org.limepepper.chefclipse.common.knife.KnifePackage;
-
 import org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl;
-
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
-
 import org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl;
 
 /**
@@ -247,6 +230,13 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 	private EDataType mapTestEDataType = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType eInputStreamEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -298,7 +288,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
 		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
 		KnifePackageImpl theKnifePackage = (KnifePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
-		RESTPackageImpl theRESTPackage = (RESTPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI) instanceof RESTPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI) : RESTPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theChefclipsePackage.createPackageContents();
@@ -307,7 +296,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		theCookbookPackage.createPackageContents();
 		theWorkstationPackage.createPackageContents();
 		theKnifePackage.createPackageContents();
-		theRESTPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theChefclipsePackage.initializePackageContents();
@@ -316,7 +304,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		theCookbookPackage.initializePackageContents();
 		theWorkstationPackage.initializePackageContents();
 		theKnifePackage.initializePackageContents();
-		theRESTPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theChefclipsePackage.freeze();
@@ -818,6 +805,15 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getEInputStream() {
+		return eInputStreamEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ChefclipseFactory getChefclipseFactory() {
 		return (ChefclipseFactory)getEFactoryInstance();
 	}
@@ -911,6 +907,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		objectEDataType = createEDataType(OBJECT);
 		nameUrlDataTypeEDataType = createEDataType(NAME_URL_DATA_TYPE);
 		mapTestEDataType = createEDataType(MAP_TEST);
+		eInputStreamEDataType = createEDataType(EINPUT_STREAM);
 	}
 
 	/**
@@ -942,7 +939,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		CookbookPackage theCookbookPackage = (CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI);
 		WorkstationPackage theWorkstationPackage = (WorkstationPackage)EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI);
 		KnifePackage theKnifePackage = (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
-		RESTPackage theRESTPackage = (RESTPackage)EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theChefserverPackage);
@@ -950,7 +946,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		getESubpackages().add(theCookbookPackage);
 		getESubpackages().add(theWorkstationPackage);
 		getESubpackages().add(theKnifePackage);
-		getESubpackages().add(theRESTPackage);
 
 		// Create type parameters
 
@@ -1031,6 +1026,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(nameUrlDataTypeEDataType, Object.class, "NameUrlDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(mapTestEDataType, HashMap.class, "MapTest", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(eInputStreamEDataType, InputStream.class, "EInputStream", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

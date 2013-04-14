@@ -3,14 +3,14 @@ package chefclipse.ui.messages;
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.limepepper.chefclipse.ui.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "chefclipse.ui.messages.messages"; //$NON-NLS-1$
 
 	public static String ChefConfigurationPropertyPage_CONFIGURE_WORKSPACE;
 	public static String ChefConfigurationPropertyPage_Description;
 	public static String ChefConfigurationPropertyPage_No_Selection;
 	public static String ChefConfigurationsViewer_ColumnNodeName;
 	public static String ChefConfigurationsViewer_ColumnServerUrl;
-	
+
 	public static String AddChefConfigurationPreferencePage_AddConfigTitle;
 	public static String AddChefConfigurationPreferencePage_AddConfigDesc;
 	public static String AddChefConfigurationPreferencePage_editConfigTitle;
@@ -37,7 +37,7 @@ public class Messages extends NLS {
 	public static String ChefclipseRootPreferencePage_CookbookCopyright;
 	public static String ChefclipseRootPreferencePage_CookbookEmail;
 	public static String ChefclipseRootPreferencePage_CookbookLicense;
-	
+
 	public static String ChefConfigurationPreferencePage_Desc;
 	public static String ChefConfigurationPreferencePage_SelectDefault;
 	public static String ChefConfigurationPreferencePage_Title;
@@ -47,18 +47,18 @@ public class Messages extends NLS {
 	public static String ChefConfigurationPreferencePage_DuplicateButton;
 	public static String ChefConfigurationPreferencePage_SearchButton;
 	public static String ChefConfigurationPreferencePage_SearchFile;
-	
+
 	public static String ChefConfigSelectWizardPage_SelectTitle;
 	public static String ChefConfigSelectWizardPage_SelectDescription;
-	
+
 	public static String ChefProjectWizardPage_Title;
 	public static String ChefProjectWizardPage_Description;
-	
+
 	public static String ChefRepositoryWizardPage_SelectLocation;
 	public static String ChefRepositoryWizardPage_LocationRequired;
 	public static String ChefRepositoryWizardPage_AddChefRepo;
     public static String ChefRepositoryWizardPage_ChefRepo;
-	
+
 //	public static String ChefConfigurationPreferencePage_ADD_CHEF_SERVER_CONFIGURATION = "Add Chef server configuration";
 	static {
 		// initialize resource bundle

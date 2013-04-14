@@ -16,20 +16,21 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
-import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
+
+import chefclipse.core.providers.ChefProjectAdapterFactory;
 
 public class ServerCookbookTable extends Composite {
 	private TableViewer tableViewer;
     private Table table;
     private ChefServerApi api;
-    
+
     public ServerCookbookTable (Composite parent, ChefServerApi api)
     {
     	super(parent,SWT.NONE);
         setLayout(new FillLayout());
-        
+
     	this.api=api;
-        
+
         tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
                 | SWT.V_SCROLL);
 
@@ -39,11 +40,11 @@ public class ServerCookbookTable extends Composite {
         tableViewer.getTable().setLinesVisible(true);
         tableViewer.setInput(api.getCookbooks());
     }
-    
-    
+
+
     class NameSorter extends ViewerSorter {
     }
-    
+
     class ServerCookbookLabelProvider extends AdapterFactoryLabelProvider {
 
         public ServerCookbookLabelProvider() {
@@ -67,7 +68,7 @@ public class ServerCookbookTable extends Composite {
                     .getImage(ISharedImages.IMG_OBJ_ELEMENT);
         }
     }
-    
+
     class ServerCookbookContentProvider extends AdapterFactoryContentProvider {
     	ServerCookbookContentProvider() {
             super(ChefProjectAdapterFactory.getAdapterFactory());

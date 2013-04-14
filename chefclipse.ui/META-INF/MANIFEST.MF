@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Ui
-Bundle-SymbolicName: chefclipse.ui; singleton:=true
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: chefclipse.ui;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: chefclipse.ui.ChefPlugin
-Bundle-Vendor: Lime Pepper Ltd
+Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
@@ -15,7 +15,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide;bundle-version="3.8.2",
  org.eclipse.emf.edit.ui;bundle-version="2.8.0",
  org.eclipse.jdt.annotation,
- org.eclipse.compare;bundle-version="3.5.301"
+ org.eclipse.compare;bundle-version="3.5.301",
+ org.eclipse.dltk.ui,
+ org.eclipse.dltk.core,
+ org.junit;bundle-version="4.10.0",
+ org.limepepper.chefclipse.chefserver.api;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: chefclipse.internal.ui.navigator;
@@ -24,12 +28,24 @@ Export-Package: chefclipse.internal.ui.navigator;
    org.eclipse.swt.graphics,
    org.eclipse.jface.viewers",
  chefclipse.ui;uses:="org.eclipse.jface.resource,org.eclipse.ui.plugin,org.osgi.framework",
+ chefclipse.ui.actions,
  chefclipse.ui.compare,
  chefclipse.ui.decorators,
  chefclipse.ui.handlers,
  chefclipse.ui.menu;uses:="org.eclipse.jface.action,org.eclipse.ui,org.eclipse.ui.actions",
  chefclipse.ui.messages,
- chefclipse.ui.perspectives;uses:="org.eclipse.ui"
-Import-Package: org.eclipse.ui.forms.events,
+ chefclipse.ui.perspectives;uses:="org.eclipse.ui",
+ chefclipse.ui.wizards,
+ org.limepepper.chefclipse.preferences.ui.actions,
+ org.limepepper.chefclipse.preferences.ui.dialogs,
+ org.limepepper.chefclipse.preferences.ui.preferences,
+ org.limepepper.chefclipse.preferences.ui.utils,
+ org.limepepper.chefclipse.properties
+Import-Package: org.eclipse.jface.text,
+ org.eclipse.ui.forms.events,
  org.eclipse.ui.forms.widgets,
  org.slf4j
+Bundle-ClassPath: lib/commons-validator.jar,
+ .,
+ lib/oro.jar,
+ resources/

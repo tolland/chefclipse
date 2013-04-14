@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.common.workstation.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.common.workstation.Rakefile;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 

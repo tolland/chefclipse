@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.impl;
 
 import java.io.File;
-
 import java.net.URL;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,12 +11,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.limepepper.chefclipse.*;
+import org.limepepper.chefclipse.ChecksumFile;
+import org.limepepper.chefclipse.ChefclipseFactory;
+import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.MaintainedObject;
+import org.limepepper.chefclipse.MapTestContainer;
+import org.limepepper.chefclipse.NameUrlMap;
+import org.limepepper.chefclipse.NameVersionMap;
+import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.RubyFile;
+import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.URLEntryTest;
+import org.limepepper.chefclipse.VersionUrl;
+import org.limepepper.chefclipse.VersionedObject;
 
 /**
  * <!-- begin-user-doc -->

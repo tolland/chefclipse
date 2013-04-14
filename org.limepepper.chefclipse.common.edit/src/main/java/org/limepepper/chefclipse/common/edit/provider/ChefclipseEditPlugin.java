@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.common.edit.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**

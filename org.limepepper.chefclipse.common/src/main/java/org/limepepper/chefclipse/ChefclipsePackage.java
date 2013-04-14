@@ -733,6 +733,17 @@ public interface ChefclipsePackage extends EPackage {
 
 
     /**
+	 * The meta object id for the '<em>EInput Stream</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.io.InputStream
+	 * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getEInputStream()
+	 * @generated
+	 */
+	int EINPUT_STREAM = 26;
+
+
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1313,6 +1324,17 @@ public interface ChefclipsePackage extends EPackage {
     EDataType getMapTest();
 
     /**
+	 * Returns the meta object for data type '{@link java.io.InputStream <em>EInput Stream</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>EInput Stream</em>'.
+	 * @see java.io.InputStream
+	 * @model instanceClass="java.io.InputStream" serializeable="false"
+	 * @generated
+	 */
+	EDataType getEInputStream();
+
+				/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1816,6 +1838,16 @@ public interface ChefclipsePackage extends EPackage {
 		 * @generated
 		 */
         EDataType MAP_TEST = eINSTANCE.getMapTest();
+
+								/**
+		 * The meta object literal for the '<em>EInput Stream</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.io.InputStream
+		 * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getEInputStream()
+		 * @generated
+		 */
+		EDataType EINPUT_STREAM = eINSTANCE.getEInputStream();
 
     }
 

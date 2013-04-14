@@ -29,25 +29,25 @@ import org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditor;
 import org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditorInput;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 
+import chefclipse.core.managers.ChefRepositoryManager;
+import chefclipse.core.providers.ChefProjectAdapterFactory;
 import chefclipse.core.testers.ChefTester;
 
 
 public class NodeTable extends Composite {
-	
+
     private TableViewer tableViewer;
     private Table table;
     private ChefServerApi api;
-    
+
     public NodeTable (Composite parent, ChefServerApi api)
     {
     	super(parent,SWT.NONE);
         setLayout(new FillLayout());
-        
+
     	this.api=api;
-        
+
         tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
                 | SWT.V_SCROLL);
         Transfer[] transferTypes = new Transfer[]{ResourceTransfer.getInstance()};
@@ -56,13 +56,13 @@ public class NodeTable extends Composite {
         tableViewer.setLabelProvider(new NodeLabelProvider());
         tableViewer.setSorter(new NameSorter());
         tableViewer.getTable().setLinesVisible(true);
-        tableViewer.setInput(api.getNodes());	
+        tableViewer.setInput(api.getNodes());
     }
-    
-    
+
+
     class NameSorter extends ViewerSorter {
     }
-    
+
     class NodeLabelProvider extends AdapterFactoryLabelProvider {
 
         public NodeLabelProvider() {
@@ -86,7 +86,7 @@ public class NodeTable extends Composite {
                     .getImage(ISharedImages.IMG_OBJ_ELEMENT);
         }
     }
-    
+
     class NodeContentProvider extends AdapterFactoryContentProvider {
         NodeContentProvider() {
             super(ChefProjectAdapterFactory.getAdapterFactory());
@@ -106,7 +106,7 @@ public class NodeTable extends Composite {
         	return nodes.toArray(new Node[nodes.size()]);
         }
     }
-    
+
     public class DropListener extends ViewerDropAdapter
     {
 		@Override
@@ -116,10 +116,10 @@ public class NodeTable extends Composite {
 			Object target =  determineTarget(event);
 			switch (location){
 			case 1 :
-				//Dropped before the target 
+				//Dropped before the target
 				break;
 			case 2 :
-				//Dropped after the target 
+				//Dropped after the target
 				break;
 			case 3 :
 				//Dropped on the target ;
@@ -153,7 +153,7 @@ public class NodeTable extends Composite {
 					}
 				}
 			}
-			
+
 			DropTargetEvent event = this.getCurrentEvent();
 			Node node =  (Node)determineTarget(event);
 			IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
@@ -179,6 +179,6 @@ public class NodeTable extends Composite {
 			}
 			return true;
 		}
-    	
+
     }
 }

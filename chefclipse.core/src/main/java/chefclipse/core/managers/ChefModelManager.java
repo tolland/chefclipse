@@ -19,8 +19,6 @@ import chefclipse.core.ChefModel;
 import chefclipse.core.DeltaProcessingState;
 import chefclipse.core.IChefElement;
 import chefclipse.core.IChefModel;
-import chefclipse.core.builders.ChefProjectNature;
-import chefclipse.core.providers.ChefModelProvider;
 import chefclipse.core.testers.ChefTester;
 
 public class ChefModelManager implements IContentTypeChangeListener {

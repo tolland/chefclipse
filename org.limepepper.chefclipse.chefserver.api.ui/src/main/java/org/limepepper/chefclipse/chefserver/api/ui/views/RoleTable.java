@@ -16,21 +16,22 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.common.chefserver.Role;
-import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
+
+import chefclipse.core.providers.ChefProjectAdapterFactory;
 
 public class RoleTable extends Composite {
 
 	private TableViewer tableViewer;
 	private Table table;
 	private ChefServerApi api;
-	
+
     public RoleTable(Composite parent, ChefServerApi api)
     {
     	super(parent,SWT.NONE);
         setLayout(new FillLayout());
-        
+
     	this.api=api;
-        
+
         tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
                 | SWT.V_SCROLL);
 
@@ -40,10 +41,10 @@ public class RoleTable extends Composite {
         tableViewer.getTable().setLinesVisible(true);
         tableViewer.setInput(api.getRoles());
     }
-    
+
     class NameSorter extends ViewerSorter {
     }
-    
+
     class RoleLabelProvider extends AdapterFactoryLabelProvider {
 
         public RoleLabelProvider() {
@@ -67,7 +68,7 @@ public class RoleTable extends Composite {
                     .getImage(ISharedImages.IMG_OBJ_ELEMENT);
         }
     }
-    
+
     class RoleContentProvider extends AdapterFactoryContentProvider {
     	RoleContentProvider() {
             super(ChefProjectAdapterFactory.getAdapterFactory());
@@ -87,5 +88,5 @@ public class RoleTable extends Composite {
         	return roles.toArray(new Role[roles.size()]);
         }
     }
-    
+
 }

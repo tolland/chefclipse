@@ -31,6 +31,7 @@ public class ApiImpl implements Api {
     @Override
     public Node getNode(final KnifeConfig config, final String string) {
         ChefServerApi api = configController.getServer(config);
+
         return api.getNode(string);
     }
 

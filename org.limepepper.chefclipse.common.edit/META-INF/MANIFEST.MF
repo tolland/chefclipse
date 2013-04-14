@@ -8,8 +8,7 @@ Bundle-Activator: org.limepepper.chefclipse.common.edit.provider.ChefclipseEditP
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.limepepper.chefclipse.REST.provider,
- org.limepepper.chefclipse.common.chefclient.provider,
+Export-Package: org.limepepper.chefclipse.common.chefclient.provider,
  org.limepepper.chefclipse.common.chefserver.provider,
  org.limepepper.chefclipse.common.cookbook.provider,
  org.limepepper.chefclipse.common.edit.provider,

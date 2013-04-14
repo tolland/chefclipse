@@ -8,9 +8,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -20,13 +18,11 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-
 import org.limepepper.chefclipse.provider.NamedObjectItemProvider;
 
 /**
@@ -69,6 +65,7 @@ public class CookbookFileItemProvider
 			addPathPropertyDescriptor(object);
 			addSpecificityPropertyDescriptor(object);
 			addCookbookPropertyDescriptor(object);
+			addBytesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -162,6 +159,28 @@ public class CookbookFileItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Bytes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBytesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookFile_bytes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_bytes_feature", "_UI_CookbookFile_type"),
+				 CookbookPackage.Literals.COOKBOOK_FILE__BYTES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -190,6 +209,7 @@ public class CookbookFileItemProvider
 			case CookbookPackage.COOKBOOK_FILE__CHECKSUM:
 			case CookbookPackage.COOKBOOK_FILE__PATH:
 			case CookbookPackage.COOKBOOK_FILE__SPECIFICITY:
+			case CookbookPackage.COOKBOOK_FILE__BYTES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

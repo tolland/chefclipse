@@ -24,22 +24,13 @@ abstract class CookbookResourceNode implements IStructureComparator,
 
 	/*
 	 * Returns true if other is ITypedElement and names are equal.
-	 * 
+	 *
 	 * @see IComparator#equals
 	 */
-	public boolean equals2(Object other) {
+	public boolean equals(Object other) {
 		if (other instanceof ITypedElement)
 			return fName.equals(((ITypedElement) other).getName());
 		return super.equals(other);
-	}
-
-	public boolean equals(Object other) {
-
-		boolean buff = equals2(other);
-		System.out.println("buff was " + buff + " for "
-				+ ((ITypedElement) other).getName());
-		return buff;
-
 	}
 
 	public int hashCode() {

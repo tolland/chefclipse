@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.compare.ITypedElement;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
@@ -20,13 +21,16 @@ public class CookbookFolderNode extends CookbookResourceNode {
 
 	boolean serverCookbook = false;
 
+	private IProject project = null;
+
 	public CookbookFolderNode(CookbookVersion input) {
 		this(input, "root");
 		recurseInput(input);
 	}
 
-	public CookbookFolderNode(ServerCookbookVersion input) {
+	public CookbookFolderNode(ServerCookbookVersion input, IProject project) {
 		this(input, "root");
+		this.project = project;
 		serverCookbook = true;
 		recurseInput(input);
 	}
@@ -58,6 +62,7 @@ public class CookbookFolderNode extends CookbookResourceNode {
 			for (Root_file iterable_element : ((CookbookVersion) input)
 					.getRoot_files()) {
 				ChefPlugin.log("adding " + iterable_element.getName());
+				ChefPlugin.log("adding " + iterable_element.getPath());
 				children.add(new CookbookFileNode(iterable_element));
 			}
 			children.add(new CookbookCollectionNode("recipes",
@@ -80,7 +85,8 @@ public class CookbookFolderNode extends CookbookResourceNode {
 
 		} else if (input instanceof ServerCookbookFile) {
 
-			children.add(new CookbookFileNode((ServerCookbookFile) input));
+			children.add(new CookbookFileNode((ServerCookbookFile) input,
+					this.project));
 		} else if (input instanceof ServerCookbookFile) {
 
 			children.add(new CookbookFileNode((CookbookFile) input));

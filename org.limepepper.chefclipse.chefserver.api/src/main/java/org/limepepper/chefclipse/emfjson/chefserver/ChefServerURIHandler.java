@@ -66,8 +66,8 @@ public class ChefServerURIHandler extends URIHandlerImpl {
 						System.out.println("stream to string2: ");
 
 						final JSONLoad loader = new JSONLoad(inStream, options);
-						inStream.close();
 						loader.fillResource(resource);
+						inStream.close();
 					}
 				}
 			}
@@ -95,9 +95,7 @@ public class ChefServerURIHandler extends URIHandlerImpl {
 	public static String convertStreamToString(java.io.InputStream is) {
 		java.util.Scanner s1 = new java.util.Scanner(is, "UTF-8");
 		java.util.Scanner s = s1.useDelimiter("\\A");
-		s1.close();
 		String returnString = s.hasNext() ? s.next() : "";
-		s.close();
 		return returnString;
 	}
 
@@ -105,7 +103,7 @@ public class ChefServerURIHandler extends URIHandlerImpl {
 	 * @Override public OutputStream createOutputStream(final URI uri, Map<?, ?>
 	 * options) throws IOException { if (checkDataBase(uri) == 0) {
 	 * createDataBase(uri); }
-	 * 
+	 *
 	 * return new JsOutputStream(options) { public void close() throws
 	 * IOException { URI documentURI = CouchDB.createOrUpdateDocument(uri,
 	 * writer, currentRoot); if (documentURI != uri) {

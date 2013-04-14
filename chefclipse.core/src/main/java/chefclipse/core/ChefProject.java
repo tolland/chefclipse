@@ -71,7 +71,7 @@ public class ChefProject extends Openable implements IChefProject, IOpenable,
 	/**
 	 * Returns the active Java project associated with the specified resource,
 	 * or <code>null</code> if no Java project yet exists for the resource.
-	 * 
+	 *
 	 * @exception IllegalArgumentException
 	 *                if the given resource is not one of an IProject, IFolder,
 	 *                or IFile.
@@ -120,5 +120,10 @@ public class ChefProject extends Openable implements IChefProject, IOpenable,
 		}
 
 		return false;
+	}
+
+	@Override
+	public IResource getResource() {
+		return this.project;
 	}
 }

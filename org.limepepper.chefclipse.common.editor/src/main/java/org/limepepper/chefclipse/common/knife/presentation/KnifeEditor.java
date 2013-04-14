@@ -108,7 +108,6 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
-import org.limepepper.chefclipse.REST.provider.RESTItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.chefclient.provider.ChefclientItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.cookbook.provider.CookbookItemProviderAdapterFactory;
@@ -606,7 +605,6 @@ public class KnifeEditor
 		adapterFactory.addAdapterFactory(new CookbookItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WorkstationItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new KnifeItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new RESTItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

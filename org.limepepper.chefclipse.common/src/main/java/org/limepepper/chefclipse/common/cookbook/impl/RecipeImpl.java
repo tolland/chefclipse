@@ -2,24 +2,21 @@
  */
 package org.limepepper.chefclipse.common.cookbook.impl;
 
+import java.io.InputStream;
+
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
-
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
-
 import org.limepepper.chefclipse.impl.SandboxedObjectImpl;
 
 /**
@@ -36,6 +33,7 @@ import org.limepepper.chefclipse.impl.SandboxedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getBytes <em>Bytes</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl#getRunlist <em>Runlist</em>}</li>
  * </ul>
@@ -194,6 +192,53 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public byte[] getBytes() {
+		return (byte[])eGet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBytes(byte[] newBytes) {
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, newBytes);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetBytes() {
+		eUnset(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetBytes() {
+		return eIsSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputStream getContentStream() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	public EList<Role> getRole() {
 		return (EList<Role>)eGet(CookbookPackage.Literals.RECIPE__ROLE, true);
@@ -240,6 +285,7 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
 		if (baseClass == CookbookFile.class) {
 			switch (derivedFeatureID) {
 				case CookbookPackage.RECIPE__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
+				case CookbookPackage.RECIPE__BYTES: return CookbookPackage.COOKBOOK_FILE__BYTES;
 				default: return -1;
 			}
 		}
@@ -282,6 +328,7 @@ public class RecipeImpl extends SandboxedObjectImpl implements Recipe {
 		if (baseClass == CookbookFile.class) {
 			switch (baseFeatureID) {
 				case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return CookbookPackage.RECIPE__COOKBOOK;
+				case CookbookPackage.COOKBOOK_FILE__BYTES: return CookbookPackage.RECIPE__BYTES;
 				default: return -1;
 			}
 		}
