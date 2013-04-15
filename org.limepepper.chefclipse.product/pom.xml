@@ -17,9 +17,102 @@
   <version>0.1.1-SNAPSHOT</version>
 
 
+
+  <scm>
+    <connection>scm:git:https://github.com/limepepper/p2.git</connection>
+    <developerConnection>scm:git:https://github.com/limepepper/p2.git</developerConnection>
+  </scm>
+
   <profiles>
     <profile>
-      <id>DefaultProfile</id>
+      <id>deploy-update-site</id>
+
+      <properties>
+        <repo.path>${project.build.directory}/repository</repo.path>
+        <checkout.path>/tmp/chefclipse_p2_checkout</checkout.path>
+        <checkout.dir>chefclipse/${mvngit.branch}/update-site</checkout.dir>
+        <!-- <checkout.dir>chefclipse/dev/update-site</checkout.dir> -->
+      </properties>
+
+      <build>
+        <plugins>
+          
+                         
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-scm-plugin</artifactId>
+            <version>1.8</version>
+            <executions>
+              <execution>
+                <id>git-checkout</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>checkout</goal>
+                </goals>
+                <configuration>
+                  <checkoutDirectory>${checkout.path}</checkoutDirectory>
+                  <skipCheckoutIfExists>true</skipCheckoutIfExists>
+                </configuration>
+              </execution>
+
+              <execution>
+                <id>git-update</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>update</goal>
+                </goals>
+                <configuration>
+                  <workingDirectory>${checkout.path}</workingDirectory>
+                </configuration>
+              </execution>
+
+              <execution>
+                <id>git-push</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>checkin</goal>
+                </goals>
+                <configuration>
+                  <workingDirectory>${checkout.path}</workingDirectory>
+                  <includes>**</includes>
+                  <message>${project.version}</message>
+                  <tag>tamplateproject.p2.${project.version}</tag>
+                  <username></username>
+                  <password></password>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>wagon-maven-plugin</artifactId>
+            <version>1.0-beta-4</version>
+            <executions>
+              <execution>
+                <id>copy-repo</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>upload</goal>
+                </goals>
+                <configuration>
+                  <fromDir>${repo.path}</fromDir>
+                  <includes>**</includes>
+                  <toDir>${checkout.dir}</toDir>
+                  <url>file://${checkout.path}</url>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+          
+
+        </plugins>
+      </build>
+    </profile>
+    
+    
+    <profile>
+      <id>main</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
@@ -67,6 +160,14 @@
             </executions>
           </plugin>
 
+          <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <includeAllDependencies>true</includeAllDependencies>
+        </configuration>
+      </plugin>      
 
           <plugin>
             <groupId>org.eclipse.tycho</groupId>
@@ -80,8 +181,12 @@
                   <goal>materialize-products</goal>
                 </goals>
               </execution>
-              <!--execution> <id>archive-products</id> <goals> <goal>archive-products</goal> 
-                </goals> </execution -->
+              <execution>
+                <id>archive-products</id>
+                <goals>
+                  <goal>archive-products</goal>
+                </goals>
+              </execution>
             </executions>
             <configuration>
               <products>

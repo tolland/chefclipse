@@ -63,7 +63,6 @@
       <import plugin="org.eclipse.dltk.ruby.ui" version="4.0.0" match="greaterOrEqual"/>
       <import plugin="com.ibm.icu" version="4.4.2" match="greaterOrEqual"/>
       <import plugin="org.limepepper.chefclipse.logger" version="0.1.0" match="compatible"/>
-      <import plugin="org.limepepper.chefclipse.preferences.api" version="0.1.0" match="compatible"/>
       <import plugin="org.codehaus.jackson.core" version="1.9.5" match="greaterOrEqual"/>
       <import plugin="org.codehaus.jackson.mapper" version="1.9.5" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.edit"/>
@@ -245,20 +244,6 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
-
-   <plugin
-         id="org.limepepper.chefclipse.preferences.api"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.limepepper.chefclipse.preferences.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.eclipse.dltk.ui"

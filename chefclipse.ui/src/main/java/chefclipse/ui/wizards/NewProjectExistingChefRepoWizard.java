@@ -5,13 +5,13 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
-public class ExistingRepoNewChefProjectWizard extends Wizard implements
+public class NewProjectExistingChefRepoWizard extends Wizard implements
 		INewWizard {
 
 	
-	private ExistingRepoChefProjectWizardPage projectPage;
+	private NewProjectExistingChefRepoWizardPage projectPage;
 	
-	public ExistingRepoNewChefProjectWizard() {
+	public NewProjectExistingChefRepoWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
@@ -31,7 +31,7 @@ public class ExistingRepoNewChefProjectWizard extends Wizard implements
 	
 
 	public void addPages() {								
-		projectPage = new ExistingRepoChefProjectWizardPage();
+		projectPage = new NewProjectExistingChefRepoWizardPage();
 		
 		
 		addPage(projectPage);

@@ -36,20 +36,19 @@
 			</activation>
 
 			<modules>
-				<!-- developer bundles -->
-				<module>features/org.limepepper.chefclipse.devel.feature</module>
-				<module>org.limepepper.chefclipse.releng</module>
-				<module>org.limepepper.chefclipse.target</module>
-
-				<!-- product -->
+        
+ 				<!-- product -->
 				<module>org.limepepper.chefclipse.product</module>
+               
+				<!-- features bundles -->        
+				<module>features/org.limepepper.chefclipse.ui.feature</module>
+				<module>features/org.limepepper.chefclipse.app.feature</module>
+        
+				<module>features/org.limepepper.chefclipse.devel.feature</module>
 
 				<!-- releng stuff -->
-				<module>features/org.limepepper.chefclipse.ui.feature</module>
-
-				<!-- headless api stuff -->
-				<module>org.limepepper.chefclipse.chefserver.api</module>
-				<module>org.limepepper.chefclipse.chefserver.api.ui</module>
+				<module>org.limepepper.chefclipse.releng</module>
+				<module>org.limepepper.chefclipse.target</module>
 
 				<!-- generated model stuff -->
 				<module>org.limepepper.chefclipse.common</module>
@@ -59,10 +58,14 @@
 				<!-- api -->
 				<module>org.limepepper.chefclipse.api</module>
 
-				<!-- app bundles -->
+				<!-- remote api stuff -->
+				<module>org.limepepper.chefclipse.chefserver.api</module>
+				<module>org.limepepper.chefclipse.chefserver.api.ui</module>
+
+				<!-- app & ui bundles -->
 				<module>chefclipse.core</module>
 				<module>chefclipse.ui</module>
-				<module>features/org.limepepper.chefclipse.app.feature</module>
+        
 				<module>org.limepepper.chefclipse.app</module>
 				<module>org.limepepper.chefclipse.utils</module>
 				<module>org.limepepper.chefclipse.editors.cookbook</module>
@@ -224,11 +227,11 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>org.limepepper.chefclipse.ui.feature</module>
-				<module>org.limepepper.chefclipse.app.feature</module>
-				<module>org.limepepper.chefclipse.devel.feature</module>
+				<module>features/org.limepepper.chefclipse.ui.feature</module>
+				<module>features/org.limepepper.chefclipse.app.feature</module>
+				<module>features/org.limepepper.chefclipse.devel.feature</module>
 				<module>org.limepepper.chefclipse.target</module>
-				<module>org.limepepper.chefclipse.p2</module>
+				<module>org.limepepper.chefclipse.product</module>
 			</modules>
 			<build>
 				<plugins>
@@ -243,13 +246,33 @@
 						<artifactId>target-platform-configuration</artifactId>
 						<version>${tycho-version}</version>
 						<configuration>
-							<environments>
-								<environment>
-									<os>linux</os>
-									<ws>gtk</ws>
-									<arch>x86_64</arch>
-								</environment>
-							</environments>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
 						</configuration>
 					</plugin>
 					<plugin>
@@ -314,9 +337,6 @@
 				<module>org.limepepper.chefclipse.ui</module>
 
 
-				<!-- chefclipse repository explorer -->
-				<!--module>org.limepepper.chefclipse.navigator</module -->
-
 				<!-- picker -->
 				<module>org.limepepper.chefclipse.remotepicker.api</module>
 				<module>org.limepepper.chefclipse.remotepicker.repositories</module>
@@ -345,15 +365,14 @@
 								<goals>
 									<goal>copy-dependencies</goal>
 								</goals>
-								<configuration>
-									<!-- configure the plugin here -->
-								</configuration>
 							</execution>
 						</executions>
 					</plugin>
 				</plugins>
 			</build>
 		</profile>
+
+
 
 		<profile>
 			<id>dev-1</id>

@@ -12,12 +12,12 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
 
-public class NewRepositoryWizard extends Wizard implements INewWizard {	
-	private NewRepositoryWizardPageConfirm pageConfirm;
+public class NewProjectNewRepositoryWizard extends Wizard implements INewWizard {	
+	private NewProjectNewRepositoryWizardPageConfirm pageConfirm;
 	private IStructuredSelection selection;
 
 
-	public NewRepositoryWizard() {
+	public NewProjectNewRepositoryWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
@@ -25,7 +25,7 @@ public class NewRepositoryWizard extends Wizard implements INewWizard {
 	
 
 	public void addPages() {		
-		pageConfirm = new NewRepositoryWizardPageConfirm(selection);				
+		pageConfirm = new NewProjectNewRepositoryWizardPageConfirm(selection);				
 		addPage(pageConfirm);
 	}
 

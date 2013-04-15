@@ -24,7 +24,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 
 
-public class NewRepositoryWizardPageConfirm extends WizardPage {
+public class NewProjectNewRepositoryWizardPageConfirm extends WizardPage {
 	private Text containerText;
 	private Text locationText;
 	private Text repoText;	
@@ -32,7 +32,7 @@ public class NewRepositoryWizardPageConfirm extends WizardPage {
 	private ISelection selection;
 
 	
-	public NewRepositoryWizardPageConfirm(ISelection selection) {
+	public NewProjectNewRepositoryWizardPageConfirm(ISelection selection) {
 		super("repositoryWizardPage");
 		setTitle("New Chef Repository");
 		setDescription("This wizard creates a reference to the chef repository");

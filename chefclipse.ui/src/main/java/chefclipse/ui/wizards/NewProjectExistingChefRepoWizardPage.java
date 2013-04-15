@@ -24,14 +24,14 @@ import org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea;
 
 import chefclipse.ui.messages.Messages;
 
-public class ExistingRepoChefProjectWizardPage extends WizardPage {
+public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 
 	private Text locationText;
 	private ChefConfigSelectionWizardPage chefConfigPage;
 
 	private ProjectContentsLocationArea locationArea;
 
-	protected ExistingRepoChefProjectWizardPage() {
+	protected NewProjectExistingChefRepoWizardPage() {
 		super("ExistingRepoNewChefWizardPage1"); //$NON-NLS-1$
 		setTitle(Messages.ChefRepositoryWizardPage_AddChefRepo);
 		setDescription(Messages.ChefRepositoryWizardPage_ChefRepo);
