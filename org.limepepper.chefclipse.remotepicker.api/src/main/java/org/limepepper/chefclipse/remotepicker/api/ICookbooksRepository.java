@@ -66,5 +66,12 @@ public interface ICookbooksRepository {
 	 * @return A string representing the version
 	 */
 	String getReadableVersion(RemoteCookbook cookbook, String version);
+	
+	static interface Builder<T> {
+		
+		ICookbooksRepository createRepository(T parameter);
+		
+		T configure();
+	}
 
 }

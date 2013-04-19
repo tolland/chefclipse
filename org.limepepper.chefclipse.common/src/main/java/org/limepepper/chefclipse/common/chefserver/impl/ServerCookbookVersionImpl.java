@@ -6,8 +6,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
+import org.limepepper.chefclipse.REST.CookbookMetadata;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
@@ -29,6 +28,7 @@ import org.limepepper.chefclipse.impl.CookbookImpl;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl#getFiles <em>Files</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl#getDefinitions <em>Definitions</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl#getCookbook_name <em>Cookbook name</em>}</li>
  * </ul>
@@ -38,148 +38,166 @@ import org.limepepper.chefclipse.impl.CookbookImpl;
  */
 public class ServerCookbookVersionImpl extends CookbookImpl implements ServerCookbookVersion {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public ServerCookbookVersionImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION;
-    }
+		return ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getRoot_files() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__ROOT_FILES, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__ROOT_FILES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getRecipes() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__RECIPES, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__RECIPES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getTemplates() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__TEMPLATES, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__TEMPLATES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getLibraries() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__LIBRARIES, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__LIBRARIES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getProviders() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__PROVIDERS, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__PROVIDERS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getResources() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__RESOURCES, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__RESOURCES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getFiles() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__FILES, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__FILES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getDefinitions() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__DEFINITIONS, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__DEFINITIONS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<ServerCookbookFile> getAttributes() {
-        return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__ATTRIBUTES, true);
-    }
+		return (EList<ServerCookbookFile>)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__ATTRIBUTES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CookbookMetadata getMetadata() {
+		return (CookbookMetadata)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__METADATA, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMetadata(CookbookMetadata newMetadata) {
+		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__METADATA, newMetadata);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getVersion() {
-        return (String)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION, true);
-    }
+		return (String)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setVersion(String newVersion) {
-        eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION, newVersion);
-    }
+		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION, newVersion);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getCookbook_name() {
-        return (String)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME, true);
-    }
+		return (String)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setCookbook_name(String newCookbook_name) {
-        eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME, newCookbook_name);
-    }
+		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME, newCookbook_name);
+	}
 
 } //ServerCookbookVersionImpl

@@ -459,7 +459,7 @@ public class ChefServerApiImpl implements ChefServerApi {
     public List<ServerCookbookVersion> getCookbooks() {
 
         List<ServerCookbookVersion> items = new ArrayList<ServerCookbookVersion>();
-        Map<String, VersionUrl> list = getCookbookList();
+        Map<String, VersionUrl> list = getCookbooksVersions("1");
         for (Entry<String, VersionUrl> entry : list.entrySet()) {
             items.add(getCookbookVersion(entry.getKey()));
         }
@@ -469,8 +469,16 @@ public class ChefServerApiImpl implements ChefServerApi {
 
     @Override
     public Map<String, VersionUrl> getCookbookList() {
-        URI uri = URI.createURI(getUrl().toString()
-                + "/cookbooks?start=0&items=25");
+        return getCookbooksVersions("all");
+    }
+
+	/**
+	 * @param numVersions  
+	 * @return
+	 */
+	protected Map<String, VersionUrl> getCookbooksVersions(String numVersions) {
+		URI uri = URI.createURI(getUrl().toString()
+                + "/cookbooks?num_versions=" + numVersions + "&start=0&items=25");
 
         try {
 
@@ -512,7 +520,7 @@ public class ChefServerApiImpl implements ChefServerApi {
 
         }
         return null;
-    }
+	}
 
     public static List<KnifeConfig> getKnifeConfigs() {
         return null;

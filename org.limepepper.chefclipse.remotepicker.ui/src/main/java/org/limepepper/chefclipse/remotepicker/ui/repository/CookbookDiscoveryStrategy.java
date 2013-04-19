@@ -127,7 +127,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		while (!mon.isCanceled() && !ready.get()) {
 			try {
 				Thread.sleep(400);
-				mon.worked(20);
+				mon.worked(10);
 			} catch (InterruptedException e) {
 				Activator.log(e);
 			}

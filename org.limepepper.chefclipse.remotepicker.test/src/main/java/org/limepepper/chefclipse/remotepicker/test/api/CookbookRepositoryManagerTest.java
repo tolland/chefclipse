@@ -65,6 +65,24 @@ public class CookbookRepositoryManagerTest {
 	}
 
 	@Test
+	public void testRegisterParamRepository() {
+		ICookbooksRepository.Builder<String> builder = new ICookbooksRepository.Builder<String>() {
+			@Override
+			public ICookbooksRepository createRepository(String parameter) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public String configure() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
+		manager.registerRepository(repo, builder);
+	}
+	
+	@Test
 	public void testMultipleRepositories() {
 		ICookbooksRepository cookbooks = mock(ICookbooksRepository.class);
 		RemoteRepository repo1 = factory.createRemoteRepository();

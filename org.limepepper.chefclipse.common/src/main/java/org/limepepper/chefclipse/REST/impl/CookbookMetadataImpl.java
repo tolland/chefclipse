@@ -22,6 +22,9 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  *   <li>{@link org.limepepper.chefclipse.REST.impl.CookbookMetadataImpl#getPlatforms <em>Platforms</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.REST.impl.CookbookMetadataImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.REST.impl.CookbookMetadataImpl#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.REST.impl.CookbookMetadataImpl#getLicense <em>License</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.REST.impl.CookbookMetadataImpl#getReplacing <em>Replacing</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.REST.impl.CookbookMetadataImpl#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
@@ -29,88 +32,142 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class CookbookMetadataImpl extends EObjectImpl implements CookbookMetadata {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookMetadataImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return RESTPackage.Literals.COOKBOOK_METADATA;
-    }
+		return RESTPackage.Literals.COOKBOOK_METADATA;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getMaintainer() {
-        return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, true);
-    }
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setMaintainer(String newMaintainer) {
-        eSet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, newMaintainer);
-    }
+		eSet(RESTPackage.Literals.COOKBOOK_METADATA__MAINTAINER, newMaintainer);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<String> getPlatforms() {
-        return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__PLATFORMS, true);
-    }
+		return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__PLATFORMS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getVersion() {
-        return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, true);
-    }
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setVersion(String newVersion) {
-        eSet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, newVersion);
-    }
+		eSet(RESTPackage.Literals.COOKBOOK_METADATA__VERSION, newVersion);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<String> getDependencies() {
-        return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__DEPENDENCIES, true);
-    }
+		return (EList<String>)eGet(RESTPackage.Literals.COOKBOOK_METADATA__DEPENDENCIES, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLicense() {
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__LICENSE, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLicense(String newLicense) {
+		eSet(RESTPackage.Literals.COOKBOOK_METADATA__LICENSE, newLicense);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getReplacing() {
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__REPLACING, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReplacing(String newReplacing) {
+		eSet(RESTPackage.Literals.COOKBOOK_METADATA__REPLACING, newReplacing);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getDescription() {
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_METADATA__DESCRIPTION, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		eSet(RESTPackage.Literals.COOKBOOK_METADATA__DESCRIPTION, newDescription);
+	}
 
 } //CookbookMetadataImpl

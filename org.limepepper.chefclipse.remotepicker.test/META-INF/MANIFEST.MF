@@ -14,5 +14,6 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.logger;bundle-version="1.0.0",
  org.limepepper.chefclipse.remotepicker.api;bundle-version="1.0.0",
  org.limepepper.chefclipse.remotepicker.repositories;bundle-version="1.0.0",
+ org.limepepper.chefclipse.common,
  org.junit;bundle-version="4.10.0"
 Import-Package: org.junit;version="4.10.0"
