@@ -125,12 +125,16 @@
                     </adapt>
                     <instanceof value="org.eclipse.core.resources.IResource" />
                     <instanceof value="org.limepepper.chefclipse.model.ChefResource" />
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
                 </or>
             </triggerPoints>
             <possibleChildren>
                 <or>
                     <instanceof value="org.eclipse.core.resources.IResource" />
                     <instanceof value="org.limepepper.chefclipse.model.ChefResource" />
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
                 </or>
             </possibleChildren>
             <override
@@ -160,6 +164,9 @@
                     </or>
                 </possibleDropTargets>
             </dropAssistant-->
+          	<actionProvider
+                 class="org.limepepper.chefclipse.databag.editor.actions.DataBagActionProvider">
+          	</actionProvider>
         </navigatorContent>
         <!--commonFilter
                 activeByDefault="false"
