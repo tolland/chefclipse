@@ -40,6 +40,9 @@ import org.eclipselabs.emfjson.EMFJs;
 import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
@@ -56,6 +59,7 @@ import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.model.ChefFile;
 import org.limepepper.chefclipse.model.ModelFactory;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.tools.ChefUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -169,6 +173,11 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
                     eObject = createCookbook((IFolder) resource);
 
                 }
+                
+                if (((IFolder) resource).getParent().getName()
+                        .equals("data_bags")) {
+                    eObject = createDataBag((IFolder) resource);
+                }
 
                 if (((IFolder) resource).getParent().getName()
                         .equals("configuration")) {
@@ -184,6 +193,14 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
                 // if a file appears in a dir, called metadata.rb, then this
                 // should trigger
                 // check on making the parent a cookbook folder
+                IContainer parent = ((IFile) resource).getParent();
+                if (parent != null) {
+                    if (((parent.getName().toLowerCase().equals("data_bags") || (parent.getParent() != null && parent
+                            .getParent().getName().toLowerCase().equals("data_bags")))) && ((IFile) resource)
+                            .getName().toLowerCase().endsWith("json")) {
+                        eObject = createDataBagItem((IFile) resource);
+                    }
+                }
                 if (((IFile) resource).getName().equals("metadata.rb")) {
                     eObject = createCookbook((IFolder) resource.getParent());
                 }
@@ -356,6 +373,42 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
         Resource cookbookResource = resourceSet.createResource(fileURI);
         cookbookResource.getContents().add(eObject);
 
+        return eObject;
+    }
+    
+    @Override
+    public EObject createDataBag(IFolder resource) throws CoreException {
+        DataBag eObject = ChefserverFactory.eINSTANCE.createDataBag();
+        eObject.setDescription("databag description");
+        eObject.setID(eObject.eClass().getInstanceTypeName().toLowerCase()
+                + "-" + ((NamedObject) eObject).getName() + "-");
+        //TODO set the server to the data bag.
+        eObject.setName(resource.getName());
+        eObject.setResource(resource);
+        logger.debug("creating data bag:" + resource.getName());
+
+        addMapping(resource, eObject);
+        
+        KnifeConfig chefProjectConfig = ChefConfigManager.instance().retrieveProjectChefConfig(resource.getProject());
+        //add the data bag to the databag list of the server. maybe retrieve the server from preferences.
+        
+        synchronizeDataBagContents(resource);
+
+        return eObject;
+    }
+    
+    @Override
+    public EObject createDataBagItem(IFile resource) {
+        DataBagItem eObject = ChefserverFactory.eINSTANCE.createDataBagItem();
+        eObject.setID(eObject.eClass().getInstanceTypeName().toLowerCase()
+                + "-" + ((NamedObject) eObject).getName() + "-");
+        eObject.setName(resource.getName());
+        eObject.setJsonResource(resource);
+        IContainer parent = resource.getParent();
+        DataBag dataBag = (DataBag) getElement(parent);
+        eObject.setDataBag(dataBag);
+        dataBag.getItems().add(eObject);
+        addMapping(resource, eObject);
         return eObject;
     }
 
@@ -827,9 +880,24 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
             if ((res instanceof IFolder) && res.getName().equals("cookbooks")) {
                 synchronizeCookbooks((IFolder) res);
             }
+            if ((res instanceof IFolder) && res.getName().equals("data_bags")) {
+                synchronizeDataBags((IFolder) res);
+            }
         }
-
         persistRepo(location);
+    }
+    
+    private boolean synchronizeDataBags(IFolder location) throws CoreException {
+        for (IResource resource : location.members()) {
+            if (resource instanceof IFolder) {
+                createDataBag((IFolder) resource);
+            }
+            //in case there is a databagitem inside the data_bags folder.
+            if (resource instanceof IFile && ((IFile) resource).getName().toLowerCase().endsWith("json")) {
+                createDataBagItem((IFile) resource);
+            }
+        }
+        return true;
     }
 
     /*
@@ -844,7 +912,15 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
         }
         return true;
     }
-
+    
+    private void synchronizeDataBagContents(IFolder location) throws CoreException {
+        for (IResource res : location.members()) {
+            if (res instanceof IFile && ((IFile) res).getName().endsWith("json")) {
+                createDataBagItem((IFile) res);
+            }
+        }
+    }
+    
     /*
      * Creates a cookbook object from the on-disk structure
      * ToDo: implement the creation of recipes. Now only one dummy recipe is

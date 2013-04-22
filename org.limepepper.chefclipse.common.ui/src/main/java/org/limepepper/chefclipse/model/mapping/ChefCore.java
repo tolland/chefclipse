@@ -5,7 +5,9 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.ui.Activator;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.model.ChefFile;
 import org.limepepper.chefclipse.model.ChefFolder;
 import org.limepepper.chefclipse.model.ChefProject;
@@ -65,5 +67,29 @@ public class ChefCore {
         }
         return null;
     }
+    
+    public static Object createDataBag(IFolder resource) {
+        ChefRepositoryManager instance = ChefRepositoryManager.INSTANCE;
+        EObject element = instance.getElement(resource);
+        if (element != null) {
+            return element;
+        } else {
+            try {
+                return instance.createDataBag(resource);
+            } catch (CoreException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
 
+    public static Object createDataBagItem(IFile resource) {
+        ChefRepositoryManager instance = ChefRepositoryManager.INSTANCE;
+        EObject element = instance.getElement(resource);
+        if (element != null) {
+            return element;
+        } else {
+            return instance.createDataBagItem(resource);
+        }
+    }
 }
