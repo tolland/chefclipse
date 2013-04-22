@@ -770,6 +770,17 @@ public interface ChefclipsePackage extends EPackage {
 
 
     /**
+     * The meta object id for the '<em>IResource</em>' data type.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.core.resources.IResource
+     * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getIResource()
+     * @generated
+     */
+    int IRESOURCE = 27;
+
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1382,6 +1393,17 @@ public interface ChefclipsePackage extends EPackage {
     EDataType getMapTest();
 
     /**
+     * Returns the meta object for data type '{@link org.eclipse.core.resources.IResource <em>IResource</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for data type '<em>IResource</em>'.
+     * @see org.eclipse.core.resources.IResource
+     * @model instanceClass="org.eclipse.core.resources.IResource"
+     * @generated
+     */
+    EDataType getIResource();
+
+    /**
      * Returns the factory that creates the instances of the model.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1911,6 +1933,16 @@ public interface ChefclipsePackage extends EPackage {
          * @generated
          */
         EDataType MAP_TEST = eINSTANCE.getMapTest();
+
+        /**
+         * The meta object literal for the '<em>IResource</em>' data type.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.eclipse.core.resources.IResource
+         * @see org.limepepper.chefclipse.impl.ChefclipsePackageImpl#getIResource()
+         * @generated
+         */
+        EDataType IRESOURCE = eINSTANCE.getIResource();
 
     }
 

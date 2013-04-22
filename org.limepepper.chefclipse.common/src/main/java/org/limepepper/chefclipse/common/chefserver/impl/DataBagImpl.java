@@ -2,12 +2,9 @@
  */
 package org.limepepper.chefclipse.common.chefserver.impl;
 
+import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -27,6 +24,7 @@ import org.limepepper.chefclipse.impl.DescribedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagImpl#getServer <em>Server</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagImpl#getItems <em>Items</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagImpl#getResource <em>Resource</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,6 +112,24 @@ public class DataBagImpl extends DescribedObjectImpl implements DataBag {
     @SuppressWarnings("unchecked")
     public EList<DataBagItem> getItems() {
         return (EList<DataBagItem>)eGet(ChefserverPackage.Literals.DATA_BAG__ITEMS, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public IResource getResource() {
+        return (IResource)eGet(ChefserverPackage.Literals.DATA_BAG__RESOURCE, true);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setResource(IResource newResource) {
+        eSet(ChefserverPackage.Literals.DATA_BAG__RESOURCE, newResource);
     }
 
     /**

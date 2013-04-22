@@ -116,6 +116,10 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
                 return createCookbookFolderAdapter();
             }
             @Override
+            public Adapter caseDataBagsFolder(DataBagsFolder object) {
+                return createDataBagsFolderAdapter();
+            }
+            @Override
             public Adapter defaultCase(EObject object) {
                 return createEObjectAdapter();
             }
@@ -300,6 +304,20 @@ public class ModelAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createCookbookFolderAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.model.DataBagsFolder <em>Data Bags Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.limepepper.chefclipse.model.DataBagsFolder
+     * @generated
+     */
+    public Adapter createDataBagsFolderAdapter() {
         return null;
     }
 

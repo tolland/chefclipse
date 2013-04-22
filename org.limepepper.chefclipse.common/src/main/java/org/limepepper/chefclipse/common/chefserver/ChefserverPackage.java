@@ -168,13 +168,22 @@ public interface ChefserverPackage extends EPackage {
     int DATA_BAG__ITEMS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Resource</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DATA_BAG__RESOURCE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+
+    /**
      * The number of structural features of the '<em>Data Bag</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int DATA_BAG_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+    int DATA_BAG_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RoleImpl <em>Role</em>}' class.
@@ -589,13 +598,22 @@ public interface ChefserverPackage extends EPackage {
     int DATA_BAG_ITEM__DATA_BAG = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Json Resource</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int DATA_BAG_ITEM__JSON_RESOURCE = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 1;
+
+    /**
      * The number of structural features of the '<em>Data Bag Item</em>' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-    int DATA_BAG_ITEM_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 1;
+    int DATA_BAG_ITEM_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.SandboxImpl <em>Sandbox</em>}' class.
@@ -974,6 +992,17 @@ public interface ChefserverPackage extends EPackage {
     EReference getDataBag_Items();
 
     /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.DataBag#getResource <em>Resource</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Resource</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.DataBag#getResource()
+     * @see #getDataBag()
+     * @generated
+     */
+    EAttribute getDataBag_Resource();
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Role <em>Role</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1308,6 +1337,17 @@ public interface ChefserverPackage extends EPackage {
     EReference getDataBagItem_DataBag();
 
     /**
+     * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getJsonResource <em>Json Resource</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Json Resource</em>'.
+     * @see org.limepepper.chefclipse.common.chefserver.DataBagItem#getJsonResource()
+     * @see #getDataBagItem()
+     * @generated
+     */
+    EAttribute getDataBagItem_JsonResource();
+
+    /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Sandbox <em>Sandbox</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1611,6 +1651,14 @@ public interface ChefserverPackage extends EPackage {
         EReference DATA_BAG__ITEMS = eINSTANCE.getDataBag_Items();
 
         /**
+         * The meta object literal for the '<em><b>Resource</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute DATA_BAG__RESOURCE = eINSTANCE.getDataBag_Resource();
+
+        /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RoleImpl <em>Role</em>}' class.
          * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1871,6 +1919,14 @@ public interface ChefserverPackage extends EPackage {
          * @generated
          */
         EReference DATA_BAG_ITEM__DATA_BAG = eINSTANCE.getDataBagItem_DataBag();
+
+        /**
+         * The meta object literal for the '<em><b>Json Resource</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute DATA_BAG_ITEM__JSON_RESOURCE = eINSTANCE.getDataBagItem_JsonResource();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.SandboxImpl <em>Sandbox</em>}' class.

@@ -6,6 +6,7 @@ import java.io.File;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -252,6 +253,13 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * @generated
      */
     private EDataType mapTestEDataType = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EDataType iResourceEDataType = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -852,6 +860,15 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
      * @generated
      */
+    public EDataType getIResource() {
+        return iResourceEDataType;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
     public ChefclipseFactory getChefclipseFactory() {
         return (ChefclipseFactory)getEFactoryInstance();
     }
@@ -949,6 +966,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         objectEDataType = createEDataType(OBJECT);
         nameUrlDataTypeEDataType = createEDataType(NAME_URL_DATA_TYPE);
         mapTestEDataType = createEDataType(MAP_TEST);
+        iResourceEDataType = createEDataType(IRESOURCE);
     }
 
     /**
@@ -1073,6 +1091,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
         initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(nameUrlDataTypeEDataType, Object.class, "NameUrlDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         initEDataType(mapTestEDataType, HashMap.class, "MapTest", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(iResourceEDataType, IResource.class, "IResource", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(eNS_URI);

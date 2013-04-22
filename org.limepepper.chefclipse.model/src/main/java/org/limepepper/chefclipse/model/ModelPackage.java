@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -1003,6 +1004,97 @@ public class ModelPackage extends EPackageImpl {
     public static final int COOKBOOK_FOLDER_FEATURE_COUNT = CHEF_FOLDER_FEATURE_COUNT + 1;
 
     /**
+     * The meta object id for the '{@link org.limepepper.chefclipse.model.DataBagsFolder <em>Data Bags Folder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.limepepper.chefclipse.model.DataBagsFolder
+     * @see org.limepepper.chefclipse.model.ModelPackage#getDataBagsFolder()
+     * @generated
+     */
+    public static final int DATA_BAGS_FOLDER = 12;
+
+    /**
+     * The feature id for the '<em><b>Children</b></em>' reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER__CHILDREN = CHEF_FOLDER__CHILDREN;
+
+    /**
+     * The feature id for the '<em><b>Parent</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER__PARENT = CHEF_FOLDER__PARENT;
+
+    /**
+     * The feature id for the '<em><b>Path</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER__PATH = CHEF_FOLDER__PATH;
+
+    /**
+     * The feature id for the '<em><b>Project</b></em>' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER__PROJECT = CHEF_FOLDER__PROJECT;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER__NAME = CHEF_FOLDER__NAME;
+
+    /**
+     * The feature id for the '<em><b>Resource</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER__RESOURCE = CHEF_FOLDER__RESOURCE;
+
+    /**
+     * The feature id for the '<em><b>Type</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER__TYPE = CHEF_FOLDER__TYPE;
+
+    /**
+     * The feature id for the '<em><b>Members</b></em>' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER__MEMBERS = CHEF_FOLDER__MEMBERS;
+
+    /**
+     * The number of structural features of the '<em>Data Bags Folder</em>' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    public static final int DATA_BAGS_FOLDER_FEATURE_COUNT = CHEF_FOLDER_FEATURE_COUNT + 0;
+
+    /**
      * The meta object id for the '<em>IResource</em>' data type.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1010,7 +1102,7 @@ public class ModelPackage extends EPackageImpl {
      * @see org.limepepper.chefclipse.model.ModelPackage#getIResource()
      * @generated
      */
-    public static final int IRESOURCE = 12;
+    public static final int IRESOURCE = 13;
 
     /**
      * <!-- begin-user-doc -->
@@ -1095,6 +1187,13 @@ public class ModelPackage extends EPackageImpl {
      * @generated
      */
     private EClass cookbookFolderEClass = null;
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    private EClass dataBagsFolderEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -1434,6 +1533,19 @@ public class ModelPackage extends EPackageImpl {
 
 
     /**
+     * Returns the meta object for class '{@link org.limepepper.chefclipse.model.DataBagsFolder <em>Data Bags Folder</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for class '<em>Data Bags Folder</em>'.
+     * @see org.limepepper.chefclipse.model.DataBagsFolder
+     * @generated
+     */
+    public EClass getDataBagsFolder() {
+        return dataBagsFolderEClass;
+    }
+
+
+    /**
      * Returns the meta object for data type '{@link org.eclipse.core.resources.IResource <em>IResource</em>}'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1509,6 +1621,8 @@ public class ModelPackage extends EPackageImpl {
         cookbookFolderEClass = createEClass(COOKBOOK_FOLDER);
         createEReference(cookbookFolderEClass, COOKBOOK_FOLDER__COOKBOOK_VERSION);
 
+        dataBagsFolderEClass = createEClass(DATA_BAGS_FOLDER);
+
         // Create data types
         iResourceEDataType = createEDataType(IRESOURCE);
     }
@@ -1537,7 +1651,7 @@ public class ModelPackage extends EPackageImpl {
         setNsURI(eNS_URI);
 
         // Obtain other dependent packages
-        org.limepepper.chefclipse.common.cookbook.CookbookPackage theCookbookPackage = (org.limepepper.chefclipse.common.cookbook.CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(org.limepepper.chefclipse.common.cookbook.CookbookPackage.eNS_URI);
+        CookbookPackage theCookbookPackage = (CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI);
 
         // Create type parameters
 
@@ -1554,6 +1668,7 @@ public class ModelPackage extends EPackageImpl {
         chefWorkspaceEClass.getESuperTypes().add(this.getChefContainer());
         chefServerEClass.getESuperTypes().add(this.getChefObject());
         cookbookFolderEClass.getESuperTypes().add(this.getChefFolder());
+        dataBagsFolderEClass.getESuperTypes().add(this.getChefFolder());
 
         // Initialize classes and features; add operations and parameters
         initEClass(chefContainerEClass, ChefContainer.class, "ChefContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1591,6 +1706,8 @@ public class ModelPackage extends EPackageImpl {
 
         initEClass(cookbookFolderEClass, CookbookFolder.class, "CookbookFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getCookbookFolder_CookbookVersion(), theCookbookPackage.getCookbookVersion(), null, "cookbookVersion", null, 1, 1, CookbookFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(dataBagsFolderEClass, DataBagsFolder.class, "DataBagsFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Initialize data types
         initEDataType(iResourceEDataType, IResource.class, "IResource", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -1803,6 +1920,16 @@ public class ModelPackage extends EPackageImpl {
          * @generated
          */
         public static final EReference COOKBOOK_FOLDER__COOKBOOK_VERSION = eINSTANCE.getCookbookFolder_CookbookVersion();
+
+        /**
+         * The meta object literal for the '{@link org.limepepper.chefclipse.model.DataBagsFolder <em>Data Bags Folder</em>}' class.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @see org.limepepper.chefclipse.model.DataBagsFolder
+         * @see org.limepepper.chefclipse.model.ModelPackage#getDataBagsFolder()
+         * @generated
+         */
+        public static final EClass DATA_BAGS_FOLDER = eINSTANCE.getDataBagsFolder();
 
         /**
          * The meta object literal for the '<em>IResource</em>' data type.

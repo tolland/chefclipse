@@ -84,10 +84,6 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
                 return createCertificatesFolderAdapter();
             }
             @Override
-            public Adapter caseDataBagsFolder(DataBagsFolder object) {
-                return createDataBagsFolderAdapter();
-            }
-            @Override
             public Adapter caseEnvironmentsFolder(EnvironmentsFolder object) {
                 return createEnvironmentsFolderAdapter();
             }
@@ -170,20 +166,6 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createCertificatesFolderAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.DataBagsFolder <em>Data Bags Folder</em>}'.
-     * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * @return the new adapter.
-     * @see org.limepepper.chefclipse.common.workstation.DataBagsFolder
-     * @generated
-     */
-    public Adapter createDataBagsFolderAdapter() {
         return null;
     }
 

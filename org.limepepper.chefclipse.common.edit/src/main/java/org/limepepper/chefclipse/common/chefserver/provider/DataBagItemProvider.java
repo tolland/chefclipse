@@ -66,6 +66,7 @@ public class DataBagItemProvider
 
             addNamePropertyDescriptor(object);
             addIDPropertyDescriptor(object);
+            addResourcePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -106,6 +107,28 @@ public class DataBagItemProvider
                  getString("_UI_NamedObject_ID_feature"),
                  getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
                  ChefclipsePackage.Literals.NAMED_OBJECT__ID,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This adds a property descriptor for the Resource feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addResourcePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_DataBag_resource_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_DataBag_resource_feature", "_UI_DataBag_type"),
+                 ChefserverPackage.Literals.DATA_BAG__RESOURCE,
                  true,
                  false,
                  false,
@@ -159,14 +182,14 @@ public class DataBagItemProvider
      * This returns the label text for the adapted class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
+     * @generated NOT
      */
     @Override
     public String getText(Object object) {
         String label = ((DataBag)object).getName();
         return label == null || label.length() == 0 ?
             getString("_UI_DataBag_type") :
-            getString("_UI_DataBag_type") + " " + label;
+            label;
     }
 
     /**
@@ -183,6 +206,7 @@ public class DataBagItemProvider
         switch (notification.getFeatureID(DataBag.class)) {
             case ChefserverPackage.DATA_BAG__NAME:
             case ChefserverPackage.DATA_BAG__ID:
+            case ChefserverPackage.DATA_BAG__RESOURCE:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case ChefserverPackage.DATA_BAG__ITEMS:

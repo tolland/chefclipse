@@ -49,15 +49,6 @@ public interface WorkstationFactory extends EFactory {
     CertificatesFolder createCertificatesFolder();
 
     /**
-     * Returns a new object of class '<em>Data Bags Folder</em>'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return a new object of class '<em>Data Bags Folder</em>'.
-     * @generated
-     */
-    DataBagsFolder createDataBagsFolder();
-
-    /**
      * Returns a new object of class '<em>Environments Folder</em>'.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

@@ -42,6 +42,7 @@ public class ModelTests extends TestSuite {
         suite.addTestSuite(ChefWorkspaceTest.class);
         suite.addTestSuite(ChefServerTest.class);
         suite.addTestSuite(CookbookFolderTest.class);
+        suite.addTestSuite(DataBagsFolderTest.class);
         return suite;
     }
 

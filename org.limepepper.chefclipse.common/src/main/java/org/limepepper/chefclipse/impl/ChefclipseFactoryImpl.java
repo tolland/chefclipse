@@ -8,6 +8,7 @@ import java.net.URL;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -113,6 +114,8 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
                 return createNameUrlDataTypeFromString(eDataType, initialValue);
             case ChefclipsePackage.MAP_TEST:
                 return createMapTestFromString(eDataType, initialValue);
+            case ChefclipsePackage.IRESOURCE:
+                return createIResourceFromString(eDataType, initialValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -148,6 +151,8 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
                 return convertNameUrlDataTypeToString(eDataType, instanceValue);
             case ChefclipsePackage.MAP_TEST:
                 return convertMapTestToString(eDataType, instanceValue);
+            case ChefclipsePackage.IRESOURCE:
+                return convertIResourceToString(eDataType, instanceValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -498,6 +503,24 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
      * @generated
      */
     public String convertMapTestToString(EDataType eDataType, Object instanceValue) {
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public IResource createIResourceFromString(EDataType eDataType, String initialValue) {
+        return (IResource)super.createFromString(eDataType, initialValue);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public String convertIResourceToString(EDataType eDataType, Object instanceValue) {
         return super.convertToString(eDataType, instanceValue);
     }
 

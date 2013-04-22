@@ -79,6 +79,7 @@ public class ModelFactory extends EFactoryImpl {
             case ModelPackage.CHANGE_TRACKER: return createChangeTracker();
             case ModelPackage.CHEF_SERVER: return createChefServer();
             case ModelPackage.COOKBOOK_FOLDER: return createCookbookFolder();
+            case ModelPackage.DATA_BAGS_FOLDER: return createDataBagsFolder();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -232,6 +233,16 @@ public class ModelFactory extends EFactoryImpl {
     public CookbookFolder createCookbookFolder() {
         CookbookFolder cookbookFolder = new CookbookFolder();
         return cookbookFolder;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public DataBagsFolder createDataBagsFolder() {
+        DataBagsFolder dataBagsFolder = new DataBagsFolder();
+        return dataBagsFolder;
     }
 
     /**

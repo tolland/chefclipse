@@ -36,4 +36,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="cookbookVersion" lowerBound="1"
         eType="ecore:EClass chefclipse.ecore#//cookbook/CookbookVersion"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataBagsFolder" eSuperTypes="#//ChefFolder"/>
 </ecore:EPackage>

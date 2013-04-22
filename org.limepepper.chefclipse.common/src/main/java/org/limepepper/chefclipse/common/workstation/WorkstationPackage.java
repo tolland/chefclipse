@@ -178,25 +178,6 @@ public interface WorkstationPackage extends EPackage {
     int CERTIFICATES_FOLDER_FEATURE_COUNT = 0;
 
     /**
-     * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.DataBagsFolderImpl <em>Data Bags Folder</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.limepepper.chefclipse.common.workstation.impl.DataBagsFolderImpl
-     * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getDataBagsFolder()
-     * @generated
-     */
-    int DATA_BAGS_FOLDER = 3;
-
-    /**
-     * The number of structural features of the '<em>Data Bags Folder</em>' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int DATA_BAGS_FOLDER_FEATURE_COUNT = 0;
-
-    /**
      * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.EnvironmentsFolderImpl <em>Environments Folder</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -204,7 +185,7 @@ public interface WorkstationPackage extends EPackage {
      * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getEnvironmentsFolder()
      * @generated
      */
-    int ENVIRONMENTS_FOLDER = 4;
+    int ENVIRONMENTS_FOLDER = 3;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -241,7 +222,7 @@ public interface WorkstationPackage extends EPackage {
      * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getRolesFolder()
      * @generated
      */
-    int ROLES_FOLDER = 5;
+    int ROLES_FOLDER = 4;
 
     /**
      * The number of structural features of the '<em>Roles Folder</em>' class.
@@ -260,7 +241,7 @@ public interface WorkstationPackage extends EPackage {
      * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getRakefile()
      * @generated
      */
-    int RAKEFILE = 6;
+    int RAKEFILE = 5;
 
     /**
      * The number of structural features of the '<em>Rakefile</em>' class.
@@ -345,16 +326,6 @@ public interface WorkstationPackage extends EPackage {
      * @generated
      */
     EClass getCertificatesFolder();
-
-    /**
-     * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.DataBagsFolder <em>Data Bags Folder</em>}'.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @return the meta object for class '<em>Data Bags Folder</em>'.
-     * @see org.limepepper.chefclipse.common.workstation.DataBagsFolder
-     * @generated
-     */
-    EClass getDataBagsFolder();
 
     /**
      * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.EnvironmentsFolder <em>Environments Folder</em>}'.
@@ -469,16 +440,6 @@ public interface WorkstationPackage extends EPackage {
          * @generated
          */
         EClass CERTIFICATES_FOLDER = eINSTANCE.getCertificatesFolder();
-
-        /**
-         * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.DataBagsFolderImpl <em>Data Bags Folder</em>}' class.
-         * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * @see org.limepepper.chefclipse.common.workstation.impl.DataBagsFolderImpl
-         * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getDataBagsFolder()
-         * @generated
-         */
-        EClass DATA_BAGS_FOLDER = eINSTANCE.getDataBagsFolder();
 
         /**
          * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.EnvironmentsFolderImpl <em>Environments Folder</em>}' class.

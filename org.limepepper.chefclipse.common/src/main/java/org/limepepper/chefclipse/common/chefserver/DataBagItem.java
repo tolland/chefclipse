@@ -2,6 +2,7 @@
  */
 package org.limepepper.chefclipse.common.chefserver;
 
+import org.eclipse.core.resources.IResource;
 import org.limepepper.chefclipse.NamedObject;
 
 /**
@@ -13,6 +14,7 @@ import org.limepepper.chefclipse.NamedObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getDataBag <em>Data Bag</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getJsonResource <em>Json Resource</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,5 +48,31 @@ public interface DataBagItem extends NamedObject {
      * @generated
      */
     void setDataBag(DataBag value);
+
+    /**
+     * Returns the value of the '<em><b>Json Resource</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Json Resource</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Json Resource</em>' attribute.
+     * @see #setJsonResource(IResource)
+     * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBagItem_JsonResource()
+     * @model dataType="org.limepepper.chefclipse.IResource" required="true"
+     * @generated
+     */
+    IResource getJsonResource();
+
+    /**
+     * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getJsonResource <em>Json Resource</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Json Resource</em>' attribute.
+     * @see #getJsonResource()
+     * @generated
+     */
+    void setJsonResource(IResource value);
 
 } // DataBagItem

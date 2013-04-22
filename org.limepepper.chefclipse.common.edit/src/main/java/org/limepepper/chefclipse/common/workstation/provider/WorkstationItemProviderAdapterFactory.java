@@ -143,29 +143,6 @@ public class WorkstationItemProviderAdapterFactory extends WorkstationAdapterFac
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.DataBagsFolder} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected DataBagsFolderItemProvider dataBagsFolderItemProvider;
-
-    /**
-     * This creates an adapter for a {@link org.limepepper.chefclipse.common.workstation.DataBagsFolder}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createDataBagsFolderAdapter() {
-        if (dataBagsFolderItemProvider == null) {
-            dataBagsFolderItemProvider = new DataBagsFolderItemProvider(this);
-        }
-
-        return dataBagsFolderItemProvider;
-    }
-
-    /**
      * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.workstation.EnvironmentsFolder} instances.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -336,7 +313,6 @@ public class WorkstationItemProviderAdapterFactory extends WorkstationAdapterFac
         if (repositoryItemProvider != null) repositoryItemProvider.dispose();
         if (configFolderItemProvider != null) configFolderItemProvider.dispose();
         if (certificatesFolderItemProvider != null) certificatesFolderItemProvider.dispose();
-        if (dataBagsFolderItemProvider != null) dataBagsFolderItemProvider.dispose();
         if (environmentsFolderItemProvider != null) environmentsFolderItemProvider.dispose();
         if (rolesFolderItemProvider != null) rolesFolderItemProvider.dispose();
         if (rakefileItemProvider != null) rakefileItemProvider.dispose();
