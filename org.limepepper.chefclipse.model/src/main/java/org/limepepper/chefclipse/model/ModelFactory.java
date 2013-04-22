@@ -3,14 +3,11 @@
 package org.limepepper.chefclipse.model;
 
 import org.eclipse.core.resources.IResource;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -79,7 +76,6 @@ public class ModelFactory extends EFactoryImpl {
             case ModelPackage.CHANGE_TRACKER: return createChangeTracker();
             case ModelPackage.CHEF_SERVER: return createChefServer();
             case ModelPackage.COOKBOOK_FOLDER: return createCookbookFolder();
-            case ModelPackage.DATA_BAGS_FOLDER: return createDataBagsFolder();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -233,16 +229,6 @@ public class ModelFactory extends EFactoryImpl {
     public CookbookFolder createCookbookFolder() {
         CookbookFolder cookbookFolder = new CookbookFolder();
         return cookbookFolder;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public DataBagsFolder createDataBagsFolder() {
-        DataBagsFolder dataBagsFolder = new DataBagsFolder();
-        return dataBagsFolder;
     }
 
     /**

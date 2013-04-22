@@ -4,10 +4,20 @@ package org.limepepper.chefclipse.model.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.limepepper.chefclipse.model.*;
+import org.limepepper.chefclipse.model.ChangeTracker;
+import org.limepepper.chefclipse.model.ChefContainer;
+import org.limepepper.chefclipse.model.ChefFile;
+import org.limepepper.chefclipse.model.ChefFolder;
+import org.limepepper.chefclipse.model.ChefObject;
+import org.limepepper.chefclipse.model.ChefObjectDefinitionFile;
+import org.limepepper.chefclipse.model.ChefObjectElementFile;
+import org.limepepper.chefclipse.model.ChefProject;
+import org.limepepper.chefclipse.model.ChefResource;
+import org.limepepper.chefclipse.model.ChefServer;
+import org.limepepper.chefclipse.model.ChefWorkspace;
+import org.limepepper.chefclipse.model.CookbookFolder;
+import org.limepepper.chefclipse.model.ModelPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -160,16 +170,6 @@ public class ModelSwitch<T> extends Switch<T> {
                 if (result == null) result = caseChefContainer(cookbookFolder);
                 if (result == null) result = caseChefResource(cookbookFolder);
                 if (result == null) result = caseChefObject(cookbookFolder);
-                if (result == null) result = defaultCase(theEObject);
-                return result;
-            }
-            case ModelPackage.DATA_BAGS_FOLDER: {
-                DataBagsFolder dataBagsFolder = (DataBagsFolder)theEObject;
-                T result = caseDataBagsFolder(dataBagsFolder);
-                if (result == null) result = caseChefFolder(dataBagsFolder);
-                if (result == null) result = caseChefContainer(dataBagsFolder);
-                if (result == null) result = caseChefResource(dataBagsFolder);
-                if (result == null) result = caseChefObject(dataBagsFolder);
                 if (result == null) result = defaultCase(theEObject);
                 return result;
             }
@@ -354,21 +354,6 @@ public class ModelSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseCookbookFolder(CookbookFolder object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>Data Bags Folder</em>'.
-     * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-     * @param object the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Data Bags Folder</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDataBagsFolder(DataBagsFolder object) {
         return null;
     }
 

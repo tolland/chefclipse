@@ -8,7 +8,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -20,7 +19,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.limepepper.chefclipse.model.util.ModelAdapterFactory;
 
 /**
@@ -348,29 +346,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
     }
 
     /**
-     * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.model.DataBagsFolder} instances.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    protected DataBagsFolderItemProvider dataBagsFolderItemProvider;
-
-    /**
-     * This creates an adapter for a {@link org.limepepper.chefclipse.model.DataBagsFolder}.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    @Override
-    public Adapter createDataBagsFolderAdapter() {
-        if (dataBagsFolderItemProvider == null) {
-            dataBagsFolderItemProvider = new DataBagsFolderItemProvider(this);
-        }
-
-        return dataBagsFolderItemProvider;
-    }
-
-    /**
      * This returns the root adapter factory that contains this factory.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -481,7 +456,6 @@ public class ModelItemProviderAdapterFactory extends ModelAdapterFactory impleme
         if (changeTrackerItemProvider != null) changeTrackerItemProvider.dispose();
         if (chefServerItemProvider != null) chefServerItemProvider.dispose();
         if (cookbookFolderItemProvider != null) cookbookFolderItemProvider.dispose();
-        if (dataBagsFolderItemProvider != null) dataBagsFolderItemProvider.dispose();
     }
 
 }

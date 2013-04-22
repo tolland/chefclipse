@@ -4,14 +4,12 @@ package org.limepepper.chefclipse.model;
 
 
 import org.eclipse.core.resources.IResource;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
@@ -1706,8 +1704,6 @@ public class ModelPackage extends EPackageImpl {
 
         initEClass(cookbookFolderEClass, CookbookFolder.class, "CookbookFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getCookbookFolder_CookbookVersion(), theCookbookPackage.getCookbookVersion(), null, "cookbookVersion", null, 1, 1, CookbookFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(dataBagsFolderEClass, DataBagsFolder.class, "DataBagsFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         // Initialize data types
         initEDataType(iResourceEDataType, IResource.class, "IResource", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
