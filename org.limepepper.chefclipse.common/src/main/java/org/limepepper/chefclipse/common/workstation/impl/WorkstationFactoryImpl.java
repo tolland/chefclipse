@@ -59,7 +59,6 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationF
             case WorkstationPackage.REPOSITORY: return createRepository();
             case WorkstationPackage.CONFIG_FOLDER: return createConfigFolder();
             case WorkstationPackage.CERTIFICATES_FOLDER: return createCertificatesFolder();
-            case WorkstationPackage.DATA_BAGS_FOLDER: return createDataBagsFolder();
             case WorkstationPackage.ENVIRONMENTS_FOLDER: return createEnvironmentsFolder();
             case WorkstationPackage.ROLES_FOLDER: return createRolesFolder();
             case WorkstationPackage.RAKEFILE: return createRakefile();
@@ -96,16 +95,6 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationF
     public CertificatesFolder createCertificatesFolder() {
         CertificatesFolderImpl certificatesFolder = new CertificatesFolderImpl();
         return certificatesFolder;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    public DataBagsFolder createDataBagsFolder() {
-        DataBagsFolderImpl dataBagsFolder = new DataBagsFolderImpl();
-        return dataBagsFolder;
     }
 
     /**

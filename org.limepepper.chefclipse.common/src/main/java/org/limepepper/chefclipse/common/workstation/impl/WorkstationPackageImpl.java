@@ -6,41 +6,26 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
-
 import org.limepepper.chefclipse.REST.RESTPackage;
-
 import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
-
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
-
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-
 import org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-
 import org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl;
-
 import org.limepepper.chefclipse.common.knife.KnifePackage;
-
 import org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl;
-
 import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
 import org.limepepper.chefclipse.common.workstation.ConfigFolder;
-import org.limepepper.chefclipse.common.workstation.DataBagsFolder;
 import org.limepepper.chefclipse.common.workstation.EnvironmentsFolder;
 import org.limepepper.chefclipse.common.workstation.Rakefile;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.RolesFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
-
 import org.limepepper.chefclipse.impl.ChefclipsePackageImpl;
 
 /**
@@ -70,13 +55,6 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
      * @generated
      */
     private EClass certificatesFolderEClass = null;
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    private EClass dataBagsFolderEClass = null;
 
     /**
      * <!-- begin-user-doc -->
@@ -248,15 +226,6 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
      * <!-- end-user-doc -->
      * @generated
      */
-    public EClass getDataBagsFolder() {
-        return dataBagsFolderEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
     public EClass getEnvironmentsFolder() {
         return environmentsFolderEClass;
     }
@@ -317,8 +286,6 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 
         certificatesFolderEClass = createEClass(CERTIFICATES_FOLDER);
 
-        dataBagsFolderEClass = createEClass(DATA_BAGS_FOLDER);
-
         environmentsFolderEClass = createEClass(ENVIRONMENTS_FOLDER);
 
         rolesFolderEClass = createEClass(ROLES_FOLDER);
@@ -372,8 +339,6 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
         initEClass(configFolderEClass, ConfigFolder.class, "ConfigFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(certificatesFolderEClass, CertificatesFolder.class, "CertificatesFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-        initEClass(dataBagsFolderEClass, DataBagsFolder.class, "DataBagsFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(environmentsFolderEClass, EnvironmentsFolder.class, "EnvironmentsFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

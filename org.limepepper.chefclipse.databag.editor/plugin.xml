@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor"
+            contributorClass="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditorContributor"
+            icon="icons/sample.gif"
+            id="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor"
+            name="Data Bag Multi-page Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Sample Wizards"
+            id="org.limepepper.chefclipse.databag.editor">
+      </category>
+      <wizard
+            name="Multi-page Editor file"
+            icon="icons/sample.gif"
+            category="org.limepepper.chefclipse.databag.editor"
+            class="org.limepepper.chefclipse.databag.editor.wizards.SampleNewWizard"
+            id="org.limepepper.chefclipse.databag.editor.wizards.SampleNewWizard">
+      </wizard>
+   </extension>
+</plugin>

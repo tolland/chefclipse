@@ -1,3 +1,4 @@
+
 package org.limepepper.chefclipse.ui.navigator;
 
 import java.util.ArrayList;
@@ -6,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -19,6 +21,7 @@ import org.eclipse.ui.navigator.IPipelinedTreeContentProvider;
 import org.eclipse.ui.navigator.IPipelinedTreeContentProvider2;
 import org.eclipse.ui.navigator.PipelinedShapeModification;
 import org.eclipse.ui.navigator.PipelinedViewerUpdate;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
 import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
@@ -36,19 +39,17 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
     }
 
     private ICommonContentExtensionSite extensionSite;
-    private Viewer                      viewer;
+    private Viewer viewer;
 
     @Override
     public Object[] getElements(Object inputElement) {
         NavigatorActivator.log("getElements for: " + inputElement);
-/*
- * if (inputElement instanceof IWorkspaceRoot) {
- * IWorkspaceRoot root = (IWorkspaceRoot) inputElement;
- * return root.getProjects();
- * } else if (inputElement instanceof IJavaModel) {
- * return ((IJavaModel)inputElement).getWorkspace().getRoot().getProjects();
- * }
- */
+        /*
+         * if (inputElement instanceof IWorkspaceRoot) { IWorkspaceRoot root =
+         * (IWorkspaceRoot) inputElement; return root.getProjects(); } else if
+         * (inputElement instanceof IJavaModel) { return
+         * ((IJavaModel)inputElement).getWorkspace().getRoot().getProjects(); }
+         */
         if (inputElement instanceof IResource) {
             return super.getElements(ChefCore.create((IProject) inputElement));
         }
@@ -80,8 +81,10 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
             } catch (CoreException e) {
                 e.printStackTrace();
             }
+        } else if (parentElement instanceof DataBag) {
+            Object[] members = ((DataBag) parentElement).getItems().toArray();
+            return members;
         }
-
         return super.getChildren(parentElement);
     }
 
@@ -101,6 +104,26 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
         if (resource instanceof IFolder) {
             return ((IFolder) resource).getParent().getName()
                     .equals("cookbooks");
+        }
+        return false;
+    }
+
+    private boolean isDataBag(IFolder resource) {
+        if (resource instanceof IFolder) {
+            return ((IFolder) resource).getParent().getName()
+                    .equals("data_bags");
+        }
+        return false;
+    }
+
+    private boolean isDataBagItem(IFile element) {
+        if (element instanceof IFile) {
+            IContainer parent = element.getParent();
+            if (parent != null) {
+                return (((parent.getName().toLowerCase().equals("data_bags") || (parent.getParent() != null && parent
+                        .getParent().getName().toLowerCase().equals("data_bags")))) && ((IFile) element)
+                        .getName().toLowerCase().endsWith("json"));
+            }
         }
         return false;
     }
@@ -146,7 +169,9 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
     public void saveState(IMemento aMemento) {
     }
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({
+            "rawtypes", "unchecked"
+    })
     @Override
     public void getPipelinedChildren(Object aParent, Set theCurrentChildren) {
         NavigatorActivator.log("pipelining children");
@@ -162,6 +187,18 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
                         NavigatorActivator.log("pipelining cookbook");
                         iter.remove();
                         newChildren.add(ChefCore.createCookbook(folder));
+                    }
+                    if (isDataBag(folder)) {
+                        NavigatorActivator.log("pipelining databag");
+                        iter.remove();
+                        newChildren.add(ChefCore.createDataBag(folder));
+                    }
+                }
+                if (element instanceof IFile) {
+                    if (isDataBagItem((IFile) element)) {
+                        NavigatorActivator.log("pipelining databag");
+                        iter.remove();
+                        newChildren.add(ChefCore.createDataBagItem((IFile) element));
                     }
                 }
             }

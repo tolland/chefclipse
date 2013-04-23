@@ -284,6 +284,15 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataBag_Resource() {
+		return (EAttribute)dataBagEClass.getEStructuralFeatures().get(2);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -563,6 +572,15 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDataBagItem_JsonResource() {
+		return (EAttribute)dataBagItemEClass.getEStructuralFeatures().get(1);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -741,7 +759,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		return (EReference)serverCookbookVersionEClass.getEStructuralFeatures().get(9);
 	}
 
-	/**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -802,6 +820,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		dataBagEClass = createEClass(DATA_BAG);
 		createEReference(dataBagEClass, DATA_BAG__SERVER);
 		createEReference(dataBagEClass, DATA_BAG__ITEMS);
+		createEAttribute(dataBagEClass, DATA_BAG__RESOURCE);
 
 		roleEClass = createEClass(ROLE);
 		createEReference(roleEClass, ROLE__RUN_LIST);
@@ -840,6 +859,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
 		dataBagItemEClass = createEClass(DATA_BAG_ITEM);
 		createEReference(dataBagItemEClass, DATA_BAG_ITEM__DATA_BAG);
+		createEAttribute(dataBagItemEClass, DATA_BAG_ITEM__JSON_RESOURCE);
 
 		sandboxEClass = createEClass(SANDBOX);
 		createEAttribute(sandboxEClass, SANDBOX__CHECKSUM);
@@ -922,6 +942,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		initEClass(dataBagEClass, DataBag.class, "DataBag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataBag_Server(), this.getServer(), this.getServer_Databags(), "server", null, 0, 1, DataBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDataBag_Items(), this.getDataBagItem(), null, "items", null, 0, -1, DataBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataBag_Resource(), theChefclipsePackage.getIResource(), "resource", "", 1, 1, DataBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRole_Run_list(), this.getRunList(), null, "run_list", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -960,6 +981,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
 		initEClass(dataBagItemEClass, DataBagItem.class, "DataBagItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDataBagItem_DataBag(), this.getDataBag(), null, "dataBag", null, 1, 1, DataBagItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataBagItem_JsonResource(), theChefclipsePackage.getIResource(), "jsonResource", null, 1, 1, DataBagItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sandboxEClass, Sandbox.class, "Sandbox", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSandbox_Checksum(), ecorePackage.getEString(), "checksum", null, 1, 1, Sandbox.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
