@@ -32,6 +32,7 @@ public class Activator extends AbstractUIPlugin {
 
 	public static final String DIRTY_ICON_OVERLAY = "DIRTY_ICON_OVERLAY";
 
+	public static final String TEMPLATE_REPO_OVERLAY = "TEMPLATE_REPO_OVERLAY";
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.limepepper.chefclipse.remotepicker.ui"; //$NON-NLS-1$
@@ -88,15 +89,15 @@ public class Activator extends AbstractUIPlugin {
 		ImageRegistry imageRegistry = super.createImageRegistry();
 		imageRegistry.put(NO_ICON_PROVIDED, imageDescriptorFromPlugin(getBundle().getSymbolicName(),
 		"icons/noiconprovided.png")); //$NON-NLS-1$
-		imageRegistry.put(NO_ICON_PROVIDED_CATALOG,
-				imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/noiconprovided32.png")); //$NON-NLS-1$
+		imageRegistry.put(NO_ICON_PROVIDED_CATALOG, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/noiconprovided32.png")); //$NON-NLS-1$
 		imageRegistry.put(IU_ICON, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/iu_obj.gif")); //$NON-NLS-1$
-		imageRegistry.put(IU_ICON_UPDATE, imageDescriptorFromPlugin(getBundle().getSymbolicName(),
-		"icons/iu_update_obj.gif")); //$NON-NLS-1$
+		imageRegistry.put(IU_ICON_UPDATE, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/iu_update_obj.gif")); //$NON-NLS-1$
 		imageRegistry.put(DEPRECATED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/deprecated_decorator.gif")); //$NON-NLS-1$
 		imageRegistry.put(DIRTY_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/dirty_decorator.png")); //$NON-NLS-1$
 		imageRegistry.put(NEW_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/new_decorator.jpg")); //$NON-NLS-1$
 		imageRegistry.put(INSTALLED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/installed_decorator.gif")); //$NON-NLS-1$
+		imageRegistry.put(INSTALLED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/installed_decorator.gif")); //$NON-NLS-1$
+		imageRegistry.put(TEMPLATE_REPO_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/add_template_repo.png")); //$NON-NLS-1$
 		return imageRegistry;
 	}
 

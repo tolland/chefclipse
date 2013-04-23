@@ -25,6 +25,8 @@ import org.eclipse.equinox.internal.p2.discovery.model.CatalogCategory;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.discovery.model.Icon;
 import org.eclipse.equinox.internal.p2.discovery.model.Overview;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.internal.util.BundleUtility;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -109,6 +111,9 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (mon.isCanceled())
 					return;
+				if (evt.getNewValue() instanceof Exception) {
+					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error getting cookbooks", ((Exception)evt.getNewValue()).getMessage());
+				}
 				EList<RemoteCookbook> cookbooks = repository.getCookbooks();
 				mon.setWorkRemaining(cookbooks.size()*10);
 				for (RemoteCookbook cookBookInfo : cookbooks){

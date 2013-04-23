@@ -45,7 +45,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	
 	private IProject project;
 	private boolean modified = false;
-	private ChefConfigurationsViewer configsViewer;
+	protected ChefConfigurationsViewer configsViewer;
 
 	/**
 	 * Constructor for ChefConfigurationPropertyPage.
@@ -156,7 +156,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		setDefaultProjectConfig();
 	}
 	
-	private void setDefaultProjectConfig() {
+	protected void setDefaultProjectConfig() {
 		
 		Config projectConfig = ChefConfigManager.instance().retrieveProjectChefConfig(project);
 		if (projectConfig != null) {

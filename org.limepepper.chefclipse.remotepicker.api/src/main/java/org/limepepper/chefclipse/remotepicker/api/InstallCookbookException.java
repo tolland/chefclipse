@@ -9,9 +9,9 @@ package org.limepepper.chefclipse.remotepicker.api;
  */
 public class InstallCookbookException extends Exception {
 
-	public static final String DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE = "Could not download the cookbook ";
+	public static final String DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE = Messages.InstallCookbookException_ErrorDownload;
 	
-	public static final String INSTALL_COOKBOOK_EXCEPTION_MESSAGE = "Could not install the cookbook ";
+	public static final String INSTALL_COOKBOOK_EXCEPTION_MESSAGE = Messages.InstallCookbookException_ErrorInstall;
 	/**
 	 * 
 	 */

@@ -4,11 +4,12 @@ package org.limepepper.chefclipse.remotepicker.api.cookbookrepository.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+
 import org.eclipse.emf.ecore.EObject;
-import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
-import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
-import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.*;
 
 /**
  * <!-- begin-user-doc -->

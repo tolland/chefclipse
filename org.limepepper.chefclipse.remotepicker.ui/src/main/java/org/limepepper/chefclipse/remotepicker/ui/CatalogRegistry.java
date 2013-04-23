@@ -34,18 +34,28 @@ public class CatalogRegistry {
 	public void installRepositories() {
 		Collection<RemoteRepository> repositories = repoManager.getRepositories();
 		for (RemoteRepository remoteRepository : repositories) {
-			CatalogDescriptor descriptor = new CatalogDescriptor();
-			descriptor.setId(remoteRepository.getId());
-			descriptor.setLabel(remoteRepository.getName());
-			try {
-				descriptor.setUrl(new URL(remoteRepository.getUri()));
-				descriptor.setIcon(ImageDescriptor.createFromURL(new URL(remoteRepository.getIcon())));
-			} catch (MalformedURLException e) {
-				Activator.log(e);
-			}
-			descriptor.setDescription(remoteRepository.getDescription());
+			CatalogDescriptor descriptor = createCatalogDescriptor(remoteRepository);
 			catalogDescriptors.add(descriptor);
 		}
+		for (RemoteRepository remoteRepository : repoManager.getTemplateRepositories()) {
+			CatalogDescriptor descriptor = createCatalogDescriptor(remoteRepository);
+			descriptor.setTemplate(true);
+			catalogDescriptors.add(descriptor);
+		}
+	}
+
+	public static CatalogDescriptor createCatalogDescriptor(RemoteRepository remoteRepository) {
+		CatalogDescriptor descriptor = new CatalogDescriptor();
+		descriptor.setId(remoteRepository.getId());
+		descriptor.setLabel(remoteRepository.getName());
+		try {
+			descriptor.setUrl(new URL(remoteRepository.getUri()));
+			descriptor.setIcon(ImageDescriptor.createFromURL(new URL(remoteRepository.getIcon())));
+		} catch (MalformedURLException e) {
+			Activator.log(e);
+		}
+		descriptor.setDescription(remoteRepository.getDescription());
+		return descriptor;
 	}
 
 	public void unregister(CatalogDescriptor catalogDescriptor) {

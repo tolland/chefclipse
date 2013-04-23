@@ -5,7 +5,9 @@ Bundle-SymbolicName: org.limepepper.chefclipse.remotepicker.test;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
- lib/hamcrest-all.jar,
+ lib/fest-assert-core.jar,
+ lib/fest-util.jar,
+ lib/fest-test.jar,
  lib/mockito-all.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -15,5 +17,5 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.remotepicker.api;bundle-version="1.0.0",
  org.limepepper.chefclipse.remotepicker.repositories;bundle-version="1.0.0",
  org.limepepper.chefclipse.common,
+ org.apache.commons.io,
  org.junit;bundle-version="4.10.0"
-Import-Package: org.junit;version="4.10.0"

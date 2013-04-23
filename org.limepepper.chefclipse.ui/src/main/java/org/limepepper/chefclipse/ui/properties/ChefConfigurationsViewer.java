@@ -225,7 +225,7 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 				if (event.getChecked()) {
 					setCheckedConfig((Config)event.getElement());
 				} else {
-					setSelectedConfig(null);
+					setSelectedConfig(StructuredSelection.EMPTY);
 				}
 			}
 		});
@@ -359,8 +359,10 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 		for (int i = 0; i < chefs.length; i++) {
 			configs.add(chefs[i]);
 		}
-		configViewer.setInput(configs);
-		configViewer.refresh();
+		if (configViewer != null && !configViewer.getTable().isDisposed()) {
+			configViewer.setInput(configs);
+			configViewer.refresh();
+		}
 	}
 	
 	/**

@@ -1,28 +1,20 @@
 package org.limepepper.chefclipse.remotepicker.extpoint;
 
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.ui.progress.IProgressConstants;
-import org.eclipse.ui.progress.IProgressConstants2;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+import org.limepepper.chefclipse.remotepicker.ui.handlers.RemotePickerHandler;
 import org.osgi.framework.Bundle;
 
 /**
@@ -31,9 +23,7 @@ import org.osgi.framework.Bundle;
  * @author Guillermo Zunino
  */
 public class ExtensionPointHandler {
-	private static final String POINT_ID = "org.limepepper.chefclipse.cookbook.repository";
-
-	protected static final Object JOBS_FAMILY = "Cookbook Repositories";
+	private static final String POINT_ID = "org.limepepper.chefclipse.cookbook.repository"; //$NON-NLS-1$
 
 	private CookbookRepositoryManager repoManager;
 	
@@ -61,20 +51,28 @@ public class ExtensionPointHandler {
 		try {
 			for (IConfigurationElement e : config) {
 				RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
-				repo.setId(e.getAttribute("id"));
-				repo.setName(e.getAttribute("name"));
-				repo.setDescription(e.getAttribute("description"));
-				repo.setUri(e.getAttribute("uri"));
+				repo.setId(e.getAttribute("id")); //$NON-NLS-1$
+				repo.setName(e.getAttribute("name")); //$NON-NLS-1$
+				repo.setDescription(e.getAttribute("description")); //$NON-NLS-1$
+				repo.setUri(e.getAttribute("uri")); //$NON-NLS-1$
 				
-				IConfigurationElement icon = e.getChildren("icon")[0];
+				IConfigurationElement icon = e.getChildren("icon")[0]; //$NON-NLS-1$
 				
 				Bundle bundle = Platform.getBundle(e.getContributor().getName());
-				URL iconFile = FileLocator.find(bundle, Path.fromPortableString(icon.getAttribute("image32")), null);
+				URL iconFile = FileLocator.find(bundle, Path.fromPortableString(icon.getAttribute("image32")), null); //$NON-NLS-1$
 				
-				final Object o = e.createExecutableExtension("class");
-				if (o instanceof ICookbooksRepository) {
-					RemoteRepository registeredRepository = getRepoManager().registerRepository(repo, (ICookbooksRepository) o);
-					registeredRepository.setIcon(iconFile.toString());
+				try { 
+					final Object o = e.createExecutableExtension("class"); //$NON-NLS-1$
+					if (o instanceof ICookbooksRepository) {
+						RemoteRepository registeredRepository = getRepoManager().registerRepository(repo, (ICookbooksRepository) o);
+						registeredRepository.setIcon(iconFile.toString());
+					}
+				} catch (CoreException ex) {
+					final Object o = e.createExecutableExtension("builder"); //$NON-NLS-1$
+					if (o instanceof ICookbooksRepository.Builder<?>) {
+						repo.setIcon(iconFile.toString());
+						getRepoManager().registerRepository(repo, (ICookbooksRepository.Builder<?>) o);
+					}
 				}
 			}
 			retrieveAndCacheCookbooks();
@@ -87,42 +85,8 @@ public class ExtensionPointHandler {
 
 	private void retrieveAndCacheCookbooks() {
 		for (final RemoteRepository repo : repoManager.getRepositories()) {
-			Job job = new Job("Retrieving Cookbooks from respository \"" + repo.getName()+ "\"") {
-				@Override
-				protected IStatus run(IProgressMonitor monitor) {
-					monitor.beginTask("Retrieving cookbooks", IProgressMonitor.UNKNOWN);
-					ExecutorService ex = Executors.newSingleThreadExecutor();
-					ex.execute(new Runnable() {
-						@Override public void run() {
-							getRepoManager().loadRepository(repo.getId());
-						}
-					});
-					ex.shutdown();
-					try {
-						while (!ex.awaitTermination(300, TimeUnit.MILLISECONDS)) {
-							if (monitor.isCanceled()) 
-								throw new InterruptedException();
-						}
-					} catch (InterruptedException e) {
-						ex.shutdownNow();
-						return Status.CANCEL_STATUS;
-					}
-					monitor.done();
-					return Status.OK_STATUS;
-				}
-				
-				@Override
-				public boolean belongsTo(Object family) {
-					return family == JOBS_FAMILY;
-				}
-			};
-			
-			try {
-				ImageDescriptor image = ImageDescriptor.createFromURL(new URL(repo.getIcon()));
-				job.setProperty(IProgressConstants.ICON_PROPERTY, image);
-			} catch (MalformedURLException e) {}
-			job.setProperty(IProgressConstants2.SHOW_IN_TASKBAR_ICON_PROPERTY, Boolean.TRUE);
-			job.schedule();
+			RemotePickerHandler.startRepositoryJob(repo, getRepoManager());
 		}
 	}
+
 }

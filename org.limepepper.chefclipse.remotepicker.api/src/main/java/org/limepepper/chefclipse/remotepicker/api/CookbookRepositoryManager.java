@@ -27,10 +27,14 @@ import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xml.type.SimpleAnyType;
+import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository.Builder;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -53,10 +57,10 @@ public class CookbookRepositoryManager {
 
 	static final Logger logger = LoggerFactory.getLogger(CookbookRepositoryManager.class);
 	
-	public static final String COOKBOOKSOURCE = ".cookbooksource";
-	public static final String COMPOSITE_REPOSITORY_ID = "composite.repository";
-	private static final String CACHE_EXT = "cookbookrepository";
-	private static final String COOKBOOKS_PROJECT_DIRECTORY = "cookbooks";
+	public static final String COOKBOOKSOURCE = ".cookbooksource"; //$NON-NLS-1$
+	public static final String COMPOSITE_REPOSITORY_ID = "composite.repository"; //$NON-NLS-1$
+	private static final String CACHE_EXT = "cookbookrepository"; //$NON-NLS-1$
+	private static final String COOKBOOKS_PROJECT_DIRECTORY = "cookbooks"; //$NON-NLS-1$
 
 	private static CookbookRepositoryManager instance;
 
@@ -64,6 +68,7 @@ public class CookbookRepositoryManager {
 	private final Map<String, RemoteRepository> repositories = new HashMap<String, RemoteRepository>();
 	private final Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
 	private final Map<String, PropertyChangeSupport> listeners = new HashMap<String, PropertyChangeSupport>();
+	private final Map<RemoteRepository, Builder<?>> builders = new HashMap<RemoteRepository, ICookbooksRepository.Builder<?>>();
 	private final Lock lock = new ReentrantLock();
 	private String cacheFolder;
 
@@ -103,6 +108,20 @@ public class CookbookRepositoryManager {
 	public RemoteRepository getRepository(final String id) {
 		return repositories.get(id);
 	}
+	
+	/**
+	 * Returns a {@link RemoteRepository} by it's unique id.
+	 * @param id the repository Id
+	 * @return a {@link RemoteCookbook}
+	 */
+	public RemoteRepository getTemplateRepository(final String id) {
+		for (RemoteRepository repo : builders.keySet()) {
+			if (repo.getId().equals(id)) {
+				return repo;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Registers a repository of cookbooks to managed by this manager.
@@ -130,6 +149,50 @@ public class CookbookRepositoryManager {
 		} finally {
 			lock.unlock();
 		}
+	}
+
+	/**
+	 * Registers a repository template using a builder.
+	 */
+	public <T> void registerRepository(RemoteRepository repo, Builder<T> builder) {
+		lock.lock();
+		try {
+			if (repositories.isEmpty()) {
+				loadRepositoriesCache();
+			}
+			builders.put(repo, builder);
+			
+			for (RemoteRepository r : repositories.values()) {
+				if (r.getRetriever() != null && !retrievers.containsKey(r.getId())
+						&& r.getId().startsWith(repo.getId())) {
+					@SuppressWarnings("unchecked")
+					T param = (T) unwrap(r.getRetriever());
+					ICookbooksRepository retriever = builder.createRepository(param);
+					retrievers.put(r.getId(), retriever);
+					listeners.put(r.getId(), new PropertyChangeSupport(r));
+				}
+			}
+		} finally {
+			lock.unlock();
+		}
+	}
+	
+	public static <T> Object unwrap(EObject param) {
+		if (param instanceof SimpleAnyType) {
+			Object value = ((SimpleAnyType) param).getValue();
+			return value;
+		}
+		return param;
+	}
+	
+	public static <T> EObject wrap(T param) {
+		if (!(param instanceof EObject)) {
+			SimpleAnyType eString = XMLTypeFactory.eINSTANCE.createSimpleAnyType();
+			eString.setInstanceType(EcorePackage.eINSTANCE.getEString());
+			eString.setValue(param);
+			return eString;
+		}
+		return (EObject) param;
 	}
 
 	private void loadRepositoriesCache() {
@@ -174,40 +237,47 @@ public class CookbookRepositoryManager {
 		repositories.clear();
 		retrievers.clear();
 		listeners.clear();
+		builders.clear();
 	}
 
 	private void cacheRepository(final RemoteRepository repo) {
-		ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
-		Collection<RemoteCookbook> cookbooks = cookbookRepository
-				.getCookbooks();
-		Map<String, Date> installed = new HashMap<String, Date>();
-		EList<RemoteCookbook> old = repo.getCookbooks();
-		for (RemoteCookbook cookbook : old) {
-			if (cookbook.getInstalledAt() != null) {
-				installed.put(cookbook.getName(), cookbook.getInstalledAt());
-			}
-		}
-		repo.getCookbooks().clear();
-
-		// restore installed date
-		for (RemoteCookbook cookbook : cookbooks) {
-			Date installedAt = installed.get(cookbook.getName());
-			if (installedAt != null) {
-				cookbook.setInstalledAt(installedAt);
-			}
-		}
-		lock.lock();
 		try {
-			repo.getCookbooks().addAll(cookbooks);
-			addRepositoryIds(repo);
-		} finally {
-			lock.unlock();
-		}
+			ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
+			Collection<RemoteCookbook> cookbooks = cookbookRepository
+					.getCookbooks();
+			Map<String, Date> installed = new HashMap<String, Date>();
+			EList<RemoteCookbook> old = repo.getCookbooks();
+			for (RemoteCookbook cookbook : old) {
+				if (cookbook.getInstalledAt() != null) {
+					installed.put(cookbook.getName(), cookbook.getInstalledAt());
+				}
+			}
+			repo.getCookbooks().clear();
+	
+			// restore installed date
+			for (RemoteCookbook cookbook : cookbooks) {
+				Date installedAt = installed.get(cookbook.getName());
+				if (installedAt != null) {
+					cookbook.setInstalledAt(installedAt);
+				}
+			}
+			lock.lock();
+			try {
+				repo.getCookbooks().addAll(cookbooks);
+				addRepositoryIds(repo);
+			} finally {
+				lock.unlock();
+			}
 
-		if (listeners.containsKey(repo.getId())) {
-			listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks);
+			if (listeners.containsKey(repo.getId())) {
+				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks); //$NON-NLS-1$
+			}
+			saveCacheModel(repo);
+		} catch (Exception e) {
+			if (listeners.containsKey(repo.getId())) {
+				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, e); //$NON-NLS-1$
+			}
 		}
-		saveCacheModel(repo);
 	}
 
 	private void saveCacheModel(final RemoteRepository repo) {
@@ -234,7 +304,7 @@ public class CookbookRepositoryManager {
 			cacheRes.save(Collections.EMPTY_MAP);
 			resource.save(Collections.EMPTY_MAP);
 		} catch (IOException e) {
-			logger.error("Error saving model cache", e);
+			logger.error(Messages.CookbookRepositoryManager_ErrorSaving, e);
 		}
 	}
 
@@ -249,14 +319,14 @@ public class CookbookRepositoryManager {
 	private String getCacheFile(final String repoId) {
 		return new StringBuilder(cacheFolder)
 			.append(File.separatorChar)
-			.append(repoId).append(".")
+			.append(repoId).append(".") //$NON-NLS-1$
 			.append(CACHE_EXT).toString();
 	}
 
 	private String getCacheFile() {
 		return new StringBuilder(cacheFolder)
 			.append(File.separatorChar)
-			.append("cache").append(".")
+			.append("cache").append(".") //$NON-NLS-1$ //$NON-NLS-2$
 			.append(CACHE_EXT).toString();
 	}
 
@@ -281,7 +351,7 @@ public class CookbookRepositoryManager {
 		ICookbooksRepository cookbookRepository = retrievers.get(repoId);
 
 		if (cookbookRepository == null || repo == null) {
-			throw new RuntimeException("Invalid repoId " + repoId);
+			throw new IllegalArgumentException(Messages.CookbookRepositoryManager_InvalidRepo + repoId);
 		}
 
 		if (!isCached(repo) || cookbookRepository.isUpdated(repo)) {
@@ -385,7 +455,7 @@ public class CookbookRepositoryManager {
 				c.setLatestVersion(version);
 				return c;
 			} catch (IOException e) {
-				logger.error("Error getting source cookbook", e);
+				logger.error(Messages.CookbookRepositoryManager_ErrorSource, e);
 			}
 		}
 		return null;
@@ -401,7 +471,7 @@ public class CookbookRepositoryManager {
 		listeners.get(repoId).addPropertyChangeListener(listener);
 		if (isRepositoryReady(repoId)) {
 			RemoteRepository repo = repositories.get(repoId);
-			listeners.get(repoId).firePropertyChange("cookbooks", null, repo.getCookbooks());
+			listeners.get(repoId).firePropertyChange("cookbooks", null, repo.getCookbooks()); //$NON-NLS-1$
 		}
 	}
 
@@ -439,7 +509,7 @@ public class CookbookRepositoryManager {
 			try {
 				resource.save(Collections.EMPTY_MAP);
 			} catch (IOException e) {
-				logger.error("Error saving resource cache", e);
+				logger.error(Messages.CookbookRepositoryManager_ErrorSaving, e);
 			}
 		}
 	}
@@ -452,13 +522,13 @@ public class CookbookRepositoryManager {
 
 		final RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
 		repo.setId(COMPOSITE_REPOSITORY_ID);
-		repo.setName("Composite Repository");
-		repo.setDescription("Contains all the cookbooks of all registered repositories.");
-		repo.setUri("http:/www.chefclipse.com/compositeRespository.html");
+		repo.setName(Messages.CookbookRepositoryManager_CompositeName);
+		repo.setDescription(Messages.CookbookRepositoryManager_CompositeDescription);
+		repo.setUri("http:/www.chefclipse.com/compositeRespository.html"); //$NON-NLS-1$
 
 		final RemoteRepository registeredRepository = registerCompositeRepository(repo);
 
-		URL iconURL = this.getClass().getClassLoader().getResource("icons/composite.png");
+		URL iconURL = this.getClass().getClassLoader().getResource("icons/composite.png"); //$NON-NLS-1$
 		registeredRepository.setIcon(iconURL.toString());
 
 		for (final RemoteRepository remoteRepository : getRepositories()){
@@ -476,7 +546,7 @@ public class CookbookRepositoryManager {
 						}
 					}
 					if (areAllReady){
-						listeners.get(registeredRepository.getId()).firePropertyChange("cookbooks", null, cookbooks);
+						listeners.get(registeredRepository.getId()).firePropertyChange("cookbooks", null, cookbooks); //$NON-NLS-1$
 					}
 				}
 			});
@@ -527,7 +597,7 @@ public class CookbookRepositoryManager {
 				try {
 					return new java.net.URI(repo.getUri());
 				} catch (URISyntaxException e) {
-					logger.error("Invalid URL", e);
+					logger.error(Messages.CookbookRepositoryManager_InvalidUrl, e);
 				}
 				return null;
 			}
@@ -567,5 +637,38 @@ public class CookbookRepositoryManager {
 			}
 		});
 		return registeredRepository;
+	}
+
+	/**
+	 * Configures a previously added template repository using the builder for that repo.
+	 */
+	public <T> RemoteRepository configureRepositoryTemplate(RemoteRepository repo) {
+		@SuppressWarnings("unchecked")
+		Builder<T> builder = (Builder<T>) builders.get(repo);
+		if (builder == null) {
+			throw new IllegalArgumentException(Messages.CookbookRepositoryManager_NotTemplate + repo.getId() + Messages.CookbookRepositoryManager_NotTemplate1);
+		}
+		RemoteRepository newRepo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
+		newRepo.setDescription(repo.getDescription());
+		newRepo.setIcon(repo.getIcon());
+		newRepo.setName(repo.getName());
+		newRepo.setUri(repo.getUri());
+		T param = builder.configure(newRepo);
+		if (param != null) {
+			ICookbooksRepository retriever = builder.createRepository(param);
+			if (newRepo.getId() == null || newRepo.getId().equals(repo.getId()) ) {
+				newRepo.setId(repo.getId() + "_" + System.currentTimeMillis()); //$NON-NLS-1$
+			}
+			newRepo.setRetriever(wrap(param));
+			return registerRepository(newRepo, retriever);
+		}
+		return null;
+	}
+
+	/**
+	 * Gets the registered template repositories.
+	 */
+	public List<RemoteRepository> getTemplateRepositories() {
+		return new ArrayList<RemoteRepository>(builders.keySet());
 	}
 }

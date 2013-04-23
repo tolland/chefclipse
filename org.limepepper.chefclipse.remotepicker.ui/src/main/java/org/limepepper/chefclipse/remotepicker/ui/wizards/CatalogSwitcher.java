@@ -7,8 +7,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.viewers.DecorationOverlayIcon;
+import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -32,8 +35,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
+import org.limepepper.chefclipse.remotepicker.ui.CatalogRegistry;
+import org.limepepper.chefclipse.remotepicker.ui.handlers.RemotePickerHandler;
 
 /**
  * @author Sebastian Sampaoli
@@ -106,7 +112,7 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 		});
 	}
 
-	private void createCookbookRepositories(Composite composite, final CatalogDescriptor catalogDescriptor) {
+	private void createCookbookRepositories(final Composite composite, final CatalogDescriptor catalogDescriptor) {
 		Composite container = new Composite(composite, SWT.NONE);
 		Color listBackground = getDisplay().getSystemColor(SWT.COLOR_LIST_BACKGROUND);
 		container.setBackground(listBackground);
@@ -123,9 +129,13 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseUp(MouseEvent e) {
-				selection = catalogDescriptor;
-				refreshSelection();
-				fireSelectionChanged();
+				if (catalogDescriptor.isTemplate()) {
+					configureRepo(composite, catalogDescriptor);
+				} else {
+					selection = catalogDescriptor;
+					refreshSelection();
+					fireSelectionChanged();
+				}
 			}
 		});
 		CatalogToolTip.attachCatalogToolTip(label, catalogDescriptor);
@@ -168,10 +178,16 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 		if (image == null) {
 			ImageDescriptor catalogIcon = catalogDescriptor.getIcon();
 			if (catalogIcon == null) {
-				return getDefaultCatalogImage();
+				image = getDefaultCatalogImage();
+			} else {
+				imageRegistry.put(key, catalogIcon);
+				image = imageRegistry.get(key);
 			}
-			imageRegistry.put(key, catalogIcon);
-			image = imageRegistry.get(key);
+			if (catalogDescriptor.isTemplate()) {
+				ImageDescriptor overlay = Activator.getDefault().getImageRegistry().getDescriptor(Activator.TEMPLATE_REPO_OVERLAY);
+				DecorationOverlayIcon imageOverlayed = new DecorationOverlayIcon(image, overlay, IDecoration.BOTTOM_LEFT);
+				image = imageOverlayed.createImage();
+			}
 		}
 		return image;
 	}
@@ -224,5 +240,27 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 
 	public int getPreferredHeight() {
 		return MIN_SCROLL_HEIGHT + (2 * getBorderWidth()) + 6;
+	}
+
+	/**
+	 * @param composite
+	 * @param catalogDescriptor
+	 */
+	protected void configureRepo(final Composite composite, final CatalogDescriptor catalogDescriptor) {
+		CookbookRepositoryManager man = CookbookRepositoryManager.getInstance();
+		try {
+			RemoteRepository newRepo = man.configureRepositoryTemplate(man.getTemplateRepository(catalogDescriptor.getId()));
+			if (newRepo != null) {
+				RemotePickerHandler.startRepositoryJob(newRepo, man);
+				CatalogDescriptor newDescriptor = CatalogRegistry.createCatalogDescriptor(newRepo);
+				createCookbookRepositories(composite, newDescriptor);
+				composite.layout();
+				selection = newDescriptor;
+				refreshSelection();
+				fireSelectionChanged();
+			}
+		} catch (Throwable e) {
+			MessageDialog.openError(getShell(), "Could not create repository", "There was an issue creating the repository. Check the error log.");
+		}
 	}
 }

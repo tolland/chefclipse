@@ -56,6 +56,7 @@
 				<module>org.limepepper.chefclipse.releng</module>
 				<module>org.limepepper.chefclipse.remotepicker.api</module>
 				<module>org.limepepper.chefclipse.remotepicker.repositories</module>
+				<module>org.limepepper.chefclipse.remotepicker.repositories.ui</module>
 				<module>org.limepepper.chefclipse.remotepicker.extpoint</module>
 				<module>org.limepepper.chefclipse.remotepicker.ui</module>
 				<module>org.limepepper.chefclipse.remotepicker.test</module>

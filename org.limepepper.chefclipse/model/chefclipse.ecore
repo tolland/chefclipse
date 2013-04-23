@@ -76,6 +76,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="chef_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="MapTest" instanceClassName="java.util.HashMap"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IResource" instanceClassName="org.eclipse.core.resources.IResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="MapTestContainer">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="entries" upperBound="-1"
         eType="#//MapTest"/>
@@ -111,6 +112,8 @@
           eOpposite="#//chefserver/Server/databags"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
           eType="#//chefserver/DataBagItem" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="resource" lowerBound="1"
+          eType="#//IResource" defaultValueLiteral=""/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="#//NamedDescribedObject #//chefserver/RunListItem">
       <eStructuralFeatures xsi:type="ecore:EReference" name="run_list" eType="#//chefserver/RunList"
@@ -168,6 +171,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="DataBagItem" eSuperTypes="#//NamedObject">
       <eStructuralFeatures xsi:type="ecore:EReference" name="dataBag" lowerBound="1"
           eType="#//chefserver/DataBag"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="jsonResource" lowerBound="1"
+          eType="#//IResource"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Sandbox">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="checksum" lowerBound="1"
@@ -317,7 +322,6 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ConfigFolder"/>
     <eClassifiers xsi:type="ecore:EClass" name="CertificatesFolder"/>
-    <eClassifiers xsi:type="ecore:EClass" name="DataBagsFolder"/>
     <eClassifiers xsi:type="ecore:EClass" name="EnvironmentsFolder" eSuperTypes="#//NamedObject"/>
     <eClassifiers xsi:type="ecore:EClass" name="RolesFolder"/>
     <eClassifiers xsi:type="ecore:EClass" name="Rakefile"/>

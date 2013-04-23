@@ -6,11 +6,15 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
@@ -324,7 +328,15 @@ public class RemoteCookbook extends EObjectImpl implements EObject {
 	 */
 	protected static final String REPOSITORY_ID_EDEFAULT = null;
 
-	protected String repositoryId;
+	/**
+	 * The cached value of the '{@link #getRepositoryId() <em>Repository Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRepositoryId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String repositoryId = REPOSITORY_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->

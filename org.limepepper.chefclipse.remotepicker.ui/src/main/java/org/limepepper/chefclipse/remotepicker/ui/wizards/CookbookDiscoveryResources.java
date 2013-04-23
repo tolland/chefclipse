@@ -61,12 +61,12 @@ public class CookbookDiscoveryResources extends DiscoveryResources {
 		RemoteCookbook cookbook = (RemoteCookbook) getCurrentCatalogItem().getData();
 		List<ImageDescriptor> imageOverlays = new ArrayList<ImageDescriptor>();
 		Date updatedAt = remoteRepository.getUpdatedAt();
-		if (updatedAt != null && cookbook.getCreatedAt().after(updatedAt)){
+		if (updatedAt != null && cookbook.getCreatedAt() != null && cookbook.getCreatedAt().after(updatedAt)){
 			ImageDescriptor overlay = Activator.getDefault().getImageRegistry().getDescriptor(Activator.NEW_ICON_OVERLAY);
 			imageOverlays.add(overlay);
 		}
 		Date installedAt = cookbook.getInstalledAt();
-		if (installedAt != null && cookbook.getUpdatedAt().after(installedAt)){
+		if (installedAt != null && cookbook.getUpdatedAt() != null && cookbook.getUpdatedAt().after(installedAt)){
 			ImageDescriptor overlay = Activator.getDefault().getImageRegistry().getDescriptor(Activator.DIRTY_ICON_OVERLAY);
 			imageOverlays.add(overlay);
 		}

@@ -25,6 +25,8 @@ public final class CatalogDescriptor {
 	private URL dependenciesRepository;
 
 	private String id;
+	
+	private boolean isTemplate = false;
 
 	public CatalogDescriptor() {
 	}
@@ -155,6 +157,14 @@ public final class CatalogDescriptor {
 	
 	public String getId(){
 		return id;
+	}
+
+	public boolean isTemplate() {
+		return isTemplate;
+	}
+
+	public void setTemplate(boolean isTemplate) {
+		this.isTemplate = isTemplate;
 	}
 
 }

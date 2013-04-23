@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -112,22 +113,13 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	public static final int REMOTE_REPOSITORY__ICON = 4;
 
 	/**
-	 * The feature id for the '<em><b>Retriever</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	public static final int REMOTE_REPOSITORY__RETRIEVER = 5;
-
-	/**
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REMOTE_REPOSITORY__URI = 6;
+	public static final int REMOTE_REPOSITORY__URI = 5;
 
 	/**
 	 * The feature id for the '<em><b>Updated At</b></em>' attribute.
@@ -136,7 +128,16 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int REMOTE_REPOSITORY__UPDATED_AT = 7;
+	public static final int REMOTE_REPOSITORY__UPDATED_AT = 6;
+
+	/**
+	 * The feature id for the '<em><b>Retriever</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REMOTE_REPOSITORY__RETRIEVER = 7;
 
 	/**
 	 * The number of structural features of the '<em>Remote Repository</em>' class.
@@ -455,16 +456,16 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	}
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Retriever</em>'.
+	 * @return the meta object for the containment reference '<em>Retriever</em>'.
 	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever()
 	 * @see #getRemoteRepository()
 	 * @generated
 	 */
-	public EAttribute getRemoteRepository_Retriever() {
-		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(5);
+	public EReference getRemoteRepository_Retriever() {
+		return (EReference)remoteRepositoryEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -477,7 +478,7 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EAttribute getRemoteRepository_Uri() {
-		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -490,9 +491,8 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EAttribute getRemoteRepository_UpdatedAt() {
-		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)remoteRepositoryEClass.getEStructuralFeatures().get(6);
 	}
-
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook <em>Remote Cookbook</em>}'.
@@ -688,7 +688,6 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		return (EAttribute)remoteCookbookEClass.getEStructuralFeatures().get(13);
 	}
 
-
 	/**
 	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook#getRepositoryId <em>Repository Id</em>}'.
 	 * <!-- begin-user-doc -->
@@ -739,9 +738,9 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__NAME);
 		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__DESCRIPTION);
 		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__ICON);
-		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__RETRIEVER);
 		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__URI);
 		createEAttribute(remoteRepositoryEClass, REMOTE_REPOSITORY__UPDATED_AT);
+		createEReference(remoteRepositoryEClass, REMOTE_REPOSITORY__RETRIEVER);
 
 		remoteCookbookEClass = createEClass(REMOTE_COOKBOOK);
 		createEAttribute(remoteCookbookEClass, REMOTE_COOKBOOK__NAME);
@@ -797,9 +796,9 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		initEAttribute(getRemoteRepository_Name(), ecorePackage.getEString(), "name", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteRepository_Description(), ecorePackage.getEString(), "description", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteRepository_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRemoteRepository_Retriever(), ecorePackage.getEJavaObject(), "retriever", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteRepository_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getRemoteRepository_UpdatedAt(), ecorePackage.getEDate(), "updatedAt", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRemoteRepository_Retriever(), ecorePackage.getEObject(), null, "retriever", null, 0, 1, RemoteRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(remoteCookbookEClass, RemoteCookbook.class, "RemoteCookbook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRemoteCookbook_Name(), ecorePackage.getEString(), "name", null, 0, 1, RemoteCookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -886,12 +885,12 @@ public class CookbookrepositoryPackage extends EPackageImpl {
 		public static final EAttribute REMOTE_REPOSITORY__ICON = eINSTANCE.getRemoteRepository_Icon();
 
 		/**
-		 * The meta object literal for the '<em><b>Retriever</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Retriever</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public static final EAttribute REMOTE_REPOSITORY__RETRIEVER = eINSTANCE.getRemoteRepository_Retriever();
+		public static final EReference REMOTE_REPOSITORY__RETRIEVER = eINSTANCE.getRemoteRepository_Retriever();
 
 		/**
 		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.

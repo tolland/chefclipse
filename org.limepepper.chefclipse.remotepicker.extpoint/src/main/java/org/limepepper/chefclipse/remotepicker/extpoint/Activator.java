@@ -11,7 +11,7 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator implements BundleActivator {
 
-	public static final String PLUGIN_ID = "org.limepepper.chefclipse.remotepicker.extpoint";
+	public static final String PLUGIN_ID = "org.limepepper.chefclipse.remotepicker.extpoint"; //$NON-NLS-1$
 	
 	private static BundleContext context;
 

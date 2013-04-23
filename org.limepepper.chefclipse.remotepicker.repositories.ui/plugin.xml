@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.limepepper.chefclipse.cookbook.repository">
+      <repositoryDescriptor
+            builder="org.limepepper.chefclipse.remotepicker.repositories.ChefServerCookbookRepositoryConfig"
+            description="This repository can be used to install cookbooks from any Chef Server. Select to configure it."
+            id="org.limepepper.chefclipse.remotepicker.repository.chefServer"
+            name="Chef Server Cookbooks Repository"
+            uri="https://api.opscode.com/organizations">
+         <icon
+               image32="icons/chefserver_32.png">
+         </icon>
+      </repositoryDescriptor>
+   </extension>
+</plugin>

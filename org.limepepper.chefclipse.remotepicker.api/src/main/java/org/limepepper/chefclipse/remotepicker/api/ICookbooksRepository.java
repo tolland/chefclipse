@@ -67,11 +67,22 @@ public interface ICookbooksRepository {
 	 */
 	String getReadableVersion(RemoteCookbook cookbook, String version);
 	
+	/**
+	 * Builder used configure a template repository.
+	 */
 	static interface Builder<T> {
 		
+		/**
+		 * Creates an ICookbooksRepository for the configured parameter.
+		 */
 		ICookbooksRepository createRepository(T parameter);
 		
-		T configure();
+		/**
+		 * May configure the URL and Description on repo
+		 * @param repo
+		 * @return
+		 */
+		T configure(RemoteRepository repo);
 	}
 
 }

@@ -6,11 +6,17 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -26,9 +32,9 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getDescription <em>Description</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getIcon <em>Icon</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUri <em>Uri</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getUpdatedAt <em>Updated At</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}</li>
  * </ul>
  * </p>
  *
@@ -128,26 +134,6 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	protected String icon = ICON_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRetriever() <em>Retriever</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRetriever()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Object RETRIEVER_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getRetriever() <em>Retriever</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRetriever()
-	 * @generated
-	 * @ordered
-	 */
-	protected Object retriever = RETRIEVER_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -186,6 +172,16 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	 * @ordered
 	 */
 	protected Date updatedAt = UPDATED_AT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getRetriever() <em>Retriever</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRetriever()
+	 * @generated
+	 * @ordered
+	 */
+	protected EObject retriever;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -360,36 +356,72 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 	}
 
 	/**
-	 * Returns the value of the '<em><b>Retriever</b></em>' attribute.
+	 * Returns the value of the '<em><b>Retriever</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Retriever</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Retriever</em>' attribute.
-	 * @see #setRetriever(Object)
+	 * @return the value of the '<em>Retriever</em>' containment reference.
+	 * @see #setRetriever(EObject)
 	 * @see org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage#getRemoteRepository_Retriever()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	public Object getRetriever() {
+	public EObject getRetriever() {
 		return retriever;
 	}
 
 	/**
-	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Retriever</em>' attribute.
+	 * @generated
+	 */
+	public NotificationChain basicSetRetriever(EObject newRetriever, NotificationChain msgs) {
+		EObject oldRetriever = retriever;
+		retriever = newRetriever;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER, oldRetriever, newRetriever);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository#getRetriever <em>Retriever</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Retriever</em>' containment reference.
 	 * @see #getRetriever()
 	 * @generated
 	 */
-	public void setRetriever(Object newRetriever) {
-		Object oldRetriever = retriever;
-		retriever = newRetriever;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER, oldRetriever, retriever));
+	public void setRetriever(EObject newRetriever) {
+		if (newRetriever != retriever) {
+			NotificationChain msgs = null;
+			if (retriever != null)
+				msgs = ((InternalEObject)retriever).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER, null, msgs);
+			if (newRetriever != null)
+				msgs = ((InternalEObject)newRetriever).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER, null, msgs);
+			msgs = basicSetRetriever(newRetriever, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER, newRetriever, newRetriever));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
+				return basicSetRetriever(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -476,12 +508,12 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 				return getDescription();
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__ICON:
 				return getIcon();
-			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
-				return getRetriever();
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__URI:
 				return getUri();
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT:
 				return getUpdatedAt();
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
+				return getRetriever();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -511,14 +543,14 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__ICON:
 				setIcon((String)newValue);
 				return;
-			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
-				setRetriever(newValue);
-				return;
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__URI:
 				setUri((String)newValue);
 				return;
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT:
 				setUpdatedAt((Date)newValue);
+				return;
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
+				setRetriever((EObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -547,14 +579,14 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__ICON:
 				setIcon(ICON_EDEFAULT);
 				return;
-			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
-				setRetriever(RETRIEVER_EDEFAULT);
-				return;
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__URI:
 				setUri(URI_EDEFAULT);
 				return;
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT:
 				setUpdatedAt(UPDATED_AT_EDEFAULT);
+				return;
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
+				setRetriever((EObject)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -578,12 +610,12 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__ICON:
 				return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
-			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
-				return RETRIEVER_EDEFAULT == null ? retriever != null : !RETRIEVER_EDEFAULT.equals(retriever);
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__URI:
 				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
 			case CookbookrepositoryPackage.REMOTE_REPOSITORY__UPDATED_AT:
 				return UPDATED_AT_EDEFAULT == null ? updatedAt != null : !UPDATED_AT_EDEFAULT.equals(updatedAt);
+			case CookbookrepositoryPackage.REMOTE_REPOSITORY__RETRIEVER:
+				return retriever != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -606,8 +638,6 @@ public class RemoteRepository extends EObjectImpl implements EObject {
 		result.append(description);
 		result.append(", icon: ");
 		result.append(icon);
-		result.append(", retriever: ");
-		result.append(retriever);
 		result.append(", uri: ");
 		result.append(uri);
 		result.append(", updatedAt: ");

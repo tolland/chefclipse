@@ -5,7 +5,9 @@ package org.limepepper.chefclipse.remotepicker.api.cookbookrepository;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
+
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -33,7 +35,7 @@ public class CookbookrepositoryFactory extends EFactoryImpl {
 	 */
 	public static CookbookrepositoryFactory init() {
 		try {
-			CookbookrepositoryFactory theCookbookrepositoryFactory = (CookbookrepositoryFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/chefclipse/cookbookrepository"); 
+			CookbookrepositoryFactory theCookbookrepositoryFactory = (CookbookrepositoryFactory)EPackage.Registry.INSTANCE.getEFactory(CookbookrepositoryPackage.eNS_URI);
 			if (theCookbookrepositoryFactory != null) {
 				return theCookbookrepositoryFactory;
 			}

@@ -71,6 +71,7 @@
       <annotation>
          <documentation>
             Description attributes for the repository of cookbooks.
+One or class or builder attributes must be specified.
          </documentation>
       </annotation>
       <complexType>
@@ -111,13 +112,23 @@
                </documentation>
             </annotation>
          </attribute>
-         <attribute name="class" type="string" use="required">
+         <attribute name="class" type="string">
             <annotation>
                <documentation>
-                  
+                  A class implementing ICookbooksRepository for repositories that are static doesn&apos;t need parameters to be run.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="builder" type="string">
+            <annotation>
+               <documentation>
+                  A class implementing ICookbooksRepository.Builder, responsable of configuring a repostiory with an UI and creating a ICookbooksRepository.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository.Builder"/>
                </appinfo>
             </annotation>
          </attribute>
@@ -140,7 +151,7 @@
       <documentation>
          &lt;extension
          point=&quot;org.limepepper.chefclipse.cookbook.repository&quot;&gt;
-	  &lt;repositoryDescriptor
+   &lt;repositoryDescriptor
             class=&quot;org.limepepper.chefclipse.remotepicker.repositories.CookbookSiteRepository&quot;
             description=&quot;This site contains all the cookbooks authored by Opscode, as well as many cookbooks from other members of the community.&quot;
             id=&quot;org.limepepper.chefclipse.remotepicker.repository.opscode&quot;

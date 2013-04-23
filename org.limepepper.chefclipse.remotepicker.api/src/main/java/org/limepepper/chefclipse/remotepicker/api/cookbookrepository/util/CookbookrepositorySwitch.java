@@ -4,10 +4,10 @@ package org.limepepper.chefclipse.remotepicker.api.cookbookrepository.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.util.Switch;
-import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
-import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
-import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+
+import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.*;
 
 /**
  * <!-- begin-user-doc -->
