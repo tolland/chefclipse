@@ -21,4 +21,4 @@ Export-Package: com.sun.jersey.api.client,
  javax.ws.rs.core,
  org.codehaus.jettison,
  org.codehaus.jettison.json
-Require-Bundle: org.limepepper.chefclipse.logger;bundle-version="1.0.0"
+Require-Bundle: org.limepepper.chefclipse.logger;bundle-version="0.1.0"
