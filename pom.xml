@@ -31,9 +31,15 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>org.limepepper.chefclipse.ui.feature</module>
-				<module>org.limepepper.chefclipse.app.feature</module>
-				<module>org.limepepper.chefclipse.devel.feature</module>
+
+				<!-- product -->
+				<module>org.limepepper.chefclipse.product</module>
+
+				<!-- features bundles -->
+				<module>features/org.limepepper.chefclipse.ui.feature</module>
+				<module>features/org.limepepper.chefclipse.app.feature</module>
+				<module>features/org.limepepper.chefclipse.devel.feature</module>
+
 				<module>org.limepepper.chefclipse.api</module>
 				<module>org.limepepper.chefclipse.app</module>
 				<module>org.limepepper.chefclipse.chefserver.api</module>
@@ -50,7 +56,6 @@
 				<module>org.limepepper.chefclipse.navigator</module>
 				<module>org.limepepper.chefclipse.ui</module>
 				<module>org.limepepper.chefclipse.p2</module>
-				<module>org.limepepper.chefclipse.product</module>
 				<module>org.limepepper.chefclipse.releng</module>
 				<module>org.limepepper.chefclipse.remotepicker.api</module>
 				<module>org.limepepper.chefclipse.remotepicker.repositories</module>
