@@ -343,12 +343,12 @@
       name="%category.name.0" />
 
     <wizard category="org.limepepper.chefclipse.ui.wizards.category"
-    class="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
+    class="chefclipse.ui.wizards.NewChefProjectWizard"
     icon="icons/sample.gif"
     id="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
     name="%wizard.name" project="true"></wizard>
     <wizard category="org.limepepper.chefclipse.ui.wizards.category"
-    class="org.limepepper.chefclipse.ui.wizards.ExistingRepoNewChefProjectWizard"
+    class="chefclipse.ui.wizards.NewProjectExistingChefRepoWizard"
     icon="icons/sample.gif"
     id="org.limepepper.chefclipse.ui.wizards.NewExistingRepoChefProjectWizard"
     name="%wizard.name.0" project="true"></wizard>
@@ -435,6 +435,23 @@
           >
     </include>
   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="chefclipse.ui.importWizards.sampleCategory"
+            name="Chefclipse">
+      </category>
+      <wizard
+            category="chefclipse.ui.importWizards.sampleCategory"
+            class="chefclipse.ui.importWizards.ImportRepositoryToProjectWizard"
+            icon="icons/32x32.png"
+            id="chefclipse.ui.importWizards.ImportRepositoryToProjectWizard"
+            name="Import Repository">
+         <description>
+            Import a file from the local file system into the workspace.
+         </description>
+      </wizard>
+   </extension>
 
 
 

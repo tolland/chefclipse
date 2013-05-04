@@ -8,9 +8,9 @@ import org.eclipse.ui.IWorkbench;
 public class NewProjectExistingChefRepoWizard extends Wizard implements
 		INewWizard {
 
-	
+
 	private NewProjectExistingChefRepoWizardPage projectPage;
-	
+
 	public NewProjectExistingChefRepoWizard() {
 		super();
 		setNeedsProgressMonitor(true);
@@ -28,13 +28,13 @@ public class NewProjectExistingChefRepoWizard extends Wizard implements
 		return false;
 	}
 
-	
 
-	public void addPages() {								
+
+	public void addPages() {
 		projectPage = new NewProjectExistingChefRepoWizardPage();
-		
-		
+
+
 		addPage(projectPage);
 	}
-	
+
 }

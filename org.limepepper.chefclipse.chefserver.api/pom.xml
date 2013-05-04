@@ -12,6 +12,7 @@
   </parent>
   <artifactId>org.limepepper.chefclipse.chefserver.api</artifactId>
   <packaging>eclipse-plugin</packaging>
+    <version>0.1.1-SNAPSHOT</version>
 
   <dependencies>
     <dependency>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<!--
+The following variables are built-in :
+
+$INSTALL_PATH : the installation path on the target system, as chosen by the user
+$APPLICATIONS_DEFAULT_ROOT : the default path for applications
+$JAVA_HOME : the JavaTM virtual machine home path
+$CLASS_PATH : the Class Path used mainly for Java Applications
+$USER_HOME : the user's home directory path
+$USER_NAME : the user name
+$APP_NAME : the application name
+$APP_URL : the application URL
+$APP_VER : the application version
+$ISO3_LANG : the ISO3 language code of the selected langpack.
+$IP_ADDRESS : the IP Address of the local machine.
+$HOST_NAME : the HostName of the local machine.
+$FILE_SEPARATOR : the file separator on the installation system
+$DesktopShortcutCheckboxEnabled : When set to true, it automatically checks the "Create Desktop Shortcuts" button. To see how to use it, go to The Variables Element ``<variables>` Be careful this variable is case sensitve !
+$InstallerFrame.logfilePath : The path to the install log. This file contains the paths of all installed files. If set to "default" then the "$INSTALL_PATH/Uninstaller/install.log" path will be used. To see how to use it, go to The Variables Element ``<variables>`. If this variable is not set, no install.log will be created.
+
+-->
+<installation
+	version="5.0"
+	xmlns="http://izpack.org/schema/installation">
+	<!-- Ant properties in this file can be referenced with @{}, otherwise 
+	use variables below in installer files with ${} -->
+	<info>
+		<appname>Chefclipse</appname>
+		<appversion>0.1.1</appversion>
+		<uninstaller name="remove.task" path="${INSTALL_PATH}${FILE_SEPARATOR}p2installer${FILE_SEPARATOR}Uninstall" write="no"/>
+	</info>
+
+	<variables>
+		<variable name="SEP" value="${FILE_SEPARATOR}"/>
+		<variable
+			name="DEFAULT_INSTALL_PATH"
+		value="${USER_HOME}${FILE_SEPARATOR}opt" />
+		<variable
+			name="ShowCreateDirectoryMessage"
+		value="false" />
+		<variable name="TargetPanel.dir.windows" value="${USER_HOME}${FILE_SEPARATOR}opt${FILE_SEPARATOR}p2installer"/>
+		<variable name="TargetPanel.dir.unix" value="${USER_HOME}${FILE_SEPARATOR}opt${FILE_SEPARATOR}p2installer"/>
+		<variable name="CHEFCLIPSE_DIR" value="${USER_HOME}${FILE_SEPARATOR}opt${FILE_SEPARATOR}chefclipse"/>
+		<variable name="ICONS_DIR" value="${CHEFCLIPSE_DIR}${FILE_SEPARATOR}resources${FILE_SEPARATOR}images${FILE_SEPARATOR}icons"/>
+	</variables>
+
+<conditions>
+   <condition type="variable" id="x86_64">
+      <name>SYSTEM_os_arch</name>
+      <value>x86_64</value>
+   </condition>
+   <condition type="variable" id="amd64">
+      <name>SYSTEM_os_arch</name>
+      <value>amd64</value>
+   </condition>
+   <condition type="variable" id="em64t">
+      <name>SYSTEM_os_arch</name>
+      <value>em64t</value>
+   </condition>
+   <condition type="variable" id="x86">
+      <name>SYSTEM_os_arch</name>
+      <value>x86</value>
+   </condition>
+   <!--condition type="java" id="installonwindows">
+             <java>
+                     <class>com.izforge.izpack.util.OsVersion</class>
+                     <field>SYSTEM_os_arch</field>
+             </java>
+             <returnvalue type="boolean">true</returnvalue>
+       </condition>
+       <condition type="and" id="standardinstallation.onwindows">
+             <condition type="ref" refid="standardinstallation"/>
+             <condition type="ref" refid="installonwindows" />
+       </condition-->
+</conditions>
+
+<dynamicvariables>
+  <variable name="exe_name" value="eclipse.exe" condition="izpack.windowsinstall" />
+  <variable name="exe_name" value="eclipse" condition="izpack.macinstall" />
+  <variable name="exe_name" value="eclipse" condition="izpack.linuxinstall" />
+  <variable name="os_arch" value="x86_64" condition="x86_64" />
+  <variable name="os_arch" value="x86_64" condition="amd64" />
+  <variable name="os_arch" value="x86_64" condition="em64t" />
+  <variable name="os_arch" value="x86" condition="x86" />
+</dynamicvariables>
+
+	<guiprefs width="600" height="480" resizable="yes">
+		<laf name="kunststoff">
+			<os family="unix" />
+		</laf>
+		<modifier key="useHeadingPanel" value="yes"/>
+		<modifier key="useHeadingForSummary" value="yes"/>
+		<modifier key="headingImageOnLeft" value="yes"/>
+		<modifier key="headingLineCount" value="2"/>
+		<modifier key="headingFontSize" value="1.5"/>
+		<modifier key="headingBackgroundColor" value="0x00ffffff"/>
+		<modifier key="headingPanelCounter" value="text"/>
+		<modifier key="headingPanelCounterPos" value="inHeading"/>
+	</guiprefs>
+
+	<locale>
+		<langpack iso3="eng"/>
+	</locale>
+
+	<resources>
+		<res id="ProcessPanel.Spec.xml" src="ProcessPanel.Spec.xml"/>
+		<res
+			id="shortcutSpec.xml"
+		src="windows_shortcut_specification.xml" />
+
+		<res id="Installer.image" src="about_vert.gif" />
+	</resources>
+
+
+	<panels>
+		<panel
+			classname="TargetPanel"
+		id="targetpanel" />
+		<panel
+			classname="TreePacksPanel"
+		id="packspanel" />
+		<panel
+			classname="ShortcutPanel"
+		id="shortcutpanel" />
+		<panel
+			classname="InstallPanel"
+		id="installpanel" />
+		<panel
+			classname="ProcessPanel" 
+		id="processpanel"/>
+		<panel
+			classname="SimpleFinishPanel"
+		id="simplefinishpanel" />
+	</panels>
+
+	<!-- <file override="true" -->
+
+	<packs>
+		<pack name="p2installer" 
+			required="yes" 
+			installGroups="Chefclipse" >
+			<description>Reality based configuration management</description>
+			<!--file src="xyz.sh" targetdir="$INSTALL_PATH"/-->
+			<file src="resources" targetdir="$USER_HOME${FILE_SEPARATOR}opt${FILE_SEPARATOR}chefclipse"/>
+			<fileset dir="p2installer" targetdir="$INSTALL_PATH"/>
+			
+			<parsable
+				targetfile="$INSTALL_PATH/p2.sh" type="shell">
+				<!--os family="windows"/-->
+			</parsable>
+			<executable
+				targetfile="$INSTALL_PATH/p2.sh"
+				stage="never"
+				keep="true"
+				>
+				<args>
+					<arg value="badgers" />
+				</args>
+			</executable>
+			<parsable
+				targetfile="$INSTALL_PATH/p2.bat" type="shell">
+				<!--os family="windows"/-->
+			</parsable>
+			<executable
+				targetfile="$INSTALL_PATH/p2.bat"
+				stage="never"
+				keep="true">
+				<args>
+					<arg value="badgers" />
+				</args>
+				<!--os family="windows"/>
+				<arch>x86</arch-->
+			</executable>
+			<executable
+				targetfile="$INSTALL_PATH/director"
+				stage="never"
+				keep="true"
+				>
+				<args></args>
+			</executable>
+			<executable
+				targetfile="$INSTALL_PATH/director.bat"
+				stage="never"
+				keep="true"
+				>
+				<args></args>
+			</executable>
+		</pack>
+
+		<pack name="Chefclipse" 
+			required="no" 
+			parent="p2installer">
+
+			<description>Chefclipse Application</description>
+		</pack>
+	</packs>
+
+	<!-- The native libraries to add. This is required for creating shortcuts on Windows -->
+	<natives>
+		<native
+			type="izpack"
+			name="ShellLink.dll"
+		stage="both" />
+		<native
+			type="izpack"
+			name="ShellLink_x64.dll"
+		stage="both" />
+		<native
+			type="izpack"
+			name="WinSetupAPI.dll"
+		stage="both" />
+		<native
+			type="izpack"
+			name="WinSetupAPI_x64.dll"
+		stage="both" />
+		<native
+			type="3rdparty"
+			name="COIOSHelper.dll"
+		stage="uninstall" />
+		<native
+			type="3rdparty"
+			name="COIOSHelper_x64.dll"
+		stage="uninstall" />
+	</natives>
+
+</installation>

@@ -19,7 +19,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea;
 
 import chefclipse.ui.messages.Messages;
@@ -129,7 +128,7 @@ public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 
 	@Override
 	public IWizardPage getNextPage() {
-		WizardNewProjectCreationPage chefProjectPage = (WizardNewProjectCreationPage) getWizard()
+		NewProjectExistingChefRepoWizardPage chefProjectPage = (NewProjectExistingChefRepoWizardPage) getWizard()
 				.getPage("ExistingRepoNewChefWizardPage1");
 		IProject adaptableItem = chefProjectPage.getProjectHandle();
 		chefConfigPage.setElement(adaptableItem);

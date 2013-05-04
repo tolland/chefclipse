@@ -2,7 +2,7 @@
 <shortcuts>
     <skipIfNotSupported />
     <programGroup defaultName="Chefclipse" location="applications"/>
-
+    
     <shortcut
         name="Chefclipse"
         programGroup="yes"
@@ -10,19 +10,18 @@
         applications="no"
         startMenu="no"
         startup="no"
-        target="$INSTALL_PATH\chefclipse.exe"
-        workingDirectory="$INSTALL_PATH\bin"
+        target="$USER_HOME${FILE_SEPARATOR}opt${FILE_SEPARATOR}chefclipse${FILE_SEPARATOR}${exe_name}"
+        workingDirectory="$USER_HOME${FILE_SEPARATOR}opt${FILE_SEPARATOR}"
         commandLine=""
         initialState="normal"
-        iconFile="$INSTALL_PATH\bin\resources\images\icons\icon.ico"
+        iconFile="$USER_HOME${FILE_SEPARATOR}opt${FILE_SEPARATOR}chefclipse${FILE_SEPARATOR}resources${FILE_SEPARATOR}images${FILE_SEPARATOR}icons${FILE_SEPARATOR}16x16.ico"
         type="Application"
         encoding="UTF-8"
         description="Run Chefclipse Application">
-
-        <createForPack name="Chefclipse Application"/>
+    
+        <createForPack name="Chefclipse"/>
     </shortcut>
-
-    <shortcut
+    <!--shortcut
         name="Chefclipse Uninstaller"
         programGroup="yes"
         desktop="no"
@@ -37,9 +36,7 @@
         type="Application"
         encoding="UTF-8"
         description="Unistall the chefclipse application">
-
+    
         <createForPack name="Chefclipse Application"/>
-    </shortcut>
-
+    </shortcut-->
 </shortcuts>
-
