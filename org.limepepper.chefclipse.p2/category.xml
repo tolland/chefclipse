@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<site>   
+<site>
    <feature url="features/org.limepepper.chefclipse.ui.feature_1.0.0.qualifier.jar" id="org.limepepper.chefclipse.ui.feature" version="1.0.0.qualifier">
-      <category name="org.limepepper.chefclipse.p2.ui.category"/>
-   </feature>
-   <feature url="features/org.limepepper.chefclipse.doc.feature_1.0.0.qualifier.jar" id="org.limepepper.chefclipse.doc.feature" version="1.0.0.qualifier">
       <category name="org.limepepper.chefclipse.p2.ui.category"/>
    </feature>
    <feature url="features/org.limepepper.chefclipse.app.feature_1.0.0.qualifier.jar" id="org.limepepper.chefclipse.app.feature" version="1.0.0.qualifier">

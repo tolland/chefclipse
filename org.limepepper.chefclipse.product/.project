@@ -14,8 +14,6 @@
 		<project>org.limepepper.chefclipse.common.editor</project>
 		<project>org.limepepper.chefclipse.model</project>
 		<project>org.limepepper.chefclipse.devel.feature</project>
-		<project>org.limepepper.chefclipse.doc</project>
-		<project>org.limepepper.chefclipse.doc.feature</project>
 		<project>org.limepepper.chefclipse.graphviewer</project>
 		<project>org.limepepper.chefclipse.navigator</project>
 		<project>org.limepepper.chefclipse.ui.feature</project>
