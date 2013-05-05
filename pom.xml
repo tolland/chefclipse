@@ -40,23 +40,26 @@
 				<module>features/org.limepepper.chefclipse.app.feature</module>
 				<module>features/org.limepepper.chefclipse.devel.feature</module>
 
+				<!-- releng stuff -->
+				<!--module>org.limepepper.chefclipse.releng</module-->
+				<module>org.limepepper.chefclipse.target</module>
+
+				<!-- generated model stuff -->
+				<module>org.limepepper.chefclipse.common</module>
+				<module>org.limepepper.chefclipse.common.edit</module>
+				<module>org.limepepper.chefclipse.common.editor</module>
+
 				<module>org.limepepper.chefclipse.api</module>
 				<module>org.limepepper.chefclipse.app</module>
 				<module>org.limepepper.chefclipse.chefserver.api</module>
 				<module>org.limepepper.chefclipse.chefserver.api.ui</module>
-				<module>org.limepepper.chefclipse.common</module>
-				<module>org.limepepper.chefclipse.common.edit</module>
-				<module>org.limepepper.chefclipse.common.editor</module>
 				<module>org.limepepper.chefclipse.common.ui</module>
 				<module>org.limepepper.chefclipse.utils</module>
-				<module>org.limepepper.chefclipse.editors.cookbook</module>
 				<module>org.limepepper.chefclipse.graphviewer</module>
 				<module>org.limepepper.chefclipse.logger</module>
 				<module>org.limepepper.chefclipse.model</module>
 				<module>org.limepepper.chefclipse.navigator</module>
 				<module>org.limepepper.chefclipse.ui</module>
-				<module>org.limepepper.chefclipse.p2</module>
-				<module>org.limepepper.chefclipse.releng</module>
 				<module>org.limepepper.chefclipse.remotepicker.api</module>
 				<module>org.limepepper.chefclipse.remotepicker.repositories</module>
 				<module>org.limepepper.chefclipse.remotepicker.repositories.ui</module>
@@ -67,8 +70,10 @@
 				<module>org.limepepper.chefclipse.preferences.ui</module>
 				<module>org.limepepper.chefclipse.preferences.test</module>
 				<module>org.limepepper.chefclipse.databag.editor</module>
-				<module>org.limepepper.chefclipse.target</module>
 				<!--module>org.limepepper.eclipse.RubyConsole</module -->
+
+
+				<!-- missing form orbit bundles -->
 				<module>com.sun.jersey.bundle</module>
 			</modules>
 			<build>
