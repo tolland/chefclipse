@@ -61,21 +61,21 @@ public class DataBagItemImpl extends NamedObjectImpl implements DataBagItem {
 		eSet(ChefserverPackage.Literals.DATA_BAG_ITEM__DATA_BAG, newDataBag);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IResource getJsonResource() {
+	public IResource getJsonResource() {
 		return (IResource)eGet(ChefserverPackage.Literals.DATA_BAG_ITEM__JSON_RESOURCE, true);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setJsonResource(IResource newJsonResource) {
+	public void setJsonResource(IResource newJsonResource) {
 		eSet(ChefserverPackage.Literals.DATA_BAG_ITEM__JSON_RESOURCE, newJsonResource);
 	}
 

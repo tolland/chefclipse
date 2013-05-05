@@ -5,7 +5,6 @@ package org.limepepper.chefclipse.tests;
 import java.util.Map;
 
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.ChefclipseFactory;
@@ -21,73 +20,73 @@ import org.limepepper.chefclipse.VersionUrl;
 public class EStringToVersionUrlMapTest extends TestCase {
 
     /**
-     * The fixture for this EString To Version Url Map test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this EString To Version Url Map test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Map.Entry<String, VersionUrl> fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(EStringToVersionUrlMapTest.class);
-    }
+		TestRunner.run(EStringToVersionUrlMapTest.class);
+	}
 
     /**
-     * Constructs a new EString To Version Url Map test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new EString To Version Url Map test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public EStringToVersionUrlMapTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Sets the fixture for this EString To Version Url Map test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this EString To Version Url Map test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected void setFixture(Map.Entry<String, VersionUrl> fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
     /**
-     * Returns the fixture for this EString To Version Url Map test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this EString To Version Url Map test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected Map.Entry<String, VersionUrl> getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     @SuppressWarnings("unchecked")
     protected void setUp() throws Exception {
-        setFixture((Map.Entry<String, VersionUrl>)ChefclipseFactory.eINSTANCE.create(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP));
-    }
+		setFixture((Map.Entry<String, VersionUrl>)ChefclipseFactory.eINSTANCE.create(ChefclipsePackage.Literals.ESTRING_TO_VERSION_URL_MAP));
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //EStringToVersionUrlMapTest

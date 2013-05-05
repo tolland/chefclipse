@@ -26,6 +26,7 @@ import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.tools.ChefUtils;
@@ -173,7 +174,7 @@ public class ServerAPITests {
     }
 
     /*
-     * 
+     *
      * "name":"metadata.rb",
      * "url":
      * "https://s3.amazonaws.com/opscode-platform-production-data/organization-203fc1d14d95451f9fe423d0b8b121d7/checksum-dae935bbc74049333a3a4997211ea470?AWSAccessKeyId=AKIAIN4GUX4PULV7JQSA&Expires=1355431779&Signature=5fdND7dqhIZCxN45qTGlv7o5Of8%3D"
@@ -198,7 +199,7 @@ public class ServerAPITests {
         assertTrue(cookbook.getRecipes().size() > 0);
         assertTrue(cookbook.getRoot_files().size() > 0);
         assertTrue(!cookbook.getVersion().equals(""));
-        for (ServerCookbookFile file : cookbook.getRoot_files()) {
+        for (Root_file file : cookbook.getRoot_files()) {
             logger.debug("chefserver: " + file.getName() + "-->checksum: {}",
                     file.getChecksum());
             if (file.getName().equals("metadata.rb")) {

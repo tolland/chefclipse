@@ -3,11 +3,8 @@
 package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.URLEntryTest;
 import org.limepepper.chefclipse.VersionUrl;
@@ -28,60 +25,60 @@ import org.limepepper.chefclipse.VersionUrl;
  */
 public class VersionUrlImpl extends EObjectImpl implements VersionUrl {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public VersionUrlImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.VERSION_URL;
-    }
+		return ChefclipsePackage.Literals.VERSION_URL;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getUrl() {
-        return (String)eGet(ChefclipsePackage.Literals.VERSION_URL__URL, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.VERSION_URL__URL, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setUrl(String newUrl) {
-        eSet(ChefclipsePackage.Literals.VERSION_URL__URL, newUrl);
-    }
+		eSet(ChefclipsePackage.Literals.VERSION_URL__URL, newUrl);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<URLEntryTest> getVersions() {
-        return (EList<URLEntryTest>)eGet(ChefclipsePackage.Literals.VERSION_URL__VERSIONS, true);
-    }
+		return (EList<URLEntryTest>)eGet(ChefclipsePackage.Literals.VERSION_URL__VERSIONS, true);
+	}
 
 } //VersionUrlImpl

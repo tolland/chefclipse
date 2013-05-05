@@ -3,22 +3,32 @@
 package org.limepepper.chefclipse.impl;
 
 import java.io.File;
-
 import java.net.URL;
-
 import java.util.HashMap;
 import java.util.Map;
+
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.limepepper.chefclipse.*;
+import org.limepepper.chefclipse.ChecksumFile;
+import org.limepepper.chefclipse.ChefclipseFactory;
+import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.MaintainedObject;
+import org.limepepper.chefclipse.MapTestContainer;
+import org.limepepper.chefclipse.NameUrlMap;
+import org.limepepper.chefclipse.NameVersionMap;
+import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.RubyFile;
+import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.URLEntryTest;
+import org.limepepper.chefclipse.VersionUrl;
+import org.limepepper.chefclipse.VersionedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,7 +45,7 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
 	 */
     public static ChefclipseFactory init() {
 		try {
-			ChefclipseFactory theChefclipseFactory = (ChefclipseFactory)EPackage.Registry.INSTANCE.getEFactory(ChefclipsePackage.eNS_URI);
+			ChefclipseFactory theChefclipseFactory = (ChefclipseFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/"); 
 			if (theChefclipseFactory != null) {
 				return theChefclipseFactory;
 			}
@@ -73,7 +83,6 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
 			case ChefclipsePackage.MAINTAINED_OBJECT: return createMaintainedObject();
 			case ChefclipsePackage.CONFIG: return createConfig();
 			case ChefclipsePackage.NAME_URL_MAP: return createNameUrlMap();
-			case ChefclipsePackage.COOKBOOK: return createCookbook();
 			case ChefclipsePackage.MAP_TEST_CONTAINER: return createMapTestContainer();
 			case ChefclipsePackage.ESTRING_TO_VERSION_URL_MAP: return (EObject)createEStringToVersionUrlMap();
 			case ChefclipsePackage.VERSION_URL: return createVersionUrl();
@@ -246,16 +255,6 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
     public NameUrlMap createNameUrlMap() {
 		NameUrlMapImpl nameUrlMap = new NameUrlMapImpl();
 		return nameUrlMap;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public Cookbook createCookbook() {
-		CookbookImpl cookbook = new CookbookImpl();
-		return cookbook;
 	}
 
     /**
@@ -508,23 +507,23 @@ public class ChefclipseFactoryImpl extends EFactoryImpl implements ChefclipseFac
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IResource createIResourceFromString(EDataType eDataType, String initialValue) {
+	public IResource createIResourceFromString(EDataType eDataType, String initialValue) {
 		return (IResource)super.createFromString(eDataType, initialValue);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String convertIResourceToString(EDataType eDataType, Object instanceValue) {
+	public String convertIResourceToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated

@@ -4,9 +4,6 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -30,102 +27,102 @@ import org.limepepper.chefclipse.impl.DescribedObjectImpl;
  */
 public class EnvironmentImpl extends DescribedObjectImpl implements Environment {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public EnvironmentImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefserverPackage.Literals.ENVIRONMENT;
-    }
+		return ChefserverPackage.Literals.ENVIRONMENT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getName() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setName(String newName) {
-        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
-    }
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getID() {
-        return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setID(String newID) {
-        eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
-    }
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @SuppressWarnings("unchecked")
     public EList<String> getOverride_attributes() {
-        return (EList<String>)eGet(ChefserverPackage.Literals.ENVIRONMENT__OVERRIDE_ATTRIBUTES, true);
-    }
+		return (EList<String>)eGet(ChefserverPackage.Literals.ENVIRONMENT__OVERRIDE_ATTRIBUTES, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == NamedObject.class) {
-            switch (derivedFeatureID) {
-                case ChefserverPackage.ENVIRONMENT__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-                case ChefserverPackage.ENVIRONMENT__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
-                default: return -1;
-            }
-        }
-        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-    }
+		if (baseClass == NamedObject.class) {
+			switch (derivedFeatureID) {
+				case ChefserverPackage.ENVIRONMENT__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+				case ChefserverPackage.ENVIRONMENT__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == NamedObject.class) {
-            switch (baseFeatureID) {
-                case ChefclipsePackage.NAMED_OBJECT__NAME: return ChefserverPackage.ENVIRONMENT__NAME;
-                case ChefclipsePackage.NAMED_OBJECT__ID: return ChefserverPackage.ENVIRONMENT__ID;
-                default: return -1;
-            }
-        }
-        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-    }
+		if (baseClass == NamedObject.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.NAMED_OBJECT__NAME: return ChefserverPackage.ENVIRONMENT__NAME;
+				case ChefclipsePackage.NAMED_OBJECT__ID: return ChefserverPackage.ENVIRONMENT__ID;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 } //EnvironmentImpl

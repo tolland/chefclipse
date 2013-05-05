@@ -3,12 +3,25 @@
 package org.limepepper.chefclipse.util;
 
 import java.util.Map;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.limepepper.chefclipse.*;
+import org.limepepper.chefclipse.ChecksumFile;
+import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.MaintainedObject;
+import org.limepepper.chefclipse.MapTestContainer;
+import org.limepepper.chefclipse.NameUrlMap;
+import org.limepepper.chefclipse.NameVersionMap;
+import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.RubyFile;
+import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.URLEntryTest;
+import org.limepepper.chefclipse.VersionUrl;
+import org.limepepper.chefclipse.VersionedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -126,12 +139,6 @@ public class ChefclipseSwitch<T> extends Switch<T> {
 			case ChefclipsePackage.NAME_URL_MAP: {
 				NameUrlMap nameUrlMap = (NameUrlMap)theEObject;
 				T result = caseNameUrlMap(nameUrlMap);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ChefclipsePackage.COOKBOOK: {
-				Cookbook cookbook = (Cookbook)theEObject;
-				T result = caseCookbook(cookbook);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -316,21 +323,6 @@ public class ChefclipseSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
     public T caseNameUrlMap(NameUrlMap object) {
-		return null;
-	}
-
-    /**
-	 * Returns the result of interpreting the object as an instance of '<em>Cookbook</em>'.
-	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Cookbook</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-    public T caseCookbook(Cookbook object) {
 		return null;
 	}
 

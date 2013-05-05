@@ -5,12 +5,24 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.limepepper.chefclipse.common.chefserver.*;
+import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Platform;
+import org.limepepper.chefclipse.common.chefserver.Role;
+import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
+import org.limepepper.chefclipse.common.chefserver.Sandbox;
+import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerConfig;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +39,7 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 	 */
     public static ChefserverFactory init() {
 		try {
-			ChefserverFactory theChefserverFactory = (ChefserverFactory)EPackage.Registry.INSTANCE.getEFactory(ChefserverPackage.eNS_URI);
+			ChefserverFactory theChefserverFactory = (ChefserverFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/chefserver"); 
 			if (theChefserverFactory != null) {
 				return theChefserverFactory;
 			}

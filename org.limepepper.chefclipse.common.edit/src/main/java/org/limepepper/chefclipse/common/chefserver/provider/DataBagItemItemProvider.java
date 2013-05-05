@@ -8,9 +8,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -19,14 +17,11 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
-
 import org.limepepper.chefclipse.provider.NamedObjectItemProvider;
 
 /**
@@ -91,10 +86,10 @@ public class DataBagItemItemProvider
     /**
 	 * This adds a property descriptor for the Json Resource feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addJsonResourcePropertyDescriptor(Object object) {
+	protected void addJsonResourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -110,7 +105,7 @@ public class DataBagItemItemProvider
 				 null));
 	}
 
-    /**
+				/**
 	 * This returns DataBagItem.gif.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

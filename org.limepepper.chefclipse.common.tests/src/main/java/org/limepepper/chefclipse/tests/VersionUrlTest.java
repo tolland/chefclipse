@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.tests;
 
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.ChefclipseFactory;
@@ -18,72 +17,72 @@ import org.limepepper.chefclipse.VersionUrl;
 public class VersionUrlTest extends TestCase {
 
     /**
-     * The fixture for this Version Url test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this Version Url test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected VersionUrl fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(VersionUrlTest.class);
-    }
+		TestRunner.run(VersionUrlTest.class);
+	}
 
     /**
-     * Constructs a new Version Url test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Version Url test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public VersionUrlTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Sets the fixture for this Version Url test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this Version Url test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected void setFixture(VersionUrl fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
     /**
-     * Returns the fixture for this Version Url test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Version Url test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected VersionUrl getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ChefclipseFactory.eINSTANCE.createVersionUrl());
-    }
+		setFixture(ChefclipseFactory.eINSTANCE.createVersionUrl());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //VersionUrlTest

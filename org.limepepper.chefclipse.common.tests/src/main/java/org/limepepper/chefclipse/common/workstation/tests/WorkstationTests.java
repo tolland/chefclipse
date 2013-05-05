@@ -4,7 +4,6 @@ package org.limepepper.chefclipse.common.workstation.tests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
 import junit.textui.TestRunner;
 
 /**
@@ -16,31 +15,31 @@ import junit.textui.TestRunner;
 public class WorkstationTests extends TestSuite {
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-        TestRunner.run(suite());
-    }
+		TestRunner.run(suite());
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static Test suite() {
-        TestSuite suite = new WorkstationTests("workstation Tests");
-        return suite;
-    }
+		TestSuite suite = new WorkstationTests("workstation Tests");
+		return suite;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public WorkstationTests(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
 } //WorkstationTests

@@ -5,12 +5,35 @@ package org.limepepper.chefclipse.REST.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.limepepper.chefclipse.REST.*;
+import org.limepepper.chefclipse.REST.ClientListResp;
+import org.limepepper.chefclipse.REST.ClientResp;
+import org.limepepper.chefclipse.REST.CookbookAttributes;
+import org.limepepper.chefclipse.REST.CookbookDefinition;
+import org.limepepper.chefclipse.REST.CookbookFile;
+import org.limepepper.chefclipse.REST.CookbookLibrary;
+import org.limepepper.chefclipse.REST.CookbookListResp;
+import org.limepepper.chefclipse.REST.CookbookListVersionResp;
+import org.limepepper.chefclipse.REST.CookbookMaintainer;
+import org.limepepper.chefclipse.REST.CookbookMetadata;
+import org.limepepper.chefclipse.REST.CookbookMetadataDependency;
+import org.limepepper.chefclipse.REST.CookbookProviders;
+import org.limepepper.chefclipse.REST.CookbookRecipe;
+import org.limepepper.chefclipse.REST.CookbookResource;
+import org.limepepper.chefclipse.REST.CookbookRootFile;
+import org.limepepper.chefclipse.REST.CookbookTemplate;
+import org.limepepper.chefclipse.REST.CookbookVersionResp;
+import org.limepepper.chefclipse.REST.EnvironmentResp;
+import org.limepepper.chefclipse.REST.JSONObjectResp;
+import org.limepepper.chefclipse.REST.NodeListResp;
+import org.limepepper.chefclipse.REST.NodeResp;
+import org.limepepper.chefclipse.REST.RESTFactory;
+import org.limepepper.chefclipse.REST.RESTPackage;
+import org.limepepper.chefclipse.REST.RoleListResp;
+import org.limepepper.chefclipse.REST.RoleResp;
+import org.limepepper.chefclipse.REST.SearchIndexResp;
+import org.limepepper.chefclipse.REST.SearchResultResp;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +50,7 @@ public class RESTFactoryImpl extends EFactoryImpl implements RESTFactory {
 	 */
     public static RESTFactory init() {
 		try {
-			RESTFactory theRESTFactory = (RESTFactory)EPackage.Registry.INSTANCE.getEFactory(RESTPackage.eNS_URI);
+			RESTFactory theRESTFactory = (RESTFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/REST"); 
 			if (theRESTFactory != null) {
 				return theRESTFactory;
 			}

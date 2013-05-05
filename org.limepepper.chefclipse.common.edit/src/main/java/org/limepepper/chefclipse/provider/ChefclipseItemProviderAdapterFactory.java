@@ -8,7 +8,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -21,7 +20,6 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.limepepper.chefclipse.util.ChefclipseAdapterFactory;
 
 /**
@@ -281,29 +279,6 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 	}
 
     /**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.Cookbook} instances.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected CookbookItemProvider cookbookItemProvider;
-
-    /**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.Cookbook}.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-    public Adapter createCookbookAdapter() {
-		if (cookbookItemProvider == null) {
-			cookbookItemProvider = new CookbookItemProvider(this);
-		}
-
-		return cookbookItemProvider;
-	}
-
-    /**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.MapTestContainer} instances.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -526,7 +501,6 @@ public class ChefclipseItemProviderAdapterFactory extends ChefclipseAdapterFacto
 		if (maintainedObjectItemProvider != null) maintainedObjectItemProvider.dispose();
 		if (configItemProvider != null) configItemProvider.dispose();
 		if (nameUrlMapItemProvider != null) nameUrlMapItemProvider.dispose();
-		if (cookbookItemProvider != null) cookbookItemProvider.dispose();
 		if (mapTestContainerItemProvider != null) mapTestContainerItemProvider.dispose();
 		if (eStringToVersionUrlMapItemProvider != null) eStringToVersionUrlMapItemProvider.dispose();
 		if (versionUrlItemProvider != null) versionUrlItemProvider.dispose();

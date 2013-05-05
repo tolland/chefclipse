@@ -4,19 +4,30 @@ package org.limepepper.chefclipse.common.chefserver.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.Cookbook;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
-
 import org.limepepper.chefclipse.SandboxedObject;
-import org.limepepper.chefclipse.common.chefserver.*;
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Platform;
+import org.limepepper.chefclipse.common.chefserver.Role;
+import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
+import org.limepepper.chefclipse.common.chefserver.Sandbox;
+import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerConfig;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
  * <!-- begin-user-doc -->
@@ -153,6 +164,10 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCookbook(Cookbook object) {
 				return createCookbookAdapter();
+			}
+			@Override
+			public Adapter caseCookbookVersion(CookbookVersion object) {
+				return createCookbookVersionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -441,13 +456,13 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 	}
 
     /**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Cookbook <em>Cookbook</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.cookbook.Cookbook <em>Cookbook</em>}'.
 	 * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.Cookbook
+	 * @see org.limepepper.chefclipse.common.cookbook.Cookbook
 	 * @generated
 	 */
     public Adapter createCookbookAdapter() {
@@ -455,6 +470,20 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 	}
 
     /**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion
+	 * @generated
+	 */
+	public Adapter createCookbookVersionAdapter() {
+		return null;
+	}
+
+				/**
 	 * Creates a new adapter for the default case.
 	 * <!-- begin-user-doc -->
      * This default implementation returns null.

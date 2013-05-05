@@ -3,23 +3,21 @@
 package org.limepepper.chefclipse.impl;
 
 import java.io.File;
-
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipseFactory;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.Config;
-import org.limepepper.chefclipse.Cookbook;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.MapTestContainer;
@@ -27,35 +25,22 @@ import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.NameVersionMap;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
-
-import org.limepepper.chefclipse.REST.RESTPackage;
-
-import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
-
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.URLEntryTest;
 import org.limepepper.chefclipse.VersionUrl;
 import org.limepepper.chefclipse.VersionedObject;
-
+import org.limepepper.chefclipse.REST.RESTPackage;
+import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
-
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-
 import org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-
 import org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl;
-
 import org.limepepper.chefclipse.common.knife.KnifePackage;
-
 import org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl;
-
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
-
 import org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl;
 
 /**
@@ -134,13 +119,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 	 * @generated
 	 */
     private EClass nameUrlMapEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass cookbookEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -256,12 +234,19 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EDataType iResourceEDataType = null;
+	private EDataType iResourceEDataType = null;
 
-    /**
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType eInputStreamEDataType = null;
+
+				/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -626,33 +611,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getCookbook() {
-		return cookbookEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EAttribute getCookbook_Json_class() {
-		return (EAttribute)cookbookEClass.getEStructuralFeatures().get(0);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EAttribute getCookbook_Chef_type() {
-		return (EAttribute)cookbookEClass.getEStructuralFeatures().get(1);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EClass getMapTestContainer() {
 		return mapTestContainerEClass;
 	}
@@ -857,14 +815,23 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EDataType getIResource() {
+	public EDataType getIResource() {
 		return iResourceEDataType;
 	}
 
-    /**
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getEInputStream() {
+		return eInputStreamEDataType;
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -933,10 +900,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		nameUrlMapEClass = createEClass(NAME_URL_MAP);
 		createEReference(nameUrlMapEClass, NAME_URL_MAP__ENTRIES);
 
-		cookbookEClass = createEClass(COOKBOOK);
-		createEAttribute(cookbookEClass, COOKBOOK__JSON_CLASS);
-		createEAttribute(cookbookEClass, COOKBOOK__CHEF_TYPE);
-
 		mapTestContainerEClass = createEClass(MAP_TEST_CONTAINER);
 		createEAttribute(mapTestContainerEClass, MAP_TEST_CONTAINER__ENTRIES);
 
@@ -967,6 +930,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		nameUrlDataTypeEDataType = createEDataType(NAME_URL_DATA_TYPE);
 		mapTestEDataType = createEDataType(MAP_TEST);
 		iResourceEDataType = createEDataType(IRESOURCE);
+		eInputStreamEDataType = createEDataType(EINPUT_STREAM);
 	}
 
     /**
@@ -1058,10 +1022,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		initEClass(nameUrlMapEClass, NameUrlMap.class, "NameUrlMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNameUrlMap_Entries(), ecorePackage.getEStringToStringMapEntry(), null, "entries", null, 0, -1, NameUrlMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(cookbookEClass, Cookbook.class, "Cookbook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCookbook_Json_class(), ecorePackage.getEString(), "json_class", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCookbook_Chef_type(), ecorePackage.getEString(), "chef_type", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(mapTestContainerEClass, MapTestContainer.class, "MapTestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMapTestContainer_Entries(), this.getMapTest(), "entries", null, 0, -1, MapTestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1092,6 +1052,7 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		initEDataType(nameUrlDataTypeEDataType, Object.class, "NameUrlDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(mapTestEDataType, HashMap.class, "MapTest", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(iResourceEDataType, IResource.class, "IResource", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(eInputStreamEDataType, InputStream.class, "EInputStream", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

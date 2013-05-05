@@ -16,74 +16,76 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.common.chefserver.Environment;
-import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
+
+import chefclipse.core.providers.ChefProjectAdapterFactory;
 
 public class EnvironmentTable extends Composite {
 
-    private TableViewer tableViewer;
-    private Table table;
-    private ChefServerApi api;
-    
-	public EnvironmentTable(Composite parent,ChefServerApi api) {
-		super(parent, SWT.NONE);
-        setLayout(new FillLayout());
-        
-    	this.api=api;
-        
-        tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
-                | SWT.V_SCROLL);
+	private TableViewer tableViewer;
+	private Table table;
+	private ChefServerApi api;
 
-        tableViewer.setContentProvider(new EnvironmentContentProvider());
-        tableViewer.setLabelProvider(new EnvironmentLabelProvider());
-        tableViewer.setSorter(new NameSorter());
-        tableViewer.getTable().setLinesVisible(true);
-        tableViewer.setInput(api.getEnvironments());
+	public EnvironmentTable(Composite parent, ChefServerApi api) {
+		super(parent, SWT.NONE);
+		setLayout(new FillLayout());
+
+		this.api = api;
+
+		tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL);
+
+		tableViewer.setContentProvider(new EnvironmentContentProvider());
+		tableViewer.setLabelProvider(new EnvironmentLabelProvider());
+		tableViewer.setSorter(new NameSorter());
+		tableViewer.getTable().setLinesVisible(true);
+		tableViewer.setInput(api.getEnvironments());
 	}
 
-    class NameSorter extends ViewerSorter {
-    }
-    
-    class EnvironmentLabelProvider extends AdapterFactoryLabelProvider {
+	class NameSorter extends ViewerSorter {
+	}
 
-        public EnvironmentLabelProvider() {
-            super(ChefProjectAdapterFactory.getAdapterFactory());
-        }
+	class EnvironmentLabelProvider extends AdapterFactoryLabelProvider {
 
-        public String getText(Object element) {
+		public EnvironmentLabelProvider() {
+			super(ChefProjectAdapterFactory.getAdapterFactory());
+		}
 
-            return super.getText(element);
-        }
+		public String getText(Object element) {
 
-        public String getColumnText(Object obj, int index) {
-            return getText(obj);
-        }
+			return super.getText(element);
+		}
 
-        public Image getColumnImage(Object obj, int index) {
-            return getImage(obj);
-        }
-        public Image getImage(Object obj) {
-            return PlatformUI.getWorkbench().getSharedImages()
-                    .getImage(ISharedImages.IMG_OBJ_ELEMENT);
-        }
-    }
-    
-    class EnvironmentContentProvider extends AdapterFactoryContentProvider {
-    	EnvironmentContentProvider() {
-            super(ChefProjectAdapterFactory.getAdapterFactory());
-        }
+		public String getColumnText(Object obj, int index) {
+			return getText(obj);
+		}
 
-        @Override
-        public void dispose() {
-        }
+		public Image getColumnImage(Object obj, int index) {
+			return getImage(obj);
+		}
 
-        @Override
-        public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-        }
+		public Image getImage(Object obj) {
+			return PlatformUI.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_ELEMENT);
+		}
+	}
 
-        @Override
-        public Object[] getElements(Object inputElement) {
-        	List<Environment> environments = (List<Environment>)inputElement;
-        	return environments.toArray(new Environment[environments.size()]);
-        }
-    }
+	class EnvironmentContentProvider extends AdapterFactoryContentProvider {
+		EnvironmentContentProvider() {
+			super(ChefProjectAdapterFactory.getAdapterFactory());
+		}
+
+		@Override
+		public void dispose() {
+		}
+
+		@Override
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		}
+
+		@Override
+		public Object[] getElements(Object inputElement) {
+			List<Environment> environments = (List<Environment>) inputElement;
+			return environments.toArray(new Environment[environments.size()]);
+		}
+	}
 }

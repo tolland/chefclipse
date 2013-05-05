@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.REST;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

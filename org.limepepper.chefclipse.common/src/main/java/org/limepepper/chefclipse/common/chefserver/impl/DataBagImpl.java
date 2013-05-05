@@ -116,23 +116,23 @@ public class DataBagImpl extends DescribedObjectImpl implements DataBag {
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public IResource getResource() {
+	public IResource getResource() {
 		return (IResource)eGet(ChefserverPackage.Literals.DATA_BAG__RESOURCE, true);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setResource(IResource newResource) {
+	public void setResource(IResource newResource) {
 		eSet(ChefserverPackage.Literals.DATA_BAG__RESOURCE, newResource);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated

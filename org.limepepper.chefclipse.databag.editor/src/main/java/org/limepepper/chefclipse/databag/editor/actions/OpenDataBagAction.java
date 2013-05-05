@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.databag.editor.actions;
 
@@ -13,13 +13,14 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorInput;
 import org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor;
 
+import chefclipse.core.managers.ChefRepositoryManager;
+
 /**
  * Action to open the Data Bag editor.
- * 
+ *
  * @author Sebastian Sampaoli
  *
  */
@@ -34,7 +35,7 @@ public class OpenDataBagAction extends Action {
         this.selectionProvider = selectionProvider;
         this.page = page;
     }
-    
+
     @Override
     public boolean isEnabled() {
         ISelection sel = selectionProvider.getSelection();
@@ -59,7 +60,7 @@ public class OpenDataBagAction extends Action {
     private boolean isDataBagOrDataBagItem(Object firstElement) {
         return (firstElement instanceof DataBag || firstElement instanceof DataBagItem);
     }
-    
+
     @Override
     public void run() {
         if (eObject != null) {

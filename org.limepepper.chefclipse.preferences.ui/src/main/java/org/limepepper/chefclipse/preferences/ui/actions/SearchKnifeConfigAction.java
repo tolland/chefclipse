@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.preferences.ui.actions;
 
@@ -29,12 +29,13 @@ import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.preferences.ui.Activator;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.messages.Messages;
 
 /**
  * Shows a dialog for selecting a knife config file and create
  * a {@link KnifeConfig} from the selected file.
- * 
+ *
  * @author Sebastian Sampaoli
  *
  */
@@ -45,18 +46,18 @@ public class SearchKnifeConfigAction extends Action {
     private final static Charset ENCODING = StandardCharsets.UTF_8;
 
     private Shell shell;
-    
+
     private KnifeConfig generatedKnifeConfig;
 
     public SearchKnifeConfigAction() {
 
     }
-    
+
     public SearchKnifeConfigAction(Shell shell) {
         this.shell = shell;
         this.setText(Messages.ChefConfigurationPreferencePage_SearchButton);
     }
-    
+
 
     @Override
     public void run() {
@@ -71,7 +72,7 @@ public class SearchKnifeConfigAction extends Action {
         } else {
             dialog.setFilterPath(homefolder);
         }
-        String fileName = dialog.getFilterPath() + File.separator + DEFAULT_KNIFE_FILE; 
+        String fileName = dialog.getFilterPath() + File.separator + DEFAULT_KNIFE_FILE;
         dialog.setFileName(fileName);
         String selected = dialog.open();
         if (selected != null && !selected.isEmpty()) {
@@ -89,7 +90,7 @@ public class SearchKnifeConfigAction extends Action {
 
     /**
      * Parses the file passed as a parameter and generate a {@link KnifeConfig}.
-     * 
+     *
      * @param knifeConfigFile
      * @return a knifeConfig
      */
@@ -97,7 +98,7 @@ public class SearchKnifeConfigAction extends Action {
         KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
         knifeConfig.setCache_option(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_CACHE_OPTIONS));
         knifeConfig.setCache_type(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_CACHE_TYPE));
-        
+
         String urlValue = parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_CHEF_SERVER_URL);
         URL chefServerUrl;
         try {
@@ -108,27 +109,27 @@ public class SearchKnifeConfigAction extends Action {
             Platform.getLog(Activator.getDefault().getBundle()).log(status );
         }
         knifeConfig.setNode_name(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_NODE_NAME));
-        
+
         String clientKeyValue = parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_CLIENT_KEY);
         File clientKeyFile = new File(clientKeyValue);
         knifeConfig.setClient_key(clientKeyFile);
-        
+
         String cookbookPathValue = parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_COOKBOOK_PATH);
         File cookbookPathPath = new File(cookbookPathValue);
         knifeConfig.setCookbook_path(cookbookPathPath);
-        
+
         knifeConfig.setCookbook_copyright(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_COOKBOOK_COPYRIGHT));
         knifeConfig.setCookbook_email(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_COOKBOOK_EMAIL));
         knifeConfig.setCookbook_license(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_COOKBOOK_LICENSE));
         knifeConfig.setValidation_client_name(parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_VALIDATION_CLIENT_NAME));
-        
+
         String validationKeyValue = parseFileAndGetPropertyValue(knifeConfigFile, PreferenceConstants.P_VALIDATION_KEY);
         File validationKeyFile = new File(validationKeyValue);
         knifeConfig.setValidation_key(validationKeyFile);
 
         return knifeConfig;
     }
-    
+
     private String parseFileAndGetPropertyValue(File knifeConfigFile, String variable) {
         Path path = Paths.get(knifeConfigFile.getAbsolutePath());
         Pattern pattern = Pattern.compile("\\s*" + variable + "\\s+?\\[?[\\s]*?\"(.+?)[\\s]*?\\]?\"");

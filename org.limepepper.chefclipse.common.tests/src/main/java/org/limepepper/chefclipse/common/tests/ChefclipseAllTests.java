@@ -4,8 +4,9 @@ package org.limepepper.chefclipse.common.tests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
-
 import junit.textui.TestRunner;
+
+import org.limepepper.chefclipse.common.cookbook.tests.CookbookTests;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,31 +17,32 @@ import junit.textui.TestRunner;
 public class ChefclipseAllTests extends TestSuite {
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-        TestRunner.run(suite());
-    }
+		TestRunner.run(suite());
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static Test suite() {
-        TestSuite suite = new ChefclipseAllTests("Chefclipse Tests");
-        return suite;
-    }
+		TestSuite suite = new ChefclipseAllTests("Chefclipse Tests");
+		suite.addTest(CookbookTests.suite());
+		return suite;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public ChefclipseAllTests(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
 } //ChefclipseAllTests

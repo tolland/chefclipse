@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.tests;
 
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.ChefclipseFactory;
@@ -18,72 +17,72 @@ import org.limepepper.chefclipse.MapTestContainer;
 public class MapTestContainerTest extends TestCase {
 
     /**
-     * The fixture for this Map Test Container test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this Map Test Container test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected MapTestContainer fixture = null;
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public static void main(String[] args) {
-        TestRunner.run(MapTestContainerTest.class);
-    }
+		TestRunner.run(MapTestContainerTest.class);
+	}
 
     /**
-     * Constructs a new Map Test Container test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Map Test Container test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public MapTestContainerTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
     /**
-     * Sets the fixture for this Map Test Container test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this Map Test Container test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected void setFixture(MapTestContainer fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
     /**
-     * Returns the fixture for this Map Test Container test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Map Test Container test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     protected MapTestContainer getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
     @Override
     protected void setUp() throws Exception {
-        setFixture(ChefclipseFactory.eINSTANCE.createMapTestContainer());
-    }
+		setFixture(ChefclipseFactory.eINSTANCE.createMapTestContainer());
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
     @Override
     protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //MapTestContainerTest

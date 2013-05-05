@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.VersionedObject;
 
@@ -25,59 +23,59 @@ import org.limepepper.chefclipse.VersionedObject;
  */
 public class VersionedObjectImpl extends EObjectImpl implements VersionedObject {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public VersionedObjectImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return ChefclipsePackage.Literals.VERSIONED_OBJECT;
-    }
+		return ChefclipsePackage.Literals.VERSIONED_OBJECT;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public Integer getNUM_VERSIONS() {
-        return (Integer)eGet(ChefclipsePackage.Literals.VERSIONED_OBJECT__NUM_VERSIONS, true);
-    }
+		return (Integer)eGet(ChefclipsePackage.Literals.VERSIONED_OBJECT__NUM_VERSIONS, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getVersion() {
-        return (String)eGet(ChefclipsePackage.Literals.VERSIONED_OBJECT__VERSION, true);
-    }
+		return (String)eGet(ChefclipsePackage.Literals.VERSIONED_OBJECT__VERSION, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setVersion(String newVersion) {
-        eSet(ChefclipsePackage.Literals.VERSIONED_OBJECT__VERSION, newVersion);
-    }
+		eSet(ChefclipsePackage.Literals.VERSIONED_OBJECT__VERSION, newVersion);
+	}
 
 } //VersionedObjectImpl

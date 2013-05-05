@@ -6,7 +6,6 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-
 import org.limepepper.chefclipse.tests.DescribedObjectTest;
 
 /**
@@ -18,55 +17,55 @@ import org.limepepper.chefclipse.tests.DescribedObjectTest;
 public class CookbookVersionTest extends DescribedObjectTest {
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-        TestRunner.run(CookbookVersionTest.class);
-    }
+		TestRunner.run(CookbookVersionTest.class);
+	}
 
 	/**
-     * Constructs a new Version test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Version test case with the given name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public CookbookVersionTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
 	/**
-     * Returns the fixture for this Version test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Version test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected CookbookVersion getFixture() {
-        return (CookbookVersion)fixture;
-    }
+		return (CookbookVersion)fixture;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
 	@Override
 	protected void setUp() throws Exception {
-        setFixture(CookbookFactory.eINSTANCE.createCookbookVersion());
-    }
+		setFixture(CookbookFactory.eINSTANCE.createCookbookVersion());
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
 	@Override
 	protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //CookbookVersionTest

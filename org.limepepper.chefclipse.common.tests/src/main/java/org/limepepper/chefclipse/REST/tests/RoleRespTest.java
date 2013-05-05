@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.REST.tests;
 
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.REST.RESTFactory;
@@ -18,72 +17,72 @@ import org.limepepper.chefclipse.REST.RoleResp;
 public class RoleRespTest extends TestCase {
 
 	/**
-     * The fixture for this Role Resp test case.
-     * <!-- begin-user-doc -->
+	 * The fixture for this Role Resp test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected RoleResp fixture = null;
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-        TestRunner.run(RoleRespTest.class);
-    }
+		TestRunner.run(RoleRespTest.class);
+	}
 
 	/**
-     * Constructs a new Role Resp test case with the given name.
-     * <!-- begin-user-doc -->
+	 * Constructs a new Role Resp test case with the given name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public RoleRespTest(String name) {
-        super(name);
-    }
+		super(name);
+	}
 
 	/**
-     * Sets the fixture for this Role Resp test case.
-     * <!-- begin-user-doc -->
+	 * Sets the fixture for this Role Resp test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected void setFixture(RoleResp fixture) {
-        this.fixture = fixture;
-    }
+		this.fixture = fixture;
+	}
 
 	/**
-     * Returns the fixture for this Role Resp test case.
-     * <!-- begin-user-doc -->
+	 * Returns the fixture for this Role Resp test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected RoleResp getFixture() {
-        return fixture;
-    }
+		return fixture;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#setUp()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
 	@Override
 	protected void setUp() throws Exception {
-        setFixture(RESTFactory.eINSTANCE.createRoleResp());
-    }
+		setFixture(RESTFactory.eINSTANCE.createRoleResp());
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see junit.framework.TestCase#tearDown()
-     * @generated
-     */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
 	@Override
 	protected void tearDown() throws Exception {
-        setFixture(null);
-    }
+		setFixture(null);
+	}
 
 } //RoleRespTest

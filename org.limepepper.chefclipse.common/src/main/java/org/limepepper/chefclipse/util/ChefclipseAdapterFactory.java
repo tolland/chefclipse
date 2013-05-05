@@ -3,14 +3,26 @@
 package org.limepepper.chefclipse.util;
 
 import java.util.Map;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.limepepper.chefclipse.*;
+import org.limepepper.chefclipse.ChecksumFile;
+import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.MaintainedObject;
+import org.limepepper.chefclipse.MapTestContainer;
+import org.limepepper.chefclipse.NameUrlMap;
+import org.limepepper.chefclipse.NameVersionMap;
+import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.RubyFile;
+import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.URLEntryTest;
+import org.limepepper.chefclipse.VersionUrl;
+import org.limepepper.chefclipse.VersionedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -107,10 +119,6 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseNameUrlMap(NameUrlMap object) {
 				return createNameUrlMapAdapter();
-			}
-			@Override
-			public Adapter caseCookbook(Cookbook object) {
-				return createCookbookAdapter();
 			}
 			@Override
 			public Adapter caseMapTestContainer(MapTestContainer object) {
@@ -289,20 +297,6 @@ public class ChefclipseAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
     public Adapter createNameUrlMapAdapter() {
-		return null;
-	}
-
-    /**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Cookbook <em>Cookbook</em>}'.
-	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.Cookbook
-	 * @generated
-	 */
-    public Adapter createCookbookAdapter() {
 		return null;
 	}
 

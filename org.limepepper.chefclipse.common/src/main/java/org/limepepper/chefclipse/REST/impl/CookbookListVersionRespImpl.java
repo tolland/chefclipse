@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.REST.CookbookListVersionResp;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -25,68 +23,68 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class CookbookListVersionRespImpl extends EObjectImpl implements CookbookListVersionResp {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookListVersionRespImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP;
-    }
+		return RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getUrl() {
-        return (String)eGet(RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP__URL, true);
-    }
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP__URL, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setUrl(String newUrl) {
-        eSet(RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP__URL, newUrl);
-    }
+		eSet(RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP__URL, newUrl);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public String getVersion() {
-        return (String)eGet(RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION, true);
-    }
+		return (String)eGet(RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION, true);
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public void setVersion(String newVersion) {
-        eSet(RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION, newVersion);
-    }
+		eSet(RESTPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION, newVersion);
+	}
 
 } //CookbookListVersionRespImpl

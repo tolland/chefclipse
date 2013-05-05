@@ -47,9 +47,15 @@ public class ChefUtils {
     }
 
     public static String convertStreamToString(java.io.InputStream is) {
-        java.util.Scanner s = new java.util.Scanner(is, "UTF-8")
-                .useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
+
+		java.util.Scanner s1 = new java.util.Scanner(is, "UTF-8");
+
+		java.util.Scanner s = s1.useDelimiter("\\A");
+		String returnString = s.hasNext() ? s.next() : "";
+		s1.close();
+		s.close();
+		return returnString;
+
     }
 
 }

@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.common;bundle-version="0.1.0",
  org.eclipse.ui.navigator;bundle-version="3.5.200",
  org.limepepper.chefclipse.api;bundle-version="0.1.0",
- org.limepepper.chefclipse.common.ui;bundle-version="0.1.0",
+ chefclipse.ui;bundle-version="0.1.0",
  org.limepepper.chefclipse.remotepicker.api;bundle-version="0.1.0",
  org.limepepper.chefclipse.preferences.api;bundle-version="0.1.0",
  org.junit;bundle-version="4.10.0",
@@ -19,7 +19,6 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse.ui,
- org.limepepper.chefclipse.ui.perspective,
- org.limepepper.chefclipse.ui.properties,
+ org.limepepper.chefclipse.ui.perspectives,
  org.limepepper.chefclipse.ui.wizards
 Bundle-ClassPath: .

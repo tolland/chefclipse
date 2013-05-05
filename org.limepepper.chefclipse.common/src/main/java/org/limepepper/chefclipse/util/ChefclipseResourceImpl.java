@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.util;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 
 /**
  * <!-- begin-user-doc -->

@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.workstation;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +13,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface RolesFolder extends EObject {
+public interface RolesFolder extends WorkstationFolder {
 } // RolesFolder

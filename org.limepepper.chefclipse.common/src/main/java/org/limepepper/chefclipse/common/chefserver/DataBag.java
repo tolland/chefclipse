@@ -69,31 +69,31 @@ public interface DataBag extends NamedDescribedObject {
 	 */
     EList<DataBagItem> getItems();
 
-    /**
+				/**
 	 * Returns the value of the '<em><b>Resource</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Resource</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Resource</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resource</em>' attribute.
 	 * @see #setResource(IResource)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBag_Resource()
 	 * @model default="" dataType="org.limepepper.chefclipse.IResource" required="true"
 	 * @generated
 	 */
-    IResource getResource();
+	IResource getResource();
 
-    /**
+				/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBag#getResource <em>Resource</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Resource</em>' attribute.
 	 * @see #getResource()
 	 * @generated
 	 */
-    void setResource(IResource value);
+	void setResource(IResource value);
 
 } // DataBag

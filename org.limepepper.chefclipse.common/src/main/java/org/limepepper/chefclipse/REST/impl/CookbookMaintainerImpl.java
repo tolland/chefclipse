@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.REST.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.REST.CookbookMaintainer;
 import org.limepepper.chefclipse.REST.RESTPackage;
 
@@ -20,32 +18,32 @@ import org.limepepper.chefclipse.REST.RESTPackage;
  */
 public class CookbookMaintainerImpl extends EObjectImpl implements CookbookMaintainer {
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     public CookbookMaintainerImpl() {
-        super();
-    }
+		super();
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected EClass eStaticClass() {
-        return RESTPackage.Literals.COOKBOOK_MAINTAINER;
-    }
+		return RESTPackage.Literals.COOKBOOK_MAINTAINER;
+	}
 
     /**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
     @Override
     protected int eStaticFeatureCount() {
-        return 0;
-    }
+		return 0;
+	}
 
 } //CookbookMaintainerImpl

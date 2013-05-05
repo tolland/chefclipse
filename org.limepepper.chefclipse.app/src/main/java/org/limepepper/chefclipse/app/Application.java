@@ -35,7 +35,7 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.StatusUtil;
 import org.eclipse.ui.internal.ide.application.DelayedEventsProcessor;
 import org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor;
-import org.limepepper.chefclipse.ui.perspective.ChefPerspectiveFactory;
+import chefclipse.ui.perspectives.ChefPerspectiveFactory;
 
 public class Application implements IApplication, IExecutableExtension {
 

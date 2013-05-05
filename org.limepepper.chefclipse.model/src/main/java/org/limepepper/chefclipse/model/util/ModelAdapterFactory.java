@@ -6,7 +6,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.limepepper.chefclipse.model.*;
 import org.limepepper.chefclipse.model.ChangeTracker;
 import org.limepepper.chefclipse.model.ChefContainer;
 import org.limepepper.chefclipse.model.ChefFile;
@@ -19,6 +18,7 @@ import org.limepepper.chefclipse.model.ChefResource;
 import org.limepepper.chefclipse.model.ChefServer;
 import org.limepepper.chefclipse.model.ChefWorkspace;
 import org.limepepper.chefclipse.model.CookbookFolder;
+import org.limepepper.chefclipse.model.DataBagsFolder;
 import org.limepepper.chefclipse.model.ModelPackage;
 
 /**

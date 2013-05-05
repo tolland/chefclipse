@@ -39,11 +39,12 @@ import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.common.ui.providers.ChefProjectAdapterFactory;
 import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory;
 import org.limepepper.chefclipse.tools.EMFUtils;
+
+import chefclipse.core.providers.ChefProjectAdapterFactory;
 
 /**
  * This sample class demonstrates how to plug-in a new

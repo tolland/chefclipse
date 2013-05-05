@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.preferences.ui.dialogs;
 
@@ -36,12 +36,13 @@ import org.limepepper.chefclipse.preferences.ui.Activator;
 import org.limepepper.chefclipse.preferences.ui.preferences.AddChefConfigurationPreferencePage;
 import org.limepepper.chefclipse.preferences.ui.preferences.ChefConfigurationPreferenceStore;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
-import org.limepepper.chefclipse.ui.Messages;
+
+import chefclipse.ui.messages.Messages;
 
 /**
  * Dialog which allow to create and add a new Chef configuration or edit an
  * existing one.
- * 
+ *
  * @author Sebastian Sampaoli
  *
  */
@@ -61,10 +62,10 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		this.addMode = addMode;
 		urlValidator = new UrlValidator();
 	}
-	
+
 	/**
 	 * Create a dummy and temporary preference store.
-	 * 
+	 *
 	 * @param knifeConfig
 	 * @return
 	 */
@@ -88,11 +89,11 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_KEY, validation_key != null ? validation_key.getAbsolutePath() : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		return preferenceStore;
 	}
-	
+
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		Composite parentComposite = (Composite) super.createDialogArea(parent);
-		
+
 		if (addMode){
 			setTitle(Messages.AddChefConfigurationPreferencePage_AddConfigTitle);
 			setMessage(Messages.AddChefConfigurationPreferencePage_AddConfigDesc);
@@ -100,7 +101,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 			setTitle(Messages.AddChefConfigurationPreferencePage_editConfigTitle);
 			setMessage(Messages.AddChefConfigurationPreferencePage_editConfigDesc);
 		}
-				
+
 		Composite composite = new Composite(parentComposite, SWT.NONE);
 		GridLayoutFactory.swtDefaults().equalWidth(false).numColumns(1).applyTo(composite);
 		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).applyTo(composite);
@@ -109,10 +110,10 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		preferencePage.setMessage(this.getMessage());
 		preferencePage.setContainer(this);
 		preferencePage.createControl(composite);
-		
+
 		return composite;
 	}
-	
+
 	/**
 	 * Create a knife config based on the preference store's content.
 	 * @return
@@ -123,42 +124,42 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		try {
 			createdKnifeConfig.setChef_server_url(new URL(stringURL));
 		} catch (MalformedURLException e) {
-			
+
 		};
-		
+
 		createdKnifeConfig.setNode_name(preferenceStore.getString(PreferenceConstants.P_NODE_NAME));
-		
+
 		String clientPath = preferenceStore.getString(PreferenceConstants.P_CLIENT_KEY);
 		createdKnifeConfig.setClient_key(getFileOrNull(clientPath));
-		
+
 		String cookbookPath = preferenceStore.getString(PreferenceConstants.P_COOKBOOK_PATH);
 		createdKnifeConfig.setCookbook_path(getFileOrNull(cookbookPath));
-		
+
 		createdKnifeConfig.setValidation_client_name(preferenceStore.getString(PreferenceConstants.P_VALIDATION_CLIENT_NAME));
-		
+
 		String validationKey = preferenceStore.getString(PreferenceConstants.P_VALIDATION_KEY);
 		createdKnifeConfig.setValidation_key(getFileOrNull(validationKey));
-		
+
 		IEclipsePreferences workspacePreferences = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
 		String cookbookCopyright = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_COPYRIGHT, "");
 		createdKnifeConfig.setCookbook_copyright(cookbookCopyright);
-		
+
 		String cookbookEmail = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_EMAIL, "");
         createdKnifeConfig.setCookbook_email(cookbookEmail);
-        
+
         String cookbookLicense = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_LICENSE, "");
         createdKnifeConfig.setCookbook_license(cookbookLicense);
-        
+
         String cacheType = workspacePreferences.get(PreferenceConstants.P_CACHE_TYPE, "");
         createdKnifeConfig.setCache_type(cacheType);
-        
+
         String cacheOptions = workspacePreferences.get(PreferenceConstants.P_CACHE_OPTIONS, "");
         createdKnifeConfig.setCache_option(cacheOptions);
-        
+
 //      TODO there is a lack of the attribute below in the model (add it?)...
 //        String sslVerifyMode = workspacePreferences.get(PreferenceConstants.P_SSL_VERIFY_MODE, "");
 //        createdKnifeConfig.set
-		
+
 		return createdKnifeConfig;
 	}
 
@@ -178,25 +179,25 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		Control bar = super.createButtonBar(parent);
 		return bar;
 	}
-	
+
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
 		super.createButton(parent, TEST_BUTTON_ID,
 				"Test Connection", false); //$NON-NLS-1$
 		super.createButtonsForButtonBar(parent);
-		
+
 		updateButtons();
 	}
-	
+
 	@Override
 	protected void buttonPressed(int buttonId) {
 		super.buttonPressed(buttonId);
-		
+
 		if (buttonId == TEST_BUTTON_ID) {
 			testConnection();
 		}
 	}
-	
+
 	@Override
 	protected void okPressed() {
 		if (preferencePage.isValid()){
@@ -222,16 +223,16 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 				public void run(IProgressMonitor monitor) throws InvocationTargetException,
 						InterruptedException {
 					monitor.beginTask(Messages.AddChefConfigurationPreferencePage_TestingConnection, IProgressMonitor.UNKNOWN);
-					
+
 					if (hasKey(knifeConfig)) {
 						ChefServerApi server = KnifeConfigController.INSTANCE.getServer((KnifeConfig) knifeConfig);
-						
+
 						try {
 							final String info = server.getServerInfo();
-							
+
 							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionSuccessful, Messages.AddChefConfigurationPreferencePage_TestingConnectionMsg + info, MessageDialog.INFORMATION);
 						} catch (final Exception e) {
-							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionError, Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj1 + 
+							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionError, Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj1 +
 											e + "\n", MessageDialog.ERROR ); //$NON-NLS-1$
 						}
 					} else {
@@ -257,7 +258,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 			}
 		});
 	}
-	
+
 	private boolean hasKey(Config knifeConfig) {
 		File client_key = knifeConfig.getClient_key();
 		return (client_key != null && client_key.exists() && client_key.canRead());
@@ -312,7 +313,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 
 	@Override
 	public void updateTitle() {
-		
+
 	}
 
 	public boolean isValid() {
@@ -322,5 +323,5 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
-	
+
 }
