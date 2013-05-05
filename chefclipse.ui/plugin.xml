@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+  <!-- =================================================================================== -->
+  <!-- org.eclipse.ui.commands -->
+  <!-- chefclipse commands category -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.commands">
+    <category
+    	name="%category.name"
+    	id="chefclipse.ui.commands.category">
+    </category>
+    <command categoryId="chefclipse.ui.commands.category"
+    	description="%command.description" id="chefclipse.ui.commands.compare"
+    	name="%command.name">
+    </command>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- org.eclipse.ui.handlers -->
+  <!-- =================================================================================== -->
+
+  <extension
+    point="org.eclipse.ui.handlers">
+    <handler
+    	class="chefclipse.ui.handlers.CompareWithHandler"
+    	commandId="chefclipse.ui.commands.compare">
+    </handler>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- adapter factory to allow the eIDE objects to be mapped to the ModelObjects -->
+  <!-- this block contains the m... -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.core.runtime.adapters">
+    <factory
+      adaptableType="chefclipse.core.IChefElement"
+      class="chefclipse.core.adapters.ChefAdapterFactory">
+      <adapter type="org.eclipse.core.resources.IResource" />
+    </factory>
+    <!--factory
+        class="chefclipse.core.adapters.ChefElementAdapterFactory"
+        adaptableType="chefclipse.core.IChefElement">
+
+        <adapter type="org.eclipse.core.resources.IResource"/>
+
+        <adapter type="org.eclipse.ui.IPersistableElement"/>
+        <adapter type="org.eclipse.ui.IContributorResourceAdapter"/>
+        <adapter type="org.eclipse.ui.ide.IContributorResourceAdapter2"/>
+        <adapter type="org.eclipse.ui.IContainmentAdapter"/>
+
+        <adapter type="org.eclipse.search.ui.ISearchPageScoreComputer"/>
+
+        <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
+        <adapter type="org.eclipse.ui.views.properties.IPropertySource"/>
+        <adapter type="org.eclipse.ui.views.tasklist.ITaskListResourceAdapter"/>
+
+        <adapter type="org.eclipse.jdt.internal.ui.IResourceLocator"/>
+        <adapter type="org.eclipse.team.ui.history.IHistoryPageSource"/>
+            </factory-->
+    <factory class="org.eclipse.jdt.internal.ui.ChefProjectAdapterFactory"
+      adaptableType="chefclipse.core.IChefProject">
+      <adapter type="org.eclipse.core.resources.IProject" />
+    </factory>
+    <factory class="chefclipse.core.adapters.ResourceAdapterFactory"
+      adaptableType="org.eclipse.core.resources.IResource">
+      <adapter type="chefclipse.core.IChefElement" />
+    </factory>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- This is the org.eclipse.ui.menus section  -->
+  <!-- apparently support for dynamic menus is only new to e4 as of 8/Apr -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.menus">
+
+    <menuContribution allPopups="true"
+    locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+      <menu
+        label="Chefclipse compare">
+        <command commandId="chefclipse.ui.commands.compare"
+        label="Compare command label">
+          <visibleWhen
+            checkEnabled="false">
+            <count value="1"></count>
+          </visibleWhen>
+        </command>
+      </menu>
+    </menuContribution>
+
+<!-- @todo how to use count=1 or count=2? ?? -->
+
+    <menuContribution allPopups="true"
+    locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+      <menu
+        label="Chefclipse compare">
+        <command commandId="chefclipse.ui.commands.compare"
+        label="Compare command label">
+          <visibleWhen checkEnabled="false">
+            <count value="2"></count>
+          </visibleWhen>
+        </command>
+      </menu>
+    </menuContribution>
+
+    <menuContribution
+    	allPopups="true"
+    	locationURI="popup:chefclipse.navigatorview?after=additions">
+      	<menu
+      	  label="menu.label.0"
+       	  mnemonic="menu.mnemonic"
+          id="chefclipse.menus.contextgroup">
+        <dynamic class="chefclipse.ui.menu.ContributionItemDynamic"
+        	id="chefclipse.menu.dynamic">
+          	<visibleWhen checkEnabled="false">
+            	<with variable="activeMenuSelection">
+              		<iterate operator="and">
+                	<or>
+                  <adapt type="chefclipse.core.IChefElement"></adapt>
+                </or>
+              </iterate>
+            </with>
+          </visibleWhen>
+        </dynamic>
+      </menu>
+    </menuContribution>
+
+    <menuContribution allPopups="true"
+    locationURI="popup:compareWithMenu/compareWithGroup?after=additions">
+      <menu
+        label="%menu.label.1"
+        mnemonic="%menu.mnemonic.0"
+        id="chefclipse.menus.contextgroup">
+        <dynamic class="chefclipse.ui.menu.DynamicContributionItemsCompareWith"
+        id="chefclipse.menu.compare.with">
+          <visibleWhen checkEnabled="false">
+            <with variable="activeMenuSelection">
+              <iterate operator="and">
+                <or>
+                  <adapt type="chefclipse.core.IChefElement" />
+                </or>
+              </iterate>
+            </with>
+          </visibleWhen>
+        </dynamic>
+      </menu>
+    </menuContribution>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- the org.eclipse.ui.navigator.navigatorContent extensions  -->
+  <!--   -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.navigator.navigatorContent">
+    <navigatorContent
+      activeByDefault="true"
+      contentProvider="chefclipse.internal.ui.navigator.ChefNavigatorContentProvider"
+      id="chefclipse.navigatorContent"
+      labelProvider="chefclipse.internal.ui.navigator.ChefNavigatorLabelProvider"
+      name="%navigatorContent.name" priority="higher">
+      <triggerPoints>
+        <or>
+          <instanceof value="org.eclipse.core.resources.IProject"></instanceof>
+          <instanceof value="org.eclipse.core.resources.IWorkspaceRoot">
+          </instanceof>
+        </or>
+      </triggerPoints>
+      <actionProvider
+        class="org.eclipse.ui.navigator.resources.GoIntoActionProvider"
+        id="org.eclipse.jdt.ui.navigator.resources.GoIntoActions"
+        overrides="org.eclipse.ui.navigator.resources.GoIntoActions">
+        <enablement>
+          <or>
+            <and>
+              <adapt type="org.eclipse.core.resources.IProject" />
+              <test property="org.eclipse.core.resources.open" value="true" />
+            </and>
+            <adapt type="org.eclipse.core.resources.IFolder" />
+            <adapt type="org.eclipse.ui.IWorkingSet" />
+            <instanceof value="chefclipse.core.IChefProject" />
+          </or>
+        </enablement>
+      </actionProvider>
+    </navigatorContent>
+
+
+    <!-- =================================================================================== -->
+    <!-- sort the items in the CNF, put the repo virtual object at the top  -->
+    <!-- =================================================================================== -->
+
+    <navigatorContent id="chefclipse.ui.navigatorContent1"
+    name="%navigatorContent.name.0" sortOnly="true">
+      <commonSorter class="chefclipse.internal.ui.navigator.ChefResourceExtensionSorter"
+      id="chefclipse.ui.defaultSorter">
+        <parentExpression>
+          <or>
+            <instanceof value="org.eclipse.core.resources.IWorkspaceRoot" />
+            <instanceof value="org.eclipse.core.resources.IProject" />
+            <instanceof value="org.eclipse.core.resources.IResource" />
+            <instanceof value="org.eclipse.core.resources.IFolder" />
+            <instanceof value="org.eclipse.core.resources.IFile" />
+            <instanceof value="org.limepepper.chefclipse.common.workstation.Repository" />
+          </or>
+        </parentExpression>
+      </commonSorter>
+    </navigatorContent>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- the view and viewer  -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.views">
+    <view
+          allowMultiple="false"
+          class="org.eclipse.ui.navigator.CommonNavigator"
+          icon="icons/sample.gif"
+          id="chefclipse.navigatorview"
+          name="%view.name"/>
+  </extension>
+
+  <!-- =================================================================================== -->
+  <!-- the viewer  -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.navigator.viewer">
+    <viewerContentBinding viewerId="chefclipse.navigatorview">
+      <includes>
+        <contentExtension
+              isRoot="false"
+              pattern="chefclipse.navigatorContent"/>
+        <contentExtension pattern="org.eclipse.ui.navigator.resourceContent" />
+        <contentExtension pattern="org.eclipse.ui.navigator.resources.filters.*" />
+        <contentExtension pattern="org.eclipse.ui.navigator.resources.linkHelper" />
+        <contentExtension pattern="org.eclipse.ui.navigator.resources.workingSets" />
+      </includes>
+    </viewerContentBinding>
+
+
+           <viewerActionBinding
+            viewerId="chefclipse.navigatorview">
+         <includes>
+             <actionExtension pattern="org.eclipse.ui.navigator.resources.*" />
+         </includes>
+       </viewerActionBinding>
+       <dragAssistant
+             class="org.eclipse.ui.navigator.resources.ResourceDragAdapterAssistant"
+             viewerId="chefclipse.navigatorview"/>
+
+
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- the perspective extensions  -->
+  <!-- =================================================================================== -->
+
+
+    <!-- @todo remove once the properties context menu is fixed -->
+    <!-- confusingly the initial plugin for the navigator/explorer is set in the perspective declaration class as a CONSTANT -->
+  <extension point="org.eclipse.ui.perspectiveExtensions">
+    <!--perspectiveExtension targetID="chefclipse.perspective">
+      <view ratio="0.5" relative="org.eclipse.ui.navigator.ProjectExplorer"
+      relationship="stack" id="chefclipse.navigatorview"></view>
+    </perspectiveExtension-->
+    <perspectiveExtension targetID="chefclipse.perspective">
+       <view
+             closeable="false"
+             id="chefclipse.navigatorview"
+             minimized="false"
+             relationship="stack">
+       </view>
+    </perspectiveExtension>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- the perspective stuff  -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.perspectives">
+    <perspective class="chefclipse.ui.perspectives.ChefPerspectiveFactory"
+    icon="icons/32x32.png" id="chefclipse.perspective"
+    name="%perspective.name"></perspective>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- the decorator stuff  -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.decorators">
+    <decorator adaptable="true" icon="icons/16x16.png"
+    id="chefclipse.decorators.projectdecorator"
+    label="%ChefProjectDecorator.name" lightweight="true" location="REPLACE"
+    state="true">
+      <enablement>
+        <and>
+          <objectClass name="org.eclipse.core.resources.IProject" />
+          <objectState name="nature" value="chefclipse.chefnature">
+          </objectState>
+          <objectState name="name" value="badger"></objectState>
+        </and>
+      </enablement>
+    </decorator>
+  </extension>
+
+  <!-- =================================================================================== -->
+  <!-- new org.eclipse.ui.popupMenus   -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.popupMenus">
+    <objectContribution
+      adaptable="true"
+      id="chefclipse.popupmenu.compare.with"
+      objectClass="org.eclipse.core.resources.IResource">
+      <action class="chefclipse.ui.actions.Action1" id="chefclipse.ui.action1"
+        label="%action.label"
+        menubarPath="compareWithMenu/compareWithGroup">
+      </action>
+    </objectContribution>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- new project wizards  -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.newWizards">
+    <category
+      id="org.limepepper.chefclipse.ui.wizards.category"
+      name="%category.name.0" />
+
+    <wizard category="org.limepepper.chefclipse.ui.wizards.category"
+    class="chefclipse.ui.wizards.NewChefProjectWizard"
+    icon="icons/sample.gif"
+    id="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
+    name="%wizard.name" project="true"></wizard>
+    <wizard category="org.limepepper.chefclipse.ui.wizards.category"
+    class="chefclipse.ui.wizards.NewProjectExistingChefRepoWizard"
+    icon="icons/sample.gif"
+    id="org.limepepper.chefclipse.ui.wizards.NewExistingRepoChefProjectWizard"
+    name="%wizard.name.0" project="true"></wizard>
+    <category
+          id="chefclipse.ui"
+          name="Chefclipse Wizards">
+    </category>
+    <wizard
+          category="chefclipse.ui"
+          class="chefclipse.ui.wizards.NewRecipeWizard"
+          icon="icons/sample.gif"
+          id="chefclipse.ui.wizards.NewRecipeWizard"
+          name="New Recipe File Wizard">
+    </wizard>
+  </extension>
+
+  <!-- =================================================================================== -->
+  <!-- preferences ui stuff -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.preferencePages">
+    <page
+      class="org.limepepper.chefclipse.preferences.ui.preferences.ChefclipseRootPreferencePage"
+      id="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
+      name="%page.name" />
+    <page category="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
+    class="org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"
+    id="org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"
+    name="%page.name.0"></page>
+  </extension>
+
+
+  <!-- =================================================================================== -->
+  <!-- org.eclipse.core.runtime.preferences -->
+  <!-- =================================================================================== -->
+
+
+
+  <extension point="org.eclipse.core.runtime.preferences">
+    <initializer class="org.limepepper.chefclipse.preferences.ui.preferences.PreferenceInitializer" />
+  </extension>
+
+  <!-- =================================================================================== -->
+  <!-- documentation hover stuff -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.dltk.ui.scriptDocumentationProviders">
+    <provider class="chefclipse.ui.OpscodeChefDocumentationProvider"
+    id="chefclipse.ui.OpscodeChefDocumentationProvider"
+    nature="chefclipse.chefnature" />
+  </extension>
+
+  <!-- =================================================================================== -->
+  <!-- org.eclipse.ui.propertyPages stuff -->
+  <!-- =================================================================================== -->
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.limepepper.chefclipse.properties.ChefConfigurationPropertyPage"
+            id="org.limepepper.chefclipse.ui.properties.pages.chef.configuration"
+            name="Chef server configuration">
+         <filter
+               name="projectNature"
+               value="chefclipse.chefnature"/>
+         <enabledWhen>
+            <adapt
+                  type="org.eclipse.core.resources.IProject">
+            </adapt>
+         </enabledWhen>
+      </page>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.editors.templates">
+    <contextType
+          class="org.eclipse.dltk.ruby.internal.ui.templates.RubyUniversalTemplateContextType"
+          id="chefclipse.contexttype"
+          name="Chef Context.name">
+    </contextType>
+    <include
+          file="resources/templates.new.xml"
+          >
+    </include>
+  </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+            id="chefclipse.ui.importWizards.sampleCategory"
+            name="Chefclipse">
+      </category>
+      <wizard
+            category="chefclipse.ui.importWizards.sampleCategory"
+            class="chefclipse.ui.importWizards.ImportRepositoryToProjectWizard"
+            icon="icons/32x32.png"
+            id="chefclipse.ui.importWizards.ImportRepositoryToProjectWizard"
+            name="Import Repository">
+         <description>
+            Import a file from the local file system into the workspace.
+         </description>
+      </wizard>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage"
+            id="org.limepepper.chefclipse.ui.properties.pages.chef.configuration"
+            name="Chef server configuration">
+         <filter
+               name="projectNature"
+               value="org.limepepper.chefclipse.ChefProjectNature"/>
+         <enabledWhen>
+            <adapt
+                  type="org.eclipse.core.resources.IProject">
+            </adapt>
+         </enabledWhen>
+      </page>
+   </extension>
+
+
+
+</plugin>
