@@ -27,8 +27,8 @@ import org.eclipse.swt.graphics.Image;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
-import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.compare.CookbookCompareInput.FilteredBufferedResourceNode;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.tools.EMFUtils;
@@ -136,7 +136,7 @@ public class ServerCookbookStructureCreator implements IStructureCreator {
             logger.info("class is: {}", eObject.eClass());
         }
 
-        for (Root_file file : cookbook.getRoot_files()) {
+        for (ServerCookbookFile file : cookbook.getRoot_files()) {
             logger.debug("processing: {}", file.getName());
             ZipFile zipFile = new ZipFile(file.getName(),
                     file.getChecksum());
@@ -351,7 +351,7 @@ public class ServerCookbookStructureCreator implements IStructureCreator {
 
         /*
          * Returns true if other is ITypedElement and names are equal.
-         *
+         * 
          * @see IComparator#equals
          */
         @Override

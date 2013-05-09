@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.limepepper.chefclipse:KnifeConfig xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.limepepper.chefclipse="http://limepepper.org/v1/chefclipse/knife" node_name="chefclipse" client_key="certificates/chefclipse.pem" chef_server_url="https://api.opscode.com/organizations/chefclipse"/>

@@ -1,6 +1,7 @@
 package org.limepepper.chefclipse.common.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.limepepper.chefclipse.common.ui.providers.ChefModelProvider;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
