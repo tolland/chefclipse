@@ -39,9 +39,9 @@ Export-Package: chefclipse.internal.ui.navigator;
  chefclipse.ui.messages,
  chefclipse.ui.perspectives;uses:="org.eclipse.ui",
  chefclipse.ui.wizards,
- org.limepepper.chefclipse.properties,
  org.limepepper.chefclipse.ui.properties
-Import-Package: org.eclipse.jface.text,
+Import-Package: org.eclipse.dltk.ruby.core,
+ org.eclipse.jface.text,
  org.eclipse.ui.forms.events,
  org.eclipse.ui.forms.widgets,
  org.slf4j

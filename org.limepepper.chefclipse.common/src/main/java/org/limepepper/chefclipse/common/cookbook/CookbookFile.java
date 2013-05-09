@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.SandboxedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +25,7 @@ import org.limepepper.chefclipse.NamedObject;
  * @model abstract="true"
  * @generated
  */
-public interface CookbookFile extends NamedObject, ChecksumFile {
+public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject {
     /**
 	 * Returns the value of the '<em><b>Cookbook</b></em>' reference.
 	 * <!-- begin-user-doc -->

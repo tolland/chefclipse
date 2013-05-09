@@ -1,17 +1,18 @@
-package chefclipse.ui.wizards;
+package chefclipse.ui.importWizards;
 
 import java.io.File;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.jface.wizard.IWizardPage;
-import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -19,22 +20,26 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea;
 
 import chefclipse.ui.messages.Messages;
+import chefclipse.ui.wizards.ChefConfigSelectionWizardPage;
 
 public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 
 	private Text locationText;
-	private ChefConfigSelectionWizardPage chefConfigPage;
-
-	private ProjectContentsLocationArea locationArea;
+	private ChefConfigSelectionWizardPage chefConfigPage = new ChefConfigSelectionWizardPage(
+			getWizard());
 
 	protected NewProjectExistingChefRepoWizardPage() {
 		super("ExistingRepoNewChefWizardPage1"); //$NON-NLS-1$
 		setTitle(Messages.ChefRepositoryWizardPage_AddChefRepo);
 		setDescription(Messages.ChefRepositoryWizardPage_ChefRepo);
-		chefConfigPage = new ChefConfigSelectionWizardPage(getWizard());
+	}
+
+	public NewProjectExistingChefRepoWizardPage(String string) {
+		super(string); //$NON-NLS-1$
+		setTitle(Messages.ChefRepositoryWizardPage_AddChefRepo);
+		setDescription(Messages.ChefRepositoryWizardPage_ChefRepo);
 	}
 
 	public IProject getProjectHandle() {
@@ -94,9 +99,48 @@ public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 			}
 		});
 
+/*		Label iconLabel = new Label(container, SWT.NONE);
+
+		final Button checkbox;
+		checkbox = new Button(container, SWT.CHECK | SWT.INHERIT_FORCE);
+		checkbox.setSelection(false);
+		checkbox.setText("Configure Server Settings for this Repository"); //$NON-NLS-1$
+		// help UI tests
+		checkbox.setData("connectorId", "test"); //$NON-NLS-1$
+		GridDataFactory.swtDefaults().align(SWT.CENTER, SWT.CENTER)
+				.applyTo(checkbox);
+
+		checkbox.addSelectionListener(new SelectionListener() {
+			public void widgetDefaultSelected(SelectionEvent e) {
+				widgetSelected(e);
+			}
+
+			public void widgetSelected(SelectionEvent e) {
+				boolean selected = checkbox.getSelection();
+				maybeModifySelection(selected);
+			}
+		});*/
+
 		dialogChanged();
 		setControl(container);
 
+	}
+
+	protected boolean maybeModifySelection(boolean selected) {
+		if (selected) {
+			((ImportRepositoryToProjectWizard) getWizard())
+					.setDoChefConfigSelection(true);
+			((ImportRepositoryToProjectWizard) getWizard())
+					.addChefConfigPage(true);
+
+		} else {
+			((ImportRepositoryToProjectWizard) getWizard())
+					.setDoChefConfigSelection(false);
+			((ImportRepositoryToProjectWizard) getWizard())
+					.addChefConfigPage(false);
+
+		}
+		return true;
 	}
 
 	private void dialogChanged() {
@@ -114,6 +158,8 @@ public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 		String path = dialog.open();
 		if (path != null) {
 			locationText.setText(path);
+			((ImportRepositoryToProjectWizard) getWizard())
+					.setLocationPath(new Path(path));
 		}
 	}
 
@@ -124,18 +170,6 @@ public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 
 	public String getLocationPath() {
 		return locationText.getText();
-	}
-
-	@Override
-	public IWizardPage getNextPage() {
-		NewProjectExistingChefRepoWizardPage chefProjectPage = (NewProjectExistingChefRepoWizardPage) getWizard()
-				.getPage("ExistingRepoNewChefWizardPage1");
-		IProject adaptableItem = chefProjectPage.getProjectHandle();
-		chefConfigPage.setElement(adaptableItem);
-		if (((Wizard) getWizard()).getPage(chefConfigPage.getName()) == null) {
-			((Wizard) getWizard()).addPage(chefConfigPage);
-		}
-		return chefConfigPage;
 	}
 
 }

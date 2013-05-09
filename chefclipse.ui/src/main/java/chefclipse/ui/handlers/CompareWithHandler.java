@@ -25,6 +25,9 @@ public class CompareWithHandler extends AbstractHandler {
 				event).getActivePage();
 
 		CompareConfiguration cc = new CompareConfiguration();
+
+		cc.setLeftEditable(true);
+		cc.setRightEditable(false);
 		// buffered merge mode: don't ask for confirmation
 		// when switching between modified resources
 		cc.setProperty(CONFIRM_SAVE_PROPERTY, new Boolean(false));

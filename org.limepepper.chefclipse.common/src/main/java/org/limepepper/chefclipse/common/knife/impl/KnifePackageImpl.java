@@ -8,8 +8,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.REST.RESTPackage;
-import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -105,7 +103,6 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		ChefclientPackageImpl theChefclientPackage = (ChefclientPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
 		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
 		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
-		RESTPackageImpl theRESTPackage = (RESTPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI) instanceof RESTPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI) : RESTPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theKnifePackage.createPackageContents();
@@ -114,7 +111,6 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		theChefclientPackage.createPackageContents();
 		theCookbookPackage.createPackageContents();
 		theWorkstationPackage.createPackageContents();
-		theRESTPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theKnifePackage.initializePackageContents();
@@ -123,7 +119,6 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		theChefclientPackage.initializePackageContents();
 		theCookbookPackage.initializePackageContents();
 		theWorkstationPackage.initializePackageContents();
-		theRESTPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theKnifePackage.freeze();

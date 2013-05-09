@@ -117,7 +117,6 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
-import org.limepepper.chefclipse.REST.provider.RESTItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.chefclient.provider.ChefclientItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.cookbook.provider.CookbookItemProviderAdapterFactory;
@@ -370,7 +369,7 @@ public class RESTEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EContentAdapter problemIndicationAdapter = 
+	protected EContentAdapter problemIndicationAdapter =
 		new EContentAdapter() {
 			@Override
 			public void notifyChanged(Notification notification) {
@@ -564,7 +563,7 @@ public class RESTEditor
 			updateProblemIndication();
 		}
 	}
-  
+
 	/**
 	 * Updates the problems indication with the information described in the specified diagnostic.
 	 * <!-- begin-user-doc -->
@@ -665,7 +664,6 @@ public class RESTEditor
 		adapterFactory.addAdapterFactory(new CookbookItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WorkstationItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new KnifeItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new RESTItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
@@ -1488,7 +1486,7 @@ public class RESTEditor
 
 	/**
 	 * This returns whether something has been persisted to the URI of the specified resource.
-	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

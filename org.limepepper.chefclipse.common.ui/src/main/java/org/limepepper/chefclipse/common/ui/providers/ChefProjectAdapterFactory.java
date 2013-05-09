@@ -10,7 +10,6 @@ import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProvid
 import org.limepepper.chefclipse.common.cookbook.provider.CookbookItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.knife.provider.KnifeItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory;
-import org.limepepper.chefclipse.model.provider.ModelItemProviderAdapterFactory;
 
 public class ChefProjectAdapterFactory {
     private static ComposedAdapterFactory adapterFactory;
@@ -23,7 +22,6 @@ public class ChefProjectAdapterFactory {
         factories.add(new CookbookItemProviderAdapterFactory());
         factories.add(new KnifeItemProviderAdapterFactory());
         factories.add(new WorkstationItemProviderAdapterFactory());
-        factories.add(new ModelItemProviderAdapterFactory());
 
         return factories;
       }

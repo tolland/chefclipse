@@ -18,9 +18,10 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
-import org.limepepper.chefclipse.properties.ChefConfigurationPropertyPage;
+import org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage;
 
 import chefclipse.ui.messages.Messages;
+
 
 /**
  * Wizard page in the New Chef project wizard, which allows to associate a Chef

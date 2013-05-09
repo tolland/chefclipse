@@ -11,7 +11,7 @@ import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.Activator;
-import org.limepepper.chefclipse.model.CookbookFolder;
+import chefclipse.core.CookbookFolder;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

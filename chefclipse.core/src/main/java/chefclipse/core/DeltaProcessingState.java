@@ -14,7 +14,10 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.IWorkspaceRunnable;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,41 +34,57 @@ public class DeltaProcessingState implements IResourceChangeListener,
 
 		// ChefModelManager.getChefModelManager().getChefModel().getChefProject();
 		System.out.println("processing delta state");
-		System.err.println("resource chjanged");
 
 		if (event == null || event.getDelta() == null) {
 			// was set to run on empty??
-			System.err.println("event was null");
+			ChefCore.error("event was null");
 			return;
 		}
 
 		fAdded = new HashSet<IResource>(1);
 		fRemoved = new HashSet<IResource>(1);
-
 		try {
 			event.getDelta().accept(this);
 			// @todo don't want to process anything if accept failed?
 
-			if (fAdded.size() > 0) {
-				logger.debug("processing added");
-				for (IResource iterable_element : fAdded) {
-					logger.debug(iterable_element.getName());
-					ChefRepositoryManager.INSTANCE.add(iterable_element);
+			IWorkspace workspace = ResourcesPlugin.getWorkspace();
+
+			IWorkspaceRunnable myRunnable = new IWorkspaceRunnable() {
+				public void run(IProgressMonitor monitor) throws CoreException {
+					// do the actual work in here
+					if (fAdded.size() > 0) {
+						logger.debug("processing added");
+						for (IResource iterable_element : fAdded) {
+							logger.debug(iterable_element.getName());
+							ChefRepositoryManager.INSTANCE
+									.add(iterable_element);
+						}
+
+					}
+
+					if (fRemoved.size() > 0) {
+						logger.debug("processing removed");
+						for (IResource iterable_element : fRemoved) {
+							logger.debug("rmovig {}",
+									iterable_element.getName());
+							ChefRepositoryManager.INSTANCE
+									.remove(iterable_element);
+						}
+					}
+
 				}
+			};
 
-			}
-
-			if (fRemoved.size() > 0) {
-				logger.debug("processing removed");
-				for (IResource iterable_element : fRemoved) {
-					logger.debug("rmovig {}", iterable_element.getName());
-					ChefRepositoryManager.INSTANCE.remove(iterable_element);
-				}
-			}
-
+			workspace
+			.run(
+					myRunnable,
+					null,
+					IWorkspace.AVOID_UPDATE, null);
 		} catch (CoreException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 	@Override
@@ -77,10 +96,10 @@ public class DeltaProcessingState implements IResourceChangeListener,
 
 			// seems to send an emtpy workspace notification and work down.
 			if (resource instanceof IWorkspaceRoot) {
-				logger.debug("on workspace Root {}", resource);
+				logger.debug("on workspace Root: {}", resource);
 
 				switch (delta.getKind()) {
-				// @todo can't open here?
+				// @todo is OPEN a valid kind here?
 				case IResourceDelta.OPEN:
 					if (resource instanceof IProject)
 						return true;

@@ -8,6 +8,7 @@ import org.eclipse.compare.structuremergeviewer.IStructureComparator;
 import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.ui.Activator;
 
 public class CookbookFolderNode extends CookbookResourceNode implements
@@ -39,7 +40,7 @@ public class CookbookFolderNode extends CookbookResourceNode implements
         if (input instanceof ServerCookbookVersion) {
             Activator.log("recursing elements of input: "
                     + ((ServerCookbookVersion) input).getCookbook_name());
-            for (ServerCookbookFile iterable_element : ((ServerCookbookVersion) input)
+            for (Root_file iterable_element : ((ServerCookbookVersion) input)
                     .getRoot_files()) {
                 children.add(new CookbookFileNode(iterable_element));
             }

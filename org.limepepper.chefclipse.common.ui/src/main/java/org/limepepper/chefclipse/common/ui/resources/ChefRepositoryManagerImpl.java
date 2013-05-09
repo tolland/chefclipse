@@ -57,8 +57,7 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
-import org.limepepper.chefclipse.model.ChefFile;
-import org.limepepper.chefclipse.model.ModelFactory;
+import chefclipse.core.ChefFile;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.tools.ChefUtils;
 import org.slf4j.Logger;
@@ -173,7 +172,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
                     eObject = createCookbook((IFolder) resource);
 
                 }
-                
+
                 if (((IFolder) resource).getParent().getName()
                         .equals("data_bags")) {
                     eObject = createDataBag((IFolder) resource);
@@ -188,7 +187,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
                 // @todo this is not used, because recipes cannot be created
                 // from eclipse atm
                 if (((IFile) resource).getParent().getName().equals("recipes")) {
-                    eObject = createRecipe((IFile) resource);
+                   // eObject = createRecipe((IFile) resource);
                 }
                 // if a file appears in a dir, called metadata.rb, then this
                 // should trigger
@@ -375,7 +374,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
 
         return eObject;
     }
-    
+
     @Override
     public EObject createDataBag(IFolder resource) throws CoreException {
         DataBag eObject = ChefserverFactory.eINSTANCE.createDataBag();
@@ -388,15 +387,15 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
         logger.debug("creating data bag:" + resource.getName());
 
         addMapping(resource, eObject);
-        
+
         KnifeConfig chefProjectConfig = ChefConfigManager.instance().retrieveProjectChefConfig(resource.getProject());
         //add the data bag to the databag list of the server. maybe retrieve the server from preferences.
-        
+
         synchronizeDataBagContents(resource);
 
         return eObject;
     }
-    
+
     @Override
     public EObject createDataBagItem(IFile resource) {
         DataBagItem eObject = ChefserverFactory.eINSTANCE.createDataBagItem();
@@ -475,8 +474,8 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
                 + "-" + ((NamedObject) eObject).getName() + "-"
                 + eObject.getCookbook().getID());
 
-        ChefFile chefFile = ModelFactory.eINSTANCE.createChefFile();
-        chefFile.setResource(resource);
+        ChefFile chefFile = new ChefFile(resource);
+
 
         return chefFile;
     }
@@ -886,7 +885,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
         }
         persistRepo(location);
     }
-    
+
     private boolean synchronizeDataBags(IFolder location) throws CoreException {
         for (IResource resource : location.members()) {
             if (resource instanceof IFolder) {
@@ -912,7 +911,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
         }
         return true;
     }
-    
+
     private void synchronizeDataBagContents(IFolder location) throws CoreException {
         for (IResource res : location.members()) {
             if (res instanceof IFile && ((IFile) res).getName().endsWith("json")) {
@@ -920,7 +919,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
             }
         }
     }
-    
+
     /*
      * Creates a cookbook object from the on-disk structure
      * ToDo: implement the creation of recipes. Now only one dummy recipe is

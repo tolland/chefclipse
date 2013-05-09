@@ -21,18 +21,19 @@ import org.limepepper.chefclipse.common.ui.Activator;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.compare.CookbookCompareInput;
 import org.limepepper.chefclipse.compare.Utilities;
-import org.limepepper.chefclipse.model.CookbookFolder;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import chefclipse.core.CookbookFolder;
+
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
- * 
- * 
+ *
+ *
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
- * 
+ *
  */
 
 @SuppressWarnings("unused")
@@ -54,7 +55,7 @@ public class ChefHandler extends AbstractHandler implements
 
     /**
      * The constructor.
-     * 
+     *
      */
     public ChefHandler() {
     }
@@ -62,7 +63,7 @@ public class ChefHandler extends AbstractHandler implements
     /**
      * the command has been executed, so extract extract the needed information
      * from the application context.
-     * 
+     *
      */
     @Override
     public Object execute(final ExecutionEvent event) throws ExecutionException {
@@ -135,7 +136,7 @@ public class ChefHandler extends AbstractHandler implements
         /*
          * EObject eObject = CookbookFactory.eINSTANCE
          * .create(CookbookPackage.eINSTANCE.getCookbookVersion());
-         * 
+         *
          * Resource eResource = eObject.eResource();
          * URI eUri = eResource.getURI();
          * if (eUri.isPlatformResource()) {
@@ -150,7 +151,7 @@ public class ChefHandler extends AbstractHandler implements
 
     /**
      * Return the path that was active when the menu item was selected.
-     * 
+     *
      * @return IWorkbenchPage
      */
     protected IWorkbenchPage getTargetPage() {

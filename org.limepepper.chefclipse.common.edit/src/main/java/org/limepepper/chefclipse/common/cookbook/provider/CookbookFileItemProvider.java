@@ -59,6 +59,7 @@ public class CookbookFileItemProvider
 			addChecksumPropertyDescriptor(object);
 			addPathPropertyDescriptor(object);
 			addSpecificityPropertyDescriptor(object);
+			addUrlPropertyDescriptor(object);
 			addCookbookPropertyDescriptor(object);
 			addBytesPropertyDescriptor(object);
 		}
@@ -123,6 +124,28 @@ public class CookbookFileItemProvider
 				 getString("_UI_ChecksumFile_specificity_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_specificity_feature", "_UI_ChecksumFile_type"),
 				 ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Url feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUrlPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SandboxedObject_url_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SandboxedObject_url_feature", "_UI_SandboxedObject_type"),
+				 ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL,
 				 true,
 				 false,
 				 false,
@@ -204,6 +227,7 @@ public class CookbookFileItemProvider
 			case CookbookPackage.COOKBOOK_FILE__CHECKSUM:
 			case CookbookPackage.COOKBOOK_FILE__PATH:
 			case CookbookPackage.COOKBOOK_FILE__SPECIFICITY:
+			case CookbookPackage.COOKBOOK_FILE__URL:
 			case CookbookPackage.COOKBOOK_FILE__BYTES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

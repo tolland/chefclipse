@@ -10,12 +10,13 @@
 
   <extension point="org.eclipse.ui.commands">
     <category
-    	name="%category.name"
+    	name="category.name"
     	id="chefclipse.ui.commands.category">
     </category>
     <command categoryId="chefclipse.ui.commands.category"
-    	description="%command.description" id="chefclipse.ui.commands.compare"
-    	name="%command.name">
+    	description="%command.description"
+    	id="chefclipse.ui.commands.compare"
+    	name="chefclipse.ui.commands.category">
     </command>
   </extension>
 
@@ -64,7 +65,7 @@
         <adapter type="org.eclipse.jdt.internal.ui.IResourceLocator"/>
         <adapter type="org.eclipse.team.ui.history.IHistoryPageSource"/>
             </factory-->
-    <factory class="org.eclipse.jdt.internal.ui.ChefProjectAdapterFactory"
+    <factory class="chefclipse.core.providers.ChefProjectAdapterFactory"
       adaptableType="chefclipse.core.IChefProject">
       <adapter type="org.eclipse.core.resources.IProject" />
     </factory>
@@ -83,11 +84,11 @@
   <extension point="org.eclipse.ui.menus">
 
     <menuContribution allPopups="true"
-    locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+    locationURI="popup:org.eclipse.ui.popup.any?after=additions">
       <menu
-        label="Chefclipse compare">
+        label="Compare With">
         <command commandId="chefclipse.ui.commands.compare"
-        label="Compare command label">
+        label="Chef Server (latest)">
           <visibleWhen
             checkEnabled="false">
             <count value="1"></count>
@@ -99,11 +100,11 @@
 <!-- @todo how to use count=1 or count=2? ?? -->
 
     <menuContribution allPopups="true"
-    locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+    locationURI="popup:org.eclipse.ui.popup.any?after=additions">
       <menu
-        label="Chefclipse compare">
+        label="menu.label.3">
         <command commandId="chefclipse.ui.commands.compare"
-        label="Compare command label">
+        label="command.label.1">
           <visibleWhen checkEnabled="false">
             <count value="2"></count>
           </visibleWhen>
@@ -115,8 +116,8 @@
     	allPopups="true"
     	locationURI="popup:chefclipse.navigatorview?after=additions">
       	<menu
-      	  label="menu.label.0"
-       	  mnemonic="menu.mnemonic"
+      	  label="%menu.label.4"
+       	  mnemonic="%menu.mnemonic.1"
           id="chefclipse.menus.contextgroup">
         <dynamic class="chefclipse.ui.menu.ContributionItemDynamic"
         	id="chefclipse.menu.dynamic">
@@ -177,7 +178,7 @@
       </triggerPoints>
       <actionProvider
         class="org.eclipse.ui.navigator.resources.GoIntoActionProvider"
-        id="org.eclipse.jdt.ui.navigator.resources.GoIntoActions"
+        id="chefclipse.GoIntoActions"
         overrides="org.eclipse.ui.navigator.resources.GoIntoActions">
         <enablement>
           <or>
@@ -344,52 +345,23 @@
 
     <wizard category="org.limepepper.chefclipse.ui.wizards.category"
     class="chefclipse.ui.wizards.NewChefProjectWizard"
-    icon="icons/sample.gif"
+    icon="icons/cc1.ico"
     id="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
     name="%wizard.name" project="true"></wizard>
-    <wizard category="org.limepepper.chefclipse.ui.wizards.category"
-    class="chefclipse.ui.wizards.NewProjectExistingChefRepoWizard"
-    icon="icons/sample.gif"
-    id="org.limepepper.chefclipse.ui.wizards.NewExistingRepoChefProjectWizard"
-    name="%wizard.name.0" project="true"></wizard>
     <category
           id="chefclipse.ui"
-          name="Chefclipse Wizards">
+          name="%category.name.1">
     </category>
     <wizard
           category="chefclipse.ui"
           class="chefclipse.ui.wizards.NewRecipeWizard"
           icon="icons/sample.gif"
           id="chefclipse.ui.wizards.NewRecipeWizard"
-          name="New Recipe File Wizard">
+          name="%wizard.name.1">
     </wizard>
   </extension>
 
-  <!-- =================================================================================== -->
-  <!-- preferences ui stuff -->
-  <!-- =================================================================================== -->
 
-  <extension point="org.eclipse.ui.preferencePages">
-    <page
-      class="org.limepepper.chefclipse.preferences.ui.preferences.ChefclipseRootPreferencePage"
-      id="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
-      name="%page.name" />
-    <page category="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
-    class="org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"
-    id="org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"
-    name="%page.name.0"></page>
-  </extension>
-
-
-  <!-- =================================================================================== -->
-  <!-- org.eclipse.core.runtime.preferences -->
-  <!-- =================================================================================== -->
-
-
-
-  <extension point="org.eclipse.core.runtime.preferences">
-    <initializer class="org.limepepper.chefclipse.preferences.ui.preferences.PreferenceInitializer" />
-  </extension>
 
   <!-- =================================================================================== -->
   <!-- documentation hover stuff -->
@@ -408,9 +380,9 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            class="org.limepepper.chefclipse.properties.ChefConfigurationPropertyPage"
+            class="org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage"
             id="org.limepepper.chefclipse.ui.properties.pages.chef.configuration"
-            name="Chef server configuration">
+            name="%page.name.1">
          <filter
                name="projectNature"
                value="chefclipse.chefnature"/>
@@ -428,7 +400,7 @@
     <contextType
           class="org.eclipse.dltk.ruby.internal.ui.templates.RubyUniversalTemplateContextType"
           id="chefclipse.contexttype"
-          name="Chef Context.name">
+          name="%contextType.name">
     </contextType>
     <include
           file="resources/templates.new.xml"
@@ -439,38 +411,43 @@
          point="org.eclipse.ui.importWizards">
       <category
             id="chefclipse.ui.importWizards.sampleCategory"
-            name="Chefclipse">
+            name="%category.name.2">
       </category>
       <wizard
             category="chefclipse.ui.importWizards.sampleCategory"
             class="chefclipse.ui.importWizards.ImportRepositoryToProjectWizard"
-            icon="icons/32x32.png"
+            icon="icons/cc1.ico"
             id="chefclipse.ui.importWizards.ImportRepositoryToProjectWizard"
-            name="Import Repository">
+            name="%wizard.name.2">
          <description>
-            Import a file from the local file system into the workspace.
+            %wizard.description
          </description>
       </wizard>
    </extension>
 
+  <!-- =================================================================================== -->
+  <!-- example chef project wizard stuff -->
+  <!-- =================================================================================== -->
+
+
 
    <extension
-         point="org.eclipse.ui.propertyPages">
-      <page
-            class="org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage"
-            id="org.limepepper.chefclipse.ui.properties.pages.chef.configuration"
-            name="Chef server configuration">
-         <filter
-               name="projectNature"
-               value="org.limepepper.chefclipse.ChefProjectNature"/>
-         <enabledWhen>
-            <adapt
-                  type="org.eclipse.core.resources.IProject">
-            </adapt>
-         </enabledWhen>
-      </page>
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.ui.Examples/org.limepepper.chefclipse.category"
+            class="chefclipse.ui.wizards.NewExampleChefProjectWizard"
+            hasPages="true"
+            icon="icons/cc1.ico"
+            id="wChefProjectWizard"
+            name="%wizard.name.3"
+            project="true">
+      </wizard>
+      <category
+            id="org.limepepper.chefclipse.category"
+            name="%category.name.3"
+            parentCategory="org.eclipse.ui.Examples">
+      </category>
    </extension>
-
 
 
 </plugin>

@@ -702,86 +702,95 @@ public interface ChefserverPackage extends EPackage {
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl <em>Server Cookbook File</em>}' class.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl
 	 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerCookbookFile()
 	 * @generated
 	 */
-    int SERVER_COOKBOOK_FILE = 11;
+	int SERVER_COOKBOOK_FILE = 11;
 
-    /**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int SERVER_COOKBOOK_FILE__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
-
-    /**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int SERVER_COOKBOOK_FILE__ID = ChefclipsePackage.NAMED_OBJECT__ID;
-
-    /**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int SERVER_COOKBOOK_FILE__CHECKSUM = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 0;
-
-    /**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int SERVER_COOKBOOK_FILE__PATH = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 1;
-
-    /**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int SERVER_COOKBOOK_FILE__SPECIFICITY = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 2;
-
-    /**
+				/**
 	 * The feature id for the '<em><b>Url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int SERVER_COOKBOOK_FILE__URL = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 3;
+	int SERVER_COOKBOOK_FILE__URL = ChefclipsePackage.SANDBOXED_OBJECT__URL;
 
-    /**
+				/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__NAME = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
+
+				/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__ID = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
+
+				/**
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__CHECKSUM = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__PATH = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__SPECIFICITY = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
+
+				/**
 	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int SERVER_COOKBOOK_FILE__COOKBOOK = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 4;
+	int SERVER_COOKBOOK_FILE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
 
-    /**
+				/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+
+				/**
 	 * The number of structural features of the '<em>Server Cookbook File</em>' class.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int SERVER_COOKBOOK_FILE_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 5;
+	int SERVER_COOKBOOK_FILE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
 
-    /**
+				/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl <em>Server Cookbook Version</em>}' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1497,25 +1506,14 @@ public interface ChefserverPackage extends EPackage {
     /**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile <em>Server Cookbook File</em>}'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Server Cookbook File</em>'.
 	 * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookFile
 	 * @generated
 	 */
-    EClass getServerCookbookFile();
+	EClass getServerCookbookFile();
 
-    /**
-	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile#getCookbook <em>Cookbook</em>}'.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Cookbook</em>'.
-	 * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookFile#getCookbook()
-	 * @see #getServerCookbookFile()
-	 * @generated
-	 */
-    EReference getServerCookbookFile_Cookbook();
-
-    /**
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion <em>Server Cookbook Version</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1964,22 +1962,14 @@ public interface ChefserverPackage extends EPackage {
         /**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl <em>Server Cookbook File</em>}' class.
 		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @see org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl
 		 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerCookbookFile()
 		 * @generated
 		 */
-        EClass SERVER_COOKBOOK_FILE = eINSTANCE.getServerCookbookFile();
+		EClass SERVER_COOKBOOK_FILE = eINSTANCE.getServerCookbookFile();
 
-        /**
-		 * The meta object literal for the '<em><b>Cookbook</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-		 * @generated
-		 */
-        EReference SERVER_COOKBOOK_FILE__COOKBOOK = eINSTANCE.getServerCookbookFile_Cookbook();
-
-        /**
+								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl <em>Server Cookbook Version</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

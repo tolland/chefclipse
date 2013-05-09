@@ -21,7 +21,7 @@ public class ChefPlugin extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "chefclipse.ui"; //$NON-NLS-1$
 
-	public static final String PROJECT_EXPLORER_ID = "chefclipse.navigatorview";
+	public static final String PROJECT_EXPLORER_ID = "chefclipse.navigatorview"; //$NON-NLS-1$
 
 	static Logger logger = LoggerFactory.getLogger(ChefPlugin.class);
 
@@ -48,7 +48,7 @@ public class ChefPlugin extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		log("creating the workspaceRoot will trigger a walk of each of the open projects");
+		log("creating the workspaceRoot will trigger a walk of each of the open projects"); //$NON-NLS-1$
 		ChefCore.create(ResourcesPlugin.getWorkspace().getRoot());
 	}
 

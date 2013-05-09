@@ -25,6 +25,7 @@ import org.limepepper.chefclipse.RubyFile;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.Metadata#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.Metadata#getPlatforms <em>Platforms</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.Metadata#getRecipes <em>Recipes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.Metadata#getReplacing <em>Replacing</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,7 +33,7 @@ import org.limepepper.chefclipse.RubyFile;
  * @model
  * @generated
  */
-public interface Metadata extends RubyFile, MaintainedObject, NamedDescribedObject {
+public interface Metadata extends RubyFile, MaintainedObject, NamedDescribedObject, CookbookFile {
     /**
 	 * Returns the value of the '<em><b>Cookbook Version</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMetadata <em>Metadata</em>}'.
@@ -232,5 +233,31 @@ public interface Metadata extends RubyFile, MaintainedObject, NamedDescribedObje
 	 * @generated
 	 */
     EMap<String, String> getRecipes();
+
+				/**
+	 * Returns the value of the '<em><b>Replacing</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Replacing</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Replacing</em>' attribute.
+	 * @see #setReplacing(String)
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getMetadata_Replacing()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getReplacing();
+
+				/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.Metadata#getReplacing <em>Replacing</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Replacing</em>' attribute.
+	 * @see #getReplacing()
+	 * @generated
+	 */
+	void setReplacing(String value);
 
 } // Metadata

@@ -327,19 +327,19 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
     /**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ServerCookbookFileItemProvider serverCookbookFileItemProvider;
+	protected ServerCookbookFileItemProvider serverCookbookFileItemProvider;
 
-    /**
+				/**
 	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createServerCookbookFileAdapter() {
+	@Override
+	public Adapter createServerCookbookFileAdapter() {
 		if (serverCookbookFileItemProvider == null) {
 			serverCookbookFileItemProvider = new ServerCookbookFileItemProvider(this);
 		}
@@ -347,7 +347,7 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		return serverCookbookFileItemProvider;
 	}
 
-    /**
+				/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion} instances.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

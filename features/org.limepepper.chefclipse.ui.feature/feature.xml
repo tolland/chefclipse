@@ -26,7 +26,6 @@
       <import plugin="org.eclipse.emf.ecore.xmi" version="2.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.limepepper.chefclipse.common" version="0.1.0" match="greaterOrEqual"/>
-      <import plugin="org.limepepper.chefclipse.common.ui" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.limepepper.chefclipse.remotepicker.api" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.navigator.resources" version="3.4.400" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.filesystem" version="1.3.200" match="greaterOrEqual"/>
@@ -39,9 +38,7 @@
       <import plugin="org.limepepper.chefclipse.common.editor" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jdt.annotation" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipselabs.emfjson" version="0.5.0" match="greaterOrEqual"/>
-      <import plugin="org.limepepper.chefclipse.model" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.draw2d"/>
-      <import plugin="org.limepepper.chefclipse.navigator" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.zest.core" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.zest.jface" version="2.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.zest.layouts" version="2.0.0" match="greaterOrEqual"/>
@@ -93,28 +90,7 @@
          unpack="false"/>
 
    <plugin
-         id="org.limepepper.chefclipse.ui"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.limepepper.chefclipse.navigator"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.limepepper.chefclipse.graphviewer"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.limepepper.chefclipse.common.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

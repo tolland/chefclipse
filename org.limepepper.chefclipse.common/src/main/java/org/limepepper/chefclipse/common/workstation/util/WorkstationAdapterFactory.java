@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.common.workstation.*;
 import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
 import org.limepepper.chefclipse.common.workstation.ConfigFolder;
 import org.limepepper.chefclipse.common.workstation.CookbooksFolder;

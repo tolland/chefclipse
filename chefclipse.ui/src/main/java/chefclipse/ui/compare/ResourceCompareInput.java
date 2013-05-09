@@ -208,7 +208,7 @@ public class ResourceCompareInput extends CompareEditorInput {
 		assertNotNull(remoteCookbook);
 
 		for (Root_file root_file : remoteCookbook.getRoot_files()) {
-			System.out.println("roiofile urlk was " + root_file.getUrl());
+			System.out.println("root file url: " + root_file.getUrl());
 		}
 
 		/*

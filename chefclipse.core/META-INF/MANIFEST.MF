@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Core
+Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: chefclipse.core;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: chefclipse.core.ChefCore
-Bundle-Vendor: Lime Pepper Ltd
+Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.core.runtime,
  org.slf4j.api;bundle-version="1.6.4",
  org.slf4j.log4j;bundle-version="1.6.4",
@@ -12,7 +12,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.limepepper.chefclipse.common;bundle-version="0.1.0";visibility:=reexport,
  org.limepepper.chefclipse.common.edit;bundle-version="0.1.0",
  org.limepepper.chefclipse.common.editor;bundle-version="0.1.0",
- org.eclipse.core.expressions;bundle-version="3.4.401";visibility:=reexport
+ org.eclipse.core.expressions;bundle-version="3.4.401";visibility:=reexport,
+ org.eclipse.dltk.ruby.core,
+ org.limepepper.chefclipse.preferences.api;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
@@ -38,8 +40,7 @@ Export-Package: chefclipse.core;
  chefclipse.core.providers,
  chefclipse.core.testers,
  chefclipse.core.utils,
- org.codehaus.jackson,
- org.limepepper.chefclipse.preferences.api
+ org.codehaus.jackson
 Bundle-ClassPath: lib/jackson-core-asl.jar,
  lib/jackson-mapper-asl.jar,
  .,

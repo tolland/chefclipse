@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.compare.CookbookCompareInput.FilteredBufferedResourceNode;
@@ -153,7 +154,7 @@ public class CookbookStructureCreator implements IStructureCreator {
             logger.info("class is: {}", eObject.eClass());
         }
 
-        for (ServerCookbookFile file : cookbook.getRoot_files()) {
+        for (Root_file file : cookbook.getRoot_files()) {
             logger.debug("processing: {}", file.getName());
             ZipFile zipFile = new ZipFile(file.getName(), file.getChecksum());
 

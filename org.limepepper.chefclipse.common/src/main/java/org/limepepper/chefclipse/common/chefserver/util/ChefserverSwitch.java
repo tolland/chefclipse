@@ -10,6 +10,7 @@ import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
@@ -23,9 +24,9 @@ import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerConfig;
-import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
@@ -168,9 +169,10 @@ public class ChefserverSwitch<T> extends Switch<T> {
 			case ChefserverPackage.SERVER_COOKBOOK_FILE: {
 				ServerCookbookFile serverCookbookFile = (ServerCookbookFile)theEObject;
 				T result = caseServerCookbookFile(serverCookbookFile);
+				if (result == null) result = caseCookbookFile(serverCookbookFile);
+				if (result == null) result = caseSandboxedObject(serverCookbookFile);
 				if (result == null) result = caseNamedObject(serverCookbookFile);
 				if (result == null) result = caseChecksumFile(serverCookbookFile);
-				if (result == null) result = caseSandboxedObject(serverCookbookFile);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -363,19 +365,19 @@ public class ChefserverSwitch<T> extends Switch<T> {
     /**
 	 * Returns the result of interpreting the object as an instance of '<em>Server Cookbook File</em>'.
 	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Server Cookbook File</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public T caseServerCookbookFile(ServerCookbookFile object) {
+	public T caseServerCookbookFile(ServerCookbookFile object) {
 		return null;
 	}
 
-    /**
+				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Server Cookbook Version</em>'.
 	 * <!-- begin-user-doc -->
      * This implementation returns null;
@@ -451,36 +453,51 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Checksum File</em>'.
-	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Checksum File</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-    public T caseChecksumFile(ChecksumFile object) {
-		return null;
-	}
-
-    /**
 	 * Returns the result of interpreting the object as an instance of '<em>Sandboxed Object</em>'.
 	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Sandboxed Object</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public T caseSandboxedObject(SandboxedObject object) {
+	public T caseSandboxedObject(SandboxedObject object) {
 		return null;
 	}
 
-    /**
+				/**
+	 * Returns the result of interpreting the object as an instance of '<em>Checksum File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Checksum File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChecksumFile(ChecksumFile object) {
+		return null;
+	}
+
+				/**
+	 * Returns the result of interpreting the object as an instance of '<em>File</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>File</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCookbookFile(CookbookFile object) {
+		return null;
+	}
+
+				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Cookbook</em>'.
 	 * <!-- begin-user-doc -->
      * This implementation returns null;

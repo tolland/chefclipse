@@ -8,7 +8,7 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import chefclipse.core.managers.ChefRepositoryManager;
 
 public class DependencyModel implements IResourceChangeListener {
     private CookbookVersion                            mCookbook;

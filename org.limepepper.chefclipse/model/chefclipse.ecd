@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="chefclipse" size="5040,843" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#/" metadata="emf-1.0" initialized="true" tag="10" key="32303037303533312D3130206F72672E6C696D657065707065722E63686566636C69707365">
+  <children xsi:type="editmodel:PackageEditModel" name="chefclient" location="2355,443" size="107,60" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefclient">
+    <model href="chefclipse.ecore#//chefclient"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="chefserver" location="2035,443" size="113,60" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver">
+    <model href="chefclipse.ecore#//chefserver"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="cookbook" location="2198,443" size="107,60" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook">
+    <model href="chefclipse.ecore#//cookbook"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="Description" location="3370,443" size="107,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Description">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//Description"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="EInputStream" location="2716,443" size="123,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//EInputStream">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//EInputStream"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="Email" location="4131,443" size="86,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Email">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//Email"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="EStringToVersionUrlMap" location="992,443" size="217,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//EStringToVersionUrlMap" runTimeClassModel="key">
+    <children xsi:type="editmodel:CompartmentEditModel" size="120,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="key" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//EStringToVersionUrlMap/key">
+        <model href="chefclipse.ecore#//EStringToVersionUrlMap/key"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//EStringToVersionUrlMap"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="File" location="4675,443" size="86,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//File">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//File"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="IResource" location="3714,443" size="95,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//IResource">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//IResource"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="knife" location="3240,443" size="80,60" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife">
+    <model href="chefclipse.ecore#//knife"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="MapTest" location="4539,443" size="86,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//MapTest">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//MapTest"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="MapTestContainer" location="1259,443" size="174,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//MapTestContainer" runTimeClassModel="entries">
+    <children xsi:type="editmodel:CompartmentEditModel" size="131,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="entries" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//MapTestContainer/entries">
+        <model href="chefclipse.ecore#//MapTestContainer/entries"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//MapTestContainer"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="Name" location="4403,443" size="86,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Name">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//Name"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="NameUrlDataType" location="2512,443" size="154,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//NameUrlDataType">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//NameUrlDataType"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="NameUrlMap" location="3527,443" size="137,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//NameUrlMap" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//NameUrlMap"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="NameVersionMap" location="2889,443" size="171,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//NameVersionMap" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//NameVersionMap"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="Object" location="4267,443" size="86,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Object">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//Object"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="REST" location="3110,443" size="80,60" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//REST">
+    <model href="chefclipse.ecore#//REST"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="Text" location="3995,443" size="86,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Text">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//Text"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="URL" location="3859,443" size="86,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//URL">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//URL"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="URLEntryTest" location="1673,443" size="140,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//URLEntryTest" runTimeClassModel="url">
+    <children xsi:type="editmodel:CompartmentEditModel" size="117,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="url" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//URLEntryTest/url">
+        <model href="chefclipse.ecore#//URLEntryTest/url"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//URLEntryTest"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:PrimitiveTypeEditModel" name="Version" location="4811,443" size="86,41" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Version">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//Version"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="VersionedObject" location="687,443" size="255,75" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//VersionedObject" runTimeClassModel="NUM_VERSIONS,version">
+    <children xsi:type="editmodel:CompartmentEditModel" size="232,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="NUM_VERSIONS" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//VersionedObject/NUM_VERSIONS">
+        <model href="chefclipse.ecore#//VersionedObject/NUM_VERSIONS"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="version" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//VersionedObject/version">
+        <model href="chefclipse.ecore#//VersionedObject/version"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//VersionedObject"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="VersionUrl" location="1483,443" size="140,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//VersionUrl" runTimeClassModel="url">
+    <children xsi:type="editmodel:CompartmentEditModel" size="117,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="url" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//VersionUrl/url">
+        <model href="chefclipse.ecore#//VersionUrl/url"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//VersionUrl"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="workstation" location="1863,443" size="122,60" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//workstation">
+    <model href="chefclipse.ecore#//workstation"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="RecipeDescription" location="1650,318" size="343,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/RecipeDescription" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.25" target="//@children.33/@sourceConnections.0" targetEnd="//@children.25/@sourceConnections.0/@children.1" sourceEnd="//@children.25/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="171,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/RecipeDescription"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.33/@sourceConnections.0" name="NamedDescribedObject" location="50,175" size="218,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//NamedDescribedObject" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.26" target="//@children.29" targetEnd="//@children.26/@sourceConnections.0/@children.1" sourceEnd="//@children.26/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="112,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="82,57"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.51/@sourceConnections.0 //@children.43/@sourceConnections.0 //@children.35/@sourceConnections.0 //@children.27/@sourceConnections.0 //@children.46/@sourceConnections.0 //@children.50/@sourceConnections.0 //@children.49/@sourceConnections.0 //@children.31/@sourceConnections.0 //@children.47/@sourceConnections.0 //@children.45/@sourceConnections.0 //@children.37/@sourceConnections.0" autoLocated="true" source="//@children.26" target="//@children.39" targetEnd="//@children.26/@sourceConnections.1/@children.1" sourceEnd="//@children.26/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="109,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="78,75" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//NamedDescribedObject"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Library" location="2986,175" size="260,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Library" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.27" target="//@children.26/@sourceConnections.1" targetEnd="//@children.27/@sourceConnections.0/@children.1" sourceEnd="//@children.27/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="130,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.27" target="//@children.51/@sourceConnections.2" targetEnd="//@children.27/@sourceConnections.1/@children.1" sourceEnd="//@children.27/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="130,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Library"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Attributes" location="3886,175" size="283,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Attributes" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.28" target="//@children.51/@sourceConnections.2" targetEnd="//@children.28/@sourceConnections.0/@children.1" sourceEnd="//@children.28/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="141,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Attributes"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.26/@sourceConnections.0" name="DescribedObject" location="80,50" size="165,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//DescribedObject" runTimeClassModel="description">
+    <children xsi:type="editmodel:CompartmentEditModel" size="131,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="description" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//DescribedObject/description">
+        <model href="chefclipse.ecore#//DescribedObject/description"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//DescribedObject"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Node" location="666,318" size="254,70" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/Node" runTimeClassModel="run_list_items">
+    <children xsi:type="editmodel:CompartmentEditModel" size="212,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="run_list_items" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/Node/run_list_items">
+        <model href="chefclipse.ecore#//chefserver/Node/run_list_items"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.30" target="//@children.33/@sourceConnections.0" targetEnd="//@children.30/@sourceConnections.0/@children.1" sourceEnd="//@children.30/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="127,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//chefserver/Node"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CookbookFile" location="1343,175" size="309,85" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/CookbookFile" runTimeClassModel="bytes, getContentStream(): EInputStream">
+    <children xsi:type="editmodel:CompartmentEditModel" size="120,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="bytes" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/CookbookFile/bytes">
+        <model href="chefclipse.ecore#//cookbook/CookbookFile/bytes"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="135,18">
+      <children xsi:type="editmodel:MethodEditModel" name="getContentStream" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/CookbookFile/getContentStream">
+        <model href="chefclipse.ecore#//cookbook/CookbookFile/getContentStream"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.31" target="//@children.26/@sourceConnections.1" targetEnd="//@children.31/@sourceConnections.0/@children.1" sourceEnd="//@children.31/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="154,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/CookbookFile"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.51/@sourceConnections.2" name="SandboxedObject" location="2889,50" size="173,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//SandboxedObject" runTimeClassModel="url">
+    <children xsi:type="editmodel:CompartmentEditModel" size="63,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="url" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//SandboxedObject/url">
+        <model href="chefclipse.ecore#//SandboxedObject/url"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//SandboxedObject"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Environment" location="2023,318" size="307,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/Environment" runTimeClassModel="override_attributes">
+    <children xsi:type="editmodel:CompartmentEditModel" size="194,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="override_attributes" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/Environment/override_attributes">
+        <model href="chefclipse.ecore#//chefserver/Environment/override_attributes"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.25/@sourceConnections.0 //@children.41/@sourceConnections.0 //@children.42/@sourceConnections.0 //@children.40/@sourceConnections.0 //@children.30/@sourceConnections.0 //@children.36/@sourceConnections.0 //@children.52/@sourceConnections.0" autoLocated="true" source="//@children.33" target="//@children.26" targetEnd="//@children.33/@sourceConnections.0/@children.1" sourceEnd="//@children.33/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="153,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="109,29" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//chefserver/Environment"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.51/@sourceConnections.1 //@children.41/@sourceConnections.2" name="RubyFile" location="461,50" size="146,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//RubyFile" runTimeClassModel="extension">
+    <children xsi:type="editmodel:CompartmentEditModel" size="123,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="extension" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//RubyFile/extension">
+        <model href="chefclipse.ecore#//RubyFile/extension"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//RubyFile"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Provider" location="3276,175" size="271,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Provider" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.35" target="//@children.26/@sourceConnections.1" targetEnd="//@children.35/@sourceConnections.0/@children.1" sourceEnd="//@children.35/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="135,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.35" target="//@children.51/@sourceConnections.2" targetEnd="//@children.35/@sourceConnections.1/@children.1" sourceEnd="//@children.35/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="135,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Provider"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Role" location="389,318" size="247,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/Role" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.36" target="//@children.33/@sourceConnections.0" targetEnd="//@children.36/@sourceConnections.0/@children.1" sourceEnd="//@children.36/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="123,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//chefserver/Role"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Attribute" location="2024,175" size="275,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Attribute" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.37" target="//@children.26/@sourceConnections.1" targetEnd="//@children.37/@sourceConnections.0/@children.1" sourceEnd="//@children.37/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="137,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Attribute"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.41/@sourceConnections.1" name="MaintainedObject" location="4807,175" size="213,93" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//MaintainedObject" runTimeClassModel="maintainer_email,license,maintainer">
+    <children xsi:type="editmodel:CompartmentEditModel" size="190,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="license" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//MaintainedObject/license">
+        <model href="chefclipse.ecore#//MaintainedObject/license"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="maintainer" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//MaintainedObject/maintainer">
+        <model href="chefclipse.ecore#//MaintainedObject/maintainer"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="maintainer_email" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//MaintainedObject/maintainer_email">
+        <model href="chefclipse.ecore#//MaintainedObject/maintainer_email"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//MaintainedObject"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.26/@sourceConnections.1" name="NamedObject" location="1883,50" size="157,75" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//NamedObject" runTimeClassModel="name,ID">
+    <children xsi:type="editmodel:CompartmentEditModel" size="134,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="ID" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//NamedObject/ID">
+        <model href="chefclipse.ecore#//NamedObject/ID"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//NamedObject/name">
+        <model href="chefclipse.ecore#//NamedObject/name"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//NamedObject"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CookbookVersion" location="950,318" size="337,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/CookbookVersion" runTimeClassModel="catalog">
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="catalog" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/CookbookVersion/catalog">
+        <model href="chefclipse.ecore#//cookbook/CookbookVersion/catalog"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.40" target="//@children.33/@sourceConnections.0" targetEnd="//@children.40/@sourceConnections.0/@children.1" sourceEnd="//@children.40/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="168,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/CookbookVersion"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Metadata" location="2360,318" size="280,75" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Metadata" runTimeClassModel="long_description,version">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="long_description" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Metadata/long_description">
+        <model href="chefclipse.ecore#//cookbook/Metadata/long_description"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="version" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Metadata/version">
+        <model href="chefclipse.ecore#//cookbook/Metadata/version"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.41" target="//@children.33/@sourceConnections.0" targetEnd="//@children.41/@sourceConnections.0/@children.1" sourceEnd="//@children.41/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="140,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.41" target="//@children.38" targetEnd="//@children.41/@sourceConnections.1/@children.1" sourceEnd="//@children.41/@sourceConnections.1/@children.0" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="280,29" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,52"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.41" target="//@children.34" targetEnd="//@children.41/@sourceConnections.2/@children.1" sourceEnd="//@children.41/@sourceConnections.2/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,17" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="146,38"/>
+      <bendpoints location="2580,243" secondRelativeDimension="1723,206" firstRelativeDimension="-66,-24"/>
+      <bendpoints location="563,243" secondRelativeDimension="-190,186" firstRelativeDimension="-2045,-58"/>
+      <bendpoints location="563,100" secondRelativeDimension="-145,48" firstRelativeDimension="-2044,-191"/>
+      <bendpoints location="681,100" secondRelativeDimension="-59,43" firstRelativeDimension="-1925,-190"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Metadata"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Repository" location="1317,318" size="303,75" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//workstation/Repository" runTimeClassModel="OS,basepath">
+    <children xsi:type="editmodel:CompartmentEditModel" size="121,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="OS" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//workstation/Repository/OS">
+        <model href="chefclipse.ecore#//workstation/Repository/OS"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="basepath" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//workstation/Repository/basepath">
+        <model href="chefclipse.ecore#//workstation/Repository/basepath"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.42" target="//@children.33/@sourceConnections.0" targetEnd="//@children.42/@sourceConnections.0/@children.1" sourceEnd="//@children.42/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="151,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//workstation/Repository"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Definition" location="3577,175" size="279,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Definition" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.43" target="//@children.26/@sourceConnections.1" targetEnd="//@children.43/@sourceConnections.0/@children.1" sourceEnd="//@children.43/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="139,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.43" target="//@children.51/@sourceConnections.2" targetEnd="//@children.43/@sourceConnections.1/@children.1" sourceEnd="//@children.43/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="139,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Definition"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Template" location="4199,175" size="276,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Template" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.44" target="//@children.51/@sourceConnections.2" targetEnd="//@children.44/@sourceConnections.0/@children.1" sourceEnd="//@children.44/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="138,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Template"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="WorkstationFolder" location="954,175" size="359,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//workstation/WorkstationFolder" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.45" target="//@children.26/@sourceConnections.1" targetEnd="//@children.45/@sourceConnections.0/@children.1" sourceEnd="//@children.45/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="179,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//workstation/WorkstationFolder"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="DataBagItem" location="1682,175" size="312,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/DataBagItem" runTimeClassModel="jsonResource">
+    <children xsi:type="editmodel:CompartmentEditModel" size="193,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="jsonResource" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/DataBagItem/jsonResource">
+        <model href="chefclipse.ecore#//chefserver/DataBagItem/jsonResource"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.46" target="//@children.26/@sourceConnections.1" targetEnd="//@children.46/@sourceConnections.0/@children.1" sourceEnd="//@children.46/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="156,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//chefserver/DataBagItem"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="File" location="2329,175" size="235,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/File" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.47" target="//@children.26/@sourceConnections.1" targetEnd="//@children.47/@sourceConnections.0/@children.1" sourceEnd="//@children.47/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="117,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.47" target="//@children.51/@sourceConnections.2" targetEnd="//@children.47/@sourceConnections.1/@children.1" sourceEnd="//@children.47/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="117,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/File"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Root_file" location="4505,175" size="272,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Root_file" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.48" target="//@children.51/@sourceConnections.2" targetEnd="//@children.48/@sourceConnections.0/@children.1" sourceEnd="//@children.48/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="136,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Root_file"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ServerCookbookFile" location="2594,175" size="362,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/ServerCookbookFile" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.49" target="//@children.26/@sourceConnections.1" targetEnd="//@children.49/@sourceConnections.0/@children.1" sourceEnd="//@children.49/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="181,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.49" target="//@children.51/@sourceConnections.2" targetEnd="//@children.49/@sourceConnections.1/@children.1" sourceEnd="//@children.49/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="181,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//chefserver/ServerCookbookFile"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Resource" location="358,175" size="277,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Resource" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.50" target="//@children.26/@sourceConnections.1" targetEnd="//@children.50/@sourceConnections.0/@children.1" sourceEnd="//@children.50/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="138,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.50" target="//@children.51/@sourceConnections.1" targetEnd="//@children.50/@sourceConnections.1/@children.1" sourceEnd="//@children.50/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="138,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.50" target="//@children.51/@sourceConnections.2" targetEnd="//@children.50/@sourceConnections.2/@children.1" sourceEnd="//@children.50/@sourceConnections.2/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="138,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Resource"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Recipe" location="665,175" size="259,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//cookbook/Recipe" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.51" target="//@children.26/@sourceConnections.1" targetEnd="//@children.51/@sourceConnections.0/@children.1" sourceEnd="//@children.51/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="129,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.50/@sourceConnections.1" autoLocated="true" source="//@children.51" target="//@children.34" targetEnd="//@children.51/@sourceConnections.1/@children.1" sourceEnd="//@children.51/@sourceConnections.1/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="129,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="73,57" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.43/@sourceConnections.1 //@children.35/@sourceConnections.1 //@children.27/@sourceConnections.1 //@children.48/@sourceConnections.0 //@children.50/@sourceConnections.2 //@children.49/@sourceConnections.1 //@children.47/@sourceConnections.1 //@children.44/@sourceConnections.0 //@children.28/@sourceConnections.0" autoLocated="true" source="//@children.51" target="//@children.32" targetEnd="//@children.51/@sourceConnections.2/@children.1" sourceEnd="//@children.51/@sourceConnections.2/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="129,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="86,57" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//cookbook/Recipe"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="DataBag" location="80,318" size="279,57" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/DataBag" runTimeClassModel="resource">
+    <children xsi:type="editmodel:CompartmentEditModel" size="167,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="resource" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefserver/DataBag/resource">
+        <model href="chefclipse.ecore#//chefserver/DataBag/resource"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.52" target="//@children.33/@sourceConnections.0" targetEnd="//@children.52/@sourceConnections.0/@children.1" sourceEnd="//@children.52/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="139,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//chefserver/DataBag"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.55/@sourceConnections.0" name="Config" location="224,443" size="219,165" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Config" runTimeClassModel="client_key,validation_key,chef_server_url,validation_client_name,log_level,node_name,version">
+    <children xsi:type="editmodel:CompartmentEditModel" size="196,126">
+      <children xsi:type="editmodel:AttributeEditModel" name="chef_server_url" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Config/chef_server_url">
+        <model href="chefclipse.ecore#//Config/chef_server_url"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="client_key" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Config/client_key">
+        <model href="chefclipse.ecore#//Config/client_key"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="log_level" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Config/log_level">
+        <model href="chefclipse.ecore#//Config/log_level"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="node_name" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Config/node_name">
+        <model href="chefclipse.ecore#//Config/node_name"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="validation_client_name" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Config/validation_client_name">
+        <model href="chefclipse.ecore#//Config/validation_client_name"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="validation_key" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Config/validation_key">
+        <model href="chefclipse.ecore#//Config/validation_key"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="version" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//Config/version">
+        <model href="chefclipse.ecore#//Config/version"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <model href="chefclipse.ecore#//Config"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ClientConfig" location="339,658" size="298,29" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//chefclient/ClientConfig" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" source="//@children.54" target="//@children.55/@sourceConnections.0" targetEnd="//@children.54/@sourceConnections.0/@children.1" sourceEnd="//@children.54/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="149,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//chefclient/ClientConfig"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="KnifeConfig" location="50,658" size="259,165" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife/KnifeConfig" runTimeClassModel="cache_type,cookbook_path,path,cache_option,cookbook_email,cookbook_license,cookbook_copyright">
+    <children xsi:type="editmodel:CompartmentEditModel" size="179,126">
+      <children xsi:type="editmodel:AttributeEditModel" name="cache_option" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife/KnifeConfig/cache_option">
+        <model href="chefclipse.ecore#//knife/KnifeConfig/cache_option"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="cache_type" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife/KnifeConfig/cache_type">
+        <model href="chefclipse.ecore#//knife/KnifeConfig/cache_type"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="cookbook_copyright" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife/KnifeConfig/cookbook_copyright">
+        <model href="chefclipse.ecore#//knife/KnifeConfig/cookbook_copyright"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="cookbook_email" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife/KnifeConfig/cookbook_email">
+        <model href="chefclipse.ecore#//knife/KnifeConfig/cookbook_email"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="cookbook_license" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife/KnifeConfig/cookbook_license">
+        <model href="chefclipse.ecore#//knife/KnifeConfig/cookbook_license"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="cookbook_path" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife/KnifeConfig/cookbook_path">
+        <model href="chefclipse.ecore#//knife/KnifeConfig/cookbook_path"/>
+      </children>
+      <children xsi:type="editmodel:AttributeEditModel" name="path" id="platform:/resource/org.limepepper.chefclipse/model/chefclipse.ecore#//knife/KnifeConfig/path">
+        <model href="chefclipse.ecore#//knife/KnifeConfig/path"/>
+      </children>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.54/@sourceConnections.0" autoLocated="true" source="//@children.55" target="//@children.53" targetEnd="//@children.55/@sourceConnections.0/@children.1" sourceEnd="//@children.55/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="129,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="109,165" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <model href="chefclipse.ecore#//knife/KnifeConfig"/>
+    <classifierPreferences xsi:type="editmodel:EMFClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural"/>
+  </children>
+  <model href="chefclipse.ecore#/"/>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1;Product=eEmf"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:EMFClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true"/>
+</editmodel:ClassDiagramEditModel>

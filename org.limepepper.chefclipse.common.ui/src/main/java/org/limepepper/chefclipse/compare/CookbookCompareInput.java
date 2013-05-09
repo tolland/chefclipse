@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
-import org.limepepper.chefclipse.model.CookbookFolder;
+import chefclipse.core.CookbookFolder;
 
 public class CookbookCompareInput extends CompareEditorInput {
 
@@ -90,17 +90,17 @@ public class CookbookCompareInput extends CompareEditorInput {
                 return null;
             return new FilteredBufferedResourceNode(child);
         }
-        
+
         @Override
         public boolean equals(Object other) {
             return super.equals(other);
         }
-        
+
         @Override
         public int hashCode() {
             return super.hashCode();
         }
-        
+
     }
 
     public IStructureComparator getStructure(IResource input) {

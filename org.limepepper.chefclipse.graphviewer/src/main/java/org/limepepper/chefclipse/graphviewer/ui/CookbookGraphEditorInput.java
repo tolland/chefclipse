@@ -6,7 +6,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
+import chefclipse.core.managers.ChefRepositoryManager;
 
 public class CookbookGraphEditorInput implements IEditorInput {
 

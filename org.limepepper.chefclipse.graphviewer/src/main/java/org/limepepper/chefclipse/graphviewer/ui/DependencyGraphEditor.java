@@ -40,23 +40,18 @@ import org.eclipse.zest.core.viewers.IGraphEntityContentProvider;
 import org.eclipse.zest.core.viewers.ISelfStyleProvider;
 import org.eclipse.zest.core.widgets.Graph;
 import org.eclipse.zest.core.widgets.GraphConnection;
-import org.eclipse.zest.core.widgets.GraphContainer;
 import org.eclipse.zest.core.widgets.GraphNode;
 import org.eclipse.zest.core.widgets.ZestStyles;
 import org.eclipse.zest.layouts.LayoutAlgorithm;
-import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
-import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
-import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.graphviewer.common.ImageLoader;
 import org.limepepper.chefclipse.graphviewer.controller.DependencyController;
 import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel;
 import org.limepepper.chefclipse.graphviewer.model.DependencyModel.IDependencyChangeListener;
-import org.limepepper.chefclipse.graphviewer.ui.CookbookGraphEditor.CookbookGraphLayoutAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -115,7 +110,7 @@ public class DependencyGraphEditor extends EditorPart implements
     @Override
     public void createPartControl(Composite parent) {
         dependencyModel.addDependencyChangeListener(this);
-        
+
         ViewForm viewForm = new ViewForm(parent, SWT.NONE);
         viewForm.setLayout(new FillLayout());
         graphViewer = new GraphViewer(viewForm, SWT.NONE);
@@ -148,7 +143,7 @@ public class DependencyGraphEditor extends EditorPart implements
 
 
     }
-    
+
     private void createToolbar(ViewForm viewFrom)
     {
         ToolBar toolBar = new ToolBar(viewFrom, SWT.FLAT);
@@ -419,7 +414,7 @@ public class DependencyGraphEditor extends EditorPart implements
                                         input.getResource()),
                                 CookbookGraphEditor.ID);
             } catch (PartInitException e) {
-    
+
                 e.printStackTrace();
             }
         }
@@ -429,14 +424,14 @@ public class DependencyGraphEditor extends EditorPart implements
             return selectedElement != null;
         }
     }
-    
+
     class DependencyGraphLayoutAction extends Action
     {
         public DependencyGraphLayoutAction() {
             this.setToolTipText("Change Dependency Graph Layout");
             setImageDescriptor(ImageDescriptor.createFromImage(ImageLoader.Load("full_hierarchy.gif")));
         }
-        
+
         @Override
         public void run()
         {

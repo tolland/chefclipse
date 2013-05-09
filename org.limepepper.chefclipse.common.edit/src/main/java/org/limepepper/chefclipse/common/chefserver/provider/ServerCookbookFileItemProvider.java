@@ -22,7 +22,9 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
+import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
+import org.limepepper.chefclipse.provider.SandboxedObjectItemProvider;
 import org.limepepper.chefclipse.provider.NamedObjectItemProvider;
 
 /**
@@ -32,7 +34,7 @@ import org.limepepper.chefclipse.provider.NamedObjectItemProvider;
  * @generated
  */
 public class ServerCookbookFileItemProvider
-    extends NamedObjectItemProvider
+    extends SandboxedObjectItemProvider
     implements
         IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
     /**
@@ -56,16 +58,62 @@ public class ServerCookbookFileItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
+			addIDPropertyDescriptor(object);
 			addChecksumPropertyDescriptor(object);
 			addPathPropertyDescriptor(object);
 			addSpecificityPropertyDescriptor(object);
-			addUrlPropertyDescriptor(object);
 			addCookbookPropertyDescriptor(object);
+			addBytesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
     /**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_NamedObject_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
+				 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the ID feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIDPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_NamedObject_ID_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
+				 ChefclipsePackage.Literals.NAMED_OBJECT__ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This adds a property descriptor for the Checksum feature.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -132,28 +180,6 @@ public class ServerCookbookFileItemProvider
 	}
 
     /**
-	 * This adds a property descriptor for the Url feature.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected void addUrlPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SandboxedObject_url_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SandboxedObject_url_feature", "_UI_SandboxedObject_type"),
-				 ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-    /**
 	 * This adds a property descriptor for the Cookbook feature.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -164,9 +190,9 @@ public class ServerCookbookFileItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ServerCookbookFile_cookbook_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServerCookbookFile_cookbook_feature", "_UI_ServerCookbookFile_type"),
-				 ChefserverPackage.Literals.SERVER_COOKBOOK_FILE__COOKBOOK,
+				 getString("_UI_CookbookFile_cookbook_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_cookbook_feature", "_UI_CookbookFile_type"),
+				 CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK,
 				 true,
 				 false,
 				 true,
@@ -176,6 +202,28 @@ public class ServerCookbookFileItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Bytes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBytesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookFile_bytes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_bytes_feature", "_UI_CookbookFile_type"),
+				 CookbookPackage.Literals.COOKBOOK_FILE__BYTES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This returns ServerCookbookFile.gif.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -212,10 +260,12 @@ public class ServerCookbookFileItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ServerCookbookFile.class)) {
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__NAME:
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__ID:
 			case ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM:
 			case ChefserverPackage.SERVER_COOKBOOK_FILE__PATH:
 			case ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY:
-			case ChefserverPackage.SERVER_COOKBOOK_FILE__URL:
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -14,5 +14,5 @@ import org.limepepper.chefclipse.NamedObject;
  * @model
  * @generated
  */
-public interface Attribute extends NamedObject {
+public interface Attribute extends CookbookFile {
 } // Attribute

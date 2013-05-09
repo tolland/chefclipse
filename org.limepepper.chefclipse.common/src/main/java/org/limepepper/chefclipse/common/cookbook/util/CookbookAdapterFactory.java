@@ -14,6 +14,7 @@ import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.RubyFile;
 import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
+import org.limepepper.chefclipse.common.cookbook.*;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
 import org.limepepper.chefclipse.common.cookbook.Attributes;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;

@@ -16,7 +16,7 @@ import org.limepepper.chefclipse.impl.NamedObjectImpl;
  *
  * @generated
  */
-public class AttributeImpl extends NamedObjectImpl implements Attribute {
+public class AttributeImpl extends CookbookFileImpl implements Attribute {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

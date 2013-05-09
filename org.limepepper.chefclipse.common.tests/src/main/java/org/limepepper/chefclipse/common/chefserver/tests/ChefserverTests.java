@@ -30,6 +30,7 @@ public class ChefserverTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new ChefserverTests("chefserver Tests");
+		suite.addTestSuite(ServerCookbookFileTest.class);
 		return suite;
 	}
 

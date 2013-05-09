@@ -45,7 +45,7 @@
             name="Chef server configuration">
          <filter
                name="projectNature"
-               value="org.limepepper.chefclipse.ChefProjectNature"/>
+               value="chefclipse.chefnature"/>
          <enabledWhen>
             <adapt
                   type="org.eclipse.core.resources.IProject">

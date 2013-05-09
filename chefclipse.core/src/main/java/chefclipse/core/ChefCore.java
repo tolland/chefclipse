@@ -10,6 +10,8 @@ import org.eclipse.core.runtime.Plugin;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import chefclipse.core.managers.ChefModelManager;
 import chefclipse.core.managers.ChefRepositoryManager;
@@ -41,6 +43,8 @@ public class ChefCore extends Plugin implements BundleActivator {
 		super();
 		CHEF_CORE_PLUGIN = this;
 	}
+
+	static Logger logger = LoggerFactory.getLogger(ChefCore.class);
 
 	private static final IResource[] NO_GENERATED_RESOURCES = new IResource[0];
 
@@ -169,5 +173,22 @@ public class ChefCore extends Plugin implements BundleActivator {
 		} else {
 			return instance.createDataBagItem(resource);
 		}
+	}
+
+	public static void log(CoreException e) {
+		logger.debug("message was: {}", e);
+	}
+
+	public static void log(String string) {
+		logger.debug("message was: {}", string);
+	}
+
+	public static void debug(Object class1) {
+		logger.debug("debug was: {}", class1);
+	}
+
+	public static void error(String string) {
+		logger.error("debug was: {}", string);
+
 	}
 }

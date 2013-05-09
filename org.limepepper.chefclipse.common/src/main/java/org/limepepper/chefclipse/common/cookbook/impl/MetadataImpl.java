@@ -2,13 +2,18 @@
  */
 package org.limepepper.chefclipse.common.cookbook.impl;
 
+import java.io.InputStream;
+import java.net.URL;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EClass;
+import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.MaintainedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Metadata;
@@ -27,6 +32,12 @@ import org.limepepper.chefclipse.impl.RubyFileImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getID <em>ID</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getChecksum <em>Checksum</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getSpecificity <em>Specificity</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getUrl <em>Url</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getBytes <em>Bytes</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getCookbookVersion <em>Cookbook Version</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getLong_description <em>Long description</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getVersion <em>Version</em>}</li>
@@ -37,6 +48,7 @@ import org.limepepper.chefclipse.impl.RubyFileImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getPlatforms <em>Platforms</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getRecipes <em>Recipes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.MetadataImpl#getReplacing <em>Replacing</em>}</li>
  * </ul>
  * </p>
  *
@@ -172,6 +184,132 @@ public class MetadataImpl extends RubyFileImpl implements Metadata {
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getChecksum() {
+		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__CHECKSUM, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setChecksum(String newChecksum) {
+		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__CHECKSUM, newChecksum);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPath() {
+		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__PATH, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPath(String newPath) {
+		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__PATH, newPath);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getSpecificity() {
+		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSpecificity(String newSpecificity) {
+		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY, newSpecificity);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public URL getUrl() {
+		return (URL)eGet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUrl(URL newUrl) {
+		eSet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, newUrl);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CookbookVersion getCookbook() {
+		return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCookbook(CookbookVersion newCookbook) {
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public byte[] getBytes() {
+		return (byte[])eGet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBytes(byte[] newBytes) {
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, newBytes);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetBytes() {
+		eUnset(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetBytes() {
+		return eIsSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -296,6 +434,35 @@ public class MetadataImpl extends RubyFileImpl implements Metadata {
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getReplacing() {
+		return (String)eGet(CookbookPackage.Literals.METADATA__REPLACING, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReplacing(String newReplacing) {
+		eSet(CookbookPackage.Literals.METADATA__REPLACING, newReplacing);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public InputStream getContentStream() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -324,6 +491,27 @@ public class MetadataImpl extends RubyFileImpl implements Metadata {
 		}
 		if (baseClass == NamedDescribedObject.class) {
 			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ChecksumFile.class) {
+			switch (derivedFeatureID) {
+				case CookbookPackage.METADATA__CHECKSUM: return ChefclipsePackage.CHECKSUM_FILE__CHECKSUM;
+				case CookbookPackage.METADATA__PATH: return ChefclipsePackage.CHECKSUM_FILE__PATH;
+				case CookbookPackage.METADATA__SPECIFICITY: return ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY;
+				default: return -1;
+			}
+		}
+		if (baseClass == SandboxedObject.class) {
+			switch (derivedFeatureID) {
+				case CookbookPackage.METADATA__URL: return ChefclipsePackage.SANDBOXED_OBJECT__URL;
+				default: return -1;
+			}
+		}
+		if (baseClass == CookbookFile.class) {
+			switch (derivedFeatureID) {
+				case CookbookPackage.METADATA__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
+				case CookbookPackage.METADATA__BYTES: return CookbookPackage.COOKBOOK_FILE__BYTES;
 				default: return -1;
 			}
 		}
@@ -360,6 +548,27 @@ public class MetadataImpl extends RubyFileImpl implements Metadata {
 		}
 		if (baseClass == NamedDescribedObject.class) {
 			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ChecksumFile.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.CHECKSUM_FILE__CHECKSUM: return CookbookPackage.METADATA__CHECKSUM;
+				case ChefclipsePackage.CHECKSUM_FILE__PATH: return CookbookPackage.METADATA__PATH;
+				case ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY: return CookbookPackage.METADATA__SPECIFICITY;
+				default: return -1;
+			}
+		}
+		if (baseClass == SandboxedObject.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.SANDBOXED_OBJECT__URL: return CookbookPackage.METADATA__URL;
+				default: return -1;
+			}
+		}
+		if (baseClass == CookbookFile.class) {
+			switch (baseFeatureID) {
+				case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return CookbookPackage.METADATA__COOKBOOK;
+				case CookbookPackage.COOKBOOK_FILE__BYTES: return CookbookPackage.METADATA__BYTES;
 				default: return -1;
 			}
 		}

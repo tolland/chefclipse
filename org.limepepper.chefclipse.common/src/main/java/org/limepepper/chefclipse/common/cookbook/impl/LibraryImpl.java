@@ -21,11 +21,11 @@ import org.limepepper.chefclipse.impl.SandboxedObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getChecksum <em>Checksum</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getSpecificity <em>Specificity</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getCookbook <em>Cookbook</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl#getBytes <em>Bytes</em>}</li>
  * </ul>
@@ -215,18 +215,18 @@ public class LibraryImpl extends SandboxedObjectImpl implements Library {
 	 */
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == NamedObject.class) {
+			switch (derivedFeatureID) {
+				case CookbookPackage.LIBRARY__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+				case CookbookPackage.LIBRARY__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				default: return -1;
+			}
+		}
 		if (baseClass == ChecksumFile.class) {
 			switch (derivedFeatureID) {
 				case CookbookPackage.LIBRARY__CHECKSUM: return ChefclipsePackage.CHECKSUM_FILE__CHECKSUM;
 				case CookbookPackage.LIBRARY__PATH: return ChefclipsePackage.CHECKSUM_FILE__PATH;
 				case CookbookPackage.LIBRARY__SPECIFICITY: return ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY;
-				default: return -1;
-			}
-		}
-		if (baseClass == NamedObject.class) {
-			switch (derivedFeatureID) {
-				case CookbookPackage.LIBRARY__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-				case CookbookPackage.LIBRARY__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
 				default: return -1;
 			}
 		}
@@ -247,18 +247,18 @@ public class LibraryImpl extends SandboxedObjectImpl implements Library {
 	 */
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == NamedObject.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.LIBRARY__NAME;
+				case ChefclipsePackage.NAMED_OBJECT__ID: return CookbookPackage.LIBRARY__ID;
+				default: return -1;
+			}
+		}
 		if (baseClass == ChecksumFile.class) {
 			switch (baseFeatureID) {
 				case ChefclipsePackage.CHECKSUM_FILE__CHECKSUM: return CookbookPackage.LIBRARY__CHECKSUM;
 				case ChefclipsePackage.CHECKSUM_FILE__PATH: return CookbookPackage.LIBRARY__PATH;
 				case ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY: return CookbookPackage.LIBRARY__SPECIFICITY;
-				default: return -1;
-			}
-		}
-		if (baseClass == NamedObject.class) {
-			switch (baseFeatureID) {
-				case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.LIBRARY__NAME;
-				case ChefclipsePackage.NAMED_OBJECT__ID: return CookbookPackage.LIBRARY__ID;
 				default: return -1;
 			}
 		}

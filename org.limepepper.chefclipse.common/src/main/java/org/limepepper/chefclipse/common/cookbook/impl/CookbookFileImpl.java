@@ -3,10 +3,12 @@
 package org.limepepper.chefclipse.common.cookbook.impl;
 
 import java.io.InputStream;
+import java.net.URL;
 
 import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.ChecksumFile;
 import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
@@ -22,6 +24,7 @@ import org.limepepper.chefclipse.impl.NamedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getChecksum <em>Checksum</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getSpecificity <em>Specificity</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getUrl <em>Url</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getCookbook <em>Cookbook</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl#getBytes <em>Bytes</em>}</li>
  * </ul>
@@ -105,6 +108,24 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 
 				/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public URL getUrl() {
+		return (URL)eGet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUrl(URL newUrl) {
+		eSet(ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL, newUrl);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -183,6 +204,12 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 				default: return -1;
 			}
 		}
+		if (baseClass == SandboxedObject.class) {
+			switch (derivedFeatureID) {
+				case CookbookPackage.COOKBOOK_FILE__URL: return ChefclipsePackage.SANDBOXED_OBJECT__URL;
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -198,6 +225,12 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 				case ChefclipsePackage.CHECKSUM_FILE__CHECKSUM: return CookbookPackage.COOKBOOK_FILE__CHECKSUM;
 				case ChefclipsePackage.CHECKSUM_FILE__PATH: return CookbookPackage.COOKBOOK_FILE__PATH;
 				case ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY: return CookbookPackage.COOKBOOK_FILE__SPECIFICITY;
+				default: return -1;
+			}
+		}
+		if (baseClass == SandboxedObject.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.SANDBOXED_OBJECT__URL: return CookbookPackage.COOKBOOK_FILE__URL;
 				default: return -1;
 			}
 		}

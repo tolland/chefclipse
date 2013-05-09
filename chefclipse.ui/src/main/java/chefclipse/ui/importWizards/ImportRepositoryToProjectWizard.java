@@ -10,45 +10,123 @@
  *******************************************************************************/
 package chefclipse.ui.importWizards;
 
-import org.eclipse.core.resources.IFile;
+import java.lang.reflect.InvocationTargetException;
+
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IImportWizard;
 import org.eclipse.ui.IWorkbench;
 
-public class ImportRepositoryToProjectWizard extends Wizard implements IImportWizard {
-	
-	ImportRepositoryToProject mainPage;
+import chefclipse.core.managers.ChefProjectManager;
+import chefclipse.ui.wizards.ChefConfigSelectionWizardPage;
+import chefclipse.ui.wizards.ChefProjectWizard;
+
+public class ImportRepositoryToProjectWizard extends ChefProjectWizard
+		implements IImportWizard {
+
+	private Path locationPath;
+	private Boolean doChefConfigSelection;
+	private ChefConfigSelectionWizardPage chefConfigPage;
+
+	NewProjectExistingChefRepoWizardPage mainPage;
+
+	protected Path getLocationPath() {
+		return locationPath;
+	}
+
+	protected void setLocationPath(Path locationPath) {
+		this.locationPath = locationPath;
+	}
 
 	public ImportRepositoryToProjectWizard() {
 		super();
+		chefConfigPage = new ChefConfigSelectionWizardPage(this);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.wizard.Wizard#performFinish()
-	 */
 	public boolean performFinish() {
-		IFile file = mainPage.createNewFile();
-        if (file == null)
-            return false;
-        return true;
+
+		IRunnableWithProgress op = new IRunnableWithProgress() {
+			public void run(IProgressMonitor monitor)
+					throws InvocationTargetException {
+				try {
+
+					// @todo how to deal with dupes..
+					String projectName = "chef-repo";
+
+					IProject proj = ChefProjectManager.instance()
+							.createChefProject(projectName, getLocationPath(),
+									monitor);
+
+					if (!proj.isOpen()) {
+						proj.open(monitor);
+					}
+				} catch (CoreException e) {
+					e.printStackTrace();
+					throw new InvocationTargetException(e);
+				} finally {
+					monitor.done();
+				}
+			}
+
+		};
+
+		try {
+			this.getContainer().run(true, false, op);
+		} catch (InterruptedException e) {
+			return false;
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+			Throwable realException = e.getTargetException();
+			MessageDialog.openError(getShell(),
+					"Error", realException.getMessage()); //$NON-NLS-1$
+			return false;
+		}
+		return true;
 	}
-	 
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see org.eclipse.ui.IWorkbenchWizard#init(org.eclipse.ui.IWorkbench,
+	 * org.eclipse.jface.viewers.IStructuredSelection)
 	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		setWindowTitle("File Import Wizard"); //NON-NLS-1
+		setWindowTitle("Chef Repository Import Wizard"); // NON-NLS-1
 		setNeedsProgressMonitor(true);
-		mainPage = new ImportRepositoryToProject("Import Repository",selection); //NON-NLS-1
+		mainPage = new NewProjectExistingChefRepoWizardPage(
+				"Import Chef Repository"); // NON-NLS-1
 	}
-	
-	/* (non-Javadoc)
-     * @see org.eclipse.jface.wizard.IWizard#addPages()
-     */
-    public void addPages() {
-        super.addPages(); 
-        addPage(mainPage);        
-    }
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see org.eclipse.jface.wizard.IWizard#addPages()
+	 */
+	public void addPages() {
+		super.addPages();
+		addPage(mainPage);
+	}
+
+	public Boolean getDoChefConfigSelection() {
+		return doChefConfigSelection;
+	}
+
+	public void setDoChefConfigSelection(Boolean doChefConfigSelection) {
+		this.doChefConfigSelection = doChefConfigSelection;
+	}
+
+	public void addChefConfigPage(boolean b) {
+		if (b) {
+			addPage(chefConfigPage);
+		} else {
+			//getPage(name);
+		}
+
+	}
 
 }

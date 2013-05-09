@@ -56,11 +56,11 @@ public class LibraryItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
+			addIDPropertyDescriptor(object);
 			addChecksumPropertyDescriptor(object);
 			addPathPropertyDescriptor(object);
 			addSpecificityPropertyDescriptor(object);
-			addNamePropertyDescriptor(object);
-			addIDPropertyDescriptor(object);
 			addCookbookPropertyDescriptor(object);
 			addBytesPropertyDescriptor(object);
 		}
@@ -258,11 +258,11 @@ public class LibraryItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Library.class)) {
+			case CookbookPackage.LIBRARY__NAME:
+			case CookbookPackage.LIBRARY__ID:
 			case CookbookPackage.LIBRARY__CHECKSUM:
 			case CookbookPackage.LIBRARY__PATH:
 			case CookbookPackage.LIBRARY__SPECIFICITY:
-			case CookbookPackage.LIBRARY__NAME:
-			case CookbookPackage.LIBRARY__ID:
 			case CookbookPackage.LIBRARY__BYTES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

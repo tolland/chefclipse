@@ -38,6 +38,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
+
 import chefclipse.ui.ChefPlugin;
 import chefclipse.ui.messages.Messages;
 
@@ -112,7 +113,7 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 					if (chef_server_url != null) {
 						return chef_server_url.toExternalForm();
 					} else {
-						return "";
+						return ""; //$NON-NLS-1$
 					}
 				}
 			}

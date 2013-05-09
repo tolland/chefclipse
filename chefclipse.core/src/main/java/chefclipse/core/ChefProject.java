@@ -25,6 +25,16 @@ public class ChefProject extends Openable implements IChefProject, IOpenable,
 		}
 	}
 
+	public ChefProject(IProject project) {
+		super(null);
+		this.project = project;
+		try {
+			buildStructure(null, null, null, null);
+		} catch (ChefModelException e) {
+			e.printStackTrace();
+		}
+	}
+
 	/**
 	 * The platform project this <code>IChefProject</code> is based on
 	 */

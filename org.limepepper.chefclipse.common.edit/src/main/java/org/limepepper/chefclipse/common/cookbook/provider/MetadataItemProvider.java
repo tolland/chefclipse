@@ -63,8 +63,15 @@ public class MetadataItemProvider
 			addDescriptionPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 			addIDPropertyDescriptor(object);
+			addChecksumPropertyDescriptor(object);
+			addPathPropertyDescriptor(object);
+			addSpecificityPropertyDescriptor(object);
+			addUrlPropertyDescriptor(object);
+			addCookbookPropertyDescriptor(object);
+			addBytesPropertyDescriptor(object);
 			addLong_descriptionPropertyDescriptor(object);
 			addVersionPropertyDescriptor(object);
+			addReplacingPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -202,6 +209,138 @@ public class MetadataItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Checksum feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addChecksumPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ChecksumFile_checksum_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_checksum_feature", "_UI_ChecksumFile_type"),
+				 ChefclipsePackage.Literals.CHECKSUM_FILE__CHECKSUM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Path feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPathPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ChecksumFile_path_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_path_feature", "_UI_ChecksumFile_type"),
+				 ChefclipsePackage.Literals.CHECKSUM_FILE__PATH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Specificity feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSpecificityPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ChecksumFile_specificity_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_specificity_feature", "_UI_ChecksumFile_type"),
+				 ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Url feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addUrlPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SandboxedObject_url_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SandboxedObject_url_feature", "_UI_SandboxedObject_type"),
+				 ChefclipsePackage.Literals.SANDBOXED_OBJECT__URL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Cookbook feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCookbookPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookFile_cookbook_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_cookbook_feature", "_UI_CookbookFile_type"),
+				 CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Bytes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBytesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookFile_bytes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_bytes_feature", "_UI_CookbookFile_type"),
+				 CookbookPackage.Literals.COOKBOOK_FILE__BYTES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This adds a property descriptor for the Long description feature.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -246,6 +385,28 @@ public class MetadataItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Replacing feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReplacingPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Metadata_replacing_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Metadata_replacing_feature", "_UI_Metadata_type"),
+				 CookbookPackage.Literals.METADATA__REPLACING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -324,8 +485,14 @@ public class MetadataItemProvider
 			case CookbookPackage.METADATA__DESCRIPTION:
 			case CookbookPackage.METADATA__NAME:
 			case CookbookPackage.METADATA__ID:
+			case CookbookPackage.METADATA__CHECKSUM:
+			case CookbookPackage.METADATA__PATH:
+			case CookbookPackage.METADATA__SPECIFICITY:
+			case CookbookPackage.METADATA__URL:
+			case CookbookPackage.METADATA__BYTES:
 			case CookbookPackage.METADATA__LONG_DESCRIPTION:
 			case CookbookPackage.METADATA__VERSION:
+			case CookbookPackage.METADATA__REPLACING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CookbookPackage.METADATA__REPLACES:

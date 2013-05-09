@@ -5,9 +5,9 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.limepepper.chefclipse.REST.CookbookListVersionResp;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,8 +78,8 @@ public class CookbookListRespImpl extends EObjectImpl implements CookbookListRes
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public EList<CookbookListVersionResp> getVersions() {
-		return (EList<CookbookListVersionResp>)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__VERSIONS, true);
+	public EList<CookbookVersion> getVersions() {
+		return (EList<CookbookVersion>)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__VERSIONS, true);
 	}
 
 				/**

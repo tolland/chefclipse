@@ -17,7 +17,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse,
  org.limepepper.chefclipse.REST,
  org.limepepper.chefclipse.REST.impl,
- org.limepepper.chefclipse.REST.util,
  org.limepepper.chefclipse.common,
  org.limepepper.chefclipse.common.chefclient,
  org.limepepper.chefclipse.common.chefclient.impl,

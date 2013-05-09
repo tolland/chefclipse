@@ -4,7 +4,7 @@ package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.limepepper.chefclipse.REST.CookbookListVersionResp;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,7 +53,7 @@ public interface CookbookListResp extends EObject {
 
     /**
 	 * Returns the value of the '<em><b>Versions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.limepepper.chefclipse.REST.CookbookListVersionResp}.
+	 * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.CookbookVersion}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Versions</em>' containment reference list isn't clear,
@@ -65,7 +65,7 @@ public interface CookbookListResp extends EObject {
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<CookbookListVersionResp> getVersions();
+	EList<CookbookVersion> getVersions();
 
 				/**
 	 * Returns the value of the '<em><b>Url</b></em>' attribute.

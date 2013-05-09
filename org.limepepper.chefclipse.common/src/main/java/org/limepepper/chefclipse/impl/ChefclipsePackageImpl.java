@@ -30,8 +30,6 @@ import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.URLEntryTest;
 import org.limepepper.chefclipse.VersionUrl;
 import org.limepepper.chefclipse.VersionedObject;
-import org.limepepper.chefclipse.REST.RESTPackage;
-import org.limepepper.chefclipse.REST.impl.RESTPackageImpl;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -298,7 +296,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
 		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
 		KnifePackageImpl theKnifePackage = (KnifePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
-		RESTPackageImpl theRESTPackage = (RESTPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI) instanceof RESTPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI) : RESTPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theChefclipsePackage.createPackageContents();
@@ -307,7 +304,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		theCookbookPackage.createPackageContents();
 		theWorkstationPackage.createPackageContents();
 		theKnifePackage.createPackageContents();
-		theRESTPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theChefclipsePackage.initializePackageContents();
@@ -316,7 +312,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		theCookbookPackage.initializePackageContents();
 		theWorkstationPackage.initializePackageContents();
 		theKnifePackage.initializePackageContents();
-		theRESTPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theChefclipsePackage.freeze();
@@ -962,7 +957,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		CookbookPackage theCookbookPackage = (CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI);
 		WorkstationPackage theWorkstationPackage = (WorkstationPackage)EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI);
 		KnifePackage theKnifePackage = (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
-		RESTPackage theRESTPackage = (RESTPackage)EPackage.Registry.INSTANCE.getEPackage(RESTPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(theChefserverPackage);
@@ -970,7 +964,6 @@ public class ChefclipsePackageImpl extends EPackageImpl implements ChefclipsePac
 		getESubpackages().add(theCookbookPackage);
 		getESubpackages().add(theWorkstationPackage);
 		getESubpackages().add(theKnifePackage);
-		getESubpackages().add(theRESTPackage);
 
 		// Create type parameters
 

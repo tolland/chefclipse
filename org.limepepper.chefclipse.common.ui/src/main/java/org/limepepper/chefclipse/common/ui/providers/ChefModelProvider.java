@@ -50,6 +50,7 @@ public class ChefModelProvider extends ModelProvider implements
         return instance;
     }
 
+
     public String getModelProviderId() {
         return MODEL_ID;
     }
@@ -115,7 +116,7 @@ public class ChefModelProvider extends ModelProvider implements
         final IResource resource = delta.getResource();
         int flags = delta.getFlags();
 
-        if (resource != null && resource.getProject() != null 
+        if (resource != null && resource.getProject() != null
         		&& resource.getProject().isNatureEnabled(ChefProjectNature.NATURE_ID)) {
 
             // seems to send an emtpy workspace notification and work down.

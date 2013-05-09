@@ -2,21 +2,20 @@ package org.limepepper.chefclipse.model.mapping;
 
 import org.eclipse.core.resources.IProject;
 import org.limepepper.chefclipse.common.workstation.Repository;
-import org.limepepper.chefclipse.model.ChefObject;
-
 
 public class RepositoryResourceMapping extends ChefResourceMapping {
 
-    public RepositoryResourceMapping(Repository adaptableObject) {
-        super((ChefObject)adaptableObject);
-    }
-
-    @Override
-    public IProject[] getProjects() {
-
-        return null;
-    }
 
 
+	public RepositoryResourceMapping(Object adaptableObject) {
+		super(adaptableObject);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public IProject[] getProjects() {
+
+		return null;
+	}
 
 }

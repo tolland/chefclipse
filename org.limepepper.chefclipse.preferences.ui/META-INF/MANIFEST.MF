@@ -17,4 +17,8 @@ Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/commons-validator.jar,
  lib/oro.jar
-Export-Package: org.limepepper.chefclipse.preferences.ui.actions
+Export-Package: org.limepepper.chefclipse.preferences.ui,
+ org.limepepper.chefclipse.preferences.ui.actions,
+ org.limepepper.chefclipse.preferences.ui.dialogs,
+ org.limepepper.chefclipse.preferences.ui.preferences,
+ org.limepepper.chefclipse.preferences.ui.utils

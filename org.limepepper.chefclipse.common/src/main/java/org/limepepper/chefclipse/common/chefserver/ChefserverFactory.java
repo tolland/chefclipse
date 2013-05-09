@@ -123,13 +123,13 @@ public interface ChefserverFactory extends EFactory {
     /**
 	 * Returns a new object of class '<em>Server Cookbook File</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Server Cookbook File</em>'.
 	 * @generated
 	 */
-    ServerCookbookFile createServerCookbookFile();
+	ServerCookbookFile createServerCookbookFile();
 
-    /**
+				/**
 	 * Returns a new object of class '<em>Server Cookbook Version</em>'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

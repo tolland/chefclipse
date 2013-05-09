@@ -18,11 +18,12 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;bundle-version="2.8.1",
  org.eclipse.compare,
  org.limepepper.chefclipse.common;bundle-version="0.1.0",
- org.limepepper.chefclipse.common.ui;bundle-version="0.1.0",
  org.junit;bundle-version="4.10.0",
  org.slf4j.log4j;bundle-version="1.6.4",
- org.limepepper.chefclipse.model;bundle-version="0.1.0"
+ chefclipse.ui;bundle-version="0.1.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .
 Export-Package: org.limepepper.chefclipse.remotepicker.ui.handlers
+Import-Package: chefclipse.core,
+ chefclipse.core.managers

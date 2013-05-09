@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>chefclipse.parent</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.pde.PluginNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>pom.xml</name>
+			<type>1</type>
+			<location>/home/tomhodder/git/chefclipse-prealpha/pom.xml</location>
+		</link>
+	</linkedResources>
+</projectDescription>

@@ -11,6 +11,7 @@ import org.limepepper.chefclipse.DescribedObject;
 import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
@@ -24,9 +25,9 @@ import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerConfig;
-import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
+import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
@@ -154,12 +155,16 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 				return createNamedDescribedObjectAdapter();
 			}
 			@Override
+			public Adapter caseSandboxedObject(SandboxedObject object) {
+				return createSandboxedObjectAdapter();
+			}
+			@Override
 			public Adapter caseChecksumFile(ChecksumFile object) {
 				return createChecksumFileAdapter();
 			}
 			@Override
-			public Adapter caseSandboxedObject(SandboxedObject object) {
-				return createSandboxedObjectAdapter();
+			public Adapter caseCookbookFile(CookbookFile object) {
+				return createCookbookFileAdapter();
 			}
 			@Override
 			public Adapter caseCookbook(Cookbook object) {
@@ -346,18 +351,18 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
     /**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile <em>Server Cookbook File</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookFile
 	 * @generated
 	 */
-    public Adapter createServerCookbookFileAdapter() {
+	public Adapter createServerCookbookFileAdapter() {
 		return null;
 	}
 
-    /**
+				/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion <em>Server Cookbook Version</em>}'.
 	 * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
@@ -428,34 +433,48 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 	}
 
     /**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.ChecksumFile <em>Checksum File</em>}'.
-	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.ChecksumFile
-	 * @generated
-	 */
-    public Adapter createChecksumFileAdapter() {
-		return null;
-	}
-
-    /**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.SandboxedObject <em>Sandboxed Object</em>}'.
 	 * <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
 	 * @return the new adapter.
 	 * @see org.limepepper.chefclipse.SandboxedObject
 	 * @generated
 	 */
-    public Adapter createSandboxedObjectAdapter() {
+	public Adapter createSandboxedObjectAdapter() {
 		return null;
 	}
 
-    /**
+				/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.ChecksumFile <em>Checksum File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.ChecksumFile
+	 * @generated
+	 */
+	public Adapter createChecksumFileAdapter() {
+		return null;
+	}
+
+				/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile <em>File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookFile
+	 * @generated
+	 */
+	public Adapter createCookbookFileAdapter() {
+		return null;
+	}
+
+				/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.cookbook.Cookbook <em>Cookbook</em>}'.
 	 * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;

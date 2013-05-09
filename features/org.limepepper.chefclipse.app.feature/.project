@@ -10,7 +10,6 @@
     <project>org.limepepper.chefclipse.common.edit</project>
     <project>org.limepepper.chefclipse.common.editor</project>
     <project>org.limepepper.chefclipse.common.ui</project>
-    <project>org.limepepper.chefclipse.model</project>
     <project>org.limepepper.chefclipse.remotepicker.api</project>
   </projects>
   <buildSpec>

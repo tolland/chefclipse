@@ -8,59 +8,56 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.limepepper.chefclipse.common.ui.providers.ChefModelProvider;
 import org.limepepper.chefclipse.common.workstation.Repository;
-import org.limepepper.chefclipse.model.ChefContainer;
-import org.limepepper.chefclipse.model.ChefProject;
+import chefclipse.core.ChefContainer;
+import chefclipse.core.ChefProject;
 
 public class ChefResourceMapping extends ResourceMapping {
 
-    private final Object object;
+	private final Object object;
 
-    public static ResourceMapping create(Object adaptableObject) {
+	public static ResourceMapping create(Object adaptableObject) {
 
+		if (adaptableObject instanceof Repository) {
+			return new RepositoryResourceMapping((Repository) adaptableObject);
 
-        if (adaptableObject instanceof Repository) {
-            return new RepositoryResourceMapping((Repository) adaptableObject);
+		}
+		if (adaptableObject instanceof ChefProject) {
+			return new ChefclipseProjectResourceMapping(
+					(ChefProject) adaptableObject);
+		}
+		if (adaptableObject instanceof ChefContainer) {
+			return new ContainerResourceMapping((ChefContainer) adaptableObject);
+		}
 
-        }
-        if (adaptableObject instanceof ChefProject) {
-            return new ChefclipseProjectResourceMapping(
-                    (ChefProject) adaptableObject);
-        }
-        if (adaptableObject instanceof ChefContainer) {
-            return new ContainerResourceMapping(
-                    (ChefContainer) adaptableObject);
-        }
+		return null;
+	}
 
-        return null;
-    }
+	public ChefResourceMapping(Object adaptableObject) {
+		this.object = adaptableObject;
+	}
 
-    public ChefResourceMapping(Object adaptableObject) {
-        this.object = adaptableObject;
-    }
+	public Object getModelObject() {
+		return object;
+	}
 
-    public Object getModelObject() {
-        return object;
-    }
+	public String getModelProviderId() {
+		return ChefModelProvider.MODEL_ID;
+	}
 
-    public String getModelProviderId() {
-        return ChefModelProvider.MODEL_ID;
-    }
+	/*
+	 * public IProject[] getProjects() { return new IProject[] { (IProject)
+	 * object.getProject().getResource() }; }
+	 */
+	public ResourceTraversal[] getTraversals(ResourceMappingContext context,
+			IProgressMonitor monitor) throws CoreException {
 
-/*
- * public IProject[] getProjects() {
- * return new IProject[] { (IProject) object.getProject().getResource() };
- * }
- */
-    public ResourceTraversal[] getTraversals(ResourceMappingContext context,
-            IProgressMonitor monitor) throws CoreException {
+		return null;
+	}
 
-        return null;
-    }
-
-@Override
-public IProject[] getProjects() {
-    // TODO Auto-generated method stub
-    return null;
-}
+	@Override
+	public IProject[] getProjects() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

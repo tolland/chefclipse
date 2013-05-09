@@ -14,7 +14,7 @@ import org.limepepper.chefclipse.tests.NamedObjectTest;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AttributeTest extends NamedObjectTest {
+public class AttributeTest extends CookbookFileTest {
 
 	/**
 	 * <!-- begin-user-doc -->

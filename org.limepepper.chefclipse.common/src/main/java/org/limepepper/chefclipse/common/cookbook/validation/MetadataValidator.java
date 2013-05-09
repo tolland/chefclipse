@@ -26,4 +26,6 @@ public interface MetadataValidator {
 	boolean validateDependencies(EMap<String, String> value);
 	boolean validatePlatforms(EMap<String, String> value);
 	boolean validateRecipes(EMap<String, String> value);
+
+	boolean validateReplacing(String value);
 }

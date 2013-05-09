@@ -3,6 +3,9 @@ package chefclipse.internal.ui.navigator;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -18,9 +21,9 @@ import chefclipse.core.providers.ChefProjectAdapterFactory;
 /**
  * http://devdesignandstuff.blogspot.co.uk/2010/10/contributing-to-eclipse-
  * common.html
- * 
+ *
  * @author tomhodder
- * 
+ *
  */
 public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider {
 
@@ -110,6 +113,27 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider 
 			e.printStackTrace();
 		}
 		return super.hasChildren(element);
+	}
+
+	private boolean isDataBag(IFolder resource) {
+		if (resource instanceof IFolder) {
+			return ((IFolder) resource).getParent().getName()
+					.equals("data_bags");
+		}
+		return false;
+	}
+
+	private boolean isDataBagItem(IFile element) {
+		if (element instanceof IFile) {
+			IContainer parent = element.getParent();
+			if (parent != null) {
+				return (((parent.getName().toLowerCase().equals("data_bags") || (parent
+						.getParent() != null && parent.getParent().getName()
+						.toLowerCase().equals("data_bags")))) && ((IFile) element)
+						.getName().toLowerCase().endsWith("json"));
+			}
+		}
+		return false;
 	}
 
 }
