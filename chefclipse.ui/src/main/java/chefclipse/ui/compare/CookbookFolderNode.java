@@ -55,14 +55,9 @@ public class CookbookFolderNode extends CookbookResourceNode {
 
 			CookbookVersion cookbookVersion = (CookbookVersion) input;
 
-			for (EObject iterable_element : cookbookVersion.eContents()) {
-				ChefPlugin.log("iterable  " + iterable_element.eClass());
-			}
-
 			for (Root_file iterable_element : ((CookbookVersion) input)
 					.getRoot_files()) {
 				ChefPlugin.log("adding " + iterable_element.getName());
-				ChefPlugin.log("adding " + iterable_element.getPath());
 				children.add(new CookbookFileNode(iterable_element));
 			}
 			children.add(new CookbookCollectionNode("recipes",

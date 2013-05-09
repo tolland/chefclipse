@@ -23,7 +23,6 @@ class CookbookFileNode extends CookbookResourceNode implements
 	static KnifeConfigController api = KnifeConfigController.INSTANCE;
 
 	private CookbookFile cookbookFile;
-	private IResource resource;
 
 	public void setMd5Sum(String md5Sum) {
 		this.md5Sum = md5Sum;
@@ -52,7 +51,7 @@ class CookbookFileNode extends CookbookResourceNode implements
 	 */
 	public CookbookFileNode(ServerCookbookFile input, IResource project) {
 		super(input.getName());
-		this.cookbookFile = (CookbookFile) input;
+		this.cookbookFile = input;
 	}
 
 	/**
@@ -67,12 +66,12 @@ class CookbookFileNode extends CookbookResourceNode implements
 			if (is != null)
 				return is;
 		} catch (Exception e) {
-			// e.printStackTrace();
-			// System.out.println("isnt a local file");
-			if (cookbookFile instanceof SandboxedObject) {
+			e.printStackTrace();
+
+			if (cookbookFile != null) {
 				URLConnection connection;
 
-				System.out.println("isnt a local file-trying "
+				ChefPlugin.log(getName() + " isnt a local file-trying "
 						+ ((SandboxedObject) cookbookFile).getUrl());
 
 				try {
@@ -87,37 +86,8 @@ class CookbookFileNode extends CookbookResourceNode implements
 
 		}
 
-		/*
-		 * if (resource != null) {
-		 *
-		 * KnifeConfig config = ChefConfigManager.instance()
-		 * .retrieveProjectChefConfig(resource.getProject());
-		 *
-		 * ChefServerApi chefServerApi = api.getServer(config);
-		 *
-		 * // ChefPlugin.log(item);
-		 *
-		 * // IResource cookbookResource = item.getResource();
-		 *
-		 * // assertNotNull(cookbookVersion);
-		 *
-		 * // String cookbookName = cookbookResource.getName();
-		 * System.out.println("path is:" + cookbookFile.getPath());
-		 *
-		 * CookbookFile remoteCookbookFile = chefServerApi
-		 * .getCookbookFile(cookbookFile.getPath());
-		 *
-		 * }
-		 */
-
 		return null;
 	}
-
-	/*
-	 * public String getType() { String s = this.getName(); int pos =
-	 * s.lastIndexOf('.'); if (pos >= 0) return s.substring(pos + 1); return
-	 * ITypedElement.UNKNOWN_TYPE; }
-	 */
 
 	public String getType() {
 
@@ -145,36 +115,6 @@ class CookbookFileNode extends CookbookResourceNode implements
 			string.append(hexString.length() == 1 ? "0" + hexString : hexString);
 		}
 		return string.toString();
-	}
-
-	/*
-	 * Returns true if other is ITypedElement and names are equal.
-	 *
-	 * @see IComparator#equals
-	 */
-	public boolean equals3(Object other) {
-		if ((other instanceof CookbookFileNode)
-				&& (getName().equals(((CookbookFileNode) other).getName()))) {
-
-			ChefPlugin.log(" local -->{}" + getName());
-			ChefPlugin.log(" remote -->{}" +
-
-			((CookbookFileNode) other).getName());
-
-			ChefPlugin.log("checking md5sums: local -->{}" + getMd5Sum());
-			ChefPlugin.log("checking md5sums: remove  -->{}"
-					+ ((CookbookFileNode) other).getMd5Sum());
-
-			if (getMd5Sum().equals(((CookbookFileNode) other).getMd5Sum())) {
-				return true;
-			}
-
-		} else {
-
-			ChefPlugin.log("is not a cookbook file resource node" + "");
-		}
-		return false;
-
 	}
 
 	public Object[] getChildren() {

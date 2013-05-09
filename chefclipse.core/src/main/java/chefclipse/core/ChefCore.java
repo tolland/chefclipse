@@ -184,7 +184,7 @@ public class ChefCore extends Plugin implements BundleActivator {
 	}
 
 	public static void debug(Object class1) {
-		logger.debug("debug was: {}", class1);
+		//logger.debug("debug was: {}", class1);
 	}
 
 	public static void error(String string) {

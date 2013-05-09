@@ -74,6 +74,24 @@ public class ResourceCompareInput extends CompareEditorInput {
 						(ITypedElement) ancestor, (ITypedElement) left,
 						(ITypedElement) right);
 			}
+
+			@Override
+			protected boolean contentsEqual(Object input1, Object input2) {
+				if ((input1 instanceof CookbookFileNode)
+						&& (input2 instanceof CookbookFileNode)) {
+					if (((CookbookFileNode) input1).getMd5Sum().equals(
+							((CookbookFileNode) input2).getMd5Sum())) {
+						return true;
+
+					} else {
+						System.out.println("input1 md5:"
+								+ ((CookbookFileNode) input1).getMd5Sum());
+						System.out.println("input2 md5:"
+								+ ((CookbookFileNode) input2).getMd5Sum());
+					}
+				}
+				return super.contentsEqual(input1, input2);
+			}
 		};
 
 		fRoot = d.findDifferences(false, monitor, null, null, fLeft, fRight);
@@ -194,12 +212,6 @@ public class ResourceCompareInput extends CompareEditorInput {
 
 		assertNotNull(chefServerApi);
 
-		// ChefPlugin.log(item);
-
-		// IResource cookbookResource = item.getResource();
-
-		// assertNotNull(cookbookVersion);
-
 		String cookbookName = cookbookResource.getName();
 
 		ServerCookbookVersion remoteCookbook = chefServerApi
@@ -211,10 +223,6 @@ public class ResourceCompareInput extends CompareEditorInput {
 			System.out.println("root file url: " + root_file.getUrl());
 		}
 
-		/*
-		 * CompareUI.openCompareEditor(new CookbookCompareInput(
-		 * item.getResource(), cookbook));
-		 */
 		return remoteCookbook;
 	}
 }

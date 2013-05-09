@@ -292,7 +292,7 @@
 
   <extension point="org.eclipse.ui.perspectives">
     <perspective class="chefclipse.ui.perspectives.ChefPerspectiveFactory"
-    icon="icons/32x32.png" id="chefclipse.perspective"
+    icon="icons/cc1.ico" id="chefclipse.perspective"
     name="%perspective.name"></perspective>
   </extension>
 

@@ -43,6 +43,8 @@ import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.common.cookbook.Attribute;
+import org.limepepper.chefclipse.common.cookbook.Attributes;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
@@ -53,8 +55,11 @@ import org.limepepper.chefclipse.common.cookbook.Metadata;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.cookbook.Template;
+import org.limepepper.chefclipse.common.cookbook.impl.AttributeImpl;
+import org.limepepper.chefclipse.common.cookbook.impl.AttributesImpl;
 import org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl;
 import org.limepepper.chefclipse.common.cookbook.impl.Root_fileImpl;
+import org.limepepper.chefclipse.common.cookbook.impl.TemplateImpl;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
@@ -178,41 +183,43 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 				}
 
 				if (((IFolder) resource).getParent().getName()
-                        .equals("data_bags")) {
-                    eObject = createDataBag((IFolder) resource);
-                }
+						.equals("data_bags")) {
+					eObject = createDataBag((IFolder) resource);
+				}
 
-                if (((IFolder) resource).getParent().getName()
+				if (((IFolder) resource).getParent().getName()
 						.equals("configuration")) {
 					logger.debug("not implemented");
 				}
 				break;
-            case IResource.FILE:
-                // @todo this is not used, because recipes cannot be created
-                // from eclipse atm
-                if (((IFile) resource).getParent().getName().equals("recipes")) {
-                    eObject = createRecipe((IFile) resource);
-                }
-                // if a file appears in a dir, called metadata.rb, then this
-                // should trigger
-                // check on making the parent a cookbook folder
-                IContainer parent = ((IFile) resource).getParent();
-                if (parent != null) {
-                    if (((parent.getName().toLowerCase().equals("data_bags") || (parent.getParent() != null && parent
-                            .getParent().getName().toLowerCase().equals("data_bags")))) && ((IFile) resource)
-                            .getName().toLowerCase().endsWith("json")) {
-                        eObject = createDataBagItem((IFile) resource);
-                    }
-                }
-                if (((IFile) resource).getName().equals("metadata.rb")) {
-                    eObject = createCookbook((IFolder) resource.getParent());
-                }
+			case IResource.FILE:
+				// @todo this is not used, because recipes cannot be created
+				// from eclipse atm
+				if (((IFile) resource).getParent().getName().equals("recipes")) {
+					eObject = createRecipe((IFile) resource);
+				}
+				// if a file appears in a dir, called metadata.rb, then this
+				// should trigger
+				// check on making the parent a cookbook folder
+				IContainer parent = ((IFile) resource).getParent();
+				if (parent != null) {
+					if (((parent.getName().toLowerCase().equals("data_bags") || (parent
+							.getParent() != null && parent.getParent()
+							.getName().toLowerCase().equals("data_bags"))))
+							&& ((IFile) resource).getName().toLowerCase()
+									.endsWith("json")) {
+						eObject = createDataBagItem((IFile) resource);
+					}
+				}
+				if (((IFile) resource).getName().equals("metadata.rb")) {
+					eObject = createCookbook((IFolder) resource.getParent());
+				}
 
-                if (((IFile) resource).getParent().getName().equals(".chef")) {
-                    logger.debug("not implemented");
-                    // return instance().createDefinition((IFile) resource);
-                }
-            break;
+				if (((IFile) resource).getParent().getName().equals(".chef")) {
+					logger.debug("not implemented");
+					// return instance().createDefinition((IFile) resource);
+				}
+				break;
 			default:
 				break;
 			}
@@ -393,8 +400,10 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 		addMapping(resource, eObject);
 
-        KnifeConfig chefProjectConfig = ChefConfigManager.instance().retrieveProjectChefConfig(resource.getProject());
-        //add the data bag to the databag list of the server. maybe retrieve the server from preferences.
+		KnifeConfig chefProjectConfig = ChefConfigManager.instance()
+				.retrieveProjectChefConfig(resource.getProject());
+		// add the data bag to the databag list of the server. maybe retrieve
+		// the server from preferences.
 
 		synchronizeDataBagContents(resource);
 
@@ -507,18 +516,10 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		try {
 
 			String checksum = ChefUtils.hexMd5Sum(file.getContents());
-
-			// logger.debug("md5sum is: {}", checksum);
-
 			checksumFile.setChecksum(checksum);
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
-		/*
-		 * try { checksumFile.setChecksum(new String(checksum,"UTF-8"));
-		 *
-		 * } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
-		 */
 
 		checksumFile.setPath(pathRelativeToCookbook(file));
 		checksumFile.setSpecificity(getSpecificity(file));
@@ -559,17 +560,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		return bytes2String(hash);
 	}
 
-	/*
-	 *
-	 *
-	 *
-	 * def checksum_file(file, digest) File.open(file, 'rb') { |f|
-	 * checksum_io(f, digest) } end
-	 *
-	 * def checksum_io(io, digest) while chunk = io.read(1024 * 8)
-	 * digest.update(chunk) end digest.hexdigest end
-	 */
-
 	// @todo utils bundle
 	static String bytes2String(byte[] bytes) {
 		StringBuilder string = new StringBuilder();
@@ -604,15 +594,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		return str.substring(beginCookbooksNext, endCookbooksNext);
 	}
 
-	/*
-	 * { "name": "default.rb", "url":
-	 * "https://s3.amazonaws.com/opscode-platform-production-data/organization-(...)"
-	 * , "checksum": "ba0dadcbca26710a521e0e3160cc5e20", "path":
-	 * "recipes/default.rb", "specificity": "default" }
-	 *
-	 * @todo migrate this to the emf version
-	 */
-
 	private byte[] sha256sum(byte[] bytes) throws NoSuchAlgorithmException {
 
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -641,18 +622,26 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		if (recipeResource != null && deleteResource) {
 			recipeResource.delete(true, null);
 		}
-
-		// recipe.getCookbook().getRecipes().remove(recipe);
-		/*
-		 * for(CookbookVersion cookbook: recipe.getCookbook()){
-		 * cookbook.getRecipes().remove(recipe); }
-		 */
 	}
 
-	public void createTemplate(IFile resource) throws CoreException {
+	public void createTemplate(final IFile resource) throws CoreException {
 		if ((resource.getFileExtension() != null)
 				&& resource.getFileExtension().equals("erb")) {
-			Template eObject = CookbookFactory.eINSTANCE.createTemplate();
+
+			Template eObject = new TemplateImpl() {
+
+				@Override
+				public InputStream getContentStream() {
+					try {
+						return resource.getContents();
+					} catch (CoreException e) {
+						e.printStackTrace();
+					}
+					return null;
+				}
+
+			};
+
 			addCheckSum(resource, (ChecksumFile) eObject);
 			try {
 				CookbookVersion cookbookVersion = (CookbookVersion) getElement(getCookbookForResource(resource));
@@ -661,6 +650,43 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 			} catch (Exception e) {
 				logger.debug("cookbook for template " + resource.getName()
+						+ " not existing:" + getCookbookForResource(resource));
+
+			}
+			eObject.setName(resource.getName());
+			eObject.setID(Long.toString(UUID.randomUUID()
+					.getMostSignificantBits()));
+
+			addMapping(resource, eObject);
+		}
+	}
+
+	public void createAttributes(final IFile resource) throws CoreException {
+		if ((resource.getFileExtension() != null)
+				&& resource.getFileExtension().equals("rb")) {
+
+			Attributes eObject = new AttributesImpl() {
+
+				@Override
+				public InputStream getContentStream() {
+					try {
+						return resource.getContents();
+					} catch (CoreException e) {
+						e.printStackTrace();
+					}
+					return null;
+				}
+
+			};
+
+			addCheckSum(resource, (ChecksumFile) eObject);
+			try {
+				CookbookVersion cookbookVersion = (CookbookVersion) getElement(getCookbookForResource(resource));
+				cookbookVersion.getAttributes().add(eObject);
+				eObject.setCookbook(cookbookVersion);
+
+			} catch (Exception e) {
+				logger.debug("cookbook for attribute " + resource.getName()
 						+ " not existing:" + getCookbookForResource(resource));
 
 			}
@@ -981,6 +1007,12 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 							createDefinition((IFile) resource);
 						}
 					}
+				} else if (res.getName().equals("attributes")) {
+					for (IResource resource : ((IFolder) res).members()) {
+						if (resource instanceof IFile) {
+							createAttributes((IFile) resource);
+						}
+					}
 				} else if (res.getName().equals("files")) {
 					recurseFilesDir((IFolder) res);
 
@@ -1002,8 +1034,8 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		}
 		if (resource.getName().endsWith(".workstation")
 				|| resource.getName().equals(".cookbook")
-				|| resource.getName().endsWith(".knife")
-				|| resource.getName().equals("metadata.json"))
+				|| resource.getName().equals(".cookbooksource")
+				|| resource.getName().endsWith(".knife"))
 			return true;
 		return false;
 	}

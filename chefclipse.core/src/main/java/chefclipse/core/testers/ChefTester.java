@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import chefclipse.core.ChefCore;
 import chefclipse.core.CookbookFolder;
 import chefclipse.core.builders.ChefProjectNature;
 import chefclipse.core.managers.ChefProjectManager;
@@ -42,11 +43,11 @@ public class ChefTester extends PropertyTester {
 	}
 
 	/**
-	 * 
+	 *
 	 * @todo so for debugging I let this run though to the end so I can print
 	 *       out result, but for performance it should return immediately
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public boolean test(Object receiver, String property, Object[] args,
 			Object expectedValue) {
@@ -88,7 +89,7 @@ public class ChefTester extends PropertyTester {
 				 * = ((ResourceMapping) receiver).getModelObject(); } else if
 				 * (property.equals("isChefProject") && (receiver instanceof
 				 * IProject) && (receiver instanceof ChefResourceMapping)) {
-				 * 
+				 *
 				 * result = ((IProject) receiver)
 				 * .isNatureEnabled(ChefProjectNature.NATURE_ID);
 				 */
@@ -123,7 +124,7 @@ public class ChefTester extends PropertyTester {
 				}
 				System.out.println("here receiver iu:" + receiver);
 				if (folder != null) {
-					System.out.println(folder.getParent().getName());
+					ChefCore.log(folder.getParent().getName());
 
 					result = (folder.getParent().getName().equals("cookbooks")
 							&& folder.getFile("metadata.json").exists() && folder
@@ -188,9 +189,9 @@ public class ChefTester extends PropertyTester {
 			 * this is just here for debugging, it should be removed for
 			 * immediately returning the result
 			 */
-			System.out.println("returning...for property " + property
-					+ " object " + result + " : " + receiver.toString());
-			System.out.println("class:" + receiver.getClass());
+			ChefCore.debug("returning...for property " + property + " object "
+					+ result + " : " + receiver.toString());
+			ChefCore.debug("class:" + receiver.getClass());
 
 		}
 		return result;
