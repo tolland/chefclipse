@@ -24,7 +24,8 @@
    <launcher name="chefclipse">
       <linux icon="icons/48x48.xpm"/>
       <solaris/>
-      <win useIco="false">
+      <win useIco="true">
+         <ico path="/chefclipse.ui/icons/cc2.ico"/>
          <bmp/>
       </win>
    </launcher>

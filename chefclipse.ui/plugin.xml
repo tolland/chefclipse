@@ -226,7 +226,7 @@
     <view
           allowMultiple="false"
           class="org.eclipse.ui.navigator.CommonNavigator"
-          icon="icons/sample.gif"
+          icon="icons/16x16.png"
           id="chefclipse.navigatorview"
           name="%view.name"/>
   </extension>
