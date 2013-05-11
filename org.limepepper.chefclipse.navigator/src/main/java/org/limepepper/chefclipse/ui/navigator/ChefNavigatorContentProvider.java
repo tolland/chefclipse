@@ -29,11 +29,14 @@ import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.model.CookbookFolder;
 import org.limepepper.chefclipse.model.mapping.ChefCore;
 import org.limepepper.chefclipse.navigator.NavigatorActivator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
         implements IPipelinedTreeContentProvider,
         IPipelinedTreeContentProvider2 {
 
+	private static Logger log = LoggerFactory.getLogger(ChefNavigatorContentProvider.class);
     public ChefNavigatorContentProvider() {
         super(ChefProjectAdapterFactory.getAdapterFactory());
     }
@@ -43,7 +46,7 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
 
     @Override
     public Object[] getElements(Object inputElement) {
-        NavigatorActivator.log("getElements for: " + inputElement);
+        log.debug("getElements for: " + inputElement);
         /*
          * if (inputElement instanceof IWorkspaceRoot) { IWorkspaceRoot root =
          * (IWorkspaceRoot) inputElement; return root.getProjects(); } else if
@@ -58,9 +61,9 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
     }
 
     public Object[] getChildren(Object parentElement) {
-        NavigatorActivator.log("getting children of " + parentElement);
+        log.debug("getting children of " + parentElement);
         ArrayList<Object> children = new ArrayList<Object>();
-        NavigatorActivator.log(parentElement.getClass().toString());
+        log.debug(parentElement.getClass().toString());
 
         if (parentElement instanceof IProject) {
             children.add(ChefRepositoryManager.INSTANCE
@@ -138,7 +141,7 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
                     IProject project = (IProject) element;
                     // @todo change to static import
                     if (isChefProject(project)) {
-                        NavigatorActivator.log("pipelining project");
+                        log.debug("pipelining project");
                         // iter.remove();
                         // newProjects.add(ChefCore.create(project));
                     }
@@ -174,7 +177,7 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
     })
     @Override
     public void getPipelinedChildren(Object aParent, Set theCurrentChildren) {
-        NavigatorActivator.log("pipelining children");
+        log.debug("pipelining children");
         if (aParent instanceof IProject) {
         } else if (aParent instanceof IFolder) {
             List<Object> newChildren = new ArrayList<Object>();
@@ -184,19 +187,19 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
                     IFolder folder = (IFolder) element;
                     // @todo change to static import
                     if (isCookbook(folder)) {
-                        NavigatorActivator.log("pipelining cookbook");
+                        log.debug("pipelining cookbook");
                         iter.remove();
                         newChildren.add(ChefCore.createCookbook(folder));
                     }
                     if (isDataBag(folder)) {
-                        NavigatorActivator.log("pipelining databag");
+                        log.debug("pipelining databag");
                         iter.remove();
                         newChildren.add(ChefCore.createDataBag(folder));
                     }
                 }
                 if (element instanceof IFile) {
                     if (isDataBagItem((IFile) element)) {
-                        NavigatorActivator.log("pipelining databag");
+                        log.debug("pipelining databag");
                         iter.remove();
                         newChildren.add(ChefCore.createDataBagItem((IFile) element));
                     }
