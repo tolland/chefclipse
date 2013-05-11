@@ -232,12 +232,20 @@ public class CookbookRepositoryManager {
 	public void evictCache() {
 		new File(getCacheFile()).delete();
 		for (RemoteRepository repo : repositories.values()) {
-			new File(getCacheFile(repo.getId())).delete();
+			deleteCache(repo);
 		}
 		repositories.clear();
 		retrievers.clear();
 		listeners.clear();
 		builders.clear();
+	}
+
+	/**
+	 * Deletes repository cache file
+	 * @param repo
+	 */
+	protected void deleteCache(RemoteRepository repo) {
+		new File(getCacheFile(repo.getId())).delete();
 	}
 
 	private void cacheRepository(final RemoteRepository repo) {
@@ -517,8 +525,9 @@ public class CookbookRepositoryManager {
 	/**
 	 * Register a composite repository (a repository which has all the cookbooks of the others repositories).
 	 * This method must be called after registering all the concrete repositories.
+	 * @return 
 	 */
-	public void createCompositeRepository() {
+	public RemoteRepository createCompositeRepository() {
 
 		final RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
 		repo.setId(COMPOSITE_REPOSITORY_ID);
@@ -551,7 +560,7 @@ public class CookbookRepositoryManager {
 				}
 			});
 		}
-
+		return repo;
 	}
 
 	/**
@@ -670,5 +679,16 @@ public class CookbookRepositoryManager {
 	 */
 	public List<RemoteRepository> getTemplateRepositories() {
 		return new ArrayList<RemoteRepository>(builders.keySet());
+	}
+
+	/**
+	 * Removes a registered repository and its cache.
+	 * @param repoId
+	 */
+	public void removeRepository(String repoId) {
+		deleteCache(getRepository(repoId));
+		repositories.remove(repoId);
+		retrievers.remove(repoId);
+		listeners.remove(repoId);
 	}
 }

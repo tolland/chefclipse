@@ -38,7 +38,7 @@ import org.limepepper.chefclipse.ui.Messages;
  * @author Guillermo Zunino
  *
  */
-public class ChefConfigurationPropertyPage extends PropertyPage {
+public class ChefConfigurationPropertyPage extends PropertyPage implements IPreferenceChangeListener {
 
 	public static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
 	public static final String PROPERTIES_PAGE = Activator.PLUGIN_ID + ".chef_config__properties_page"; //$NON-NLS-1$
@@ -93,16 +93,15 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 			}
 		});
 		
-		ChefConfigManager.instance().getPreferences().addPreferenceChangeListener(new IPreferenceChangeListener() {
-
-			@Override
-			public void preferenceChange(PreferenceChangeEvent event) {
-				loadChefServerConfigs();
-			}
-		});
+		ChefConfigManager.instance().getPreferences().addPreferenceChangeListener(this);
 		return composite;
 	}
 
+	@Override
+	public void preferenceChange(PreferenceChangeEvent event) {
+		loadChefServerConfigs();
+	}
+	
 	/**
 	 * Create description label and workspace settings link.
 	 * @param parent {@link Composite}
@@ -226,6 +225,12 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 
     public void setModified(boolean modified) {
         this.modified = modified;
+    }
+    
+    @Override
+    public void dispose() {
+    	ChefConfigManager.instance().getPreferences().removePreferenceChangeListener(this);
+    	super.dispose();
     }
 
 }

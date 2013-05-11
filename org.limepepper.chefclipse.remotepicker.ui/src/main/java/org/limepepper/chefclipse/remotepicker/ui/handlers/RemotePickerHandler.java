@@ -26,6 +26,7 @@ import org.eclipse.ui.progress.IProgressConstants;
 import org.eclipse.ui.progress.IProgressConstants2;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogRegistry;
 import org.limepepper.chefclipse.remotepicker.ui.wizards.CookbookCatalogConfiguration;
@@ -43,7 +44,7 @@ public class RemotePickerHandler extends AbstractHandler {
 	private List<CatalogDescriptor> catalogDescriptors;
 		
 	private static final String DISCOVERY_DESCRIPTION = "Select cookbooks to install. Press Finish to proceed with installation.\n" +
-			"Press the information button to see a detailed overview and a link to more information.";
+			"Press the information button to see an overview and a link to more information.";
 	
 	private static final String CHEFCLIPSE_COOKBOOK_DISCOVERY = "Chefclipse Cookbook Discovery";
 	
@@ -96,6 +97,7 @@ public class RemotePickerHandler extends AbstractHandler {
 	 * @param repo
 	 */
 	public static void startRepositoryJob(final RemoteRepository repo, final CookbookRepositoryManager repoManager) {
+		enableRepository(repo);
 		Job job = new Job("Retrieving Cookbooks from respository \"" + repo.getName()+ "\"") {
 			@Override
 			protected IStatus run(IProgressMonitor monitor) {
@@ -132,6 +134,14 @@ public class RemotePickerHandler extends AbstractHandler {
 		} catch (MalformedURLException e) {}
 		job.setProperty(IProgressConstants2.SHOW_IN_TASKBAR_ICON_PROPERTY, Boolean.TRUE);
 		job.schedule();
+	}
+
+	/**
+	 * Enables the repository by default.
+	 * @param repo
+	 */
+	public static void enableRepository(final RemoteRepository repo) {
+		Activator.getDefault().getPreferenceStore().setDefault(repo.getId(), true);
 	}
 
 }

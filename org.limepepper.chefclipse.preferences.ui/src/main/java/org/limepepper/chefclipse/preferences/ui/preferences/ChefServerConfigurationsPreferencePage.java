@@ -76,7 +76,8 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		
 		initializeDialogUnits(ancestor);
 		
-		noDefaultAndApplyButton();
+		ancestor = new Composite(ancestor, SWT.NONE);
+		GridDataFactory.fillDefaults().grab(true, true).applyTo(ancestor);
 		
 		GridLayoutFactory.fillDefaults().numColumns(2).applyTo(ancestor);
 		

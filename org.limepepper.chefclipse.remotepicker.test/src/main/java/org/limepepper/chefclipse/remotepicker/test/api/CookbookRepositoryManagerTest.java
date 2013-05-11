@@ -258,6 +258,23 @@ public class CookbookRepositoryManagerTest {
 		assertThat(cookbook).isNotNull();
 		assertThat(cookbook.getName()).isEqualTo("testCookbook");
 	}
+	
+	@Test
+	public void testRemoteRepository() {
+		RemoteRepository repoMock = factory.createRemoteRepository();
+		repoMock.setId("repoTest");
+		ICookbooksRepository cookbooks = mock(ICookbooksRepository.class);
+
+		manager.registerRepository(repoMock, cookbooks);
+
+		RemoteRepository repository = manager.getRepository("repoTest");
+		assertThat(repository).isNotNull();
+		manager.removeRepository(repository.getId());
+		
+		repository = manager.getRepository("repoTest");
+		assertThat(repository).isNull();
+		assertThat(manager.getRepositories()).isEmpty();
+	}
 
 	/**
 	 * @return
