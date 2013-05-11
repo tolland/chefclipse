@@ -48,6 +48,7 @@
 				<module>org.limepepper.chefclipse.editors.cookbook</module>
 				<module>org.limepepper.chefclipse.graphviewer</module>
 				<module>org.limepepper.chefclipse.logger</module>
+				<module>org.limepepper.chefclipse.logger.ui</module>
 				<module>org.limepepper.chefclipse.model</module>
 				<module>org.limepepper.chefclipse.navigator</module>
 				<module>org.limepepper.chefclipse.ui</module>
