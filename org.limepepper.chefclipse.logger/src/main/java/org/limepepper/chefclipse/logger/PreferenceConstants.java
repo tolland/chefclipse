@@ -13,6 +13,8 @@ public class PreferenceConstants {
 
 	public static final String P_STRING = "stringPreference";
 	
+	public static final String P_REMOTE_LOGGING_ENABLED = "logger.remote.enabled";
+
 	public static final String P_REMOTEHOST = "logger.udp.remoteHost";
 	
 	public static final String P_PORT = "logger.udp.port";

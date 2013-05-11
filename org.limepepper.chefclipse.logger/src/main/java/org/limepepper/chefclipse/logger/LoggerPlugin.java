@@ -55,7 +55,7 @@ public class LoggerPlugin extends Plugin {
 		configureLoggers();
 		log = LoggerFactory.getLogger(LoggerPlugin.class);
 		log.trace(PLUGIN_ID + " started.");
-//		initPreferences();
+		// initPreferences();
 	}
 
 	private void initPreferences() {
@@ -122,37 +122,47 @@ public class LoggerPlugin extends Plugin {
 					.getLogger(Logger.ROOT_LOGGER_NAME);
 			IEclipsePreferences prefs = getPreferences();
 			String level = prefs.get(PreferenceConstants.P_LEVEL, "INFO");
-			String host = prefs.get(PreferenceConstants.P_REMOTEHOST, "logger.limepepper.co.uk");
-			Integer port = Integer.valueOf(prefs.get(PreferenceConstants.P_PORT,"9999"));
+			String host = prefs.get(PreferenceConstants.P_REMOTEHOST,
+					"logger.limepepper.co.uk");
+			Integer port = Integer.valueOf(prefs.get(
+					PreferenceConstants.P_PORT, "9999"));
+			Boolean isRemoteEnabled = Boolean.valueOf(prefs.get(
+					PreferenceConstants.P_REMOTE_LOGGING_ENABLED, "false"));
 
 			// Save defaults
 			prefs.put(PreferenceConstants.P_LEVEL, level);
 			prefs.put(PreferenceConstants.P_REMOTEHOST, host);
 			prefs.putInt(PreferenceConstants.P_PORT, port);
-			
-			JacksonJsonFormatter formatter = new JacksonJsonFormatter();
-			JsonLayout layout = new JsonLayout();
-			layout.setJsonFormatter(formatter);
-			layout.start();
-			
-			root.getAppender("UDP").stop();
-			root.detachAppender("UDP");
-			
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				log.warn("Interrupted.", e);
+			prefs.putBoolean(PreferenceConstants.P_REMOTE_LOGGING_ENABLED,
+					isRemoteEnabled);
+
+			if (root.getAppender("UDP") != null) {
+				root.getAppender("UDP").stop();
+				root.detachAppender("UDP");
 			}
-			
-			UDPAppender appender = new UDPAppender();
-			appender.setRemoteHost(host);
-			appender.setPort(port);
-			appender.setName("UDP");
-			appender.setLayout(layout);
-			appender.start();
-			
-			root.addAppender(appender);
-			
+
+			if (isRemoteEnabled) {
+				JacksonJsonFormatter formatter = new JacksonJsonFormatter();
+				JsonLayout layout = new JsonLayout();
+				layout.setJsonFormatter(formatter);
+				layout.start();
+
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					log.warn("Interrupted.", e);
+				}
+
+				UDPAppender appender = new UDPAppender();
+				appender.setRemoteHost(host);
+				appender.setPort(port);
+				appender.setName("UDP");
+				appender.setLayout(layout);
+				appender.start();
+
+				root.addAppender(appender);
+			}
+
 			root.setLevel(Level.toLevel(level));
 		} catch (JoranException je) {
 			// StatusPrinter will handle this

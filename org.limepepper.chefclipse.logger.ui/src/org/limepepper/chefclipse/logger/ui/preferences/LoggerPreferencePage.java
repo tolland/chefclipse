@@ -1,5 +1,6 @@
 package org.limepepper.chefclipse.logger.ui.preferences;
 
+import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.ComboFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IntegerFieldEditor;
@@ -36,6 +37,9 @@ public class LoggerPreferencePage extends FieldEditorPreferencePage implements
 	 * editor knows how to save and restore itself.
 	 */
 	public void createFieldEditors() {
+		addField(new BooleanFieldEditor(
+				PreferenceConstants.P_REMOTE_LOGGING_ENABLED,
+				"Enable remote logging", getFieldEditorParent()));
 		addField(new ComboFieldEditor(PreferenceConstants.P_LEVEL,
 				"Logging level: ", new String[][] { { "All", "ALL" },
 						{ "Trace", "TRACE" }, { "Debug", "DEBUG" },
@@ -69,7 +73,5 @@ public class LoggerPreferencePage extends FieldEditorPreferencePage implements
 		super.performApply();
 		LoggerPlugin.getDefault().configureLoggers();
 	}
-	
 
-	
 }
