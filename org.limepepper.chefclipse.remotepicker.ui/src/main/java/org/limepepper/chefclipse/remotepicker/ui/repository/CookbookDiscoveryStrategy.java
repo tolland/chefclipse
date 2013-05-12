@@ -108,13 +108,18 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		final RemoteRepository repository = getRepoManager().getRepository(catalogDescriptor.getId());
 		getRepoManager().addRepositoryListener(catalogDescriptor.getId(), new PropertyChangeListener() {
 			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
+			public void propertyChange(final PropertyChangeEvent evt) {
 				if (mon.isCanceled())
 					return;
-				if (evt.getNewValue() instanceof Exception) {
-					MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error getting cookbooks", ((Exception)evt.getNewValue()).getMessage());
-				}
 				EList<RemoteCookbook> cookbooks = repository.getCookbooks();
+				if (evt.getNewValue() instanceof Throwable && !cookbooks.isEmpty()) {
+					Display.getDefault().asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							MessageDialog.openError(Display.getCurrent().getActiveShell(), "Error getting cookbooks", "Could not fetch cookbooks from repository. Error: " + ((Throwable)evt.getNewValue()).getMessage());
+						}
+					});
+				}
 				mon.setWorkRemaining(cookbooks.size()*10);
 				for (RemoteCookbook cookBookInfo : cookbooks){
 					addCategoryFromCookbook(cookBookInfo);

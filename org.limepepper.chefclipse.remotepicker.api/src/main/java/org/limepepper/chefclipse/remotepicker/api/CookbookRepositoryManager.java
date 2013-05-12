@@ -69,6 +69,7 @@ public class CookbookRepositoryManager {
 	private final Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
 	private final Map<String, PropertyChangeSupport> listeners = new HashMap<String, PropertyChangeSupport>();
 	private final Map<RemoteRepository, Builder<?>> builders = new HashMap<RemoteRepository, ICookbooksRepository.Builder<?>>();
+	private final Map<String, Throwable> errors = new HashMap<String, Throwable>();
 	private final Lock lock = new ReentrantLock();
 	private String cacheFolder;
 
@@ -280,7 +281,10 @@ public class CookbookRepositoryManager {
 				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks); //$NON-NLS-1$
 			}
 			saveCacheModel(repo);
+			errors.put(repo.getId(), null);
 		} catch (Throwable e) {
+			logger.error("Could not cache repository " + repo.getUri(), e);
+			errors.put(repo.getId(), e);
 			if (listeners.containsKey(repo.getId())) {
 				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, e); //$NON-NLS-1$
 			}
@@ -479,6 +483,8 @@ public class CookbookRepositoryManager {
 		if (isRepositoryReady(repoId)) {
 			RemoteRepository repo = repositories.get(repoId);
 			listeners.get(repoId).firePropertyChange("cookbooks", null, repo.getCookbooks()); //$NON-NLS-1$
+		} else if (errors.get(repoId) != null) { // try to reload failed repo
+			loadRepository(repoId);
 		}
 	}
 
