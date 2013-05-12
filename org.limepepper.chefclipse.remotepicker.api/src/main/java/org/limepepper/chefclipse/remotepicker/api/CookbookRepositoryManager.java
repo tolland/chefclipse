@@ -27,13 +27,13 @@ import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.ecore.xml.type.SimpleAnyType;
-import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.limepepper.chefclipse.ChefclipseFactory;
+import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.impl.NamedObjectImpl;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository.Builder;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
@@ -178,8 +178,8 @@ public class CookbookRepositoryManager {
 	}
 	
 	public static <T> Object unwrap(EObject param) {
-		if (param instanceof SimpleAnyType) {
-			Object value = ((SimpleAnyType) param).getValue();
+		if (param.getClass().equals(NamedObjectImpl.class)) {
+			Object value = ((NamedObject) param).getName();
 			return value;
 		}
 		return param;
@@ -187,9 +187,8 @@ public class CookbookRepositoryManager {
 	
 	public static <T> EObject wrap(T param) {
 		if (!(param instanceof EObject)) {
-			SimpleAnyType eString = XMLTypeFactory.eINSTANCE.createSimpleAnyType();
-			eString.setInstanceType(EcorePackage.eINSTANCE.getEString());
-			eString.setValue(param);
+			NamedObject eString = ChefclipseFactory.eINSTANCE.createNamedObject();
+			eString.setName(param.toString());
 			return eString;
 		}
 		return (EObject) param;
@@ -281,7 +280,7 @@ public class CookbookRepositoryManager {
 				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks); //$NON-NLS-1$
 			}
 			saveCacheModel(repo);
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			if (listeners.containsKey(repo.getId())) {
 				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, e); //$NON-NLS-1$
 			}

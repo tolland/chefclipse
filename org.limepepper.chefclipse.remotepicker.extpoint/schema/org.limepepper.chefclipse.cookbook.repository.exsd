@@ -132,6 +132,13 @@ One or class or builder attributes must be specified.
                </appinfo>
             </annotation>
          </attribute>
+         <attribute name="config" type="string">
+            <annotation>
+               <documentation>
+                  Optional paramenter for builder
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

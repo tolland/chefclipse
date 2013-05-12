@@ -43,7 +43,7 @@ public class RemotePickerPreferencePage extends FieldEditorPreferencePage
 		public Button rmButton;
 		private Label icon;
 		private Image scaledImage;
-		private boolean disposed;
+		private boolean disposed = false;
 
 		private RepositoryFieldEditor(String name, String label,
 				Composite parent, Composite composite) {
@@ -64,7 +64,14 @@ public class RemotePickerPreferencePage extends FieldEditorPreferencePage
 		
 		@Override
 		protected void adjustForNumColumns(int numColumns) {
-			super.adjustForNumColumns(1);
+			if (!disposed)
+				super.adjustForNumColumns(1);
+		}
+		
+		@Override
+		protected void doLoadDefault() {
+			if (!disposed)
+				super.doLoadDefault();
 		}
 
 		/**

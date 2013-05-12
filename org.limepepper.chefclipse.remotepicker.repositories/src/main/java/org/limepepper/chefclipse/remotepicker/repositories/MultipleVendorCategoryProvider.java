@@ -51,7 +51,7 @@ public enum MultipleVendorCategoryProvider {
 		if (categoriesMap.containsKey(categoryPrefix)){
 			return categoriesMap.get(categoryPrefix);
 		}
-		return "Reference Cookbooks";
+		return "Uncategorized";
 	}
 
 }

@@ -43,8 +43,8 @@ public class RemotePickerHandler extends AbstractHandler {
 
 	private List<CatalogDescriptor> catalogDescriptors;
 		
-	private static final String DISCOVERY_DESCRIPTION = "Select cookbooks to install. Press Finish to proceed with installation.\n" +
-			"Press the information button to see an overview and a link to more information.";
+	private static final String DISCOVERY_DESCRIPTION = "Select cookbooks to install and press Finish to proceed with installation.\n" +
+			"Press the information button to see an overview and link to more information.";
 	
 	private static final String CHEFCLIPSE_COOKBOOK_DISCOVERY = "Chefclipse Cookbook Discovery";
 	

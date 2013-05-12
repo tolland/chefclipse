@@ -70,8 +70,17 @@ public class ExtensionPointHandler {
 				} catch (CoreException ex) {
 					final Object o = e.createExecutableExtension("builder"); //$NON-NLS-1$
 					if (o instanceof ICookbooksRepository.Builder<?>) {
-						repo.setIcon(iconFile.toString());
-						getRepoManager().registerRepository(repo, (ICookbooksRepository.Builder<?>) o);
+						if (e.getAttribute("config") != null) {
+							@SuppressWarnings("unchecked")
+							ICookbooksRepository.Builder<String> builder = (ICookbooksRepository.Builder<String>) o;
+							ICookbooksRepository cookbookRepo = builder.createRepository(e.getAttribute("config"));
+							
+							RemoteRepository registeredRepository = getRepoManager().registerRepository(repo, cookbookRepo);
+							registeredRepository.setIcon(iconFile.toString());
+						} else {
+							repo.setIcon(iconFile.toString());
+							getRepoManager().registerRepository(repo, (ICookbooksRepository.Builder<?>) o);
+						}
 					}
 				}
 			}
