@@ -34,6 +34,10 @@ public class Activator extends AbstractUIPlugin {
 
 	public static final String TEMPLATE_REPO_OVERLAY = "TEMPLATE_REPO_OVERLAY";
 
+	public static final String REPO_ADD = "REPO_ADD";
+
+	public static final String REPO_REMOVE = "REPO_REMOVE";
+
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.limepepper.chefclipse.remotepicker.ui"; //$NON-NLS-1$
 
@@ -98,6 +102,8 @@ public class Activator extends AbstractUIPlugin {
 		imageRegistry.put(INSTALLED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/installed_decorator.gif")); //$NON-NLS-1$
 		imageRegistry.put(INSTALLED_ICON_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/installed_decorator.gif")); //$NON-NLS-1$
 		imageRegistry.put(TEMPLATE_REPO_OVERLAY, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/add_template_repo.png")); //$NON-NLS-1$
+		imageRegistry.put(REPO_ADD, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/add_repo.gif")); //$NON-NLS-1$
+		imageRegistry.put(REPO_REMOVE, imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/delete_repo.gif")); //$NON-NLS-1$
 		return imageRegistry;
 	}
 

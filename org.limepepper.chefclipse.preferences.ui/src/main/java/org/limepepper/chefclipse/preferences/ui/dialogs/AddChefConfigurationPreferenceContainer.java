@@ -59,6 +59,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		super(parentShell);
 		this.preferenceStore = createChefConfigurationStore(knifeConfig);
 		this.addMode = addMode;
+		super.setShellStyle(SWT.DIALOG_TRIM | SWT.RESIZE);
 		urlValidator = new UrlValidator();
 	}
 	

@@ -54,7 +54,7 @@ import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStr
 @SuppressWarnings("restriction")
 public class CookbookDiscoveryWizard extends DiscoveryWizard{
 
-	private static final String INSTALL_COOKBOOKS = "Install Cookbooks";
+	public static final String INSTALL_COOKBOOKS = "Install Cookbooks";
 
 	private static final String PROJECT_SELECTION_MESSAGE_DIALOG = "Choose the projects to which you want to install the selected cookbooks.";
 

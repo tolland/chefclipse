@@ -4,6 +4,8 @@
 package org.limepepper.chefclipse.remotepicker.repositories;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -14,6 +16,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.TimeZone;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -50,19 +53,21 @@ import com.sun.jersey.core.header.LinkHeader;
  * @author Sebastian Sampaoli
  *
  */
-public class MultipleVendorCookbookRepository implements ICookbooksRepository {
+public class GitHubCookbookRepository implements ICookbooksRepository {
 
 	private static final int THREADS = 10;
 
-	static final Logger logger = LoggerFactory.getLogger(MultipleVendorCookbookRepository.class);
+	static final Logger logger = LoggerFactory.getLogger(GitHubCookbookRepository.class);
 	
 	private WebResource service;
 	
 	private static final String REPOSITORY_URI = "https://api.github.com";
 	
-	private static final String REPOSITORY_ID = "Multiple vendor Chef cookbooks";
+	private static final String REPOSITORY_ID = "GitHub Chef cookbooks repository";
 	
 	private IDownloadCookbookStrategy downloadCookbookStrategy;
+
+	private String githubUser;
 
 	private final class GetTask implements Runnable {
 		private final int page;
@@ -110,8 +115,8 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 		}
 	}
 	
-	public MultipleVendorCookbookRepository() {
-		
+	public GitHubCookbookRepository(String githubUser) {
+		this.githubUser = githubUser;
 		ClientConfig config = new DefaultClientConfig();
 		
 		Client client = Client.create(config);
@@ -137,10 +142,20 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	 */
 	@Override
 	public URI getRepositoryURI() {
-		return UriBuilder.fromUri(REPOSITORY_URI)
-				.queryParam("client_id", "1fbe8bb4c87a918859ac")
-				.queryParam("client_secret", "7fc4d5ba285f4f5897f443589bb1a932dc5bd60d")
-				.build();
+		return repositoryUrl();
+	}
+
+	public static URI repositoryUrl() {
+		UriBuilder fromUri = UriBuilder.fromUri(REPOSITORY_URI);
+		Properties prop = new Properties();
+		try (InputStream is = GitHubCookbookRepository.class.getResourceAsStream("/github.properties")) {
+			prop.load(is);
+			fromUri.queryParam("client_id", prop.getProperty("client_id"))
+				.queryParam("client_secret", prop.getProperty("client_secret"));
+		} catch (IOException e) {
+			logger.error("Cannot load github.properties file", e);
+		}
+		return fromUri.build();
 	}
 
 	/* (non-Javadoc)
@@ -220,14 +235,14 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	}
 
 	private JSONArray getRestCookbooks(int page, int items) {
-		return getService().path("users").path("cookbooks").path("repos")
+		return getService().path("users").path(githubUser).path("repos")
 				.queryParam("page", String.valueOf(page))
 				.queryParam("per_page", String.valueOf(items))
 				.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONArray.class);
 	}
 
 	protected int getRestCookbooksLast(int items) {
-		ClientResponse r = getService().path("users").path("cookbooks").path("repos")
+		ClientResponse r = getService().path("users").path(githubUser).path("repos")
 				.queryParam("page", String.valueOf(1))
 				.queryParam("per_page", String.valueOf(items))
 				.accept(MediaType.APPLICATION_JSON_TYPE).head();
@@ -264,7 +279,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 		ClientResponse response = null;
 		try {
 			response = getService()
-					.path("users").path("cookbooks").path("repos")
+					.path("users").path(githubUser).path("repos")
 					.header("If-Modified-Since", date)
 					.get(ClientResponse.class);
 		} catch (ClientHandlerException | UniformInterfaceException e) {
@@ -291,7 +306,7 @@ public class MultipleVendorCookbookRepository implements ICookbooksRepository {
 	 * @return
 	 */
 	private JSONObject restCookbook(String name) {
-	    return getService().path("repos").path("cookbooks").path(name)
+	    return getService().path("repos").path(githubUser).path(name)
 	    		.accept(MediaType.APPLICATION_JSON_TYPE)
 	    		.get(JSONObject.class);
 	}

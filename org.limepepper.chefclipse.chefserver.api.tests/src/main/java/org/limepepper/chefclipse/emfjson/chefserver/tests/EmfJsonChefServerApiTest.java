@@ -36,6 +36,7 @@ import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.emfjson.chefserver.ChefServerURIHandler;
 import org.limepepper.chefclipse.emfjson.chefserver.internal.ChefRequest;
 import org.limepepper.chefclipse.emfjson.chefserver.internal.ChefServerClient;
+import org.limepepper.chefclipse.testing.KnifeConfigUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,38 +52,17 @@ public class EmfJsonChefServerApiTest {
 
     @Before
     public void setUp() throws Exception {
-
-        Properties props = new Properties();
-
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "http", new JsResourceFactoryImpl());
 
         Resource.Factory.Registry.INSTANCE.getProtocolToFactoryMap().put(
                 "https", new JsResourceFactoryImpl());
-        try {
+        knifeConfig = KnifeConfigUtils.getDefaultKnifeConfig();
 
-            props.load(new FileInputStream("resources/opscode-tests.properties"));
+        options.put(EMFJs.OPTION_ROOT_ELEMENT,
+                ChefclipsePackage.eINSTANCE.getNameUrlMap());
 
-            knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-            knifeConfig.setChef_server_url(new URL(props
-                    .getProperty("chef_server_url")));
-            knifeConfig
-                    .setClient_key(new File(props.getProperty("client_key")));
-            knifeConfig.setNode_name(props.getProperty("client_name"));
-
-            assertNotNull(props);
-            assertTrue(knifeConfig.getClient_key().exists());
-            assertTrue(knifeConfig.getNode_name().length() > 0);
-
-            options.put(EMFJs.OPTION_ROOT_ELEMENT,
-                    ChefclipsePackage.eINSTANCE.getNameUrlMap());
-
-            options.put("knifeConfig", knifeConfig);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            fail();
-
-        }
+        options.put("knifeConfig", knifeConfig);
     }
 
     @Test

@@ -14,17 +14,4 @@
          </icon>
       </repositoryDescriptor>
    </extension>
-   <extension
-         point="org.limepepper.chefclipse.cookbook.repository">
-      <repositoryDescriptor
-            class="org.limepepper.chefclipse.remotepicker.repositories.MultipleVendorCookbookRepository"
-            description="This repository contains a collection of cookbooks from vendors and individuals. The repositories under this organization are not affiliated with Opscode."
-            id="org.limepepper.chefclipse.remotepicker.repository.multipleVendor"
-            name="Multiple Vendor Cookbook Site"
-            uri="https://github.com/cookbooks">
-         <icon
-               image32="icons/multiple_vendor_32.png">
-         </icon>
-      </repositoryDescriptor>
-   </extension>
 </plugin>
