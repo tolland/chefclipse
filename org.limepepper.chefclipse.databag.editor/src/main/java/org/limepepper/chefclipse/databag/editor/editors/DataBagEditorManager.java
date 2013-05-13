@@ -98,9 +98,6 @@ public enum DataBagEditorManager {
                 }
                 JsonNode fieldValue = nodeToRead.path(field);
                 if (fieldValue != null && !fieldValue.isMissingNode()) {
-//                    ObjectNode nodeToAdd = mapper.createObjectNode();
-//                    nodeToAdd.put(nodeEntry.getKey(), fieldValue);
-//                    ((ArrayNode) arrayNode).add(nodeToAdd);
                     if (fieldValue.isValueNode() || fieldValue.isArray()) {
                         ObjectNode nodeToAdd = mapper.createObjectNode();
                         nodeToAdd.put(nodeEntry.getKey(), fieldValue);
@@ -108,8 +105,6 @@ public enum DataBagEditorManager {
                     } else {
                         //it's an object
                         generateNodeWithChildren(nodeEntry.getKey(), fieldValue, (ArrayNode) arrayNode);
-//                        ((ArrayNode) arrayNode).add(generateNodeWithChildren(nodeEntry.getKey(), fieldValue, (ArrayNode) arrayNode));
-//                        resultNode = generateNodeWithChildren(nodeEntry.getKey(), field, fieldValue, resultNode);
                     }
                 }
             }
@@ -135,7 +130,6 @@ public enum DataBagEditorManager {
                 childContainer.add(childNodeToAdd);
             }
         }
-//        return null;
     }
 
     private ArrayNode findContainer(ArrayNode container, String fieldName) {
@@ -152,30 +146,6 @@ public enum DataBagEditorManager {
         container.add(nodeOfArray);
         return (ArrayNode) nodeOfArray.path(fieldName);
     }
-
-//    private ObjectNode generateNodeWithChildren(String fileName, String fieldName, JsonNode fieldValue, ObjectNode resultNode) {
-//        ObjectMapper mapper = new ObjectMapper();
-//        for (Iterator<Entry<String, JsonNode>> fields = fieldValue.getFields(); fields.hasNext();) {
-//            Entry<String, JsonNode> childNode = fields.next();
-//            JsonNode childValueNode = childNode.getValue();
-//            if (childValueNode.isObject()) {
-//                
-//            } else {
-//                ObjectNode nodeToAdd = mapper.createObjectNode();
-//                nodeToAdd.put(nodeEntry.getKey(), fieldValue);
-//                ((ArrayNode) arrayNode).add(nodeToAdd);
-//            }
-//        }
-//        ArrayNode arrayNode = (ArrayNode) resultNode.path(fieldName);
-//        for (Iterator<Entry<String, JsonNode>> fields = fieldValue.getFields(); fields.hasNext();) {
-//            Entry<String, JsonNode> arrayChild = fields.next();
-//            fo
-//            if (fi)
-//        }
-//        arrayNode.find
-//        Iterator<String> fieldNames = fieldValue.getFieldNames();
-//        return null;
-//    }
 
     /**
      * Validates if a JSON node which belong to a {@link DataBagItem} has an id
@@ -207,8 +177,6 @@ public enum DataBagEditorManager {
             throws JsonParseException,
             JsonMappingException, IOException {
         Map<String, JsonNode> nodes = new LinkedHashMap<String, JsonNode>(); 
-        // List<JsonNodeEntry<String, JsonNode>> nodes = new
-        // ArrayList<JsonNodeEntry<String, JsonNode>>();
         if (eObject instanceof DataBag) {
             DataBag dataBag = (DataBag) eObject;
             EList<DataBagItem> items = dataBag.getItems();
@@ -263,17 +231,4 @@ public enum DataBagEditorManager {
         }
         return null;
     }
-    
-    //TODO add method to add a new property to a specific data bag item. It should receive as parameter
-//    the super JsonNode object (give instructions to call the createAllKeysNode method before), a databagitemname
-//    and an Entry<String,JsonNode>???may be these stuff I am writing should be on label provider.
-    
-//    add a simple method to find the value of a data bag item given a string property, the name of the data bag item, and a super jsonnode
-//    if the property name exists more than once, it will return the first found.
-    
-//    same for remove. Maybe I have to consider not using the super Json node and use the JsonNode of the databag directly,
-//    I think it makes more sense. This methods I am thinking to put are only for the API pourposes.
-    
-//  So TOMORROW just worried about creating the functionality for the label provide, then we will see the other stuff, that's
-//    where to put methods.
 }

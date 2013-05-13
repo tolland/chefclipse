@@ -71,40 +71,6 @@ public class DataBagEditorManagerTest extends AbstractDataBagEditorTest{
         assertThat(surnameArray.findValue("jsonFile1").asText()).isEqualTo("William");
 	}
     
-//    @Test
-//	public void testValuesOfCompositeKeysNode() {
-//        Map<String, JsonNode> nodesMap = new HashMap<String, JsonNode>();
-//        nodesMap.put("jsonFile1", firstKeysNode);
-//        nodesMap.put("jsonFile2", secondKeysNode);
-//        nodesMap.put("jsonFile3", thirdKeysNode);
-//	    JsonNode allKeysNode = managerInstance.createAllFieldsNode(nodesMap);
-//	    JsonNode addressNode = allKeysNode.path("address");
-//	    assertThat(addressNode.isArray()).isTrue();
-//	    
-//	    ArrayNode arrayAddress = (ArrayNode)addressNode;
-//	    assertThat(arrayAddress.size()).isEqualTo(3);
-//	    
-//        JsonNode firstElement = arrayAddress.findValue("jsonFile1");
-//	    assertThat(firstElement.asText()).isEqualTo("an address");
-//	    
-//	    ObjectNode secondAddressNode = mapper.createObjectNode();
-//	    ObjectNode nameAttributes = mapper.createObjectNode();
-//	    nameAttributes.put("value", "Marriot street");
-//	    nameAttributes.put("creationYear", 1985);
-//	    secondAddressNode.put("name", nameAttributes);
-//	    secondAddressNode.put("number", 1234);
-////	    ((ObjectNode) secondAddressNode).put("address", secondAddressNode);
-//	    JsonNode secondElement = arrayAddress.findValue("jsonFile2");
-//        assertThat((ObjectNode)secondElement).isEqualTo(secondAddressNode);
-//	    
-//        ObjectNode thirdAddressNode = mapper.createObjectNode();
-//        thirdAddressNode.put("name", "Av. Corrientes");
-//        thirdAddressNode.put("number", 8989);
-//        thirdAddressNode.put("Prov", "Buenos Aires");
-//        JsonNode thirdElement = arrayAddress.findValue("jsonFile3");
-//        assertThat((ObjectNode)thirdElement).isEqualTo(thirdAddressNode);
-//	}
-//	
 	@SuppressWarnings("unchecked")
     @Test
     public void testValuesOfCompositeKeysNode() {

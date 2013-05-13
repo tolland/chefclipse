@@ -11,8 +11,11 @@ import org.codehaus.jackson.JsonNode;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 
 /**
+ * Provides the value for a {@link DataBagItem}.
+ * 
  * @author Sebastian Sampaoli
  *
  */
