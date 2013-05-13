@@ -69,7 +69,6 @@ public class DataBagEditorManagerTest extends AbstractDataBagEditorTest{
         ArrayNode surnameArray = (ArrayNode) surnameNode;
         assertThat(surnameArray.size()).isEqualTo(1);
         assertThat(surnameArray.findValue("jsonFile1").asText()).isEqualTo("William");
-        
 	}
     
 //    @Test
@@ -173,5 +172,58 @@ public class DataBagEditorManagerTest extends AbstractDataBagEditorTest{
         assertThat(fourthElement.isArray()).isTrue();
         assertThat((ArrayNode)fourthElement).hasSize(1);
         assertThat((ArrayNode)fourthElement).isEqualTo(provArray);
+    }
+	
+	@Test
+    public void testGetTextOfDataBagItemsForCertainProperties() {
+	    Map<String, JsonNode> nodesMap = new HashMap<String, JsonNode>();
+        nodesMap.put("jsonFile1", firstKeysNode);
+        nodesMap.put("jsonFile2", secondKeysNode);
+        nodesMap.put("jsonFile3", thirdKeysNode);
+        JsonNode allKeysNode = managerInstance.createAllFieldsNode(nodesMap);
+        JsonNode addressNode = allKeysNode.path("address");
+        
+        JsonNodeEntry<String, JsonNode> addressEntry = new JsonNodeEntry<String, JsonNode>(
+                "address", addressNode);
+        JsonNode jsonFile1AddressValue = managerInstance.getValue(addressEntry, "jsonFile1");
+        assertThat(jsonFile1AddressValue.asText()).isEqualTo("an address");
+        
+        JsonNode jsonFile2AddressValue = managerInstance.getValue(addressEntry, "jsonFile2");
+        assertThat(jsonFile2AddressValue).isNull();
+        
+        JsonNode jsonFile3AddressValue = managerInstance.getValue(addressEntry, "jsonFile3");
+        assertThat(jsonFile3AddressValue).isNull();
+        
+        ArrayNode arrayAddress = (ArrayNode)addressNode;
+        JsonNode nameElement = arrayAddress.findValue("name");
+        JsonNodeEntry<String, JsonNode> nameEntry = new JsonNodeEntry<String, JsonNode>(
+                "name", nameElement);
+        
+        JsonNode jsonFile1AddressNameValue = managerInstance.getValue(nameEntry, "jsonFile1");
+        JsonNode jsonFile2AddressNameValue = managerInstance.getValue(nameEntry, "jsonFile2");
+        JsonNode jsonFile3AddressNameValue = managerInstance.getValue(nameEntry, "jsonFile3");
+        assertThat(jsonFile1AddressNameValue).isNull();
+        assertThat(jsonFile2AddressNameValue).isNull();
+        assertThat(jsonFile3AddressNameValue.asText()).isEqualTo("Av. Corrientes");
+        
+        JsonNode valueElement = nameElement.findValue("value");
+        JsonNodeEntry<String, JsonNode> valueElementEntry = new JsonNodeEntry<String, JsonNode>(
+                "value", valueElement);
+        JsonNode jsonFile1valueElementValue = managerInstance.getValue(valueElementEntry, "jsonFile1");
+        JsonNode jsonFile2valueElementValue = managerInstance.getValue(valueElementEntry, "jsonFile2");
+        JsonNode jsonFile3valueElementValue = managerInstance.getValue(valueElementEntry, "jsonFile3");
+        assertThat(jsonFile1valueElementValue).isNull();
+        assertThat(jsonFile2valueElementValue.asText()).isEqualTo("Marriot street");
+        assertThat(jsonFile3valueElementValue).isNull();
+        
+        JsonNode numberNode = arrayAddress.findValue("number");
+        JsonNodeEntry<String, JsonNode> numberNodeEntry = new JsonNodeEntry<String, JsonNode>(
+                "value", numberNode);
+        JsonNode jsonFile1numberNodeValue = managerInstance.getValue(numberNodeEntry, "jsonFile1");
+        JsonNode jsonFile2numberNodeValue = managerInstance.getValue(numberNodeEntry, "jsonFile2");
+        JsonNode jsonFile3numberNodeValue = managerInstance.getValue(numberNodeEntry, "jsonFile3");
+        assertThat(jsonFile1numberNodeValue).isNull();
+        assertThat(jsonFile2numberNodeValue.asInt()).isEqualTo(1234);
+        assertThat(jsonFile3numberNodeValue.asInt()).isEqualTo(8989);
     }
 }
