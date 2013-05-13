@@ -27,7 +27,7 @@ import org.limepepper.chefclipse.common.chefserver.DataBagItem;
  */
 public class DataBagActionProvider extends CommonActionProvider {
 
-    private OpenDataBagAction openAction;
+    private OpenDataBagEditorAction openAction;
 
     /**
      * 
@@ -41,7 +41,7 @@ public class DataBagActionProvider extends CommonActionProvider {
         ICommonViewerSite viewSite = aSite.getViewSite();
         if (viewSite instanceof ICommonViewerWorkbenchSite) {
             ICommonViewerWorkbenchSite workbenchSite = (ICommonViewerWorkbenchSite) viewSite;
-            openAction = new OpenDataBagAction(workbenchSite.getPage(), workbenchSite.getSelectionProvider());
+            openAction = new OpenDataBagEditorAction(workbenchSite.getPage(), workbenchSite.getSelectionProvider());
         }
     }
     

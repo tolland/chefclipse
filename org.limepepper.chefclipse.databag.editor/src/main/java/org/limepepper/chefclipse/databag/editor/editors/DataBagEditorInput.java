@@ -3,6 +3,9 @@
  */
 package org.limepepper.chefclipse.databag.editor.editors;
 
+import java.util.Map;
+
+import org.codehaus.jackson.JsonNode;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
@@ -11,21 +14,25 @@ import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 
 /**
+ * Input for the {@link MultiPageDataBagEditor}.
+ * 
  * @author Sebastian Sampaoli
- *
+ * 
  */
 public class DataBagEditorInput implements IEditorInput {
 
     private EObject eObject;
     private String name;
+    private Map<String, JsonNode> nodesMap;
 
-    public DataBagEditorInput(EObject eObject) {
+    public DataBagEditorInput(EObject eObject, Map<String, JsonNode> nodesMap) {
         this.seteObject(eObject);
         if (eObject instanceof DataBag) {
             name = ((DataBag) eObject).getName();
         } else if (eObject instanceof DataBagItem) {
             name =  ((DataBagItem) eObject).getName();
         }
+        this.nodesMap = nodesMap;
     }
     /* (non-Javadoc)
      * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
@@ -104,5 +111,11 @@ public class DataBagEditorInput implements IEditorInput {
     
     public void seteObject(EObject eObject) {
         this.eObject = eObject;
+    }
+    public Map<String, JsonNode> getNodesMap() {
+        return nodesMap;
+    }
+    public void setNodesMap(Map<String, JsonNode> nodesMap) {
+        this.nodesMap = nodesMap;
     }
 }

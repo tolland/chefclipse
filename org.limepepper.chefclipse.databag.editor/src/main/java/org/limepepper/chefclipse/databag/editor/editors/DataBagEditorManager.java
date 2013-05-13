@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -17,14 +18,17 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.node.ArrayNode;
 import org.codehaus.jackson.node.ObjectNode;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 
 /**
- * Provides methods to access functionality related to {@link DataBag} and
- * {@link DataBagItem}.
+ * Provides methods to perform operations that access or modify {@link DataBag}s and
+ * {@link DataBagItem}s. 
+ * 
+ * It also provides methods to put and retrieve values from an specific {@link JsonNode}.
  * 
  * @author Sebastian Sampaoli
  */
@@ -33,25 +37,50 @@ public enum DataBagEditorManager {
     INSTANCE;
 
     /**
-     * Create a {@link JsonNode} which contains all the fields and values of the
-     * nodes given as parameter. The created JsonNode contains all the fields of
-     * all the JsonNodes given as parameter. The map given as parameter should
-     * contain the JsonNodes of a collection of {@link DataBagItem}s. Each entry
-     * of the map contains the file name of the data bag item resource, and the
-     * json contained in that resource. The elements of the resulting JSON are
-     * {@link ArrayNode}s which each one contain the values of all the JSON
-     * files for the current field. For example, given two JSON files as below:
-     * *******JsonFile1.json******* { "name": "John", "address":
-     * "57 Street 8900" } *******JsonFile2.json******* { "name": "Peter",
-     * "surname": "Crouch", "address": { "name": { value: "Av. Corrientes",
-     * "creation year": 1850 }, "number": 1234, "Province": "Buenos Aires" } }
-     * The resulting JsonNode would be: { "name": [{"JsonFile1.json": "John"},
-     * {"JsonFile2.json": "Peter"}], "surname": [{"JsonFile2.json": "Crouch"}],
-     * "address": [{"JsonFile1.json":"57 Street 8900"}, {name:
-     * [{"value":[{"JsonFile2.json": "Av. Corrientes"}]},
-     * {"creation year":[{"JsonFile2.json": 1850}]} ]}, {"number":
-     * [{"JsonFile2.json": 1234}]} {"Province":
-     * [{"JsonFile2.json":"Buenos Aires"}]}] }
+     * Create a {@link JsonNode} which contains all the fields and values of the nodes
+     * given as parameter. The created JsonNode contains all the fields of all
+     * the JsonNodes given as parameter. The map given as parameter should contain
+     * the JsonNodes of a collection of {@link DataBagItem}s. Specifically, it contains 
+     * a map where each key represents a Json file name, and each value the {@link JsonNode}
+     * associated with that file name. Each entry in the map represents the {@link IResource}
+     * contained in a {@link DataBagItem}.
+     *  
+     * The elements of the resulting JSON are {@link ArrayNode}s which each one contain 
+     * the values of all the JSON files for the current field. For
+     * example, given two JSON files as below:
+     * 
+     * *******JsonFile1.json*******
+     * {
+     *  "name": "John",
+     *  "address": "57 Street 8900"
+     * }
+     * 
+     * *******JsonFile2.json*******
+     * {
+     *  "name": "Peter",
+     *  "surname": "Crouch",
+     *  "address": {
+     *      "name": {
+     *              value: "Av. Corrientes",
+     *              "creation year": 1850
+     *              },
+     *      "number": 1234,
+     *      "Province": "Buenos Aires"
+     *              }
+     *  }
+     *  
+     *  The resulting JsonNode would be:
+     *  
+     *  {
+     *  "name": [{"JsonFile1.json": "John"}, {"JsonFile2.json": "Peter"}],
+     *  "surname": [{"JsonFile2.json": "Crouch"}],
+     *  "address": [{"JsonFile1.json":"57 Street 8900"},
+     *              {name: [{"value":[{"JsonFile2.json": "Av. Corrientes"}]},
+     *                      {"creation year":[{"JsonFile2.json": 1850}]}
+     *                     ]},
+     *              {"number": [{"JsonFile2.json": 1234}]}
+     *              {"Province": [{"JsonFile2.json":"Buenos Aires"}]}]
+     *  }
      * 
      * @param nodes to retrieve the fields
      * @return a JsonNode which contains a set of fields
@@ -61,7 +90,7 @@ public enum DataBagEditorManager {
         ObjectNode resultNode = mapper.createObjectNode();
         for (Entry<String, JsonNode> nodeEntry : nodesMap.entrySet()) {
             JsonNode nodeToRead = nodeEntry.getValue();
-            for (Iterator<String> fields = nodeToRead.getFieldNames(); fields.hasNext();) {
+            for (Iterator<String> fields = nodeToRead.getFieldNames(); fields.hasNext(); ) {
                 String field = fields.next();
                 JsonNode arrayNode = resultNode.path(field);
                 if (arrayNode.isMissingNode()) {
@@ -69,23 +98,18 @@ public enum DataBagEditorManager {
                 }
                 JsonNode fieldValue = nodeToRead.path(field);
                 if (fieldValue != null && !fieldValue.isMissingNode()) {
-                    // ObjectNode nodeToAdd = mapper.createObjectNode();
-                    // nodeToAdd.put(nodeEntry.getKey(), fieldValue);
-                    // ((ArrayNode) arrayNode).add(nodeToAdd);
+//                    ObjectNode nodeToAdd = mapper.createObjectNode();
+//                    nodeToAdd.put(nodeEntry.getKey(), fieldValue);
+//                    ((ArrayNode) arrayNode).add(nodeToAdd);
                     if (fieldValue.isValueNode() || fieldValue.isArray()) {
                         ObjectNode nodeToAdd = mapper.createObjectNode();
                         nodeToAdd.put(nodeEntry.getKey(), fieldValue);
                         ((ArrayNode) arrayNode).add(nodeToAdd);
                     } else {
-                        // it's an object
-                        generateNodeWithChildren(nodeEntry.getKey(), fieldValue,
-                                (ArrayNode) arrayNode);
-                        // ((ArrayNode)
-                        // arrayNode).add(generateNodeWithChildren(nodeEntry.getKey(),
-                        // fieldValue, (ArrayNode) arrayNode));
-                        // resultNode =
-                        // generateNodeWithChildren(nodeEntry.getKey(), field,
-                        // fieldValue, resultNode);
+                        //it's an object
+                        generateNodeWithChildren(nodeEntry.getKey(), fieldValue, (ArrayNode) arrayNode);
+//                        ((ArrayNode) arrayNode).add(generateNodeWithChildren(nodeEntry.getKey(), fieldValue, (ArrayNode) arrayNode));
+//                        resultNode = generateNodeWithChildren(nodeEntry.getKey(), field, fieldValue, resultNode);
                     }
                 }
             }
@@ -97,8 +121,7 @@ public enum DataBagEditorManager {
         return resultNode;
     }
 
-    private void generateNodeWithChildren(String fileName, JsonNode fieldValue,
-            ArrayNode parentContainer) {
+    private void generateNodeWithChildren(String fileName, JsonNode fieldValue, ArrayNode parentContainer) {
         ObjectMapper mapper = new ObjectMapper();
         for (Iterator<Entry<String, JsonNode>> fields = fieldValue.getFields(); fields.hasNext();) {
             Entry<String, JsonNode> childNodeEntry = fields.next();
@@ -112,13 +135,12 @@ public enum DataBagEditorManager {
                 childContainer.add(childNodeToAdd);
             }
         }
-        // return null;
+//        return null;
     }
 
     private ArrayNode findContainer(ArrayNode container, String fieldName) {
         ObjectMapper mapper = new ObjectMapper();
-        for (Iterator<JsonNode> containerFields = container.getElements(); containerFields
-                .hasNext();) {
+        for (Iterator<JsonNode> containerFields = container.getElements(); containerFields.hasNext();) {
             JsonNode containerField = containerFields.next();
             JsonNode childContainer = containerField.path(fieldName);
             if (!childContainer.isMissingNode()) {
@@ -131,32 +153,29 @@ public enum DataBagEditorManager {
         return (ArrayNode) nodeOfArray.path(fieldName);
     }
 
-    // private ObjectNode generateNodeWithChildren(String fileName, String
-    // fieldName, JsonNode fieldValue, ObjectNode resultNode) {
-    // ObjectMapper mapper = new ObjectMapper();
-    // for (Iterator<Entry<String, JsonNode>> fields = fieldValue.getFields();
-    // fields.hasNext();) {
-    // Entry<String, JsonNode> childNode = fields.next();
-    // JsonNode childValueNode = childNode.getValue();
-    // if (childValueNode.isObject()) {
-    //
-    // } else {
-    // ObjectNode nodeToAdd = mapper.createObjectNode();
-    // nodeToAdd.put(nodeEntry.getKey(), fieldValue);
-    // ((ArrayNode) arrayNode).add(nodeToAdd);
-    // }
-    // }
-    // ArrayNode arrayNode = (ArrayNode) resultNode.path(fieldName);
-    // for (Iterator<Entry<String, JsonNode>> fields = fieldValue.getFields();
-    // fields.hasNext();) {
-    // Entry<String, JsonNode> arrayChild = fields.next();
-    // fo
-    // if (fi)
-    // }
-    // arrayNode.find
-    // Iterator<String> fieldNames = fieldValue.getFieldNames();
-    // return null;
-    // }
+//    private ObjectNode generateNodeWithChildren(String fileName, String fieldName, JsonNode fieldValue, ObjectNode resultNode) {
+//        ObjectMapper mapper = new ObjectMapper();
+//        for (Iterator<Entry<String, JsonNode>> fields = fieldValue.getFields(); fields.hasNext();) {
+//            Entry<String, JsonNode> childNode = fields.next();
+//            JsonNode childValueNode = childNode.getValue();
+//            if (childValueNode.isObject()) {
+//                
+//            } else {
+//                ObjectNode nodeToAdd = mapper.createObjectNode();
+//                nodeToAdd.put(nodeEntry.getKey(), fieldValue);
+//                ((ArrayNode) arrayNode).add(nodeToAdd);
+//            }
+//        }
+//        ArrayNode arrayNode = (ArrayNode) resultNode.path(fieldName);
+//        for (Iterator<Entry<String, JsonNode>> fields = fieldValue.getFields(); fields.hasNext();) {
+//            Entry<String, JsonNode> arrayChild = fields.next();
+//            fo
+//            if (fi)
+//        }
+//        arrayNode.find
+//        Iterator<String> fieldNames = fieldValue.getFieldNames();
+//        return null;
+//    }
 
     /**
      * Validates if a JSON node which belong to a {@link DataBagItem} has an id
@@ -177,10 +196,9 @@ public enum DataBagEditorManager {
     }
 
     /**
-     * Returns a {@link Map} that contains {@link JsonNode}s and it corresponded
-     * file names which are contained in the {@link DataBag} or the
-     * {@link DataBagItem} passed as parameter. In case the eObject is a
-     * {@link DataBagItem}, it will return a map with only one entry.
+     * Returns a {@link Map} that contains {@link JsonNode}s and it corresponded file names
+     * which are contained in the {@link DataBag} or the {@link DataBagItem} passed as parameter. 
+     * In case the eObject is a {@link DataBagItem}, it will return a map with only one entry.
      * 
      * @param eObject the DataBag or DataBagItem which contains JSON nodes
      * @return a map of JSON entry nodes
@@ -188,8 +206,7 @@ public enum DataBagEditorManager {
     public Map<String, JsonNode> retrieveNodes(EObject eObject)
             throws JsonParseException,
             JsonMappingException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, JsonNode> nodes = new HashMap<String, JsonNode>();
+        Map<String, JsonNode> nodes = new LinkedHashMap<String, JsonNode>(); 
         // List<JsonNodeEntry<String, JsonNode>> nodes = new
         // ArrayList<JsonNodeEntry<String, JsonNode>>();
         if (eObject instanceof DataBag) {
@@ -197,23 +214,23 @@ public enum DataBagEditorManager {
             EList<DataBagItem> items = dataBag.getItems();
             for (DataBagItem dataBagItem : items) {
                 File jsonFile = dataBagItem.getJsonResource().getLocation().toFile();
-                JsonNode node = readJsonFile(mapper, jsonFile);
+                JsonNode node = loadJsonFile(jsonFile);
                 nodes.put(jsonFile.getName(), node);
             }
             return nodes;
         } else if (eObject instanceof DataBagItem) {
             DataBagItem dataBagItem = (DataBagItem) eObject;
             File jsonFile = dataBagItem.getJsonResource().getLocation().toFile();
-            JsonNode node = readJsonFile(mapper, jsonFile);
+            JsonNode node = loadJsonFile(jsonFile);
             nodes.put(jsonFile.getName(), node);
             return nodes;
         }
         return new HashMap<String, JsonNode>();
     }
 
-    private JsonNode readJsonFile(ObjectMapper mapper,
-            File jsonFile) throws IOException {
-        JsonNode node;
+    private JsonNode loadJsonFile(File jsonFile) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node = null;
         try {
             node = mapper.readValue(jsonFile, JsonNode.class);
         } catch (IOException e) {
@@ -223,4 +240,40 @@ public enum DataBagEditorManager {
         }
         return node;
     }
+
+    /**
+     * Returns the value which has a {@link DataBagItem} for an specific JSON property.
+     * It's highly recommended that the method {@link #createAllFieldsNode(Map)} is used
+     * first, in order to create and have a suitable structure to add, remove, or get 
+     * values from data bags items.
+     * 
+     * @param element an entry in the JsonNode structure. The key of such entry is the name of a JSON property
+     * @param dataBagItemName the name of the data bag item to fetch the value
+     * @return the value for the given JSON property in the data bag item, otherwise it returns null
+     */
+    public JsonNode getValue(Entry<String, JsonNode> element, String dataBagItemName) {
+        JsonNode elementArray = element.getValue();
+        for (Iterator<JsonNode> elements = elementArray.getElements(); elements.hasNext(); ) {
+            JsonNode childElement = elements.next();
+            Iterator<Entry<String, JsonNode>> childFields = childElement.getFields();
+            Entry<String, JsonNode> childNode = childFields.next();
+            if (childNode.getKey().equals(dataBagItemName) && (childNode.getValue().isValueNode() || childNode.getValue().isArray())) {
+                return childNode.getValue();
+            }
+        }
+        return null;
+    }
+    
+    //TODO add method to add a new property to a specific data bag item. It should receive as parameter
+//    the super JsonNode object (give instructions to call the createAllKeysNode method before), a databagitemname
+//    and an Entry<String,JsonNode>???may be these stuff I am writing should be on label provider.
+    
+//    add a simple method to find the value of a data bag item given a string property, the name of the data bag item, and a super jsonnode
+//    if the property name exists more than once, it will return the first found.
+    
+//    same for remove. Maybe I have to consider not using the super Json node and use the JsonNode of the databag directly,
+//    I think it makes more sense. This methods I am thinking to put are only for the API pourposes.
+    
+//  So TOMORROW just worried about creating the functionality for the label provide, then we will see the other stuff, that's
+//    where to put methods.
 }

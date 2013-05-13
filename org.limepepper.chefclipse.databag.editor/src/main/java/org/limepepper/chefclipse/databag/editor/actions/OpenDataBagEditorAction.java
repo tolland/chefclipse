@@ -3,18 +3,25 @@
  */
 package org.limepepper.chefclipse.databag.editor.actions;
 
+import java.io.IOException;
+import java.util.Map;
+
+import org.codehaus.jackson.JsonNode;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.SWT;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorInput;
+import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
 import org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor;
 
 /**
@@ -23,13 +30,13 @@ import org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor;
  * @author Sebastian Sampaoli
  *
  */
-public class OpenDataBagAction extends Action {
+public class OpenDataBagEditorAction extends Action {
 
     private ISelectionProvider selectionProvider;
     private EObject eObject;
     private IWorkbenchPage page;
 
-    public OpenDataBagAction(IWorkbenchPage page, ISelectionProvider selectionProvider) {
+    public OpenDataBagEditorAction(IWorkbenchPage page, ISelectionProvider selectionProvider) {
         setText("Open");
         this.selectionProvider = selectionProvider;
         this.page = page;
@@ -63,10 +70,16 @@ public class OpenDataBagAction extends Action {
     @Override
     public void run() {
         if (eObject != null) {
-            DataBagEditorInput input = new DataBagEditorInput(eObject);
             try {
+                Map<String, JsonNode> nodesMap = DataBagEditorManager.INSTANCE.retrieveNodes(eObject);
+                DataBagEditorInput input = new DataBagEditorInput(eObject, nodesMap);
                 page.openEditor(input, MultiPageDataBagEditor.ID);
             } catch (PartInitException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO log the exception and present some error dialog: some file
+                // could not be parsed.
+                MessageDialog.open(MessageDialog.ERROR, page.getActivePart().getSite().getShell(), "Error while trying to read JSON file", e.getMessage(), SWT.NONE);
                 e.printStackTrace();
             }
         }

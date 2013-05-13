@@ -1,6 +1,9 @@
 package org.limepepper.chefclipse.databag.editor.editors;
 
 
+import java.util.Map;
+
+import org.codehaus.jackson.JsonNode;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
@@ -28,12 +31,14 @@ import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 
 /**
- * An example showing how to create a multi-page editor.
- * This example has 3 pages:
+ * A multi page editor to manage all operations to {@link DataBag}s and {@link DataBagItem}s.
+ * 
+ * This editor has the following pages:
  * <ul>
- * <li>page 0 contains a nested text editor.
- * <li>page 1 allows you to change the font used in page 2
- * <li>page 2 shows the words in page 0 in sorted order
+ * <li>page 0 contains a visual column based editor.
+ * <li>subsequent pages depend on the number of data bag items which contain the opened
+ * DataBag. There is one page per data bag item file. Each page is a Json editor.
+ * <li>last page shows an editor that manage each data bag item as rows.
  * </ul>
  * 
  * @author Sebastian Sampaoli
@@ -42,7 +47,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
     
     public static final String ID = "org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor";
 
-	/** The text editor used in page 0. */
+	/** The column data bag editor used in page 0. */
 	private DataBagColumnEditor columnEditor;
 	
 	/** The font chosen in page 1. */
@@ -52,9 +57,9 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	private StyledText text;
 
     private EObject dataBagEObject;
-	/**
-	 * Creates a multi-page editor example.
-	 */
+
+    private Map<String, JsonNode> nodesMap;
+	
 	public MultiPageDataBagEditor() {
 		super();
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
@@ -66,7 +71,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
      */
     void createColumnEditorPage() {
         try {
-            columnEditor = new DataBagColumnEditor();
+            columnEditor = new DataBagColumnEditor(nodesMap);
             int index = addPage(columnEditor, getEditorInput());
             setPageText(index, "Column DataBag Editor");
         } catch (PartInitException e) {
@@ -78,8 +83,10 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
         }
     }
 	/**
-	 * Creates page 1 of the multi-page editor,
-	 * which allows you to change the font used in page 2.
+	 * Creates pages for each {@link DataBagItem} contained in the opened
+	 * {@link DataBag}. Each page contains a JSON editor. If the item being
+	 * opened is a DataBagItem, it shows only one page.
+	 * 
 	 */
 	void createJsonEditorPages() {
 	    if (dataBagEObject instanceof DataBag) {
@@ -122,8 +129,9 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
         }
     }
 	/**
-	 * Creates page 2 of the multi-page editor,
-	 * which shows a Row Data Bag editor.
+	 * Creates last page of this editor. This page shows an editor which manages
+	 * all data bag items as rows in the viewer. The JSON properties are showed in a
+	 * left column.
 	 */
 	void createRowEditorPage() {
 		Composite composite = new Composite(getContainer(), SWT.NONE);
@@ -136,12 +144,12 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		setPageText(index, "Row DataBag Editor");
 	}
 	/**
-	 * Creates the pages of the multi-page editor.
+	 * Creates the pages of the multi-page data bag editor.
 	 */
 	protected void createPages() {
 		createColumnEditorPage();
-		createJsonEditorPages();
 		createRowEditorPage();
+		createJsonEditorPages();
 	}
 	/**
 	 * The <code>MultiPageEditorPart</code> implementation of this 
@@ -150,7 +158,9 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 */
 	public void dispose() {
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
-		super.dispose();
+		if (getSite() != null) {
+		    super.dispose();
+		}
 	}
 	/**
 	 * Saves the multi-page editor's document.
@@ -177,17 +187,20 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		IDE.gotoMarker(getEditor(0), marker);
 	}
 	/**
-	 * The <code>MultiPageEditorExample</code> implementation of this method
-	 * checks that the input is an instance of <code>IFileEditorInput</code>.
+	 * Initialize the current multi page editor. It checks that the input is an instance 
+	 * of <code>DataBagEditorInput</code>. Besides, it loads all the JSON nodes from each 
+	 * data bag item JSON file. 
 	 */
 	public void init(IEditorSite site, IEditorInput editorInput)
 		throws PartInitException {
 		if (!(editorInput instanceof DataBagEditorInput)) {
 			throw new PartInitException("Invalid Input: Must be DataBagEditorInput");
 		}
-		dataBagEObject = ((DataBagEditorInput) editorInput).geteObject();
+		setInput(editorInput);
+		setSite(site);
 		setPartName(editorInput.getName());
-		super.init(site, editorInput);
+		dataBagEObject = ((DataBagEditorInput) editorInput).geteObject();
+		nodesMap = ((DataBagEditorInput) editorInput).getNodesMap();
 	}
 	/* (non-Javadoc)
 	 * Method declared on IEditorPart.
