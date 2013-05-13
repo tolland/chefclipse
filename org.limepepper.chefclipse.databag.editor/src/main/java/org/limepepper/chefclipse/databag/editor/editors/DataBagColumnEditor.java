@@ -20,9 +20,11 @@ import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
+import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
+import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -218,52 +220,53 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
         TreeViewerColumn objectColumn = new TreeViewerColumn(viewer, SWT.LEFT);
         objectColumn.getColumn().setAlignment(SWT.LEFT);
         objectColumn.getColumn().setText("Field name");
-        objectColumn.getColumn().setWidth(230);
+        objectColumn.getColumn().setWidth(150);
         objectColumn.setEditingSupport(new FieldEditingSupport(viewer,
                 textCellEditor));
         // objectColumn.setLabelProvider(new MetadataCellLabelProvider());
-        // TableColumnLayout columnLayout = new TableColumnLayout();
-        // columnLayout.setColumnData(objectColumn.getColumn(), new
-        // ColumnWeightData(200, 150, true));
+        TreeColumnLayout treeLayout = new TreeColumnLayout();
+        viewer.getTree().setLayout(treeLayout);
+
+        treeLayout.setColumnData(objectColumn.getColumn(), new
+                ColumnWeightData(40, 150));
 
         if (dataBagEObject instanceof DataBag) {
-            createColumns(viewer, nodesMap);
+            createColumns(viewer, nodesMap, treeLayout);
         } else { // it's a databagitem
             TreeViewerColumn valueColumn = new TreeViewerColumn(viewer, SWT.LEFT);
             valueColumn.getColumn().setAlignment(SWT.LEFT);
             valueColumn.getColumn().setText("Value");
-            valueColumn.getColumn().setWidth(300);
+            valueColumn.getColumn().setWidth(150);
             valueColumn.getColumn().setImage(
                     Activator.getDefault().getImageRegistry()
                             .getDescriptor(Activator.DATA_BAG_ICON).createImage());
             // valueColumn.setEditingSupport(new ValueEditingSupport(viewer,
             // textCellEditor));
-            // columnLayout.setColumnData(valueColumn.getColumn(),
-            // new ColumnWeightData(150, 150, true));
+            treeLayout.setColumnData(valueColumn.getColumn(),
+                    new ColumnWeightData(30, 150));
             // valueColumn.setLabelProvider(new MetadataValueLabelProvider());
         }
-        // viewer.getTree().setLayout(columnLayout);
         return viewer;
     }
 
-    private void createColumns(TreeViewer treeViewer, Map<String, JsonNode> nodesMap) {
+    private void createColumns(TreeViewer treeViewer, Map<String, JsonNode> nodesMap,
+            TreeColumnLayout columnLayout) {
         // final TextCellEditor textCellEditor = new
         // TextCellEditor(treeViewer.getTree());
-        // int columnWeight = 140;
-        // TableColumnLayout columnLayout = new TableColumnLayout();
+        int columnWeight = 20;
         for (String columnName : nodesMap.keySet()) {
             TreeViewerColumn valueColumn = new TreeViewerColumn(treeViewer, SWT.LEFT);
             valueColumn.getColumn().setAlignment(SWT.LEFT);
             valueColumn.getColumn().setText(columnName);
-            valueColumn.getColumn().setWidth(180);
+            valueColumn.getColumn().setWidth(150);
             valueColumn.getColumn().setImage(
                     Activator.getDefault().getImageRegistry()
                             .getDescriptor(Activator.DATA_BAG_ICON).createImage());
             // valueColumn.setEditingSupport(new ValueEditingSupport(treeViewer,
             // textCellEditor));
-            // columnLayout.setColumnData(valueColumn.getColumn(), new
-            // ColumnWeightData(
-            // --columnWeight, 150, true));
+            columnLayout.setColumnData(valueColumn.getColumn(), new
+                    ColumnWeightData(
+                            --columnWeight, 150));
         }
     }
 
