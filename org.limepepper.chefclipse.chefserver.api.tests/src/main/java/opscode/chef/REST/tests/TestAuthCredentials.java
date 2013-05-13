@@ -1,17 +1,12 @@
 package opscode.chef.REST.tests;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.security.SignatureException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Properties;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -22,12 +17,12 @@ import opscode.chef.REST.AuthCredentials;
 import org.junit.Before;
 import org.junit.Test;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.testing.KnifeConfigUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class TestAuthCredentials {
 
-    private Properties props  = new Properties();
     private String     client_name;
     private File       client_key;
     KnifeConfig             config;
@@ -38,20 +33,11 @@ public class TestAuthCredentials {
 
     @Before
     public void setUp() throws Exception {
-
-        try {
-
-            props.load(new FileInputStream("resources/opscode-tests.properties"));
-            client_name = props.getProperty("client_name");
-            client_key = new File(props.getProperty("client_key"));
-            assertNotNull(props);
-            assertTrue(client_key.exists());
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            fail();
-
-        }
+    	config = KnifeConfigUtils.getDefaultKnifeConfig();
+    	
+        client_name = config.getNode_name();
+        client_key = config.getClient_key();
+        assertTrue(client_key.exists());
     }
 
     @Test

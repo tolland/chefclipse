@@ -37,35 +37,6 @@ import org.slf4j.LoggerFactory;
 public class EmfJsonWrapperTest {
     static Logger logger = LoggerFactory.getLogger(EmfJsonWrapperTest.class);
 
-    @Before
-    public void setUp() throws Exception {
-
-        Properties props = new Properties();
-
-        KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-
-        try {
-
-            props.load(new FileInputStream("resources/opscode-tests.properties"));
-
-            knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-            knifeConfig.setChef_server_url(new URL(props
-                    .getProperty("chef_server_url")));
-            knifeConfig
-                    .setClient_key(new File(props.getProperty("client_key")));
-            knifeConfig.setNode_name(props.getProperty("client_name"));
-
-            assertNotNull(props);
-            assertTrue(knifeConfig.getClient_key().exists());
-            assertTrue(knifeConfig.getNode_name().length() > 0);
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            fail();
-
-        }
-    }
-
     @Test
     public void testBasic1() {
 

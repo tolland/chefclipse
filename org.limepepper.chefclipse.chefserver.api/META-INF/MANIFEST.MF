@@ -24,7 +24,6 @@ Export-Package: org.eclipselabs.emfjson,
  org.eclipselabs.emfjson.internal,
  org.eclipselabs.emfjson.resource,
  org.limepepper.chefclipse.chefserver.api,
- org.limepepper.chefclipse.chefserver.api.util,
  org.limepepper.chefclipse.knife.api
 Import-Package: org.codehaus.jackson;version="1.6.0",
  org.codehaus.jackson.map;version="1.6.0",

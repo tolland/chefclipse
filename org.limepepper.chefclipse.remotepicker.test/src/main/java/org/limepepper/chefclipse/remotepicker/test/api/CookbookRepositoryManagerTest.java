@@ -29,6 +29,8 @@ import org.mockito.Mockito;
  */
 public class CookbookRepositoryManagerTest {
 
+	private static final String CACHE = "target/cache";
+	private static final String CACHE_FAIL = "target/cacheFail";
 	private static final CookbookrepositoryFactory factory = CookbookrepositoryFactory.eINSTANCE;
 	private CookbookRepositoryManager manager;
 
@@ -40,7 +42,10 @@ public class CookbookRepositoryManagerTest {
 	@Before
 	public void setUp() throws Exception {
 		manager = CookbookRepositoryManager.getInstance();
-		manager.setCacheFolder("cache");
+		manager.setCacheFolder(CACHE_FAIL);
+		manager.evictCache();
+		
+		manager.setCacheFolder(CACHE);
 		manager.evictCache();
 	}
 
@@ -130,12 +135,13 @@ public class CookbookRepositoryManagerTest {
 		assertThat(manager.getRepositories()).isEmpty();
 		
 		RemoteRepository paramRepo = manager.configureRepositoryTemplate(repoMock);
+		assertThat(manager.getRepositories().size()).isEqualTo(1);
 		assertThat(paramRepo).isNotNull();
 		manager.loadRepository(paramRepo.getId());
 	
-		manager.setCacheFolder("cacheFail");
+		manager.setCacheFolder(CACHE_FAIL);
 		manager.evictCache();
-		manager.setCacheFolder("cache");
+		manager.setCacheFolder(CACHE);
 		assertThat(manager.getRepositories()).isEmpty();
 	
 		manager.registerRepository(repoMock , builder);
