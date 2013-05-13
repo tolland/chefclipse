@@ -102,7 +102,7 @@ public class DataBagContentProvider implements ITreeContentProvider {
     /**
      * Returns the children of the given field node.
      * 
-     * @param parentNodeEntry the parent entry
+     * @param parentElement the parent entry
      * @return an array of children for the given field entry
      */
     @SuppressWarnings("unchecked")
@@ -226,14 +226,16 @@ public class DataBagContentProvider implements ITreeContentProvider {
             for (Iterator<JsonNode> elements = parentArray.getElements(); elements.hasNext(); ) {
                 JsonNode element = elements.next();
                 List<Entry<String, JsonNode>> elementFields = IteratorUtils.toList(element.getFields());
-                Entry<String, JsonNode> firstElementInArray = elementFields.get(0);
-                if (elementFields.size() == 1 && firstElementInArray.getValue().isArray()) {
-                    if (firstElementInArray.getKey().equals(childNodeEntry.getKey()) && ((ArrayNode)firstElementInArray.getValue()).equals(childNodeEntry.getValue())) {
-                        return parentEntry;
-                    }
-                    Entry<String, JsonNode> parent = getParent(firstElementInArray, childNodeEntry);
-                    if (parent != null) {
-                        return parent;
+                if (elementFields.size() > 0) {
+                    Entry<String, JsonNode> firstElementInArray = elementFields.get(0);
+                    if (elementFields.size() == 1 && firstElementInArray.getValue().isArray()) {
+                        if (firstElementInArray.getKey().equals(childNodeEntry.getKey()) && ((ArrayNode)firstElementInArray.getValue()).equals(childNodeEntry.getValue())) {
+                            return parentEntry;
+                        }
+                        Entry<String, JsonNode> parent = getParent(firstElementInArray, childNodeEntry);
+                        if (parent != null) {
+                            return parent;
+                        }
                     }
                 }
             }
@@ -269,53 +271,53 @@ public class DataBagContentProvider implements ITreeContentProvider {
 //        return null;
 //    }
 
-    private boolean containsChild(ArrayNode parentValueArray, Entry<String, JsonNode> childNodeEntry) {
-        for (Iterator<JsonNode> children = parentValueArray.getElements(); children.hasNext(); ) {
-            JsonNode childElement = children.next();
-            Iterator<Entry<String, JsonNode>> childElementFields = childElement.getFields();
-            Entry<String, JsonNode> childElementField = childElementFields.next();
-            if (childElementField.getKey().equals(childNodeEntry.getKey())) {
-                boolean areEquals = childElementsAreEquals(childElementField.getValue(), childNodeEntry.getValue());
-                if (areEquals) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+//    private boolean containsChild(ArrayNode parentValueArray, Entry<String, JsonNode> childNodeEntry) {
+//        for (Iterator<JsonNode> children = parentValueArray.getElements(); children.hasNext(); ) {
+//            JsonNode childElement = children.next();
+//            Iterator<Entry<String, JsonNode>> childElementFields = childElement.getFields();
+//            Entry<String, JsonNode> childElementField = childElementFields.next();
+//            if (childElementField.getKey().equals(childNodeEntry.getKey())) {
+//                boolean areEquals = childElementsAreEquals(childElementField.getValue(), childNodeEntry.getValue());
+//                if (areEquals) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
     
-    private boolean childElementsAreEquals(JsonNode valueFromParent, JsonNode valueFromChild) {
-        if (valueFromParent.isValueNode() && valueFromChild.isValueNode()) {
-            if (valueFromParent.equals(valueFromChild)) {
-                return true;
-            }
-            return false;
-        }
-        if (valueFromChild.isArray() && valueFromParent.isArray()) {
-            ArrayNode arrayChildNode = (ArrayNode) valueFromChild;
-            for (Iterator<JsonNode> childrenOfChildNode = arrayChildNode.getElements(); childrenOfChildNode.hasNext(); ) {
-                JsonNode childOfChildNode = childrenOfChildNode.next();
-                Iterator<Entry<String, JsonNode>> childField = childOfChildNode.getFields();
-                Entry<String, JsonNode> childFieldEntry = childField.next();
-                ArrayNode arrayParentNode = (ArrayNode) valueFromParent;
-                boolean contains = false;
-                for (Iterator<JsonNode> childrenOfParentNode = arrayParentNode.getElements(); childrenOfParentNode.hasNext() && !contains; ) {
-                    JsonNode childOfParentNode = childrenOfParentNode.next();
-                    Iterator<Entry<String, JsonNode>> parentField = childOfParentNode.getFields();
-                    Entry<String, JsonNode> parentFieldEntry = parentField.next();
-                    if (childFieldEntry.getKey().equals(parentFieldEntry.getKey())) {
-                        contains = childElementsAreEquals(childFieldEntry.getValue(), parentFieldEntry.getValue());
-                    }
-                }
-                if (!contains) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
-                
-    }
+//    private boolean childElementsAreEquals(JsonNode valueFromParent, JsonNode valueFromChild) {
+//        if (valueFromParent.isValueNode() && valueFromChild.isValueNode()) {
+//            if (valueFromParent.equals(valueFromChild)) {
+//                return true;
+//            }
+//            return false;
+//        }
+//        if (valueFromChild.isArray() && valueFromParent.isArray()) {
+//            ArrayNode arrayChildNode = (ArrayNode) valueFromChild;
+//            for (Iterator<JsonNode> childrenOfChildNode = arrayChildNode.getElements(); childrenOfChildNode.hasNext(); ) {
+//                JsonNode childOfChildNode = childrenOfChildNode.next();
+//                Iterator<Entry<String, JsonNode>> childField = childOfChildNode.getFields();
+//                Entry<String, JsonNode> childFieldEntry = childField.next();
+//                ArrayNode arrayParentNode = (ArrayNode) valueFromParent;
+//                boolean contains = false;
+//                for (Iterator<JsonNode> childrenOfParentNode = arrayParentNode.getElements(); childrenOfParentNode.hasNext() && !contains; ) {
+//                    JsonNode childOfParentNode = childrenOfParentNode.next();
+//                    Iterator<Entry<String, JsonNode>> parentField = childOfParentNode.getFields();
+//                    Entry<String, JsonNode> parentFieldEntry = parentField.next();
+//                    if (childFieldEntry.getKey().equals(parentFieldEntry.getKey())) {
+//                        contains = childElementsAreEquals(childFieldEntry.getValue(), parentFieldEntry.getValue());
+//                    }
+//                }
+//                if (!contains) {
+//                    return false;
+//                }
+//            }
+//            return true;
+//        }
+//        return false;
+//                
+//    }
 
 //    /**
 //     * Returns the parent of the given field.
