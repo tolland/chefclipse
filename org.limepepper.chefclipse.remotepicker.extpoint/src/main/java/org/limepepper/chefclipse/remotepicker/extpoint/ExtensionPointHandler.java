@@ -19,14 +19,14 @@ import org.osgi.framework.Bundle;
 
 /**
  * Extension Point reader.
- * 
+ *
  * @author Guillermo Zunino
  */
 public class ExtensionPointHandler {
 	private static final String POINT_ID = "org.limepepper.chefclipse.cookbook.repository"; //$NON-NLS-1$
 
 	private CookbookRepositoryManager repoManager;
-	
+
 	/**
 	 * @return the repoManager
 	 */
@@ -55,13 +55,13 @@ public class ExtensionPointHandler {
 				repo.setName(e.getAttribute("name")); //$NON-NLS-1$
 				repo.setDescription(e.getAttribute("description")); //$NON-NLS-1$
 				repo.setUri(e.getAttribute("uri")); //$NON-NLS-1$
-				
+
 				IConfigurationElement icon = e.getChildren("icon")[0]; //$NON-NLS-1$
-				
+
 				Bundle bundle = Platform.getBundle(e.getContributor().getName());
 				URL iconFile = FileLocator.find(bundle, Path.fromPortableString(icon.getAttribute("image32")), null); //$NON-NLS-1$
-				
-				try { 
+
+				try {
 					final Object o = e.createExecutableExtension("class"); //$NON-NLS-1$
 					if (o instanceof ICookbooksRepository) {
 						RemoteRepository registeredRepository = getRepoManager().registerRepository(repo, (ICookbooksRepository) o);
@@ -74,7 +74,7 @@ public class ExtensionPointHandler {
 							@SuppressWarnings("unchecked")
 							ICookbooksRepository.Builder<String> builder = (ICookbooksRepository.Builder<String>) o;
 							ICookbooksRepository cookbookRepo = builder.createRepository(e.getAttribute("config"));
-							
+
 							RemoteRepository registeredRepository = getRepoManager().registerRepository(repo, cookbookRepo);
 							registeredRepository.setIcon(iconFile.toString());
 						} else {

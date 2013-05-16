@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.remotepicker.repositories;
 
@@ -43,11 +43,11 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
  *
  */
 public class CookbookSiteRepository implements ICookbooksRepository {
-	
+
 	private static final int THREADS = 10;
 
 	static final Logger logger = LoggerFactory.getLogger(CookbookSiteRepository.class);
-	
+
 	private final class GetPages implements Runnable {
 		private final int start;
 		private final List<RemoteCookbook> cookbooks;
@@ -78,7 +78,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			}
 		}
 	}
-	
+
 	private final class GetCookbook implements Runnable {
 		private final JSONObject cookbookJson;
 		private final List<RemoteCookbook> cookbooks;
@@ -98,9 +98,9 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	private WebResource service;
 
 	private IDownloadCookbookStrategy downloadCookbookStrategy;
-	
+
 	private static final String REPOSITORY_URI = "http://cookbooks.opscode.com";
-	
+
 	private static final String REPOSITORY_ID = "cookbooks.opscode.com";
 
 	protected WebResource getService() {
@@ -112,7 +112,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 		Client client = Client.create(config);
 		service = client.resource(getRepositoryURI());
-		
+
 		downloadCookbookStrategy = new CookbookSiteDownloadStrategy(REPOSITORY_URI, this);
 	}
 
@@ -130,7 +130,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	    		.accept(MediaType.APPLICATION_JSON_TYPE)
 	    		.get(JSONObject.class);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbooks(org.eclipse.core.runtime.IProgressMonitor)
 	 */
@@ -187,18 +187,18 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	    		.accept(MediaType.APPLICATION_JSON_TYPE)
 	    		.get(JSONObject.class);
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbook(java.lang.String, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
 	public RemoteCookbook getCookbook(String name) {
 		JSONObject cookbookJson = restCookbook(name);
-		
+
 		String url = UriBuilder.fromUri(getRepositoryURI()).path("api").path("v1")
 				.path("cookbooks").path(name)
 				.build().toString();
-		
+
 		RemoteCookbook cookbook = createCookbookDetail(cookbookJson, url);
 		return cookbook;
 	}
@@ -220,7 +220,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			cookbook.setRating(cookbookJson.optDouble("average_rating"));
 			cookbook.setReplacement(cookbookJson.optString("replacement"));
 			JSONArray versionsJson = cookbookJson.optJSONArray("versions");
-			
+
 			String[] versions = new String[versionsJson.length()];
 			for (int i = 0; i < versionsJson.length(); i++) {
 				versions[i] = versionsJson.getString(i);

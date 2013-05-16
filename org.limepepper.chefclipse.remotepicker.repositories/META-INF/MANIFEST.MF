@@ -2,12 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.remotepicker.repositories
 Bundle-SymbolicName: org.limepepper.chefclipse.remotepicker.repositories;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.8.1",
  org.limepepper.chefclipse.remotepicker.api,
  com.sun.jersey.bundle;bundle-version="1.0.0",
- org.limepepper.chefclipse.logger;bundle-version="1.0.0",
- org.limepepper.chefclipse.chefserver.api;bundle-version="1.0.0"
+ org.limepepper.chefclipse.logger;bundle-version="0.1.0",
+ org.limepepper.chefclipse.chefserver.api;bundle-version="0.1.0",
+ chefclipse.ui;bundle-version="0.1.1"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.limepepper.chefclipse.remotepicker.repositories

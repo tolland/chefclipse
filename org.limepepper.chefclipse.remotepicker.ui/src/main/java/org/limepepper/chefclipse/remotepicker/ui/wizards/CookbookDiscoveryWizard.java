@@ -37,7 +37,6 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WizardNewProjectReferencePage;
-import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -45,6 +44,8 @@ import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.limepepper.chefclipse.remotepicker.ui.preferences.IRemotePickerPreferences;
 import org.limepepper.chefclipse.remotepicker.ui.repository.CookbookDiscoveryStrategy;
+
+import chefclipse.core.builders.ChefProjectNature;
 
 /**
  * A wizard for interacting with cookbooks repositories.

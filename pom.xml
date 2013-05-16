@@ -91,6 +91,9 @@
 				<module>org.limepepper.chefclipse.preferences.test</module>
 
 
+				<!-- test bundles -->
+				<module>org.limepepper.chefclipse.testing</module>
+
 				<!-- experimental - @todo put these plugins in separate profile -->
 				<!--module>org.limepepper.eclipse.RubyConsole</module -->
 

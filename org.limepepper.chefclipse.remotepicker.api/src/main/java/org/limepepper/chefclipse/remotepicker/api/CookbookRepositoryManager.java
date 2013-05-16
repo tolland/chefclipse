@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.remotepicker.api;
 
@@ -31,14 +31,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.limepepper.chefclipse.ChefclipseFactory;
-import org.limepepper.chefclipse.NamedObject;
-import org.limepepper.chefclipse.impl.NamedObjectImpl;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository.Builder;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
+import org.limepepper.chefclipse.utility.NamedObject;
+import org.limepepper.chefclipse.utility.UtilityFactory;
+import org.limepepper.chefclipse.utility.impl.NamedObjectImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,13 +50,13 @@ import org.slf4j.LoggerFactory;
  * {@link #setCacheFolder(String)} should be called prior to loading.
  * This class is thread safe.
  * This plugin can be used standalone, outside eclipse.
- * 
+ *
  * @author Guillermo Zunino
  */
 public class CookbookRepositoryManager {
 
 	static final Logger logger = LoggerFactory.getLogger(CookbookRepositoryManager.class);
-	
+
 	public static final String COOKBOOKSOURCE = ".cookbooksource"; //$NON-NLS-1$
 	public static final String COMPOSITE_REPOSITORY_ID = "composite.repository"; //$NON-NLS-1$
 	private static final String CACHE_EXT = "cookbookrepository"; //$NON-NLS-1$
@@ -109,7 +109,7 @@ public class CookbookRepositoryManager {
 	public RemoteRepository getRepository(final String id) {
 		return repositories.get(id);
 	}
-	
+
 	/**
 	 * Returns a {@link RemoteRepository} by it's unique id.
 	 * @param id the repository Id
@@ -162,7 +162,7 @@ public class CookbookRepositoryManager {
 				loadRepositoriesCache();
 			}
 			builders.put(repo, builder);
-			
+
 			for (RemoteRepository r : repositories.values()) {
 				if (r.getRetriever() != null && !retrievers.containsKey(r.getId())
 						&& r.getId().startsWith(repo.getId())) {
@@ -177,7 +177,7 @@ public class CookbookRepositoryManager {
 			lock.unlock();
 		}
 	}
-	
+
 	public static <T> Object unwrap(EObject param) {
 		if (param.getClass().equals(NamedObjectImpl.class)) {
 			Object value = ((NamedObject) param).getName();
@@ -185,10 +185,10 @@ public class CookbookRepositoryManager {
 		}
 		return param;
 	}
-	
+
 	public static <T> EObject wrap(T param) {
 		if (!(param instanceof EObject)) {
-			NamedObject eString = ChefclipseFactory.eINSTANCE.createNamedObject();
+			NamedObject eString = UtilityFactory.eINSTANCE.createNamedObject();
 			eString.setName(param.toString());
 			return eString;
 		}
@@ -261,7 +261,7 @@ public class CookbookRepositoryManager {
 				}
 			}
 			repo.getCookbooks().clear();
-	
+
 			// restore installed date
 			for (RemoteCookbook cookbook : cookbooks) {
 				Date installedAt = installed.get(cookbook.getName());
@@ -530,7 +530,7 @@ public class CookbookRepositoryManager {
 	/**
 	 * Register a composite repository (a repository which has all the cookbooks of the others repositories).
 	 * This method must be called after registering all the concrete repositories.
-	 * @return 
+	 * @return
 	 */
 	public RemoteRepository createCompositeRepository() {
 
@@ -591,7 +591,7 @@ public class CookbookRepositoryManager {
 
 	/**
 	 * Create and register a composite repository.
-	 * 
+	 *
 	 * @param repo the composite repository to be registered.
 	 * @return
 	 */
