@@ -113,6 +113,9 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 	}
 
 	private void createCookbookRepositories(final Composite composite, final CatalogDescriptor catalogDescriptor) {
+		if ( !Activator.getDefault().getPreferenceStore().getBoolean(catalogDescriptor.getId()) )
+			return;
+		
 		Composite container = new Composite(composite, SWT.NONE);
 		Color listBackground = getDisplay().getSystemColor(SWT.COLOR_LIST_BACKGROUND);
 		container.setBackground(listBackground);

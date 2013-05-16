@@ -12,7 +12,7 @@ import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
-import org.limepepper.chefclipse.remotepicker.repositories.MultipleVendorCookbookRepository;
+import org.limepepper.chefclipse.remotepicker.repositories.GitHubCookbookRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,7 +26,7 @@ public class MultipleVendorCookbookRepositoryTest {
 
 	private static final CookbookrepositoryFactory factory = CookbookrepositoryFactory.eINSTANCE;
 
-	private MultipleVendorCookbookRepository repo = new MultipleVendorCookbookRepository();
+	private GitHubCookbookRepository repo = new GitHubCookbookRepository("cookbooks");
 	
 	@Test
 	public void testGetCookbooks() {

@@ -54,7 +54,7 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 		Shell shell = Display.getCurrent().getActiveShell();
 		ChefConfigDialog dialog = new ChefConfigDialog(shell);
 		dialog.create();
-		if (dialog.open() == Window.OK) {
+		if (dialog.open() == Window.OK && dialog.getChefServer() != null) {
 			server = dialog.getChefServer();
 			repo.setName(repo.getName() + " (" + server.getNode_name() + ")");
 			repo.setDescription("Install cookbooks from a Chef Server \n"+ "Configured for server: " + server.getNode_name() + " (" + server.getChef_server_url() + ")");
@@ -68,17 +68,20 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 	 * 
 	 * @author Guillermo Zunino
 	 */
-	class ChefConfigDialog extends TitleAreaDialog {
+	class ChefConfigDialog extends TitleAreaDialog implements IPreferenceChangeListener {
 		private KnifeConfig server;
 		private ChefConfigurationsViewer configsViewer;
+		private Shell parentShell;
 
 		public ChefConfigDialog(Shell parentShell) {
 			super(parentShell);
+			this.parentShell = parentShell;
+			setShellStyle(SWT.CLOSE | SWT.TITLE | SWT.BORDER | SWT.OK);
 		}
 		
 		@Override
 		protected Point getInitialSize() {
-			return new Point(450, 350);
+			return new Point(480, 380);
 		}
 		
 		@Override
@@ -128,15 +131,22 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 				}
 			});
 			
-			ChefConfigManager.instance().getPreferences().addPreferenceChangeListener(new IPreferenceChangeListener() {
-				@Override
-				public void preferenceChange(PreferenceChangeEvent event) {
-					loadChefServerConfigs();
-				}
-			});
+			ChefConfigManager.instance().getPreferences().addPreferenceChangeListener(this);
 			loadChefServerConfigs();
 			
 			return parent;
+		}
+		
+		@Override
+		public void preferenceChange(PreferenceChangeEvent event) {
+			loadChefServerConfigs();
+		}
+
+		@Override
+		public boolean close() {
+			boolean ret = super.close();
+	    	ChefConfigManager.instance().getPreferences().removePreferenceChangeListener(this);
+	    	return ret;
 		}
 		
 		/**
@@ -181,8 +191,11 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 			configurationHyperlink.addHyperlinkListener(new HyperlinkAdapter() {
 				@Override
 				public void linkActivated(HyperlinkEvent e) {
-					PreferenceDialog dlg = PreferencesUtil.createPreferenceDialogOn(getShell(),
-							ChefConfigurationPropertyPage.CHEF_CONFIG_PREFERENCE_ID, new String[] { ChefConfigurationPropertyPage.CHEF_CONFIG_PREFERENCE_ID }, null);
+					final PreferenceDialog dlg = PreferencesUtil.createPreferenceDialogOn(getShell(),
+							ChefConfigurationPropertyPage.CHEF_CONFIG_PREFERENCE_ID, null, null);
+					if (parentShell == dlg.getShell()) {
+						close();
+					}
 					dlg.open();
 				}
 			});

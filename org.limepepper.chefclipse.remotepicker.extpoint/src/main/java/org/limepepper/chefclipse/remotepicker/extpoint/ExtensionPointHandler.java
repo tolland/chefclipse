@@ -70,13 +70,23 @@ public class ExtensionPointHandler {
 				} catch (CoreException ex) {
 					final Object o = e.createExecutableExtension("builder"); //$NON-NLS-1$
 					if (o instanceof ICookbooksRepository.Builder<?>) {
-						repo.setIcon(iconFile.toString());
-						getRepoManager().registerRepository(repo, (ICookbooksRepository.Builder<?>) o);
+						if (e.getAttribute("config") != null) {
+							@SuppressWarnings("unchecked")
+							ICookbooksRepository.Builder<String> builder = (ICookbooksRepository.Builder<String>) o;
+							ICookbooksRepository cookbookRepo = builder.createRepository(e.getAttribute("config"));
+							
+							RemoteRepository registeredRepository = getRepoManager().registerRepository(repo, cookbookRepo);
+							registeredRepository.setIcon(iconFile.toString());
+						} else {
+							repo.setIcon(iconFile.toString());
+							getRepoManager().registerRepository(repo, (ICookbooksRepository.Builder<?>) o);
+						}
 					}
 				}
 			}
 			retrieveAndCacheCookbooks();
-			getRepoManager().createCompositeRepository();
+			RemoteRepository composite = getRepoManager().createCompositeRepository();
+			RemotePickerHandler.enableRepository(composite);
 		} catch (CoreException ex) {
 			IStatus status = new Status(Status.ERROR, Activator.PLUGIN_ID, ex.getMessage(), ex);
 			Platform.getLog(Activator.getContext().getBundle()).log(status );

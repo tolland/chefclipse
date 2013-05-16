@@ -27,13 +27,13 @@ import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.ecore.xml.type.SimpleAnyType;
-import org.eclipse.emf.ecore.xml.type.XMLTypeFactory;
+import org.limepepper.chefclipse.ChefclipseFactory;
+import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.impl.NamedObjectImpl;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository.Builder;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryPackage;
@@ -69,6 +69,7 @@ public class CookbookRepositoryManager {
 	private final Map<String, ICookbooksRepository> retrievers = new HashMap<String, ICookbooksRepository>();
 	private final Map<String, PropertyChangeSupport> listeners = new HashMap<String, PropertyChangeSupport>();
 	private final Map<RemoteRepository, Builder<?>> builders = new HashMap<RemoteRepository, ICookbooksRepository.Builder<?>>();
+	private final Map<String, Throwable> errors = new HashMap<String, Throwable>();
 	private final Lock lock = new ReentrantLock();
 	private String cacheFolder;
 
@@ -178,8 +179,8 @@ public class CookbookRepositoryManager {
 	}
 	
 	public static <T> Object unwrap(EObject param) {
-		if (param instanceof SimpleAnyType) {
-			Object value = ((SimpleAnyType) param).getValue();
+		if (param.getClass().equals(NamedObjectImpl.class)) {
+			Object value = ((NamedObject) param).getName();
 			return value;
 		}
 		return param;
@@ -187,9 +188,8 @@ public class CookbookRepositoryManager {
 	
 	public static <T> EObject wrap(T param) {
 		if (!(param instanceof EObject)) {
-			SimpleAnyType eString = XMLTypeFactory.eINSTANCE.createSimpleAnyType();
-			eString.setInstanceType(EcorePackage.eINSTANCE.getEString());
-			eString.setValue(param);
+			NamedObject eString = ChefclipseFactory.eINSTANCE.createNamedObject();
+			eString.setName(param.toString());
 			return eString;
 		}
 		return (EObject) param;
@@ -232,12 +232,20 @@ public class CookbookRepositoryManager {
 	public void evictCache() {
 		new File(getCacheFile()).delete();
 		for (RemoteRepository repo : repositories.values()) {
-			new File(getCacheFile(repo.getId())).delete();
+			deleteCache(repo);
 		}
 		repositories.clear();
 		retrievers.clear();
 		listeners.clear();
 		builders.clear();
+	}
+
+	/**
+	 * Deletes repository cache file
+	 * @param repo
+	 */
+	protected void deleteCache(RemoteRepository repo) {
+		new File(getCacheFile(repo.getId())).delete();
 	}
 
 	private void cacheRepository(final RemoteRepository repo) {
@@ -273,7 +281,10 @@ public class CookbookRepositoryManager {
 				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, cookbooks); //$NON-NLS-1$
 			}
 			saveCacheModel(repo);
-		} catch (Exception e) {
+			errors.put(repo.getId(), null);
+		} catch (Throwable e) {
+			logger.error("Could not cache repository " + repo.getUri(), e);
+			errors.put(repo.getId(), e);
 			if (listeners.containsKey(repo.getId())) {
 				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, e); //$NON-NLS-1$
 			}
@@ -472,6 +483,8 @@ public class CookbookRepositoryManager {
 		if (isRepositoryReady(repoId)) {
 			RemoteRepository repo = repositories.get(repoId);
 			listeners.get(repoId).firePropertyChange("cookbooks", null, repo.getCookbooks()); //$NON-NLS-1$
+		} else if (errors.get(repoId) != null) { // try to reload failed repo
+			loadRepository(repoId);
 		}
 	}
 
@@ -517,8 +530,9 @@ public class CookbookRepositoryManager {
 	/**
 	 * Register a composite repository (a repository which has all the cookbooks of the others repositories).
 	 * This method must be called after registering all the concrete repositories.
+	 * @return 
 	 */
-	public void createCompositeRepository() {
+	public RemoteRepository createCompositeRepository() {
 
 		final RemoteRepository repo = CookbookrepositoryFactory.eINSTANCE.createRemoteRepository();
 		repo.setId(COMPOSITE_REPOSITORY_ID);
@@ -551,7 +565,7 @@ public class CookbookRepositoryManager {
 				}
 			});
 		}
-
+		return repo;
 	}
 
 	/**
@@ -670,5 +684,16 @@ public class CookbookRepositoryManager {
 	 */
 	public List<RemoteRepository> getTemplateRepositories() {
 		return new ArrayList<RemoteRepository>(builders.keySet());
+	}
+
+	/**
+	 * Removes a registered repository and its cache.
+	 * @param repoId
+	 */
+	public void removeRepository(String repoId) {
+		deleteCache(getRepository(repoId));
+		repositories.remove(repoId);
+		retrievers.remove(repoId);
+		listeners.remove(repoId);
 	}
 }

@@ -180,7 +180,7 @@ public class CookbookDiscoveryItem<T extends CatalogItem> extends AbstractDiscov
 			hookTooltip(providerLabel, providerLabel, this, providerLabel, item.getSource(), overview, image);
 		} else if (item.getLicense() != null) {
 			providerLabel.setText(NLS.bind(Messages.ConnectorDiscoveryWizardMainPage_provider_and_license, item.getProvider(), item.getLicense()));
-		} else {
+		} else if (item.getProvider() != null) {
 			providerLabel.setText(item.getProvider());
 		}
 	}

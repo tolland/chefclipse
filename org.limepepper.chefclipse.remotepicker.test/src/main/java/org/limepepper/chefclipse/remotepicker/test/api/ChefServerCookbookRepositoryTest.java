@@ -6,25 +6,20 @@ package org.limepepper.chefclipse.remotepicker.test.api;
 import static org.fest.assertions.api.Assertions.*;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.CookbookrepositoryFactory;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 import org.limepepper.chefclipse.remotepicker.repositories.ChefServerCookbookRepository;
+import org.limepepper.chefclipse.testing.KnifeConfigUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,35 +37,11 @@ public class ChefServerCookbookRepositoryTest {
 	
 	@Before
 	public void setup() throws IOException {
-		String serverFile = "resources/opscode-tests.properties";
-		
-		KnifeConfig knifeConfig = createKnifeConfig(serverFile);
+		KnifeConfig knifeConfig = KnifeConfigUtils.getDefaultKnifeConfig();
 		
 		repo = new ChefServerCookbookRepository(knifeConfig);	
 	}
 
-	/**
-	 * @param file
-	 * @return
-	 * @throws IOException
-	 * @throws FileNotFoundException
-	 * @throws MalformedURLException
-	 */
-	protected KnifeConfig createKnifeConfig(String file) throws FileNotFoundException,
-			MalformedURLException, IOException {
-		Properties props = new Properties();
-		props.load(new FileInputStream(file));
-        String client_name = props.getProperty("client_name");
-        File client_key = new File(props.getProperty("client_key"));
-        URL chef_server_url = new URL(props.getProperty("chef_server_url"));
-
-        KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-        knifeConfig.setChef_server_url(chef_server_url);
-        knifeConfig.setClient_key(client_key);
-        knifeConfig.setNode_name(client_name);
-		return knifeConfig;
-	}
-	
 	@Test
 	public void testGetCookbook() {
 		RemoteCookbook cookbook = repo.getCookbook("apache2");
