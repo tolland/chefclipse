@@ -36,6 +36,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ToolBar;
@@ -179,7 +180,10 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
      */
     @Override
     public void createPartControl(Composite parent) {
-        viewer = doCreateViewer(parent);
+        Group editorGroup = new Group(parent, SWT.NONE);
+        GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(editorGroup);
+        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(editorGroup);
+        viewer = doCreateViewer(editorGroup);
         viewer.setContentProvider(new DataBagContentProvider(nodesMap));
 //        viewer.setLabelProvider(new DataBagValueLabelProvider(nodesMap));
         viewer.setInput(allFieldsNode);
@@ -189,9 +193,6 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
     }
 
     private TreeViewer doCreateViewer(Composite parent) {
-        GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(parent);
-        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(parent);
-        
         final Composite bar = new Composite(parent, SWT.NULL);
         GridDataFactory.fillDefaults().align(SWT.BEGINNING, SWT.BEGINNING).indent(0, 37).grab(false, true).applyTo(bar);
         createKeysToolBar(bar);
@@ -202,16 +203,16 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
             @Override
             protected Composite createFilterControls(Composite parent) {
                 final Composite bar = new Composite(parent, SWT.NULL);
-                bar.setLayout(new GridLayout(5, false));
+                bar.setLayout(new GridLayout(3, false));
+                GridDataFactory.fillDefaults().align(SWT.FILL, SWT.BEGINNING).indent(0, 0).grab(true, false).applyTo(bar);
                 // new Label(bar, SWT.NULL).setText("Filter:");
                 // addAditionalActions(bar);
                 setFilterControl(super.createFilterControls(bar));
 //                getFilterControl().setSize(f, height)
-                GridDataFactory.fillDefaults().align(SWT.BEGINNING, SWT.BEGINNING).hint(140, 20).grab(false, false).applyTo(getFilterControl());
+                GridDataFactory.fillDefaults().align(SWT.BEGINNING, SWT.BEGINNING).indent(0, 0).hint(140, 20).grab(false, false).applyTo(getFilterControl());
 //                createFilterControls.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
                 Label emptyLabel = new Label(bar, SWT.NONE);
-                emptyLabel.setText("");
-                GridDataFactory.fillDefaults().align(SWT.FILL, SWT.BEGINNING).grab(true, false).applyTo(emptyLabel);
+                GridDataFactory.fillDefaults().align(SWT.FILL, SWT.BEGINNING).indent(0, 0).grab(true, false).applyTo(emptyLabel);
                 createDataBagItemsToolBar(bar);
                 return bar;
                 
@@ -276,7 +277,8 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
         
         TreeColumnLayout treeLayout = new TreeColumnLayout();
         treeViewer.getTree().setLayout(treeLayout);
-
+        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).indent(0, 0).grab(true, true).applyTo(treeViewer.getTree());
+        
         treeLayout.setColumnData(fieldColumn.getColumn(), new
                 ColumnWeightData(40, 150));
 
