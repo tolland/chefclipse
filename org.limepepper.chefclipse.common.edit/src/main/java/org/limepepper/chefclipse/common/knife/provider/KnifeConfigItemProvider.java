@@ -24,7 +24,7 @@ import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
-import org.limepepper.chefclipse.provider.ConfigItemProvider;
+import org.limepepper.chefclipse.utility.provider.ConfigItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.common.knife.KnifeConfig} object.
@@ -65,6 +65,7 @@ public class KnifeConfigItemProvider
 			addCookbook_licensePropertyDescriptor(object);
 			addPathPropertyDescriptor(object);
 			addServerPropertyDescriptor(object);
+			addServerCookbookVersionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -246,6 +247,28 @@ public class KnifeConfigItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Server Cookbook Version feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addServerCookbookVersionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_KnifeConfig_serverCookbookVersion_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_KnifeConfig_serverCookbookVersion_feature", "_UI_KnifeConfig_type"),
+				 KnifePackage.Literals.KNIFE_CONFIG__SERVER_COOKBOOK_VERSION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.

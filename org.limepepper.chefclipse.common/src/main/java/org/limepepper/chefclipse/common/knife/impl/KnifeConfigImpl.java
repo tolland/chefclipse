@@ -7,10 +7,11 @@ import java.io.File;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.Plugin;
-import org.limepepper.chefclipse.impl.ConfigImpl;
+import org.limepepper.chefclipse.utility.impl.ConfigImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,6 +29,7 @@ import org.limepepper.chefclipse.impl.ConfigImpl;
  *   <li>{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl#getCookbook_license <em>Cookbook license</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl#getServer <em>Server</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl#getServerCookbookVersion <em>Server Cookbook Version</em>}</li>
  * </ul>
  * </p>
  *
@@ -205,6 +207,16 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 */
     public void setServer(Server newServer) {
 		eSet(KnifePackage.Literals.KNIFE_CONFIG__SERVER, newServer);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<ServerCookbookVersion> getServerCookbookVersion() {
+		return (EList<ServerCookbookVersion>)eGet(KnifePackage.Literals.KNIFE_CONFIG__SERVER_COOKBOOK_VERSION, true);
 	}
 
 } //KnifeConfigImpl

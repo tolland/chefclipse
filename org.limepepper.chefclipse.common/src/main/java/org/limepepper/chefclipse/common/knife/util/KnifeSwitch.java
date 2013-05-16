@@ -5,12 +5,12 @@ package org.limepepper.chefclipse.common.knife.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.*;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
 import org.limepepper.chefclipse.common.knife.Plugin;
+import org.limepepper.chefclipse.utility.Config;
 
 /**
  * <!-- begin-user-doc -->

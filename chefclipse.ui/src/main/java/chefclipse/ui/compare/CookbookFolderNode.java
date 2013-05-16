@@ -28,6 +28,14 @@ public class CookbookFolderNode extends CookbookResourceNode {
 		recurseInput(input);
 	}
 
+	/**
+	 *
+	 * not put that much thought into this, so this is just a hack to associated
+	 * the correct IProject with an arbitrary input
+	 *
+	 * @param input
+	 * @param project
+	 */
 	public CookbookFolderNode(ServerCookbookVersion input, IProject project) {
 		this(input, "root");
 		this.project = project;
@@ -50,13 +58,10 @@ public class CookbookFolderNode extends CookbookResourceNode {
 
 	private void recurseInput(EObject input) {
 		if (input instanceof CookbookVersion) {
-			ChefPlugin.log("recursing local elements of input: "
-					+ ((CookbookVersion) input).getName());
 
 			CookbookVersion cookbookVersion = (CookbookVersion) input;
 
-			for (Root_file iterable_element : ((CookbookVersion) input)
-					.getRoot_files()) {
+			for (Root_file iterable_element : cookbookVersion.getRoot_files()) {
 				ChefPlugin.log("adding " + iterable_element.getName());
 				children.add(new CookbookFileNode(iterable_element));
 			}
@@ -65,9 +70,6 @@ public class CookbookFolderNode extends CookbookResourceNode {
 
 			children.add(new CookbookCollectionNode("templates",
 					((CookbookVersion) input).getTemplates().toArray()));
-
-			children.add(new CookbookCollectionNode("files",
-					((CookbookVersion) input).getFiles().toArray()));
 
 			children.add(new CookbookCollectionNode("attributes",
 					((CookbookVersion) input).getAttributes().toArray()));

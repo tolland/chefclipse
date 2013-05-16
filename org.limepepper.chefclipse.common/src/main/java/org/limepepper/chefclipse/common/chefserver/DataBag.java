@@ -4,7 +4,7 @@ package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.utility.NamedDescribedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public interface DataBag extends NamedDescribedObject {
 	 * @return the value of the '<em>Resource</em>' attribute.
 	 * @see #setResource(IResource)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBag_Resource()
-	 * @model default="" dataType="org.limepepper.chefclipse.IResource" required="true"
+	 * @model default="" dataType="org.limepepper.chefclipse.utility.IResource" required="true"
 	 * @generated
 	 */
 	IResource getResource();

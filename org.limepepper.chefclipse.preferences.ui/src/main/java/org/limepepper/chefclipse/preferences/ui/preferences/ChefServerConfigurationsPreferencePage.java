@@ -32,7 +32,6 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.PlatformUI;
-import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
@@ -40,6 +39,7 @@ import org.limepepper.chefclipse.preferences.ui.actions.SearchKnifeConfigAction;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
+import org.limepepper.chefclipse.utility.Config;
 
 import chefclipse.ui.ChefPlugin;
 import chefclipse.ui.messages.Messages;

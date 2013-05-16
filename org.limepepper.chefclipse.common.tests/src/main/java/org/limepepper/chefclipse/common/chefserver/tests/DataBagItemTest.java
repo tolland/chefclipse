@@ -6,7 +6,7 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.tests.NamedObjectTest;
+import org.limepepper.chefclipse.utility.tests.NamedObjectTest;
 
 /**
  * <!-- begin-user-doc -->

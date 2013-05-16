@@ -9,11 +9,12 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 
-import chefclipse.core.ChefCore;
-import chefclipse.core.IChefProject;
 import chefclipse.core.builders.ChefProjectNature;
 import chefclipse.core.managers.ChefRepositoryManager;
 import chefclipse.core.providers.ChefProjectAdapterFactory;
@@ -44,19 +45,20 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider 
 					&& ((IProject) parentElement)
 							.hasNature(ChefProjectNature.NATURE_ID)) {
 
-				IChefProject project = ChefCore
-						.create((IProject) parentElement);
-
 				ArrayList<Object> children = new ArrayList<Object>(
 						Arrays.asList(((IProject) parentElement).members()));
 
-				// Repository repository = project.getRepository();
 				Repository repository = ChefRepositoryManager.INSTANCE
 						.getRepository(((IProject) parentElement));
 
 				children.add(repository);
 
-				// ((IProject)parentElement).get
+				for (KnifeConfig knifeConfig : ChefConfigManager.instance()
+						.retrieveChefConfigurations()) {
+
+					children.add(knifeConfig);
+				}
+
 				return children.toArray();
 
 			} else if (parentElement instanceof CookbookVersion) {
@@ -66,8 +68,9 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider 
 						new MenuLevelHolder("Templates",
 								((CookbookVersion) parentElement)
 										.getTemplates()),
-						new MenuLevelHolder("Files",
-								((CookbookVersion) parentElement).getFiles()),
+						new MenuLevelHolder("Root_Files",
+								((CookbookVersion) parentElement)
+										.getRoot_files()),
 						new MenuLevelHolder("Attributes",
 								((CookbookVersion) parentElement)
 										.getAttributes()),
@@ -85,8 +88,11 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider 
 
 				return ((MenuLevelHolder) parentElement).getChildren();
 
+			} else if (parentElement instanceof DataBag) {
+				Object[] members = ((DataBag) parentElement).getItems()
+						.toArray();
+				return members;
 			}
-
 		} catch (CoreException e) {
 
 			e.printStackTrace();

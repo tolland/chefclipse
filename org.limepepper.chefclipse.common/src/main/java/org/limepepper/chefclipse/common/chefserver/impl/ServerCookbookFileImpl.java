@@ -5,19 +5,15 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 import java.io.InputStream;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.NamedObject;
-
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
-
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-
-import org.limepepper.chefclipse.impl.SandboxedObjectImpl;
+import org.limepepper.chefclipse.utility.ChecksumFile;
+import org.limepepper.chefclipse.utility.NamedObject;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.impl.SandboxedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,10 +25,10 @@ import org.limepepper.chefclipse.impl.SandboxedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl#getChecksum <em>Checksum</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl#getBytes <em>Bytes</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl#getSpecificity <em>Specificity</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl#getCookbook <em>Cookbook</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookFileImpl#getBytes <em>Bytes</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,7 +60,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
 	/**
@@ -73,7 +69,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public void setName(String newName) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
 	/**
@@ -82,7 +78,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getID() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
 	/**
@@ -91,7 +87,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public void setID(String newID) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
 	/**
@@ -100,7 +96,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getChecksum() {
-		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__CHECKSUM, true);
+		return (String)eGet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM, true);
 	}
 
 	/**
@@ -109,7 +105,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public void setChecksum(String newChecksum) {
-		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__CHECKSUM, newChecksum);
+		eSet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM, newChecksum);
 	}
 
 	/**
@@ -118,7 +114,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getPath() {
-		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__PATH, true);
+		return (String)eGet(CookbookPackage.Literals.COOKBOOK_FILE__PATH, true);
 	}
 
 	/**
@@ -127,7 +123,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public void setPath(String newPath) {
-		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__PATH, newPath);
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__PATH, newPath);
 	}
 
 	/**
@@ -136,7 +132,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getSpecificity() {
-		return (String)eGet(ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY, true);
+		return (String)eGet(CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, true);
 	}
 
 	/**
@@ -145,7 +141,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public void setSpecificity(String newSpecificity) {
-		eSet(ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY, newSpecificity);
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, newSpecificity);
 	}
 
 	/**
@@ -222,23 +218,23 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				case ChefserverPackage.SERVER_COOKBOOK_FILE__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
+				case ChefserverPackage.SERVER_COOKBOOK_FILE__ID: return UtilityPackage.NAMED_OBJECT__ID;
 				default: return -1;
 			}
 		}
 		if (baseClass == ChecksumFile.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM: return ChefclipsePackage.CHECKSUM_FILE__CHECKSUM;
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__PATH: return ChefclipsePackage.CHECKSUM_FILE__PATH;
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY: return ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY;
+				case ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM: return UtilityPackage.CHECKSUM_FILE__CHECKSUM;
 				default: return -1;
 			}
 		}
 		if (baseClass == CookbookFile.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
 				case ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES: return CookbookPackage.COOKBOOK_FILE__BYTES;
+				case ChefserverPackage.SERVER_COOKBOOK_FILE__PATH: return CookbookPackage.COOKBOOK_FILE__PATH;
+				case ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY: return CookbookPackage.COOKBOOK_FILE__SPECIFICITY;
+				case ChefserverPackage.SERVER_COOKBOOK_FILE__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
 				default: return -1;
 			}
 		}
@@ -254,23 +250,23 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case ChefclipsePackage.NAMED_OBJECT__NAME: return ChefserverPackage.SERVER_COOKBOOK_FILE__NAME;
-				case ChefclipsePackage.NAMED_OBJECT__ID: return ChefserverPackage.SERVER_COOKBOOK_FILE__ID;
+				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.SERVER_COOKBOOK_FILE__NAME;
+				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.SERVER_COOKBOOK_FILE__ID;
 				default: return -1;
 			}
 		}
 		if (baseClass == ChecksumFile.class) {
 			switch (baseFeatureID) {
-				case ChefclipsePackage.CHECKSUM_FILE__CHECKSUM: return ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM;
-				case ChefclipsePackage.CHECKSUM_FILE__PATH: return ChefserverPackage.SERVER_COOKBOOK_FILE__PATH;
-				case ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY: return ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY;
+				case UtilityPackage.CHECKSUM_FILE__CHECKSUM: return ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM;
 				default: return -1;
 			}
 		}
 		if (baseClass == CookbookFile.class) {
 			switch (baseFeatureID) {
-				case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return ChefserverPackage.SERVER_COOKBOOK_FILE__COOKBOOK;
 				case CookbookPackage.COOKBOOK_FILE__BYTES: return ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES;
+				case CookbookPackage.COOKBOOK_FILE__PATH: return ChefserverPackage.SERVER_COOKBOOK_FILE__PATH;
+				case CookbookPackage.COOKBOOK_FILE__SPECIFICITY: return ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY;
+				case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return ChefserverPackage.SERVER_COOKBOOK_FILE__COOKBOOK;
 				default: return -1;
 			}
 		}

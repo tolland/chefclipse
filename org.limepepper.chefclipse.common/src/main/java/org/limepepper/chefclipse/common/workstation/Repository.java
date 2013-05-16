@@ -3,9 +3,9 @@
 package org.limepepper.chefclipse.common.workstation;
 
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.utility.NamedDescribedObject;
 
 /**
  * <!-- begin-user-doc -->

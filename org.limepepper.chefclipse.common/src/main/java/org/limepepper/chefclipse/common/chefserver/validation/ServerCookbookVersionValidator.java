@@ -4,6 +4,8 @@
  */
 package org.limepepper.chefclipse.common.chefserver.validation;
 
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
+
 
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion}.
@@ -16,4 +18,6 @@ public interface ServerCookbookVersionValidator {
 
 	boolean validateVersion(String value);
 	boolean validateCookbook_name(String value);
+
+	boolean validateKnifeConfig(KnifeConfig value);
 }

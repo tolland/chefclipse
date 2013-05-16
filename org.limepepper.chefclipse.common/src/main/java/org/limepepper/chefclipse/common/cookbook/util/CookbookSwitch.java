@@ -5,13 +5,6 @@ package org.limepepper.chefclipse.common.cookbook.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.DescribedObject;
-import org.limepepper.chefclipse.MaintainedObject;
-import org.limepepper.chefclipse.NamedDescribedObject;
-import org.limepepper.chefclipse.NamedObject;
-import org.limepepper.chefclipse.RubyFile;
-import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.cookbook.*;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
@@ -26,13 +19,19 @@ import org.limepepper.chefclipse.common.cookbook.File;
 import org.limepepper.chefclipse.common.cookbook.Library;
 import org.limepepper.chefclipse.common.cookbook.Metadata;
 import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
-import org.limepepper.chefclipse.common.cookbook.Name;
 import org.limepepper.chefclipse.common.cookbook.Provider;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.RecipeDescription;
 import org.limepepper.chefclipse.common.cookbook.Resource;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.cookbook.Template;
+import org.limepepper.chefclipse.utility.ChecksumFile;
+import org.limepepper.chefclipse.utility.DescribedObject;
+import org.limepepper.chefclipse.utility.MaintainedObject;
+import org.limepepper.chefclipse.utility.NamedDescribedObject;
+import org.limepepper.chefclipse.utility.NamedObject;
+import org.limepepper.chefclipse.utility.RubyFile;
+import org.limepepper.chefclipse.utility.SandboxedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -105,9 +104,9 @@ public class CookbookSwitch<T> extends Switch<T> {
 				Definition definition = (Definition)theEObject;
 				T result = caseDefinition(definition);
 				if (result == null) result = caseCookbookFile(definition);
-				if (result == null) result = caseSandboxedObject(definition);
-				if (result == null) result = caseChecksumFile(definition);
 				if (result == null) result = caseNamedObject(definition);
+				if (result == null) result = caseChecksumFile(definition);
+				if (result == null) result = caseSandboxedObject(definition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,9 +114,9 @@ public class CookbookSwitch<T> extends Switch<T> {
 				Library library = (Library)theEObject;
 				T result = caseLibrary(library);
 				if (result == null) result = caseCookbookFile(library);
-				if (result == null) result = caseSandboxedObject(library);
 				if (result == null) result = caseNamedObject(library);
 				if (result == null) result = caseChecksumFile(library);
+				if (result == null) result = caseSandboxedObject(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -134,12 +133,12 @@ public class CookbookSwitch<T> extends Switch<T> {
 			case CookbookPackage.RECIPE: {
 				Recipe recipe = (Recipe)theEObject;
 				T result = caseRecipe(recipe);
-				if (result == null) result = caseRubyFile(recipe);
 				if (result == null) result = caseCookbookFile(recipe);
+				if (result == null) result = caseRubyFile(recipe);
 				if (result == null) result = caseRunListItem(recipe);
-				if (result == null) result = caseSandboxedObject(recipe);
-				if (result == null) result = caseChecksumFile(recipe);
 				if (result == null) result = caseNamedObject(recipe);
+				if (result == null) result = caseChecksumFile(recipe);
+				if (result == null) result = caseSandboxedObject(recipe);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -155,11 +154,11 @@ public class CookbookSwitch<T> extends Switch<T> {
 			case CookbookPackage.RESOURCE: {
 				Resource resource = (Resource)theEObject;
 				T result = caseResource(resource);
-				if (result == null) result = caseRubyFile(resource);
 				if (result == null) result = caseCookbookFile(resource);
-				if (result == null) result = caseSandboxedObject(resource);
-				if (result == null) result = caseChecksumFile(resource);
+				if (result == null) result = caseRubyFile(resource);
 				if (result == null) result = caseNamedObject(resource);
+				if (result == null) result = caseChecksumFile(resource);
+				if (result == null) result = caseSandboxedObject(resource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -167,9 +166,9 @@ public class CookbookSwitch<T> extends Switch<T> {
 				Template template = (Template)theEObject;
 				T result = caseTemplate(template);
 				if (result == null) result = caseCookbookFile(template);
-				if (result == null) result = caseSandboxedObject(template);
 				if (result == null) result = caseNamedObject(template);
 				if (result == null) result = caseChecksumFile(template);
+				if (result == null) result = caseSandboxedObject(template);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -177,9 +176,10 @@ public class CookbookSwitch<T> extends Switch<T> {
 				Attributes attributes = (Attributes)theEObject;
 				T result = caseAttributes(attributes);
 				if (result == null) result = caseCookbookFile(attributes);
-				if (result == null) result = caseSandboxedObject(attributes);
+				if (result == null) result = caseRubyFile(attributes);
 				if (result == null) result = caseNamedObject(attributes);
 				if (result == null) result = caseChecksumFile(attributes);
+				if (result == null) result = caseSandboxedObject(attributes);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -187,9 +187,9 @@ public class CookbookSwitch<T> extends Switch<T> {
 				File file = (File)theEObject;
 				T result = caseFile(file);
 				if (result == null) result = caseCookbookFile(file);
-				if (result == null) result = caseSandboxedObject(file);
-				if (result == null) result = caseChecksumFile(file);
 				if (result == null) result = caseNamedObject(file);
+				if (result == null) result = caseChecksumFile(file);
+				if (result == null) result = caseSandboxedObject(file);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -202,14 +202,14 @@ public class CookbookSwitch<T> extends Switch<T> {
 			case CookbookPackage.METADATA: {
 				Metadata metadata = (Metadata)theEObject;
 				T result = caseMetadata(metadata);
+				if (result == null) result = caseCookbookFile(metadata);
 				if (result == null) result = caseRubyFile(metadata);
 				if (result == null) result = caseMaintainedObject(metadata);
 				if (result == null) result = caseNamedDescribedObject(metadata);
-				if (result == null) result = caseCookbookFile(metadata);
-				if (result == null) result = caseDescribedObject(metadata);
 				if (result == null) result = caseNamedObject(metadata);
 				if (result == null) result = caseChecksumFile(metadata);
 				if (result == null) result = caseSandboxedObject(metadata);
+				if (result == null) result = caseDescribedObject(metadata);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -217,8 +217,8 @@ public class CookbookSwitch<T> extends Switch<T> {
 				Provider provider = (Provider)theEObject;
 				T result = caseProvider(provider);
 				if (result == null) result = caseCookbookFile(provider);
-				if (result == null) result = caseChecksumFile(provider);
 				if (result == null) result = caseNamedObject(provider);
+				if (result == null) result = caseChecksumFile(provider);
 				if (result == null) result = caseSandboxedObject(provider);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -227,9 +227,9 @@ public class CookbookSwitch<T> extends Switch<T> {
 				Root_file root_file = (Root_file)theEObject;
 				T result = caseRoot_file(root_file);
 				if (result == null) result = caseCookbookFile(root_file);
+				if (result == null) result = caseNamedObject(root_file);
 				if (result == null) result = caseChecksumFile(root_file);
 				if (result == null) result = caseSandboxedObject(root_file);
-				if (result == null) result = caseNamedObject(root_file);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -237,20 +237,14 @@ public class CookbookSwitch<T> extends Switch<T> {
 				MinimalMetadata minimalMetadata = (MinimalMetadata)theEObject;
 				T result = caseMinimalMetadata(minimalMetadata);
 				if (result == null) result = caseMetadata(minimalMetadata);
+				if (result == null) result = caseCookbookFile(minimalMetadata);
 				if (result == null) result = caseRubyFile(minimalMetadata);
 				if (result == null) result = caseMaintainedObject(minimalMetadata);
 				if (result == null) result = caseNamedDescribedObject(minimalMetadata);
-				if (result == null) result = caseCookbookFile(minimalMetadata);
-				if (result == null) result = caseDescribedObject(minimalMetadata);
 				if (result == null) result = caseNamedObject(minimalMetadata);
 				if (result == null) result = caseChecksumFile(minimalMetadata);
 				if (result == null) result = caseSandboxedObject(minimalMetadata);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case CookbookPackage.NAME: {
-				Name name = (Name)theEObject;
-				T result = caseName(name);
+				if (result == null) result = caseDescribedObject(minimalMetadata);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -411,19 +405,19 @@ public class CookbookSwitch<T> extends Switch<T> {
     /**
 	 * Returns the result of interpreting the object as an instance of '<em>File</em>'.
 	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>File</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public T caseFile(File object) {
+	public T caseFile(File object) {
 		return null;
 	}
 
-    /**
+				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Dependency Relation</em>'.
 	 * <!-- begin-user-doc -->
      * This implementation returns null;
@@ -495,21 +489,6 @@ public class CookbookSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
     public T caseMinimalMetadata(MinimalMetadata object) {
-		return null;
-	}
-
-    /**
-	 * Returns the result of interpreting the object as an instance of '<em>Name</em>'.
-	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Name</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-    public T caseName(Name object) {
 		return null;
 	}
 

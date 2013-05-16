@@ -2,7 +2,7 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.utility.SandboxedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +14,5 @@ import org.limepepper.chefclipse.SandboxedObject;
  * @model
  * @generated
  */
-public interface Library extends SandboxedObject, CookbookFile {
+public interface Library extends CookbookFile {
 } // Library

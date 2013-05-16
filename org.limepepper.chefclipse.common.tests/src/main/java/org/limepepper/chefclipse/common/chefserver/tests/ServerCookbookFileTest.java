@@ -6,8 +6,7 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
-import org.limepepper.chefclipse.tests.SandboxedObjectTest;
-import org.limepepper.chefclipse.tests.NamedObjectTest;
+import org.limepepper.chefclipse.utility.tests.SandboxedObjectTest;
 
 /**
  * <!-- begin-user-doc -->

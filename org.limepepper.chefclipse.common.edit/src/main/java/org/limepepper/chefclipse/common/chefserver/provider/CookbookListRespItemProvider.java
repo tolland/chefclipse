@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
-import org.limepepper.chefclipse.REST.RESTFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
@@ -201,12 +200,7 @@ public class CookbookListRespItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__VERSIONS,
-				 ChefserverFactory.eINSTANCE.createServerCookbookVersion()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__VERSIONS,
-				 CookbookFactory.eINSTANCE.createCookbookVersion()));
+				 ChefserverFactory.eINSTANCE.createCookbookListVersionResp()));
 	}
 
     /**

@@ -2,10 +2,7 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.NamedObject;
-import org.limepepper.chefclipse.RubyFile;
-import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.utility.RubyFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,5 +14,5 @@ import org.limepepper.chefclipse.SandboxedObject;
  * @model
  * @generated
  */
-public interface Resource extends RubyFile, SandboxedObject, ChecksumFile, NamedObject, CookbookFile {
+public interface Resource extends CookbookFile, RubyFile {
 } // Resource

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -13,17 +14,20 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
- * 
- * 
- * @author tomhodder  
  *
  *
- * http://wiki.eclipse.org/Menu_Contributions/Populating_a_dynamic_submenu  
- * http://wiki.eclipse.org/Menu_Contributions/Problems_View_Example
- * http://wiki.eclipse.org/FAQ_How_do_I_make_menus_with_dynamic_contents%3F
- *  
+ * @author tomhodder
+ *
+ *
+ *         http://wiki.eclipse.org/Menu_Contributions/
+ *         Populating_a_dynamic_submenu
+ *         http://wiki.eclipse.org/Menu_Contributions/Problems_View_Example
+ *         http:
+ *         //wiki.eclipse.org/FAQ_How_do_I_make_menus_with_dynamic_contents%3F
+ *
  */
 public class ContributionItemDynamic extends CompoundContributionItem {
 
@@ -34,23 +38,27 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 	Map<String, String> remoteMenuItems = new HashMap<String, String>();
 
 	@Override
-	    protected IContributionItem[] getContributionItems() {
-	        IStructuredSelection selection = (IStructuredSelection) PlatformUI
-	                .getWorkbench().getActiveWorkbenchWindow()
-	                .getSelectionService().getSelection();
-	        if (selection == null)
-	            return new IContributionItem[] {};
+	protected IContributionItem[] getContributionItems() {
+		IStructuredSelection selection = (IStructuredSelection) PlatformUI
+				.getWorkbench().getActiveWorkbenchWindow()
+				.getSelectionService().getSelection();
+		if (selection == null)
+			return new IContributionItem[] {};
 
-	        Object item = selection.getFirstElement();
-	        // if (item instanceof IResource) {
+		Object item = selection.getFirstElement();
 
+		if (Platform.getAdapterManager()
+				.getAdapter(item, CookbookVersion.class) != null) {
+			System.out.println("here:" + item.getClass());
+			System.out.println("here:" + item.toString());
+			menuItems.put("refresh.cookbookVersion",
+					"update model for this cookbook");
+		}
 
-	                menuItems.put("compare.cookbook", "Compare with ... "
-	                       );
-	        // }
-	        return fillMenu();
-	        // return new IContributionItem[] {};
-	    }
+		menuItems.put("compare.cookbook", "1Compare with ... ");
+
+		return fillMenu();
+	}
 
 	IContributionItem[] fillMenu() {
 
@@ -70,7 +78,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 	IContributionItem menuItem(Entry<String, String> entry) {
 		// @todo monkey hack
 		IContributionItem menuItem = menuItem(entry,
-				"org.limepepper.chefclipse.commands.popupContext");
+				"chefclipse.ui.commands.popupContext");
 
 		return menuItem;
 	}

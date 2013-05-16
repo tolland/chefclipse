@@ -6,12 +6,12 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.*;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
 import org.limepepper.chefclipse.common.knife.Plugin;
+import org.limepepper.chefclipse.utility.Config;
 
 /**
  * <!-- begin-user-doc -->
@@ -148,13 +148,13 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 	}
 
     /**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Config <em>Config</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.Config <em>Config</em>}'.
 	 * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.limepepper.chefclipse.Config
+	 * @see org.limepepper.chefclipse.utility.Config
 	 * @generated
 	 */
     public Adapter createConfigAdapter() {

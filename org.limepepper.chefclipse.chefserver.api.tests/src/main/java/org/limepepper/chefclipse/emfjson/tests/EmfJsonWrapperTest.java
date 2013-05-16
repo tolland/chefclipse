@@ -23,16 +23,15 @@ import org.eclipselabs.emfjson.EMFJs;
 import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.cookbook.Template;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
+import org.limepepper.chefclipse.utility.NameUrlMap;
+import org.limepepper.chefclipse.utility.UtilityPackage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,7 +85,7 @@ public class EmfJsonWrapperTest {
 
         Map<String, Object> options = new HashMap<String, Object>();
         options.put(EMFJs.OPTION_ROOT_ELEMENT,
-                ChefclipsePackage.eINSTANCE.getNameUrlMap());
+                UtilityPackage.eINSTANCE.getNameUrlMap());
         URL url = null;
 
         try {

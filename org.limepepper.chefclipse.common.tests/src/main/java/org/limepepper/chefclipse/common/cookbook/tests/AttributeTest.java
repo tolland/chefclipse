@@ -6,7 +6,6 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.Attribute;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
-import org.limepepper.chefclipse.tests.NamedObjectTest;
 
 /**
  * <!-- begin-user-doc -->

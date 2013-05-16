@@ -6,7 +6,7 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.common.workstation.WorkstationFolder;
-import org.limepepper.chefclipse.tests.NamedObjectTest;
+import org.limepepper.chefclipse.utility.tests.NamedObjectTest;
 
 /**
  * <!-- begin-user-doc -->

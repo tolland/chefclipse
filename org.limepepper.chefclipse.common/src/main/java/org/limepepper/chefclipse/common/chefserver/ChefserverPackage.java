@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+import org.limepepper.chefclipse.utility.UtilityPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ENVIRONMENT__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int ENVIRONMENT__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
 
     /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -83,7 +83,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ENVIRONMENT__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+    int ENVIRONMENT__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -92,7 +92,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ENVIRONMENT__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+    int ENVIRONMENT__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
 	 * The feature id for the '<em><b>Override attributes</b></em>' attribute list.
@@ -101,7 +101,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ENVIRONMENT__OVERRIDE_ATTRIBUTES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+    int ENVIRONMENT__OVERRIDE_ATTRIBUTES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
 	 * The number of structural features of the '<em>Environment</em>' class.
@@ -110,7 +110,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ENVIRONMENT_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+    int ENVIRONMENT_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.DataBagImpl <em>Data Bag</em>}' class.
@@ -129,7 +129,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int DATA_BAG__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
 
     /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -138,7 +138,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+    int DATA_BAG__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -147,7 +147,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+    int DATA_BAG__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
 	 * The feature id for the '<em><b>Server</b></em>' container reference.
@@ -156,7 +156,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG__SERVER = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+    int DATA_BAG__SERVER = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
 	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -165,7 +165,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG__ITEMS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+    int DATA_BAG__ITEMS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
 	 * The feature id for the '<em><b>Resource</b></em>' attribute.
@@ -174,7 +174,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BAG__RESOURCE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+	int DATA_BAG__RESOURCE = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
 				/**
 	 * The number of structural features of the '<em>Data Bag</em>' class.
@@ -183,7 +183,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+    int DATA_BAG_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RoleImpl <em>Role</em>}' class.
@@ -202,7 +202,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROLE__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int ROLE__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
 
     /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -211,7 +211,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROLE__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+    int ROLE__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -220,7 +220,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROLE__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+    int ROLE__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
 	 * The feature id for the '<em><b>Run list</b></em>' containment reference.
@@ -229,7 +229,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROLE__RUN_LIST = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+    int ROLE__RUN_LIST = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
 	 * The feature id for the '<em><b>Environment</b></em>' reference.
@@ -238,7 +238,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROLE__ENVIRONMENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+    int ROLE__ENVIRONMENT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
 	 * The number of structural features of the '<em>Role</em>' class.
@@ -247,7 +247,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROLE_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+    int ROLE_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl <em>Node</em>}' class.
@@ -266,7 +266,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int NODE__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
 
     /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -275,7 +275,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+    int NODE__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -284,7 +284,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+    int NODE__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
 	 * The feature id for the '<em><b>Environment</b></em>' reference.
@@ -293,7 +293,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__ENVIRONMENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+    int NODE__ENVIRONMENT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
 	 * The feature id for the '<em><b>Server</b></em>' reference.
@@ -302,7 +302,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__SERVER = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+    int NODE__SERVER = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
 	 * The feature id for the '<em><b>Client</b></em>' reference.
@@ -311,7 +311,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__CLIENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+    int NODE__CLIENT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
 	 * The feature id for the '<em><b>Attributes</b></em>' reference.
@@ -320,7 +320,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__ATTRIBUTES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+    int NODE__ATTRIBUTES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
 
     /**
 	 * The feature id for the '<em><b>Run list items</b></em>' attribute list.
@@ -329,7 +329,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__RUN_LIST_ITEMS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
+    int NODE__RUN_LIST_ITEMS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
 
     /**
 	 * The feature id for the '<em><b>Run list</b></em>' reference.
@@ -338,7 +338,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE__RUN_LIST = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
+    int NODE__RUN_LIST = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
 
     /**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -347,7 +347,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int NODE_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 6;
+    int NODE_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 6;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl <em>Server</em>}' class.
@@ -577,7 +577,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG_ITEM__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
+    int DATA_BAG_ITEM__NAME = UtilityPackage.NAMED_OBJECT__NAME;
 
     /**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -586,7 +586,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG_ITEM__ID = ChefclipsePackage.NAMED_OBJECT__ID;
+    int DATA_BAG_ITEM__ID = UtilityPackage.NAMED_OBJECT__ID;
 
     /**
 	 * The feature id for the '<em><b>Data Bag</b></em>' reference.
@@ -595,7 +595,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG_ITEM__DATA_BAG = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 0;
+    int DATA_BAG_ITEM__DATA_BAG = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 0;
 
     /**
 	 * The feature id for the '<em><b>Json Resource</b></em>' attribute.
@@ -604,7 +604,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BAG_ITEM__JSON_RESOURCE = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 1;
+	int DATA_BAG_ITEM__JSON_RESOURCE = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 1;
 
 				/**
 	 * The number of structural features of the '<em>Data Bag Item</em>' class.
@@ -613,7 +613,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int DATA_BAG_ITEM_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 2;
+    int DATA_BAG_ITEM_FEATURE_COUNT = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 2;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.SandboxImpl <em>Sandbox</em>}' class.
@@ -654,6 +654,43 @@ public interface ChefserverPackage extends EPackage {
 
 
     /**
+	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListVersionRespImpl <em>Cookbook List Version Resp</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.limepepper.chefclipse.common.chefserver.impl.CookbookListVersionRespImpl
+	 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getCookbookListVersionResp()
+	 * @generated
+	 */
+	int COOKBOOK_LIST_VERSION_RESP = 10;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK_LIST_VERSION_RESP__URL = 0;
+
+				/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK_LIST_VERSION_RESP__VERSION = 1;
+
+				/**
+	 * The number of structural features of the '<em>Cookbook List Version Resp</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK_LIST_VERSION_RESP_FEATURE_COUNT = 2;
+
+				/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl <em>Cookbook List Resp</em>}' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -661,7 +698,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getCookbookListResp()
 	 * @generated
 	 */
-    int COOKBOOK_LIST_RESP = 10;
+    int COOKBOOK_LIST_RESP = 11;
 
     /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -707,7 +744,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerCookbookFile()
 	 * @generated
 	 */
-	int SERVER_COOKBOOK_FILE = 11;
+	int SERVER_COOKBOOK_FILE = 12;
 
 				/**
 	 * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -716,7 +753,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_COOKBOOK_FILE__URL = ChefclipsePackage.SANDBOXED_OBJECT__URL;
+	int SERVER_COOKBOOK_FILE__URL = UtilityPackage.SANDBOXED_OBJECT__URL;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -725,7 +762,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_COOKBOOK_FILE__NAME = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
+	int SERVER_COOKBOOK_FILE__NAME = UtilityPackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -734,7 +771,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_COOKBOOK_FILE__ID = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
+	int SERVER_COOKBOOK_FILE__ID = UtilityPackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
 
 				/**
 	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
@@ -743,34 +780,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_COOKBOOK_FILE__CHECKSUM = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVER_COOKBOOK_FILE__PATH = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVER_COOKBOOK_FILE__SPECIFICITY = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVER_COOKBOOK_FILE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
+	int SERVER_COOKBOOK_FILE__CHECKSUM = UtilityPackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
 
 				/**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
@@ -779,7 +789,34 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_COOKBOOK_FILE__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int SERVER_COOKBOOK_FILE__BYTES = UtilityPackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__PATH = UtilityPackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__SPECIFICITY = UtilityPackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_FILE__COOKBOOK = UtilityPackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
 
 				/**
 	 * The number of structural features of the '<em>Server Cookbook File</em>' class.
@@ -788,7 +825,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SERVER_COOKBOOK_FILE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
+	int SERVER_COOKBOOK_FILE_FEATURE_COUNT = UtilityPackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
 
 				/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ServerCookbookVersionImpl <em>Server Cookbook Version</em>}' class.
@@ -798,7 +835,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getServerCookbookVersion()
 	 * @generated
 	 */
-    int SERVER_COOKBOOK_VERSION = 12;
+    int SERVER_COOKBOOK_VERSION = 13;
 
     /**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -884,11 +921,11 @@ public interface ChefserverPackage extends EPackage {
 				/**
 	 * The feature id for the '<em><b>Files</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int SERVER_COOKBOOK_VERSION__FILES = CookbookPackage.COOKBOOK_VERSION__FILES;
+	int SERVER_COOKBOOK_VERSION__FILES = CookbookPackage.COOKBOOK_VERSION__FILES;
 
 				/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -990,13 +1027,22 @@ public interface ChefserverPackage extends EPackage {
     int SERVER_COOKBOOK_VERSION__COOKBOOK_NAME = CookbookPackage.COOKBOOK_VERSION_FEATURE_COUNT + 1;
 
     /**
+	 * The feature id for the '<em><b>Knife Config</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER_COOKBOOK_VERSION__KNIFE_CONFIG = CookbookPackage.COOKBOOK_VERSION_FEATURE_COUNT + 2;
+
+				/**
 	 * The number of structural features of the '<em>Server Cookbook Version</em>' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int SERVER_COOKBOOK_VERSION_FEATURE_COUNT = CookbookPackage.COOKBOOK_VERSION_FEATURE_COUNT + 2;
+    int SERVER_COOKBOOK_VERSION_FEATURE_COUNT = CookbookPackage.COOKBOOK_VERSION_FEATURE_COUNT + 3;
 
 
     /**
@@ -1007,7 +1053,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getRunListItem()
 	 * @generated
 	 */
-    int RUN_LIST_ITEM = 13;
+    int RUN_LIST_ITEM = 14;
 
     /**
 	 * The number of structural features of the '<em>Run List Item</em>' class.
@@ -1461,6 +1507,38 @@ public interface ChefserverPackage extends EPackage {
     EAttribute getSandbox_Url();
 
     /**
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp <em>Cookbook List Version Resp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cookbook List Version Resp</em>'.
+	 * @see org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp
+	 * @generated
+	 */
+	EClass getCookbookListVersionResp();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp#getUrl <em>Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Url</em>'.
+	 * @see org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp#getUrl()
+	 * @see #getCookbookListVersionResp()
+	 * @generated
+	 */
+	EAttribute getCookbookListVersionResp_Url();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp#getVersion()
+	 * @see #getCookbookListVersionResp()
+	 * @generated
+	 */
+	EAttribute getCookbookListVersionResp_Version();
+
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp <em>Cookbook List Resp</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1546,6 +1624,17 @@ public interface ChefserverPackage extends EPackage {
     EAttribute getServerCookbookVersion_Cookbook_name();
 
     /**
+	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getKnifeConfig <em>Knife Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Knife Config</em>'.
+	 * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getKnifeConfig()
+	 * @see #getServerCookbookVersion()
+	 * @generated
+	 */
+	EReference getServerCookbookVersion_KnifeConfig();
+
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.RunListItem <em>Run List Item</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1926,6 +2015,32 @@ public interface ChefserverPackage extends EPackage {
         EAttribute SANDBOX__URL = eINSTANCE.getSandbox_Url();
 
         /**
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListVersionRespImpl <em>Cookbook List Version Resp</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.common.chefserver.impl.CookbookListVersionRespImpl
+		 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getCookbookListVersionResp()
+		 * @generated
+		 */
+		EClass COOKBOOK_LIST_VERSION_RESP = eINSTANCE.getCookbookListVersionResp();
+
+								/**
+		 * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COOKBOOK_LIST_VERSION_RESP__URL = eINSTANCE.getCookbookListVersionResp_Url();
+
+								/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COOKBOOK_LIST_VERSION_RESP__VERSION = eINSTANCE.getCookbookListVersionResp_Version();
+
+								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl <em>Cookbook List Resp</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -1996,6 +2111,14 @@ public interface ChefserverPackage extends EPackage {
         EAttribute SERVER_COOKBOOK_VERSION__COOKBOOK_NAME = eINSTANCE.getServerCookbookVersion_Cookbook_name();
 
         /**
+		 * The meta object literal for the '<em><b>Knife Config</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVER_COOKBOOK_VERSION__KNIFE_CONFIG = eINSTANCE.getServerCookbookVersion_KnifeConfig();
+
+								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.RunListItemImpl <em>Run List Item</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

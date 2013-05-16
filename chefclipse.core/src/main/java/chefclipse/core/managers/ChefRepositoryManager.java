@@ -23,7 +23,8 @@ import org.limepepper.chefclipse.common.workstation.Repository;
  */
 public interface ChefRepositoryManager {
 
-	public static ChefRepositoryManager INSTANCE = ChefRepositoryManagerImpl.instance();
+	public static ChefRepositoryManager INSTANCE = ChefRepositoryManagerImpl
+			.instance();
 
 	/**
 	 * So i guess the idea here is to cause a full refresh of all the resouces
@@ -34,12 +35,11 @@ public interface ChefRepositoryManager {
 
 	/**
 	 * opens the repo corresponding to this project, sets the parent element of
-	 * the model to the IProject resource or if not exists
-	 * then Initializes a repository in the project
+	 * the model to the IProject resource or if not exists then Initializes a
+	 * repository in the project
 	 *
 	 */
 	public void remove(IResource resource);
-
 
 	public void updateDependsLists(CookbookVersion cookbook);
 
@@ -64,5 +64,7 @@ public interface ChefRepositoryManager {
 	public EObject createDataBag(IFolder resource) throws CoreException;
 
 	public EObject createDataBagItem(IFile resource);
+
+	public EObject create(IResource resource);
 
 }

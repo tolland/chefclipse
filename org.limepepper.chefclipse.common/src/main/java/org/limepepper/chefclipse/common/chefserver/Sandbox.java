@@ -61,7 +61,7 @@ public interface Sandbox extends EObject {
 	 * @return the value of the '<em>Url</em>' attribute.
 	 * @see #setUrl(URL)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getSandbox_Url()
-	 * @model dataType="org.limepepper.chefclipse.URL" required="true"
+	 * @model dataType="org.limepepper.chefclipse.utility.URL" required="true"
 	 * @generated
 	 */
     URL getUrl();

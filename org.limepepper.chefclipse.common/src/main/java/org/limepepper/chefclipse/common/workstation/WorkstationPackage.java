@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.utility.UtilityPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int REPOSITORY__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
 
     /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -82,7 +82,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+    int REPOSITORY__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -91,7 +91,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+    int REPOSITORY__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
 	 * The feature id for the '<em><b>OS</b></em>' attribute.
@@ -100,7 +100,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY__OS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+    int REPOSITORY__OS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
 	 * The feature id for the '<em><b>Basepath</b></em>' attribute.
@@ -109,7 +109,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY__BASEPATH = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+    int REPOSITORY__BASEPATH = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
 	 * The feature id for the '<em><b>Cookbooks</b></em>' containment reference list.
@@ -118,7 +118,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY__COOKBOOKS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+    int REPOSITORY__COOKBOOKS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
 	 * The feature id for the '<em><b>Knife</b></em>' reference list.
@@ -127,7 +127,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY__KNIFE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+    int REPOSITORY__KNIFE = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
 
     /**
 	 * The feature id for the '<em><b>Cookbook Folders</b></em>' reference list.
@@ -136,7 +136,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int REPOSITORY__COOKBOOK_FOLDERS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
+	int REPOSITORY__COOKBOOK_FOLDERS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
 
 				/**
 	 * The number of structural features of the '<em>Repository</em>' class.
@@ -145,7 +145,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
+    int REPOSITORY_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.WorkstationFolderImpl <em>Folder</em>}' class.
@@ -164,7 +164,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTATION_FOLDER__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
+	int WORKSTATION_FOLDER__NAME = UtilityPackage.NAMED_OBJECT__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -173,7 +173,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTATION_FOLDER__ID = ChefclipsePackage.NAMED_OBJECT__ID;
+	int WORKSTATION_FOLDER__ID = UtilityPackage.NAMED_OBJECT__ID;
 
 				/**
 	 * The number of structural features of the '<em>Folder</em>' class.
@@ -182,7 +182,7 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORKSTATION_FOLDER_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 0;
+	int WORKSTATION_FOLDER_FEATURE_COUNT = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 0;
 
 				/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl <em>Config Folder</em>}' class.

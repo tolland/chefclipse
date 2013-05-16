@@ -112,6 +112,15 @@ public interface ChefserverFactory extends EFactory {
     Sandbox createSandbox();
 
     /**
+	 * Returns a new object of class '<em>Cookbook List Version Resp</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cookbook List Version Resp</em>'.
+	 * @generated
+	 */
+	CookbookListVersionResp createCookbookListVersionResp();
+
+				/**
 	 * Returns a new object of class '<em>Cookbook List Resp</em>'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

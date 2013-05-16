@@ -28,6 +28,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.actions.ActionDelegate;
 
+@SuppressWarnings("restriction")
 public class NewActionPopupTest extends ActionDelegate implements
         IObjectActionDelegate {
 
@@ -82,7 +83,8 @@ public class NewActionPopupTest extends ActionDelegate implements
             super(resource);
         }
 
-        protected IStructureComparator createChild(IResource child) {
+        @SuppressWarnings("restriction")
+		protected IStructureComparator createChild(IResource child) {
             String name = child.getName();
             if (CompareUIPlugin.getDefault().filter(name,
                     child instanceof IContainer, false))

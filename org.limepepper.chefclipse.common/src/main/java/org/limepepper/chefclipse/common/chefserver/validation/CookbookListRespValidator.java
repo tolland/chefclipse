@@ -5,9 +5,8 @@
 package org.limepepper.chefclipse.common.chefserver.validation;
 
 import org.eclipse.emf.common.util.EList;
+import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.REST.CookbookListVersionResp;
-
 
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.chefserver.CookbookListResp}.
@@ -19,7 +18,6 @@ public interface CookbookListRespValidator {
 	boolean validate();
 
 	boolean validateName(String value);
-	boolean validateVersions(EList<CookbookListVersionResp> value);
-
+	boolean validateVersions(EList<CookbookVersion> value);
 	boolean validateUrl(String value);
 }

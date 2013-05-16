@@ -3,9 +3,9 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.common.chefclient.Client;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
+import org.limepepper.chefclipse.utility.NamedDescribedObject;
 
 /**
  * <!-- begin-user-doc -->

@@ -20,14 +20,14 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
-import org.limepepper.chefclipse.provider.DescribedObjectItemProvider;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.provider.DescribedObjectItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.common.workstation.Repository} object.
@@ -84,7 +84,7 @@ public class RepositoryItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedObject_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
-				 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
+				 UtilityPackage.Literals.NAMED_OBJECT__NAME,
 				 true,
 				 false,
 				 false,
@@ -106,7 +106,7 @@ public class RepositoryItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedObject_ID_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
-				 ChefclipsePackage.Literals.NAMED_OBJECT__ID,
+				 UtilityPackage.Literals.NAMED_OBJECT__ID,
 				 true,
 				 false,
 				 false,

@@ -18,7 +18,7 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
-import org.limepepper.chefclipse.provider.ConfigItemProvider;
+import org.limepepper.chefclipse.utility.provider.ConfigItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.common.chefclient.ClientConfig} object.

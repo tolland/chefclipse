@@ -3,7 +3,7 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.core.resources.IResource;
-import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.utility.NamedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,7 +60,7 @@ public interface DataBagItem extends NamedObject {
 	 * @return the value of the '<em>Json Resource</em>' attribute.
 	 * @see #setJsonResource(IResource)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBagItem_JsonResource()
-	 * @model dataType="org.limepepper.chefclipse.IResource" required="true"
+	 * @model dataType="org.limepepper.chefclipse.utility.IResource" required="true"
 	 * @generated
 	 */
 	IResource getJsonResource();

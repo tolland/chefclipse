@@ -20,7 +20,6 @@ import org.limepepper.chefclipse.common.cookbook.File;
 import org.limepepper.chefclipse.common.cookbook.Library;
 import org.limepepper.chefclipse.common.cookbook.Metadata;
 import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
-import org.limepepper.chefclipse.common.cookbook.Name;
 import org.limepepper.chefclipse.common.cookbook.Provider;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.RecipeDescription;
@@ -87,7 +86,6 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
 			case CookbookPackage.PROVIDER: return createProvider();
 			case CookbookPackage.ROOT_FILE: return createRoot_file();
 			case CookbookPackage.MINIMAL_METADATA: return createMinimalMetadata();
-			case CookbookPackage.NAME: return createName();
 			case CookbookPackage.COOKBOOK: return createCookbook();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -186,15 +184,15 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public File createFile() {
+	public File createFile() {
 		FileImpl file = new FileImpl();
 		return file;
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -242,16 +240,6 @@ public class CookbookFactoryImpl extends EFactoryImpl implements CookbookFactory
     public MinimalMetadata createMinimalMetadata() {
 		MinimalMetadataImpl minimalMetadata = new MinimalMetadataImpl();
 		return minimalMetadata;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public Name createName() {
-		NameImpl name = new NameImpl();
-		return name;
 	}
 
     /**

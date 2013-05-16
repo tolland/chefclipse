@@ -26,4 +26,8 @@
             id="org.limepepper.chefclipse.databag.editor.wizards.SampleNewWizard">
       </wizard>
    </extension>
+
+
+
+
 </plugin>

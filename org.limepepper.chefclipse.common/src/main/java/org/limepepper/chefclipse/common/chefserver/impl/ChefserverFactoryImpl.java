@@ -22,6 +22,7 @@ import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerConfig;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 
 /**
@@ -78,6 +79,7 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 			case ChefserverPackage.SERVER_CONFIG: return createServerConfig();
 			case ChefserverPackage.DATA_BAG_ITEM: return createDataBagItem();
 			case ChefserverPackage.SANDBOX: return createSandbox();
+			case ChefserverPackage.COOKBOOK_LIST_VERSION_RESP: return createCookbookListVersionResp();
 			case ChefserverPackage.COOKBOOK_LIST_RESP: return createCookbookListResp();
 			case ChefserverPackage.SERVER_COOKBOOK_FILE: return createServerCookbookFile();
 			case ChefserverPackage.SERVER_COOKBOOK_VERSION: return createServerCookbookVersion();
@@ -188,6 +190,16 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CookbookListVersionResp createCookbookListVersionResp() {
+		CookbookListVersionRespImpl cookbookListVersionResp = new CookbookListVersionRespImpl();
+		return cookbookListVersionResp;
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated

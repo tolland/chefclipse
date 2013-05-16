@@ -12,8 +12,7 @@ Export-Package: org.limepepper.chefclipse.common.chefclient.tests,
  org.limepepper.chefclipse.common.cookbook.tests,
  org.limepepper.chefclipse.common.knife.tests,
  org.limepepper.chefclipse.common.tests,
- org.limepepper.chefclipse.common.workstation.tests,
- org.limepepper.chefclipse.tests
+ org.limepepper.chefclipse.common.workstation.tests
 Require-Bundle: org.eclipse.core.runtime,
  org.limepepper.chefclipse.common;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

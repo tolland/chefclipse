@@ -18,7 +18,7 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 import org.limepepper.chefclipse.common.workstation.WorkstationFolder;
-import org.limepepper.chefclipse.provider.NamedObjectItemProvider;
+import org.limepepper.chefclipse.utility.provider.NamedObjectItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.common.workstation.WorkstationFolder} object.

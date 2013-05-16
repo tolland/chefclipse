@@ -21,6 +21,25 @@
   </extension>
 
 
+  <extension
+       point="org.eclipse.ui.commands">
+    <category
+          id="org.limepepper.chefclipse.commands.category"
+          name="Chefclipse Commands Category">
+    </category>
+    <command
+          categoryId="org.limepepper.chefclipse.commands.category"
+          id="chefclipse.ui.commands.popupContext"
+          name="UI dynamic command placeholder">
+       <commandParameter
+             id="commandParameter1"
+             name="parameter to select dynamic handler"
+             optional="false">
+       </commandParameter>
+    </command>
+ </extension>
+
+
   <!-- =================================================================================== -->
   <!-- org.eclipse.ui.handlers -->
   <!-- =================================================================================== -->
@@ -32,6 +51,14 @@
     	commandId="chefclipse.ui.commands.compare">
     </handler>
   </extension>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="chefclipse.ui.handlers.UiHandler"
+            commandId="chefclipse.ui.commands.popupContext">
+      </handler>
+   </extension>
 
 
   <!-- =================================================================================== -->
@@ -114,14 +141,13 @@
 
     <menuContribution
     	allPopups="true"
-    	locationURI="popup:chefclipse.navigatorview?after=additions">
-      	<menu
-      	  label="%menu.label.4"
-       	  mnemonic="%menu.mnemonic.1"
-          id="chefclipse.menus.contextgroup">
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+      	 <menu label="Chefclipse Menu"
+               mnemonic="C"
+               id="org.limepepper.chefclipse.menus.contextgroup">
         <dynamic class="chefclipse.ui.menu.ContributionItemDynamic"
-        	id="chefclipse.menu.dynamic">
-          	<visibleWhen checkEnabled="false">
+        	id="chefclipse.ui.menu.dynamic">
+          	<!--visibleWhen checkEnabled="false">
             	<with variable="activeMenuSelection">
               		<iterate operator="and">
                 	<or>
@@ -129,10 +155,26 @@
                 </or>
               </iterate>
             </with>
-          </visibleWhen>
+          </visibleWhen-->
         </dynamic>
       </menu>
     </menuContribution>
+
+<!--
+   <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+        <menu label="Chefclipse Menu"
+               mnemonic="C"
+               id="org.limepepper.chefclipse.menus.contextgroup">
+         <dynamic
+               class="org.limepepper.chefclipse.chefserver.api.ui.handler.ContributionItemDynamic"
+               id="org.limepepper.chefclipse.api.ui.dynamic">
+         </dynamic>
+         </menu>
+      </menuContribution>
+ -->
+
 
     <menuContribution allPopups="true"
     locationURI="popup:compareWithMenu/compareWithGroup?after=additions">
@@ -170,12 +212,27 @@
       labelProvider="chefclipse.internal.ui.navigator.ChefNavigatorLabelProvider"
       name="%navigatorContent.name" priority="higher">
       <triggerPoints>
-        <or>
-          <instanceof value="org.eclipse.core.resources.IProject"></instanceof>
-          <instanceof value="org.eclipse.core.resources.IWorkspaceRoot">
-          </instanceof>
-        </or>
+                <or>
+                    <adapt type="org.eclipse.core.resources.IProject" >
+                        <test property="org.eclipse.core.resources.projectNature"
+                        value="org.limepepper.chefclipse.ChefProjectNature"/>
+                    </adapt>
+                    <instanceof value="org.eclipse.core.resources.IResource" />
+                    <instanceof value="chefclipse.core.ChefResource" />
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
+                </or>
       </triggerPoints>
+                  <possibleChildren>
+                <or>
+                    <instanceof value="org.eclipse.core.resources.IResource" />
+                    <instanceof value="chefclipse.core.ChefResource" />
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
+                </or>
+            </possibleChildren>
+
+
       <actionProvider
         class="org.eclipse.ui.navigator.resources.GoIntoActionProvider"
         id="chefclipse.GoIntoActions"
@@ -192,6 +249,9 @@
           </or>
         </enablement>
       </actionProvider>
+          	<actionProvider
+                 class="org.limepepper.chefclipse.databag.editor.actions.DataBagActionProvider">
+          	</actionProvider>
     </navigatorContent>
 
 

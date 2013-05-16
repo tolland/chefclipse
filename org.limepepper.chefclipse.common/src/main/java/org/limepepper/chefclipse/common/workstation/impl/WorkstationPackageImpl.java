@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -27,7 +26,8 @@ import org.limepepper.chefclipse.common.workstation.RolesFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.common.workstation.WorkstationFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
-import org.limepepper.chefclipse.impl.ChefclipsePackageImpl;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.impl.UtilityPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -146,27 +146,27 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		ChefclipsePackageImpl theChefclipsePackage = (ChefclipsePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI) instanceof ChefclipsePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI) : ChefclipsePackage.eINSTANCE);
 		ChefserverPackageImpl theChefserverPackage = (ChefserverPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) : ChefserverPackage.eINSTANCE);
 		ChefclientPackageImpl theChefclientPackage = (ChefclientPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
 		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
 		KnifePackageImpl theKnifePackage = (KnifePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
+		UtilityPackageImpl theUtilityPackage = (UtilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI) instanceof UtilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI) : UtilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkstationPackage.createPackageContents();
-		theChefclipsePackage.createPackageContents();
 		theChefserverPackage.createPackageContents();
 		theChefclientPackage.createPackageContents();
 		theCookbookPackage.createPackageContents();
 		theKnifePackage.createPackageContents();
+		theUtilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theWorkstationPackage.initializePackageContents();
-		theChefclipsePackage.initializePackageContents();
 		theChefserverPackage.initializePackageContents();
 		theChefclientPackage.initializePackageContents();
 		theCookbookPackage.initializePackageContents();
 		theKnifePackage.initializePackageContents();
+		theUtilityPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theWorkstationPackage.freeze();
@@ -389,7 +389,7 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		ChefclipsePackage theChefclipsePackage = (ChefclipsePackage)EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI);
+		UtilityPackage theUtilityPackage = (UtilityPackage)EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI);
 		CookbookPackage theCookbookPackage = (CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI);
 		KnifePackage theKnifePackage = (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
 
@@ -398,13 +398,13 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		repositoryEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
+		repositoryEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
 		configFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
 		certificatesFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
 		dataBagsFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
 		environmentsFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
 		rolesFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
-		workstationFolderEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
+		workstationFolderEClass.getESuperTypes().add(theUtilityPackage.getNamedObject());
 		cookbooksFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
 
 		// Initialize classes and features; add operations and parameters
@@ -431,6 +431,9 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 
 		initEClass(cookbooksFolderEClass, CookbooksFolder.class, "CookbooksFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCookbooksFolder_Cookbooks(), theCookbookPackage.getCookbookVersion(), null, "cookbooks", null, 0, -1, CookbooksFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Create resource
+		createResource(eNS_URI);
 	}
 
 } //WorkstationPackageImpl

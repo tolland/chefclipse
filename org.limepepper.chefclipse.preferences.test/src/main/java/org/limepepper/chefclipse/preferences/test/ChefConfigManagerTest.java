@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.preferences.test;
 
@@ -19,14 +19,14 @@ import org.eclipse.core.resources.IProject;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+import org.limepepper.chefclipse.utility.Config;
 
 /**
  * JUnit Plugin Test.
- * 
+ *
  * @author Guillermo Zunino
  */
 public class ChefConfigManagerTest {

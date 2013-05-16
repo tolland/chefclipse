@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.utility.UtilityPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int COOKBOOK_VERSION__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
 
     /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -90,7 +90,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+    int COOKBOOK_VERSION__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
 
     /**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -99,7 +99,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+    int COOKBOOK_VERSION__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
 
     /**
 	 * The feature id for the '<em><b>Json class</b></em>' attribute.
@@ -108,7 +108,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__JSON_CLASS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+    int COOKBOOK_VERSION__JSON_CLASS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
 
     /**
 	 * The feature id for the '<em><b>Chef type</b></em>' attribute.
@@ -117,7 +117,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__CHEF_TYPE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+    int COOKBOOK_VERSION__CHEF_TYPE = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
 
     /**
 	 * The feature id for the '<em><b>Environment</b></em>' reference.
@@ -126,7 +126,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__ENVIRONMENT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+    int COOKBOOK_VERSION__ENVIRONMENT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
 	 * The feature id for the '<em><b>Templates</b></em>' containment reference list.
@@ -135,7 +135,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__TEMPLATES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+    int COOKBOOK_VERSION__TEMPLATES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
 
     /**
 	 * The feature id for the '<em><b>Recipes</b></em>' containment reference list.
@@ -144,7 +144,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__RECIPES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
+    int COOKBOOK_VERSION__RECIPES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
 
     /**
 	 * The feature id for the '<em><b>Definitions</b></em>' containment reference list.
@@ -153,25 +153,25 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__DEFINITIONS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
+    int COOKBOOK_VERSION__DEFINITIONS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
 
     /**
 	 * The feature id for the '<em><b>Files</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__FILES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 6;
+	int COOKBOOK_VERSION__FILES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 6;
 
-    /**
+				/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__RESOURCES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 7;
+    int COOKBOOK_VERSION__RESOURCES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 7;
 
     /**
 	 * The feature id for the '<em><b>Libraries</b></em>' containment reference list.
@@ -180,7 +180,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__LIBRARIES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 8;
+    int COOKBOOK_VERSION__LIBRARIES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 8;
 
     /**
 	 * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -189,7 +189,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__METADATA = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 9;
+    int COOKBOOK_VERSION__METADATA = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 9;
 
     /**
 	 * The feature id for the '<em><b>Providers</b></em>' containment reference list.
@@ -198,7 +198,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__PROVIDERS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 10;
+    int COOKBOOK_VERSION__PROVIDERS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 10;
 
     /**
 	 * The feature id for the '<em><b>Root files</b></em>' containment reference list.
@@ -207,7 +207,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__ROOT_FILES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 11;
+    int COOKBOOK_VERSION__ROOT_FILES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 11;
 
     /**
 	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
@@ -216,7 +216,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__ATTRIBUTES = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 12;
+    int COOKBOOK_VERSION__ATTRIBUTES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 12;
 
     /**
 	 * The feature id for the '<em><b>Catalog</b></em>' attribute.
@@ -225,7 +225,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__CATALOG = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 13;
+    int COOKBOOK_VERSION__CATALOG = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 13;
 
     /**
 	 * The feature id for the '<em><b>Depends</b></em>' reference list.
@@ -234,7 +234,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__DEPENDS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 14;
+    int COOKBOOK_VERSION__DEPENDS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 14;
 
     /**
 	 * The feature id for the '<em><b>Missing</b></em>' reference list.
@@ -243,7 +243,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION__MISSING = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 15;
+    int COOKBOOK_VERSION__MISSING = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 15;
 
     /**
 	 * The number of structural features of the '<em>Version</em>' class.
@@ -252,7 +252,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_VERSION_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 16;
+    int COOKBOOK_VERSION_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 16;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.DefinitionImpl <em>Definition</em>}' class.
@@ -265,87 +265,6 @@ public interface CookbookPackage extends EPackage {
     int DEFINITION = 1;
 
     /**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int DEFINITION__URL = ChefclipsePackage.SANDBOXED_OBJECT__URL;
-
-    /**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int DEFINITION__CHECKSUM = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
-
-    /**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int DEFINITION__PATH = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
-
-    /**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int DEFINITION__SPECIFICITY = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
-
-    /**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int DEFINITION__NAME = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
-
-    /**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int DEFINITION__ID = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
-
-    /**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int DEFINITION__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
-
-    /**
-	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEFINITION__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
-
-				/**
-	 * The number of structural features of the '<em>Definition</em>' class.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int DEFINITION_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
-
-    /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.LibraryImpl <em>Library</em>}' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -354,87 +273,6 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 */
     int LIBRARY = 2;
-
-    /**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int LIBRARY__URL = ChefclipsePackage.SANDBOXED_OBJECT__URL;
-
-    /**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int LIBRARY__NAME = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
-
-    /**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int LIBRARY__ID = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int LIBRARY__CHECKSUM = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int LIBRARY__PATH = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int LIBRARY__SPECIFICITY = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
-
-    /**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int LIBRARY__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
-
-    /**
-	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIBRARY__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
-
-				/**
-	 * The number of structural features of the '<em>Library</em>' class.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int LIBRARY_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.AttributeImpl <em>Attribute</em>}' class.
@@ -497,16 +335,6 @@ public interface CookbookPackage extends EPackage {
     int ATTRIBUTES = 8;
 
     /**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.FileImpl <em>File</em>}' class.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.cookbook.impl.FileImpl
-	 * @see org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl#getFile()
-	 * @generated
-	 */
-    int FILE = 9;
-
-    /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.DependencyRelationImpl <em>Dependency Relation</em>}' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -557,16 +385,6 @@ public interface CookbookPackage extends EPackage {
     int MINIMAL_METADATA = 14;
 
     /**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.NameImpl <em>Name</em>}' class.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.cookbook.impl.NameImpl
-	 * @see org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl#getName_()
-	 * @generated
-	 */
-    int NAME = 15;
-
-    /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl <em>File</em>}' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -574,7 +392,7 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl#getCookbookFile()
 	 * @generated
 	 */
-    int COOKBOOK_FILE = 16;
+    int COOKBOOK_FILE = 15;
 
     /**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -583,7 +401,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK_FILE__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
+	int COOKBOOK_FILE__NAME = UtilityPackage.NAMED_OBJECT__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -592,7 +410,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK_FILE__ID = ChefclipsePackage.NAMED_OBJECT__ID;
+	int COOKBOOK_FILE__ID = UtilityPackage.NAMED_OBJECT__ID;
 
 				/**
 	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
@@ -601,25 +419,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK_FILE__CHECKSUM = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 0;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COOKBOOK_FILE__PATH = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 1;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COOKBOOK_FILE__SPECIFICITY = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 2;
+	int COOKBOOK_FILE__CHECKSUM = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 0;
 
 				/**
 	 * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -628,25 +428,43 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK_FILE__URL = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 3;
+	int COOKBOOK_FILE__URL = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 1;
 
 				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int COOKBOOK_FILE__COOKBOOK = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 4;
-
-    /**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COOKBOOK_FILE__BYTES = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 5;
+	int COOKBOOK_FILE__BYTES = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 2;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK_FILE__PATH = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 3;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK_FILE__SPECIFICITY = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 4;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COOKBOOK_FILE__COOKBOOK = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 5;
 
 				/**
 	 * The number of structural features of the '<em>File</em>' class.
@@ -655,7 +473,169 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int COOKBOOK_FILE_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 6;
+    int COOKBOOK_FILE_FEATURE_COUNT = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 6;
+
+				/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int DEFINITION__NAME = COOKBOOK_FILE__NAME;
+
+				/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int DEFINITION__ID = COOKBOOK_FILE__ID;
+
+				/**
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int DEFINITION__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int DEFINITION__URL = COOKBOOK_FILE__URL;
+
+				/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFINITION__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int DEFINITION__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int DEFINITION__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEFINITION__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
+
+				/**
+	 * The number of structural features of the '<em>Definition</em>' class.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int DEFINITION_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 0;
+
+				/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int LIBRARY__NAME = COOKBOOK_FILE__NAME;
+
+				/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int LIBRARY__ID = COOKBOOK_FILE__ID;
+
+				/**
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int LIBRARY__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int LIBRARY__URL = COOKBOOK_FILE__URL;
+
+				/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int LIBRARY__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int LIBRARY__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
+
+				/**
+	 * The number of structural features of the '<em>Library</em>' class.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int LIBRARY_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -685,6 +665,24 @@ public interface CookbookPackage extends EPackage {
 	int ATTRIBUTE__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
 
 				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__URL = COOKBOOK_FILE__URL;
+
+				/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -703,15 +701,6 @@ public interface CookbookPackage extends EPackage {
 	int ATTRIBUTE__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
 
 				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__URL = COOKBOOK_FILE__URL;
-
-				/**
 	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -719,15 +708,6 @@ public interface CookbookPackage extends EPackage {
 	 * @ordered
 	 */
 	int ATTRIBUTE__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
-
-				/**
-	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__BYTES = COOKBOOK_FILE__BYTES;
 
 				/**
 	 * The number of structural features of the '<em>Attribute</em>' class.
@@ -739,58 +719,13 @@ public interface CookbookPackage extends EPackage {
     int ATTRIBUTE_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RECIPE__URL = ChefclipsePackage.SANDBOXED_OBJECT__URL;
-
-				/**
-	 * The feature id for the '<em><b>Extension</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RECIPE__EXTENSION = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RECIPE__CHECKSUM = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RECIPE__PATH = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RECIPE__SPECIFICITY = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
-
-				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE__NAME = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
+    int RECIPE__NAME = COOKBOOK_FILE__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -799,16 +734,25 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE__ID = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
+    int RECIPE__ID = COOKBOOK_FILE__ID;
 
 				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+    int RECIPE__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RECIPE__URL = COOKBOOK_FILE__URL;
 
 				/**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
@@ -817,7 +761,43 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RECIPE__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
+	int RECIPE__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RECIPE__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RECIPE__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RECIPE__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
+
+				/**
+	 * The feature id for the '<em><b>Extension</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RECIPE__EXTENSION = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
 	 * The feature id for the '<em><b>Role</b></em>' reference list.
@@ -826,7 +806,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE__ROLE = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 8;
+    int RECIPE__ROLE = COOKBOOK_FILE_FEATURE_COUNT + 1;
 
 				/**
 	 * The feature id for the '<em><b>Runlist</b></em>' reference list.
@@ -835,7 +815,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE__RUNLIST = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 9;
+    int RECIPE__RUNLIST = COOKBOOK_FILE_FEATURE_COUNT + 2;
 
 				/**
 	 * The number of structural features of the '<em>Recipe</em>' class.
@@ -844,7 +824,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 10;
+    int RECIPE_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 3;
 
 				/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -853,7 +833,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE_DESCRIPTION__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+    int RECIPE_DESCRIPTION__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -862,7 +842,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE_DESCRIPTION__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+    int RECIPE_DESCRIPTION__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -871,7 +851,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE_DESCRIPTION__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+    int RECIPE_DESCRIPTION__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
 
 				/**
 	 * The number of structural features of the '<em>Recipe Description</em>' class.
@@ -880,7 +860,79 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RECIPE_DESCRIPTION_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+    int RECIPE_DESCRIPTION_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+
+				/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RESOURCE__NAME = COOKBOOK_FILE__NAME;
+
+				/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RESOURCE__ID = COOKBOOK_FILE__ID;
+
+				/**
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RESOURCE__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RESOURCE__URL = COOKBOOK_FILE__URL;
+
+				/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RESOURCE__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int RESOURCE__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
 
 				/**
 	 * The feature id for the '<em><b>Extension</b></em>' attribute.
@@ -889,79 +941,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RESOURCE__EXTENSION = ChefclipsePackage.RUBY_FILE__EXTENSION;
-
-				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RESOURCE__URL = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 0;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RESOURCE__CHECKSUM = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 1;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RESOURCE__PATH = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 2;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RESOURCE__SPECIFICITY = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 3;
-
-				/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RESOURCE__NAME = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 4;
-
-				/**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RESOURCE__ID = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 5;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int RESOURCE__COOKBOOK = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 6;
-
-				/**
-	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOURCE__BYTES = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 7;
+    int RESOURCE__EXTENSION = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
 	 * The number of structural features of the '<em>Resource</em>' class.
@@ -970,16 +950,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int RESOURCE_FEATURE_COUNT = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 8;
-
-				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int TEMPLATE__URL = ChefclipsePackage.SANDBOXED_OBJECT__URL;
+    int RESOURCE_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 1;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -988,7 +959,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int TEMPLATE__NAME = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
+    int TEMPLATE__NAME = COOKBOOK_FILE__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -997,7 +968,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int TEMPLATE__ID = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
+    int TEMPLATE__ID = COOKBOOK_FILE__ID;
 
 				/**
 	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
@@ -1006,34 +977,16 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int TEMPLATE__CHECKSUM = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
+    int TEMPLATE__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
 
 				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int TEMPLATE__PATH = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int TEMPLATE__SPECIFICITY = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int TEMPLATE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
+    int TEMPLATE__URL = COOKBOOK_FILE__URL;
 
 				/**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
@@ -1042,7 +995,34 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEMPLATE__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int TEMPLATE__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int TEMPLATE__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int TEMPLATE__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPLATE__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
 
 				/**
 	 * The number of structural features of the '<em>Template</em>' class.
@@ -1051,16 +1031,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int TEMPLATE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
-
-				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int ATTRIBUTES__URL = ChefclipsePackage.SANDBOXED_OBJECT__URL;
+    int TEMPLATE_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1069,7 +1040,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ATTRIBUTES__NAME = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
+    int ATTRIBUTES__NAME = COOKBOOK_FILE__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -1078,7 +1049,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ATTRIBUTES__ID = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
+    int ATTRIBUTES__ID = COOKBOOK_FILE__ID;
 
 				/**
 	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
@@ -1087,34 +1058,16 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ATTRIBUTES__CHECKSUM = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
+    int ATTRIBUTES__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
 
 				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int ATTRIBUTES__PATH = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int ATTRIBUTES__SPECIFICITY = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int ATTRIBUTES__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
+    int ATTRIBUTES__URL = COOKBOOK_FILE__URL;
 
 				/**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
@@ -1123,7 +1076,43 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTES__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int ATTRIBUTES__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int ATTRIBUTES__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int ATTRIBUTES__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTES__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
+
+				/**
+	 * The feature id for the '<em><b>Extension</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTES__EXTENSION = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
 	 * The number of structural features of the '<em>Attributes</em>' class.
@@ -1132,70 +1121,53 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ATTRIBUTES_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
+    int ATTRIBUTES_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 1;
 
 				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.FileImpl <em>File</em>}' class.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.limepepper.chefclipse.common.cookbook.impl.FileImpl
+	 * @see org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl#getFile()
 	 * @generated
-	 * @ordered
 	 */
-    int FILE__URL = ChefclipsePackage.SANDBOXED_OBJECT__URL;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int FILE__CHECKSUM = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 0;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int FILE__PATH = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 1;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int FILE__SPECIFICITY = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 2;
+	int FILE = 9;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int FILE__NAME = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 3;
+	int FILE__NAME = COOKBOOK_FILE__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int FILE__ID = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 4;
+	int FILE__ID = COOKBOOK_FILE__ID;
 
 				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int FILE__COOKBOOK = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 5;
+	int FILE__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__URL = COOKBOOK_FILE__URL;
 
 				/**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
@@ -1204,16 +1176,43 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE__BYTES = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 6;
+	int FILE__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
 
 				/**
 	 * The number of structural features of the '<em>File</em>' class.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int FILE_FEATURE_COUNT = ChefclipsePackage.SANDBOXED_OBJECT_FEATURE_COUNT + 7;
+	int FILE_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
 	 * The number of structural features of the '<em>Dependency Relation</em>' class.
@@ -1225,13 +1224,85 @@ public interface CookbookPackage extends EPackage {
     int DEPENDENCY_RELATION_FEATURE_COUNT = 0;
 
 				/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int METADATA__NAME = COOKBOOK_FILE__NAME;
+
+				/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int METADATA__ID = COOKBOOK_FILE__ID;
+
+				/**
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__URL = COOKBOOK_FILE__URL;
+
+				/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METADATA__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
+
+				/**
 	 * The feature id for the '<em><b>Extension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__EXTENSION = ChefclipsePackage.RUBY_FILE__EXTENSION;
+    int METADATA__EXTENSION = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
 	 * The feature id for the '<em><b>Maintainer</b></em>' attribute.
@@ -1240,7 +1311,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__MAINTAINER = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 0;
+    int METADATA__MAINTAINER = COOKBOOK_FILE_FEATURE_COUNT + 1;
 
 				/**
 	 * The feature id for the '<em><b>Maintainer email</b></em>' attribute.
@@ -1249,7 +1320,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__MAINTAINER_EMAIL = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 1;
+    int METADATA__MAINTAINER_EMAIL = COOKBOOK_FILE_FEATURE_COUNT + 2;
 
 				/**
 	 * The feature id for the '<em><b>License</b></em>' attribute.
@@ -1258,7 +1329,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__LICENSE = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 2;
+    int METADATA__LICENSE = COOKBOOK_FILE_FEATURE_COUNT + 3;
 
 				/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1267,88 +1338,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__DESCRIPTION = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 3;
-
-				/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int METADATA__NAME = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 4;
-
-				/**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int METADATA__ID = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 5;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METADATA__CHECKSUM = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 6;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METADATA__PATH = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 7;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METADATA__SPECIFICITY = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 8;
-
-				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METADATA__URL = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 9;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METADATA__COOKBOOK = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 10;
-
-				/**
-	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METADATA__BYTES = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 11;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook Version</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int METADATA__COOKBOOK_VERSION = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 12;
+    int METADATA__DESCRIPTION = COOKBOOK_FILE_FEATURE_COUNT + 4;
 
 				/**
 	 * The feature id for the '<em><b>Long description</b></em>' attribute.
@@ -1357,7 +1347,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__LONG_DESCRIPTION = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 13;
+    int METADATA__LONG_DESCRIPTION = COOKBOOK_FILE_FEATURE_COUNT + 5;
 
 				/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -1366,7 +1356,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__VERSION = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 14;
+    int METADATA__VERSION = COOKBOOK_FILE_FEATURE_COUNT + 6;
 
 				/**
 	 * The feature id for the '<em><b>Replaces</b></em>' map.
@@ -1375,7 +1365,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__REPLACES = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 15;
+    int METADATA__REPLACES = COOKBOOK_FILE_FEATURE_COUNT + 7;
 
 				/**
 	 * The feature id for the '<em><b>Provides</b></em>' map.
@@ -1384,7 +1374,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__PROVIDES = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 16;
+    int METADATA__PROVIDES = COOKBOOK_FILE_FEATURE_COUNT + 8;
 
 				/**
 	 * The feature id for the '<em><b>Conflicts</b></em>' map.
@@ -1393,7 +1383,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__CONFLICTS = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 17;
+    int METADATA__CONFLICTS = COOKBOOK_FILE_FEATURE_COUNT + 9;
 
 				/**
 	 * The feature id for the '<em><b>Suggests</b></em>' map.
@@ -1402,7 +1392,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__SUGGESTS = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 18;
+    int METADATA__SUGGESTS = COOKBOOK_FILE_FEATURE_COUNT + 10;
 
 				/**
 	 * The feature id for the '<em><b>Dependencies</b></em>' map.
@@ -1411,7 +1401,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__DEPENDENCIES = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 19;
+    int METADATA__DEPENDENCIES = COOKBOOK_FILE_FEATURE_COUNT + 11;
 
 				/**
 	 * The feature id for the '<em><b>Platforms</b></em>' map.
@@ -1420,7 +1410,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__PLATFORMS = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 20;
+    int METADATA__PLATFORMS = COOKBOOK_FILE_FEATURE_COUNT + 12;
 
 				/**
 	 * The feature id for the '<em><b>Recipes</b></em>' map.
@@ -1429,7 +1419,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA__RECIPES = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 21;
+    int METADATA__RECIPES = COOKBOOK_FILE_FEATURE_COUNT + 13;
 
 				/**
 	 * The feature id for the '<em><b>Replacing</b></em>' attribute.
@@ -1438,7 +1428,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METADATA__REPLACING = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 22;
+	int METADATA__REPLACING = COOKBOOK_FILE_FEATURE_COUNT + 14;
 
 				/**
 	 * The number of structural features of the '<em>Metadata</em>' class.
@@ -1447,34 +1437,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int METADATA_FEATURE_COUNT = ChefclipsePackage.RUBY_FILE_FEATURE_COUNT + 23;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int PROVIDER__CHECKSUM = ChefclipsePackage.CHECKSUM_FILE__CHECKSUM;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int PROVIDER__PATH = ChefclipsePackage.CHECKSUM_FILE__PATH;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int PROVIDER__SPECIFICITY = ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY;
+    int METADATA_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 15;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1483,7 +1446,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int PROVIDER__NAME = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 0;
+    int PROVIDER__NAME = COOKBOOK_FILE__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -1492,7 +1455,16 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int PROVIDER__ID = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 1;
+    int PROVIDER__ID = COOKBOOK_FILE__ID;
+
+				/**
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int PROVIDER__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
 
 				/**
 	 * The feature id for the '<em><b>Url</b></em>' attribute.
@@ -1501,16 +1473,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int PROVIDER__URL = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 2;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int PROVIDER__COOKBOOK = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 3;
+    int PROVIDER__URL = COOKBOOK_FILE__URL;
 
 				/**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
@@ -1519,7 +1482,34 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROVIDER__BYTES = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 4;
+	int PROVIDER__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int PROVIDER__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int PROVIDER__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDER__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
 
 				/**
 	 * The number of structural features of the '<em>Provider</em>' class.
@@ -1528,43 +1518,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int PROVIDER_FEATURE_COUNT = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 5;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int ROOT_FILE__CHECKSUM = ChefclipsePackage.CHECKSUM_FILE__CHECKSUM;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int ROOT_FILE__PATH = ChefclipsePackage.CHECKSUM_FILE__PATH;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int ROOT_FILE__SPECIFICITY = ChefclipsePackage.CHECKSUM_FILE__SPECIFICITY;
-
-				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int ROOT_FILE__URL = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 0;
+    int PROVIDER_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 0;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1573,7 +1527,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROOT_FILE__NAME = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 1;
+    int ROOT_FILE__NAME = COOKBOOK_FILE__NAME;
 
 				/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -1582,16 +1536,25 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROOT_FILE__ID = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 2;
+    int ROOT_FILE__ID = COOKBOOK_FILE__ID;
 
 				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int ROOT_FILE__COOKBOOK = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 3;
+    int ROOT_FILE__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int ROOT_FILE__URL = COOKBOOK_FILE__URL;
 
 				/**
 	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
@@ -1600,7 +1563,34 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ROOT_FILE__BYTES = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 4;
+	int ROOT_FILE__BYTES = COOKBOOK_FILE__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int ROOT_FILE__PATH = COOKBOOK_FILE__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int ROOT_FILE__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT_FILE__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
 
 				/**
 	 * The number of structural features of the '<em>Root file</em>' class.
@@ -1609,7 +1599,79 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ROOT_FILE_FEATURE_COUNT = ChefclipsePackage.CHECKSUM_FILE_FEATURE_COUNT + 5;
+    int ROOT_FILE_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 0;
+
+				/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int MINIMAL_METADATA__NAME = METADATA__NAME;
+
+				/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+    int MINIMAL_METADATA__ID = METADATA__ID;
+
+				/**
+	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMAL_METADATA__CHECKSUM = METADATA__CHECKSUM;
+
+				/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMAL_METADATA__URL = METADATA__URL;
+
+				/**
+	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMAL_METADATA__BYTES = METADATA__BYTES;
+
+				/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMAL_METADATA__PATH = METADATA__PATH;
+
+				/**
+	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMAL_METADATA__SPECIFICITY = METADATA__SPECIFICITY;
+
+				/**
+	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MINIMAL_METADATA__COOKBOOK = METADATA__COOKBOOK;
 
 				/**
 	 * The feature id for the '<em><b>Extension</b></em>' attribute.
@@ -1655,87 +1717,6 @@ public interface CookbookPackage extends EPackage {
 	 * @ordered
 	 */
     int MINIMAL_METADATA__DESCRIPTION = METADATA__DESCRIPTION;
-
-				/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int MINIMAL_METADATA__NAME = METADATA__NAME;
-
-				/**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int MINIMAL_METADATA__ID = METADATA__ID;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMAL_METADATA__CHECKSUM = METADATA__CHECKSUM;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMAL_METADATA__PATH = METADATA__PATH;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMAL_METADATA__SPECIFICITY = METADATA__SPECIFICITY;
-
-				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMAL_METADATA__URL = METADATA__URL;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMAL_METADATA__COOKBOOK = METADATA__COOKBOOK;
-
-				/**
-	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MINIMAL_METADATA__BYTES = METADATA__BYTES;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook Version</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int MINIMAL_METADATA__COOKBOOK_VERSION = METADATA__COOKBOOK_VERSION;
 
 				/**
 	 * The feature id for the '<em><b>Long description</b></em>' attribute.
@@ -1837,16 +1818,6 @@ public interface CookbookPackage extends EPackage {
     int MINIMAL_METADATA_FEATURE_COUNT = METADATA_FEATURE_COUNT + 0;
 
 				/**
-	 * The number of structural features of the '<em>Name</em>' class.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int NAME_FEATURE_COUNT = 0;
-
-
-    /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookImpl <em>Cookbook</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1854,7 +1825,7 @@ public interface CookbookPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl#getCookbook()
 	 * @generated
 	 */
-	int COOKBOOK = 17;
+	int COOKBOOK = 16;
 
 				/**
 	 * The feature id for the '<em><b>Json class</b></em>' attribute.
@@ -1941,15 +1912,15 @@ public interface CookbookPackage extends EPackage {
     /**
 	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getFiles <em>Files</em>}'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Files</em>'.
 	 * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getFiles()
 	 * @see #getCookbookVersion()
 	 * @generated
 	 */
-    EReference getCookbookVersion_Files();
+	EReference getCookbookVersion_Files();
 
-    /**
+				/**
 	 * Returns the meta object for the containment reference list '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getResources <em>Resources</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2153,14 +2124,14 @@ public interface CookbookPackage extends EPackage {
     /**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.File <em>File</em>}'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>File</em>'.
 	 * @see org.limepepper.chefclipse.common.cookbook.File
 	 * @generated
 	 */
-    EClass getFile();
+	EClass getFile();
 
-    /**
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.DependencyRelation <em>Dependency Relation</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2179,17 +2150,6 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 */
     EClass getMetadata();
-
-    /**
-	 * Returns the meta object for the container reference '{@link org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion <em>Cookbook Version</em>}'.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Cookbook Version</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion()
-	 * @see #getMetadata()
-	 * @generated
-	 */
-    EReference getMetadata_CookbookVersion();
 
     /**
 	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.Metadata#getLong_description <em>Long description</em>}'.
@@ -2332,16 +2292,6 @@ public interface CookbookPackage extends EPackage {
     EClass getMinimalMetadata();
 
     /**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.Name <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Name</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbook.Name
-	 * @generated
-	 */
-    EClass getName_();
-
-    /**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile <em>File</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2350,17 +2300,6 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 */
     EClass getCookbookFile();
-
-    /**
-	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getCookbook <em>Cookbook</em>}'.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Cookbook</em>'.
-	 * @see org.limepepper.chefclipse.common.cookbook.CookbookFile#getCookbook()
-	 * @see #getCookbookFile()
-	 * @generated
-	 */
-    EReference getCookbookFile_Cookbook();
 
     /**
 	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getBytes <em>Bytes</em>}'.
@@ -2372,6 +2311,39 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCookbookFile_Bytes();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookFile#getPath()
+	 * @see #getCookbookFile()
+	 * @generated
+	 */
+	EAttribute getCookbookFile_Path();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getSpecificity <em>Specificity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Specificity</em>'.
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookFile#getSpecificity()
+	 * @see #getCookbookFile()
+	 * @generated
+	 */
+	EAttribute getCookbookFile_Specificity();
+
+				/**
+	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getCookbook <em>Cookbook</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Cookbook</em>'.
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookFile#getCookbook()
+	 * @see #getCookbookFile()
+	 * @generated
+	 */
+	EReference getCookbookFile_Cookbook();
 
 				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.Cookbook <em>Cookbook</em>}'.
@@ -2472,12 +2444,12 @@ public interface CookbookPackage extends EPackage {
         /**
 		 * The meta object literal for the '<em><b>Files</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-        EReference COOKBOOK_VERSION__FILES = eINSTANCE.getCookbookVersion_Files();
+		EReference COOKBOOK_VERSION__FILES = eINSTANCE.getCookbookVersion_Files();
 
-        /**
+								/**
 		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2648,14 +2620,14 @@ public interface CookbookPackage extends EPackage {
         /**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.FileImpl <em>File</em>}' class.
 		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @see org.limepepper.chefclipse.common.cookbook.impl.FileImpl
 		 * @see org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl#getFile()
 		 * @generated
 		 */
-        EClass FILE = eINSTANCE.getFile();
+		EClass FILE = eINSTANCE.getFile();
 
-        /**
+								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.DependencyRelationImpl <em>Dependency Relation</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2674,14 +2646,6 @@ public interface CookbookPackage extends EPackage {
 		 * @generated
 		 */
         EClass METADATA = eINSTANCE.getMetadata();
-
-        /**
-		 * The meta object literal for the '<em><b>Cookbook Version</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-		 * @generated
-		 */
-        EReference METADATA__COOKBOOK_VERSION = eINSTANCE.getMetadata_CookbookVersion();
 
         /**
 		 * The meta object literal for the '<em><b>Long description</b></em>' attribute feature.
@@ -2794,16 +2758,6 @@ public interface CookbookPackage extends EPackage {
         EClass MINIMAL_METADATA = eINSTANCE.getMinimalMetadata();
 
         /**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.NameImpl <em>Name</em>}' class.
-		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.cookbook.impl.NameImpl
-		 * @see org.limepepper.chefclipse.common.cookbook.impl.CookbookPackageImpl#getName_()
-		 * @generated
-		 */
-        EClass NAME = eINSTANCE.getName_();
-
-        /**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookFileImpl <em>File</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -2814,20 +2768,36 @@ public interface CookbookPackage extends EPackage {
         EClass COOKBOOK_FILE = eINSTANCE.getCookbookFile();
 
         /**
-		 * The meta object literal for the '<em><b>Cookbook</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-		 * @generated
-		 */
-        EReference COOKBOOK_FILE__COOKBOOK = eINSTANCE.getCookbookFile_Cookbook();
-
-								/**
 		 * The meta object literal for the '<em><b>Bytes</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute COOKBOOK_FILE__BYTES = eINSTANCE.getCookbookFile_Bytes();
+
+								/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COOKBOOK_FILE__PATH = eINSTANCE.getCookbookFile_Path();
+
+								/**
+		 * The meta object literal for the '<em><b>Specificity</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COOKBOOK_FILE__SPECIFICITY = eINSTANCE.getCookbookFile_Specificity();
+
+								/**
+		 * The meta object literal for the '<em><b>Cookbook</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COOKBOOK_FILE__COOKBOOK = eINSTANCE.getCookbookFile_Cookbook();
 
 								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.CookbookImpl <em>Cookbook</em>}' class.

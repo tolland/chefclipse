@@ -14,6 +14,7 @@ import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
+
 import chefclipse.core.managers.ChefRepositoryManager;
 
 public class ContributionItemDynamic extends CompoundContributionItem {

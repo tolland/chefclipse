@@ -41,8 +41,8 @@ import org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProvid
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
-import org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory;
 import org.limepepper.chefclipse.tools.EMFUtils;
+import org.limepepper.chefclipse.utility.provider.UtilityItemProviderAdapterFactory;
 
 import chefclipse.core.providers.ChefProjectAdapterFactory;
 
@@ -208,7 +208,7 @@ public class SampleView extends ViewPart {
         ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
                 ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
-        adapterFactory.addAdapterFactory(new ChefclipseItemProviderAdapterFactory());
+        adapterFactory.addAdapterFactory(new UtilityItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new ChefserverItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new WorkstationItemProviderAdapterFactory());
         adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());

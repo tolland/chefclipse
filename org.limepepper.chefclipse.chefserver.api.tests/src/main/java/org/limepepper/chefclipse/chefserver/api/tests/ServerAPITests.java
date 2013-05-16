@@ -13,23 +13,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import org.eclipse.emf.common.util.EList;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.VersionUrl;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
-import org.limepepper.chefclipse.common.chefserver.RunListItem;
-import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.tools.ChefUtils;
+import org.limepepper.chefclipse.utility.VersionUrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

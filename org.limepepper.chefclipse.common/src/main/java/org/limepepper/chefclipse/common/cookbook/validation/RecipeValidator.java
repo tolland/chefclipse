@@ -7,6 +7,7 @@ package org.limepepper.chefclipse.common.cookbook.validation;
 import org.eclipse.emf.common.util.EList;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.cookbook.Recipe}.
@@ -19,4 +20,6 @@ public interface RecipeValidator {
 
 	boolean validateRole(EList<Role> value);
 	boolean validateRunlist(EList<RunList> value);
+
+	boolean validateCookbook(CookbookVersion value);
 }

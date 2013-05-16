@@ -6,8 +6,6 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.cookbook.Attributes;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
@@ -22,7 +20,9 @@ import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.Resource;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.cookbook.Template;
-import org.limepepper.chefclipse.impl.DescribedObjectImpl;
+import org.limepepper.chefclipse.utility.NamedObject;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,7 +80,7 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
 	 * @generated
 	 */
     public String getName() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
     /**
@@ -89,7 +89,7 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
 	 * @generated
 	 */
     public void setName(String newName) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
     /**
@@ -98,7 +98,7 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
 	 * @generated
 	 */
     public String getID() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
     /**
@@ -107,7 +107,7 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
 	 * @generated
 	 */
     public void setID(String newID) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
     /**
@@ -178,15 +178,15 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<File> getFiles() {
+	@SuppressWarnings("unchecked")
+	public EList<File> getFiles() {
 		return (EList<File>)eGet(CookbookPackage.Literals.COOKBOOK_VERSION__FILES, true);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -319,8 +319,8 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case CookbookPackage.COOKBOOK_VERSION__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-				case CookbookPackage.COOKBOOK_VERSION__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				case CookbookPackage.COOKBOOK_VERSION__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
+				case CookbookPackage.COOKBOOK_VERSION__ID: return UtilityPackage.NAMED_OBJECT__ID;
 				default: return -1;
 			}
 		}
@@ -343,8 +343,8 @@ public class CookbookVersionImpl extends DescribedObjectImpl implements Cookbook
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case ChefclipsePackage.NAMED_OBJECT__NAME: return CookbookPackage.COOKBOOK_VERSION__NAME;
-				case ChefclipsePackage.NAMED_OBJECT__ID: return CookbookPackage.COOKBOOK_VERSION__ID;
+				case UtilityPackage.NAMED_OBJECT__NAME: return CookbookPackage.COOKBOOK_VERSION__NAME;
+				case UtilityPackage.NAMED_OBJECT__ID: return CookbookPackage.COOKBOOK_VERSION__ID;
 				default: return -1;
 			}
 		}

@@ -2,7 +2,7 @@
  */
 package org.limepepper.chefclipse.common.workstation;
 
-import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.utility.NamedObject;
 
 /**
  * <!-- begin-user-doc -->

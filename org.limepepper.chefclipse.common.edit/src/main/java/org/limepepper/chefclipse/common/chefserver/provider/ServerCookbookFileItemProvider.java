@@ -19,13 +19,12 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
-import org.limepepper.chefclipse.provider.SandboxedObjectItemProvider;
-import org.limepepper.chefclipse.provider.NamedObjectItemProvider;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.provider.SandboxedObjectItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookFile} object.
@@ -61,10 +60,10 @@ public class ServerCookbookFileItemProvider
 			addNamePropertyDescriptor(object);
 			addIDPropertyDescriptor(object);
 			addChecksumPropertyDescriptor(object);
+			addBytesPropertyDescriptor(object);
 			addPathPropertyDescriptor(object);
 			addSpecificityPropertyDescriptor(object);
 			addCookbookPropertyDescriptor(object);
-			addBytesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -82,7 +81,7 @@ public class ServerCookbookFileItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedObject_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
-				 ChefclipsePackage.Literals.NAMED_OBJECT__NAME,
+				 UtilityPackage.Literals.NAMED_OBJECT__NAME,
 				 true,
 				 false,
 				 false,
@@ -104,7 +103,7 @@ public class ServerCookbookFileItemProvider
 				 getResourceLocator(),
 				 getString("_UI_NamedObject_ID_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
-				 ChefclipsePackage.Literals.NAMED_OBJECT__ID,
+				 UtilityPackage.Literals.NAMED_OBJECT__ID,
 				 true,
 				 false,
 				 false,
@@ -126,7 +125,7 @@ public class ServerCookbookFileItemProvider
 				 getResourceLocator(),
 				 getString("_UI_ChecksumFile_checksum_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_checksum_feature", "_UI_ChecksumFile_type"),
-				 ChefclipsePackage.Literals.CHECKSUM_FILE__CHECKSUM,
+				 UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM,
 				 true,
 				 false,
 				 false,
@@ -146,9 +145,9 @@ public class ServerCookbookFileItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ChecksumFile_path_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_path_feature", "_UI_ChecksumFile_type"),
-				 ChefclipsePackage.Literals.CHECKSUM_FILE__PATH,
+				 getString("_UI_CookbookFile_path_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_path_feature", "_UI_CookbookFile_type"),
+				 CookbookPackage.Literals.COOKBOOK_FILE__PATH,
 				 true,
 				 false,
 				 false,
@@ -168,9 +167,9 @@ public class ServerCookbookFileItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ChecksumFile_specificity_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_specificity_feature", "_UI_ChecksumFile_type"),
-				 ChefclipsePackage.Literals.CHECKSUM_FILE__SPECIFICITY,
+				 getString("_UI_CookbookFile_specificity_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_specificity_feature", "_UI_CookbookFile_type"),
+				 CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY,
 				 true,
 				 false,
 				 false,
@@ -182,10 +181,10 @@ public class ServerCookbookFileItemProvider
     /**
 	 * This adds a property descriptor for the Cookbook feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addCookbookPropertyDescriptor(Object object) {
+	protected void addCookbookPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
@@ -201,7 +200,7 @@ public class ServerCookbookFileItemProvider
 				 null));
 	}
 
-    /**
+				/**
 	 * This adds a property descriptor for the Bytes feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -263,9 +262,9 @@ public class ServerCookbookFileItemProvider
 			case ChefserverPackage.SERVER_COOKBOOK_FILE__NAME:
 			case ChefserverPackage.SERVER_COOKBOOK_FILE__ID:
 			case ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM:
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES:
 			case ChefserverPackage.SERVER_COOKBOOK_FILE__PATH:
 			case ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY:
-			case ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

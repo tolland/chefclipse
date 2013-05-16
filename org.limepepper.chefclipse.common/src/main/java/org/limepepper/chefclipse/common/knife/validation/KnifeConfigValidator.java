@@ -8,6 +8,7 @@ import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.Plugin;
 
 /**
@@ -28,4 +29,6 @@ public interface KnifeConfigValidator {
 	boolean validateCookbook_license(String value);
 	boolean validatePath(File value);
 	boolean validateServer(Server value);
+
+	boolean validateServerCookbookVersion(EList<ServerCookbookVersion> value);
 }

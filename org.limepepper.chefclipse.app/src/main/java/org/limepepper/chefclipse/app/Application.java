@@ -35,8 +35,10 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.StatusUtil;
 import org.eclipse.ui.internal.ide.application.DelayedEventsProcessor;
 import org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor;
+
 import chefclipse.ui.perspectives.ChefPerspectiveFactory;
 
+@SuppressWarnings("restriction")
 public class Application implements IApplication, IExecutableExtension {
 
     /**

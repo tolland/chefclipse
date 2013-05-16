@@ -302,6 +302,29 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 	}
 
     /**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CookbookListVersionRespItemProvider cookbookListVersionRespItemProvider;
+
+				/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCookbookListVersionRespAdapter() {
+		if (cookbookListVersionRespItemProvider == null) {
+			cookbookListVersionRespItemProvider = new CookbookListVersionRespItemProvider(this);
+		}
+
+		return cookbookListVersionRespItemProvider;
+	}
+
+				/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.CookbookListResp} instances.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -502,6 +525,7 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		if (serverConfigItemProvider != null) serverConfigItemProvider.dispose();
 		if (dataBagItemItemProvider != null) dataBagItemItemProvider.dispose();
 		if (sandboxItemProvider != null) sandboxItemProvider.dispose();
+		if (cookbookListVersionRespItemProvider != null) cookbookListVersionRespItemProvider.dispose();
 		if (cookbookListRespItemProvider != null) cookbookListRespItemProvider.dispose();
 		if (serverCookbookFileItemProvider != null) serverCookbookFileItemProvider.dispose();
 		if (serverCookbookVersionItemProvider != null) serverCookbookVersionItemProvider.dispose();

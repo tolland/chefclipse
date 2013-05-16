@@ -4,8 +4,6 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefclient.Client;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -13,7 +11,9 @@ import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
-import org.limepepper.chefclipse.impl.DescribedObjectImpl;
+import org.limepepper.chefclipse.utility.NamedObject;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,7 +61,7 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 * @generated
 	 */
     public String getName() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
     /**
@@ -70,7 +70,7 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 * @generated
 	 */
     public void setName(String newName) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
     /**
@@ -79,7 +79,7 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 * @generated
 	 */
     public String getID() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
     /**
@@ -88,7 +88,7 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 * @generated
 	 */
     public void setID(String newID) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
     /**
@@ -201,8 +201,8 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.NODE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.NODE__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				case ChefserverPackage.NODE__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
+				case ChefserverPackage.NODE__ID: return UtilityPackage.NAMED_OBJECT__ID;
 				default: return -1;
 			}
 		}
@@ -218,8 +218,8 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case ChefclipsePackage.NAMED_OBJECT__NAME: return ChefserverPackage.NODE__NAME;
-				case ChefclipsePackage.NAMED_OBJECT__ID: return ChefserverPackage.NODE__ID;
+				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.NODE__NAME;
+				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.NODE__ID;
 				default: return -1;
 			}
 		}

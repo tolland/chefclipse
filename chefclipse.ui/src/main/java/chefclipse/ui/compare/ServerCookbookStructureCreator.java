@@ -232,7 +232,8 @@ public class ServerCookbookStructureCreator implements IStructureCreator {
             return children;
         }
 
-        ZipFile createContainer(String path) {
+        @SuppressWarnings("restriction")
+		ZipFile createContainer(String path) {
             String entry = path;
             int pos = path.indexOf('/');
             if (pos < 0) {

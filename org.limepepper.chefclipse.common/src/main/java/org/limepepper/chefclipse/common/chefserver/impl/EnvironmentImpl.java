@@ -4,11 +4,11 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Environment;
-import org.limepepper.chefclipse.impl.DescribedObjectImpl;
+import org.limepepper.chefclipse.utility.NamedObject;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,7 +51,7 @@ public class EnvironmentImpl extends DescribedObjectImpl implements Environment 
 	 * @generated
 	 */
     public String getName() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
     /**
@@ -60,7 +60,7 @@ public class EnvironmentImpl extends DescribedObjectImpl implements Environment 
 	 * @generated
 	 */
     public void setName(String newName) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
     /**
@@ -69,7 +69,7 @@ public class EnvironmentImpl extends DescribedObjectImpl implements Environment 
 	 * @generated
 	 */
     public String getID() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
     /**
@@ -78,7 +78,7 @@ public class EnvironmentImpl extends DescribedObjectImpl implements Environment 
 	 * @generated
 	 */
     public void setID(String newID) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
     /**
@@ -100,8 +100,8 @@ public class EnvironmentImpl extends DescribedObjectImpl implements Environment 
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.ENVIRONMENT__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.ENVIRONMENT__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				case ChefserverPackage.ENVIRONMENT__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
+				case ChefserverPackage.ENVIRONMENT__ID: return UtilityPackage.NAMED_OBJECT__ID;
 				default: return -1;
 			}
 		}
@@ -117,8 +117,8 @@ public class EnvironmentImpl extends DescribedObjectImpl implements Environment 
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case ChefclipsePackage.NAMED_OBJECT__NAME: return ChefserverPackage.ENVIRONMENT__NAME;
-				case ChefclipsePackage.NAMED_OBJECT__ID: return ChefserverPackage.ENVIRONMENT__ID;
+				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.ENVIRONMENT__NAME;
+				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.ENVIRONMENT__ID;
 				default: return -1;
 			}
 		}

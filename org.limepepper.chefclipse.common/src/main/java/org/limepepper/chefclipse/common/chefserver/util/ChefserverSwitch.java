@@ -5,11 +5,6 @@ package org.limepepper.chefclipse.common.chefserver.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.DescribedObject;
-import org.limepepper.chefclipse.NamedDescribedObject;
-import org.limepepper.chefclipse.NamedObject;
-import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
@@ -24,10 +19,16 @@ import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerConfig;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+import org.limepepper.chefclipse.utility.ChecksumFile;
+import org.limepepper.chefclipse.utility.DescribedObject;
+import org.limepepper.chefclipse.utility.NamedDescribedObject;
+import org.limepepper.chefclipse.utility.NamedObject;
+import org.limepepper.chefclipse.utility.SandboxedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -157,6 +158,12 @@ public class ChefserverSwitch<T> extends Switch<T> {
 			case ChefserverPackage.SANDBOX: {
 				Sandbox sandbox = (Sandbox)theEObject;
 				T result = caseSandbox(sandbox);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.COOKBOOK_LIST_VERSION_RESP: {
+				CookbookListVersionResp cookbookListVersionResp = (CookbookListVersionResp)theEObject;
+				T result = caseCookbookListVersionResp(cookbookListVersionResp);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -348,6 +355,21 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
     /**
+	 * Returns the result of interpreting the object as an instance of '<em>Cookbook List Version Resp</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cookbook List Version Resp</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCookbookListVersionResp(CookbookListVersionResp object) {
+		return null;
+	}
+
+				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Cookbook List Resp</em>'.
 	 * <!-- begin-user-doc -->
      * This implementation returns null;

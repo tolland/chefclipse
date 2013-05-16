@@ -43,7 +43,7 @@ import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
-import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.utility.NamedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
@@ -118,10 +118,10 @@ public class CookbookGraphEditor extends EditorPart implements
     @Override
     public void createPartControl(Composite parent) {
         cookbookModel.addCookbookChangeListener(this);
-        
+
         ViewForm viewForm = new ViewForm(parent, SWT.NONE);
         viewForm.setLayout(new FillLayout());
-        
+
         graphViewer = new GraphViewer(viewForm, SWT.NONE);
 
         graphViewer.setContentProvider(new CookbookViewerContentProvider());
@@ -138,7 +138,7 @@ public class CookbookGraphEditor extends EditorPart implements
         hookMenu(graph);
         viewForm.setContent(graph);
     }
-    
+
     private void createToolbar(ViewForm viewFrom)
     {
         ToolBar toolBar = new ToolBar(viewFrom, SWT.FLAT);
@@ -265,7 +265,7 @@ public class CookbookGraphEditor extends EditorPart implements
             return null;
         }
     }
-    
+
     public LayoutAlgorithm getLayoutAlgorithm()
     {
         return this.currentLayoutAlgorithm;
@@ -309,7 +309,7 @@ public class CookbookGraphEditor extends EditorPart implements
             ManhattanConnectionRouter router = new ManhattanConnectionRouter();
             Connection c = connection.getConnectionFigure();
             connection.setRouter(router);
-           
+
             if(editor.getLayoutAlgorithm().getClass()==TreeLayoutAlgorithm.class)
             {
                 ConnectionAnchor s = new ChefclipseConnectionAnchor(c
@@ -329,7 +329,7 @@ public class CookbookGraphEditor extends EditorPart implements
             {
                 GraphContainer graphContainer = (GraphContainer)node;
                 DrawableContainer container = (DrawableContainer)element;
-                
+
                 if(container.getElements().length>0)
                 {
                     graphContainer.open(false);
@@ -365,14 +365,14 @@ public class CookbookGraphEditor extends EditorPart implements
             return null;
         }
     }
-    
+
     class CookbookGraphLayoutAction extends Action
     {
         public CookbookGraphLayoutAction() {
             this.setToolTipText("Change Cookbook Structure Graph Layout");
             setImageDescriptor(ImageDescriptor.createFromImage(ImageLoader.Load("full_hierarchy.gif")));
         }
-        
+
         @Override
         public void run()
         {

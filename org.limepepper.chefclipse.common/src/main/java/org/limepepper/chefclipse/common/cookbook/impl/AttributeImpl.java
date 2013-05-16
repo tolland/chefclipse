@@ -5,7 +5,6 @@ package org.limepepper.chefclipse.common.cookbook.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
-import org.limepepper.chefclipse.impl.NamedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->

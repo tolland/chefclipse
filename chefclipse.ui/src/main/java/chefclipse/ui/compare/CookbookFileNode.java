@@ -1,19 +1,17 @@
 package chefclipse.ui.compare;
 
 import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 
 import org.eclipse.compare.IStreamContentAccessor;
 import org.eclipse.compare.ITypedElement;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 
-import chefclipse.ui.ChefPlugin;
+import chefclipse.core.behaviours.DownloadBehaviour;
+import chefclipse.core.behaviours.DownloadBehaviourAdapterFactory;
 
 class CookbookFileNode extends CookbookResourceNode implements
 		IStreamContentAccessor, ITypedElement {
@@ -56,37 +54,15 @@ class CookbookFileNode extends CookbookResourceNode implements
 
 	/**
 	 *
-	 * @todo the client is responsible for closing the stream when finished
+	 *
 	 */
 	@Override
 	public InputStream getContents() throws CoreException {
 
-		try {
-			InputStream is = cookbookFile.getContentStream();
-			if (is != null)
-				return is;
-		} catch (Exception e) {
-			e.printStackTrace();
+		DownloadBehaviour downloader = (DownloadBehaviour) DownloadBehaviourAdapterFactory.INSTANCE
+				.adapt(cookbookFile, DownloadBehaviour.class);
 
-			if (cookbookFile != null) {
-				URLConnection connection;
-
-				ChefPlugin.log(getName() + " isnt a local file-trying "
-						+ ((SandboxedObject) cookbookFile).getUrl());
-
-				try {
-					URL url = ((SandboxedObject) cookbookFile).getUrl();
-
-					connection = url.openConnection();
-					return connection.getInputStream();
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-
-		}
-
-		return null;
+		return downloader.getContentStream();
 	}
 
 	public String getType() {

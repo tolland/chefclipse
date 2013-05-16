@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.impl.NamedObjectImpl;
+import org.limepepper.chefclipse.utility.impl.NamedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->

@@ -3,7 +3,7 @@
 package org.limepepper.chefclipse.common.cookbook.tests;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
-import org.limepepper.chefclipse.tests.NamedObjectTest;
+import org.limepepper.chefclipse.utility.tests.NamedObjectTest;
 
 /**
  * <!-- begin-user-doc -->

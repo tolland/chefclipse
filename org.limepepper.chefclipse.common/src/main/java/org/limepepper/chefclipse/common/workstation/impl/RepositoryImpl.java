@@ -4,14 +4,14 @@ package org.limepepper.chefclipse.common.workstation.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.CookbooksFolder;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
-import org.limepepper.chefclipse.impl.DescribedObjectImpl;
+import org.limepepper.chefclipse.utility.NamedObject;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,7 +58,7 @@ public class RepositoryImpl extends DescribedObjectImpl implements Repository {
 	 * @generated
 	 */
     public String getName() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
     /**
@@ -67,7 +67,7 @@ public class RepositoryImpl extends DescribedObjectImpl implements Repository {
 	 * @generated
 	 */
     public void setName(String newName) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
     /**
@@ -76,7 +76,7 @@ public class RepositoryImpl extends DescribedObjectImpl implements Repository {
 	 * @generated
 	 */
     public String getID() {
-		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
     /**
@@ -85,7 +85,7 @@ public class RepositoryImpl extends DescribedObjectImpl implements Repository {
 	 * @generated
 	 */
     public void setID(String newID) {
-		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
     /**
@@ -163,8 +163,8 @@ public class RepositoryImpl extends DescribedObjectImpl implements Repository {
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case WorkstationPackage.REPOSITORY__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
-				case WorkstationPackage.REPOSITORY__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				case WorkstationPackage.REPOSITORY__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
+				case WorkstationPackage.REPOSITORY__ID: return UtilityPackage.NAMED_OBJECT__ID;
 				default: return -1;
 			}
 		}
@@ -180,8 +180,8 @@ public class RepositoryImpl extends DescribedObjectImpl implements Repository {
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case ChefclipsePackage.NAMED_OBJECT__NAME: return WorkstationPackage.REPOSITORY__NAME;
-				case ChefclipsePackage.NAMED_OBJECT__ID: return WorkstationPackage.REPOSITORY__ID;
+				case UtilityPackage.NAMED_OBJECT__NAME: return WorkstationPackage.REPOSITORY__NAME;
+				case UtilityPackage.NAMED_OBJECT__ID: return WorkstationPackage.REPOSITORY__ID;
 				default: return -1;
 			}
 		}

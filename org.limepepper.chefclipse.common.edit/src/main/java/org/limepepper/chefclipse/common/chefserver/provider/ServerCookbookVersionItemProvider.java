@@ -62,6 +62,7 @@ public class ServerCookbookVersionItemProvider
 
 			addVersionPropertyDescriptor(object);
 			addCookbook_namePropertyDescriptor(object);
+			addKnifeConfigPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -106,6 +107,28 @@ public class ServerCookbookVersionItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Knife Config feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addKnifeConfigPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ServerCookbookVersion_knifeConfig_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ServerCookbookVersion_knifeConfig_feature", "_UI_ServerCookbookVersion_type"),
+				 ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__KNIFE_CONFIG,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

@@ -2,7 +2,7 @@
  */
 package org.limepepper.chefclipse.common.chefclient;
 
-import org.limepepper.chefclipse.Config;
+import org.limepepper.chefclipse.utility.Config;
 
 /**
  * <!-- begin-user-doc -->

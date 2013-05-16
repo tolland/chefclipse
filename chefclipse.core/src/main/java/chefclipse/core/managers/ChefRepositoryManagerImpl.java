@@ -29,6 +29,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -38,12 +39,9 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.swt.widgets.Display;
 import org.eclipselabs.emfjson.EMFJs;
 import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.NamedObject;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.common.cookbook.Attribute;
 import org.limepepper.chefclipse.common.cookbook.Attributes;
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
@@ -51,23 +49,22 @@ import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Definition;
 import org.limepepper.chefclipse.common.cookbook.File;
+import org.limepepper.chefclipse.common.cookbook.Library;
 import org.limepepper.chefclipse.common.cookbook.Metadata;
+import org.limepepper.chefclipse.common.cookbook.Provider;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.cookbook.Template;
-import org.limepepper.chefclipse.common.cookbook.impl.AttributeImpl;
-import org.limepepper.chefclipse.common.cookbook.impl.AttributesImpl;
-import org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl;
-import org.limepepper.chefclipse.common.cookbook.impl.Root_fileImpl;
-import org.limepepper.chefclipse.common.cookbook.impl.TemplateImpl;
+import org.limepepper.chefclipse.common.cookbook.util.CookbookSwitch;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+import org.limepepper.chefclipse.utility.ChecksumFile;
+import org.limepepper.chefclipse.utility.NamedObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import chefclipse.core.ChefFile;
 import chefclipse.core.builders.ChefProjectNature;
 import chefclipse.core.utils.ChefUtils;
 
@@ -127,7 +124,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 					// Cookbook().eContents().remove(eObject);
 
 					getRepository(resource.getProject()).getCookbooks().remove(
-							((CookbookVersion) eObject));
+							(eObject));
 
 				}
 			} catch (Exception e) {
@@ -135,12 +132,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 				logger.debug("Not able to completely delete without NPE");
 			}
 		}
-
-		/*
-		 * if (cookbookResource != null && deleteResource) {
-		 * cookbookResource.getParent().delete(true, null); }
-		 */
-
 	}
 
 	public EObject create(IResource resource) {
@@ -196,7 +187,8 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 				// @todo this is not used, because recipes cannot be created
 				// from eclipse atm
 				if (((IFile) resource).getParent().getName().equals("recipes")) {
-					eObject = createRecipe((IFile) resource);
+					eObject = createCookbookFile((IFile) resource,
+							CookbookPackage.eINSTANCE.getRecipe());
 				}
 				// if a file appears in a dir, called metadata.rb, then this
 				// should trigger
@@ -351,7 +343,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		eObject.setName(resource.getName());
 		eObject.setMetadata(CookbookFactory.eINSTANCE.createMetadata());
 
-		eObject.getAttributes();
 		Repository repo = (Repository) getElement(resource.getProject());
 
 		assertNotNull(repo);
@@ -366,10 +357,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		logger.debug("creating cookbook:" + resource.getName());
 		addMapping(resource, eObject);
 
-		synchronizeCookbookContents(eObject, (IFolder) resource);
-
-		System.err.println("cookbook :" + eObject.getName() + "  has "
-				+ eObject.getMetadata().getDependencies().toString());
+		synchronizeCookbookContents(eObject, resource);
 
 		cache.put(eObject.getName() + "-" + eObject.getMetadata().getVersion(),
 				eObject);
@@ -436,7 +424,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 		addMapping(resource, eObject);
 
-		synchronizeRepository((IContainer) resource);
+		synchronizeRepository(resource);
 		readInKnifeConfigs(resource);
 
 		for (CookbookVersion cookbook : eObject.getCookbooks()) {
@@ -465,31 +453,79 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		// cookbook.get().getCookbooks().remove(CookbookVersion);
 	}
 
-	public Recipe createRecipe(final IFile resource) throws CoreException {
+	/**
+	 * pass the EClass for the type
+	 *
+	 * @param resource
+	 * @param eClass
+	 * @return
+	 * @throws CoreException
+	 */
+	public CookbookFile createCookbookFile(final IFile resource, EClass eClass)
+			throws CoreException {
 
-		// Recipe eObject = CookbookFactory.eINSTANCE.createRecipe();
+		CookbookFile eObject = (CookbookFile) CookbookFactory.eINSTANCE
+				.create(eClass);
 
-		Recipe eObject = new RecipeImpl() {
-
-			@Override
-			public InputStream getContentStream() {
-				try {
-					return resource.getContents();
-				} catch (CoreException e) {
-					e.printStackTrace();
-				}
-				return null;
-			}
-
-		};
-
-		addCheckSum(resource, (ChecksumFile) eObject);
+		addCheckSum(resource, eObject);
 		eObject.setName(resource.getName());
 		addMapping(resource, eObject);
 
 		try {
-			CookbookVersion cookbookVersion = (CookbookVersion) getElement(getCookbookForResource(resource));
-			cookbookVersion.getRecipes().add(eObject);
+			final CookbookVersion cookbookVersion = (CookbookVersion) getElement(getCookbookForResource(resource));
+			CookbookSwitch<CookbookFile> cookbookFileSwitch = new CookbookSwitch<CookbookFile>() {
+
+				@Override
+				public CookbookFile caseRecipe(Recipe eObject) {
+					cookbookVersion.getRecipes().add(eObject);
+					return eObject;
+				}
+
+				@Override
+				public CookbookFile caseAttributes(Attributes eObject) {
+					cookbookVersion.getAttributes().add(eObject);
+					return eObject;
+				}
+
+				@Override
+				public CookbookFile caseProvider(Provider eObject) {
+					cookbookVersion.getProviders().add(eObject);
+					return eObject;
+				}
+
+				@Override
+				public CookbookFile caseRoot_file(Root_file eObject) {
+					cookbookVersion.getRoot_files().add(eObject);
+					return eObject;
+				}
+
+				@Override
+				public CookbookFile caseFile(File eObject) {
+					cookbookVersion.getFiles().add(eObject);
+					return eObject;
+				}
+
+				@Override
+				public CookbookFile caseLibrary(Library eObject) {
+					cookbookVersion.getLibraries().add(eObject);
+					return eObject;
+				}
+
+				@Override
+				public CookbookFile caseDefinition(Definition eObject) {
+					cookbookVersion.getDefinitions().add(eObject);
+					return eObject;
+				}
+
+				@Override
+				public CookbookFile caseTemplate(Template eObject) {
+					cookbookVersion.getTemplates().add(eObject);
+					return eObject;
+				}
+
+			};
+			cookbookFileSwitch.doSwitch(eObject);
+			// cookbookVersion.getRecipes().add(eObject);
 			eObject.setCookbook(cookbookVersion);
 
 		} catch (Exception e) {
@@ -499,8 +535,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		eObject.setID(eObject.eClass().getInstanceTypeName().toLowerCase()
 				+ "-" + ((NamedObject) eObject).getName() + "-"
 				+ eObject.getCookbook().getID());
-
-		ChefFile chefFile = new ChefFile(resource);
 
 		return eObject;
 	}
@@ -521,8 +555,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 			e.printStackTrace();
 		}
 
-		checksumFile.setPath(pathRelativeToCookbook(file));
-		checksumFile.setSpecificity(getSpecificity(file));
 	}
 
 	/*
@@ -624,99 +656,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		}
 	}
 
-	public void createTemplate(final IFile resource) throws CoreException {
-		if ((resource.getFileExtension() != null)
-				&& resource.getFileExtension().equals("erb")) {
-
-			Template eObject = new TemplateImpl() {
-
-				@Override
-				public InputStream getContentStream() {
-					try {
-						return resource.getContents();
-					} catch (CoreException e) {
-						e.printStackTrace();
-					}
-					return null;
-				}
-
-			};
-
-			addCheckSum(resource, (ChecksumFile) eObject);
-			try {
-				CookbookVersion cookbookVersion = (CookbookVersion) getElement(getCookbookForResource(resource));
-				cookbookVersion.getTemplates().add(eObject);
-				eObject.setCookbook(cookbookVersion);
-
-			} catch (Exception e) {
-				logger.debug("cookbook for template " + resource.getName()
-						+ " not existing:" + getCookbookForResource(resource));
-
-			}
-			eObject.setName(resource.getName());
-			eObject.setID(Long.toString(UUID.randomUUID()
-					.getMostSignificantBits()));
-
-			addMapping(resource, eObject);
-		}
-	}
-
-	public void createAttributes(final IFile resource) throws CoreException {
-		if ((resource.getFileExtension() != null)
-				&& resource.getFileExtension().equals("rb")) {
-
-			Attributes eObject = new AttributesImpl() {
-
-				@Override
-				public InputStream getContentStream() {
-					try {
-						return resource.getContents();
-					} catch (CoreException e) {
-						e.printStackTrace();
-					}
-					return null;
-				}
-
-			};
-
-			addCheckSum(resource, (ChecksumFile) eObject);
-			try {
-				CookbookVersion cookbookVersion = (CookbookVersion) getElement(getCookbookForResource(resource));
-				cookbookVersion.getAttributes().add(eObject);
-				eObject.setCookbook(cookbookVersion);
-
-			} catch (Exception e) {
-				logger.debug("cookbook for attribute " + resource.getName()
-						+ " not existing:" + getCookbookForResource(resource));
-
-			}
-			eObject.setName(resource.getName());
-			eObject.setID(Long.toString(UUID.randomUUID()
-					.getMostSignificantBits()));
-
-			addMapping(resource, eObject);
-		}
-	}
-
-	public void createFile(IFile resource) throws CoreException {
-
-		File eObject = CookbookFactory.eINSTANCE.createFile();
-		try {
-			CookbookVersion cookbookVersion = (CookbookVersion) getElement(resource
-					.getParent());
-			cookbookVersion.getFiles().add(eObject);
-			eObject.setCookbook(cookbookVersion);
-
-		} catch (Exception e) {
-			logger.debug("cookbook not existing:" + resource.getParent());
-		}
-		eObject.setName(resource.getName());
-		eObject.setID(Long.toString(UUID.randomUUID().getMostSignificantBits()));
-
-		addMapping(resource, eObject);
-
-	}
-
 	// @todo move to utils
 
 	public static IResource lookUpForCookbookResource(IResource resource)
@@ -740,92 +679,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 	}
 
-	public void createRootFile(final IFile resource) throws CoreException {
-
-		logger.info("creating root file:-->" + resource.getName());
-
-		// Root_file eObject = CookbookFactory.eINSTANCE.createRoot_file();
-
-		Root_file eObject = new Root_fileImpl() {
-
-			@Override
-			public InputStream getContentStream() {
-				try {
-					return resource.getContents();
-				} catch (CoreException e) {
-					e.printStackTrace();
-				}
-				return null;
-			}
-
-		};
-
-		addCheckSum(resource, (ChecksumFile) eObject);
-		try {
-			CookbookVersion cookbookVersion = (CookbookVersion) getElement(lookUpForCookbookResource(resource));
-			cookbookVersion.getRoot_files().add(eObject);
-			eObject.setCookbook(cookbookVersion);
-
-		} catch (Exception e) {
-			logger.error("cookbook not existing:" + resource.getParent());
-		}
-		/*
-		 * if (resource.getName().lastIndexOf('.') != -1) {
-		 * eObject.setName(resource.getName().substring(0,
-		 * resource.getName().lastIndexOf('.'))); } else {
-		 */
-		eObject.setName(resource.getName());
-		/* } */
-
-		eObject.setID(Long.toString(UUID.randomUUID().getMostSignificantBits()));
-
-		addMapping(resource, eObject);
-
-	}
-
-	public void createDefinition(IFile resource) throws CoreException {
-
-		Definition eObject = CookbookFactory.eINSTANCE.createDefinition();
-		try {
-			CookbookVersion cookbookVersion = (CookbookVersion) getElement(lookUpForCookbookResource(resource));
-			cookbookVersion.getDefinitions().add(eObject);
-			eObject.setCookbook(cookbookVersion);
-
-		} catch (Exception e) {
-			logger.debug("cookbook not existing:" + resource.getParent());
-		}
-		eObject.setName(resource.getName());
-		eObject.setID(Long.toString(UUID.randomUUID().getMostSignificantBits()));
-
-		addMapping(resource, eObject);
-
-	}
-
-	public void createProvider(IFile resource) throws CoreException {
-		if (resource.getFileExtension().equals("rb")) {
-			Template eObject = CookbookFactory.eINSTANCE.createTemplate();
-			addCheckSum(resource, (ChecksumFile) eObject);
-			try {
-				CookbookVersion cookbookVersion = (CookbookVersion) getElement(lookUpForCookbookResource(resource));
-				cookbookVersion.getTemplates().add(eObject);
-				eObject.setCookbook(cookbookVersion);
-
-			} catch (Exception e) {
-				logger.debug("cookbook not existing:" + resource.getParent());
-			}
-			/*
-			 * if (resource.getName().lastIndexOf('.') != -1) {
-			 * eObject.setName(resource.getName().substring(0,
-			 * resource.getName().lastIndexOf('.'))); } else {
-			 */
-			eObject.setName(resource.getName());
-			/* } */
-			eObject.setID(Long.toString(UUID.randomUUID()
-					.getMostSignificantBits()));
-			addMapping(resource, eObject);
-		}
-	}
-
 	/**
 	 * This is a chef cookbooks resource, not an IResource, or an EMF resource <br/>
 	 * see <a
@@ -842,7 +695,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		if (file.getFileExtension().equals("rb")) {
 			org.limepepper.chefclipse.common.cookbook.Resource eObject = CookbookFactory.eINSTANCE
 					.createResource();
-			addCheckSum(file, (ChecksumFile) eObject);
+			addCheckSum(file, eObject);
 			try {
 				CookbookVersion cookbookVersion = (CookbookVersion) getElement(getCookbookForResource(file));
 				cookbookVersion.getResources().add(eObject);
@@ -984,33 +837,38 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 					for (IResource resource : ((IFolder) res).members()) {
 						if ((resource instanceof IFile)
 								&& (((IFile) resource).getName().endsWith("rb"))) {
-							createRecipe((IFile) resource);
+							createCookbookFile((IFile) resource,
+									CookbookPackage.eINSTANCE.getRecipe());
 						}
 
 					}
 				} else if (res.getName().equals("providers")) {
 					for (IResource resource : ((IFolder) res).members()) {
 						if (resource instanceof IFile) {
-							createProvider((IFile) resource);
+							createCookbookFile((IFile) resource,
+									CookbookPackage.eINSTANCE.getProvider());
 						}
 					}
 
 				} else if (res.getName().equals("resources")) {
 					for (IResource resource : ((IFolder) res).members()) {
 						if (resource instanceof IFile) {
-							createResource((IFile) resource);
+							createCookbookFile((IFile) resource,
+									CookbookPackage.eINSTANCE.getResource());
 						}
 					}
 				} else if (res.getName().equals("definitions")) {
 					for (IResource resource : ((IFolder) res).members()) {
 						if (resource instanceof IFile) {
-							createDefinition((IFile) resource);
+							createCookbookFile((IFile) resource,
+									CookbookPackage.eINSTANCE.getDefinition());
 						}
 					}
 				} else if (res.getName().equals("attributes")) {
 					for (IResource resource : ((IFolder) res).members()) {
 						if (resource instanceof IFile) {
-							createAttributes((IFile) resource);
+							createCookbookFile((IFile) resource,
+									CookbookPackage.eINSTANCE.getAttributes());
 						}
 					}
 				} else if (res.getName().equals("files")) {
@@ -1021,7 +879,8 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 				}
 			} else if (res instanceof IFile) {
 				if (!isIgnored(res)) {
-					createRootFile((IFile) res);
+					createCookbookFile((IFile) res,
+							CookbookPackage.eINSTANCE.getRoot_file());
 
 				}
 			}
@@ -1043,7 +902,8 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	private void recurseTemplatesDir(IFolder folder) throws CoreException {
 		for (IResource resource : folder.members()) {
 			if (resource instanceof IFile) {
-				createTemplate((IFile) resource);
+				createCookbookFile((IFile) resource,
+						CookbookPackage.eINSTANCE.getTemplate());
 			}
 			if (resource instanceof IFolder) {
 				recurseTemplatesDir((IFolder) resource);
@@ -1054,10 +914,11 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	private void recurseFilesDir(IFolder folder) throws CoreException {
 		for (IResource resource : folder.members()) {
 			if (resource instanceof IFile) {
-				createFile((IFile) resource);
+				createCookbookFile((IFile) resource,
+						CookbookPackage.eINSTANCE.getFile());
 			}
 			if (resource instanceof IFolder) {
-				recurseTemplatesDir((IFolder) resource);
+				recurseFilesDir((IFolder) resource);
 			}
 		}
 	}

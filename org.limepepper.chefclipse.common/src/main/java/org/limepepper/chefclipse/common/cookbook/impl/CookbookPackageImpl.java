@@ -9,7 +9,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.limepepper.chefclipse.ChefclipsePackage;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -27,7 +26,6 @@ import org.limepepper.chefclipse.common.cookbook.File;
 import org.limepepper.chefclipse.common.cookbook.Library;
 import org.limepepper.chefclipse.common.cookbook.Metadata;
 import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
-import org.limepepper.chefclipse.common.cookbook.Name;
 import org.limepepper.chefclipse.common.cookbook.Provider;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.common.cookbook.RecipeDescription;
@@ -38,7 +36,8 @@ import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.impl.KnifePackageImpl;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 import org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl;
-import org.limepepper.chefclipse.impl.ChefclipsePackageImpl;
+import org.limepepper.chefclipse.utility.UtilityPackage;
+import org.limepepper.chefclipse.utility.impl.UtilityPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -112,12 +111,12 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass fileEClass = null;
+	private EClass fileEClass = null;
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -151,13 +150,6 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     private EClass minimalMetadataEClass = null;
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    private EClass nameEClass = null;
 
     /**
 	 * <!-- begin-user-doc -->
@@ -220,27 +212,27 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		ChefclipsePackageImpl theChefclipsePackage = (ChefclipsePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI) instanceof ChefclipsePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI) : ChefclipsePackage.eINSTANCE);
 		ChefserverPackageImpl theChefserverPackage = (ChefserverPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) : ChefserverPackage.eINSTANCE);
 		ChefclientPackageImpl theChefclientPackage = (ChefclientPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
 		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
 		KnifePackageImpl theKnifePackage = (KnifePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
+		UtilityPackageImpl theUtilityPackage = (UtilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI) instanceof UtilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI) : UtilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theCookbookPackage.createPackageContents();
-		theChefclipsePackage.createPackageContents();
 		theChefserverPackage.createPackageContents();
 		theChefclientPackage.createPackageContents();
 		theWorkstationPackage.createPackageContents();
 		theKnifePackage.createPackageContents();
+		theUtilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCookbookPackage.initializePackageContents();
-		theChefclipsePackage.initializePackageContents();
 		theChefserverPackage.initializePackageContents();
 		theChefclientPackage.initializePackageContents();
 		theWorkstationPackage.initializePackageContents();
 		theKnifePackage.initializePackageContents();
+		theUtilityPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCookbookPackage.freeze();
@@ -298,14 +290,14 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getCookbookVersion_Files() {
+	public EReference getCookbookVersion_Files() {
 		return (EReference)cookbookVersionEClass.getEStructuralFeatures().get(4);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -478,14 +470,14 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getFile() {
+	public EClass getFile() {
 		return fileEClass;
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -508,17 +500,8 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getMetadata_CookbookVersion() {
-		return (EReference)metadataEClass.getEStructuralFeatures().get(0);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EAttribute getMetadata_Long_description() {
-		return (EAttribute)metadataEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)metadataEClass.getEStructuralFeatures().get(0);
 	}
 
     /**
@@ -527,7 +510,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     public EAttribute getMetadata_Version() {
-		return (EAttribute)metadataEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)metadataEClass.getEStructuralFeatures().get(1);
 	}
 
     /**
@@ -536,7 +519,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     public EReference getMetadata_Replaces() {
-		return (EReference)metadataEClass.getEStructuralFeatures().get(3);
+		return (EReference)metadataEClass.getEStructuralFeatures().get(2);
 	}
 
     /**
@@ -545,7 +528,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     public EReference getMetadata_Provides() {
-		return (EReference)metadataEClass.getEStructuralFeatures().get(4);
+		return (EReference)metadataEClass.getEStructuralFeatures().get(3);
 	}
 
     /**
@@ -554,7 +537,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     public EReference getMetadata_Conflicts() {
-		return (EReference)metadataEClass.getEStructuralFeatures().get(5);
+		return (EReference)metadataEClass.getEStructuralFeatures().get(4);
 	}
 
     /**
@@ -563,7 +546,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     public EReference getMetadata_Suggests() {
-		return (EReference)metadataEClass.getEStructuralFeatures().get(6);
+		return (EReference)metadataEClass.getEStructuralFeatures().get(5);
 	}
 
     /**
@@ -572,7 +555,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     public EReference getMetadata_Dependencies() {
-		return (EReference)metadataEClass.getEStructuralFeatures().get(7);
+		return (EReference)metadataEClass.getEStructuralFeatures().get(6);
 	}
 
     /**
@@ -581,7 +564,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     public EReference getMetadata_Platforms() {
-		return (EReference)metadataEClass.getEStructuralFeatures().get(8);
+		return (EReference)metadataEClass.getEStructuralFeatures().get(7);
 	}
 
     /**
@@ -590,7 +573,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
     public EReference getMetadata_Recipes() {
-		return (EReference)metadataEClass.getEStructuralFeatures().get(9);
+		return (EReference)metadataEClass.getEStructuralFeatures().get(8);
 	}
 
     /**
@@ -599,7 +582,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
 	public EAttribute getMetadata_Replacing() {
-		return (EAttribute)metadataEClass.getEStructuralFeatures().get(10);
+		return (EAttribute)metadataEClass.getEStructuralFeatures().get(9);
 	}
 
 				/**
@@ -634,26 +617,8 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getName_() {
-		return nameEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EClass getCookbookFile() {
 		return cookbookFileEClass;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getCookbookFile_Cookbook() {
-		return (EReference)cookbookFileEClass.getEStructuralFeatures().get(0);
 	}
 
     /**
@@ -662,7 +627,34 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 	 * @generated
 	 */
 	public EAttribute getCookbookFile_Bytes() {
+		return (EAttribute)cookbookFileEClass.getEStructuralFeatures().get(0);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCookbookFile_Path() {
 		return (EAttribute)cookbookFileEClass.getEStructuralFeatures().get(1);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCookbookFile_Specificity() {
+		return (EAttribute)cookbookFileEClass.getEStructuralFeatures().get(2);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCookbookFile_Cookbook() {
+		return (EReference)cookbookFileEClass.getEStructuralFeatures().get(3);
 	}
 
 				/**
@@ -759,7 +751,6 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		dependencyRelationEClass = createEClass(DEPENDENCY_RELATION);
 
 		metadataEClass = createEClass(METADATA);
-		createEReference(metadataEClass, METADATA__COOKBOOK_VERSION);
 		createEAttribute(metadataEClass, METADATA__LONG_DESCRIPTION);
 		createEAttribute(metadataEClass, METADATA__VERSION);
 		createEReference(metadataEClass, METADATA__REPLACES);
@@ -777,11 +768,11 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 
 		minimalMetadataEClass = createEClass(MINIMAL_METADATA);
 
-		nameEClass = createEClass(NAME);
-
 		cookbookFileEClass = createEClass(COOKBOOK_FILE);
-		createEReference(cookbookFileEClass, COOKBOOK_FILE__COOKBOOK);
 		createEAttribute(cookbookFileEClass, COOKBOOK_FILE__BYTES);
+		createEAttribute(cookbookFileEClass, COOKBOOK_FILE__PATH);
+		createEAttribute(cookbookFileEClass, COOKBOOK_FILE__SPECIFICITY);
+		createEReference(cookbookFileEClass, COOKBOOK_FILE__COOKBOOK);
 
 		cookbookEClass = createEClass(COOKBOOK);
 		createEAttribute(cookbookEClass, COOKBOOK__JSON_CLASS);
@@ -812,7 +803,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		ChefclipsePackage theChefclipsePackage = (ChefclipsePackage)EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI);
+		UtilityPackage theUtilityPackage = (UtilityPackage)EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI);
 		ChefserverPackage theChefserverPackage = (ChefserverPackage)EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI);
 
 		// Create type parameters
@@ -820,50 +811,31 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		cookbookVersionEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
+		cookbookVersionEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
 		cookbookVersionEClass.getESuperTypes().add(this.getCookbook());
-		definitionEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
-		definitionEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
-		definitionEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
 		definitionEClass.getESuperTypes().add(this.getCookbookFile());
-		libraryEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
 		libraryEClass.getESuperTypes().add(this.getCookbookFile());
 		attributeEClass.getESuperTypes().add(this.getCookbookFile());
-		recipeEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
-		recipeEClass.getESuperTypes().add(theChefclipsePackage.getRubyFile());
-		recipeEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
-		recipeEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
 		recipeEClass.getESuperTypes().add(this.getCookbookFile());
+		recipeEClass.getESuperTypes().add(theUtilityPackage.getRubyFile());
 		recipeEClass.getESuperTypes().add(theChefserverPackage.getRunListItem());
-		recipeDescriptionEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
-		resourceEClass.getESuperTypes().add(theChefclipsePackage.getRubyFile());
-		resourceEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
-		resourceEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
-		resourceEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
+		recipeDescriptionEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
 		resourceEClass.getESuperTypes().add(this.getCookbookFile());
-		templateEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
+		resourceEClass.getESuperTypes().add(theUtilityPackage.getRubyFile());
 		templateEClass.getESuperTypes().add(this.getCookbookFile());
-		attributesEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
 		attributesEClass.getESuperTypes().add(this.getCookbookFile());
-		fileEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
-		fileEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
-		fileEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
+		attributesEClass.getESuperTypes().add(theUtilityPackage.getRubyFile());
 		fileEClass.getESuperTypes().add(this.getCookbookFile());
-		metadataEClass.getESuperTypes().add(theChefclipsePackage.getRubyFile());
-		metadataEClass.getESuperTypes().add(theChefclipsePackage.getMaintainedObject());
-		metadataEClass.getESuperTypes().add(theChefclipsePackage.getNamedDescribedObject());
 		metadataEClass.getESuperTypes().add(this.getCookbookFile());
-		providerEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
-		providerEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
-		providerEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
+		metadataEClass.getESuperTypes().add(theUtilityPackage.getRubyFile());
+		metadataEClass.getESuperTypes().add(theUtilityPackage.getMaintainedObject());
+		metadataEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
 		providerEClass.getESuperTypes().add(this.getCookbookFile());
-		root_fileEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
-		root_fileEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
 		root_fileEClass.getESuperTypes().add(this.getCookbookFile());
 		minimalMetadataEClass.getESuperTypes().add(this.getMetadata());
-		cookbookFileEClass.getESuperTypes().add(theChefclipsePackage.getNamedObject());
-		cookbookFileEClass.getESuperTypes().add(theChefclipsePackage.getChecksumFile());
-		cookbookFileEClass.getESuperTypes().add(theChefclipsePackage.getSandboxedObject());
+		cookbookFileEClass.getESuperTypes().add(theUtilityPackage.getNamedObject());
+		cookbookFileEClass.getESuperTypes().add(theUtilityPackage.getChecksumFile());
+		cookbookFileEClass.getESuperTypes().add(theUtilityPackage.getSandboxedObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(cookbookVersionEClass, CookbookVersion.class, "CookbookVersion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -874,7 +846,7 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		initEReference(getCookbookVersion_Files(), this.getFile(), null, "files", null, 0, -1, CookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCookbookVersion_Resources(), this.getResource(), null, "resources", null, 0, -1, CookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCookbookVersion_Libraries(), this.getLibrary(), null, "libraries", null, 0, -1, CookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCookbookVersion_Metadata(), this.getMetadata(), this.getMetadata_CookbookVersion(), "metadata", null, 1, 1, CookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCookbookVersion_Metadata(), this.getMetadata(), null, "metadata", null, 1, 1, CookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCookbookVersion_Providers(), this.getProvider(), null, "providers", null, 0, -1, CookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCookbookVersion_Root_files(), this.getRoot_file(), null, "root_files", null, 0, -1, CookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCookbookVersion_Attributes(), this.getAttributes(), null, "attributes", null, 0, -1, CookbookVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -905,9 +877,8 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		initEClass(dependencyRelationEClass, DependencyRelation.class, "DependencyRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMetadata_CookbookVersion(), this.getCookbookVersion(), this.getCookbookVersion_Metadata(), "cookbookVersion", null, 1, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMetadata_Long_description(), theChefclipsePackage.getText(), "long_description", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMetadata_Version(), theChefclipsePackage.getVersion(), "version", "0.0.0", 1, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetadata_Long_description(), theUtilityPackage.getText(), "long_description", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMetadata_Version(), theUtilityPackage.getVersion(), "version", "0.0.0", 1, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMetadata_Replaces(), ecorePackage.getEStringToStringMapEntry(), null, "replaces", null, 0, -1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMetadata_Provides(), ecorePackage.getEStringToStringMapEntry(), null, "provides", null, 0, -1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMetadata_Conflicts(), ecorePackage.getEStringToStringMapEntry(), null, "conflicts", null, 0, -1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -923,17 +894,20 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 
 		initEClass(minimalMetadataEClass, MinimalMetadata.class, "MinimalMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(nameEClass, Name.class, "Name", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(cookbookFileEClass, CookbookFile.class, "CookbookFile", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCookbookFile_Cookbook(), this.getCookbookVersion(), null, "cookbook", null, 1, 1, CookbookFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCookbookFile_Bytes(), ecorePackage.getEByteArray(), "bytes", null, 0, 1, CookbookFile.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCookbookFile_Path(), ecorePackage.getEString(), "path", null, 1, 1, CookbookFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCookbookFile_Specificity(), ecorePackage.getEString(), "specificity", "default", 1, 1, CookbookFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCookbookFile_Cookbook(), this.getCookbookVersion(), null, "cookbook", null, 1, 1, CookbookFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(cookbookFileEClass, theChefclipsePackage.getEInputStream(), "getContentStream", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEOperation(cookbookFileEClass, theUtilityPackage.getEInputStream(), "getContentStream", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(cookbookEClass, Cookbook.class, "Cookbook", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCookbook_Json_class(), ecorePackage.getEString(), "json_class", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCookbook_Chef_type(), ecorePackage.getEString(), "chef_type", null, 0, 1, Cookbook.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Create resource
+		createResource(eNS_URI);
 	}
 
 } //CookbookPackageImpl

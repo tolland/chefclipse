@@ -28,6 +28,7 @@ Export-Package: chefclipse.core;
    org.eclipse.core.runtime.content,
    org.osgi.framework",
  chefclipse.core.adapters,
+ chefclipse.core.behaviours,
  chefclipse.core.builders;uses:="org.eclipse.core.runtime,org.eclipse.core.resources",
  chefclipse.core.factories;uses:="org.eclipse.emf.common.notify",
  chefclipse.core.managers;

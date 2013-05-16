@@ -4,6 +4,8 @@
  */
 package org.limepepper.chefclipse.common.cookbook.validation;
 
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+
 
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.cookbook.Provider}.
@@ -13,5 +15,7 @@ package org.limepepper.chefclipse.common.cookbook.validation;
  */
 public interface ProviderValidator {
 	boolean validate();
+
+	boolean validateCookbook(CookbookVersion value);
 
 }

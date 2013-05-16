@@ -32,17 +32,17 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
-import chefclipse.ui.messages.Messages;
+import org.limepepper.chefclipse.ui.Messages;
 import org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage;
 import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
 
 /**
  * Implements {@link ICookbooksRepository.Builder} to provide a dialog to select a Chef Server Configuration.
- *
+ * 
  * @author Guillermo Zunino
  */
 public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.Builder<KnifeConfig> {
-
+	
 	@Override
 	public ICookbooksRepository createRepository(KnifeConfig parameter) {
 		return new ChefServerCookbookRepository(parameter);
@@ -62,10 +62,10 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 		}
 		return server;
 	}
-
+	
 	/**
 	 * Dialog wrapping ChefConfigurationsViewer.
-	 *
+	 * 
 	 * @author Guillermo Zunino
 	 */
 	class ChefConfigDialog extends TitleAreaDialog {
@@ -75,12 +75,12 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 		public ChefConfigDialog(Shell parentShell) {
 			super(parentShell);
 		}
-
+		
 		@Override
 		protected Point getInitialSize() {
 			return new Point(450, 350);
 		}
-
+		
 		@Override
 		public void create() {
 			super.create();
@@ -89,13 +89,13 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 					IMessageProvider.INFORMATION);
 			getButton(IDialogConstants.OK_ID).setEnabled(false);
 		}
-
+		
 		@Override
 		protected void configureShell(Shell newShell) {
 			super.configureShell(newShell);
 			newShell.setText("Select a Chef Server Configuration");
 		}
-
+	
 		@Override
 		protected Control createDialogArea(Composite parent) {
 			Font font = parent.getFont();
@@ -106,28 +106,28 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 			composite.setFont(font);
 
 			createHeader(composite);
-
+			
 			configsViewer = new ChefConfigurationsViewer();
 			configsViewer.createControl(composite);
 			Control control = configsViewer.getControl();
 			GridData data = new GridData(GridData.FILL_BOTH);
 			data.horizontalSpan = 1;
 			control.setLayoutData(data);
-
+			
 			configsViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 				@Override
 				public void selectionChanged(SelectionChangedEvent event) {
 					Config current = configsViewer.getCheckedConfig();
 					if (current == null) {
 						getButton(IDialogConstants.OK_ID).setEnabled(false);
-						setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection);
+						setErrorMessage(Messages.ChefConfigurationPropertyPage_No_Selection); 
 					} else {
 						getButton(IDialogConstants.OK_ID).setEnabled(true);
 						setErrorMessage(null);
 					}
 				}
 			});
-
+			
 			ChefConfigManager.instance().getPreferences().addPreferenceChangeListener(new IPreferenceChangeListener() {
 				@Override
 				public void preferenceChange(PreferenceChangeEvent event) {
@@ -135,19 +135,19 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 				}
 			});
 			loadChefServerConfigs();
-
+			
 			return parent;
 		}
-
+		
 		/**
 		 * Load workspace chef configuration on viewer and select default or saved configuration.
 		 */
 		private void loadChefServerConfigs() {
 			List<KnifeConfig> configs = getChefServerConfigs();
-
+			
 			configsViewer.setChefConfigs(configs.toArray(new KnifeConfig[0]));
 		}
-
+		
 		/**
 		 * Gets Chef-server configuration from workspace preferences.
 		 * @return List of configurations
@@ -155,7 +155,7 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 		public List<KnifeConfig> getChefServerConfigs() {
 			return ChefConfigManager.instance().retrieveChefConfigurations();
 		}
-
+		
 		/**
 		 * Create description label and workspace settings link.
 		 * @param parent {@link Composite}
@@ -173,7 +173,7 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 
 			Label description = createDescriptionLabel(composite);
 			GridDataFactory.fillDefaults().grab(true, false).applyTo(description);
-
+			
 			Hyperlink configurationHyperlink = new Hyperlink(composite, SWT.NONE);
 			configurationHyperlink.setUnderlined(true);
 			configurationHyperlink.setText(Messages.ChefConfigurationPropertyPage_CONFIGURE_WORKSPACE);
@@ -189,14 +189,14 @@ public class ChefServerCookbookRepositoryConfig implements ICookbooksRepository.
 
 			return composite;
 		}
-
+		
 		protected Label createDescriptionLabel(Composite parent) {
 	        Label result = null;
             result = new Label(parent, SWT.WRAP);
             result.setFont(parent.getFont());
 	        return result;
 	    }
-
+		
 		@Override
 		protected void okPressed() {
 			server = (KnifeConfig) configsViewer.getCheckedConfig();

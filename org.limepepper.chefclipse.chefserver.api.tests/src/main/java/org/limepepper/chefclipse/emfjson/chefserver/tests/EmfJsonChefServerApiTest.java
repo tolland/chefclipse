@@ -26,8 +26,6 @@ import org.eclipselabs.emfjson.EMFJs;
 import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.ChefclipsePackage;
-import org.limepepper.chefclipse.NameUrlMap;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
@@ -36,6 +34,8 @@ import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.emfjson.chefserver.ChefServerURIHandler;
 import org.limepepper.chefclipse.emfjson.chefserver.internal.ChefRequest;
 import org.limepepper.chefclipse.emfjson.chefserver.internal.ChefServerClient;
+import org.limepepper.chefclipse.utility.NameUrlMap;
+import org.limepepper.chefclipse.utility.UtilityPackage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -75,7 +75,7 @@ public class EmfJsonChefServerApiTest {
             assertTrue(knifeConfig.getNode_name().length() > 0);
 
             options.put(EMFJs.OPTION_ROOT_ELEMENT,
-                    ChefclipsePackage.eINSTANCE.getNameUrlMap());
+                    UtilityPackage.eINSTANCE.getNameUrlMap());
 
             options.put("knifeConfig", knifeConfig);
         } catch (IOException ex) {
@@ -200,7 +200,7 @@ public class EmfJsonChefServerApiTest {
             Map<String, Object> options = new HashMap<String, Object>();
 
             options.put(EMFJs.OPTION_ROOT_ELEMENT,
-                    ChefclipsePackage.eINSTANCE.getNameUrlMap());
+                    UtilityPackage.eINSTANCE.getNameUrlMap());
 
             URL url = null;
 

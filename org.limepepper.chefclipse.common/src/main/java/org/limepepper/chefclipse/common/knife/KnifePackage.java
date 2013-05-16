@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.utility.UtilityPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -73,7 +73,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__CHEF_SERVER_URL = ChefclipsePackage.CONFIG__CHEF_SERVER_URL;
+    int KNIFE_CONFIG__CHEF_SERVER_URL = UtilityPackage.CONFIG__CHEF_SERVER_URL;
 
     /**
 	 * The feature id for the '<em><b>Client key</b></em>' attribute.
@@ -82,7 +82,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__CLIENT_KEY = ChefclipsePackage.CONFIG__CLIENT_KEY;
+    int KNIFE_CONFIG__CLIENT_KEY = UtilityPackage.CONFIG__CLIENT_KEY;
 
     /**
 	 * The feature id for the '<em><b>Node name</b></em>' attribute.
@@ -91,7 +91,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__NODE_NAME = ChefclipsePackage.CONFIG__NODE_NAME;
+    int KNIFE_CONFIG__NODE_NAME = UtilityPackage.CONFIG__NODE_NAME;
 
     /**
 	 * The feature id for the '<em><b>Log level</b></em>' attribute.
@@ -100,7 +100,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__LOG_LEVEL = ChefclipsePackage.CONFIG__LOG_LEVEL;
+    int KNIFE_CONFIG__LOG_LEVEL = UtilityPackage.CONFIG__LOG_LEVEL;
 
     /**
 	 * The feature id for the '<em><b>Validation key</b></em>' attribute.
@@ -109,7 +109,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__VALIDATION_KEY = ChefclipsePackage.CONFIG__VALIDATION_KEY;
+    int KNIFE_CONFIG__VALIDATION_KEY = UtilityPackage.CONFIG__VALIDATION_KEY;
 
     /**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -118,7 +118,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__VERSION = ChefclipsePackage.CONFIG__VERSION;
+    int KNIFE_CONFIG__VERSION = UtilityPackage.CONFIG__VERSION;
 
     /**
 	 * The feature id for the '<em><b>Validation client name</b></em>' attribute.
@@ -127,7 +127,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__VALIDATION_CLIENT_NAME = ChefclipsePackage.CONFIG__VALIDATION_CLIENT_NAME;
+    int KNIFE_CONFIG__VALIDATION_CLIENT_NAME = UtilityPackage.CONFIG__VALIDATION_CLIENT_NAME;
 
     /**
 	 * The feature id for the '<em><b>Plugins</b></em>' containment reference list.
@@ -136,7 +136,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__PLUGINS = ChefclipsePackage.CONFIG_FEATURE_COUNT + 0;
+    int KNIFE_CONFIG__PLUGINS = UtilityPackage.CONFIG_FEATURE_COUNT + 0;
 
     /**
 	 * The feature id for the '<em><b>Cache type</b></em>' attribute.
@@ -145,7 +145,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__CACHE_TYPE = ChefclipsePackage.CONFIG_FEATURE_COUNT + 1;
+    int KNIFE_CONFIG__CACHE_TYPE = UtilityPackage.CONFIG_FEATURE_COUNT + 1;
 
     /**
 	 * The feature id for the '<em><b>Cache option</b></em>' attribute.
@@ -154,7 +154,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__CACHE_OPTION = ChefclipsePackage.CONFIG_FEATURE_COUNT + 2;
+    int KNIFE_CONFIG__CACHE_OPTION = UtilityPackage.CONFIG_FEATURE_COUNT + 2;
 
     /**
 	 * The feature id for the '<em><b>Cookbook path</b></em>' attribute.
@@ -163,7 +163,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__COOKBOOK_PATH = ChefclipsePackage.CONFIG_FEATURE_COUNT + 3;
+    int KNIFE_CONFIG__COOKBOOK_PATH = UtilityPackage.CONFIG_FEATURE_COUNT + 3;
 
     /**
 	 * The feature id for the '<em><b>Cookbook copyright</b></em>' attribute.
@@ -172,7 +172,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__COOKBOOK_COPYRIGHT = ChefclipsePackage.CONFIG_FEATURE_COUNT + 4;
+    int KNIFE_CONFIG__COOKBOOK_COPYRIGHT = UtilityPackage.CONFIG_FEATURE_COUNT + 4;
 
     /**
 	 * The feature id for the '<em><b>Cookbook email</b></em>' attribute.
@@ -181,7 +181,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__COOKBOOK_EMAIL = ChefclipsePackage.CONFIG_FEATURE_COUNT + 5;
+    int KNIFE_CONFIG__COOKBOOK_EMAIL = UtilityPackage.CONFIG_FEATURE_COUNT + 5;
 
     /**
 	 * The feature id for the '<em><b>Cookbook license</b></em>' attribute.
@@ -190,7 +190,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__COOKBOOK_LICENSE = ChefclipsePackage.CONFIG_FEATURE_COUNT + 6;
+    int KNIFE_CONFIG__COOKBOOK_LICENSE = UtilityPackage.CONFIG_FEATURE_COUNT + 6;
 
     /**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -199,7 +199,7 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__PATH = ChefclipsePackage.CONFIG_FEATURE_COUNT + 7;
+    int KNIFE_CONFIG__PATH = UtilityPackage.CONFIG_FEATURE_COUNT + 7;
 
     /**
 	 * The feature id for the '<em><b>Server</b></em>' reference.
@@ -208,16 +208,25 @@ public interface KnifePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG__SERVER = ChefclipsePackage.CONFIG_FEATURE_COUNT + 8;
+    int KNIFE_CONFIG__SERVER = UtilityPackage.CONFIG_FEATURE_COUNT + 8;
 
     /**
+	 * The feature id for the '<em><b>Server Cookbook Version</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KNIFE_CONFIG__SERVER_COOKBOOK_VERSION = UtilityPackage.CONFIG_FEATURE_COUNT + 9;
+
+				/**
 	 * The number of structural features of the '<em>Config</em>' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG_FEATURE_COUNT = ChefclipsePackage.CONFIG_FEATURE_COUNT + 9;
+    int KNIFE_CONFIG_FEATURE_COUNT = UtilityPackage.CONFIG_FEATURE_COUNT + 10;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.knife.impl.PluginImpl <em>Plugin</em>}' class.
@@ -368,6 +377,17 @@ public interface KnifePackage extends EPackage {
     EReference getKnifeConfig_Server();
 
     /**
+	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getServerCookbookVersion <em>Server Cookbook Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Server Cookbook Version</em>'.
+	 * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getServerCookbookVersion()
+	 * @see #getKnifeConfig()
+	 * @generated
+	 */
+	EReference getKnifeConfig_ServerCookbookVersion();
+
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.knife.Plugin <em>Plugin</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -492,6 +512,14 @@ public interface KnifePackage extends EPackage {
         EReference KNIFE_CONFIG__SERVER = eINSTANCE.getKnifeConfig_Server();
 
         /**
+		 * The meta object literal for the '<em><b>Server Cookbook Version</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference KNIFE_CONFIG__SERVER_COOKBOOK_VERSION = eINSTANCE.getKnifeConfig_ServerCookbookVersion();
+
+								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.knife.impl.PluginImpl <em>Plugin</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

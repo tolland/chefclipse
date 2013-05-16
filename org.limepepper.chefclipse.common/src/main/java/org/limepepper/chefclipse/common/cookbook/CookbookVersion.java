@@ -5,8 +5,8 @@ package org.limepepper.chefclipse.common.cookbook;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.NamedDescribedObject;
 import org.limepepper.chefclipse.common.chefserver.Environment;
+import org.limepepper.chefclipse.utility.NamedDescribedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -116,19 +116,19 @@ public interface CookbookVersion extends NamedDescribedObject, Cookbook {
 	 * Returns the value of the '<em><b>Files</b></em>' containment reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.File}.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Files</em>' containment reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Files</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Files</em>' containment reference list.
 	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Files()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-    EList<File> getFiles();
+	EList<File> getFiles();
 
-    /**
+				/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Resource}.
 	 * <!-- begin-user-doc -->
@@ -162,7 +162,6 @@ public interface CookbookVersion extends NamedDescribedObject, Cookbook {
 
     /**
 	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion <em>Cookbook Version</em>}'.
 	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Metadata</em>' containment reference isn't clear,
@@ -172,8 +171,7 @@ public interface CookbookVersion extends NamedDescribedObject, Cookbook {
 	 * @return the value of the '<em>Metadata</em>' containment reference.
 	 * @see #setMetadata(Metadata)
 	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Metadata()
-	 * @see org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion
-	 * @model opposite="cookbookVersion" containment="true" resolveProxies="true" required="true"
+	 * @model containment="true" resolveProxies="true" required="true"
 	 * @generated
 	 */
     Metadata getMetadata();

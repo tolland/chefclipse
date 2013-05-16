@@ -13,14 +13,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  * @generated
  */
 public class ChefclipseResourceImpl extends XMIResourceImpl {
-    /**
+	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param uri the URI of the new resource.
 	 * @generated
 	 */
-    public ChefclipseResourceImpl(URI uri) {
+	public ChefclipseResourceImpl(URI uri) {
 		super(uri);
 	}
 

@@ -3,13 +3,10 @@
 package org.limepepper.chefclipse.common.cookbook;
 
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.NamedObject;
-import org.limepepper.chefclipse.RubyFile;
-import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
+import org.limepepper.chefclipse.utility.RubyFile;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +25,7 @@ import org.limepepper.chefclipse.common.chefserver.RunListItem;
  * @model
  * @generated
  */
-public interface Recipe extends SandboxedObject, RubyFile, ChecksumFile, NamedObject, CookbookFile, RunListItem {
+public interface Recipe extends CookbookFile, RubyFile, RunListItem {
     /**
 	 * Returns the value of the '<em><b>Role</b></em>' reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.Role}.

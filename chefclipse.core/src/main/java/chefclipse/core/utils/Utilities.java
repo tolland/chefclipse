@@ -1,20 +1,11 @@
 package chefclipse.core.utils;
 
-import static org.junit.Assert.assertNotNull;
-
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
-import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
-import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import chefclipse.core.ChefCore;
-import chefclipse.core.CookbookFolder;
 
 public class Utilities {
 

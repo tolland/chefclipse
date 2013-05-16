@@ -2,8 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-import org.limepepper.chefclipse.ChecksumFile;
-import org.limepepper.chefclipse.SandboxedObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,5 +13,5 @@ import org.limepepper.chefclipse.SandboxedObject;
  * @model
  * @generated
  */
-public interface Root_file extends ChecksumFile, SandboxedObject, CookbookFile {
+public interface Root_file extends CookbookFile {
 } // Root_file

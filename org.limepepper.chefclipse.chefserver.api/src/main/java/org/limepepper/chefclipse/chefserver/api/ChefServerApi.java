@@ -1,58 +1,52 @@
 package org.limepepper.chefclipse.chefserver.api;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
-import org.limepepper.chefclipse.VersionUrl;
-import org.limepepper.chefclipse.REST.ClientResp;
-import org.limepepper.chefclipse.REST.CookbookListResp;
-import org.limepepper.chefclipse.REST.CookbookVersionResp;
+import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.cookbook.CookbookFile;
+import org.limepepper.chefclipse.utility.VersionUrl;
 
 /**
  * @author tomhodder
- * 
+ *
  */
 public interface ChefServerApi {
 
-    String getServerInfo();
+	String getServerInfo();
 
-    List<ServerCookbookVersion> getCookbooks();
+	List<ServerCookbookVersion> getCookbooks();
 
-    Map<String, VersionUrl> getCookbookList();
+	Map<String, VersionUrl> getCookbookList();
 
-    List<ClientResp> getClients();
+	CookbookListResp getCookbookInfo(String name);
 
-    ClientResp getClient(String name);
+	InputStream getCookbookFileStream(CookbookFile cookbookFile);
 
-    List<CookbookListResp> getCookbooks(int num_versions);
+	ServerCookbookVersion getCookbookVersion(String name);
 
-    CookbookListResp getCookbookInfo(String name);
+	ServerCookbookVersion getCookbookVersion(String name, String version);
 
-    ServerCookbookVersion getCookbookVersion(String name);
+	List<Node> getNodes();
 
-    ServerCookbookVersion getCookbookVersion(String name, String version);
+	Map<String, String> getNodeList();
 
-    List<Node> getNodes();
+	Node getNode(String fqdn);
 
-    Map<String, String> getNodeList();
+	Map<String, String> getEnvironmentsList();
 
-    Node getNode(String fqdn);
+	List<Environment> getEnvironments();
 
-    List<CookbookVersionResp> getNodeCookbooks(String name);
+	Environment getEnvironment(String name);
 
-    Map<String, String> getEnvironmentsList();
+	Map<String, String> getRolesList();
 
-    List<Environment> getEnvironments();
+	List<Role> getRoles();
 
-    Environment getEnvironment(String name);
-
-    Map<String, String> getRolesList();
-
-    List<Role> getRoles();
-
-    Role getRole(String name);
+	Role getRole(String name);
 }

@@ -5,8 +5,9 @@ package org.limepepper.chefclipse.common.knife;
 import java.io.File;
 
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.Config;
 import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.utility.Config;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +26,7 @@ import org.limepepper.chefclipse.common.chefserver.Server;
  *   <li>{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getCookbook_license <em>Cookbook license</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getServer <em>Server</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getServerCookbookVersion <em>Server Cookbook Version</em>}</li>
  * </ul>
  * </p>
  *
@@ -112,7 +114,7 @@ public interface KnifeConfig extends Config {
 	 * @return the value of the '<em>Cookbook path</em>' attribute.
 	 * @see #setCookbook_path(File)
 	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeConfig_Cookbook_path()
-	 * @model dataType="org.limepepper.chefclipse.File" required="true"
+	 * @model dataType="org.limepepper.chefclipse.utility.File" required="true"
 	 * @generated
 	 */
     File getCookbook_path();
@@ -216,7 +218,7 @@ public interface KnifeConfig extends Config {
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(File)
 	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeConfig_Path()
-	 * @model dataType="org.limepepper.chefclipse.File" required="true"
+	 * @model dataType="org.limepepper.chefclipse.utility.File" required="true"
 	 * @generated
 	 */
     File getPath();
@@ -256,5 +258,23 @@ public interface KnifeConfig extends Config {
 	 * @generated
 	 */
     void setServer(Server value);
+
+				/**
+	 * Returns the value of the '<em><b>Server Cookbook Version</b></em>' reference list.
+	 * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion}.
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getKnifeConfig <em>Knife Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Server Cookbook Version</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Server Cookbook Version</em>' reference list.
+	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeConfig_ServerCookbookVersion()
+	 * @see org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion#getKnifeConfig
+	 * @model opposite="knifeConfig"
+	 * @generated
+	 */
+	EList<ServerCookbookVersion> getServerCookbookVersion();
 
 } // KnifeConfig

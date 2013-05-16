@@ -2,8 +2,8 @@
  */
 package org.limepepper.chefclipse.common.chefserver;
 
-import org.limepepper.chefclipse.SandboxedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
+import org.limepepper.chefclipse.utility.SandboxedObject;
 
 /**
  * <!-- begin-user-doc -->

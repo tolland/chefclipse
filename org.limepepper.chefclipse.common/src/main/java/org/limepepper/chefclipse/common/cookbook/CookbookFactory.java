@@ -105,13 +105,13 @@ public interface CookbookFactory extends EFactory {
     /**
 	 * Returns a new object of class '<em>File</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>File</em>'.
 	 * @generated
 	 */
-    File createFile();
+	File createFile();
 
-    /**
+				/**
 	 * Returns a new object of class '<em>Dependency Relation</em>'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -155,15 +155,6 @@ public interface CookbookFactory extends EFactory {
 	 * @generated
 	 */
     MinimalMetadata createMinimalMetadata();
-
-    /**
-	 * Returns a new object of class '<em>Name</em>'.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Name</em>'.
-	 * @generated
-	 */
-    Name createName();
 
     /**
 	 * Returns a new object of class '<em>Cookbook</em>'.

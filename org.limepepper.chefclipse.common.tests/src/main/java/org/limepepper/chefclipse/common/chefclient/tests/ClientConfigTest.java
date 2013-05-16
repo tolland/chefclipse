@@ -6,7 +6,7 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
 import org.limepepper.chefclipse.common.chefclient.ClientConfig;
-import org.limepepper.chefclipse.tests.ConfigTest;
+import org.limepepper.chefclipse.utility.tests.ConfigTest;
 
 /**
  * <!-- begin-user-doc -->

@@ -39,6 +39,7 @@ Export-Package: chefclipse.internal.ui.navigator;
  chefclipse.ui.messages,
  chefclipse.ui.perspectives;uses:="org.eclipse.ui",
  chefclipse.ui.wizards,
+ org.apache.commons.validator,
  org.limepepper.chefclipse.ui.properties
 Import-Package: org.eclipse.dltk.ruby.core,
  org.eclipse.jface.text,

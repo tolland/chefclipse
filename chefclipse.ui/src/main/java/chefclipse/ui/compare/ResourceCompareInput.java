@@ -13,10 +13,12 @@ package chefclipse.ui.compare;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.compare.CompareConfiguration;
 import org.eclipse.compare.CompareEditorInput;
+import org.eclipse.compare.IStreamContentAccessor;
 import org.eclipse.compare.ITypedElement;
 import org.eclipse.compare.structuremergeviewer.DiffNode;
 import org.eclipse.compare.structuremergeviewer.DiffTreeViewer;
@@ -25,6 +27,7 @@ import org.eclipse.compare.structuremergeviewer.IDiffContainer;
 import org.eclipse.compare.structuremergeviewer.IStructureComparator;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -33,7 +36,6 @@ import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.slf4j.Logger;
@@ -79,19 +81,12 @@ public class ResourceCompareInput extends CompareEditorInput {
 			protected boolean contentsEqual(Object input1, Object input2) {
 				if ((input1 instanceof CookbookFileNode)
 						&& (input2 instanceof CookbookFileNode)) {
-					if (((CookbookFileNode) input1).getMd5Sum().equals(
-							((CookbookFileNode) input2).getMd5Sum())) {
-						return true;
-
-					} else {
-						System.out.println("input1 md5:"
-								+ ((CookbookFileNode) input1).getMd5Sum());
-						System.out.println("input2 md5:"
-								+ ((CookbookFileNode) input2).getMd5Sum());
-					}
+					return ((CookbookFileNode) input1).getMd5Sum().equals(
+							((CookbookFileNode) input2).getMd5Sum());
 				}
 				return super.contentsEqual(input1, input2);
 			}
+
 		};
 
 		fRoot = d.findDifferences(false, monitor, null, null, fLeft, fRight);
@@ -218,10 +213,6 @@ public class ResourceCompareInput extends CompareEditorInput {
 				.getCookbookVersion(cookbookName);
 
 		assertNotNull(remoteCookbook);
-
-		for (Root_file root_file : remoteCookbook.getRoot_files()) {
-			System.out.println("root file url: " + root_file.getUrl());
-		}
 
 		return remoteCookbook;
 	}

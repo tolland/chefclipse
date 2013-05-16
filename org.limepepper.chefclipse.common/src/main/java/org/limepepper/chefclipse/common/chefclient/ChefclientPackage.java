@@ -5,7 +5,7 @@ package org.limepepper.chefclipse.common.chefclient;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.utility.UtilityPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -138,7 +138,7 @@ public interface ChefclientPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_CONFIG__CHEF_SERVER_URL = ChefclipsePackage.CONFIG__CHEF_SERVER_URL;
+    int CLIENT_CONFIG__CHEF_SERVER_URL = UtilityPackage.CONFIG__CHEF_SERVER_URL;
 
     /**
 	 * The feature id for the '<em><b>Client key</b></em>' attribute.
@@ -147,7 +147,7 @@ public interface ChefclientPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_CONFIG__CLIENT_KEY = ChefclipsePackage.CONFIG__CLIENT_KEY;
+    int CLIENT_CONFIG__CLIENT_KEY = UtilityPackage.CONFIG__CLIENT_KEY;
 
     /**
 	 * The feature id for the '<em><b>Node name</b></em>' attribute.
@@ -156,7 +156,7 @@ public interface ChefclientPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_CONFIG__NODE_NAME = ChefclipsePackage.CONFIG__NODE_NAME;
+    int CLIENT_CONFIG__NODE_NAME = UtilityPackage.CONFIG__NODE_NAME;
 
     /**
 	 * The feature id for the '<em><b>Log level</b></em>' attribute.
@@ -165,7 +165,7 @@ public interface ChefclientPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_CONFIG__LOG_LEVEL = ChefclipsePackage.CONFIG__LOG_LEVEL;
+    int CLIENT_CONFIG__LOG_LEVEL = UtilityPackage.CONFIG__LOG_LEVEL;
 
     /**
 	 * The feature id for the '<em><b>Validation key</b></em>' attribute.
@@ -174,7 +174,7 @@ public interface ChefclientPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_CONFIG__VALIDATION_KEY = ChefclipsePackage.CONFIG__VALIDATION_KEY;
+    int CLIENT_CONFIG__VALIDATION_KEY = UtilityPackage.CONFIG__VALIDATION_KEY;
 
     /**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -183,7 +183,7 @@ public interface ChefclientPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_CONFIG__VERSION = ChefclipsePackage.CONFIG__VERSION;
+    int CLIENT_CONFIG__VERSION = UtilityPackage.CONFIG__VERSION;
 
     /**
 	 * The feature id for the '<em><b>Validation client name</b></em>' attribute.
@@ -192,7 +192,7 @@ public interface ChefclientPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_CONFIG__VALIDATION_CLIENT_NAME = ChefclipsePackage.CONFIG__VALIDATION_CLIENT_NAME;
+    int CLIENT_CONFIG__VALIDATION_CLIENT_NAME = UtilityPackage.CONFIG__VALIDATION_CLIENT_NAME;
 
     /**
 	 * The number of structural features of the '<em>Client Config</em>' class.
@@ -201,7 +201,7 @@ public interface ChefclientPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_CONFIG_FEATURE_COUNT = ChefclipsePackage.CONFIG_FEATURE_COUNT + 0;
+    int CLIENT_CONFIG_FEATURE_COUNT = UtilityPackage.CONFIG_FEATURE_COUNT + 0;
 
 
     /**

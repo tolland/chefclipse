@@ -6,7 +6,7 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
-import org.limepepper.chefclipse.tests.ConfigTest;
+import org.limepepper.chefclipse.utility.tests.ConfigTest;
 
 /**
  * <!-- begin-user-doc -->

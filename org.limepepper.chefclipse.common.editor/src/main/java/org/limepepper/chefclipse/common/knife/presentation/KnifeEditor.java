@@ -114,7 +114,7 @@ import org.limepepper.chefclipse.common.cookbook.provider.CookbookItemProviderAd
 import org.limepepper.chefclipse.common.editor.presentation.ChefclipseEditorPlugin;
 import org.limepepper.chefclipse.common.knife.provider.KnifeItemProviderAdapterFactory;
 import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProviderAdapterFactory;
-import org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory;
+import org.limepepper.chefclipse.utility.provider.UtilityItemProviderAdapterFactory;
 
 
 /**
@@ -310,7 +310,7 @@ public class KnifeEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected EContentAdapter problemIndicationAdapter = 
+	protected EContentAdapter problemIndicationAdapter =
 		new EContentAdapter() {
 			@Override
 			public void notifyChanged(Notification notification) {
@@ -504,7 +504,7 @@ public class KnifeEditor
 			updateProblemIndication();
 		}
 	}
-  
+
 	/**
 	 * Updates the problems indication with the information described in the specified diagnostic.
 	 * <!-- begin-user-doc -->
@@ -599,12 +599,12 @@ public class KnifeEditor
 		adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new ChefclipseItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ChefserverItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ChefclientItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CookbookItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new WorkstationItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new KnifeItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new UtilityItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.
