@@ -16,8 +16,18 @@ public class Activator extends AbstractUIPlugin {
 
     public static final String EDIT_JSON_VALUE = "EDIT JSON VALUE";
 
-    public static final String DATA_BAG_ICON = "DATA BAG VALUE";
+    public static final String DATA_BAG_EDITOR = "DATA BAG EDITOR";
+    
+    public static final String DATA_BAG_ITEM_PAGE = "DATA BAG ITEM PAGE";
 
+    public static final String COLUMN_PAGE = "COLUMN PAGE";
+
+    public static final String JSON_FIELD = "JSON FIELD";
+
+    public static final String JSON_OBJECT = "JSON OBJECT";
+
+    public static final String ROW_PAGE = "ROW PAGE";
+    
     // The shared instance
     private static Activator plugin;
 
@@ -74,8 +84,18 @@ public class Activator extends AbstractUIPlugin {
         ImageRegistry imageRegistry = super.createImageRegistry();
         imageRegistry.put(EDIT_JSON_VALUE,
                 imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/edit.gif")); //$NON-NLS-1$
-        imageRegistry.put(DATA_BAG_ICON,
-                imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/data_bag_item.png")); //$NON-NLS-1$
+        imageRegistry.put(DATA_BAG_EDITOR,
+                imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/data_bag_editor.png")); //$NON-NLS-1$
+        imageRegistry.put(DATA_BAG_ITEM_PAGE,
+                imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/databagitem_page.gif")); //$NON-NLS-1$
+        imageRegistry.put(COLUMN_PAGE,
+                imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/column_page.gif")); //$NON-NLS-1$
+        imageRegistry.put(JSON_FIELD,
+                imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/json_field.gif")); //$NON-NLS-1$
+        imageRegistry.put(JSON_OBJECT,
+                imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/json_object.gif")); //$NON-NLS-1$
+        imageRegistry.put(ROW_PAGE,
+                imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/row_page.gif")); //$NON-NLS-1$
         return imageRegistry;
     }
 }

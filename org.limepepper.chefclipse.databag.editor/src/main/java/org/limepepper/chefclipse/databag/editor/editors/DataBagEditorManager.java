@@ -9,9 +9,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.commons.collections.IteratorUtils;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -230,5 +232,31 @@ public enum DataBagEditorManager {
             }
         }
         return null;
+    }
+
+    /**
+     * Returns whether the given field has children or not.
+     * 
+     * @param parentElement the field to check if contains children or not
+     * @param nodesMap
+     * @return true if the given parentElement contains children, false
+     *         otherwise
+     */
+    @SuppressWarnings("unchecked")
+    public boolean hasChildren(Entry<String, JsonNode> parentNodeEntry, Map<String, JsonNode> nodesMap) {
+        JsonNode valueNode = parentNodeEntry.getValue();
+        if (valueNode.isArray()) {
+            ArrayNode childrenArray = (ArrayNode) valueNode;
+            for (Iterator<JsonNode> children = childrenArray.getElements(); children.hasNext(); ) {
+                JsonNode child = children.next();
+                //below the field list is obtained, it must have only one element, we don't need to check that.
+                List<Entry<String, JsonNode>> fieldList = IteratorUtils.toList(child.getFields());
+                Entry<String, JsonNode> childEntry = fieldList.get(0);
+                if (!nodesMap.containsKey(childEntry.getKey()) && childEntry.getValue().isArray() && ((ArrayNode)childEntry.getValue()).size() > 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

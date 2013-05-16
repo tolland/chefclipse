@@ -13,8 +13,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.commands.CommandStack;
+import org.eclipse.gef.commands.CommandStackListener;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -32,9 +33,11 @@ import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
@@ -43,7 +46,6 @@ import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.part.EditorPart;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
-import org.limepepper.chefclipse.databag.editor.Activator;
 import org.limepepper.chefclipse.databag.editor.actions.AddNewDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.actions.EditJsonValueOfDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveJsonPropertyAction;
@@ -62,6 +64,8 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
     private Action addNewDataBagItemAction;
     private Action removePropertyAction;
     private Action editValueAction;
+    private CommandStack commandStack;
+    private Composite filterControl;
 
     /**
      * 
@@ -103,6 +107,8 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
         setSite(site);
         setInput(input);
         setPartName(input.getName());
+        setCommandStack(new CommandStack());
+        getCommandStack().addCommandStackListener(this);
         dataBagEObject = ((DataBagEditorInput) input).geteObject();
         try {
             allFieldsNode = DataBagEditorManager.INSTANCE.createAllFieldsNode(nodesMap);
@@ -116,8 +122,18 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
         }
     }
 
-    private void createToolBar(Composite bar) {
-        final ToolBar toolBar = new ToolBar(bar, SWT.NONE);
+    private void createKeysToolBar(Composite bar) {
+        final ToolBar toolBar = new ToolBar(bar, SWT.VERTICAL);
+        ToolBarManager manager = new ToolBarManager(toolBar);
+
+        ViewerProvider viewerProvider = new ViewerProvider();
+        addCommonActions(manager, viewerProvider);
+        manager.update(true);
+    }
+    
+    private void createDataBagItemsToolBar(Composite bar) {
+        final ToolBar toolBar = new ToolBar(bar, SWT.HORIZONTAL);
+        GridDataFactory.fillDefaults().align(SWT.END, SWT.BEGINNING).grab(false, false).applyTo(toolBar);
         ToolBarManager manager = new ToolBarManager(toolBar);
 
         ViewerProvider viewerProvider = new ViewerProvider();
@@ -126,7 +142,7 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
     }
 
     private void addCommonActions(ToolBarManager manager, ViewerProvider viewerProvider) {
-        setAddNewDataBagItemAction(new AddNewDataBagItemAction(viewerProvider));
+        setAddNewDataBagItemAction(new AddNewDataBagItemAction(viewerProvider, nodesMap));
         setRemovePropertyAction(new RemoveJsonPropertyAction(viewerProvider));
         setEditValueAction(new EditJsonValueOfDataBagItemAction(viewerProvider));
 
@@ -165,7 +181,7 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
     public void createPartControl(Composite parent) {
         viewer = doCreateViewer(parent);
         viewer.setContentProvider(new DataBagContentProvider(nodesMap));
-        viewer.setLabelProvider(new DataBagLabelProvider(nodesMap));
+//        viewer.setLabelProvider(new DataBagValueLabelProvider(nodesMap));
         viewer.setInput(allFieldsNode);
         GridLayoutFactory.swtDefaults().equalWidth(false).applyTo(viewer.getTree());
         GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true)
@@ -173,32 +189,56 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
     }
 
     private TreeViewer doCreateViewer(Composite parent) {
+        GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(parent);
+        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(parent);
+        
+        final Composite bar = new Composite(parent, SWT.NULL);
+        GridDataFactory.fillDefaults().align(SWT.BEGINNING, SWT.BEGINNING).indent(0, 37).grab(false, true).applyTo(bar);
+        createKeysToolBar(bar);
+        
         final FilteredTree filter = new FilteredTree(parent, SWT.H_SCROLL | SWT.V_SCROLL
                 | SWT.BORDER | SWT.FULL_SELECTION, new PatternFilter(), true) {
 
             @Override
             protected Composite createFilterControls(Composite parent) {
                 final Composite bar = new Composite(parent, SWT.NULL);
-                bar.setLayout(new GridLayout(4, false));
+                bar.setLayout(new GridLayout(5, false));
                 // new Label(bar, SWT.NULL).setText("Filter:");
                 // addAditionalActions(bar);
-                final Composite createFilterControls = super.createFilterControls(bar);
-                createToolBar(bar);
-                createFilterControls.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+                setFilterControl(super.createFilterControls(bar));
+//                getFilterControl().setSize(f, height)
+                GridDataFactory.fillDefaults().align(SWT.BEGINNING, SWT.BEGINNING).hint(140, 20).grab(false, false).applyTo(getFilterControl());
+//                createFilterControls.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+                Label emptyLabel = new Label(bar, SWT.NONE);
+                emptyLabel.setText("");
+                GridDataFactory.fillDefaults().align(SWT.FILL, SWT.BEGINNING).grab(true, false).applyTo(emptyLabel);
+                createDataBagItemsToolBar(bar);
                 return bar;
+                
+//                final Composite filterParent = new Composite(parent, SWT.NULL);
+//                filterParent.setLayout(new GridLayout(2, false));
+                // new Label(bar, SWT.NULL).setText("Filter:");
+                // addAditionalActions(bar);
+//                final Composite createFilterControls = super.createFilterControls(filterParent);
+//                createToolBar(bar);
+//                GridDataFactory.fillDefaults().align(SWT.BEGINNING, SWT.FILL).grab(false, false).applyTo(createFilterControls);
+//                createFilterControls.setLayoutData(new GridData(GridData.BEGINNING));
+//                return filterParent;
             }
-        };
 
-        final TreeViewer viewer = filter.getViewer();
-        viewer.setUseHashlookup(true);
-        viewer.getTree().setHeaderVisible(true);
-        viewer.getTree().setLinesVisible(true);
+        };
+        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(filter);
+        
+        final TreeViewer treeViewer = filter.getViewer();
+        treeViewer.setUseHashlookup(true);
+        treeViewer.getTree().setHeaderVisible(true);
+        treeViewer.getTree().setLinesVisible(true);
         // viewer.setSorter(new NameSorter());
 
-        TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(viewer,
-                new FocusCellOwnerDrawHighlighter(viewer));
+        TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer,
+                new FocusCellOwnerDrawHighlighter(treeViewer));
         ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(
-                viewer) {
+                treeViewer) {
 
             protected boolean isEditorActivationEvent(ColumnViewerEditorActivationEvent event) {
                 return event.eventType == ColumnViewerEditorActivationEvent.TRAVERSAL
@@ -209,44 +249,51 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
             }
         };
 
-        TreeViewerEditor.create(viewer, focusCellManager, actSupport,
+        TreeViewerEditor.create(treeViewer, focusCellManager, actSupport,
                 ColumnViewerEditor.TABBING_HORIZONTAL
                         | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR
                         | ColumnViewerEditor.TABBING_VERTICAL
                         | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 
-        final TextCellEditor textCellEditor = new TextCellEditor(viewer.getTree());
+        final TextCellEditor textCellEditor = new TextCellEditor(treeViewer.getTree());
 
-        TreeViewerColumn objectColumn = new TreeViewerColumn(viewer, SWT.LEFT);
-        objectColumn.getColumn().setAlignment(SWT.LEFT);
-        objectColumn.getColumn().setText("Field name");
-        objectColumn.getColumn().setWidth(150);
-        objectColumn.setEditingSupport(new FieldEditingSupport(viewer,
+        final TreeViewerColumn fieldColumn = new TreeViewerColumn(treeViewer, SWT.LEFT);
+        fieldColumn.getColumn().setAlignment(SWT.LEFT);
+        fieldColumn.getColumn().setText("Field name");
+        fieldColumn.getColumn().setWidth(150);
+        fieldColumn.setEditingSupport(new FieldEditingSupport(treeViewer,
                 textCellEditor));
-        // objectColumn.setLabelProvider(new MetadataCellLabelProvider());
-        TreeColumnLayout treeLayout = new TreeColumnLayout();
-        viewer.getTree().setLayout(treeLayout);
+        fieldColumn.setLabelProvider(new DataBagLabelProvider(nodesMap));
+        fieldColumn.getColumn().addListener(SWT.Resize, new Listener() {
 
-        treeLayout.setColumnData(objectColumn.getColumn(), new
+            @Override
+            public void handleEvent(Event event) {
+                filterControl.setSize(fieldColumn.getColumn().getWidth(), filterControl.getSize().y);
+            }
+            
+        });
+        filterControl.setSize(fieldColumn.getColumn().getWidth(), filterControl.getSize().y);
+        
+        TreeColumnLayout treeLayout = new TreeColumnLayout();
+        treeViewer.getTree().setLayout(treeLayout);
+
+        treeLayout.setColumnData(fieldColumn.getColumn(), new
                 ColumnWeightData(40, 150));
 
         if (dataBagEObject instanceof DataBag) {
-            createColumns(viewer, nodesMap, treeLayout);
+            createColumns(treeViewer, nodesMap, treeLayout);
         } else { // it's a databagitem
-            TreeViewerColumn valueColumn = new TreeViewerColumn(viewer, SWT.LEFT);
+            TreeViewerColumn valueColumn = new TreeViewerColumn(treeViewer, SWT.LEFT);
             valueColumn.getColumn().setAlignment(SWT.LEFT);
             valueColumn.getColumn().setText("Value");
             valueColumn.getColumn().setWidth(150);
-            valueColumn.getColumn().setImage(
-                    Activator.getDefault().getImageRegistry()
-                            .getDescriptor(Activator.DATA_BAG_ICON).createImage());
             // valueColumn.setEditingSupport(new ValueEditingSupport(viewer,
             // textCellEditor));
             treeLayout.setColumnData(valueColumn.getColumn(),
                     new ColumnWeightData(30, 150));
-            // valueColumn.setLabelProvider(new MetadataValueLabelProvider());
+            valueColumn.setLabelProvider(new DataBagLabelProvider(nodesMap));
         }
-        return viewer;
+        return treeViewer;
     }
 
     private void createColumns(TreeViewer treeViewer, Map<String, JsonNode> nodesMap,
@@ -257,13 +304,11 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
         for (String columnName : nodesMap.keySet()) {
             TreeViewerColumn valueColumn = new TreeViewerColumn(treeViewer, SWT.LEFT);
             valueColumn.getColumn().setAlignment(SWT.LEFT);
-            valueColumn.getColumn().setText(columnName);
+            valueColumn.getColumn().setText("Data bag item: " + columnName);
             valueColumn.getColumn().setWidth(150);
-            valueColumn.getColumn().setImage(
-                    Activator.getDefault().getImageRegistry()
-                            .getDescriptor(Activator.DATA_BAG_ICON).createImage());
             // valueColumn.setEditingSupport(new ValueEditingSupport(treeViewer,
             // textCellEditor));
+            valueColumn.setLabelProvider(new DataBagLabelProvider(nodesMap));
             columnLayout.setColumnData(valueColumn.getColumn(), new
                     ColumnWeightData(
                             --columnWeight, 150));
@@ -314,6 +359,18 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
         this.editValueAction = editValueAction;
     }
 
+    public CommandStack getCommandStack() {
+        return commandStack;
+    }
+
+    public void setCommandStack(CommandStack commandStack) {
+        this.commandStack = commandStack;
+    }
+
+    private void setFilterControl(Composite filterControl) {
+        this.filterControl = filterControl;
+    }
+
     // private class NameSorter extends ViewerSorter {
     //
     // @Override
@@ -331,6 +388,10 @@ public class DataBagColumnEditor extends EditorPart implements CommandStackListe
             // IStructuredSelection selection = (IStructuredSelection)
             // getViewer().getSelection();
             return null;
+        }
+        
+        public CommandStack getCommandStack() {
+            return commandStack;
         }
     }
 }

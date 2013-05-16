@@ -114,20 +114,7 @@ public class DataBagContentProvider implements ITreeContentProvider {
     @Override
     public boolean hasChildren(Object parentElement) {
         Entry<String, JsonNode> parentNodeEntry = (Entry<String, JsonNode>) parentElement;
-        JsonNode valueNode = parentNodeEntry.getValue();
-        if (valueNode.isArray()) {
-            ArrayNode childrenArray = (ArrayNode) valueNode;
-            for (Iterator<JsonNode> children = childrenArray.getElements(); children.hasNext(); ) {
-                JsonNode child = children.next();
-                //below the field list is obtained, it must have only one element, we don't need to check that.
-                List<Entry<String, JsonNode>> fieldList = IteratorUtils.toList(child.getFields());
-                Entry<String, JsonNode> childEntry = fieldList.get(0);
-                if (!nodesMap.containsKey(childEntry.getKey()) && childEntry.getValue().isArray() && ((ArrayNode)childEntry.getValue()).size() > 0) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return DataBagEditorManager.INSTANCE.hasChildren(parentNodeEntry, nodesMap);
     }
     
     /**

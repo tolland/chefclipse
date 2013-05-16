@@ -29,6 +29,7 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.databag.editor.Activator;
 
 /**
  * A multi page editor to manage all operations to {@link DataBag}s and {@link DataBagItem}s.
@@ -74,6 +75,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
             columnEditor = new DataBagColumnEditor(nodesMap);
             int index = addPage(columnEditor, getEditorInput());
             setPageText(index, "Column DataBag Editor");
+            setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.COLUMN_PAGE).createImage());
         } catch (PartInitException e) {
             ErrorDialog.openError(
                     getSite().getShell(),
@@ -124,6 +126,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
             TextEditor editor = new TextEditor();
             int index = addPage(editor, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
             setPageText(index, dataBagItem.getName());
+            setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_ITEM_PAGE).createImage());
         } catch (PartInitException e) {
             e.printStackTrace();
         }
@@ -142,6 +145,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 
 		int index = addPage(composite);
 		setPageText(index, "Row DataBag Editor");
+		setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.ROW_PAGE).createImage());
 	}
 	/**
 	 * Creates the pages of the multi-page data bag editor.
