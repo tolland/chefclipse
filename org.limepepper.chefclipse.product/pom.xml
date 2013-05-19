@@ -67,7 +67,7 @@
             </executions>
           </plugin>
 
-          <plugin>
+      <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-p2-repository-plugin</artifactId>
         <version>${tycho-version}</version>
@@ -107,7 +107,7 @@
 							</products>
 							<!-- global optional parameters (with default values) -->
 							<installFeatures>true</installFeatures>
-							<profile>DefaultProfile</profile>
+							<profile>main</profile>
 						</configuration>
 					</plugin>
 				</plugins>
