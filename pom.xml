@@ -126,12 +126,10 @@
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
-      <modules>
-        <!-- releng stuff -->
-        <module>chefclipse.p2installer</module>
-      </modules>
     </profile>
 
+
+    <!-- p2 builds a repo -->
     <profile>
       <id>p2</id>
       <activation>
