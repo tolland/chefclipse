@@ -36,17 +36,7 @@
 
   <profiles>
     <profile>
-      <id>izpack</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <modules>
-        <!-- releng stuff -->
-        <module>chefclipse.p2installer</module>
-      </modules>
-    </profile>
-    <profile>
-      <id>profile-1</id>
+      <id>build</id>
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
@@ -129,6 +119,18 @@
       </build>
     </profile>
 
+
+    <!-- izpack creates a install.jar, depends on the build profile -->
+    <profile>
+      <id>izpack</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <modules>
+        <!-- releng stuff -->
+        <module>chefclipse.p2installer</module>
+      </modules>
+    </profile>
 
     <profile>
       <id>p2</id>

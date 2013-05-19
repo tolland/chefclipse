@@ -17,8 +17,8 @@
   <packaging>eclipse-repository</packaging>
 
   <scm>
-    <connection>scm:git:https://github.com/limepepper/p2.git</connection>
-    <developerConnection>scm:git:https://github.com/limepepper/p2.git</developerConnection>
+    <connection>scm:git:git@github.com:limepepper/p2.git</connection>
+    <developerConnection>scm:git:git@github.com:limepepper/p2.git</developerConnection>
   </scm>
 
   <profiles>
