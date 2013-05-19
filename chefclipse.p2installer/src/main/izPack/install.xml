@@ -3,7 +3,7 @@
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 xsi:schemaLocation="http://izpack.org/schema/installation
-http://izpack.org/schema/5.0/izpack-installation-5.0.xsd"> 
+http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
   <info>
     <appname>Chefclipse</appname>
     <appversion>0.1.1</appversion>
@@ -219,7 +219,7 @@ http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
       name="p2installer"
       required="yes"
       installGroups="Chefclipse">
-      
+
 
       <description>Reality based configuration management</description>
 
