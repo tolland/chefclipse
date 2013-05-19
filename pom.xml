@@ -42,24 +42,24 @@
       </activation>
       <modules>
 
+        <!--module>org.limepepper.chefclipse.releng</module -->
+        <module>org.limepepper.chefclipse.target</module>
+        
         <!-- product -->
         <module>org.limepepper.chefclipse.product</module>
+        <module>org.limepepper.chefclipse.p2</module>
+
+        <!-- releng stuff -->
+        <module>chefclipse.p2installer</module>
 
         <!-- features bundles -->
         <module>features/org.limepepper.chefclipse.ui.feature</module>
         <module>features/org.limepepper.chefclipse.app.feature</module>
         <module>features/org.limepepper.chefclipse.devel.feature</module>
 
-
         <!-- app & ui bundles -->
         <module>chefclipse.core</module>
         <module>chefclipse.ui</module>
-
-        <!-- releng stuff -->
-        <module>chefclipse.p2installer</module>
-
-        <!--module>org.limepepper.chefclipse.releng</module -->
-        <module>org.limepepper.chefclipse.target</module>
 
         <!-- generated model stuff -->
         <module>org.limepepper.chefclipse.common</module>
@@ -135,17 +135,10 @@
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
-      <modules>
-        <module>features/org.limepepper.chefclipse.ui.feature</module>
-        <module>features/org.limepepper.chefclipse.app.feature</module>
-        <module>features/org.limepepper.chefclipse.devel.feature</module>
-        <module>org.limepepper.chefclipse.target</module>
-        <module>org.limepepper.chefclipse.product</module>
-        <module>org.limepepper.chefclipse.p2</module>
-      </modules>
       <build>
         <plugins>
           <plugin>
+          	
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-deploy-plugin</artifactId>
             <version>2.7</version>
