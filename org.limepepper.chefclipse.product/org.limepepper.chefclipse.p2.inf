@@ -1,6 +1,6 @@
 instructions.configure=\
-  addRepository(type:0,location:https${#58}//github.com/limepepper/p2/raw/master/chefclipse/tomhodder/update-site);\
-  addRepository(type:1,location:https${#58}//github.com/limepepper/p2/raw/master/chefclipse/tomhodder/update-site);
+  addRepository(type:0,location:https${#58}//github.com/limepepper/p2/raw/master/chefclipse/tomhodder2/update-site);\
+  addRepository(type:1,location:https${#58}//github.com/limepepper/p2/raw/master/chefclipse/tomhodder2/update-site);
   requires.1.namespace = org.eclipse.equinox.p2.iu
   requires.1.name = org.limepepper.chefclipse.ui.feature.feature.group
   requires.1.range = (0.0.0, 2.0.0)

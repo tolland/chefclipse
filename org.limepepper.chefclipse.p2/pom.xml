@@ -25,7 +25,8 @@
   	
   	<properties>
   		<repo.path>${project.build.directory}/repository</repo.path>
-    	<checkout.path>${project.build.directory}/checkout</checkout.path>
+        <checkout.path>/tmp/chefclipse_p2_checkout</checkout.path>
+    	<!--checkout.path>${project.build.directory}/checkout</checkout.path-->
     	<checkout.dir>chefclipse/${mvngit.branch}/update-site</checkout.dir>
   	</properties>
   	
@@ -57,7 +58,7 @@
         			<workingDirectory>${checkout.path}</workingDirectory>
         			<includes>**</includes>
         			<message>${project.version}</message>
-        			<tag>tamplateproject.p2.${project.version}</tag>        			
+        			<tag>Chefclipse.p2.${project.version}</tag>        			
         			<username></username>
         			<password></password>
         		</configuration>         		

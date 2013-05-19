@@ -18,11 +18,11 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class CookbookSiteRepositoryTest {
-	
+
 	static final Logger logger = LoggerFactory.getLogger(CookbookSiteRepositoryTest.class);
-	
+
 	private CookbookSiteRepository repo = new CookbookSiteRepository();
-	
+
 	@Test
 	public void testGetCookbooks() {
 		long t1 = System.currentTimeMillis();
@@ -33,11 +33,11 @@ public class CookbookSiteRepositoryTest {
 		assertThat(results.get(0).getName()).isNotEmpty();
 		assertThat(results.get(500).getName()).isNotEmpty();
 	}
-	
+
 	@Test
 	public void testGetCookbook() {
 		RemoteCookbook result = repo.getCookbook("apache");
-		
+
 		assertThat(result).isNotNull();
 		assertThat(result.getMaintainer()).isEqualTo("melezhik");
 		assertThat(result.getName()).isEqualTo("apache");
@@ -49,16 +49,16 @@ public class CookbookSiteRepositoryTest {
 		assertThat(result.getLatestVersion()).isEqualTo("http://cookbooks.opscode.com/api/v1/cookbooks/apache/versions/0_0_5");
 		assertThat(result.getVersions()).contains("http://cookbooks.opscode.com/api/v1/cookbooks/apache/versions/0_0_5");
 	}
-	
+
 	@Test
 	public void testDownloadCookbook() throws InstallCookbookException {
 		RemoteCookbook result = repo.getCookbook("apache");
 		File downloadCookbook = repo.downloadCookbook(result, result.getLatestVersion());
-		String tmpDirectory = System.getProperty("java.io.tmpdir");		
+		String tmpDirectory = System.getProperty("java.io.tmpdir");
 		assertThat(downloadCookbook.getPath()).isEqualTo(
 				Paths.get(tmpDirectory, "apache" + "_" + repo.getReadableVersion(result, result.getLatestVersion())).toString());
 	}
-	
+
 	@Test
     public void testCookbookVersion() throws InstallCookbookException {
         RemoteCookbook result = repo.getCookbook("apache");
