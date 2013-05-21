@@ -11,9 +11,16 @@ import java.util.Map.Entry;
 import org.codehaus.jackson.JsonNode;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.IColorProvider;
+import org.eclipse.jface.viewers.StyledCellLabelProvider;
+import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.jface.viewers.StyledString.Styler;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.TextStyle;
+import org.eclipse.swt.widgets.Display;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.databag.editor.Activator;
 
@@ -22,7 +29,7 @@ import org.limepepper.chefclipse.databag.editor.Activator;
  * 
  * @author Sebastian Sampaoli
  */
-public class DataBagLabelProvider extends ColumnLabelProvider {
+public class DataBagLabelProvider extends StyledCellLabelProvider implements IColorProvider {
 
     private Map<String, JsonNode> dataBagItemsMap;
 
@@ -35,9 +42,23 @@ public class DataBagLabelProvider extends ColumnLabelProvider {
     public void update(final ViewerCell cell) {
         final Entry<String, JsonNode> entryElement = (Entry<String, JsonNode>) cell.getElement();
         if (cell.getColumnIndex() == 0) {
+            StyledString styledString = new StyledString();
+            Styler dataStyler = new Styler() {
+
+                @Override
+                public void applyStyles(TextStyle textStyle) {
+                    textStyle.foreground = getForeground(entryElement);
+                    textStyle.background = getBackground(entryElement);
+//                    textStyle.font = getFont(element);
+                }
+            };
+            String text = getText(entryElement, cell.getColumnIndex());
+            styledString.append(text, dataStyler);
+            cell.setStyleRanges(styledString.getStyleRanges());
             cell.setFont(JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT));
+            cell.setText(styledString.getString());
             cell.setImage(getImage(entryElement, cell.getColumnIndex()));
-            cell.setText(getText(entryElement, cell.getColumnIndex()));
+//            cell.setText(getText(entryElement, cell.getColumnIndex()));
         } else {
             cell.setText(getText(entryElement, cell.getColumnIndex()));
         }
@@ -74,5 +95,15 @@ public class DataBagLabelProvider extends ColumnLabelProvider {
             return propertyValue.toString();
         }
         return "";
+    }
+
+    @Override
+    public Color getForeground(Object element) {
+        return Display.getCurrent().getSystemColor(SWT.COLOR_DARK_BLUE);
+    }
+
+    @Override
+    public Color getBackground(Object element) {
+        return null;
     }
 }
