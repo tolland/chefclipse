@@ -407,7 +407,9 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager,
         IContainer parent = resource.getParent();
         DataBag dataBag = (DataBag) getElement(parent);
         eObject.setDataBag(dataBag);
-        dataBag.getItems().add(eObject);
+        if (dataBag != null) {
+            dataBag.getItems().add(eObject);
+        }
         addMapping(resource, eObject);
         return eObject;
     }
