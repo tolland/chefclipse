@@ -20,16 +20,21 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.FontDialog;
 import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.xtext.resource.XtextResourceFactory;
+import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.databag.editor.Activator;
+
+import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /**
  * A multi page editor to manage all operations to {@link DataBag}s and {@link DataBagItem}s.
@@ -51,6 +56,17 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	/** The column data bag editor used in page 0. */
 	private DataBagColumnEditor columnEditor;
 	
+	@Inject
+	private Provider<XtextEditor> editorProvider;
+
+	private XtextEditor xtext;
+
+	@Inject
+	private OutlinePage outlinePage;
+	
+	@Inject
+	private XtextResourceFactory resourceFactory;
+
 	/** The font chosen in page 1. */
 	private Font font;
 
@@ -72,7 +88,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
      */
     void createColumnEditorPage() {
         try {
-            columnEditor = new DataBagColumnEditor(nodesMap);
+        	columnEditor = new DataBagColumnEditor(resourceFactory);
             int index = addPage(columnEditor, getEditorInput());
             setPageText(index, "Column DataBag Editor");
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.COLUMN_PAGE).createImage());
@@ -123,11 +139,16 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 
     private void createJsonEditorForDataBagItem(DataBagItem dataBagItem) {
         try {
-            TextEditor editor = new TextEditor();
-            int index = addPage(editor, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
+        	xtext = editorProvider.get();
+			int index = addPage(xtext, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
+        	
+            //TextEditor editor = new TextEditor();
+            //int index = addPage(editor, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
             setPageText(index, dataBagItem.getName());
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_ITEM_PAGE).createImage());
         } catch (PartInitException e) {
+        	ErrorDialog.openError(getSite().getShell(),
+					"Error creating nested text editor", null, e.getStatus());
             e.printStackTrace();
         }
     }
@@ -147,6 +168,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		setPageText(index, "Row DataBag Editor");
 		setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.ROW_PAGE).createImage());
 	}
+
 	/**
 	 * Creates the pages of the multi-page data bag editor.
 	 */
@@ -166,11 +188,20 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		    super.dispose();
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * Method declared on IEditorPart.
+	 */
+	public boolean isSaveAsAllowed() {
+		return true;
+	}
+
 	/**
 	 * Saves the multi-page editor's document.
 	 */
 	public void doSave(IProgressMonitor monitor) {
-		getEditor(0).doSave(monitor);
+		xtext.doSave(monitor);
+//		getEditor(0).doSave(monitor);
 	}
 	/**
 	 * Saves the multi-page editor's document as another file.
@@ -178,11 +209,16 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * to correspond to the nested editor's.
 	 */
 	public void doSaveAs() {
-		IEditorPart editor = getEditor(0);
-		editor.doSaveAs();
-		setPageText(0, editor.getTitle());
-		setInput(editor.getEditorInput());
+		xtext.doSaveAs();
+		setPageText(0, xtext.getTitle());
+		setInput(xtext.getEditorInput());
+
+//		IEditorPart editor = getEditor(0);
+//		editor.doSaveAs();
+//		setPageText(0, editor.getTitle());
+//		setInput(editor.getEditorInput());
 	}
+	
 	/* (non-Javadoc)
 	 * Method declared on IEditorPart
 	 */
@@ -200,17 +236,13 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		if (!(editorInput instanceof DataBagEditorInput)) {
 			throw new PartInitException("Invalid Input: Must be DataBagEditorInput");
 		}
-		setInput(editorInput);
-		setSite(site);
-		setPartName(editorInput.getName());
 		dataBagEObject = ((DataBagEditorInput) editorInput).geteObject();
+		
+		super.init(site, editorInput);
+//		setInput(editorInput);
+//		setSite(site);
+		setPartName(editorInput.getName());
 		nodesMap = ((DataBagEditorInput) editorInput).getNodesMap();
-	}
-	/* (non-Javadoc)
-	 * Method declared on IEditorPart.
-	 */
-	public boolean isSaveAsAllowed() {
-		return true;
 	}
 	/**
 	 * Calculates the contents of page 2 when the it is activated.
@@ -253,6 +285,16 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 			text.setFont(font);
 		}
 	}
+	
+	@Override
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+		if (IContentOutlinePage.class.equals(adapter)) {
+			outlinePage.setSourceViewer(xtext.getInternalSourceViewer());
+			return outlinePage;
+		}
+		return super.getAdapter(adapter);
+	}
+	
 	/**
 	 * Sorts the words in page 0, and shows them in page 2.
 	 */

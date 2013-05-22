@@ -6,6 +6,7 @@ package org.limepepper.chefclipse.databag.editor.editors;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -22,9 +23,17 @@ import org.codehaus.jackson.node.ArrayNode;
 import org.codehaus.jackson.node.ObjectNode;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.json.json.JsonObjectValue;
+import org.limepepper.chefclipse.json.json.Model;
+import org.limepepper.chefclipse.json.json.Value;
 
 /**
  * Provides methods to perform operations that access or modify {@link DataBag}s and
@@ -259,4 +268,75 @@ public enum DataBagEditorManager {
         }
         return false;
     }
+
+	public Model createSchemaModel(ResourceSet resSet) {
+		final Resource schemaRes = new XMIResourceImpl();
+		
+		for (Resource res : resSet.getResources()) {
+			mergeResource(schemaRes, res);
+		}
+		
+		trimValues(schemaRes);
+		
+		if (schemaRes.getContents().isEmpty())
+			throw new RuntimeException("Couldn't create schema model");
+		
+		return (Model) schemaRes.getContents().get(0);
+	}
+
+	public void trimValues(final Resource schemaRes) {
+		TreeIterator<EObject> it = schemaRes.getAllContents();
+		List<EObject> toRemove = new ArrayList<EObject>();
+		while (it.hasNext()) {
+			EObject eObject = (EObject) it.next();
+			if (isPrimitiveValue(eObject)) {
+				toRemove.add(eObject);
+			}
+		}
+		for (EObject eObject : toRemove) {
+			EcoreUtil.remove(eObject);
+		}
+	}
+
+	public void mergeResource(final Resource schemaRes, Resource res) {
+		TreeIterator<EObject> it = res.getAllContents();
+		while (it.hasNext()) {
+			EObject eObject = (EObject) it.next();
+			if (isPrimitiveValue(eObject)) {
+				it.prune();
+				continue;
+			}
+			String uriFragment = eObject.eResource().getURIFragment(eObject);
+			EObject eObjectSchema = schemaRes.getEObject(uriFragment);
+			if (eObjectSchema == null) {
+				EObject copy = EcoreUtil.copy(eObject);
+				addToSchema(schemaRes, eObject, copy);
+			}
+		}
+	}
+
+	public void addToSchema(final Resource schemaRes, EObject eObject,
+			EObject copy) {
+		if (eObject.eContainer() != null) {
+			String containerFragment = eObject.eResource().getURIFragment(eObject.eContainer());
+			EObject schemaContainer = schemaRes.getEObject(containerFragment);
+			if (schemaContainer == null) {
+				throw new RuntimeException("This should never happen");
+			}
+			if (eObject.eContainmentFeature().isMany()) {
+				@SuppressWarnings("unchecked")
+				List<EObject> list = (List<EObject>) schemaContainer.eGet(eObject.eContainmentFeature());
+				list.add(copy);
+			} else {
+				schemaContainer.eSet(eObject.eContainmentFeature(), copy);
+			}
+		} else {
+			schemaRes.getContents().add(copy);
+		}
+	}
+
+	public boolean isPrimitiveValue(EObject eObject) {
+		return eObject instanceof Value && !(eObject instanceof JsonObjectValue);
+	}
+	
 }

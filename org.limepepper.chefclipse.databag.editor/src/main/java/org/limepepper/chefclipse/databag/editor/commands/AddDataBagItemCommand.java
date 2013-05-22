@@ -19,8 +19,7 @@ import org.limepepper.chefclipse.databag.editor.editors.DataBagColumnEditor.View
  */
 public class AddDataBagItemCommand extends Command {
 
-    public AddDataBagItemCommand(ViewerProvider viewerProvider,
-            Map<String, JsonNode> dataBagItemsMap) {
+    public AddDataBagItemCommand(Map<String, JsonNode> dataBagItemsMap) {
         // TODO Auto-generated constructor stub
     }
     

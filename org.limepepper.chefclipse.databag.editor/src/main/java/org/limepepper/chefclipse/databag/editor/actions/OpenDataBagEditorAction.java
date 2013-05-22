@@ -74,6 +74,7 @@ public class OpenDataBagEditorAction extends Action {
                 Map<String, JsonNode> nodesMap = DataBagEditorManager.INSTANCE.retrieveNodes(eObject);
                 DataBagEditorInput input = new DataBagEditorInput(eObject, nodesMap);
                 page.openEditor(input, MultiPageDataBagEditor.ID);
+//                page.openEditor(input, "org.limepepper.chefclipse.databag.mpe.editor.DatabagMPE");
             } catch (PartInitException e) {
                 e.printStackTrace();
             } catch (IOException e) {
