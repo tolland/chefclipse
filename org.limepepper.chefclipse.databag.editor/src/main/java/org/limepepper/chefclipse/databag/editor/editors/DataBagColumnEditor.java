@@ -123,7 +123,8 @@ public class DataBagColumnEditor extends EditorPart implements
     private TreeViewer viewer;
     private Action addNewDataBagItemAction;
     private Action removePropertyAction;
-    private Action editValueAction;
+    private Action addJsonPropertyAction;
+    private Action removeDataBagItemAction;
     private Composite filterControl;
     
     /**
@@ -459,7 +460,7 @@ public class DataBagColumnEditor extends EditorPart implements
         ToolBarManager manager = new ToolBarManager(toolBar);
 
         ViewerProvider viewerProvider = new ViewerProvider();
-        addCommonActions(manager, viewerProvider);
+        addKeysRelatedActions(manager, viewerProvider);
         manager.update(true);
     }
     
@@ -469,18 +470,24 @@ public class DataBagColumnEditor extends EditorPart implements
         ToolBarManager manager = new ToolBarManager(toolBar);
 
         ViewerProvider viewerProvider = new ViewerProvider();
-        addCommonActions(manager, viewerProvider);
+        addDataBagItemsRelatedActions(manager, viewerProvider);
         manager.update(true);
     }
 
-    private void addCommonActions(ToolBarManager manager, ViewerProvider viewerProvider) {
-        setAddNewDataBagItemAction(new AddNewDataBagItemAction());
-        setRemovePropertyAction(new RemoveJsonPropertyAction());
-        setEditValueAction(new EditJsonValueOfDataBagItemAction());
+    private void addKeysRelatedActions(ToolBarManager manager, ViewerProvider viewerProvider) {
+        setAddJsonPropertyAction(new AddJsonPropertyAction(viewerProvider, nodesMap));
+        setRemovePropertyAction(new RemoveJsonPropertyAction(viewerProvider));
+
+        manager.add(getAddJsonPropertyAction());
+        manager.add(getRemovePropertyAction());
+    }
+    
+    private void addDataBagItemsRelatedActions(ToolBarManager manager, ViewerProvider viewerProvider) {
+        setAddNewDataBagItemAction(new AddNewDataBagItemAction(viewerProvider, nodesMap));
+        setRemoveDataBagItemAction(new RemoveDataBagItemAction(viewerProvider));
 
         manager.add(getAddNewDataBagItemAction());
-        manager.add(getRemovePropertyAction());
-        manager.add(getEditValueAction());
+        manager.add(getRemoveDataBagItemAction());
     }
 
     /*
@@ -678,6 +685,8 @@ public class DataBagColumnEditor extends EditorPart implements
 
 	private TreeViewer doCreateViewer(Composite parent) {
         final Composite bar = new Composite(parent, SWT.NULL);
+        GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).margins(0, 0).spacing(0, 0).applyTo(parent);
+        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).indent(0, 0).applyTo(parent);
         GridDataFactory.fillDefaults().align(SWT.BEGINNING, SWT.BEGINNING).indent(0, 37).grab(false, true).applyTo(bar);
         createKeysToolBar(bar);
         
@@ -687,8 +696,9 @@ public class DataBagColumnEditor extends EditorPart implements
             @Override
             protected Composite createFilterControls(Composite parent) {
                 final Composite bar = new Composite(parent, SWT.NULL);
-                bar.setLayout(new GridLayout(3, false));
-                GridDataFactory.fillDefaults().align(SWT.FILL, SWT.BEGINNING).indent(0, 0).grab(true, false).applyTo(bar);
+                GridLayoutFactory.swtDefaults().numColumns(3).equalWidth(false).margins(0, 0).spacing(0, 0).applyTo(bar);
+//                bar.setLayout(new GridLayout(3, false));
+                GridDataFactory.fillDefaults().align(SWT.FILL, SWT.BEGINNING).indent(0, 2).grab(true, false).applyTo(bar);
                 // new Label(bar, SWT.NULL).setText("Filter:");
                 // addAditionalActions(bar);
                 setFilterControl(super.createFilterControls(bar));
@@ -712,7 +722,8 @@ public class DataBagColumnEditor extends EditorPart implements
             }
 
         };
-        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(filter);
+        GridLayoutFactory.swtDefaults().margins(0, 0).spacing(0, 1).applyTo(filter);
+        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).indent(2, 0).grab(true, true).applyTo(filter);
         
         final TreeViewer treeViewer = filter.getViewer();
         treeViewer.setUseHashlookup(true);
@@ -826,16 +837,24 @@ public class DataBagColumnEditor extends EditorPart implements
         this.removePropertyAction = removePropertyAction;
     }
 
-    public Action getEditValueAction() {
-        return editValueAction;
-    }
-
-    public void setEditValueAction(Action editValueAction) {
-        this.editValueAction = editValueAction;
-    }
-
     private void setFilterControl(Composite filterControl) {
         this.filterControl = filterControl;
+    }
+
+    public Action getAddJsonPropertyAction() {
+        return addJsonPropertyAction;
+    }
+
+    public void setAddJsonPropertyAction(Action addJsonPropertyAction) {
+        this.addJsonPropertyAction = addJsonPropertyAction;
+    }
+
+    public Action getRemoveDataBagItemAction() {
+        return removeDataBagItemAction;
+    }
+
+    public void setRemoveDataBagItemAction(Action removeDataBagItemAction) {
+        this.removeDataBagItemAction = removeDataBagItemAction;
     }
 
     // private class NameSorter extends ViewerSorter {

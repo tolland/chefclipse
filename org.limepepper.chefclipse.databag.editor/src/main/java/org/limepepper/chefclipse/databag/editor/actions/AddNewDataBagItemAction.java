@@ -9,12 +9,13 @@ import org.codehaus.jackson.JsonNode;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.databag.editor.Activator;
 import org.limepepper.chefclipse.databag.editor.commands.AddDataBagItemCommand;
 import org.limepepper.chefclipse.databag.editor.dialogs.AddNewDataBagItemDialog;
+import org.limepepper.chefclipse.databag.editor.utils.DataBagEditorUtils;
 
 /**
  * Adds a new {@link DataBagItem} to the current editor.
@@ -31,7 +32,9 @@ public class AddNewDataBagItemAction extends Action {
         setId(ADD_DATA_BAG_ITEM_ACTION);
         setToolTipText(ADD_DATA_BAG_ITEM_TOOLTIP);
         setText(ADD_DATA_BAG_ITEM_ACTION);
-        setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
+        ImageDescriptor descriptor = Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_EDITOR);
+        ImageDescriptor addImageOverlay = Activator.getDefault().getImageRegistry().getDescriptor(Activator.ADD_DATA_BAG_ITEM_OVERLAY);
+        setImageDescriptor(DataBagEditorUtil.INSTANCE.getOverlayImageDescriptor(descriptor, addImageOverlay));
     }
     
     @Override

@@ -25,5 +25,13 @@
             class="org.limepepper.chefclipse.databag.editor.wizards.SampleNewWizard"
             id="org.limepepper.chefclipse.databag.editor.wizards.SampleNewWizard">
       </wizard>
+      <wizard
+            category="org.limepepper.chefclipse.ui.wizards.category"
+            class="org.limepepper.chefclipse.databag.editor.wizards.BasicNewDataBagWizard"
+            hasPages="true"
+            icon="icons/data_bag_editor.png"
+            id="org.limepepper.chefclipse.databag.editor.createdatabag"
+            name="New Data Bag">
+      </wizard>
    </extension>
 </plugin>
