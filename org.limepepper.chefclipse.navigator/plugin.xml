@@ -165,8 +165,11 @@
                 </possibleDropTargets>
             </dropAssistant-->
           	<actionProvider
-                 class="org.limepepper.chefclipse.databag.editor.actions.DataBagActionProvider">
+                 class="org.limepepper.chefclipse.databag.editor.actions.OpenDataBagActionProvider">
           	</actionProvider>
+           <actionProvider
+                 class="org.limepepper.chefclipse.databag.editor.actions.NewDataBagActionProvider">
+           </actionProvider>
         </navigatorContent>
         <!--commonFilter
                 activeByDefault="false"

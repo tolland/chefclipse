@@ -25,14 +25,14 @@ import org.limepepper.chefclipse.common.chefserver.DataBagItem;
  * @author Sebastian Sampaoli
  *
  */
-public class DataBagActionProvider extends CommonActionProvider {
+public class OpenDataBagActionProvider extends CommonActionProvider {
 
     private OpenDataBagEditorAction openAction;
 
     /**
      * 
      */
-    public DataBagActionProvider() {
+    public OpenDataBagActionProvider() {
 
     }
     

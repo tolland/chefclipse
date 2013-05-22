@@ -3,39 +3,36 @@
  */
 package org.limepepper.chefclipse.databag.editor.actions;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.codehaus.jackson.JsonNode;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.databag.editor.Activator;
 import org.limepepper.chefclipse.databag.editor.commands.AddDataBagItemCommand;
 import org.limepepper.chefclipse.databag.editor.dialogs.AddNewDataBagItemDialog;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagColumnEditor.ViewerProvider;
-import org.limepepper.chefclipse.databag.editor.utils.DataBagEditorUtils;
 
 /**
  * Adds a new {@link DataBagItem} to the current editor.
  * 
  * @author Sebastian Sampaoli
  */
-public class AddNewDataBagItemAction extends Action {
+public class AddJsonPropertyAction extends Action {
     
-    private static final String ADD_DATA_BAG_ITEM_TOOLTIP = "Add a new data bag item to the current editor";
-    private static final String ADD_DATA_BAG_ITEM_ACTION = "Add new Data Bag item";
-    private Map<String, JsonNode> dataBagItemsMap;
+    private static final String ADD_PROPERTY_TOOLTIP = "Add a new property to the current editor";
+    private static final String ADD_PROPERTY_ITEM_ACTION = "Add new JSON property";
 
-    public AddNewDataBagItemAction() {
-        setId(ADD_DATA_BAG_ITEM_ACTION);
-        setToolTipText(ADD_DATA_BAG_ITEM_TOOLTIP);
-        setText(ADD_DATA_BAG_ITEM_ACTION);
-        ImageDescriptor descriptor = Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_EDITOR);
-        ImageDescriptor addImageOverlay = Activator.getDefault().getImageRegistry().getDescriptor(Activator.ADD_DATA_BAG_ITEM_OVERLAY);
-        setImageDescriptor(DataBagEditorUtils.INSTANCE.getOverlayImageDescriptor(descriptor, addImageOverlay));
+    public AddJsonPropertyAction() {
+        setId(ADD_PROPERTY_ITEM_ACTION);
+        setToolTipText(ADD_PROPERTY_TOOLTIP);
+        setText(ADD_PROPERTY_ITEM_ACTION);
+        setImageDescriptor(PlatformUI.getWorkbench().getSharedImages().getImageDescriptor(ISharedImages.IMG_OBJ_ADD));
     }
     
     @Override

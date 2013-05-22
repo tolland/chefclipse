@@ -13,7 +13,7 @@ import org.codehaus.jackson.node.ArrayNode;
 import org.junit.Before;
 import org.junit.Test;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagLabelProvider;
+import org.limepepper.chefclipse.databag.editor.editors.DataBagValueLabelProvider;
 
 /**
  * @author Sebastian Sampaoli
@@ -23,7 +23,7 @@ public class DataBagLabelProviderTest extends AbstractDataBagEditorTest {
     
     private DataBagEditorManager managerInstance;
     private JsonNode allKeysNode;
-    private DataBagLabelProvider labelProvider;
+    private DataBagValueLabelProvider labelProvider;
 
     @Before
     public void setUp() {
@@ -35,7 +35,7 @@ public class DataBagLabelProviderTest extends AbstractDataBagEditorTest {
         nodesMap.put("jsonFile3", thirdKeysNode);
 
         allKeysNode = managerInstance.createAllFieldsNode(nodesMap);
-        labelProvider = new DataBagLabelProvider(nodesMap);
+        labelProvider = new DataBagValueLabelProvider(nodesMap);
     }
     
     @Test

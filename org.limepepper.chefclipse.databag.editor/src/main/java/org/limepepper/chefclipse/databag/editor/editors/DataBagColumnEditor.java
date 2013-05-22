@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.List;
@@ -28,13 +27,9 @@ import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.ecore.resource.impl.ResourceFactoryRegistryImpl;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -47,9 +42,7 @@ import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
-import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
@@ -80,7 +73,6 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Group;
@@ -100,16 +92,15 @@ import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceFactory;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.databag.editor.actions.AddJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.actions.AddNewDataBagItemAction;
-import org.limepepper.chefclipse.databag.editor.actions.EditJsonValueOfDataBagItemAction;
+import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.editing.FieldEditingSupport;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorInput;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.provider.JsonItemProviderAdapterFactory;
 
@@ -123,8 +114,8 @@ public class DataBagColumnEditor extends EditorPart implements
     private TreeViewer viewer;
     private Action addNewDataBagItemAction;
     private Action removePropertyAction;
-    private Action addJsonPropertyAction;
-    private Action removeDataBagItemAction;
+    private Action editValueAction;
+    private CommandStack commandStack;
     private Composite filterControl;
     
     /**
@@ -152,6 +143,8 @@ public class DataBagColumnEditor extends EditorPart implements
 	 */
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
 	private XtextResourceFactory resFactory;
+	private Action addJsonPropertyAction;
+	private Action removeDataBagItemAction;
 	
     /**
      * @param resourceFactory 
@@ -475,16 +468,16 @@ public class DataBagColumnEditor extends EditorPart implements
     }
 
     private void addKeysRelatedActions(ToolBarManager manager, ViewerProvider viewerProvider) {
-        setAddJsonPropertyAction(new AddJsonPropertyAction(viewerProvider, nodesMap));
-        setRemovePropertyAction(new RemoveJsonPropertyAction(viewerProvider));
+        setAddJsonPropertyAction(new AddJsonPropertyAction());
+        setRemovePropertyAction(new RemoveJsonPropertyAction());
 
         manager.add(getAddJsonPropertyAction());
         manager.add(getRemovePropertyAction());
     }
     
     private void addDataBagItemsRelatedActions(ToolBarManager manager, ViewerProvider viewerProvider) {
-        setAddNewDataBagItemAction(new AddNewDataBagItemAction(viewerProvider, nodesMap));
-        setRemoveDataBagItemAction(new RemoveDataBagItemAction(viewerProvider));
+        setAddNewDataBagItemAction(new AddNewDataBagItemAction());
+        setRemoveDataBagItemAction(new RemoveDataBagItemAction());
 
         manager.add(getAddNewDataBagItemAction());
         manager.add(getRemoveDataBagItemAction());
@@ -771,9 +764,10 @@ public class DataBagColumnEditor extends EditorPart implements
         filterControl.setSize(fieldColumn.getColumn().getWidth(), filterControl.getSize().y);
         
         TreeColumnLayout treeLayout = new TreeColumnLayout();
+//        GridLayoutFactory.swtDefaults().margins(0, 0).spacing(0, 0).applyTo(treeViewer.getTree());
         treeViewer.getTree().setLayout(treeLayout);
-        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).indent(0, 0).grab(true, true).applyTo(treeViewer.getTree());
-
+        //GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).indent(0, 0).grab(true, true).applyTo(treeViewer.getTree());
+        
         treeLayout.setColumnData(fieldColumn.getColumn(), new
                 ColumnWeightData(40, 150));
 

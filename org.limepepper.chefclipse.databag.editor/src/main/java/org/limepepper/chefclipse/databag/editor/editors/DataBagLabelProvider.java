@@ -69,8 +69,9 @@ public class DataBagLabelProvider extends StyledCellLabelProvider implements ICo
             styledString.append(text, dataStyler);
             cell.setStyleRanges(styledString.getStyleRanges());
             cell.setFont(JFaceResources.getFontRegistry().getBold(JFaceResources.DEFAULT_FONT));
+            cell.setText(styledString.getString());
             cell.setImage(getImage(entryElement, cell.getColumnIndex()));
-            cell.setText(getText(entryElement, cell.getColumnIndex()));
+//            cell.setText(getText(entryElement, cell.getColumnIndex()));
         } else {
             cell.setText(getText(entryElement, cell.getColumnIndex()));
         }

@@ -27,6 +27,8 @@ public class Activator extends AbstractUIPlugin {
     public static final String JSON_OBJECT = "JSON OBJECT";
 
     public static final String ROW_PAGE = "ROW PAGE";
+
+    public static final String ADD_DATA_BAG_ITEM_OVERLAY = "ADD DATA BAG ITEM OVERLAY";
     
     // The shared instance
     private static Activator plugin;
@@ -96,6 +98,8 @@ public class Activator extends AbstractUIPlugin {
                 imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/json_object.gif")); //$NON-NLS-1$
         imageRegistry.put(ROW_PAGE,
                 imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/row_page.gif")); //$NON-NLS-1$
+        imageRegistry.put(ADD_DATA_BAG_ITEM_OVERLAY,
+                imageDescriptorFromPlugin(getBundle().getSymbolicName(), "icons/add_data_bag_item_icon.png")); //$NON-NLS-1$
         return imageRegistry;
     }
 }
