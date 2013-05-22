@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.limepepper.chefclipse.json.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.limepepper.chefclipse.json.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.limepepper.chefclipse.json,
+ org.limepepper.chefclipse.json.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.junit4,
+ org.eclipse.ui.workbench;resolution:=optional,
+ org.limepepper.chefclipse.testing;bundle-version="1.0.0",
+ org.limepepper.chefclipse.databag.editor
+Import-Package: org.hamcrest.core,
+ org.junit;version="4.5.0",
+ org.junit.runner;version="4.5.0",
+ org.junit.runner.manipulation;version="4.5.0",
+ org.junit.runner.notification;version="4.5.0",
+ org.junit.runners;version="4.5.0",
+ org.junit.runners.model;version="4.5.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.limepepper.chefclipse.json

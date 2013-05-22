@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.limepepper.chefclipse.json.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.limepepper.chefclipse.json.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.limepepper.chefclipse.json;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.limepepper.chefclipse.json.ui,
+ org.limepepper.chefclipse.json.ui.contentassist,
+ org.limepepper.chefclipse.json.ui.contentassist.antlr,
+ org.limepepper.chefclipse.json.ui.internal,
+ org.limepepper.chefclipse.json.ui.quickfix
+Bundle-Activator: org.limepepper.chefclipse.json.ui.internal.JsonActivator

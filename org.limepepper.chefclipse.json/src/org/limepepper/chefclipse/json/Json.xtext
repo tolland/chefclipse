@@ -1,0 +1,53 @@
+grammar org.limepepper.chefclipse.json.Json with org.eclipse.xtext.common.Terminals
+
+generate json "http://www.limepepper.org/chefclipse/json/Json"
+
+Model:
+	  objects+=JsonObject
+	| LSQUARE objects+=JsonObject (COMMA objects+=JsonObject)* RSQUARE
+;
+
+JsonObject:
+	LCURLY pairs+=Pair (COMMA pairs+=Pair)* RCURLY
+;
+	
+Pair:
+	string=STRING COLON value=Value
+;
+
+Value:
+	StringValue | NumberValue | JsonObjectValue | ArrayValue | BooleanValue | NullValue
+;
+
+StringValue:
+	value=STRING
+;
+
+NumberValue:
+	value=INT
+;
+
+JsonObjectValue:
+	value=JsonObject
+;
+
+ArrayValue:
+	LSQUARE value+=Value (COMMA value+=Value)* RSQUARE
+;
+
+BooleanValue:
+	value=BOOL
+;
+
+NullValue:
+	value=NULL
+;
+
+LCURLY  : "{";
+RCURLY  : "}";
+LSQUARE : "["; 
+RSQUARE : "]";
+COLON   : ":";
+COMMA   : ",";
+BOOL    : "true" | "false";
+NULL    : "null";

@@ -1,0 +1,16 @@
+{
+    "groups": [
+      "syncusers",
+      "sysadmins",
+      "contacts",
+    ],
+    "id": "gzunino",
+    "openid_email": "g@g.com",
+    "shell": "/bin/bash",
+    "telnums": {
+      "mobile": "+222222222",
+      "work": "33333333"
+    },
+    "email": "a@b.com",
+    "extra": "some value"
+}
