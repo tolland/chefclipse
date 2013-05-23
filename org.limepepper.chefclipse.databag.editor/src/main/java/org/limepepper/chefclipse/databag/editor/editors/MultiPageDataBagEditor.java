@@ -1,16 +1,24 @@
 package org.limepepper.chefclipse.databag.editor.editors;
 
 
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.codehaus.jackson.JsonNode;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -28,6 +36,7 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResourceFactory;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.info.ResourceWorkingCopyFileEditorInput;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
@@ -76,6 +85,8 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
     private EObject dataBagEObject;
 
     private Map<String, JsonNode> nodesMap;
+
+	private ResourceSet resourceSet;
 	
 	public MultiPageDataBagEditor() {
 		super();
@@ -90,6 +101,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
         try {
         	columnEditor = new DataBagColumnEditor(resourceFactory);
             int index = addPage(columnEditor, getEditorInput());
+            resourceSet = columnEditor.getResourceSet();
             setPageText(index, "Column DataBag Editor");
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.COLUMN_PAGE).createImage());
         } catch (PartInitException e) {
@@ -107,13 +119,14 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * 
 	 */
 	void createJsonEditorPages() {
+		Iterator<Resource> res = resourceSet.getResources().iterator();
 	    if (dataBagEObject instanceof DataBag) {
 	        DataBag dataBag = (DataBag) dataBagEObject;
 	        for (DataBagItem dataBagItem : dataBag.getItems()) {
-	            createJsonEditorForDataBagItem(dataBagItem);
+	            createJsonEditorForDataBagItem(dataBagItem, res.next());
 	        }
 	    } else if (dataBagEObject instanceof DataBagItem) {
-	        createJsonEditorForDataBagItem((DataBagItem) dataBagEObject);
+	        createJsonEditorForDataBagItem((DataBagItem) dataBagEObject, res.next());
 	    }
 
 //		Composite composite = new Composite(getContainer(), SWT.NONE);
@@ -137,10 +150,13 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 //		setPageText(index, "Properties");
 	}
 
-    private void createJsonEditorForDataBagItem(DataBagItem dataBagItem) {
+    private void createJsonEditorForDataBagItem(DataBagItem dataBagItem, Resource resource) {
         try {
         	xtext = editorProvider.get();
-			int index = addPage(xtext, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
+
+        	ResourceWorkingCopyFileEditorInput xtextInput = new ResourceWorkingCopyFileEditorInput(resource);
+        	
+        	int index = addPage(xtext, xtextInput);
         	
             //TextEditor editor = new TextEditor();
             //int index = addPage(editor, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
@@ -150,6 +166,10 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
         	ErrorDialog.openError(getSite().getShell(),
 					"Error creating nested text editor", null, e.getStatus());
             e.printStackTrace();
+        } catch (IllegalArgumentException | IOException e) {
+        	ErrorDialog.openError(getSite().getShell(),
+        			"Error creating nested text editor", null, null);
+        	e.printStackTrace();
         }
     }
 	/**
@@ -244,6 +264,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		setPartName(editorInput.getName());
 		nodesMap = ((DataBagEditorInput) editorInput).getNodesMap();
 	}
+	
 	/**
 	 * Calculates the contents of page 2 when the it is activated.
 	 */
