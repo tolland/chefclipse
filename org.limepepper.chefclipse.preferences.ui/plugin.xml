@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+  <!-- =================================================================================== -->
+  <!-- preferences ui stuff -->
+  <!-- =================================================================================== -->
+
+   <extension
+         point="org.eclipse.ui.preferencePages">
+		<page
+            class="org.limepepper.chefclipse.preferences.ui.preferences.ChefclipseRootPreferencePage"
+            id="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
+            name="Chefclipse">
+      	</page>
+      	<page
+             category="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
+             class="org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"
+             id="org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"
+             name="Chef server configurations">
+      	</page>
+   	</extension>
+
+  <!-- =================================================================================== -->
+  <!-- org.eclipse.core.runtime.preferences -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.core.runtime.preferences">
+    <initializer class="org.limepepper.chefclipse.preferences.ui.preferences.PreferenceInitializer" />
+  </extension>
+
+</plugin>

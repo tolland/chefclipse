@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="RubyConsole Action Set"
+            visible="true"
+            id="RubyConsole.actionSet">
+         <menu
+               label="Ruby Console"
+               id="rubyConsole">
+            <separator
+                  name="rubyConsoleGroup">
+            </separator>
+         </menu>
+         <action
+               label="&amp;Console 1"
+               icon="icons/sample.gif"
+               class="rubyconsole.actions.NewRubyConsole"
+               tooltip="Hello, Eclipse world"
+               menubarPath="chefClipse/rubyConsoleGroup"
+               id="rubyconsole.actions.NewRubyConsole">
+         </action>
+         <action
+               class="rubyconsole.actions.Redgregregrg"
+               id="org.limepepper.eclipse.RubyConsole.action1"
+               label="&amp;Console 2"
+               menubarPath="chefClipse/rubyConsoleGroup"
+               style="push">
+         </action>
+         <action
+               class="rubyconsole.actions.NewSwingJRubyConsolePop"
+               id="org.limepepper.eclipse.RubyConsole.action2"
+               label="&amp;Console 3"
+               menubarPath="chefClipse/rubyConsoleGroup"
+               style="push">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.limepepper.eclipse.RubyConsole"
+            name="ChefClips Category">
+      </category>
+      <view
+            category="org.limepepper.eclipse.RubyConsole"
+            class="org.limepepper.eclipse.rubyconsole.views.ConsoleClipsView"
+            icon="icons/sample.gif"
+            id="org.limepepper.eclipse.rubyconsole.views.ConsoleClipsView"
+            name="ConsoleClips">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="org.limepepper.eclipse.rubyconsole.views.ConsoleClipsView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+</plugin>

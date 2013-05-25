@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+
+
+
+<!-- =================================================================================== -->
+<!-- This is the chefclipse code, the above is mostly remainder of the example, @todo migrate down	-->
+<!-- this block contains the model mappings and providers, and the builder and nature -->
+<!-- =================================================================================== -->
+
+
+
+   <extension
+         id="org.limepepper.chefclipse.ChefProjectNature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.limepepper.chefclipse.common.ui.builder.ChefProjectNature">
+         </run>
+      </runtime>
+   </extension>
+
+
+
+<!-- =================================================================================== -->
+<!-- Property Testers for chefclipse													 -->
+<!-- =================================================================================== -->
+
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.limepepper.chefclipse.navigator.testers.ChefTester"
+            id="org.limepepper.chefclipse.navigator.ChefResourcesPropertyTester"
+            namespace="org.limepepper.chefclipse"
+            properties="isRepositoryFolder,isCookbook,isChefProject,isRecipe,isCookbookMetadata,isAttributesFile,isDefinition,isCookbookProject"
+            type="org.eclipse.core.resources.mapping.ResourceMapping">
+      </propertyTester>
+   </extension>
+
+
+
+
+
+<!-- =================================================================================== -->
+<!-- This is a handler for the dynamic menu org.limepepper.chefclipse.menu.dynamic -->
+<!-- notes on creating dynamic menus, labels, handlders etc -->
+<!-- http://timezra.blogspot.co.uk/2008/01/dynamic-labels-redux.html -->
+<!-- =================================================================================== -->
+
+
+    <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="org.limepepper.chefclipse.commands.popupContext"
+            class="org.limepepper.chefclipse.handlers.ChefHandler">
+      </handler>
+   </extension>
+
+
+<!-- =================================================================================== -->
+<!-- This is the command contribution declarations for dynamic menu item etc	-->
+<!-- lars vogel tutorials on advanced commmands features -->
+<!-- http://www.vogella.com/articles/EclipseCommandsAdvanced/article.html -->
+<!-- =================================================================================== -->
+
+
+  <extension
+       point="org.eclipse.ui.commands">
+    <category
+          id="org.limepepper.chefclipse.commands.category"
+          name="Chefclipse Commands Category">
+    </category>
+    <command
+          categoryId="org.limepepper.chefclipse.commands.category"
+          id="org.limepepper.chefclipse.commands.popupContext"
+          name="Dynamic Command Label Placeholder">
+       <commandParameter
+             id="commandParameter1"
+             name="parameter to select dynamic handler"
+             optional="false">
+       </commandParameter>
+    </command>
+ </extension>
+
+
+<!-- =================================================================================== -->
+<!-- This is the dynamic menu  -->
+<!-- =================================================================================== -->
+
+   <extension
+         point="org.eclipse.ui.menus">
+
+   <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+        <menu label="Chefclipse Menu"
+               mnemonic="C"
+               id="org.limepepper.chefclipse.menus.contextgroup">
+         <dynamic
+               class="org.limepepper.chefclipse.menu.ContributionItemDynamic"
+               id="org.limepepper.chefclipse.menu.dynamic">
+        <visibleWhen checkEnabled="false">
+               <with
+                     variable="activeMenuSelection">
+                  <iterate>
+                     <or>
+                        <adapt
+                              type="org.eclipse.core.resources.IResource">
+                        </adapt>
+                     </or>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </dynamic>
+         </menu>
+      </menuContribution>
+   </extension>
+   <!--extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.eclipse.emf.ecore.EObject"
+            class="org.limepepper.chefclipse.common.ui.providers.AdapterFactory">
+         <adapter
+               type="org.eclipse.emf.ecore.EObject">
+         </adapter>
+      </factory>
+   </extension-->
+   <extension
+         id="modelProvider"
+         point="org.eclipse.core.resources.modelProviders">
+      <modelProvider
+            class="org.limepepper.chefclipse.common.ui.providers.ChefModelProvider">
+      </modelProvider>
+      <extends-model
+            id="org.eclipse.core.resources.modelProvider">
+      </extends-model>
+      <enablement>
+         <test
+               property="org.eclipse.core.resources.projectNature"
+               value="org.limepepper.chefclipse.ChefProjectNature">
+         </test>
+      </enablement>
+   </extension>
+
+
+<!-- =================================================================================== -->
+<!-- This is the cookbook structure compare  -->
+<!-- =================================================================================== -->
+
+
+<extension point="org.eclipse.compare.structureCreators">
+
+<structureCreator
+
+  class="org.limepepper.chefclipse.compare.CookbookStructureCreator"
+
+  extensions="cookbook"
+
+  id="org.limepepper.chefclipse.compare.StructureCreator">
+
+</structureCreator>
+
+</extension>
+
+
+     <extension
+         point="org.eclipse.compare.contentMergeViewers">
+      <viewer
+            extensions="cookbookitem"
+            class="org.limepepper.chefclipse.compare.structurecreator.TextMergeViewerCreator"
+            id="org.limepepper.chefclipse.compare.TextMergeViewerCreator">
+      </viewer>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Compare Action Set"
+            visible="true"
+            id="cookbook.compare.actionset">
+         <menu
+               label="Compare action set menu"
+               id="compare.actionset">
+            <separator
+                  name="sampleGroup.compare.cookbook">
+            </separator>
+         </menu>
+         <action
+               label="&amp;Compare Cookbook"
+               icon="icons/sample.gif"
+               class="org.limepepper.chefclipse.compare.actions.CompareAction"
+               tooltip="Hello, Eclipse world"
+               menubarPath="compare.actionset/sampleGroup.compare.cookbook"
+               toolbarPath="sampleGroup"
+               id="rubyconsole.actions.NewRubyConsole">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.limepepper.chefclipse.common.ui.contribution1"
+            objectClass="org.eclipse.core.resources.IFolder">
+         <menu
+               id="org.limepepper.chefclipse.common.ui.menu1"
+               label="New Submenu"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="org.limepepper.chefclipse.common.ui.popup.actions.NewActionPopupTest"
+               enablesFor="+"
+               id="org.limepepper.chefclipse.common.ui.newAction"
+               label="New Action"
+               menubarPath="org.limepepper.chefclipse.common.ui.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.eclipse.core.resources.IResource"
+            class="org.limepepper.chefclipse.model.mapping.ChefAdapterFactory">
+         <adapter
+               type="org.limepepper.chefclipse.model.ChefResource">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="org.limepepper.chefclipse.model.ChefResource"
+            class="org.limepepper.chefclipse.model.mapping.ChefAdapterFactory">
+         <adapter
+               type="org.eclipse.core.resources.IResource">
+         </adapter>
+      </factory>
+      <factory
+               adaptableType="org.limepepper.chefclipse.model.ChefResource"
+               class="org.limepepper.chefclipse.model.mapping.ChefAdapterFactory">
+            <adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
+            <adapter type="org.eclipse.core.resources.mapping.ResourceMapping"/>
+         </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFolder"
+            adaptable="true"
+            id="org.eclipse.team.examples.filesystem.ResourceContributions2">
+         <enablement>
+               <adapt type="org.eclipse.core.resources.mapping.ResourceMapping">
+                   <test property="org.eclipse.core.resources.projectPersistentProperty"
+                         args="org.eclipse.team.core.repository,org.eclipse.team.examples.filesystem.FileSystemProvider"/>
+               </adapt>
+         </enablement>
+         <action
+               label="%Put.name"
+               tooltip="%Put.tooltip"
+               class="org.limepepper.chefclipse.model.mapping.actions.Action1"
+               menubarPath="additions/group1"
+               id="org.limepepper.chefclipse.model.mapping.actions.Action1">
+         </action>
+        </objectContribution>
+        </extension>
+
+</plugin>

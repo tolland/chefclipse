@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: server API Tests
+Bundle-SymbolicName: org.limepepper.chefclipse.chefserver.api.tests
+Bundle-Version: 0.1.0.qualifier
+Fragment-Host: org.limepepper.chefclipse.chefserver.api;bundle-version="0.1.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.limepepper.chefclipse.utils;bundle-version="0.1.0"

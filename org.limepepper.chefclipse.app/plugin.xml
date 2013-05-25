@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="splashExtension" name="Splash Extensions" schema="schema/splashExtension.exsd"/>
+
+   <extension
+         id="org.limepepper.chefclipse.app"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.limepepper.chefclipse.app.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.limepepper.chefclipse.app"
+            name="Chefclipse Product">
+         <property
+               name="appName"
+               value="Chefclipse Product">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="custom.ini">
+         </property>
+         <property
+               name="aboutImage"
+               value="icons/about_vert.gif">
+         </property>
+         <property
+               name="aboutText"
+               value="chefclipse is a plugin for working with opscode chef repositories and cookbooks">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/16x16.png,icons/32x32.png,icons/48x48.png,icons/64x64.png,icons/128x128.png">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

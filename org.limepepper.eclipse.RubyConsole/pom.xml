@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+    <groupId>org.limepepper.chefclipse</groupId>
+    <artifactId>org.limepepper.chefclipse</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <relativePath>../</relativePath>
+  </parent>
+
+  <groupId>org.limepepper.eclipse</groupId>
+  <artifactId>org.limepepper.eclipse.RubyConsole</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>eclipse-plugin</packaging>
+
+
+
+  <dependencies>
+    <dependency>
+
+      <groupId>org.jruby</groupId>
+      <artifactId>jruby-complete</artifactId>
+      <version>1.6.7</version>
+
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <id>copy-bundle-classpath-libs</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/lib</outputDirectory>
+              <overWriteReleases>true</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <stripVersion>true</stripVersion>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.jruby</groupId>
+                  <artifactId>jruby-complete</artifactId>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jruby-maven-plugin</artifactId>
+        <version>1.0-beta-4</version>
+        <configuration>
+        <ruby>require 'java'; $LOAD_PATH.each { |p| puts p }</ruby>
+        <libraryPaths>
+        <libraryPath>/usr/local/lib/site_ruby/1.8</libraryPath>
+        </libraryPaths>
+        </configuration>
+        <script>src/main/ruby/find_todo.rb</script>
+        </plugin -->
+    </plugins>
+  </build>
+</project>

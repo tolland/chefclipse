@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+	  <category
+            name="Remote Picker Command Category"
+            id="org.limepepper.chefclipse.remotepicker.ui.commands.category">
+      </category>
+      <command
+            name="Remote Picker Command"
+            categoryId="org.limepepper.chefclipse.remotepicker.ui.commands.category"
+            id="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook">
+      </command>
+      <command
+            categoryId="org.limepepper.chefclipse.remotepicker.ui.commands.category"
+            description="Compare with remote picker origin"
+            id="org.limepepper.chefclipse.remotepicker.ui.commands.compare.origin"
+            name="Compare with remote picker origin">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
+            class="org.limepepper.chefclipse.remotepicker.ui.handlers.RemotePickerHandler">
+      </handler>
+      <handler
+            class="org.limepepper.chefclipse.remotepicker.ui.handlers.CompareWithRemotePickerHandler"
+            commandId="org.limepepper.chefclipse.remotepicker.ui.commands.compare.origin">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+         <menuContribution
+            locationURI="menu:help?after=additions">
+           		<command
+	              	commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
+	              	mnemonic="S"
+	              	label="Cookbooks Remote Picker"
+	              	icon="icons/opscode_16.png">
+            	</command>
+      	</menuContribution>
+      	<menuContribution
+             allPopups="true"
+             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <menu
+                  label="Compare With">
+               <command
+                     commandId="org.limepepper.chefclipse.remotepicker.ui.commands.compare.origin"
+                     label="Origin cookbook (remote picker)">
+                  <visibleWhen
+                        checkEnabled="false">
+					 <with variable="selection">
+         <and>
+            <iterate
+                  ifEmpty="false">
+               <or>
+                  <adapt
+                        type="org.limepepper.chefclipse.common.cookbook.CookbookVersion">
+                  </adapt>
+                  <adapt
+                        type="org.limepepper.chefclipse.model.CookbookFolder">
+                  </adapt>
+                  <adapt
+                        type="org.eclipse.core.resources.mapping.ResourceMapping">
+                     <test
+                           property="org.limepepper.chefclipse.isCookbook"
+                           value="true">
+                     </test>
+                  </adapt>
+               </or>
+            </iterate>
+            <count
+                  value="1">
+            </count>
+         </and>
+					 </with>
+                  </visibleWhen>
+               </command>
+            </menu>
+        </menuContribution>
+      	<menuContribution locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+            <command
+                label="Open Remote Picker Wizard"
+                commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
+                icon="icons/opscode_16.png">
+               	<visibleWhen>
+					<with variable="selection">
+			   		    <iterate operator="and" ifEmpty="false">
+			      			<adapt type="org.eclipse.core.resources.IProject">
+			                	<test property="org.eclipse.core.resources.projectNature" 
+			           	   			value="org.limepepper.chefclipse.ChefProjectNature"/>
+			      			</adapt>
+			   		    </iterate>
+					</with>
+        		</visibleWhen>
+            </command>
+        </menuContribution>
+   </extension>
+	<extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.limepepper.chefclipse.preferences.ui.preferences.chefclipsePreferencePage"
+            class="org.limepepper.chefclipse.remotepicker.ui.preferences.RemotePickerPreferencePage"
+            id="org.limepepper.chefclipse.remotepicker.ui.remotePickerPreferencePage"
+            name="Cookbooks Remote Picker">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="org.limepepper.chefclipse.remotepicker.ui.preferences.RemotePickerPreferencesInitializer"/>
+   </extension>
+
+</plugin>

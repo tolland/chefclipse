@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="CookbookMetadata Editor"
+            extensions="rb"
+            icon="icons/sample.gif"
+            contributorClass="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditorContributor"
+            class="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditor"
+            id="org.limepepper.chefclipse.editors.cookbook.editors.CookbookMetadataEditor">
+         <contentTypeBinding
+               contentTypeId="org.limepepper.chefclipse.editors.cookbook.content-type">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="CookbookMetadata Wizard"
+            id="org.limepepper.chefclipse.editors.cookbook">
+      </category>
+      <wizard
+            name="CookbookMetadata Editor file"
+            icon="icons/sample.gif"
+            category="org.limepepper.chefclipse.editors.cookbook"
+            class="org.limepepper.chefclipse.editors.cookbook.wizards.CookbookMetadataNewWizard"
+            id="org.limepepper.chefclipse.editors.cookbook.wizards.CookbookMetadataNewWizard">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            file-names="metadata.rb"
+            id="org.limepepper.chefclipse.editors.cookbook.content-type"
+            name="Cookbook metadata file"
+            priority="high">
+      </content-type>
+      <file-association
+            content-type="org.limepepper.chefclipse.editors.cookbook.content-type"
+            file-names="metadata.rb">
+      </file-association>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/sample_decorator.gif"
+            id="org.limepepper.chefclipse.editors.cookbook.decorator"
+            label="Resource Decorator"
+            lightweight="true"
+            location="TOP_LEFT"
+            state="true">
+         <enablement>
+         <or>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IProject">
+               </objectClass>
+              <objectState name="nature" value="org.limepepper.chefclipse.ChefProjectNature" />
+            </and>
+
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IFolder">
+               </objectClass>
+<objectState name="org.limepepper.chefclipse.isCookbook" value="true"/>
+
+
+            </and>
+
+            </or>
+         </enablement>
+      </decorator>
+   </extension>
+
+</plugin>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider">
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,com.sun.jersey.bundle"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.eclipse.ui.console"/>
+<project reference="1.0,git@github.com:limepepper/emfjson.git,monkey-patch-02,bundles/org.eclipselabs.emfjson"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.api"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.api.tests"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.app"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.app.feature"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.chefserver.api"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.chefserver.api.tests"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.chefserver.api.ui"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.common"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.common.edit"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.common.editor"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.common.tests"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.common.ui"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.common.utils"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.devel.feature"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.editors.cookbook"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.graphviewer"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.logger"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.model"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.navigator"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.p2"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.product"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.remotepicker.api"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.remotepicker.extpoint"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.remotepicker.repositories"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.remotepicker.ui"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.ui"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.ui.feature"/>
+<project reference="1.0,git@github.com:tolland/chefclipse,prealpha,org.limepepper.chefclipse.utils"/>
+</provider>
+<provider id="org.eclipse.pde.core.BinaryRepositoryProvider"/>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1352168927476_1" label="chefclipse" name="chefclipse">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.test" type="4"/>
+<item elementID="=org.limepepper.chefclipse.common.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.common" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.utils" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.common.tests" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.remotepicker.extpoint" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=com.sun.jersey.bundle" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.graphviewer" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eclipse.zest.jface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.chefserver.api.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eclipselabs.emfjson" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.devel.feature" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eclipse.ui.console" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eclipse.zest.layouts" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.editors.cookbook" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.eclipse.RubyConsole" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.product" type="4"/>
+<item elementID="=org.limepepper.chefclipse.common.utils" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.common.editor" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.remotepicker.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.app" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.chefserver.api" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.model" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.navigator" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.api.tests" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.logger" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eclipse.zest.core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.remotepicker.api" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.tracing" type="4"/>
+<item elementID="=org.limepepper.chefclipse.chefserver.api.tests" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.api" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.remotepicker.repositories" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.common.edit" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1354387631649_56" label="chefclipse-libs" name="chefclipse-libs">
+<item elementID="=org.limepepper.chefclipse.common" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.common.tests" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.chefserver.api" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.p2" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.ui.feature" type="4"/>
+<item elementID="=org.codehaus.jackson.core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eclipse.zest.jface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.codehaus.jackson.mapper" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.app.feature" type="4"/>
+<item elementID="=org.eclipse.zest.core" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.eclipse.zest.layouts" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.common.edit" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=org.limepepper.chefclipse.common.editor" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.pde.ui.pluginWorkingSet" id="1355601988427_99" label="chefclipse-tests" name="chefclipse-tests">
+<item factoryID="org.eclipse.pde.ui.elementFactory" org.eclipse.pde.workingSetKey="org.limepepper.chefclipse.common.tests"/>
+<item factoryID="org.eclipse.pde.ui.elementFactory" org.eclipse.pde.workingSetKey="org.limepepper.chefclipse.api.tests"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1355046801089_91" label="feature-projects" name="feature-projects">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.examples.feature" type="4"/>
+<item elementID="=org.limepepper.chefclipse.devel.feature" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.app.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.ui.feature" type="4"/>
+</workingSets>
+</psf>

@@ -1,0 +1,20 @@
+<processing>
+  <job name="do xyz">
+    <os family="windows" />
+    <executefile name="${P2_PATH}${SEP}p2.bat">
+      <arg>install-win32</arg>
+    </executefile>
+  </job>
+  <job name="do xyz">
+    <os family="unix" />
+    <executefile name="${P2_PATH}${SEP}p2.sh">
+      <arg>install</arg>
+    </executefile>
+  </job>
+    <onFail previous="true" next="false" />
+  <onSuccess previous="true" next="true" condition="mycondition" />
+  <onSuccess previous="false" next="true" condition="!mycondition" />
+  <!--executeclass name="classname">
+<args..../>
+</executeclass-->
+</processing>

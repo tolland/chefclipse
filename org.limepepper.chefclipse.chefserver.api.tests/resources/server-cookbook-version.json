@@ -1,0 +1,190 @@
+{
+   "name":"php-1.0.0",
+   "definitions":[
+
+   ],
+   "json_class":"Chef::CookbookVersion",
+   "files":[
+
+   ],
+   "attributes":[
+      {
+         "name":"default.rb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/2104a838a5a051388c533f7f311f342b",
+         "checksum":"2104a838a5a051388c533f7f311f342b",
+         "path":"attributes\/default.rb",
+         "specificity":"default"
+      }
+   ],
+   "metadata":{
+      "dependencies":{
+         "xml":">= 0.0.0",
+         "mysql":">= 0.0.0",
+         "build-essential":">= 0.0.0"
+      },
+      "name":"php",
+      "maintainer_email":"cookbooks@opscode.com",
+      "attributes":{
+         "apache\/contact":{
+            "required":"optional",
+            "calculated":false,
+            "default":"ops@example.com",
+            "choice":[
+
+            ],
+            "type":"string",
+            "recipes":[
+
+            ],
+            "display_name":"Apache Contact",
+            "description":"Email address of webmaster"
+         },
+         "apache\/serversignature":{
+            "required":"optional",
+            "calculated":false,
+            "default":"On",
+            "choice":[
+
+            ],
+            "type":"string",
+            "recipes":[
+
+            ],
+            "display_name":"Apache Server Signature",
+            "description":"Configure footer on server-generated documents"
+         }
+      },
+      "license":"Apache 2.0",
+      "suggestions":{
+
+      },
+      "platforms":{
+         "debian":">= 0.0.0",
+         "fedora":">= 0.0.0",
+         "redhat":">= 0.0.0"
+      },
+      "maintainer":"Opscode, Inc.",
+      "long_description":"",
+      "version":"1.0.0",
+      "recommendations":{
+
+      },
+      "recipes":{
+         "php::module_fpdf":"Install the php-fpdf package",
+         "php":"",
+         "php::module_sqlite3":"Install the php5-sqlite3 package",
+         "php::source":"Installs php from source.",
+         "php::module_pgsql":"Install the php5-pgsql packag"
+      },
+      "groupings":{
+
+      },
+      "conflicting":{
+
+      },
+      "replacing":{
+
+      },
+      "description":"Installs and maintains php and php modules",
+      "providing":{
+         "php::module_fpdf":">= 0.0.0",
+         "php":">= 0.0.0",
+         "php::module_sqlite3":">= 0.0.0",
+         "php::module_pgsql":">= 0.0.0"
+      }
+   },
+   "providers":[
+      {
+         "name":"pear.rb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/d18c7818892b6b0317c5b058889df86d",
+         "checksum":"d18c7818892b6b0317c5b058889df86d",
+         "path":"providers\/pear.rb",
+         "specificity":"default"
+      },
+      {
+         "name":"pear_channel.rb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/edf817477d3cbbd28fa712004658b40e",
+         "checksum":"edf817477d3cbbd28fa712004658b40e",
+         "path":"providers\/pear_channel.rb",
+         "specificity":"default"
+      }
+   ],
+   "cookbook_name":"php",
+   "templates":[
+      {
+         "name":"php.ini.erb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/e593a826529ac9b6d5f79bed42ba2563",
+         "checksum":"e593a826529ac9b6d5f79bed42ba2563",
+         "path":"templates\/ubuntu\/php.ini.erb",
+         "specificity":"ubuntu"
+      },
+      {
+         "name":"php.ini.erb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/648d3639deb8b6c0b3ef125747167fac",
+         "checksum":"648d3639deb8b6c0b3ef125747167fac",
+         "path":"templates\/default\/php.ini.erb",
+         "specificity":"default"
+      }
+   ],
+   "libraries":[
+
+   ],
+   "resources":[
+      {
+         "name":"pear_channel.rb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/e43dd2564fd26f1bee654232ee589c65",
+         "checksum":"e43dd2564fd26f1bee654232ee589c65",
+         "path":"resources\/pear_channel.rb",
+         "specificity":"default"
+      },
+      {
+         "name":"pear.rb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/babb2fa85fc28373cd4c81af435739a8",
+         "checksum":"babb2fa85fc28373cd4c81af435739a8",
+         "path":"resources\/pear.rb",
+         "specificity":"default"
+      }
+   ],
+   "version":"1.0.0",
+   "recipes":[
+      {
+         "name":"default.rb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/4dcbc5ad8efdd418744bc353128f8724",
+         "checksum":"4dcbc5ad8efdd418744bc353128f8724",
+         "path":"recipes\/default.rb",
+         "specificity":"default"
+      },
+      {
+         "name":"module_memcache.rb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/c3d136be05cc7f62ad06d43d4cc59123",
+         "checksum":"c3d136be05cc7f62ad06d43d4cc59123",
+         "path":"recipes\/module_memcache.rb",
+         "specificity":"default"
+      }
+   ],
+   "root_files":[
+      {
+         "name":"README.md",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/99902a10ca3a6e8eb7488361fdd93a4f",
+         "checksum":"99902a10ca3a6e8eb7488361fdd93a4f",
+         "path":"README.md",
+         "specificity":"default"
+      },
+      {
+         "name":"metadata.rb",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/b6035c2a7e5a42c226b80cceec35d76d",
+         "checksum":"b6035c2a7e5a42c226b80cceec35d76d",
+         "path":"metadata.rb",
+         "specificity":"default"
+      },
+      {
+         "name":"metadata.json",
+         "url":"http:\/\/opencirrus-g0801.hpl.hp.com:4000\/cookbooks\/php\/1.0.0\/files\/36fadd51f47965d3f9a4a397509791a4",
+         "checksum":"36fadd51f47965d3f9a4a397509791a4",
+         "path":"metadata.json",
+         "specificity":"default"
+      }
+   ],
+   "frozen?":false,
+   "chef_type":"cookbook_version"
+}

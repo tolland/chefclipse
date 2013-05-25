@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.limepepper.chefclipse.ui.wizards.category"
+            name="Chefclipse">
+      </category>
+      <wizard
+            category="org.limepepper.chefclipse.ui.wizards.category"
+            class="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
+            icon="icons/sample.gif"
+            id="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
+            name="New Chef Project"
+            project="true">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.limepepper.chefclipse.ui.perspective.ChefPerspectiveFactory"
+            icon="icons/32x32.png"
+            id="org.limepepper.chefclipse.perspective"
+            name="Chef">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.limepepper.chefclipse.perspective">
+         <showInPart
+               id="org.eclipse.ui.navigator.ProjectExplorer">
+         </showInPart>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage"
+            id="org.limepepper.chefclipse.ui.properties.pages.chef.configuration"
+            name="Chef server configuration">
+         <filter
+               name="projectNature"
+               value="chefclipse.chefnature"/>
+         <enabledWhen>
+            <adapt
+                  type="org.eclipse.core.resources.IProject">
+            </adapt>
+         </enabledWhen>
+      </page>
+   </extension>
+
+</plugin>

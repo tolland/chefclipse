@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.limepepper.chefclipse.chefserver.api.ui.handler.ApiUiHandler"
+            commandId="org.limepepper.chefclipse.api.ui.popupContext">
+      </handler>
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.menus">
+
+   <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+        <menu label="Chefclipse Menu"
+               mnemonic="C"
+               id="org.limepepper.chefclipse.menus.contextgroup">
+         <dynamic
+               class="org.limepepper.chefclipse.chefserver.api.ui.handler.ContributionItemDynamic"
+               id="org.limepepper.chefclipse.api.ui.dynamic">
+         </dynamic>
+         </menu>
+      </menuContribution>
+   </extension>
+   
+
+<!-- =================================================================================== -->
+<!-- This is the command contribution declarations for dynamic menu item etc    -->
+<!-- lars vogel tutorials on advanced commmands features -->
+<!-- http://www.vogella.com/articles/EclipseCommandsAdvanced/article.html -->
+<!-- =================================================================================== -->
+
+
+  <extension
+       point="org.eclipse.ui.commands">
+    <category
+          id="org.limepepper.chefclipse.commands.category"
+          name="Chefclipse Commands Category">
+    </category>
+    <command
+          categoryId="org.limepepper.chefclipse.commands.category"
+          id="org.limepepper.chefclipse.api.ui.popupContext"
+          name="Dynamic Command Label Placeholder">
+       <commandParameter
+             id="commandParameter1"
+             name="parameter to select dynamic handler"
+             optional="false">
+       </commandParameter>
+    </command>
+ </extension>
+  <extension
+        point="org.eclipse.ui.views">
+     <category
+           id="org.limepepper.chefclipse.chefserver.api.ui"
+           name="Sample Category">
+     </category>
+     <view
+           category="org.limepepper.chefclipse.chefserver.api.ui"
+           class="org.limepepper.chefclipse.chefserver.api.ui.views.SampleView"
+           icon="icons/sample.gif"
+           id="org.limepepper.chefclipse.chefserver.api.ui.views.SampleView"
+           name="Sample View">
+     </view>
+     <view
+           category="org.limepepper.chefclipse.chefserver.api.ui"
+           class="org.limepepper.chefclipse.chefserver.api.ui.views.PropertyView"
+           icon="icons/sample.gif"
+           id="org.limepepper.chefclipse.chefserver.api.ui.views.PropertyView"
+           name="PropertyView View">
+     </view>
+  </extension>
+  <extension
+        point="org.eclipse.ui.perspectiveExtensions">
+     <perspectiveExtension
+           targetID="org.eclipse.jdt.ui.JavaPerspective">
+        <view
+              id="org.limepepper.chefclipse.chefserver.api.ui.views.SampleView"
+              ratio="0.5"
+              relationship="right"
+              relative="org.eclipse.ui.views.ProblemView">
+        </view>
+        <view
+              id="org.limepepper.chefclipse.chefserver.api.ui.views.PropertyView"
+              ratio="0.5"
+              relationship="right"
+              relative="org.eclipse.ui.views.ProblemView">
+        </view>
+     </perspectiveExtension>
+  </extension>
+  <extension
+        point="org.eclipse.help.contexts">
+     <contexts
+           file="contexts.xml">
+     </contexts>
+  </extension>
+  <extension point="org.eclipse.ui.editors"> 
+     <editor id="org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditor" class="org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditor" name="RunList Editor"> 
+     </editor> 
+  </extension>
+
+</plugin>

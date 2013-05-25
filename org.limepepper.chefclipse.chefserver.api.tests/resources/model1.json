@@ -1,0 +1,9 @@
+{
+  "name" : "My Shelf",
+    "dependencies": {
+        "build-essential":">= 0.0.0",
+        "xml":">= 0.0.0",
+        "mysql":">= 0.0.0"
+    },
+    "version": "99.99"
+}

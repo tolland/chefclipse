@@ -1,0 +1,22 @@
+
+
+System.setProperty("jruby.script", "jruby");
+System.setProperty("jruby.shell", "/bin/bash");
+System.setProperty("jruby.home", "/usr/share/jruby");
+System.setProperty("jruby.version", "1.8");
+System.setProperty("jruby.lib", "/usr/share/jruby/lib");
+
+List pathsLoad = new ArrayList();
+pathsLoad.add("/usr/share/jruby/lib/ruby/1.8");
+pathsLoad.add("/usr/share/jruby/lib/ruby/site_ruby/1.8");
+pathsLoad.add("/usr/share/jruby/lib/ruby/site_ruby/shared");
+
+Ruby rubyRuntime = JavaEmbedUtils.initialize(pathsLoad);
+
+
+
+
+org.jruby.Main.main(new String[] {"-S", "jirb_swing"});
+
+
+

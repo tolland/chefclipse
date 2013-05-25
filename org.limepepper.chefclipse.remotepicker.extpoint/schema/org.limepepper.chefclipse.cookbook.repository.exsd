@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.limepepper.chefclipse.remotepicker.extpoint" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="org.limepepper.chefclipse.remotepicker.extpoint" id="org.limepepper.chefclipse.cookbook.repository" name="Chefclipse Cookbook Repository Discovery"/>
+      </appinfo>
+      <documentation>
+         An extension point for contributing to the Chefclipse Cookbook Repositories.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="repositoryDescriptor"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="icon">
+      <annotation>
+         <documentation>
+            A 32x32 image to show as the repository icon
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="image32" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="resource"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="repositoryDescriptor">
+      <annotation>
+         <documentation>
+            Description attributes for the repository of cookbooks.
+One or class or builder attributes must be specified.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="icon"/>
+         </sequence>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Unique Id for each repository.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Repository Name
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="description" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Repository Description to show in the remote picker wizard
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="uri" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  A class implementing ICookbooksRepository for repositories that are static doesn&apos;t need parameters to be run.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="builder" type="string">
+            <annotation>
+               <documentation>
+                  A class implementing ICookbooksRepository.Builder, responsable of configuring a repostiory with an UI and creating a ICookbooksRepository.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository.Builder"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="config" type="string">
+            <annotation>
+               <documentation>
+                  Optional paramenter for builder
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         1.0.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension
+         point=&quot;org.limepepper.chefclipse.cookbook.repository&quot;&gt;
+   &lt;repositoryDescriptor
+            class=&quot;org.limepepper.chefclipse.remotepicker.repositories.CookbookSiteRepository&quot;
+            description=&quot;This site contains all the cookbooks authored by Opscode, as well as many cookbooks from other members of the community.&quot;
+            id=&quot;org.limepepper.chefclipse.remotepicker.repository.opscode&quot;
+            name=&quot;Opscode Cookbook Site&quot;
+            uri=&quot;http://community.opscode.com/cookbooks&quot;&gt;
+         &lt;icon
+               image32=&quot;icons/opscode_32.png&quot;&gt;
+         &lt;/icon&gt;
+      &lt;/repositoryDescriptor&gt;
+   &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         Extensions should implement ICookbookRepository
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         You can see implementations of thisi extension point on org.limepepper.chefclipse.remotepicker.repositories.
+      </documentation>
+   </annotation>
+
+
+</schema>

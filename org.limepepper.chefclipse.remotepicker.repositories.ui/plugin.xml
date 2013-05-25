@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.limepepper.chefclipse.cookbook.repository">
+      <repositoryDescriptor
+            builder="org.limepepper.chefclipse.remotepicker.repositories.ChefServerCookbookRepositoryConfig"
+            description="This repository can be used to install Cookbooks from any Chef Server. Select to configure it."
+            id="org.limepepper.chefclipse.remotepicker.repository.chefServer"
+            name="Chef Server Cookbooks Repository"
+            uri="https://api.opscode.com/organizations">
+         <icon
+               image32="icons/chefserver_32.png">
+         </icon>
+      </repositoryDescriptor>
+   </extension>
+   <extension
+         point="org.limepepper.chefclipse.cookbook.repository">
+      <repositoryDescriptor
+            builder="org.limepepper.chefclipse.remotepicker.repositories.GithubCookbookRepositoryConfig"
+            description="Install cookbooks from any GitHub organization providing Cookbooks repositories. Select to configure it."
+            id="org.limepepper.chefclipse.remotepicker.repository.github"
+            name="GitHub Cookbooks Repository"
+            uri="https://github.com">
+         <icon
+               image32="icons/github_32.png">
+         </icon>
+      </repositoryDescriptor>
+   </extension>
+   <extension
+         point="org.limepepper.chefclipse.cookbook.repository">
+      <repositoryDescriptor
+            builder="org.limepepper.chefclipse.remotepicker.repositories.GithubCookbookRepositoryConfig"
+            description="This repository contains a collection of cookbooks from vendors and individuals. The repositories under this organization are not affiliated with Opscode."
+            config="cookbooks"
+            id="org.limepepper.chefclipse.remotepicker.repository.multipleVendor"
+            name="Multiple Vendor Cookbook Site"
+            uri="https://github.com/cookbooks">
+         <icon
+               image32="icons/github_32.png">
+         </icon>
+      </repositoryDescriptor>
+   </extension>
+</plugin>

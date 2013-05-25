@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>emfjson</artifactId>
+		<groupId>org.eclipselabs</groupId>
+		<version>0.5.0-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>org.eclipselabs.emfjson.repository</artifactId>
+	<packaging>eclipse-repository</packaging>
+	
+	
+	<scm>
+		<url>scm:git:git@github.com:limepepper/emfjson.git</url>
+		<connection>scm:git:git@github.com:limepepper/emfjson.git</connection>
+		<developerConnection>scm:git:git@github.com:limepepper/emfjson.git</developerConnection>
+	</scm>
+	
+	<profiles>
+	<profile>
+    <id>deploy-update-site</id>
+
+    <properties>
+        <repo.path>${project.build.directory}/repository</repo.path>
+        <checkout.path>${project.build.directory}/checkout</checkout.path>
+        <checkout.dir>p2</checkout.dir>
+    </properties>
+
+    <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.8</version>
+        <executions>
+            <execution>
+                <id>git-fetch</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>checkout</goal>
+                </goals>
+                <configuration>
+                    <checkoutDirectory>${checkout.path}</checkoutDirectory>
+                    <scmVersion>gh-pages</scmVersion>
+                    <scmVersionType>branch</scmVersionType>
+                </configuration>
+            </execution>
+
+            <execution>
+                <id>git-push</id>
+                <phase>install</phase>
+                <goals>
+                    <goal>checkin</goal>
+                </goals>
+                <configuration>
+                    <workingDirectory>${checkout.path}</workingDirectory>
+                    <includes>**</includes>
+                    <message>${project.version}</message>
+                    <tag>emfjson.p2.${project.version}</tag>
+                    <username></username>
+                    <password></password>
+                </configuration>
+            </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>wagon-maven-plugin</artifactId>
+        <version>1.0-beta-4</version>
+        <executions>
+            <execution>
+                <id>copy-repo</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>upload</goal>
+                </goals>
+                <configuration>
+                    <fromDir>${repo.path}</fromDir>
+                    <includes>**</includes>
+                    <toDir>${checkout.dir}</toDir>
+                    <url>file://${checkout.path}</url>
+                </configuration>
+            </execution>
+         <execution>
+          <id>upload-p2</id>
+          <phase>validate</phase>
+          <goals>
+            <goal>upload</goal>
+          </goals>
+          <configuration>
+            <fromDir>${project.build.directory}/checkout</fromDir>
+            <includes>*</includes>
+            <excludes>pom.xml</excludes>
+            <url>file://${checkout.path}</url>
+            <toDir>p2</toDir>
+          </configuration>
+          </execution>
+        </executions>
+     </plugin>
+    </plugins>
+    </build>
+    </profile>
+	</profiles>
+</project>
