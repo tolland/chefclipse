@@ -50,9 +50,6 @@
         <module>org.limepepper.chefclipse.product</module>
         <module>org.limepepper.chefclipse.p2</module>
 
-        <!-- releng stuff -->
-        <module>chefclipse.p2installer</module>
-
         <!-- features bundles -->
         <module>features/org.limepepper.chefclipse.ui.feature</module>
         <module>features/org.limepepper.chefclipse.app.feature</module>
@@ -118,21 +115,18 @@
     </profile>
 
 
-    <!-- izpack creates a install.jar, depends on the build profile -->
-    <profile>
-      <id>izpack</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-    </profile>
 
 
     <!-- p2 builds a repo -->
+    <!-- set the deploy-update-site and install to push the budles to remote p2 -->
     <profile>
       <id>p2</id>
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
+      <modules>
+        <module>org.limepepper.chefclipse.p2</module>
+      </modules>
       <build>
         <plugins>
           <plugin>
@@ -146,6 +140,96 @@
 
           </plugin>
         </plugins>
+      </build>
+    </profile>
+
+
+
+
+
+    <!-- izpack creates a install.jar, depends on the build profile -->
+    <profile>
+      <id>izpack</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <modules>
+        <module>chefclipse.izpacker</module>
+			</modules>
+    </profile>
+
+
+    
+
+    <!-- purge the chefclipse groupId -->
+    <profile>
+      <id>purge</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.8</version>
+        <executions>
+          <execution>
+            <id>purge-local-dependencies</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>purge-local-repository</goal>
+            </goals>
+            <configuration>
+              <DresolutionFuzziness>groupId</DresolutionFuzziness>
+              <includes>
+              <include>org.limepepper.chefclipse</include>
+              </includes>
+<verbose>true</verbose>           
+<DactTransitively>false</DactTransitively>                
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+    </profile>
+    
+    
+    <!-- source bundles -->
+    <profile>
+      <id>source</id>
+          <build>
+        <plugins>
+    <plugin>
+	<groupId>org.eclipse.tycho.extras</groupId>
+	<artifactId>tycho-source-feature-plugin</artifactId>
+	<version>${tycho-extras-version}</version>
+	<executions>
+		<execution>
+			<id>source-feature</id>
+			<phase>package</phase>
+			<goals>
+				<goal>source-feature</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+<plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-p2-plugin</artifactId>
+	<version>${tycho-version}</version>
+	<executions>
+		<execution>
+			<id>attach-p2-metadata</id>
+			<phase>package</phase>
+			<goals>
+				<goal>p2-metadata</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+            </plugins>
       </build>
     </profile>
 

@@ -230,6 +230,7 @@
                   <skipCheckoutIfExists>true</skipCheckoutIfExists>
                 </configuration>
               </execution>
+</executions>
                 </plugin>
         </plugins>
       </build>
