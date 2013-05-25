@@ -6,7 +6,7 @@
          point="org.eclipse.ui.editors">
       <editor
             class="org.limepepper.chefclipse.databag.editor.DatabagExecutableExtensionFactory:org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor"
-            contributorClass="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditorContributor"
+            contributorClass="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditorContributorCopy"
             icon="icons/data_bag_editor.png"
             id="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor"
             name="Data Bag Multi-page Editor">

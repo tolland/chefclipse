@@ -271,7 +271,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	protected void pageChange(int newPageIndex) {
 		super.pageChange(newPageIndex);
 		if (newPageIndex == 2) {
-			sortWords();
+
 		}
 	}
 	/**
@@ -314,29 +314,5 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 			return outlinePage;
 		}
 		return super.getAdapter(adapter);
-	}
-	
-	/**
-	 * Sorts the words in page 0, and shows them in page 2.
-	 */
-	void sortWords() {
-
-//		String editorText =
-//			editor.getDocumentProvider().getDocument(editor.getEditorInput()).get();
-//
-//		StringTokenizer tokenizer =
-//			new StringTokenizer(editorText, " \t\n\r\f!@#\u0024%^&*()-_=+`~[]{};:'\",.<>/?|\\");
-//		ArrayList editorWords = new ArrayList();
-//		while (tokenizer.hasMoreTokens()) {
-//			editorWords.add(tokenizer.nextToken());
-//		}
-//
-//		Collections.sort(editorWords, Collator.getInstance());
-//		StringWriter displayText = new StringWriter();
-//		for (int i = 0; i < editorWords.size(); i++) {
-//			displayText.write(((String) editorWords.get(i)));
-//			displayText.write(System.getProperty("line.separator"));
-//		}
-//		text.setText(displayText.toString());
 	}
 }

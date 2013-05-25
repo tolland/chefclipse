@@ -44,7 +44,6 @@ import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
-import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -97,10 +96,6 @@ import org.eclipse.xtext.resource.XtextResourceFactory;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
-import org.limepepper.chefclipse.databag.editor.actions.AddJsonPropertyAction;
-import org.limepepper.chefclipse.databag.editor.actions.AddNewDataBagItemAction;
-import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
-import org.limepepper.chefclipse.databag.editor.actions.RemoveJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.editing.FieldEditingSupport;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.provider.JsonItemProviderAdapterFactory;
@@ -113,11 +108,8 @@ public class DataBagColumnEditor extends EditorPart implements
 
     private EObject dataBagEObject;
     private TreeViewer viewer;
-    private Action addNewDataBagItemAction;
-    private Action removePropertyAction;
-    private Action editValueAction;
-    private CommandStack commandStack;
     private Composite filterControl;
+    private DataBagActionContributor actionContributor;
     
     /**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
@@ -144,8 +136,6 @@ public class DataBagColumnEditor extends EditorPart implements
 	 */
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
 	private XtextResourceFactory resFactory;
-	private Action addJsonPropertyAction;
-	private Action removeDataBagItemAction;
 	
     /**
      * @param resourceFactory 
@@ -263,7 +253,7 @@ public class DataBagColumnEditor extends EditorPart implements
 	 * @generated
 	 */
 	public void createModel() {
-		Exception exception = null;
+//		Exception exception = null;
 		try {
 			// Load the resource through the editing domain.
 			editingDomain.getResourceSet().getResourceFactoryRegistry().getContentTypeToFactoryMap().put("databag", resFactory);
@@ -281,7 +271,7 @@ public class DataBagColumnEditor extends EditorPart implements
 			}
 		}
 		catch (Exception e) {
-			exception = e;
+//			exception = e;
 		}
 
 //		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
@@ -305,9 +295,10 @@ public class DataBagColumnEditor extends EditorPart implements
         setSite(site);
 		setInputWithNotify(input);
         setPartName(input.getName());
+        site.setSelectionProvider(this);
+        actionContributor = new DataBagActionContributor(this);
 //        setCommandStack(new CommandStack());
 //        getCommandStack().addCommandStackListener(this);
-		site.setSelectionProvider(this);
 //		site.getPage().addPartListener(partListener);
 //		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
         
@@ -453,8 +444,8 @@ public class DataBagColumnEditor extends EditorPart implements
         final ToolBar toolBar = new ToolBar(bar, SWT.VERTICAL);
         ToolBarManager manager = new ToolBarManager(toolBar);
 
-        ViewerProvider viewerProvider = new ViewerProvider();
-        addKeysRelatedActions(manager, viewerProvider);
+        actionContributor.addKeysRelatedActions(manager);
+//        addKeysRelatedActions(manager, viewerProvider);
         manager.update(true);
     }
     
@@ -462,26 +453,10 @@ public class DataBagColumnEditor extends EditorPart implements
         final ToolBar toolBar = new ToolBar(bar, SWT.HORIZONTAL);
         GridDataFactory.fillDefaults().align(SWT.END, SWT.BEGINNING).grab(false, false).applyTo(toolBar);
         ToolBarManager manager = new ToolBarManager(toolBar);
-
-        ViewerProvider viewerProvider = new ViewerProvider();
-        addDataBagItemsRelatedActions(manager, viewerProvider);
+        
+        actionContributor.addDataBagItemsRelatedActions(manager);
+//        addDataBagItemsRelatedActions(manager);
         manager.update(true);
-    }
-
-    private void addKeysRelatedActions(ToolBarManager manager, ViewerProvider viewerProvider) {
-        setAddJsonPropertyAction(new AddJsonPropertyAction());
-        setRemovePropertyAction(new RemoveJsonPropertyAction());
-
-        manager.add(getAddJsonPropertyAction());
-        manager.add(getRemovePropertyAction());
-    }
-    
-    private void addDataBagItemsRelatedActions(ToolBarManager manager, ViewerProvider viewerProvider) {
-        setAddNewDataBagItemAction(new AddNewDataBagItemAction());
-        setRemoveDataBagItemAction(new RemoveDataBagItemAction());
-
-        manager.add(getAddNewDataBagItemAction());
-        manager.add(getRemoveDataBagItemAction());
     }
 
     /*
@@ -816,67 +791,12 @@ public class DataBagColumnEditor extends EditorPart implements
 
     }
 
-    public Action getAddNewDataBagItemAction() {
-        return addNewDataBagItemAction;
-    }
-
-    public void setAddNewDataBagItemAction(Action addNewDataBagItemAction) {
-        this.addNewDataBagItemAction = addNewDataBagItemAction;
-    }
-
-    public Action getRemovePropertyAction() {
-        return removePropertyAction;
-    }
-
-    public void setRemovePropertyAction(Action removePropertyAction) {
-        this.removePropertyAction = removePropertyAction;
-    }
-
     private void setFilterControl(Composite filterControl) {
         this.filterControl = filterControl;
-    }
-
-    public Action getAddJsonPropertyAction() {
-        return addJsonPropertyAction;
-    }
-
-    public void setAddJsonPropertyAction(Action addJsonPropertyAction) {
-        this.addJsonPropertyAction = addJsonPropertyAction;
-    }
-
-    public Action getRemoveDataBagItemAction() {
-        return removeDataBagItemAction;
-    }
-
-    public void setRemoveDataBagItemAction(Action removeDataBagItemAction) {
-        this.removeDataBagItemAction = removeDataBagItemAction;
-    }
-
-    // private class NameSorter extends ViewerSorter {
-    //
-    // @Override
-    // public int compare(Viewer viewer, Object e1, Object e2) {
-    //
-    // }
-    // }
-    public class ViewerProvider {
-
-        public TreeViewer getViewer() {
-            return viewer;
-        }
-
-//        public Entry<String, JsonNode> getItemSelected() {
-            // IStructuredSelection selection = (IStructuredSelection)
-            // getViewer().getSelection();
-//            return null;
-//        }
-        
-//        public CommandStack getCommandStack() {
-//            return commandStack;
-//        }
     }
 
 	public ResourceSet getResourceSet() {
 		return editingDomain.getResourceSet();
 	}
+
 }
