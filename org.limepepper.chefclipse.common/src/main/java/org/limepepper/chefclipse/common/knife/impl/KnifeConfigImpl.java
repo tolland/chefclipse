@@ -11,6 +11,7 @@ import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.Plugin;
+import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.utility.impl.ConfigImpl;
 
 /**
@@ -30,6 +31,7 @@ import org.limepepper.chefclipse.utility.impl.ConfigImpl;
  *   <li>{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl#getServer <em>Server</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl#getServerCookbookVersion <em>Server Cookbook Version</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.knife.impl.KnifeConfigImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
  *
@@ -217,6 +219,24 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	@SuppressWarnings("unchecked")
 	public EList<ServerCookbookVersion> getServerCookbookVersion() {
 		return (EList<ServerCookbookVersion>)eGet(KnifePackage.Literals.KNIFE_CONFIG__SERVER_COOKBOOK_VERSION, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Repository getRepository() {
+		return (Repository)eGet(KnifePackage.Literals.KNIFE_CONFIG__REPOSITORY, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRepository(Repository newRepository) {
+		eSet(KnifePackage.Literals.KNIFE_CONFIG__REPOSITORY, newRepository);
 	}
 
 } //KnifeConfigImpl

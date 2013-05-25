@@ -7,6 +7,7 @@ import java.io.File;
 import org.eclipse.emf.common.util.EList;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.utility.Config;
 
 /**
@@ -27,6 +28,7 @@ import org.limepepper.chefclipse.utility.Config;
  *   <li>{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getServer <em>Server</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getServerCookbookVersion <em>Server Cookbook Version</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
  *
@@ -278,5 +280,33 @@ public interface KnifeConfig extends Config {
 	 * @generated
 	 */
 	EList<ServerCookbookVersion> getServerCookbookVersion();
+
+				/**
+	 * Returns the value of the '<em><b>Repository</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.workstation.Repository#getKnife <em>Knife</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Repository</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Repository</em>' reference.
+	 * @see #setRepository(Repository)
+	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeConfig_Repository()
+	 * @see org.limepepper.chefclipse.common.workstation.Repository#getKnife
+	 * @model opposite="knife"
+	 * @generated
+	 */
+	Repository getRepository();
+
+				/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getRepository <em>Repository</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Repository</em>' reference.
+	 * @see #getRepository()
+	 * @generated
+	 */
+	void setRepository(Repository value);
 
 } // KnifeConfig
