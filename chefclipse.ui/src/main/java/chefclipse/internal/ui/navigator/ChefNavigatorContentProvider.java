@@ -2,6 +2,7 @@ package chefclipse.internal.ui.navigator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -9,7 +10,12 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
+import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.Server;
+import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
@@ -27,6 +33,8 @@ import chefclipse.core.providers.ChefProjectAdapterFactory;
  *
  */
 public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider {
+
+	KnifeConfigController api = KnifeConfigController.INSTANCE;
 
 	public ChefNavigatorContentProvider() {
 
@@ -55,6 +63,10 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider 
 
 				for (KnifeConfig knifeConfig : ChefConfigManager.instance()
 						.retrieveChefConfigurations()) {
+
+					Server server = ChefserverFactory.eINSTANCE.createServer();
+					server.setWebuiport(4040);
+					knifeConfig.setServer(server);
 
 					children.add(knifeConfig);
 				}

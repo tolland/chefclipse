@@ -96,7 +96,7 @@ public class MultiPageEditor extends MultiPageEditorPart implements IResourceCha
 		gd.horizontalSpan = 2;
 		fontButton.setLayoutData(gd);
 		fontButton.setText("Change Font...");
-		
+
 		fontButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
 				setFont();
@@ -129,7 +129,7 @@ public class MultiPageEditor extends MultiPageEditorPart implements IResourceCha
 		createPage2();
 	}
 	/**
-	 * The <code>MultiPageEditorPart</code> implementation of this 
+	 * The <code>MultiPageEditorPart</code> implementation of this
 	 * <code>IWorkbenchPart</code> method disposes all nested editors.
 	 * Subclasses may extend.
 	 */
@@ -200,7 +200,7 @@ public class MultiPageEditor extends MultiPageEditorPart implements IResourceCha
 							pages[i].closeEditor(editorPart,true);
 						}
 					}
-				}            
+				}
 			});
 		}
 	}
@@ -228,7 +228,7 @@ public class MultiPageEditor extends MultiPageEditorPart implements IResourceCha
 
 		StringTokenizer tokenizer =
 			new StringTokenizer(editorText, " \t\n\r\f!@#\u0024%^&*()-_=+`~[]{};:'\",.<>/?|\\");
-		ArrayList editorWords = new ArrayList();
+		ArrayList<String> editorWords = new ArrayList<String>();
 		while (tokenizer.hasMoreTokens()) {
 			editorWords.add(tokenizer.nextToken());
 		}
@@ -236,7 +236,7 @@ public class MultiPageEditor extends MultiPageEditorPart implements IResourceCha
 		Collections.sort(editorWords, Collator.getInstance());
 		StringWriter displayText = new StringWriter();
 		for (int i = 0; i < editorWords.size(); i++) {
-			displayText.write(((String) editorWords.get(i)));
+			displayText.write((editorWords.get(i)));
 			displayText.write(System.getProperty("line.separator"));
 		}
 		text.setText(displayText.toString());

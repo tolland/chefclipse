@@ -22,57 +22,54 @@ import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
 import org.limepepper.chefclipse.common.cookbook.Metadata;
 
 public class KnifeJsonTests {
-    /**
-     * @todo no idea!
-     * 
-     */
-    private ResourceSet resourceSet    = new ResourceSetImpl();
-    private Resource    masterResource = null;
+	/**
+	 * @todo no idea!
+	 *
+	 */
+	private ResourceSet resourceSet = new ResourceSetImpl();
 
-    @Before
-    public void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 
-        Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-                "json", new JsResourceFactoryImpl());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
+				"json", new JsResourceFactoryImpl());
 
-    }
+	}
 
-    @Test
-    public void testLoadMetaData() throws Exception {
+	@Test
+	public void testLoadMetaData() throws Exception {
 
-        resourceSet = new ResourceSetImpl();
+		resourceSet = new ResourceSetImpl();
 
-        Map<String, Object> options = new HashMap<String, Object>();
-        options.put(EMFJs.OPTION_ROOT_ELEMENT,
-                CookbookPackage.eINSTANCE.getMetadata());
-        URL url = null;
+		Map<String, Object> options = new HashMap<String, Object>();
+		options.put(EMFJs.OPTION_ROOT_ELEMENT,
+				CookbookPackage.eINSTANCE.getMetadata());
+		URL url = null;
 
-        try {
-            url = new URL("file:resources/knife-generated-metadata.json");
+		try {
+			url = new URL("file:resources/knife-generated-metadata.json");
 
-            InputStream inputStream = url.openConnection().getInputStream();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    inputStream));
-            String inputLine;
+			InputStream inputStream = url.openConnection().getInputStream();
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					inputStream));
+			while ((in.readLine()) != null) {
+				// System.out.println(inputLine);
+			}
 
-            while ((inputLine = in.readLine()) != null) {
-                // System.out.println(inputLine);
-            }
+			in.close();
 
-            in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+		Resource resource = resourceSet.createResource(URI
+				.createURI("resources/knife-generated-metadata.json"));
 
-        Resource resource = resourceSet.createResource(URI
-                .createURI("resources/knife-generated-metadata.json"));
+		resource.load(options);
 
-        resource.load(options);
+		Metadata user = (Metadata) resource.getContents().get(0);
 
-        Metadata user = (Metadata) resource.getContents().get(0);
-
-        assertTrue(user.getName().equals("php"));
-    }
+		assertTrue(user.getName().equals("php"));
+	}
 
 }

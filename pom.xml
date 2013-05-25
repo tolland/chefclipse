@@ -9,7 +9,8 @@
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
-    <tycho-version>0.16.0</tycho-version>
+		<tycho-version>0.17.0</tycho-version>
+    <tycho-extras-version>0.17.0</tycho-extras-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -44,7 +45,7 @@
 
         <!--module>org.limepepper.chefclipse.releng</module -->
         <module>org.limepepper.chefclipse.target</module>
-        
+
         <!-- product -->
         <module>org.limepepper.chefclipse.product</module>
         <module>org.limepepper.chefclipse.p2</module>
@@ -74,7 +75,6 @@
         <!-- merged into chefclipse.ui -->
         <!-- module>org.limepepper.chefclipse.common.ui</module -->
 
-
         <module>org.limepepper.chefclipse.utils</module>
         <module>org.limepepper.chefclipse.graphviewer</module>
         <module>org.limepepper.chefclipse.logger</module>
@@ -102,13 +102,11 @@
         <module>org.limepepper.chefclipse.preferences.ui</module>
         <module>org.limepepper.chefclipse.preferences.test</module>
 
-
         <!-- test bundles -->
         <module>org.limepepper.chefclipse.testing</module>
 
         <!-- experimental - @todo put these plugins in separate profile -->
         <!--module>org.limepepper.eclipse.RubyConsole</module -->
-
 
         <!-- missing form orbit bundles -->
         <module>libs/com.sun.jersey.bundle</module>
@@ -138,7 +136,7 @@
       <build>
         <plugins>
           <plugin>
-          	
+
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-deploy-plugin</artifactId>
             <version>2.7</version>
@@ -198,7 +196,7 @@
                 <artifact>
                   <groupId>org.limepepper.chefclipse</groupId>
                   <artifactId>juno42</artifactId>
-                  <version>0.1.0</version>
+									<version>0.1.0-SNAPSHOT</version>
                 </artifact>
               </target>
               <environments>
@@ -255,23 +253,24 @@
           </execution>
         </executions>
       </plugin>
-      
+
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-p2-repository-plugin</artifactId>
         <version>${tycho-version}</version>
         <configuration>
-          <includeAllDependencies>true</includeAllDependencies>
+          <!-- experimenting with getting the binary artifacts into the repo -->
+          <includeAllDependencies>false</includeAllDependencies>
         </configuration>
       </plugin>
-      
+
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
         <extensions>true</extensions>
       </plugin>
-      
+
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
@@ -313,8 +312,8 @@
           </environments>
         </configuration>
       </plugin>
-
     </plugins>
+
     <extensions>
       <extension>
         <groupId>org.springframework.build</groupId>

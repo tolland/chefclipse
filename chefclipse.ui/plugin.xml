@@ -249,9 +249,9 @@
           </or>
         </enablement>
       </actionProvider>
-          	<actionProvider
-                 class="org.limepepper.chefclipse.databag.editor.actions.DataBagActionProvider">
-          	</actionProvider>
+	  	<!--actionProvider
+	         class="org.limepepper.chefclipse.databag.editor.actions.DataBagActionProvider">
+	  	</actionProvider-->
     </navigatorContent>
 
 

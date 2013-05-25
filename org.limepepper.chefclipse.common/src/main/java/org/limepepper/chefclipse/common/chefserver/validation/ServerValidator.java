@@ -13,6 +13,7 @@ import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.chefserver.Server}.
@@ -32,4 +33,6 @@ public interface ServerValidator {
 	boolean validateWebuiport(int value);
 	boolean validateSandboxes(EList<Sandbox> value);
 	boolean validateConfig(ServerConfig value);
+
+	boolean validateKnifeConfig(EList<KnifeConfig> value);
 }

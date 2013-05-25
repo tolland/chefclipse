@@ -5,6 +5,7 @@ package org.limepepper.chefclipse.common.chefserver;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,6 +24,7 @@ import org.limepepper.chefclipse.common.chefclient.Client;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Server#getWebuiport <em>Webuiport</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Server#getSandboxes <em>Sandboxes</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.Server#getConfig <em>Config</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.Server#getKnifeConfig <em>Knife Config</em>}</li>
  * </ul>
  * </p>
  *
@@ -219,5 +221,23 @@ public interface Server extends EObject {
 	 * @generated
 	 */
     void setConfig(ServerConfig value);
+
+				/**
+	 * Returns the value of the '<em><b>Knife Config</b></em>' reference list.
+	 * The list contents are of type {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getServer <em>Server</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Knife Config</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Knife Config</em>' reference list.
+	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getServer_KnifeConfig()
+	 * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getServer
+	 * @model opposite="server"
+	 * @generated
+	 */
+	EList<KnifeConfig> getKnifeConfig();
 
 } // Server

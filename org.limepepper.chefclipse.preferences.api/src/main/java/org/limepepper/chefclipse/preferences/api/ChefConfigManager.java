@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.preferences.api;
 
@@ -35,9 +35,9 @@ import org.osgi.service.prefs.BackingStoreException;
 
 /**
  * Manager that allow to persist and retrieve chef configurations.
- * 
+ *
  * @author Sebastian Sampaoli
- * 
+ *
  */
 public class ChefConfigManager {
 
@@ -64,7 +64,7 @@ public class ChefConfigManager {
 
     /**
      * Retrieve the list of persisted chef configurations from disk.
-     * 
+     *
      * @return a list of KnifeConfig's
      */
     @SuppressWarnings("unchecked")
@@ -107,7 +107,7 @@ public class ChefConfigManager {
      * Save the list of Chef configurations. This saved list will be used to
      * retrieve the configurations and show them in the Chef configuration preference page
      * and others.
-     * 
+     *
      * @param chefConfigs
      */
     public void saveChefConfigs(final List<? extends Config> chefConfigs) {
@@ -145,7 +145,7 @@ public class ChefConfigManager {
     /**
      * Retrieve the default Chef configuration previously chosen by the user in
      * the Chef configuration preference page.
-     * 
+     *
      * @return the default knifeconfig
      */
     public KnifeConfig retrieveDefaultChefConfig() {
@@ -167,7 +167,7 @@ public class ChefConfigManager {
 
     /**
      * Save the default Chef configuration chosen by the user.
-     * 
+     *
      * @param currentDefaultConfig
      */
     public void saveDefaultChefConfig(final Config currentDefaultConfig) {
@@ -233,8 +233,8 @@ public class ChefConfigManager {
 
         IScopeContext projectScope = new ProjectScope(project.getProject());
         IEclipsePreferences projectNode = projectScope.getNode(Activator.PLUGIN_ID);
-        String selectedUrl = ""; //$NON-NLS-1$
-        String selectedName = ""; //$NON-NLS-1$
+        String selectedUrl = "";
+        String selectedName = "";
         if (defaultConfig  != null) {
             selectedUrl = serverUrl(defaultConfig);
             selectedName = (defaultConfig.getNode_name() == null) ? "" : defaultConfig.getNode_name(); //$NON-NLS-1$

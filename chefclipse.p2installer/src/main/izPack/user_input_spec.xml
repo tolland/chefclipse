@@ -1,19 +1,37 @@
 <userInput>
   <panel id="userinputpanel">
-  <field type="staticText" align="left">
-  <description><html><body><p style="color: red;">Please enter the Jboss directory name.</p></body></html></description>
-</field>
-    <field type="combo" variable="SCM_BRANCH">
-  <description align="left" txt="Please select the branch to install"
-            id="description.radio"/>
-  <spec>
-          <choice txt="prealpha" id="radio.label.1" value="prealpha"  set="true"  />
-          <choice txt="alpha" id="radio.label.2" value="alpha"/>
-          <choice txt="tomhodder" id="radio.label.3" value="tomhodder" />
-          <choice txt="tomhodder2" id="radio.label.4" value="tomhodder2" />
-          <choice txt="sebasampaoli" id="radio.label.5" value="sebasampaoli" />
-  </spec>
-</field>
+    <field
+      type="staticText"
+      align="left">
+      <description>
+        <html>
+          <body>
+            <p style="color: red;">Please enter the Jboss directory name.</p>
+          </body>
+        </html>
+      </description>
+    </field>
+    <field
+      type="combo"
+      variable="SCM_BRANCH">
+      <description
+        align="left"
+        txt="Please select the branch to install"
+        id="description.radio" />
+      <spec>
+        <!-- choice txt="prealpha" id="radio.label.1" value="prealpha" set="true"
+          / -->
+        <!-- choice txt="alpha" id="radio.label.2" value="alpha"/ -->
+        <!-- choice txt="tomhodder" id="radio.label.3" value="tomhodder"
+          / -->
+        <choice
+          txt="tomhodder2"
+          id="radio.label.4"
+          value="tomhodder2" />
+        <!-- choice txt="sebasampaoli" id="radio.label.5" value="sebasampaoli"
+          / -->
+      </spec>
+    </field>
 
   </panel>
 </userInput>

@@ -91,7 +91,7 @@ public class CookbookMetadataEditor extends MultiPageEditorPart implements IReso
 		gd.horizontalSpan = 2;
 		fontButton.setLayoutData(gd);
 		fontButton.setText("Change Font...");
-		
+
 		fontButton.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent event) {
 				setFont();
@@ -124,7 +124,7 @@ public class CookbookMetadataEditor extends MultiPageEditorPart implements IReso
 		createPage2();
 	}
 	/**
-	 * The <code>MultiPageEditorPart</code> implementation of this 
+	 * The <code>MultiPageEditorPart</code> implementation of this
 	 * <code>IWorkbenchPart</code> method disposes all nested editors.
 	 * Subclasses may extend.
 	 */
@@ -195,7 +195,7 @@ public class CookbookMetadataEditor extends MultiPageEditorPart implements IReso
 							pages[i].closeEditor(editorPart,true);
 						}
 					}
-				}            
+				}
 			});
 		}
 	}
@@ -223,7 +223,7 @@ public class CookbookMetadataEditor extends MultiPageEditorPart implements IReso
 
 		StringTokenizer tokenizer =
 			new StringTokenizer(editorText, " \t\n\r\f!@#\u0024%^&*()-_=+`~[]{};:'\",.<>/?|\\");
-		ArrayList editorWords = new ArrayList();
+		ArrayList<String> editorWords = new ArrayList<String>();
 		while (tokenizer.hasMoreTokens()) {
 			editorWords.add(tokenizer.nextToken());
 		}
@@ -231,7 +231,7 @@ public class CookbookMetadataEditor extends MultiPageEditorPart implements IReso
 		Collections.sort(editorWords, Collator.getInstance());
 		StringWriter displayText = new StringWriter();
 		for (int i = 0; i < editorWords.size(); i++) {
-			displayText.write(((String) editorWords.get(i)));
+			displayText.write((editorWords.get(i)));
 			displayText.write(System.getProperty("line.separator"));
 		}
 		text.setText(displayText.toString());

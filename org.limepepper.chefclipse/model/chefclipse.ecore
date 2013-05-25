@@ -54,6 +54,8 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="sandboxes" upperBound="-1"
           eType="#//chefserver/Sandbox"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="config" eType="#//chefserver/ServerConfig"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="knifeConfig" upperBound="-1"
+          eType="#//knife/KnifeConfig" eOpposite="#//knife/KnifeConfig/server"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Platform">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="TestVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -242,7 +244,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="cookbook_license" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1"
           eType="#//utility/File"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="server" eType="#//chefserver/Server"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="server" eType="#//chefserver/Server"
+          eOpposite="#//chefserver/Server/knifeConfig"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="serverCookbookVersion"
           upperBound="-1" eType="#//chefserver/ServerCookbookVersion" eOpposite="#//chefserver/ServerCookbookVersion/knifeConfig"/>
     </eClassifiers>
