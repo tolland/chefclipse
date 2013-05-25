@@ -15,6 +15,7 @@ import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,6 +33,7 @@ import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl#getWebuiport <em>Webuiport</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl#getSandboxes <em>Sandboxes</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl#getConfig <em>Config</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.ServerImpl#getKnifeConfig <em>Knife Config</em>}</li>
  * </ul>
  * </p>
  *
@@ -189,6 +191,16 @@ public class ServerImpl extends EObjectImpl implements Server {
 	 */
     public void setConfig(ServerConfig newConfig) {
 		eSet(ChefserverPackage.Literals.SERVER__CONFIG, newConfig);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<KnifeConfig> getKnifeConfig() {
+		return (EList<KnifeConfig>)eGet(ChefserverPackage.Literals.SERVER__KNIFE_CONFIG, true);
 	}
 
 } //ServerImpl

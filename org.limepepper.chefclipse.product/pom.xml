@@ -16,8 +16,87 @@
   <packaging>eclipse-repository</packaging>
   <version>0.1.0-SNAPSHOT</version>
 
+  <scm>
+    <connection>scm:git:https://github.com/limepepper/p2.git</connection>
+    <developerConnection>scm:git:https://github.com/limepepper/p2.git</developerConnection> 
+  </scm>
+
 
   <profiles>
+    
+        <profile>
+    <id>try1111</id>
+    
+    <build>
+    <plugins>
+                    <plugin>
+                    <groupId>org.eclipse.tycho.extras</groupId>
+                    <artifactId>tycho-p2-extras-plugin</artifactId>
+                    <version>${tycho-version}</version>
+                    <executions>
+                        <execution>
+                            <id>publish</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>mirror</goal>
+                            </goals>
+                            <configuration>
+                                <source>
+                                    <repository>
+                                        <url>${project.build.directory}/repository</url>
+                                    </repository>
+                                </source>
+                                <append>true</append>
+                                <destination>${project.build.directory}/repository2</destination>
+                                                <ius>
+                    <iu>
+                        <id>org.limepepper.chefclipse.product</id>
+                    </iu>
+                    <!-- since tycho-extras 0.17.0, IUs can also be selected using p2 match queries  -->
+                    <!-- http://wiki.eclipse.org/Query_Language_for_p2 -->
+                    <!--iu>
+                        <query>
+                           <expression>id == $0 && version == $1</expression>
+                           <parameters>org.eclipse.tycho.sampleid,1.0.0</parameters>
+                        </query>
+                    </iu-->
+                </ius>
+                
+                                <followStrictOnly>false</followStrictOnly>
+                <!-- Whether or not to follow optional requirements. -->
+                <includeOptional>true</includeOptional>
+                <!-- Whether or not to follow non-greedy requirements. -->
+                <includeNonGreedy>true</includeNonGreedy>
+                <!-- Filter properties. E.g. filter only one platform -->
+                <!--filter>
+                    <osgi.os>linux</osgi.os>
+                    <osgi.ws>gtk</osgi.ws>
+                    <osgi.arch>x86_64</osgi.arch>
+                </filter-->
+                <!-- Whether to filter the resulting set of IUs to only -->
+                <!-- include the latest version of each IU -->
+                <latestVersionOnly>true</latestVersionOnly>
+                <!-- don't mirror artifacts, only metadata -->
+                <mirrorMetadataOnly>false</mirrorMetadataOnly>
+                <!-- whether to compress the content.xml/artifacts.xml -->
+                <compress>false</compress>
+                <!-- whether to append to the target repository content -->
+                <append>true</append>
+                <includePacked>true</includePacked>
+                
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+    </plugins>
+    
+    
+    </build>
+    
+    
+    </profile>
+    
+    
     <profile>
       <id>build</id>
       <activation>
@@ -73,7 +152,8 @@
             <artifactId>tycho-p2-repository-plugin</artifactId>
             <version>${tycho-version}</version>
             <configuration>
-              <includeAllDependencies>true</includeAllDependencies>
+              <includeAllDependencies>false</includeAllDependencies>
+              <compress>false</compress>
             </configuration>
           </plugin>
 
@@ -108,7 +188,7 @@
               </products>
               <!-- global optional parameters (with default values) -->
               <installFeatures>true</installFeatures>
-              <profile>main</profile>
+              <profile>chefclipse</profile>
             </configuration>
           </plugin>
 
@@ -121,6 +201,123 @@
       </build>
     </profile>
 
+    <profile>
+      <id>checkout-update-site</id>
+      
+            <properties>
+        <repo.path>${project.build.directory}/repository</repo.path>
+        <checkout.path>/tmp/chefclipse_p2_checkout</checkout.path>
+        <!--checkout.path>${project.build.directory}/checkout</checkout.path -->
+        <checkout.dir>chefclipse/${mvngit.branch}/update-site</checkout.dir>
+      </properties>
+      
+            <build>
+        <plugins>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-scm-plugin</artifactId>
+            <version>1.8</version>
+            <executions>
+              <execution>
+                <id>git-checkout</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>checkout</goal>
+                </goals>
+                <configuration>
+                  <checkoutDirectory>${checkout.path}</checkoutDirectory>
+                  <skipCheckoutIfExists>true</skipCheckoutIfExists>
+                </configuration>
+              </execution>
+</executions>
+                </plugin>
+        </plugins>
+      </build>
+      </profile>
+
+    <profile>
+      <id>deploy-update-site</id>
+
+      <properties>
+        <repo.path>${project.build.directory}/repository</repo.path>
+        <checkout.path>/tmp/chefclipse_p2_checkout</checkout.path>
+        <!--checkout.path>${project.build.directory}/checkout</checkout.path -->
+        <checkout.dir>chefclipse/${mvngit.branch}/update-site</checkout.dir>
+      </properties>
+
+      <build>
+        <plugins>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-scm-plugin</artifactId>
+            <version>1.8</version>
+            <executions>
+              <!--execution>
+                <id>git-checkout</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>checkout</goal>
+                </goals>
+                <configuration>
+                  <checkoutDirectory>${checkout.path}</checkoutDirectory>
+                  <skipCheckoutIfExists>true</skipCheckoutIfExists>
+                </configuration>
+              </execution-->
+
+              <execution>
+                <id>git-update</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>update</goal>
+                </goals>
+                <configuration>
+                  <workingDirectory>${checkout.path}</workingDirectory>
+                </configuration>
+              </execution>
+
+              <execution>
+                <id>git-push</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>checkin</goal>
+                </goals>
+                <configuration>
+                  <workingDirectory>${checkout.path}</workingDirectory>
+                  <includes>**</includes>
+                  <message>${project.version}</message>
+                  <tag>chefclipse.p2.${project.version}</tag>
+                  <username></username>
+                  <password></password>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>wagon-maven-plugin</artifactId>
+            <version>1.0-beta-4</version>
+            <executions>
+              <execution>
+                <id>copy-repo</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>upload</goal>
+                </goals>
+                <configuration>
+                  <fromDir>${repo.path}</fromDir>
+                  <includes>**</includes>
+                  <toDir>${checkout.dir}</toDir>
+                  <url>file://${checkout.path}</url>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
 </project>

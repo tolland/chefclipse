@@ -62,6 +62,7 @@ public class ServerItemProvider
 			addWebuiportPropertyDescriptor(object);
 			addSandboxesPropertyDescriptor(object);
 			addConfigPropertyDescriptor(object);
+			addKnifeConfigPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -177,6 +178,28 @@ public class ServerItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Knife Config feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addKnifeConfigPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Server_knifeConfig_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Server_knifeConfig_feature", "_UI_Server_type"),
+				 ChefserverPackage.Literals.SERVER__KNIFE_CONFIG,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.

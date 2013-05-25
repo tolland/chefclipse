@@ -30,101 +30,91 @@ import org.slf4j.LoggerFactory;
 
 public class ChefServerURIHandler extends URIHandlerImpl {
 
-    static Logger logger = LoggerFactory.getLogger(ChefServerURIHandler.class);
+	static Logger logger = LoggerFactory.getLogger(ChefServerURIHandler.class);
 
-    @Override
-    public boolean canHandle(URI uri) {
-        // return isChefServerApiService(uri);
-        return uri.toString().contains("http")
-                || uri.toString().startsWith("https://");
-    }
+	@Override
+	public boolean canHandle(URI uri) {
+		// return isChefServerApiService(uri);
+		return uri.toString().contains("http")
+				|| uri.toString().startsWith("https://");
+	}
 
-    @Override
-    public InputStream createInputStream(final URI uri, final Map<?, ?> options)
-            throws IOException {
+	@Override
+	public InputStream createInputStream(final URI uri, final Map<?, ?> options)
+			throws IOException {
 
-        logger.debug("Creating JsInputStream to process uri: {}", uri);
+		logger.debug("Creating JsInputStream to process uri: {}", uri);
 
-/*
- * if (checkDataBase(new ChefRequest(uri, null)) == 0) {
- * throw new IllegalArgumentException("DataBase does not exist");
- * }
- */
-        JsInputStream is = new JsInputStream(uri, options) {
+		/*
+		 * if (checkDataBase(new ChefRequest(uri, null)) == 0) { throw new
+		 * IllegalArgumentException("DataBase does not exist"); }
+		 */
+		JsInputStream is = new JsInputStream(uri, options) {
 
-            @Override
-            public void loadResource(Resource resource) throws IOException {
+			@Override
+			public void loadResource(Resource resource) throws IOException {
 
-                if (options != null) {
-                    final KnifeConfig knifeConfig = (KnifeConfig) options
-                            .get("knifeConfig");
-                    if (knifeConfig != null) {
-                        final HttpURLConnection connection = getGetConnection(new ChefRequest(
-                                uri, knifeConfig));
-                        final InputStream inStream = connection
-                                .getInputStream();
+				if (options != null) {
+					final KnifeConfig knifeConfig = (KnifeConfig) options
+							.get("knifeConfig");
+					if (knifeConfig != null) {
+						final HttpURLConnection connection = getGetConnection(new ChefRequest(
+								uri, knifeConfig));
+						final InputStream inStream = connection
+								.getInputStream();
 
+						System.out.println("stream to string2: ");
 
-                        System.out.println("stream to string2: ");
+						final JSONLoad loader = new JSONLoad(inStream, options);
+						loader.fillResource(resource);
+					}
+				}
+			}
+		};
 
-                        final JSONLoad loader = new JSONLoad(inStream, options);
-                        loader.fillResource(resource);
-                    }
-                }
-            }
-        };
+		if (options != null) {
+			final KnifeConfig knifeConfig = (KnifeConfig) options
+					.get("knifeConfig");
+			if (knifeConfig != null) {
+				final HttpURLConnection connection = getGetConnection(new ChefRequest(
+						uri, knifeConfig));
+				BufferedInputStream bis = new BufferedInputStream(
+						connection.getInputStream());
+				bis.mark(Integer.MAX_VALUE);
+				System.out.println("stream to string: "
+						+ convertStreamToString(bis));
 
-        if (options != null) {
-            final KnifeConfig knifeConfig = (KnifeConfig) options
-                    .get("knifeConfig");
-            if (knifeConfig != null) {
-                final HttpURLConnection connection = getGetConnection(new ChefRequest(
-                        uri, knifeConfig));
-                BufferedInputStream bis = new BufferedInputStream(
-                        connection.getInputStream());
-                bis.mark(Integer.MAX_VALUE);
-                System.out.println("stream to string: "+ convertStreamToString(bis));
+				bis.reset();
+				return bis;
+			}
+		}
+		return null;
+	}
 
-                bis.reset();
-                return bis;
-            }
-        }
-        return null;
-    }
+	public static String convertStreamToString(java.io.InputStream is) {
+		java.util.Scanner s = new java.util.Scanner(is, "UTF-8");
+		java.util.Scanner s1 = s.useDelimiter("\\A");
+		String buff = s.hasNext() ? s.next() : "";
+		return buff;
+	}
 
-    public static String convertStreamToString(java.io.InputStream is) {
-        java.util.Scanner s = new java.util.Scanner(is, "UTF-8")
-                .useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
-    }
+	/*
+	 * @Override public OutputStream createOutputStream(final URI uri, Map<?, ?>
+	 * options) throws IOException { if (checkDataBase(uri) == 0) {
+	 * createDataBase(uri); }
+	 *
+	 * return new JsOutputStream(options) { public void close() throws
+	 * IOException { URI documentURI = CouchDB.createOrUpdateDocument(uri,
+	 * writer, currentRoot); if (documentURI != uri) {
+	 * resource.setURI(documentURI); } } }; }
+	 */
 
-/*
- * @Override
- * public OutputStream createOutputStream(final URI uri, Map<?, ?> options)
- * throws IOException {
- * if (checkDataBase(uri) == 0) {
- * createDataBase(uri);
- * }
- *
- * return new JsOutputStream(options) {
- * public void close() throws IOException {
- * URI documentURI = CouchDB.createOrUpdateDocument(uri, writer, currentRoot);
- * if (documentURI != uri) {
- * resource.setURI(documentURI);
- * }
- * }
- * };
- * }
- */
+	private void createDataBase(URI uri) {
+	}
 
-    private void createDataBase(URI uri) {
-    }
-
-/*
- * @Override
- * public void delete(URI uri, Map<?, ?> options) throws IOException {
- * CouchDB.delete(uri);
- * }
- */
+	/*
+	 * @Override public void delete(URI uri, Map<?, ?> options) throws
+	 * IOException { CouchDB.delete(uri); }
+	 */
 
 }

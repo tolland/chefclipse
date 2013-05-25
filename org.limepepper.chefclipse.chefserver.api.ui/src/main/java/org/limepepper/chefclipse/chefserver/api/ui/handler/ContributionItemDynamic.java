@@ -81,6 +81,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 
         menuItems.put("refresh.chefserver", "update remote model");
         menuItems.put("connect.chefserver", "connect to this Server");
+        menuItems.put("connect.chefserver.knife", "populate KnifeConfig server node");
 
         List<IContributionItem> iContItems = new ArrayList<IContributionItem>();
         for (Entry<String, String> entry : menuItems.entrySet()) {

@@ -9,7 +9,8 @@
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <properties>
-    <tycho-version>0.16.0</tycho-version>
+		<tycho-version>0.17.0</tycho-version>
+    <tycho-extras-version>0.17.0</tycho-extras-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -44,13 +45,10 @@
 
         <!--module>org.limepepper.chefclipse.releng</module -->
         <module>org.limepepper.chefclipse.target</module>
-        
+
         <!-- product -->
         <module>org.limepepper.chefclipse.product</module>
         <module>org.limepepper.chefclipse.p2</module>
-
-        <!-- releng stuff -->
-        <module>chefclipse.p2installer</module>
 
         <!-- features bundles -->
         <module>features/org.limepepper.chefclipse.ui.feature</module>
@@ -73,7 +71,6 @@
 
         <!-- merged into chefclipse.ui -->
         <!-- module>org.limepepper.chefclipse.common.ui</module -->
-
 
         <module>org.limepepper.chefclipse.utils</module>
         <module>org.limepepper.chefclipse.graphviewer</module>
@@ -102,13 +99,11 @@
         <module>org.limepepper.chefclipse.preferences.ui</module>
         <module>org.limepepper.chefclipse.preferences.test</module>
 
-
         <!-- test bundles -->
         <module>org.limepepper.chefclipse.testing</module>
 
         <!-- experimental - @todo put these plugins in separate profile -->
         <!--module>org.limepepper.eclipse.RubyConsole</module -->
-
 
         <!-- missing form orbit bundles -->
         <module>libs/com.sun.jersey.bundle</module>
@@ -120,25 +115,22 @@
     </profile>
 
 
-    <!-- izpack creates a install.jar, depends on the build profile -->
-    <profile>
-      <id>izpack</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-    </profile>
 
 
     <!-- p2 builds a repo -->
+    <!-- set the deploy-update-site and install to push the budles to remote p2 -->
     <profile>
       <id>p2</id>
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
+      <modules>
+        <module>org.limepepper.chefclipse.p2</module>
+      </modules>
       <build>
         <plugins>
           <plugin>
-          	
+
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-deploy-plugin</artifactId>
             <version>2.7</version>
@@ -148,6 +140,96 @@
 
           </plugin>
         </plugins>
+      </build>
+    </profile>
+
+
+
+
+
+    <!-- izpack creates a install.jar, depends on the build profile -->
+    <profile>
+      <id>izpack</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <modules>
+        <module>chefclipse.izpacker</module>
+			</modules>
+    </profile>
+
+
+    
+
+    <!-- purge the chefclipse groupId -->
+    <profile>
+      <id>purge</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.8</version>
+        <executions>
+          <execution>
+            <id>purge-local-dependencies</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>purge-local-repository</goal>
+            </goals>
+            <configuration>
+              <DresolutionFuzziness>groupId</DresolutionFuzziness>
+              <includes>
+              <include>org.limepepper.chefclipse</include>
+              </includes>
+<verbose>true</verbose>           
+<DactTransitively>false</DactTransitively>                
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+    </profile>
+    
+    
+    <!-- source bundles -->
+    <profile>
+      <id>source</id>
+          <build>
+        <plugins>
+    <plugin>
+	<groupId>org.eclipse.tycho.extras</groupId>
+	<artifactId>tycho-source-feature-plugin</artifactId>
+	<version>${tycho-extras-version}</version>
+	<executions>
+		<execution>
+			<id>source-feature</id>
+			<phase>package</phase>
+			<goals>
+				<goal>source-feature</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+<plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-p2-plugin</artifactId>
+	<version>${tycho-version}</version>
+	<executions>
+		<execution>
+			<id>attach-p2-metadata</id>
+			<phase>package</phase>
+			<goals>
+				<goal>p2-metadata</goal>
+			</goals>
+		</execution>
+	</executions>
+</plugin>
+            </plugins>
       </build>
     </profile>
 
@@ -198,7 +280,7 @@
                 <artifact>
                   <groupId>org.limepepper.chefclipse</groupId>
                   <artifactId>juno42</artifactId>
-                  <version>0.1.0</version>
+									<version>0.1.0-SNAPSHOT</version>
                 </artifact>
               </target>
               <environments>
@@ -255,23 +337,24 @@
           </execution>
         </executions>
       </plugin>
-      
+
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-p2-repository-plugin</artifactId>
         <version>${tycho-version}</version>
         <configuration>
-          <includeAllDependencies>true</includeAllDependencies>
+          <!-- experimenting with getting the binary artifacts into the repo -->
+          <includeAllDependencies>false</includeAllDependencies>
         </configuration>
       </plugin>
-      
+
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
         <version>${tycho-version}</version>
         <extensions>true</extensions>
       </plugin>
-      
+
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>target-platform-configuration</artifactId>
@@ -313,8 +396,8 @@
           </environments>
         </configuration>
       </plugin>
-
     </plugins>
+
     <extensions>
       <extension>
         <groupId>org.springframework.build</groupId>

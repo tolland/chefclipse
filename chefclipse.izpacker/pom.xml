@@ -13,7 +13,7 @@
   </parent>
 
   <version>0.1.0-SNAPSHOT</version>
-  <artifactId>chefclipse.p2installer</artifactId>
+  <artifactId>chefclipse.izpacker</artifactId>
 
 
 

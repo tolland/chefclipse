@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
@@ -281,6 +282,8 @@ public class KnifeConfigItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(KnifePackage.Literals.KNIFE_CONFIG__PLUGINS);
+			childrenFeatures.add(KnifePackage.Literals.KNIFE_CONFIG__SERVER);
+			childrenFeatures.add(KnifePackage.Literals.KNIFE_CONFIG__SERVER_COOKBOOK_VERSION);
 		}
 		return childrenFeatures;
 	}
@@ -366,6 +369,11 @@ public class KnifeConfigItemProvider
 			(createChildParameter
 				(KnifePackage.Literals.KNIFE_CONFIG__PLUGINS,
 				 KnifeFactory.eINSTANCE.createPlugin()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(KnifePackage.Literals.KNIFE_CONFIG__SERVER_COOKBOOK_VERSION,
+				 ChefserverFactory.eINSTANCE.createServerCookbookVersion()));
 	}
 
     /**

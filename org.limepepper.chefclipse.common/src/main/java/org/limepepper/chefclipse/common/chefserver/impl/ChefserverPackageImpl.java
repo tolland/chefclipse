@@ -461,6 +461,15 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getServer_KnifeConfig() {
+		return (EReference)serverEClass.getEStructuralFeatures().get(9);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -769,6 +778,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		createEAttribute(serverEClass, SERVER__WEBUIPORT);
 		createEReference(serverEClass, SERVER__SANDBOXES);
 		createEReference(serverEClass, SERVER__CONFIG);
+		createEReference(serverEClass, SERVER__KNIFE_CONFIG);
 
 		platformEClass = createEClass(PLATFORM);
 		createEAttribute(platformEClass, PLATFORM__TEST_VAL);
@@ -884,6 +894,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		initEAttribute(getServer_Webuiport(), ecorePackage.getEInt(), "webuiport", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServer_Sandboxes(), this.getSandbox(), null, "sandboxes", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServer_Config(), this.getServerConfig(), null, "config", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServer_KnifeConfig(), theKnifePackage.getKnifeConfig(), theKnifePackage.getKnifeConfig_Server(), "knifeConfig", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(platformEClass, Platform.class, "Platform", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPlatform_TestVal(), ecorePackage.getEInt(), "TestVal", null, 0, 1, Platform.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

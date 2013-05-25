@@ -235,6 +235,7 @@ public interface KnifeConfig extends Config {
 
     /**
 	 * Returns the value of the '<em><b>Server</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.chefserver.Server#getKnifeConfig <em>Knife Config</em>}'.
 	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Server</em>' reference isn't clear,
@@ -244,7 +245,8 @@ public interface KnifeConfig extends Config {
 	 * @return the value of the '<em>Server</em>' reference.
 	 * @see #setServer(Server)
 	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeConfig_Server()
-	 * @model
+	 * @see org.limepepper.chefclipse.common.chefserver.Server#getKnifeConfig
+	 * @model opposite="knifeConfig"
 	 * @generated
 	 */
     Server getServer();

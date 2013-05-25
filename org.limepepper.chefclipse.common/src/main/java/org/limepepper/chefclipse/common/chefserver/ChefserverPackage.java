@@ -441,13 +441,22 @@ public interface ChefserverPackage extends EPackage {
     int SERVER__CONFIG = 8;
 
     /**
+	 * The feature id for the '<em><b>Knife Config</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SERVER__KNIFE_CONFIG = 9;
+
+				/**
 	 * The number of structural features of the '<em>Server</em>' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int SERVER_FEATURE_COUNT = 9;
+    int SERVER_FEATURE_COUNT = 10;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.PlatformImpl <em>Platform</em>}' class.
@@ -1347,6 +1356,17 @@ public interface ChefserverPackage extends EPackage {
     EReference getServer_Config();
 
     /**
+	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.chefserver.Server#getKnifeConfig <em>Knife Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Knife Config</em>'.
+	 * @see org.limepepper.chefclipse.common.chefserver.Server#getKnifeConfig()
+	 * @see #getServer()
+	 * @generated
+	 */
+	EReference getServer_KnifeConfig();
+
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Platform <em>Platform</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1885,6 +1905,14 @@ public interface ChefserverPackage extends EPackage {
         EReference SERVER__CONFIG = eINSTANCE.getServer_Config();
 
         /**
+		 * The meta object literal for the '<em><b>Knife Config</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SERVER__KNIFE_CONFIG = eINSTANCE.getServer_KnifeConfig();
+
+								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.PlatformImpl <em>Platform</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->
