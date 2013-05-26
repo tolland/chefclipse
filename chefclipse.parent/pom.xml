@@ -59,7 +59,7 @@
         <!-- app & ui bundles -->
         <module>../chefclipse.core</module>
         <module>../chefclipse.ui</module>
-        
+
         <!-- docs bundles -->
         <!--   not used, this is just legacy vanilla wizard generated stuff -->
         <!--   however the build broken when I tried to remove it -->
@@ -98,7 +98,8 @@
         <module>../org.limepepper.chefclipse.remotepicker.repositories.ui</module>
         <module>../org.limepepper.chefclipse.remotepicker.extpoint</module>
         <module>../org.limepepper.chefclipse.remotepicker.ui</module>
-        <module>../org.limepepper.chefclipse.remotepicker.test</module>
+        <!-- disabled because its breaking the build  -->
+        <!-- module>../org.limepepper.chefclipse.remotepicker.test</module-->
 
         <!-- preferences -->
         <module>../org.limepepper.chefclipse.preferences.api</module>
