@@ -215,7 +215,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="cookbooks" upperBound="-1"
           eType="#//cookbook/CookbookVersion" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="knife" upperBound="-1"
-          eType="#//knife/KnifeConfig"/>
+          eType="#//knife/KnifeConfig" eOpposite="#//knife/KnifeConfig/repository"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="cookbookFolders" lowerBound="1"
           upperBound="-1" eType="#//workstation/CookbooksFolder"/>
     </eClassifiers>
@@ -248,6 +248,8 @@
           eOpposite="#//chefserver/Server/knifeConfig"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="serverCookbookVersion"
           upperBound="-1" eType="#//chefserver/ServerCookbookVersion" eOpposite="#//chefserver/ServerCookbookVersion/knifeConfig"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="repository" eType="#//workstation/Repository"
+          eOpposite="#//workstation/Repository/knife"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Plugin"/>
     <eClassifiers xsi:type="ecore:EClass" name="KnifeSearch"/>

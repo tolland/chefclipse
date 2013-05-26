@@ -230,6 +230,15 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 
 				/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getKnifeConfig_Repository() {
+		return (EReference)knifeConfigEClass.getEStructuralFeatures().get(10);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -285,6 +294,7 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		createEAttribute(knifeConfigEClass, KNIFE_CONFIG__PATH);
 		createEReference(knifeConfigEClass, KNIFE_CONFIG__SERVER);
 		createEReference(knifeConfigEClass, KNIFE_CONFIG__SERVER_COOKBOOK_VERSION);
+		createEReference(knifeConfigEClass, KNIFE_CONFIG__REPOSITORY);
 
 		pluginEClass = createEClass(PLUGIN);
 
@@ -317,6 +327,7 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		// Obtain other dependent packages
 		UtilityPackage theUtilityPackage = (UtilityPackage)EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI);
 		ChefserverPackage theChefserverPackage = (ChefserverPackage)EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI);
+		WorkstationPackage theWorkstationPackage = (WorkstationPackage)EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -337,6 +348,7 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		initEAttribute(getKnifeConfig_Path(), theUtilityPackage.getFile(), "path", null, 1, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKnifeConfig_Server(), theChefserverPackage.getServer(), theChefserverPackage.getServer_KnifeConfig(), "server", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKnifeConfig_ServerCookbookVersion(), theChefserverPackage.getServerCookbookVersion(), theChefserverPackage.getServerCookbookVersion_KnifeConfig(), "serverCookbookVersion", null, 0, -1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getKnifeConfig_Repository(), theWorkstationPackage.getRepository(), theWorkstationPackage.getRepository_Knife(), "repository", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

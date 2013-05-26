@@ -220,13 +220,22 @@ public interface KnifePackage extends EPackage {
 	int KNIFE_CONFIG__SERVER_COOKBOOK_VERSION = UtilityPackage.CONFIG_FEATURE_COUNT + 9;
 
 				/**
+	 * The feature id for the '<em><b>Repository</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KNIFE_CONFIG__REPOSITORY = UtilityPackage.CONFIG_FEATURE_COUNT + 10;
+
+				/**
 	 * The number of structural features of the '<em>Config</em>' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int KNIFE_CONFIG_FEATURE_COUNT = UtilityPackage.CONFIG_FEATURE_COUNT + 10;
+    int KNIFE_CONFIG_FEATURE_COUNT = UtilityPackage.CONFIG_FEATURE_COUNT + 11;
 
     /**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.knife.impl.PluginImpl <em>Plugin</em>}' class.
@@ -388,6 +397,17 @@ public interface KnifePackage extends EPackage {
 	EReference getKnifeConfig_ServerCookbookVersion();
 
 				/**
+	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getRepository <em>Repository</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Repository</em>'.
+	 * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getRepository()
+	 * @see #getKnifeConfig()
+	 * @generated
+	 */
+	EReference getKnifeConfig_Repository();
+
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.knife.Plugin <em>Plugin</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -518,6 +538,14 @@ public interface KnifePackage extends EPackage {
 		 * @generated
 		 */
 		EReference KNIFE_CONFIG__SERVER_COOKBOOK_VERSION = eINSTANCE.getKnifeConfig_ServerCookbookVersion();
+
+								/**
+		 * The meta object literal for the '<em><b>Repository</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference KNIFE_CONFIG__REPOSITORY = eINSTANCE.getKnifeConfig_Repository();
 
 								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.knife.impl.PluginImpl <em>Plugin</em>}' class.

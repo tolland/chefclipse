@@ -67,6 +67,7 @@ public class KnifeConfigItemProvider
 			addPathPropertyDescriptor(object);
 			addServerPropertyDescriptor(object);
 			addServerCookbookVersionPropertyDescriptor(object);
+			addRepositoryPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -261,6 +262,28 @@ public class KnifeConfigItemProvider
 				 getString("_UI_KnifeConfig_serverCookbookVersion_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_KnifeConfig_serverCookbookVersion_feature", "_UI_KnifeConfig_type"),
 				 KnifePackage.Literals.KNIFE_CONFIG__SERVER_COOKBOOK_VERSION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Repository feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRepositoryPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_KnifeConfig_repository_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_KnifeConfig_repository_feature", "_UI_KnifeConfig_type"),
+				 KnifePackage.Literals.KNIFE_CONFIG__REPOSITORY,
 				 true,
 				 false,
 				 true,

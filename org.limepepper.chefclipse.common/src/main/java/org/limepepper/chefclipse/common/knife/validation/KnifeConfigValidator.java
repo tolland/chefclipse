@@ -10,6 +10,7 @@ import org.eclipse.emf.common.util.EList;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.Plugin;
+import org.limepepper.chefclipse.common.workstation.Repository;
 
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
@@ -31,4 +32,6 @@ public interface KnifeConfigValidator {
 	boolean validateServer(Server value);
 
 	boolean validateServerCookbookVersion(EList<ServerCookbookVersion> value);
+
+	boolean validateRepository(Repository value);
 }

@@ -99,6 +99,7 @@ public interface Repository extends NamedDescribedObject {
     /**
 	 * Returns the value of the '<em><b>Knife</b></em>' reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getRepository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Knife</em>' reference list isn't clear,
@@ -107,7 +108,8 @@ public interface Repository extends NamedDescribedObject {
      * <!-- end-user-doc -->
 	 * @return the value of the '<em>Knife</em>' reference list.
 	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Knife()
-	 * @model
+	 * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getRepository
+	 * @model opposite="repository"
 	 * @generated
 	 */
     EList<KnifeConfig> getKnife();
