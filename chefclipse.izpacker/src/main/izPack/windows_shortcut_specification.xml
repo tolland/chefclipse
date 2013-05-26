@@ -2,7 +2,7 @@
 <shortcuts>
     <skipIfNotSupported />
     <programGroup defaultName="Chefclipse" location="applications"/>
-    
+
     <shortcut
         name="Chefclipse(${SCM_BRANCH})"
         programGroup="yes"
@@ -12,13 +12,13 @@
         startup="no"
         target="${CC_PATH}${SEP}${exe_name}"
         workingDirectory="${CC_PATH}"
-        commandLine=""
+        commandLine="-data @user.home/workspace-chefclipse-${SCM_BRANCH}"
         initialState="normal"
         iconFile="${CC_PATH}${SEP}resources${SEP}images${SEP}icons${SEP}16x16.ico"
         type="Application"
         encoding="UTF-8"
         description="Run Chefclipse Application">
-    
+
         <createForPack name="Chefclipse"/>
     </shortcut>
     <!--shortcut
@@ -36,7 +36,7 @@
         type="Application"
         encoding="UTF-8"
         description="Unistall the chefclipse application">
-    
+
         <createForPack name="Chefclipse Application"/>
     </shortcut-->
 </shortcuts>

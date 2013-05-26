@@ -15,6 +15,7 @@ attrib -r -s -a -H "%USERPROFILE%"\workspace-chefclipse /S /D
 	-consolelog ^
 	-debug ^
 	-clean ^
+  -repository http://download.eclipse.org/releases/juno ^
 	-repository ^
 	https://github.com/limepepper/p2/raw/master/chefclipse/%{SCM_BRANCH}/update-site  ^
 	-repository ^
