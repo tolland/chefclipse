@@ -54,10 +54,16 @@
         <module>../features/org.limepepper.chefclipse.ui.feature</module>
         <module>../features/org.limepepper.chefclipse.app.feature</module>
         <module>../features/org.limepepper.chefclipse.devel.feature</module>
+        <module>../features/org.limepepper.chefclipse.doc.feature</module>
 
         <!-- app & ui bundles -->
         <module>../chefclipse.core</module>
         <module>../chefclipse.ui</module>
+        
+        <!-- docs bundles -->
+        <!--   not used, this is just legacy vanilla wizard generated stuff -->
+        <!--   however the build broken when I tried to remove it -->
+        <module>../org.limepepper.chefclipse.doc</module>
 
         <!-- generated model stuff -->
         <module>../org.limepepper.chefclipse.common</module>
@@ -242,7 +248,7 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
-        <module>org.limepepper.chefclipse.releng</module>
+        <module>../org.limepepper.chefclipse.releng</module>
       </modules>
       <build>
         <plugins>
@@ -268,7 +274,7 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
-        <module>org.limepepper.chefclipse.releng</module>
+        <module>../org.limepepper.chefclipse.releng</module>
       </modules>
       <build>
         <plugins>
@@ -345,7 +351,7 @@
         <version>${tycho-version}</version>
         <configuration>
           <!-- experimenting with getting the binary artifacts into the repo -->
-          <includeAllDependencies>false</includeAllDependencies>
+          <includeAllDependencies>true</includeAllDependencies>
         </configuration>
       </plugin>
 
