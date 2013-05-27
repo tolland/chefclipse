@@ -11,5 +11,5 @@
   <groupId>org.limepepper.chefclipse</groupId>
   <artifactId>org.limepepper.chefclipse.ui.feature</artifactId>
   <packaging>eclipse-feature</packaging>
-    <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.2-SNAPSHOT</version>
 </project>
