@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.expressions;bundle-version="3.4.401";visibility:=reexport,
  org.eclipse.dltk.ruby.core,
  org.limepepper.chefclipse.preferences.api;bundle-version="0.1.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,
  org.eclipse.core.resources.mapping,

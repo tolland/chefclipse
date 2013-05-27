@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.ui,
  org.junit;bundle-version="4.10.0",
  chefclipse.core;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse.graphviewer,
  org.limepepper.chefclipse.graphviewer.common,
  org.limepepper.chefclipse.graphviewer.controller,

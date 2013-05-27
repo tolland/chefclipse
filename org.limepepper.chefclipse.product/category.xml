@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<site>   
-   <feature url="features/org.limepepper.chefclipse.ui.feature_0.1.0.qualifier.jar" id="org.limepepper.chefclipse.ui.feature" version="0.1.0.qualifier">
-      <category name="org.limepepper.chefclipse.p2.ui.category"/>
-   </feature>
-   <feature url="features/org.limepepper.chefclipse.app.feature_0.1.0.qualifier.jar" id="org.limepepper.chefclipse.app.feature" version="0.1.0.qualifier">
-      <category name="org.limepepper.chefclipse.p2.app.category"/>
-   </feature>
-   <feature url="features/org.limepepper.chefclipse.devel.feature_0.1.0.qualifier.jar" id="org.limepepper.chefclipse.devel.feature" version="0.1.0.qualifier">
-      <category name="org.limepepper.chefclipse.p2.app.category"/>
-   </feature>
-   <feature url="features/org.limepepper.chefclipse.doc.feature_0.1.0.qualifier.jar" id="org.limepepper.chefclipse.doc.feature" version="0.1.0.qualifier">
-      <category name="org.limepepper.chefclipse.p2.app.category"/>
-   </feature>
-   <category-def name="org.limepepper.chefclipse.p2.app.category" label="Chefclipse App"/>
-   <category-def name="org.limepepper.chefclipse.p2.ui.category" label="Chefclipse UI"/>
+<site>
+  <feature
+    url="features/org.limepepper.chefclipse.ui.feature_0.1.1.qualifier.jar"
+    id="org.limepepper.chefclipse.ui.feature"
+    version="0.1.1.qualifier">
+    <category name="org.limepepper.chefclipse.p2.ui.category" />
+  </feature>
+  <feature
+    url="features/org.limepepper.chefclipse.app.feature_0.1.0.qualifier.jar"
+    id="org.limepepper.chefclipse.app.feature"
+    version="0.1.0.qualifier">
+    <category name="org.limepepper.chefclipse.p2.app.category" />
+  </feature>
+  <feature
+    url="features/org.limepepper.chefclipse.devel.feature_0.1.0.qualifier.jar"
+    id="org.limepepper.chefclipse.devel.feature"
+    version="0.1.0.qualifier">
+    <category name="org.limepepper.chefclipse.p2.app.category" />
+  </feature>
+  <feature
+    url="features/org.limepepper.chefclipse.doc.feature_0.1.0.qualifier.jar"
+    id="org.limepepper.chefclipse.doc.feature"
+    version="0.1.0.qualifier">
+    <category name="org.limepepper.chefclipse.p2.app.category" />
+  </feature>
+  <category-def
+    name="org.limepepper.chefclipse.p2.app.category"
+    label="Chefclipse App" />
+  <category-def
+    name="org.limepepper.chefclipse.p2.ui.category"
+    label="Chefclipse UI" />
 </site>

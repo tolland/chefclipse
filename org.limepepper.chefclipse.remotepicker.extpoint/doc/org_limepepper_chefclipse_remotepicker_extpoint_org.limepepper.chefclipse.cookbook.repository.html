@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Chefclipse Cookbook Repository Discovery</title>
+<style type="text/css">@import url("file:/usr/lib64/eclipse/plugins/org.eclipse.platform_4.2.2.v20130320-1959/book.css");</style>
+<style type="text/css">@import url("file:/home/tomhodder/.eclipse/org.eclipse.platform_4.2.0_793567567/configuration/org.eclipse.osgi/bundles/436/1/.cp/schema.css");</style>
+</HEAD>
+<BODY>
+<H1 style="text-align:center">Chefclipse Cookbook Repository Discovery</H1>
+<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Identifier: </h6>org.limepepper.chefclipse.remotepicker.extpoint.org.limepepper.chefclipse.cookbook.repository<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Since: </h6>1.0.0
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Description: </h6>An extension point for contributing to the Chefclipse Cookbook Repositories.<p></p>
+<h6 class="CaptionFigColumn SchemaHeader">Configuration Markup:</h6>
+<p></p>
+<p class="code SchemaDtd">&lt;!ELEMENT <a name="e.extension">extension</a> (<a href="#e.repositoryDescriptor">repositoryDescriptor</a>)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST extension</p>
+<p class="code SchemaDtdAttlist">point&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<ul class="ConfigMarkupAttlistDesc">
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.icon">icon</a> EMPTY&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST icon</p>
+<p class="code SchemaDtdAttlist">image32&nbsp;CDATA #REQUIRED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+A 32x32 image to show as the repository icon</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>image32</b> - </li>
+</ul>
+<br><p class="code SchemaDtd">&lt;!ELEMENT <a name="e.repositoryDescriptor">repositoryDescriptor</a> (<a href="#e.icon">icon</a>)&gt;</p>
+<p class="code SchemaDtd">&lt;!ATTLIST repositoryDescriptor</p>
+<p class="code SchemaDtdAttlist">id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">description&nbsp;CDATA #REQUIRED</p><p class="code SchemaDtdAttlist">uri&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">class&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">builder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p><p class="code SchemaDtdAttlist">config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CDATA #IMPLIED</p>&gt;</p>
+<p></p>
+<p class="ConfigMarkupElementDesc">
+Description attributes for the repository of cookbooks.
+One or class or builder attributes must be specified.</p>
+<br>
+<ul class="ConfigMarkupAttlistDesc">
+<li><b>id</b> - Unique Id for each repository.</li>
+<li><b>name</b> - Repository Name</li>
+<li><b>description</b> - Repository Description to show in the remote picker wizard</li>
+<li><b>uri</b> - </li>
+<li><b>class</b> - A class implementing ICookbooksRepository for repositories that are static doesn't need parameters to be run.</li>
+<li><b>builder</b> - A class implementing ICookbooksRepository.Builder, responsable of configuring a repostiory with an UI and creating a ICookbooksRepository.</li>
+<li><b>config</b> - Optional paramenter for builder</li>
+</ul>
+<br><h6 class="CaptionFigColumn SchemaHeader">Examples: </h6><extension
+         point="org.limepepper.chefclipse.cookbook.repository">
+   <repositoryDescriptor
+            class="org.limepepper.chefclipse.remotepicker.repositories.CookbookSiteRepository"
+            description="This site contains all the cookbooks authored by Opscode, as well as many cookbooks from other members of the community."
+            id="org.limepepper.chefclipse.remotepicker.repository.opscode"
+            name="Opscode Cookbook Site"
+            uri="http://community.opscode.com/cookbooks">
+         <icon
+               image32="icons/opscode_32.png">
+         </icon>
+      </repositoryDescriptor>
+   </extension>
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">API Information: </h6>Extensions should implement ICookbookRepository
+<p></p>
+
+<h6 class="CaptionFigColumn SchemaHeader">Supplied Implementation: </h6>You can see implementations of thisi extension point on org.limepepper.chefclipse.remotepicker.repositories.
+<p></p>
+
+<br>
+<p class="note SchemaCopyright">
+</p>
+</BODY>
+</HTML>

@@ -86,7 +86,7 @@
         id="org.limepepper.chefclipse.menus.contextgroup">
         <dynamic
           class="org.limepepper.chefclipse.graphviewer.handler.DynamicMenu"
-          id="org.limepepper.chefclipse.menu.dynamic">
+          id="org.limepepper.chefclipse.graphviewer.menu.dynamic">
           <visibleWhen checkEnabled="false">
             <with variable="activeMenuSelection">
               <iterate>

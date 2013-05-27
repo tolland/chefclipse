@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.utils;bundle-version="0.1.0",
  chefclipse.ui
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse.chefserver.api.ui;uses:="org.eclipse.jface.resource,org.eclipse.ui.plugin,org.osgi.framework",
  org.limepepper.chefclipse.chefserver.api.ui.editors;
   uses:="org.eclipse.jface.action,

@@ -2,7 +2,7 @@
 <feature
       id="org.limepepper.chefclipse.ui.feature"
       label="Chefclipse UI"
-      version="0.1.0.qualifier">
+      version="0.1.1.qualifier">
 
    <description url="http://www.chefclipse.org/description">
       [Enter Feature Description here.]

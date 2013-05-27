@@ -119,7 +119,7 @@ END OF TERMS AND CONDITIONS
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="3" />
-      <property name="test" value="1" />
+      <property name="osgi.instance.area" value="@user.home/workspace-chefclipse-${branch}" />
    </configurations>
 
 </product>

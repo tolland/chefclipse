@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: chefclipse.ui;singleton:=true
-Bundle-Version: 0.1.1.qualifier
+Bundle-Version: 0.1.2.qualifier
 Bundle-Activator: chefclipse.ui.ChefPlugin
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.ui,
@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.chefserver.api;bundle-version="0.1.0",
  org.limepepper.chefclipse.preferences.api;bundle-version="0.1.0",
  org.limepepper.chefclipse.utils;bundle-version="0.1.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: chefclipse.internal.ui.navigator;
   uses:="org.eclipse.ui.navigator,

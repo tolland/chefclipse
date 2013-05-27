@@ -46,7 +46,8 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 	private static final int THREADS = 10;
 
-	static final Logger logger = LoggerFactory.getLogger(CookbookSiteRepository.class);
+	static final Logger logger = LoggerFactory
+			.getLogger(CookbookSiteRepository.class);
 
 	private final class GetPages implements Runnable {
 		private final int start;
@@ -59,7 +60,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 		@Override
 		public void run() {
-			ExecutorService pool = Executors.newFixedThreadPool(THREADS/2);
+			ExecutorService pool = Executors.newFixedThreadPool(THREADS / 2);
 			try {
 				JSONObject json = getRestCookbooks(start, 100);
 				JSONArray items = json.getJSONArray("items");
@@ -73,7 +74,14 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 				}
 				pool.shutdown();
 				pool.awaitTermination(20, TimeUnit.MINUTES);
-			} catch (JSONException | ClientHandlerException | UniformInterfaceException | InterruptedException e) {
+			} catch (JSONException e) {
+				logger.error("Error getting cookbooks", e);
+			} catch (ClientHandlerException e) {
+				logger.error("Error getting cookbooks", e);
+			} catch (UniformInterfaceException e) {
+				logger.error("Error getting cookbooks", e);
+			} catch (InterruptedException e) {
+
 				logger.error("Error getting cookbooks", e);
 			}
 		}
@@ -83,7 +91,8 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 		private final JSONObject cookbookJson;
 		private final List<RemoteCookbook> cookbooks;
 
-		private GetCookbook(JSONObject cookbookJson, List<RemoteCookbook> cookbooks) {
+		private GetCookbook(JSONObject cookbookJson,
+				List<RemoteCookbook> cookbooks) {
 			this.cookbookJson = cookbookJson;
 			this.cookbooks = cookbooks;
 		}
@@ -113,46 +122,62 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 		Client client = Client.create(config);
 		service = client.resource(getRepositoryURI());
 
-		downloadCookbookStrategy = new CookbookSiteDownloadStrategy(REPOSITORY_URI, this);
+		downloadCookbookStrategy = new CookbookSiteDownloadStrategy(
+				REPOSITORY_URI, this);
 	}
 
 	/**
-	 * /cookbooks
-	 * Gets a listing of the available cookbooks. It is a good idea to use the optional parameters start and items to limit and paginate the results.
-	 * @param start The offset into the cookbook list at which you would like the result set to start.
-	 * @param items The number of items to return in the result set.
+	 * /cookbooks Gets a listing of the available cookbooks. It is a good idea
+	 * to use the optional parameters start and items to limit and paginate the
+	 * results.
+	 *
+	 * @param start
+	 *            The offset into the cookbook list at which you would like the
+	 *            result set to start.
+	 * @param items
+	 *            The number of items to return in the result set.
 	 * @return List of cookbooks
 	 */
 	private JSONObject getRestCookbooks(int start, int items) {
-	    return getService().path("api").path("v1").path("cookbooks")
-	    		.queryParam("start", String.valueOf(start))
-	    		.queryParam("items", String.valueOf(items))
-	    		.accept(MediaType.APPLICATION_JSON_TYPE)
-	    		.get(JSONObject.class);
+		return getService().path("api").path("v1").path("cookbooks")
+				.queryParam("start", String.valueOf(start))
+				.queryParam("items", String.valueOf(items))
+				.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONObject.class);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbooks(org.eclipse.core.runtime.IProgressMonitor)
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbooks
+	 * (org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
 	public List<RemoteCookbook> getCookbooks() {
 		ExecutorService pool = Executors.newFixedThreadPool(THREADS);
 		List<RemoteCookbook> list = new ArrayList<RemoteCookbook>();
-		final List<RemoteCookbook> cookbooks = Collections.synchronizedList(list);
+		final List<RemoteCookbook> cookbooks = Collections
+				.synchronizedList(list);
 		int start = 0;
 		int total = 100;
 		try {
 			JSONObject json = getRestCookbooks(0, 1);
 			total = json.getInt("total");
-		} catch (JSONException | ClientHandlerException | UniformInterfaceException e) {
+		} catch (JSONException e) {
 			logger.error("Error getting cookbooks", e);
+		} catch (ClientHandlerException e) {
+			logger.error("Error getting cookbooks", e);
+		} catch (UniformInterfaceException e) {
+			logger.error("Error getting cookbooks", e);
+
 		}
 		long t1 = System.currentTimeMillis();
 		do {
 			pool.execute(new GetPages(start, cookbooks));
 			start += 100;
 		} while (start < total);
-		logger.info("get Cookbooks info in {}ms", System.currentTimeMillis() - t1);
+		logger.info("get Cookbooks info in {}ms", System.currentTimeMillis()
+				- t1);
 		try {
 			pool.shutdown();
 			pool.awaitTermination(20, TimeUnit.MINUTES);
@@ -163,12 +188,15 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	}
 
 	private RemoteCookbook createCookbook(JSONObject cookbookJson) {
-		RemoteCookbook cookbook = CookbookrepositoryFactory.eINSTANCE.createRemoteCookbook();
+		RemoteCookbook cookbook = CookbookrepositoryFactory.eINSTANCE
+				.createRemoteCookbook();
 		try {
 			cookbook.setName(cookbookJson.getString("cookbook_name"));
 			cookbook.setUrl(cookbookJson.getString("cookbook"));
-			cookbook.setDescription(cookbookJson.getString("cookbook_description"));
-			cookbook.setMaintainer(cookbookJson.getString("cookbook_maintainer"));
+			cookbook.setDescription(cookbookJson
+					.getString("cookbook_description"));
+			cookbook.setMaintainer(cookbookJson
+					.getString("cookbook_maintainer"));
 		} catch (JSONException e) {
 			logger.error("Error getting cookbooks", e);
 		}
@@ -176,43 +204,49 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 	}
 
 	/**
-	 * /cookbooks/{cookbook}
-	 * Gets a cookbook.
+	 * /cookbooks/{cookbook} Gets a cookbook.
+	 *
 	 * @param cookbook
 	 * @return
 	 */
 	private JSONObject restCookbook(String cookbook) {
-	    return getService().path("api").path("v1").path("cookbooks")
-	    		.path(cookbook)
-	    		.accept(MediaType.APPLICATION_JSON_TYPE)
-	    		.get(JSONObject.class);
+		return getService().path("api").path("v1").path("cookbooks")
+				.path(cookbook).accept(MediaType.APPLICATION_JSON_TYPE)
+				.get(JSONObject.class);
 	}
 
-	/* (non-Javadoc)
-	 * @see org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbook(java.lang.String, org.eclipse.core.runtime.IProgressMonitor)
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see
+	 * org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository#getCookbook
+	 * (java.lang.String, org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
 	public RemoteCookbook getCookbook(String name) {
 		JSONObject cookbookJson = restCookbook(name);
 
-		String url = UriBuilder.fromUri(getRepositoryURI()).path("api").path("v1")
-				.path("cookbooks").path(name)
-				.build().toString();
+		String url = UriBuilder.fromUri(getRepositoryURI()).path("api")
+				.path("v1").path("cookbooks").path(name).build().toString();
 
 		RemoteCookbook cookbook = createCookbookDetail(cookbookJson, url);
 		return cookbook;
 	}
 
-	private RemoteCookbook createCookbookDetail(JSONObject cookbookJson, String url) {
-		RemoteCookbook cookbook = CookbookrepositoryFactory.eINSTANCE.createRemoteCookbook();
+	private RemoteCookbook createCookbookDetail(JSONObject cookbookJson,
+			String url) {
+		RemoteCookbook cookbook = CookbookrepositoryFactory.eINSTANCE
+				.createRemoteCookbook();
 		DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
 		try {
 			cookbook.setName(cookbookJson.getString("name"));
 			cookbook.setUrl(url);
 			cookbook.setDescription(cookbookJson.getString("description"));
 			cookbook.setCategory(cookbookJson.getString("category"));
-			cookbook.setUpdatedAt(format.parse(cookbookJson.getString("updated_at")));
-			cookbook.setCreatedAt(format.parse(cookbookJson.getString("created_at")));
+			cookbook.setUpdatedAt(format.parse(cookbookJson
+					.getString("updated_at")));
+			cookbook.setCreatedAt(format.parse(cookbookJson
+					.getString("created_at")));
 			cookbook.setDeprecated(cookbookJson.optBoolean("deprecated"));
 			cookbook.setExternalUrl(cookbookJson.optString("external_url"));
 			cookbook.setLatestVersion(cookbookJson.getString("latest_version"));
@@ -226,7 +260,9 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 				versions[i] = versionsJson.getString(i);
 			}
 			cookbook.getVersions().addAll(Arrays.asList(versions));
-		} catch (JSONException | ParseException e) {
+		} catch (JSONException e) {
+			logger.error("Error getting cookbooks", e);
+		} catch (ParseException e) {
 			logger.error("Error getting cookbooks", e);
 		}
 		return cookbook;
@@ -234,8 +270,7 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 
 	@Override
 	public URI getRepositoryURI() {
-		return UriBuilder.fromUri(REPOSITORY_URI)
-				.build();
+		return UriBuilder.fromUri(REPOSITORY_URI).build();
 	}
 
 	@Override
@@ -250,15 +285,22 @@ public class CookbookSiteRepository implements ICookbooksRepository {
 			int total = json.getInt("total");
 			if (total != repo.getCookbooks().size())
 				return true;
-		} catch (JSONException | ClientHandlerException | UniformInterfaceException e) {
+		} catch (JSONException e) {
+			logger.error("Error checking isUpdated", e);
+		} catch (ClientHandlerException e) {
+			logger.error("Error checking isUpdated", e);
+		} catch (UniformInterfaceException e) {
 			logger.error("Error checking isUpdated", e);
 		}
+
 		return false;
 	}
 
 	@Override
-	public File downloadCookbook(RemoteCookbook cookbook, String version) throws InstallCookbookException {
-		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(cookbook, version);
+	public File downloadCookbook(RemoteCookbook cookbook, String version)
+			throws InstallCookbookException {
+		File downloadedCookbook = downloadCookbookStrategy.downloadCookbook(
+				cookbook, version);
 		return downloadedCookbook;
 	}
 
