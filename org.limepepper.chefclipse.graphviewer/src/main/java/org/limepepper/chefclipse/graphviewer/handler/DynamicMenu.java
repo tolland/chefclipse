@@ -38,11 +38,11 @@ public class DynamicMenu extends CompoundContributionItem {
         IStructuredSelection selection = (IStructuredSelection) PlatformUI
                 .getWorkbench().getActiveWorkbenchWindow()
                 .getSelectionService().getSelection();
-        
+
         if(selection==null)
             return new IContributionItem[] {};
-        
-        
+
+
         Object item = selection.getFirstElement();
 /*        if (item instanceof IResource) {
             return fillMenu((IResource)item);

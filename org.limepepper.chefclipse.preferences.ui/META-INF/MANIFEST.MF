@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.preferences.api;bundle-version="0.1.0",
  org.limepepper.chefclipse.chefserver.api;bundle-version="0.1.0",
  chefclipse.ui;bundle-version="0.1.1"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
  lib/commons-validator.jar,

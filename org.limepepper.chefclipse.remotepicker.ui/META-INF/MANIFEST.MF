@@ -23,7 +23,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.limepepper.chefclipse.logger,
  chefclipse.ui;bundle-version="0.1.1"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .
 Export-Package: org.limepepper.chefclipse.remotepicker.ui.handlers,
  org.limepepper.chefclipse.remotepicker.ui.preferences,

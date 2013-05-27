@@ -27,85 +27,94 @@ import org.slf4j.LoggerFactory;
 
 public class TestAuthCredentials {
 
-    private Properties props  = new Properties();
-    private String     client_name;
-    private File       client_key;
-    KnifeConfig             config;
-    AuthCredentials    auth;
+	private Properties props = new Properties();
+	private String client_name;
+	private File client_key;
+	KnifeConfig config;
+	AuthCredentials auth;
 
-    Logger             logger = LoggerFactory
-                                      .getLogger(TestAuthCredentials.class);
+	Logger logger = LoggerFactory.getLogger(TestAuthCredentials.class);
 
-    @Before
-    public void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 
-        try {
+		try {
 
-            props.load(new FileInputStream("resources/opscode-tests.properties"));
-            client_name = props.getProperty("client_name");
-            client_key = new File(props.getProperty("client_key"));
-            assertNotNull(props);
-            assertTrue(client_key.exists());
+			props.load(new FileInputStream("resources/opscode-tests.properties"));
+			client_name = props.getProperty("client_name");
+			client_key = new File(props.getProperty("client_key"));
+			assertNotNull(props);
+			assertTrue(client_key.exists());
 
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            fail();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			fail();
 
-        }
-    }
+		}
+	}
 
-    @Test
-    public void testWrapperConfig() throws Exception {
+	@Test
+	public void testWrapperConfig() throws Exception {
 
-        auth = new AuthCredentials(client_name, client_key);
-        assertNotNull(auth);
+		auth = new AuthCredentials(client_name, client_key);
+		assertNotNull(auth);
 
-    }
+	}
 
-    @Test
-    public void testLoadKey() throws Exception {
-        if (auth == null) {
-            testWrapperConfig();
-        }
+	@Test
+	public void testLoadKey() throws Exception {
+		if (auth == null) {
+			testWrapperConfig();
+		}
 
-        assertNotNull(auth.getRaw_key());
-        assertTrue(auth.getRaw_key().length()>0);
+		assertNotNull(auth.getRaw_key());
+		assertTrue(auth.getRaw_key().length() > 0);
 
-    }
+	}
 
-    @Test
-    public void testsignatureHeaders() throws Exception {
-        if (auth == null) {
-            testLoadKey();
-        }
+	@Test
+	public void testsignatureHeaders() throws Exception {
+		if (auth == null) {
+			testLoadKey();
+		}
 
-        Map<String, String> request_params = new HashMap<String, String>();
-        request_params.put("timestamp", "2012-11-14T11:02:00Z");
-        request_params.put("client_name", "chefclipse");
-        request_params.put("method", "GET");
-        request_params.put("path", "/cookbooks");
-        request_params.put("body", "");
+		Map<String, String> request_params = new HashMap<String, String>();
+		request_params.put("timestamp", "2012-11-14T11:02:00Z");
+		request_params.put("client_name", "chefclipse");
+		request_params.put("method", "GET");
+		request_params.put("path", "/cookbooks");
+		request_params.put("body", "");
 
-        Map<String, String> auth_headers = new HashMap<String, String>();
-        try {
-            auth_headers =  auth.signature_headers(request_params);
-        } catch (SignatureException | IllegalBlockSizeException
-                | NoSuchPaddingException | BadPaddingException e) {
-            e.printStackTrace();
-            fail();
-        }
+		Map<String, String> auth_headers = new HashMap<String, String>();
+		try {
+			auth_headers = auth.signature_headers(request_params);
+		} catch (SignatureException e) {
+			e.printStackTrace();
+			fail();
 
-        for (Entry<String, String> entry : auth_headers.entrySet()) {
-            logger.debug("header:"+ entry.getValue());
-        }
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+			fail();
 
-        for (String key : auth_headers.keySet()) {
-            logger.debug( key + ":"+ auth_headers.get(key));
-        }
+		} catch (NoSuchPaddingException e) {
+			e.printStackTrace();
+			fail();
 
-        assertTrue(auth_headers.size()>0);
+		} catch (BadPaddingException e) {
 
+			e.printStackTrace();
+			fail();
+		}
 
+		for (Entry<String, String> entry : auth_headers.entrySet()) {
+			logger.debug("header:" + entry.getValue());
+		}
 
-    }
+		for (String key : auth_headers.keySet()) {
+			logger.debug(key + ":" + auth_headers.get(key));
+		}
+
+		assertTrue(auth_headers.size() > 0);
+
+	}
 }

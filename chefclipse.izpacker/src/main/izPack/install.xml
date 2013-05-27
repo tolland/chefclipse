@@ -1,8 +1,9 @@
-<izpack:installation version="5.0"
-                     xmlns:izpack="http://izpack.org/schema/installation"
-                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<izpack:installation
+  version="5.0"
+  xmlns:izpack="http://izpack.org/schema/installation"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
-xsi:schemaLocation="http://izpack.org/schema/installation
+  xsi:schemaLocation="http://izpack.org/schema/installation
 http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
   <info>
     <appname>Chefclipse</appname>
@@ -76,6 +77,30 @@ http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
       value="x86"
       condition="x86" />
     <variable
+      name="os_ws"
+      value="win32"
+      condition="izpack.windowsinstall" />
+    <variable
+      name="os_ws"
+      value="gtk"
+      condition="izpack.linuxinstall" />
+    <variable
+      name="os_ws"
+      value="cocoa"
+      condition="izpack.macinstall" />
+    <variable
+      name="os_name"
+      value="win32"
+      condition="izpack.windowsinstall" />
+    <variable
+      name="os_name"
+      value="linux"
+      condition="izpack.linuxinstall" />
+    <variable
+      name="os_name"
+      value="macosx"
+      condition="izpack.macinstall" />
+    <variable
       name="SEP"
       value="${FILE_SEPARATOR}" />
 
@@ -92,9 +117,9 @@ http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
 
   <locale>
     <langpack iso3="eng" />
-    <langpack iso3="rus"/>
-    <langpack iso3="spa"/>
-    <langpack iso3="pol"/>
+    <langpack iso3="rus" />
+    <langpack iso3="spa" />
+    <langpack iso3="pol" />
   </locale>
 
   <guiprefs
@@ -158,7 +183,8 @@ http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
     </condition>
     <!--condition type="java" id="installonwindows"> <java> <class>com.izforge.izpack.util.OsVersion</class>
       <field>SYSTEM_os_arch</field> </java> <returnvalue type="boolean">true</returnvalue>
-      </condition> <condition type="and" id="standardinstallation.onwindows"> <condition
+      </condition> <condition type="and" id="standardinstallation.onwindows">
+      <condition
       type="ref" refid="standardinstallation"/> <condition type="ref" refid="installonwindows"
       /> </condition -->
   </conditions>
@@ -189,15 +215,17 @@ http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
     <panel
       classname="UserInputPanel"
       id="userinputpanel" />
-       <!--help iso3="deu" src="HelloPanelHelp_deu.html" />
-  <help iso3="eng" src="HelloPanelHelp_eng.html" /-->
+    <!--help iso3="deu" src="HelloPanelHelp_deu.html" />
+      <help iso3="eng" src="HelloPanelHelp_eng.html" / -->
     <!--panel classname="InstallationGroupPanel"/ -->
     <panel
       classname="PacksPanel"
       id="packspanel" />
     <!--panel classname="TreePacksPanel" id="packspanel" / -->
 
-    <!--panel classname="DataCheckPanel" id="datacheckpanel"/ -->
+    <panel
+      classname="DataCheckPanel"
+      id="datacheckpanel" />
     <panel
       classname="InstallPanel"
       id="installpanel" />
@@ -206,7 +234,7 @@ http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
       id="processpanel" />
     <panel
       classname="ShortcutPanel"
-      id="shortcutpanel" />
+      id="shortcutpanel"></panel>
     <panel
       classname="SimpleFinishPanel"
       id="simplefinishpanel" />

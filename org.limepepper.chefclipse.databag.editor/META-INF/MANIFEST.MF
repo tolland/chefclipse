@@ -16,5 +16,5 @@ Require-Bundle: org.eclipse.ui,
  chefclipse.ui;bundle-version="0.1.0",
  jsonedit-core;bundle-version="0.9.5"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse.databag.editor.actions

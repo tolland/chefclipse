@@ -29,10 +29,12 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
  * @author Guillermo Zunino
  *
  */
-public class GithubCookbookRepositoryConfig implements ICookbooksRepository.Builder<String> {
+public class GithubCookbookRepositoryConfig implements
+		ICookbooksRepository.Builder<String> {
 
-	static final Logger logger = LoggerFactory.getLogger(GithubCookbookRepositoryConfig.class);
-	
+	static final Logger logger = LoggerFactory
+			.getLogger(GithubCookbookRepositoryConfig.class);
+
 	@Override
 	public ICookbooksRepository createRepository(String githubUser) {
 		return new GitHubCookbookRepository(githubUser);
@@ -41,7 +43,7 @@ public class GithubCookbookRepositoryConfig implements ICookbooksRepository.Buil
 	@Override
 	public String configure(final RemoteRepository repo) {
 		Shell shell = Display.getCurrent().getActiveShell();
-		
+
 		IInputValidator validator = new IInputValidator() {
 			@Override
 			public String isValid(String newText) {
@@ -51,7 +53,11 @@ public class GithubCookbookRepositoryConfig implements ICookbooksRepository.Buil
 				return null;
 			}
 		};
-		InputDialog dialog = new InputDialog(shell, "Github Cookbooks Repository", "Enter a Github organization (or user) hosting public cookbook repositories (e.g.: \"cookbooks\" or \"opscode-cookbooks\")", null, validator) {
+		InputDialog dialog = new InputDialog(
+				shell,
+				"Github Cookbooks Repository",
+				"Enter a Github organization (or user) hosting public cookbook repositories (e.g.: \"cookbooks\" or \"opscode-cookbooks\")",
+				null, validator) {
 			@Override
 			protected void okPressed() {
 				String error = fetchCookbooksInfo(getValue(), repo, null);
@@ -67,17 +73,23 @@ public class GithubCookbookRepositoryConfig implements ICookbooksRepository.Buil
 		return null;
 	}
 
-	private String fetchCookbooksInfo(final String githubUser, final RemoteRepository repo, final InputDialog dialog) {
-		IProgressService progressService = PlatformUI.getWorkbench().getProgressService();
+	private String fetchCookbooksInfo(final String githubUser,
+			final RemoteRepository repo, final InputDialog dialog) {
+		IProgressService progressService = PlatformUI.getWorkbench()
+				.getProgressService();
 		try {
 			progressService.busyCursorWhile(new IRunnableWithProgress() {
 				@Override
-				public void run(IProgressMonitor monitor) throws InvocationTargetException {
+				public void run(IProgressMonitor monitor)
+						throws InvocationTargetException {
 					try {
 						ClientConfig config = new DefaultClientConfig();
 						Client client = Client.create(config);
-						WebResource service = client.resource(GitHubCookbookRepository.repositoryUrl());
-						JSONObject json = service.path("users").path(githubUser)
+						WebResource service = client
+								.resource(GitHubCookbookRepository
+										.repositoryUrl());
+						JSONObject json = service.path("users")
+								.path(githubUser)
 								.accept(MediaType.APPLICATION_JSON_TYPE)
 								.get(JSONObject.class);
 						String name = json.getString("name");
@@ -87,17 +99,32 @@ public class GithubCookbookRepositoryConfig implements ICookbooksRepository.Buil
 						String type = json.getString("type");
 						String avatar_id = json.getString("gravatar_id");
 						repo.setName(name + " (GitHub)");
-						repo.setDescription("Cookbooks provided by GitHub repositories from " + type + " \"" + login + "\". More info on \"" + blog + "\"");
+						repo.setDescription("Cookbooks provided by GitHub repositories from "
+								+ type
+								+ " \""
+								+ login
+								+ "\". More info on \""
+								+ blog + "\"");
 						repo.setUri(url);
-						repo.setIcon("http://www.gravatar.com/avatar/" + avatar_id + "?s=32&d=" + URLEncoder.encode("http://raw.github.com/limepepper/chefclipse/gh-pages/css/images/github.png", "UTF-8") );
+						repo.setIcon("http://www.gravatar.com/avatar/"
+								+ avatar_id
+								+ "?s=32&d="
+								+ URLEncoder
+										.encode("http://raw.github.com/limepepper/chefclipse/gh-pages/css/images/github.png",
+												"UTF-8"));
 					} catch (Exception e) {
 						logger.error("Cannot fetch github organization info", e);
 						throw new InvocationTargetException(e);
 					}
 				}
 			});
-		} catch (InvocationTargetException | InterruptedException e) {
-			return "Cannot fetch Github organization information for user \"" + githubUser + "\".";
+		} catch (InvocationTargetException e) {
+			return "Cannot fetch Github organization information for user \""
+					+ githubUser + "\".";
+		} catch (InterruptedException e) {
+
+			return "Cannot fetch Github organization information for user \""
+					+ githubUser + "\".";
 		}
 		return null;
 	};

@@ -21,63 +21,63 @@
     <developerConnection>scm:git:git@github.com:limepepper/p2.git</developerConnection>
   </scm>
 
-      <build>
-        <plugins>
+  <build>
+    <plugins>
 
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>tycho-p2-repository-plugin</artifactId>
-            <version>${tycho-version}</version>
-            <configuration>
-              <includeAllDependencies>false</includeAllDependencies>
-              <compress>false</compress>
-            </configuration>
-          </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <includeAllDependencies>false</includeAllDependencies>
+          <compress>false</compress>
+        </configuration>
+      </plugin>
 
-        </plugins>
-      </build>
+    </plugins>
+  </build>
 
   <profiles>
-    
+
     <profile>
-    <id>try1</id>
-    
-    <build>
-    <plugins>
-                    <plugin>
-                    <groupId>org.eclipse.tycho.extras</groupId>
-                    <artifactId>tycho-p2-extras-plugin</artifactId>
-                    
-                    <version>${tycho-version}</version>
-                    <executions>
-                        <execution>
-                            <id>publish</id>
-                            <phase>install</phase>
-                            <goals>
-                                <goal>mirror</goal>
-                            </goals>
-                            <configuration>
-                                <source>
-                                    <repository>
-                                        <url>${project.build.directory}/repository</url>
-                                    </repository>
-                                </source>
-                                <append>true</append>
-                                <destination>${project.build.directory}/repository2</destination>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-    </plugins>
-    
-    
-    </build>
-    
-    
+      <id>try1</id>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho.extras</groupId>
+            <artifactId>tycho-p2-extras-plugin</artifactId>
+
+            <version>${tycho-version}</version>
+            <executions>
+              <execution>
+                <id>publish</id>
+                <phase>install</phase>
+                <goals>
+                  <goal>mirror</goal>
+                </goals>
+                <configuration>
+                  <source>
+                    <repository>
+                      <url>${project.build.directory}/repository</url>
+                    </repository>
+                  </source>
+                  <append>true</append>
+                  <destination>${project.build.directory}/repository2</destination>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+
+
+      </build>
+
+
     </profile>
-    
-    
-    
+
+
+
     <profile>
       <id>deploy-update-site2</id>
 

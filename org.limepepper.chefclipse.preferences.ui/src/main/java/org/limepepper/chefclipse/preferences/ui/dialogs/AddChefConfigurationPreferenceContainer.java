@@ -46,7 +46,8 @@ import chefclipse.ui.messages.Messages;
  * @author Sebastian Sampaoli
  *
  */
-public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog implements IPreferencePageContainer {
+public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog
+		implements IPreferencePageContainer {
 
 	private static final String VALIDATION_CLIENT_NAME_DEFAULT_VALUE = "#{ENV['validation_client_name']}"; //$NON-NLS-1$
 	private static final int TEST_BUTTON_ID = 34;
@@ -56,7 +57,8 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	private boolean valid;
 	private UrlValidator urlValidator;
 
-	public AddChefConfigurationPreferenceContainer(Shell parentShell, KnifeConfig knifeConfig, boolean addMode) {
+	public AddChefConfigurationPreferenceContainer(Shell parentShell,
+			KnifeConfig knifeConfig, boolean addMode) {
 		super(parentShell);
 		this.preferenceStore = createChefConfigurationStore(knifeConfig);
 		this.addMode = addMode;
@@ -72,21 +74,35 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	private PreferenceStore createChefConfigurationStore(KnifeConfig knifeConfig) {
 		PreferenceStore preferenceStore = new ChefConfigurationPreferenceStore();
 		URL chef_server_url = knifeConfig.getChef_server_url();
-		if (chef_server_url == null || chef_server_url.toExternalForm().equals(AddChefConfigurationPreferencePage.URL_INVALID_PREFIX)){
-			preferenceStore.setValue(PreferenceConstants.P_CHEF_SERVER_URL, AddChefConfigurationPreferencePage.URL_PREFIX);
+		if (chef_server_url == null
+				|| chef_server_url.toExternalForm().equals(
+						AddChefConfigurationPreferencePage.URL_INVALID_PREFIX)) {
+			preferenceStore.setValue(PreferenceConstants.P_CHEF_SERVER_URL,
+					AddChefConfigurationPreferencePage.URL_PREFIX);
 		} else {
-			preferenceStore.setValue(PreferenceConstants.P_CHEF_SERVER_URL, chef_server_url.toExternalForm());
+			preferenceStore.setValue(PreferenceConstants.P_CHEF_SERVER_URL,
+					chef_server_url.toExternalForm());
 		}
 		String node_name = knifeConfig.getNode_name();
-		preferenceStore.setValue(PreferenceConstants.P_NODE_NAME, node_name != null ? node_name : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_NODE_NAME,
+				node_name != null ? node_name
+						: AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		File client_key = knifeConfig.getClient_key();
-		preferenceStore.setValue(PreferenceConstants.P_CLIENT_KEY, client_key != null ? client_key.getAbsolutePath() : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_CLIENT_KEY,
+				client_key != null ? client_key.getAbsolutePath()
+						: AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		File cookbook_path = knifeConfig.getCookbook_path();
-		preferenceStore.setValue(PreferenceConstants.P_COOKBOOK_PATH, cookbook_path != null ? cookbook_path.getAbsolutePath() : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_COOKBOOK_PATH,
+				cookbook_path != null ? cookbook_path.getAbsolutePath()
+						: AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		String validation_client_name = knifeConfig.getValidation_client_name();
-		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_CLIENT_NAME, validation_client_name != null ? validation_client_name : VALIDATION_CLIENT_NAME_DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_CLIENT_NAME,
+				validation_client_name != null ? validation_client_name
+						: VALIDATION_CLIENT_NAME_DEFAULT_VALUE);
 		File validation_key = knifeConfig.getValidation_key();
-		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_KEY, validation_key != null ? validation_key.getAbsolutePath() : AddChefConfigurationPreferencePage.DEFAULT_VALUE);
+		preferenceStore.setValue(PreferenceConstants.P_VALIDATION_KEY,
+				validation_key != null ? validation_key.getAbsolutePath()
+						: AddChefConfigurationPreferencePage.DEFAULT_VALUE);
 		return preferenceStore;
 	}
 
@@ -94,7 +110,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	protected Control createDialogArea(Composite parent) {
 		Composite parentComposite = (Composite) super.createDialogArea(parent);
 
-		if (addMode){
+		if (addMode) {
 			setTitle(Messages.AddChefConfigurationPreferencePage_AddConfigTitle);
 			setMessage(Messages.AddChefConfigurationPreferencePage_AddConfigDesc);
 		} else {
@@ -103,8 +119,10 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		}
 
 		Composite composite = new Composite(parentComposite, SWT.NONE);
-		GridLayoutFactory.swtDefaults().equalWidth(false).numColumns(1).applyTo(composite);
-		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).applyTo(composite);
+		GridLayoutFactory.swtDefaults().equalWidth(false).numColumns(1)
+				.applyTo(composite);
+		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL)
+				.applyTo(composite);
 
 		preferencePage = new AddChefConfigurationPreferencePage(preferenceStore);
 		preferencePage.setMessage(this.getMessage());
@@ -116,56 +134,74 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 
 	/**
 	 * Create a knife config based on the preference store's content.
+	 *
 	 * @return
 	 */
 	public Config getCreatedChefConfig() {
-		KnifeConfig createdKnifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
-		String stringURL = preferenceStore.getString(PreferenceConstants.P_CHEF_SERVER_URL);
+		KnifeConfig createdKnifeConfig = KnifeFactory.eINSTANCE
+				.createKnifeConfig();
+		String stringURL = preferenceStore
+				.getString(PreferenceConstants.P_CHEF_SERVER_URL);
 		try {
 			createdKnifeConfig.setChef_server_url(new URL(stringURL));
 		} catch (MalformedURLException e) {
 
-		};
+		}
+		;
 
-		createdKnifeConfig.setNode_name(preferenceStore.getString(PreferenceConstants.P_NODE_NAME));
+		createdKnifeConfig.setNode_name(preferenceStore
+				.getString(PreferenceConstants.P_NODE_NAME));
 
-		String clientPath = preferenceStore.getString(PreferenceConstants.P_CLIENT_KEY);
+		String clientPath = preferenceStore
+				.getString(PreferenceConstants.P_CLIENT_KEY);
 		createdKnifeConfig.setClient_key(getFileOrNull(clientPath));
 
-		String cookbookPath = preferenceStore.getString(PreferenceConstants.P_COOKBOOK_PATH);
+		String cookbookPath = preferenceStore
+				.getString(PreferenceConstants.P_COOKBOOK_PATH);
 		createdKnifeConfig.setCookbook_path(getFileOrNull(cookbookPath));
 
-		createdKnifeConfig.setValidation_client_name(preferenceStore.getString(PreferenceConstants.P_VALIDATION_CLIENT_NAME));
+		createdKnifeConfig.setValidation_client_name(preferenceStore
+				.getString(PreferenceConstants.P_VALIDATION_CLIENT_NAME));
 
-		String validationKey = preferenceStore.getString(PreferenceConstants.P_VALIDATION_KEY);
+		String validationKey = preferenceStore
+				.getString(PreferenceConstants.P_VALIDATION_KEY);
 		createdKnifeConfig.setValidation_key(getFileOrNull(validationKey));
 
-		IEclipsePreferences workspacePreferences = ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
-		String cookbookCopyright = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_COPYRIGHT, "");
+		IEclipsePreferences workspacePreferences = ConfigurationScope.INSTANCE
+				.getNode(Activator.PLUGIN_ID);
+		String cookbookCopyright = workspacePreferences.get(
+				PreferenceConstants.P_COOKBOOK_COPYRIGHT, "");
 		createdKnifeConfig.setCookbook_copyright(cookbookCopyright);
 
-		String cookbookEmail = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_EMAIL, "");
-        createdKnifeConfig.setCookbook_email(cookbookEmail);
+		String cookbookEmail = workspacePreferences.get(
+				PreferenceConstants.P_COOKBOOK_EMAIL, "");
+		createdKnifeConfig.setCookbook_email(cookbookEmail);
 
-        String cookbookLicense = workspacePreferences.get(PreferenceConstants.P_COOKBOOK_LICENSE, "");
-        createdKnifeConfig.setCookbook_license(cookbookLicense);
+		String cookbookLicense = workspacePreferences.get(
+				PreferenceConstants.P_COOKBOOK_LICENSE, "");
+		createdKnifeConfig.setCookbook_license(cookbookLicense);
 
-        String cacheType = workspacePreferences.get(PreferenceConstants.P_CACHE_TYPE, "");
-        createdKnifeConfig.setCache_type(cacheType);
+		String cacheType = workspacePreferences.get(
+				PreferenceConstants.P_CACHE_TYPE, "");
+		createdKnifeConfig.setCache_type(cacheType);
 
-        String cacheOptions = workspacePreferences.get(PreferenceConstants.P_CACHE_OPTIONS, "");
-        createdKnifeConfig.setCache_option(cacheOptions);
+		String cacheOptions = workspacePreferences.get(
+				PreferenceConstants.P_CACHE_OPTIONS, "");
+		createdKnifeConfig.setCache_option(cacheOptions);
 
-//      TODO there is a lack of the attribute below in the model (add it?)...
-//        String sslVerifyMode = workspacePreferences.get(PreferenceConstants.P_SSL_VERIFY_MODE, "");
-//        createdKnifeConfig.set
+		// TODO there is a lack of the attribute below in the model (add it?)...
+		// String sslVerifyMode =
+		// workspacePreferences.get(PreferenceConstants.P_SSL_VERIFY_MODE, "");
+		// createdKnifeConfig.set
 
 		return createdKnifeConfig;
 	}
 
 	/**
 	 * Returns a {@link File} if path is non empty, otherwise it returns null.
-	 * @param path Path to file, can be null or empty
+	 *
+	 * @param path
+	 *            Path to file, can be null or empty
 	 * @return a {@link File} or null
 	 */
 	private File getFileOrNull(String path) {
@@ -182,8 +218,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 
 	@Override
 	protected void createButtonsForButtonBar(Composite parent) {
-		super.createButton(parent, TEST_BUTTON_ID,
-				"Test Connection", false); //$NON-NLS-1$
+		super.createButton(parent, TEST_BUTTON_ID, "Test Connection", false); //$NON-NLS-1$
 		super.createButtonsForButtonBar(parent);
 
 		updateButtons();
@@ -200,18 +235,20 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 
 	@Override
 	protected void okPressed() {
-		if (preferencePage.isValid()){
+		if (preferencePage.isValid()) {
 			preferencePage.performOk();
 			super.okPressed();
 		}
 	}
 
 	/**
-	 * Test Connection to Chef-Server returned by {@link #getCreatedChefConfig()}.
-	 * Shows test result in an informational or error dialog.
+	 * Test Connection to Chef-Server returned by
+	 * {@link #getCreatedChefConfig()}. Shows test result in an informational or
+	 * error dialog.
 	 */
 	public void testConnection() {
-		IProgressService progressService = PlatformUI.getWorkbench().getProgressService();
+		IProgressService progressService = PlatformUI.getWorkbench()
+				.getProgressService();
 		preferencePage.performOk();
 		final Config knifeConfig = getCreatedChefConfig();
 		if (knifeConfig == null) {
@@ -220,37 +257,56 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		try {
 			progressService.busyCursorWhile(new IRunnableWithProgress() {
 				@Override
-				public void run(IProgressMonitor monitor) throws InvocationTargetException,
-						InterruptedException {
-					monitor.beginTask(Messages.AddChefConfigurationPreferencePage_TestingConnection, IProgressMonitor.UNKNOWN);
+				public void run(IProgressMonitor monitor)
+						throws InvocationTargetException, InterruptedException {
+					monitor.beginTask(
+							Messages.AddChefConfigurationPreferencePage_TestingConnection,
+							IProgressMonitor.UNKNOWN);
 
 					if (hasKey(knifeConfig)) {
-						ChefServerApi server = KnifeConfigController.INSTANCE.getServer((KnifeConfig) knifeConfig);
+						ChefServerApi server = KnifeConfigController.INSTANCE
+								.getServer((KnifeConfig) knifeConfig);
 
 						try {
 							final String info = server.getServerInfo();
 
-							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionSuccessful, Messages.AddChefConfigurationPreferencePage_TestingConnectionMsg + info, MessageDialog.INFORMATION);
+							showTestConnectionResult(
+									Messages.AddChefConfigurationPreferencePage_ConnectionSuccessful,
+									Messages.AddChefConfigurationPreferencePage_TestingConnectionMsg
+											+ info, MessageDialog.INFORMATION);
 						} catch (final Exception e) {
-							showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionError, Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj1 +
-											e + "\n", MessageDialog.ERROR ); //$NON-NLS-1$
+							showTestConnectionResult(
+									Messages.AddChefConfigurationPreferencePage_ConnectionError,
+									Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj1
+											+ e + "\n", MessageDialog.ERROR); //$NON-NLS-1$
 						}
 					} else {
-						showTestConnectionResult(Messages.AddChefConfigurationPreferencePage_ConnectionError, Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj2, MessageDialog.ERROR);
+						showTestConnectionResult(
+								Messages.AddChefConfigurationPreferencePage_ConnectionError,
+								Messages.AddChefConfigurationPreferencePage_ConnectionErrorMsj2,
+								MessageDialog.ERROR);
 					}
 					monitor.done();
 				}
 			});
-		} catch (InvocationTargetException | InterruptedException e) {}
+		} catch (InvocationTargetException e) {
+		} catch (InterruptedException e) {
+		}
 	}
 
 	/**
-	 * Show an information or error dialog with the given title and message on the UI thread.
-	 * @param dlgTitle The title of the dialog
-	 * @param msg the dialog message
-	 * @param type the dialog type from {@link MessageDialog}
+	 * Show an information or error dialog with the given title and message on
+	 * the UI thread.
+	 *
+	 * @param dlgTitle
+	 *            The title of the dialog
+	 * @param msg
+	 *            the dialog message
+	 * @param type
+	 *            the dialog type from {@link MessageDialog}
 	 */
-	private void showTestConnectionResult(final String dlgTitle, final String msg, final int type) {
+	private void showTestConnectionResult(final String dlgTitle,
+			final String msg, final int type) {
 		getShell().getDisplay().asyncExec(new Runnable() {
 			@Override
 			public void run() {
@@ -261,7 +317,8 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 
 	private boolean hasKey(Config knifeConfig) {
 		File client_key = knifeConfig.getClient_key();
-		return (client_key != null && client_key.exists() && client_key.canRead());
+		return (client_key != null && client_key.exists() && client_key
+				.canRead());
 	}
 
 	@Override
@@ -272,7 +329,8 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 	@Override
 	public void updateButtons() {
 		if (getButton(IDialogConstants.OK_ID) != null) {
-			getButton(IDialogConstants.OK_ID).setEnabled(preferencePage.isValid());
+			getButton(IDialogConstants.OK_ID).setEnabled(
+					preferencePage.isValid());
 		}
 		if (getButton(TEST_BUTTON_ID) != null) {
 			getButton(TEST_BUTTON_ID).setEnabled(preferencePage.isValid());
@@ -284,28 +342,29 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog imp
 		if (preferencePage != null) {
 			String pageMessage = preferencePage.getMessage();
 			String pageErrorMessage = preferencePage.getErrorMessage();
-			if (preferencePage.isValid() && pageErrorMessage == null){
+			if (preferencePage.isValid() && pageErrorMessage == null) {
 				setMessage(pageMessage);
 				setErrorMessage(null);
 			} else {
 				setErrorMessage(pageErrorMessage);
 			}
-			if (!preferencePage.isValid() && getErrorMessage() == null){
+			if (!preferencePage.isValid() && getErrorMessage() == null) {
 				String errorMessage = getUrlErrorMessage();
 				setErrorMessage(errorMessage);
 			}
 			updateButtons();
-	    }
+		}
 	}
 
 	private String getUrlErrorMessage() {
 		String urlValue = preferencePage.getURLText();
-		if (urlValue.isEmpty()){
+		if (urlValue.isEmpty()) {
 			return Messages.AddChefConfigurationPreferencePage_EmptyURL;
-		} else if (urlValue.equals(AddChefConfigurationPreferencePage.URL_PREFIX)){
+		} else if (urlValue
+				.equals(AddChefConfigurationPreferencePage.URL_PREFIX)) {
 			return Messages.AddChefConfigurationPreferencePage_ValidURL;
 		}
-		if (!urlValidator.isValid(urlValue)){
+		if (!urlValidator.isValid(urlValue)) {
 			return Messages.AddChefConfigurationPreferencePage_ValidURL;
 		}
 		return null;

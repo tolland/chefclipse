@@ -44,244 +44,242 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 public class JSONRestWrapper {
 
-    Logger                  logger          = LoggerFactory
-                                                    .getLogger(JSONRestWrapper.class);
-
-    private WebResource     service;
-    private AuthCredentials auth = null;
-    private URL             url;
+	Logger logger = LoggerFactory.getLogger(JSONRestWrapper.class);
+
+	private WebResource service;
+	private AuthCredentials auth = null;
+	private URL url;
+
+	Map<String, String> default_headers = new HashMap<String, String>();
 
-    Map<String, String>     default_headers = new HashMap<String, String>();
+	// static Map<String, String> config = new HashMap<String, String>();
 
-    // static Map<String, String> config = new HashMap<String, String>();
+	public JSONRestWrapper(@NonNull AuthCredentials auth, URL url) {
+		this.auth = auth;
+		this.url = url;
+		ClientConfig cc = new DefaultClientConfig();
+		Client client = Client.create(cc);
+		client.addFilter(new LoggingFilter(System.out));
+		service = client.resource(url.toString());
 
-    public JSONRestWrapper(@NonNull AuthCredentials auth, URL url) {
-        this.auth = auth;
-        this.url = url;
-        ClientConfig cc = new DefaultClientConfig();
-        Client client = Client.create(cc);
-        client.addFilter(new LoggingFilter(System.out));
-        service = client.resource(url.toString());
+		default_headers.put("X-CHEF-VERSION", "10.8.0");
 
-        default_headers.put("X-CHEF-VERSION", "10.8.0");
+	}
+
+	/**
+	 * @param path
+	 *            is the service relative path of the request.
+	 * @param params
+	 *            is a named list of multivalued paramaters, e.g.
+	 *            ?p=1&q=1,2,3&r=&s=123 so it is requied to collapse the list in
+	 *            some suitable fashion into the querystring
+	 * @return
+	 * @throws MalformedURLException
+	 *
+	 */
+	@SuppressWarnings("deprecation")
+	public JSONObject rest_get(String path, Map<String, List<String>> params) {
 
-    }
-
-    /**
-     * @param path
-     *            is the service relative path of the request.
-     * @param params
-     *            is a named list of multivalued paramaters, e.g.
-     *            ?p=1&q=1,2,3&r=&s=123
-     *            so it is requied to collapse the list in some suitable fashion
-     *            into the querystring
-     * @return
-     * @throws MalformedURLException
-     *
-     */
-    @SuppressWarnings("deprecation")
-    public JSONObject rest_get(String path, Map<String, List<String>> params) {
-
-        final String method = "GET";
+		final String method = "GET";
+
+		Map<String, String> headers = default_headers;
 
-        Map<String, String> headers = default_headers;
+		MultivaluedMap<String, String> query_params = new MultivaluedMapImpl();
+		query_params.putAll(params);
 
-        MultivaluedMap<String, String> query_params = new MultivaluedMapImpl();
-        query_params.putAll(params);
+		WebResource.Builder builder = getService().path(path)
+				.queryParams(query_params).getRequestBuilder();
 
-        WebResource.Builder builder = getService().path(path)
-                .queryParams(query_params).getRequestBuilder();
+		logger.debug("Created WebResource.Builder with the following details");
+		logger.debug("path:" + path);
+		logger.debug("query_params:");
 
-        logger.debug("Created WebResource.Builder with the following details");
-        logger.debug("path:" + path);
-        logger.debug("query_params:");
+		for (Entry<String, List<String>> key : query_params.entrySet()) {
+			logger.debug("key:" + key.getKey().toString());
+			for (String val : key.getValue()) {
+				logger.debug("val:" + val);
+			}
 
-        for (Entry<String, List<String>> key : query_params.entrySet()) {
-            logger.debug("key:" + key.getKey().toString());
-            for (String val : key.getValue()) {
-                logger.debug("val:" + val);
-            }
+		}
 
-        }
+		logger.debug("server:" + service.toString());
 
-        logger.debug("server:" + service.toString());
+		Map<String, String> auth_headers = null;
 
-        Map<String, String> auth_headers = null;
+		try {
+			auth_headers = build_headers(method,
+					new URL(url.toString() + path), headers, null, false, auth);
 
-        try {
-            auth_headers = build_headers(method,
-                    new URL(url.toString() + path), headers, null, false, auth);
+			logger.debug("auth_headers:");
 
-            logger.debug("auth_headers:");
+			for (Entry<String, String> entry : auth_headers.entrySet()) {
+				logger.debug(entry.getKey().toString() + ":" + entry.getValue());
+			}
 
-            for (Entry<String, String> entry : auth_headers.entrySet()) {
-                logger.debug(entry.getKey().toString() + ":" + entry.getValue());
-            }
+			for (String key : auth_headers.keySet()) {
+				builder.header(key, auth_headers.get(key));
+			}
 
-            for (String key : auth_headers.keySet()) {
-                builder.header(key, auth_headers.get(key));
-            }
+			builder.accept(MediaType.APPLICATION_JSON_TYPE);
 
-            builder.accept(MediaType.APPLICATION_JSON_TYPE);
+			JSONObject response = builder.get(JSONObject.class);
 
-            JSONObject response = builder.get(JSONObject.class);
+			ObjectMapper mapper = new ObjectMapper();
+			mapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS,
+					false);
+			try {
+				logger.debug(mapper.defaultPrettyPrintingWriter()
+						.writeValueAsString(response));
+			} catch (JsonGenerationException e) {
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.configure(SerializationConfig.Feature.FAIL_ON_EMPTY_BEANS,
-                    false);
-            try {
-                logger.debug(mapper.defaultPrettyPrintingWriter()
-                        .writeValueAsString(response));
-            } catch (JsonGenerationException | JsonMappingException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+			return response;
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		}
+		return null;
+	}
 
-            return response;
-        } catch (MalformedURLException e1) {
-            e1.printStackTrace();
-        }
-        return null;
-    }
+	public ClientResponse rest_head(String path,
+			Map<String, List<String>> params) {
 
-    public ClientResponse rest_head(String path,
-            Map<String, List<String>> params) {
+		final String method = "HEAD";
 
-        final String method = "HEAD";
+		Map<String, String> headers = new HashMap<String, String>();
 
-        Map<String, String> headers = new HashMap<String, String>();
+		MultivaluedMap<String, String> query_params = new MultivaluedMapImpl();
+		query_params.putAll(params);
 
-        MultivaluedMap<String, String> query_params = new MultivaluedMapImpl();
-        query_params.putAll(params);
+		WebResource.Builder builder = getService().path(path)
+				.queryParams(query_params).getRequestBuilder();
 
-        WebResource.Builder builder = getService().path(path)
-                .queryParams(query_params).getRequestBuilder();
+		Map<String, String> auth_headers = null;
+		try {
+			auth_headers = build_headers(method,
+					new URL(url.toString() + path), headers, null, false);
+			for (String key : auth_headers.keySet()) {
+				builder.header(key, auth_headers.get(key));
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 
-        Map<String, String> auth_headers = null;
-        try {
-            auth_headers = build_headers(method,
-                    new URL(url.toString() + path), headers, null, false);
-            for (String key : auth_headers.keySet()) {
-                builder.header(key, auth_headers.get(key));
-            }
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+		return builder.accept(MediaType.APPLICATION_JSON_TYPE).head();
 
-        return builder.accept(MediaType.APPLICATION_JSON_TYPE).head();
+	}
 
-    }
+	public static Map<String, String> authentication_headers(String method,
+			URL url, String json_body, @NonNull AuthCredentials auth) {
 
-    public static Map<String, String> authentication_headers(String method, URL url,
-            String json_body, @NonNull AuthCredentials auth) {
+		Map<String, String> request_params = new HashMap<String, String>();
+		request_params.put("method", method);
+		request_params.put("path", url.getPath());
+		request_params.put("body", (json_body == null) ? "" : json_body);
+		request_params.put("host", url.getHost() + ":" + url.getPort());
 
-        Map<String, String> request_params = new HashMap<String, String>();
-        request_params.put("method", method);
-        request_params.put("path", url.getPath());
-        request_params.put("body", (json_body == null) ? "" : json_body);
-        request_params.put("host", url.getHost() + ":" + url.getPort());
+		try {
 
-        try {
+			return auth.signature_headers(request_params);
 
-            return auth
-                    .signature_headers(
-                            request_params);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return request_params;
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return request_params;
+	}
 
-    }
+	public Map<String, String> authentication_headers(String method, URL url,
+			String json_body) {
 
+		Map<String, String> request_params = new HashMap<String, String>();
+		request_params.put("method", method);
+		request_params.put("path", url.getPath());
+		request_params.put("body", (json_body == null) ? "" : json_body);
+		request_params.put("host", url.getHost() + ":" + url.getPort());
 
-    public Map<String, String> authentication_headers(String method, URL url,
-            String json_body) {
+		try {
 
-        Map<String, String> request_params = new HashMap<String, String>();
-        request_params.put("method", method);
-        request_params.put("path", url.getPath());
-        request_params.put("body", (json_body == null) ? "" : json_body);
-        request_params.put("host", url.getHost() + ":" + url.getPort());
+			return auth.signature_headers(request_params);
 
-        try {
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return request_params;
 
-            return auth.signature_headers(request_params);
+	}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return request_params;
+	public static Map<String, String> build_headers(String method, URL url,
+			Map<String, String> headers, String json_body, boolean raw,
+			@NonNull AuthCredentials auth) {
 
-    }
+		if (!raw)
+			headers.put("Accept", "application/json");
 
-    public static Map<String, String> build_headers(String method, URL url,
-            Map<String, String> headers, String json_body, boolean raw, @NonNull AuthCredentials auth) {
+		if (json_body != null) {
+			headers.put("Content-Type", "application/json");
+			headers.put("Content-Length", Integer.toString(json_body.length()));
+		}
 
-        if (!raw)
-            headers.put("Accept", "application/json");
+		Map<String, String> auth_headers = authentication_headers(method, url,
+				json_body, auth);
 
-        if (json_body != null) {
-            headers.put("Content-Type", "application/json");
-            headers.put("Content-Length", Integer.toString(json_body.length()));
-        }
+		for (String key : auth_headers.keySet()) {
+			headers.put(key, auth_headers.get(key));
+		}
 
-        Map<String, String> auth_headers = authentication_headers(method, url,
-                json_body, auth);
+		return headers;
 
-        for (String key : auth_headers.keySet()) {
-            headers.put(key, auth_headers.get(key));
-        }
+	}
 
-        return headers;
+	public Map<String, String> build_headers(String method, URL url,
+			Map<String, String> headers, String json_body, boolean raw) {
 
-    }
+		if (!raw)
+			headers.put("Accept", "application/json");
 
-    public Map<String, String> build_headers(String method, URL url,
-            Map<String, String> headers, String json_body, boolean raw) {
+		if (json_body != null) {
+			headers.put("Content-Type", "application/json");
+			headers.put("Content-Length", Integer.toString(json_body.length()));
+		}
 
-        if (!raw)
-            headers.put("Accept", "application/json");
+		Map<String, String> auth_headers = authentication_headers(method, url,
+				json_body, auth);
 
-        if (json_body != null) {
-            headers.put("Content-Type", "application/json");
-            headers.put("Content-Length", Integer.toString(json_body.length()));
-        }
+		for (String key : auth_headers.keySet()) {
+			headers.put(key, auth_headers.get(key));
+		}
 
-        Map<String, String> auth_headers = authentication_headers(method, url,
-                json_body,  auth);
+		return headers;
 
-        for (String key : auth_headers.keySet()) {
-            headers.put(key, auth_headers.get(key));
-        }
+	}
 
-        return headers;
+	public WebResource getService() {
+		return service;
+	}
 
-    }
+	public static void asFile(String path, String content) {
 
-    public WebResource getService() {
-        return service;
-    }
+		ObjectOutputStream outputStream = null;
+		try {
+			outputStream = new ObjectOutputStream(new FileOutputStream(path));
+			outputStream.writeObject(content);
+			outputStream.flush();
+		} catch (Exception e) {
+			System.err.println("Error: " + e);
+		} finally {
 
-    public static void asFile(String path, String content) {
+			try {
+				if (outputStream != null)
+					outputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
-        ObjectOutputStream outputStream = null;
-        try {
-            outputStream = new ObjectOutputStream(new FileOutputStream(path));
-            outputStream.writeObject(content);
-            outputStream.flush();
-        } catch (Exception e) {
-            System.err.println("Error: " + e);
-        } finally {
-
-            try {
-                if (outputStream != null)
-                    outputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
+	}
 }
