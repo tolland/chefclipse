@@ -48,7 +48,7 @@
 
         <!-- product -->
         <module>../org.limepepper.chefclipse.product</module>
-        <module>../org.limepepper.chefclipse.p2</module>
+        <!-- module>../org.limepepper.chefclipse.p2</module -->
 
         <!-- features bundles -->
         <module>../features/org.limepepper.chefclipse.ui.feature</module>
