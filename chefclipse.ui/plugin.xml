@@ -285,7 +285,7 @@
   <extension point="org.eclipse.ui.views">
     <view
           allowMultiple="false"
-          class="org.eclipse.ui.navigator.CommonNavigator"
+          class="chefclipse.internal.ui.navigator.ChefNavigator"
           icon="icons/16x16.png"
           id="chefclipse.navigatorview"
           name="%view.name"/>
