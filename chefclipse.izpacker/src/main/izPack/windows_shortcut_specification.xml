@@ -22,8 +22,8 @@
 
         <createForPack name="Chefclipse"/>
     </shortcut>
-    <!--shortcut
-        name="Chefclipse Uninstaller"
+    <shortcut
+        name="Uninstall"
         programGroup="yes"
         desktop="no"
         applications="no"
@@ -39,5 +39,5 @@
         description="Unistall the chefclipse application">
 
         <createForPack name="Chefclipse Application"/>
-    </shortcut-->
+    </shortcut>
 </shortcuts>
