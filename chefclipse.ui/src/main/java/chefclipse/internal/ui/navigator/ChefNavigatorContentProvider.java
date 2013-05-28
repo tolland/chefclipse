@@ -2,7 +2,6 @@ package chefclipse.internal.ui.navigator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -12,14 +11,14 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
-import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.Server;
-import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import chefclipse.core.builders.ChefProjectNature;
 import chefclipse.core.managers.ChefRepositoryManager;
@@ -36,6 +35,7 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider 
 
 	KnifeConfigController api = KnifeConfigController.INSTANCE;
 
+	private static Logger log = LoggerFactory.getLogger(ChefNavigatorContentProvider.class);
 	public ChefNavigatorContentProvider() {
 
 		super(ChefProjectAdapterFactory.getAdapterFactory());

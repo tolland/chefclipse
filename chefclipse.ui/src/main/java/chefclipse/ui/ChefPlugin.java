@@ -35,7 +35,7 @@ public class ChefPlugin extends AbstractUIPlugin {
 
 		super();
 		plugin = this;
-
+		logger.debug(this.getClass().toString());
 	}
 
 	/*
