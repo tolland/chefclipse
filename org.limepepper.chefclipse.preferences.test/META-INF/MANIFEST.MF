@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.limepepper.chefclipse.preferences.test
 Bundle-SymbolicName: org.limepepper.chefclipse.preferences.test
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
  org.eclipse.emf.ecore;bundle-version="2.8.0",
- org.limepepper.chefclipse.common;bundle-version="1.0.0",
- org.limepepper.chefclipse.preferences.api;bundle-version="1.0.0",
- org.limepepper.chefclipse.preferences.ui;bundle-version="1.0.0",
- org.limepepper.chefclipse.testing;bundle-version="1.0.0"
+ org.limepepper.chefclipse.common;bundle-version="0.1.0",
+ org.limepepper.chefclipse.preferences.api;bundle-version="0.1.0",
+ org.limepepper.chefclipse.preferences.ui;bundle-version="0.1.0",
+ org.limepepper.chefclipse.testing;bundle-version="0.1.0"

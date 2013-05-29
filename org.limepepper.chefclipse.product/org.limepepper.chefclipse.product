@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Chefclipse Product" uid="org.limepepper.chefclipse.product" id="org.limepepper.chefclipse.app.product" application="org.limepepper.chefclipse.app" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Chefclipse Product" uid="org.limepepper.chefclipse.product" id="org.limepepper.chefclipse.app.product" application="org.limepepper.chefclipse.app" version="0.1.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="/org.limepepper.chefclipse.app/icons/about_vert.gif"/>
@@ -106,10 +106,10 @@ END OF TERMS AND CONDITIONS
       <feature id="org.eclipse.equinox.p2.user.ui"/>
       <feature id="org.codehaus.jackson.feature" version="1.9.5.201204111326"/>
       <feature id="jsonedit-feature" version="0.9.5"/>
-      <feature id="org.limepepper.chefclipse.ui.feature" version="1.0.0.qualifier"/>
-      <feature id="org.limepepper.chefclipse.app.feature" version="1.0.0.qualifier"/>
-      <feature id="org.limepepper.chefclipse.devel.feature" version="1.0.0.qualifier"/>
-      <feature id="org.limepepper.chefclipse.doc.feature" version="1.0.0.qualifier"/>
+      <feature id="org.limepepper.chefclipse.ui.feature" version="0.1.0.qualifier"/>
+      <feature id="org.limepepper.chefclipse.app.feature" version="0.1.0.qualifier"/>
+      <feature id="org.limepepper.chefclipse.devel.feature" version="0.1.0.qualifier"/>
+      <feature id="org.limepepper.chefclipse.doc.feature" version="0.1.0.qualifier"/>
       <feature id="org.eclipse.platform" version="4.2.1.v20130118-173121-9MF7GHYdG0B5kx4E_SkfZV-1mNjVATf67ZAb7"/>
       <feature id="org.eclipse.rcp" version="4.2.2.v20130129-152330-7IARAABrMQkGSvMgQnUlz-DQz00h"/>
    </features>

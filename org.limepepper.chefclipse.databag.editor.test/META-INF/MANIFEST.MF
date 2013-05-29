@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: DataBag editor Test
 Bundle-SymbolicName: org.limepepper.chefclipse.databag.editor.test
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.databag.editor.test.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.limepepper.chefclipse.databag.editor;bundle-version="1.0.0",
+ org.limepepper.chefclipse.databag.editor;bundle-version="0.1.0",
  org.junit;bundle-version="4.10.0",
  org.codehaus.jackson.core;bundle-version="1.9.5",
  org.codehaus.jackson.mapper;bundle-version="1.9.5",

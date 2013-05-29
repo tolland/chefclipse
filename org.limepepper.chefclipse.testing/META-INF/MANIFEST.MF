@@ -2,16 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Commons Test Plugin
 Bundle-SymbolicName: org.limepepper.chefclipse.testing
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .,
  lib/fest-assert-core.jar,
  lib/fest-util.jar,
  lib/fest-test.jar,
  lib/mockito-all.jar
-Require-Bundle: org.limepepper.chefclipse.logger;bundle-version="1.0.0";visibility:=reexport,
+Require-Bundle: org.limepepper.chefclipse.logger;bundle-version="0.1.0";visibility:=reexport,
  org.junit;bundle-version="4.10.0";visibility:=reexport,
- org.limepepper.chefclipse.common;bundle-version="1.0.0",
+ org.limepepper.chefclipse.common;bundle-version="0.1.0",
  org.apache.commons.io
 Export-Package: org.fest.assertions.api,
  org.fest.assertions.api.filter,
