@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.limepepper.chefclipse.logger;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.logger.LoggerPlugin
 Bundle-Vendor: Lime Pepper Ltd
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0"

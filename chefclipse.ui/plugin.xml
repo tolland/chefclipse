@@ -285,8 +285,8 @@
   <extension point="org.eclipse.ui.views">
     <view
           allowMultiple="false"
-          class="org.eclipse.ui.navigator.CommonNavigator"
-          icon="icons/16x16.ico"
+          class="chefclipse.internal.ui.navigator.ChefNavigator"
+          icon="icons/16x16.png"
           id="chefclipse.navigatorview"
           name="%view.name"/>
   </extension>
@@ -352,7 +352,7 @@
 
   <extension point="org.eclipse.ui.perspectives">
     <perspective class="chefclipse.ui.perspectives.ChefPerspectiveFactory"
-    icon="icons/16x16.ico" id="chefclipse.perspective"
+    icon="icons/cc1.ico" id="chefclipse.perspective"
     name="%perspective.name"></perspective>
   </extension>
 
@@ -497,7 +497,7 @@
             category="org.eclipse.ui.Examples/org.limepepper.chefclipse.category"
             class="chefclipse.ui.wizards.NewExampleChefProjectWizard"
             hasPages="true"
-            icon="icons/16x16.ico"
+            icon="icons/cc1.ico"
             id="wChefProjectWizard"
             name="%wizard.name.3"
             project="true">

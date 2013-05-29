@@ -131,7 +131,6 @@ public class ChefCore extends Plugin implements BundleActivator {
 		super.start(context);
 		setContext(context);
 		ChefModelManager.getChefModelManager().startup();
-		System.err.println("this is a test");
 	}
 
 	public static Object create(IResource resource) {

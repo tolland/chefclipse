@@ -25,7 +25,8 @@ import chefclipse.core.managers.ChefRepositoryManager;
 
 public class DeltaProcessingState implements IResourceChangeListener,
 		IResourceDeltaVisitor {
-	Logger logger = LoggerFactory.getLogger(DeltaProcessingState.class);
+	private static Logger logger = LoggerFactory
+			.getLogger(DeltaProcessingState.class);
 	private Set<IResource> fAdded;
 	private Set<IResource> fRemoved;
 
@@ -33,11 +34,9 @@ public class DeltaProcessingState implements IResourceChangeListener,
 	public void resourceChanged(IResourceChangeEvent event) {
 
 		// ChefModelManager.getChefModelManager().getChefModel().getChefProject();
-		System.out.println("processing delta state");
 
 		if (event == null || event.getDelta() == null) {
-			// was set to run on empty??
-			ChefCore.error("event was null");
+			logger.trace("test");
 			return;
 		}
 
@@ -75,11 +74,7 @@ public class DeltaProcessingState implements IResourceChangeListener,
 				}
 			};
 
-			workspace
-			.run(
-					myRunnable,
-					null,
-					IWorkspace.AVOID_UPDATE, null);
+			workspace.run(myRunnable, null, IWorkspace.AVOID_UPDATE, null);
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

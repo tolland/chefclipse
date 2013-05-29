@@ -16,6 +16,9 @@ import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  *
  *
@@ -30,6 +33,9 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
  *
  */
 public class ContributionItemDynamic extends CompoundContributionItem {
+
+	private static Logger log = LoggerFactory
+			.getLogger(ContributionItemDynamic.class);
 
 	IWorkbenchWindow workbench = PlatformUI.getWorkbench()
 			.getActiveWorkbenchWindow();
@@ -54,6 +60,8 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 			menuItems.put("refresh.cookbookVersion",
 					"update model for this cookbook");
 		}
+
+		log.debug("here si the message");
 
 		menuItems.put("compare.cookbook", "1Compare with ... ");
 

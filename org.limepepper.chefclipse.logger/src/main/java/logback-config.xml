@@ -9,6 +9,5 @@
 	</appender>
 	<root level="INFO">
 		<appender-ref ref="ECLIPSE" />
-		<appender-ref ref="UDP" />
 	</root>
 </configuration>
