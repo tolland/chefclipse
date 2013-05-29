@@ -7,6 +7,7 @@ package org.limepepper.chefclipse.databag.editor.editors;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -339,4 +340,13 @@ public enum DataBagEditorManager {
 		return eObject instanceof Value && !(eObject instanceof JsonObjectValue);
 	}
 	
+	public Collection<EObject> getEObjectsOfKey(EObject entry, List<Resource> resources) {
+        List<EObject> values = new ArrayList<EObject>();
+        for (Resource resource : resources) {
+            String uriFragment = entry.eResource().getURIFragment(entry);
+            EObject value = resource.getEObject(uriFragment);
+            values.add(value);
+        }
+        return values;
+    }
 }

@@ -26,6 +26,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -81,7 +82,6 @@ import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
@@ -384,6 +384,16 @@ public class DataBagColumnEditor extends EditorPart implements
                     "Error while trying to load JSON file", e.getMessage(), SWT.NONE);
         }
         initializeActionListeners();
+        generateDataBagItems();
+    }
+
+    private void generateDataBagItems() {
+        items = new ArrayList<DataBagItem>();
+        if (dataBagEObject instanceof DataBag) {
+            items = ((DataBag) dataBagEObject).getItems();
+        } else {
+            items.add((DataBagItem) dataBagEObject);
+        }
     }
 
     /*
@@ -442,12 +452,13 @@ public class DataBagColumnEditor extends EditorPart implements
 		editorSelection = selection;
 		for (ISelectionChangedListener listener : selectionChangedListeners) {
 		    if (listener instanceof RemoveDataBagItemAction) {
-		        DataBagItem selectedDataBagItem = getSelectedDataBagItem();
+		        Resource selectedDataBagItem = getSelectedDataBagItem();
 		        if (selectedDataBagItem != null) {
-		            ((RemoveDataBagItemAction) listener).setEnabled(true);
-		            listener.selectionChanged(new SelectionChangedEvent(this, new StructuredSelection(selectedDataBagItem)));
+//		            ((RemoveDataBagItemAction) listener).setEnabled(true);
+		            ((RemoveDataBagItemAction) listener).selectionChanged(new SelectionChangedEvent(this, new StructuredSelection(selectedDataBagItem)));
+//		            ((RemoveDataBagItemAction) listener).setEnabled(true);
 		        } else {
-		            ((RemoveDataBagItemAction) listener).setEnabled(false);
+//		            ((RemoveDataBagItemAction) listener).setEnabled(false);
 		        }
 		    } else {
 		        listener.selectionChanged(new SelectionChangedEvent(this, selection));
@@ -482,7 +493,8 @@ public class DataBagColumnEditor extends EditorPart implements
 	 * @generated
 	 */
 	public IActionBars getActionBars() {
-		return getActionBarContributor().getActionBars();
+//		return getActionBarContributor().getActionBars();
+	    return null;
 	}
 
 	/**
@@ -544,16 +556,31 @@ public class DataBagColumnEditor extends EditorPart implements
         manager.update(true);
     }
     
-    public DataBagItem getSelectedDataBagItem() {
+    public Resource getSelectedDataBagItem() {
         ViewerCell focusCell = focusCellManager.getFocusCell();
         if (viewer != null && !viewer.getTree().isDisposed() && focusCell != null) {
             int columnIndex = focusCell.getColumnIndex();
             if (columnIndex > 0 && columnIndex <= items.size()) {
-                return items.get(columnIndex - 1);
+                DataBagItem item = items.get(columnIndex - 1);;
+                URI itemURI = URI.createPlatformResourceURI(item.getJsonResource().getFullPath().toOSString(), false);
+                Resource dataBagItemResource = getResourceFromURI(itemURI);
+                return dataBagItemResource;
             }
         }
         return null;
     }
+    
+    private Resource getResourceFromURI(URI itemURI) {
+        EList<Resource> resources = getEditingDomain().getResourceSet().getResources();
+        for (Iterator<Resource> it = resources.iterator(); it.hasNext(); ) {
+            Resource resource = it.next();
+            if (resource.getURI().equals(itemURI)) {
+                return resource;
+            }
+        }
+        return null;
+    }
+
 
     /*
      * (non-Javadoc)
@@ -723,10 +750,10 @@ public class DataBagColumnEditor extends EditorPart implements
     public void createPartControl(Composite parent) {
 		// Only creates the other pages if there is something that can be edited
 		if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
-			Group editorGroup = new Group(parent, SWT.NONE);
-	        GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(editorGroup);
-	        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(editorGroup);
-	        viewer = doCreateViewer(editorGroup);
+//			Group editorGroup = new Group(parent, SWT.NONE);
+//	        GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(editorGroup);
+//	        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(editorGroup);
+	        viewer = doCreateViewer(parent);
 	        viewer.setContentProvider(new AdapterFactoryContentProvider(new JsonItemProviderAdapterFactory()));
 //		        viewer.setLabelProvider(new DataBagValueLabelProvider(nodesMap));
 //	        viewer.setLabelProvider(new AdapterFactoryLabelProvider(new JsonItemProviderAdapterFactory()));
@@ -832,7 +859,7 @@ public class DataBagColumnEditor extends EditorPart implements
 
             @Override
             public void handleEvent(Event event) {
-                filterControl.setSize(fieldColumn.getColumn().getWidth(), filterControl.getSize().y);
+//                filterControl.setSize(fieldColumn.getColumn().getWidth(), filterControl.getSize().y);
             }
             
         });
@@ -905,9 +932,7 @@ public class DataBagColumnEditor extends EditorPart implements
 	}
 	
 	public void setStatusLineManager(ISelection selection) {
-		IStatusLineManager statusLineManager = viewer != null
-				&& viewer == contentOutlineViewer ? contentOutlineStatusLineManager
-				: getActionBars().getStatusLineManager();
+		IStatusLineManager statusLineManager = contentOutlineStatusLineManager;
 
 		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {

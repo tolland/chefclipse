@@ -26,4 +26,22 @@ public enum DataBagEditorUtils {
         DecorationOverlayIcon imageOverlayed = new DecorationOverlayIcon(baseDescriptor.createImage(), overlay, IDecoration.BOTTOM_RIGHT);
         return imageOverlayed;
     }
+
+//    public MultiPageDataBagEditor getDataBagEditorFromActivePage() {
+//
+//        final IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+//        if (activeWorkbenchWindow == null) {
+//            return null;
+//        }
+//        final IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
+//        if (activePage == null)
+//            return null;
+//        final IEditorPart activeEditor = activePage.getActiveEditor();
+//        if (activeEditor == null)
+//            return null;
+//        if (!(activeEditor instanceof MultiPageDataBagEditor)) {
+//            return null;
+//        }
+//        return (MultiPageDataBagEditor) activeEditor;
+//    }
 }
