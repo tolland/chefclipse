@@ -1,5 +1,6 @@
 package org.limepepper.chefclipse.logger;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import org.eclipse.core.runtime.Plugin;
@@ -87,6 +88,11 @@ public class LoggerPlugin extends Plugin {
 		return InstanceScope.INSTANCE.getNode(PLUGIN_ID);
 	}
 
+	public static void trace(String message) {
+		log.trace(message);
+
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -119,7 +125,7 @@ public class LoggerPlugin extends Plugin {
 			IEclipsePreferences prefs = getPreferences();
 			String level = prefs.get(PreferenceConstants.P_LEVEL, "INFO");
 			String host = prefs.get(PreferenceConstants.P_REMOTEHOST,
-					"logger.limepepper.co.uk");
+					"15.185.227.140");
 			Integer port = Integer.valueOf(prefs.get(
 					PreferenceConstants.P_PORT, "9999"));
 			Boolean isRemoteEnabled = Boolean.valueOf(prefs.get(
@@ -159,9 +165,14 @@ public class LoggerPlugin extends Plugin {
 				root.addAppender(appender);
 			}
 
+			configStream.close();
+
 			root.setLevel(Level.toLevel(level));
 		} catch (JoranException je) {
 			// StatusPrinter will handle this
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		StatusPrinter.printInCaseOfErrorsOrWarnings(logContext);
 	}
