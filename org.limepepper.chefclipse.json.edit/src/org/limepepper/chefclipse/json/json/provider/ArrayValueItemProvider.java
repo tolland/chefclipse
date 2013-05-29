@@ -4,8 +4,10 @@ package org.limepepper.chefclipse.json.json.provider;
 
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -19,6 +21,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.limepepper.chefclipse.json.json.ArrayValue;
 import org.limepepper.chefclipse.json.json.JsonFactory;
 import org.limepepper.chefclipse.json.json.JsonPackage;
+import org.limepepper.chefclipse.json.json.Value;
 
 /**
  * This is the item provider adapter for a {@link org.limepepper.chefclipse.json.json.ArrayValue} object.
@@ -116,7 +119,17 @@ public class ArrayValueItemProvider extends ValueItemProvider implements
 	 */
 	@Override
 	public String getText(Object object) {
-		return ((ArrayValue) object).getValue().toString();
+		StringBuilder builder = new StringBuilder("[");
+		EList<Value> values = ((ArrayValue) object).getValue();
+		for (Value value : values) {
+			IItemLabelProvider provider = (IItemLabelProvider) adapterFactory.adapt(value, IItemLabelProvider.class);
+			builder.append(provider.getText(value));
+			builder.append(", ");
+		}
+		if (!values.isEmpty())
+			builder.delete(builder.length()-2, builder.length());
+		builder.append("]");
+		return builder.toString();
 	}
 
 	/**
