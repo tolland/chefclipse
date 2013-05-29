@@ -1,6 +1,9 @@
 package org.limepepper.chefclipse.databag.editor.editors;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
@@ -8,6 +11,7 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
@@ -27,6 +31,10 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.databag.editor.Activator;
+import org.limepepper.chefclipse.databag.editor.actions.AddJsonPropertyAction;
+import org.limepepper.chefclipse.databag.editor.actions.AddNewDataBagItemAction;
+import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
+import org.limepepper.chefclipse.databag.editor.actions.RemoveJsonPropertyAction;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -61,8 +69,14 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 
     private EObject dataBagEObject;
 
+	
+	private Map<String, IAction> actionRegistry;
+
+    private DataBagActionContributor dataBagActionContributor;
+	
 	public MultiPageDataBagEditor() {
 		super();
+		actionRegistry = new HashMap<String, IAction>();
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
 	}
 
@@ -148,7 +162,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * Creates the pages of the multi-page data bag editor.
 	 */
 	protected void createPages() {
-		columnEditor = new DataBagColumnEditor();
+		columnEditor = new DataBagColumnEditor(dataBagActionContributor);
 		
 		createRowEditorPage();
 		createJsonEditorPages();
@@ -212,12 +226,24 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		if (!(editorInput instanceof DataBagEditorInput)) {
 			throw new PartInitException("Invalid Input: Must be DataBagEditorInput");
 		}
+		initActionRegistry();
 		dataBagEObject = ((DataBagEditorInput) editorInput).geteObject();
-		
+		dataBagActionContributor = new DataBagActionContributor(this);
 		super.init(site, editorInput);
 		setPartName(editorInput.getName());
 	}
-	
+
+	private void initActionRegistry() {
+	    AddNewDataBagItemAction addNewDataBagItemAction = new AddNewDataBagItemAction(null);
+        actionRegistry.put(addNewDataBagItemAction.getId(), addNewDataBagItemAction);
+        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null);
+        actionRegistry.put(removeDataBagItemAction.getId(), removeDataBagItemAction);
+        AddJsonPropertyAction addJsonPropertyAction = new AddJsonPropertyAction(null);
+        actionRegistry.put(addJsonPropertyAction.getId(), addJsonPropertyAction);
+	    RemoveJsonPropertyAction removeJsonPropertyAction = new RemoveJsonPropertyAction(null);
+        actionRegistry.put(removeJsonPropertyAction.getId(), removeJsonPropertyAction);
+    }
+
 	/**
 	 * Closes all project files on project close.
 	 */
@@ -268,8 +294,11 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		return super.getAdapter(adapter);
 	}
 
-	//	public void setOutline(Class<?> adapter) {
-//		outline.setDelegate((IContentOutlinePage) getActiveEditor().getAdapter(adapter));
-//	}
-	
+    public Map<String, IAction> getActionRegistry() {
+        return actionRegistry;
+    }
+
+    public void setActionRegistry(Map<String, IAction> actionRegistry) {
+        this.actionRegistry = actionRegistry;
+    }
 }

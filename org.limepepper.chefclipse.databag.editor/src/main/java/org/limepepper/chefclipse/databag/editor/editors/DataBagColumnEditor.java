@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EventObject;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
@@ -23,6 +24,7 @@ import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -73,6 +75,7 @@ import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
@@ -96,6 +99,8 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.editing.FieldEditingSupport;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.provider.JsonItemProviderAdapterFactory;
@@ -145,6 +150,7 @@ public class DataBagColumnEditor extends EditorPart implements
 	 * @generated
 	 */
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
+	
 	private EContentAdapter changeAdapter = new EContentAdapter() {
     	@Override
     	public void notifyChanged(Notification notification) {
@@ -164,15 +170,70 @@ public class DataBagColumnEditor extends EditorPart implements
     	}
     };
     
+    private List<ISelectionChangedListener> selectionChangedListeners;
+    private TreeViewerFocusCellManager focusCellManager;
+    private List<DataBagItem> items;
+	
     /**
      * @param resourceFactory 
+     * @param dataBagActionContributor 
      * 
      */
-    public DataBagColumnEditor() {
+    public DataBagColumnEditor(DataBagActionContributor dataBagActionContributor) {
+//        this.nodesMap = nodesMap;
+        this.actionContributor = dataBagActionContributor;
+        this.selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 		initializeEditingDomain();
 	}
 
-	/**
+	private void initializeActionListeners() {
+	    ResourceSet resourceSet = editingDomain.getResourceSet();
+        for (Resource resource : resourceSet.getResources()) {
+            resource.eAdapters().add(new AdapterImpl(){
+	            @Override
+	            public void notifyChanged(Notification msg) {
+//	                if (msg.getFeature().equals(
+//	                        BowlingPackage.eINSTANCE.getTournament_Matchups())) {
+//	                    updateNumberOfMatchups();
+//	                }
+	                super.notifyChanged(msg);
+	            }
+	        });
+            resource.eAdapters().add(new AdapterImpl(){
+                @Override
+                public void notifyChanged(Notification msg) {
+//                  if (msg.getFeature().equals(
+//                          BowlingPackage.eINSTANCE.getTournament_Matchups())) {
+//                      updateNumberOfMatchups();
+//                  }
+                    super.notifyChanged(msg);
+                }
+            });
+	    }
+	    resourceSet.eAdapters().add(new AdapterImpl() {
+	        @Override
+            public void notifyChanged(Notification msg) {
+//              if (msg.getFeature().equals(
+//                      BowlingPackage.eINSTANCE.getTournament_Matchups())) {
+//                  updateNumberOfMatchups();
+//              }
+                super.notifyChanged(msg);
+            }
+	    });
+	    resourceSet.eAdapters().add(new AdapterImpl() {
+            @Override
+            public void notifyChanged(Notification msg) {
+//              if (msg.getFeature().equals(
+//                      BowlingPackage.eINSTANCE.getTournament_Matchups())) {
+//                  updateNumberOfMatchups();
+//              }
+                super.notifyChanged(msg);
+            }
+        });
+//	    Collection<EObject> eObjects = DataBagEditorUtils.INSTANCE.getEObjectsOfKey(entryElement, domain.getResourceSet().getResources());
+	}
+
+    /**
 	 * This sets up the editing domain for the model editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -205,7 +266,7 @@ public class DataBagColumnEditor extends EditorPart implements
 								  //
 								  Command mostRecentCommand = ((CommandStack)event.getSource()).getMostRecentCommand();
 								  if (mostRecentCommand != null) {
-//									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+									  setSelectionToViewer(mostRecentCommand.getAffectedObjects());
 								  }
 //								  for (Iterator<PropertySheetPage> i = propertySheetPages.iterator(); i.hasNext(); ) {
 //									  PropertySheetPage propertySheetPage = i.next();
@@ -226,7 +287,35 @@ public class DataBagColumnEditor extends EditorPart implements
 		XtextResourceSet resourceSet = new XtextResourceSet();
 		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet);
 	}
-
+	
+	/**
+     * This sets the selection into whichever viewer is active.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setSelectionToViewer(Collection<?> collection) {
+        final Collection<?> theSelection = collection;
+        // Make sure it's okay.
+        //
+        if (theSelection != null && !theSelection.isEmpty())
+        {
+            Runnable runnable =
+                    new Runnable()
+                    {
+                        public void run()
+                        {
+                            // Try to select the items in the current content viewer of the editor.
+                            //
+                            if (viewer != null) {
+                                viewer.refresh();
+                            }
+                        }
+                    };
+            getSite().getShell().getDisplay().asyncExec(runnable);
+        }
+    }
+    
 	/**
 	 * This returns the editing domain as required by the {@link IEditingDomainProvider} interface.
 	 * This is important for implementing the static methods of {@link AdapterFactoryEditingDomain}
@@ -285,6 +374,7 @@ public class DataBagColumnEditor extends EditorPart implements
 		setInputWithNotify(input);
         setPartName(input.getName());
         site.setSelectionProvider(this);
+        actionContributor.setActiveEditor(this);
 //		site.getPage().addPartListener(partListener);
 //		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
         
@@ -293,6 +383,7 @@ public class DataBagColumnEditor extends EditorPart implements
             MessageDialog.open(MessageDialog.ERROR, getSite().getShell(),
                     "Error while trying to load JSON file", e.getMessage(), SWT.NONE);
         }
+        initializeActionListeners();
     }
 
     /*
@@ -317,7 +408,7 @@ public class DataBagColumnEditor extends EditorPart implements
 	 * @generated
 	 */
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
-//		selectionChangedListeners.add(listener);
+		selectionChangedListeners.add(listener);
 	}
 
 	/**
@@ -327,7 +418,7 @@ public class DataBagColumnEditor extends EditorPart implements
 	 * @generated
 	 */
 	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
-//		selectionChangedListeners.remove(listener);
+		selectionChangedListeners.remove(listener);
 	}
 
 	/**
@@ -349,10 +440,19 @@ public class DataBagColumnEditor extends EditorPart implements
 	 */
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
-
-//		for (ISelectionChangedListener listener : selectionChangedListeners) {
-//			listener.selectionChanged(new SelectionChangedEvent(this, selection));
-//		}
+		for (ISelectionChangedListener listener : selectionChangedListeners) {
+		    if (listener instanceof RemoveDataBagItemAction) {
+		        DataBagItem selectedDataBagItem = getSelectedDataBagItem();
+		        if (selectedDataBagItem != null) {
+		            ((RemoveDataBagItemAction) listener).setEnabled(true);
+		            listener.selectionChanged(new SelectionChangedEvent(this, new StructuredSelection(selectedDataBagItem)));
+		        } else {
+		            ((RemoveDataBagItemAction) listener).setEnabled(false);
+		        }
+		    } else {
+		        listener.selectionChanged(new SelectionChangedEvent(this, selection));
+		    }
+		}
 		setStatusLineManager(selection);
 	}
 
@@ -420,7 +520,7 @@ public class DataBagColumnEditor extends EditorPart implements
 //		if (contentOutlinePage != null) {
 //			contentOutlinePage.dispose();
 //		}
-
+		selectionChangedListeners.clear();
 		super.dispose();
 	}
 
@@ -442,6 +542,17 @@ public class DataBagColumnEditor extends EditorPart implements
         actionContributor.addDataBagItemsRelatedActions(manager);
 //        addDataBagItemsRelatedActions(manager);
         manager.update(true);
+    }
+    
+    public DataBagItem getSelectedDataBagItem() {
+        ViewerCell focusCell = focusCellManager.getFocusCell();
+        if (viewer != null && !viewer.getTree().isDisposed() && focusCell != null) {
+            int columnIndex = focusCell.getColumnIndex();
+            if (columnIndex > 0 && columnIndex <= items.size()) {
+                return items.get(columnIndex - 1);
+            }
+        }
+        return null;
     }
 
     /*
@@ -648,7 +759,7 @@ public class DataBagColumnEditor extends EditorPart implements
         createKeysToolBar(bar);
         
         final FilteredTree filter = new FilteredTree(parent, SWT.H_SCROLL | SWT.V_SCROLL
-                | SWT.BORDER | SWT.FULL_SELECTION, new PatternFilter(), true) {
+                | SWT.BORDER | SWT.MULTI | SWT.FULL_SELECTION, new PatternFilter(), true) {
 
             @Override
             protected Composite createFilterControls(Composite parent) {
@@ -688,7 +799,7 @@ public class DataBagColumnEditor extends EditorPart implements
         treeViewer.getTree().setLinesVisible(true);
         // viewer.setSorter(new NameSorter());
 
-        TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer,
+        focusCellManager = new TreeViewerFocusCellManager(treeViewer,
                 new FocusCellOwnerDrawHighlighter(treeViewer));
         ColumnViewerEditorActivationStrategy actSupport = new ColumnViewerEditorActivationStrategy(
                 treeViewer) {
@@ -707,7 +818,7 @@ public class DataBagColumnEditor extends EditorPart implements
                         | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR
                         | ColumnViewerEditor.TABBING_VERTICAL
                         | ColumnViewerEditor.KEYBOARD_ACTIVATION);
-
+        
         final TextCellEditor textCellEditor = new TextCellEditor(treeViewer.getTree());
 
         final TreeViewerColumn fieldColumn = new TreeViewerColumn(treeViewer, SWT.LEFT);
@@ -748,6 +859,12 @@ public class DataBagColumnEditor extends EditorPart implements
                     new ColumnWeightData(30, 150));
             valueColumn.setLabelProvider(new DataBagLabelProvider(editingDomain.getResourceSet().getResources().get(0)));
         }
+        treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+            @Override
+            public void selectionChanged(SelectionChangedEvent event) {
+                setSelection(event.getSelection());
+            }
+        });
         return treeViewer;
     }
 
@@ -776,7 +893,7 @@ public class DataBagColumnEditor extends EditorPart implements
 
     @Override
     public void resourceChanged(IResourceChangeEvent event) {
-
+        System.out.println("dsada");
     }
 
     private void setFilterControl(Composite filterControl) {
