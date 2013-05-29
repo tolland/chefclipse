@@ -16,6 +16,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.logger.LoggerPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +52,8 @@ public class UiHandler implements IHandler {
 			protected IStatus run(IProgressMonitor monitor) {
 
 				KnifeConfigController api = KnifeConfigController.INSTANCE;
-				System.err.println("execturing the handler for the ui spot");
+				System.err.println("execturing the handler for the u1i spot");
+				LoggerPlugin.trace("test");
 
 				if (name.equals("refresh.cookbookVersion")) {
 
