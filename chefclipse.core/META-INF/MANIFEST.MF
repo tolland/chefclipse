@@ -6,15 +6,14 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: chefclipse.core.ChefCore
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.core.runtime,
- org.slf4j.api;bundle-version="1.6.4",
- org.slf4j.log4j;bundle-version="1.6.4",
  org.junit;bundle-version="4.10.0",
  org.limepepper.chefclipse.common;bundle-version="0.1.0";visibility:=reexport,
  org.limepepper.chefclipse.common.edit;bundle-version="0.1.0",
  org.limepepper.chefclipse.common.editor;bundle-version="0.1.0",
  org.eclipse.core.expressions;bundle-version="3.4.401";visibility:=reexport,
  org.eclipse.dltk.ruby.core,
- org.limepepper.chefclipse.preferences.api;bundle-version="0.1.0"
+ org.limepepper.chefclipse.preferences.api;bundle-version="0.1.0",
+ org.limepepper.chefclipse.logger;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,

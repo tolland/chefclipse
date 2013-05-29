@@ -55,35 +55,6 @@ public class LoggerPlugin extends Plugin {
 		// initPreferences();
 	}
 
-	private void initPreferences() {
-		final IEclipsePreferences preferences = getPreferences();
-		preferences
-				.addPreferenceChangeListener(new IPreferenceChangeListener() {
-
-					@Override
-					public void preferenceChange(PreferenceChangeEvent event) {
-						String key = event.getKey();
-						Object value = event.getNewValue();
-						if (value == null)
-							value = event.getOldValue();
-						switch (key) {
-						case PreferenceConstants.P_LEVEL:
-							Logger root = (Logger) LoggerFactory
-									.getLogger(Logger.ROOT_LOGGER_NAME);
-							root.setLevel(Level.toLevel((String) value));
-							log.info("Logging level changed to: " + value);
-							break;
-						case PreferenceConstants.P_REMOTEHOST:
-							break;
-						case PreferenceConstants.P_PORT:
-							break;
-						default:
-							break;
-						}
-					}
-				});
-	}
-
 	public IEclipsePreferences getPreferences() {
 		return InstanceScope.INSTANCE.getNode(PLUGIN_ID);
 	}
