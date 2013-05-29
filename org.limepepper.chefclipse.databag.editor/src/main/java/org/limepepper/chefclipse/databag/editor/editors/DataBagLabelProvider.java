@@ -4,16 +4,12 @@
 
 package org.limepepper.chefclipse.databag.editor.editors;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 //import org.codehaus.jackson.JsonNode;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.IColorProvider;
-import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.LabelProviderChangedEvent;
 import org.eclipse.jface.viewers.StyledCellLabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.jface.viewers.StyledString.Styler;
@@ -67,12 +63,6 @@ public class DataBagLabelProvider extends StyledCellLabelProvider implements ICo
             cell.setText(styledString.getString());
             cell.setImage(getImage(entryElement, cell.getColumnIndex()));
         } else {
-        	adapterProvider.addListener(new ILabelProviderListener() {
-				@Override
-				public void labelProviderChanged(LabelProviderChangedEvent event) {
-					update(cell);
-				}
-			});
             cell.setText(getText(entryElement, cell.getColumnIndex(), cell));
         }
     }
@@ -103,12 +93,6 @@ public class DataBagLabelProvider extends StyledCellLabelProvider implements ICo
     		Pair pair = (Pair) value;
     		if (!(pair.getValue() instanceof JsonObjectValue)) {
     			ValueItemProvider labelProvider = (ValueItemProvider) adapterFactory.adapt(pair.getValue(), ValueItemProvider.class);
-    			labelProvider.addListener(new INotifyChangedListener() {
-					@Override
-					public void notifyChanged(Notification notification) {
-						update(cell);
-					}
-				});
     			String text = labelProvider.getUpdateableText(pair.getValue());
     			return text;
     		}
