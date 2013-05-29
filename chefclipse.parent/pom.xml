@@ -80,7 +80,11 @@
 
         <module>../org.limepepper.chefclipse.utils</module>
         <module>../org.limepepper.chefclipse.graphviewer</module>
+
+
+        <!-- logger -->
         <module>../org.limepepper.chefclipse.logger</module>
+        <module>../org.limepepper.chefclipse.logger.ui</module>
 
         <!-- merged into chefclipse.core as non generated -->
         <!--module>org.limepepper.chefclipse.model</module -->
