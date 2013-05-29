@@ -26,7 +26,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -452,13 +451,13 @@ public class DataBagColumnEditor extends EditorPart implements
 		editorSelection = selection;
 		for (ISelectionChangedListener listener : selectionChangedListeners) {
 		    if (listener instanceof RemoveDataBagItemAction) {
-		        Resource selectedDataBagItem = getSelectedDataBagItem();
+		        DataBagItem selectedDataBagItem = getSelectedDataBagItem();
 		        if (selectedDataBagItem != null) {
-//		            ((RemoveDataBagItemAction) listener).setEnabled(true);
-		            ((RemoveDataBagItemAction) listener).selectionChanged(new SelectionChangedEvent(this, new StructuredSelection(selectedDataBagItem)));
+		            ((RemoveDataBagItemAction) listener).setEnabled(true);
+		            ((RemoveDataBagItemAction) listener).selectionChanged(new SelectionChangedEvent(this, selection));
 //		            ((RemoveDataBagItemAction) listener).setEnabled(true);
 		        } else {
-//		            ((RemoveDataBagItemAction) listener).setEnabled(false);
+		            ((RemoveDataBagItemAction) listener).setEnabled(false);
 		        }
 		    } else {
 		        listener.selectionChanged(new SelectionChangedEvent(this, selection));
@@ -556,32 +555,24 @@ public class DataBagColumnEditor extends EditorPart implements
         manager.update(true);
     }
     
-    public Resource getSelectedDataBagItem() {
-        ViewerCell focusCell = focusCellManager.getFocusCell();
-        if (viewer != null && !viewer.getTree().isDisposed() && focusCell != null) {
-            int columnIndex = focusCell.getColumnIndex();
-            if (columnIndex > 0 && columnIndex <= items.size()) {
-                DataBagItem item = items.get(columnIndex - 1);;
-                URI itemURI = URI.createPlatformResourceURI(item.getJsonResource().getFullPath().toOSString(), false);
-                Resource dataBagItemResource = getResourceFromURI(itemURI);
-                return dataBagItemResource;
+    public DataBagItem getSelectedDataBagItem() {
+        if (focusCellManager != null) {
+            ViewerCell focusCell = focusCellManager.getFocusCell();
+            if (viewer != null && !viewer.getTree().isDisposed() && focusCell != null) {
+                int columnIndex = focusCell.getColumnIndex();
+                if (columnIndex > 0 && columnIndex <= items.size()) {
+//                    DataBagItem item = items.get(columnIndex - 1);
+                    return items.get(columnIndex - 1);
+//                    URI itemURI = URI.createPlatformResourceURI(item.getJsonResource().getFullPath().toOSString(), false);
+//                    Resource dataBagItemResource = getResourceFromURI(itemURI);
+//                    return dataBagItemResource;
+                }
             }
+             
         }
         return null;
     }
     
-    private Resource getResourceFromURI(URI itemURI) {
-        EList<Resource> resources = getEditingDomain().getResourceSet().getResources();
-        for (Iterator<Resource> it = resources.iterator(); it.hasNext(); ) {
-            Resource resource = it.next();
-            if (resource.getURI().equals(itemURI)) {
-                return resource;
-            }
-        }
-        return null;
-    }
-
-
     /*
      * (non-Javadoc)
      * @see org.eclipse.ui.part.EditorPart#isSaveAsAllowed()

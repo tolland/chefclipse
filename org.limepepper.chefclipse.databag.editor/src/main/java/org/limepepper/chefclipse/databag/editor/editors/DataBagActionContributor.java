@@ -247,7 +247,7 @@ public class DataBagActionContributor extends
                     selection instanceof IStructuredSelection ? (IStructuredSelection) selection
                             : StructuredSelection.EMPTY;
 //            if (removeDataBagItemAction.isEnabled()) {
-//                removeDataBagItemAction.updateSelection(structuredSelection);
+                removeDataBagItemAction.updateSelection(structuredSelection);
 //            }
             addNewDataBagItemAction.updateSelection(structuredSelection);
             removeJsonPropertyAction.updateSelection(structuredSelection);
