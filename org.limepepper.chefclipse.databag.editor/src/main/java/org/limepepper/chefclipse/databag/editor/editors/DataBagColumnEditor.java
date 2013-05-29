@@ -6,19 +6,15 @@ package org.limepepper.chefclipse.databag.editor.editors;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EventObject;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Iterator;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -26,14 +22,17 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -43,15 +42,17 @@ import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IStatusLineManager;
+import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.layout.TreeColumnLayout;
@@ -63,6 +64,8 @@ import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TextCellEditor;
@@ -86,17 +89,14 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
-import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.ide.IGotoMarker;
 import org.eclipse.ui.part.EditorPart;
-import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.xtext.resource.XtextResourceFactory;
+import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
+import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
-import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.databag.editor.actions.AddJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.actions.AddNewDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
@@ -121,13 +121,23 @@ public class DataBagColumnEditor extends EditorPart implements
     
     /**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	protected AdapterFactoryEditingDomain editingDomain;
+	
 	private ComposedAdapterFactory adapterFactory;
 
+	/**
+	 * This is the content outline page.
+	 */
+	protected IContentOutlinePage contentOutlinePage;
+
+	protected IStatusLineManager contentOutlineStatusLineManager;
+	
+	/**
+	 * This is the content outline page's viewer.
+	 */
+	protected TreeViewer contentOutlineViewer;
+	
 	/**
 	 * Resources that have been saved.
 	 * <!-- begin-user-doc -->
@@ -143,17 +153,33 @@ public class DataBagColumnEditor extends EditorPart implements
 	 * @generated
 	 */
 	protected ISelection editorSelection = StructuredSelection.EMPTY;
-	private XtextResourceFactory resFactory;
 	private Action addJsonPropertyAction;
 	private Action removeDataBagItemAction;
 	
+	private EContentAdapter changeAdapter = new EContentAdapter() {
+    	@Override
+    	public void notifyChanged(Notification notification) {
+    		super.notifyChanged(notification);
+    		// handles all changes except adapter updates
+    		if (notification.getEventType() < Notification.REMOVING_ADAPTER) {
+        		getSite().getShell().getDisplay().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						if (viewer != null && !viewer.getTree().isDisposed()) {
+							setViewerInput();
+//							viewer.refresh();
+						}
+					}
+				});
+    		}
+    	}
+    };
+    
     /**
      * @param resourceFactory 
      * 
      */
-    public DataBagColumnEditor(XtextResourceFactory resourceFactory/*Map<String, JsonNode> nodesMap*/) {
-//        this.nodesMap = nodesMap;
-        this.resFactory = resourceFactory;
+    public DataBagColumnEditor() {
 		initializeEditingDomain();
 	}
 
@@ -181,7 +207,6 @@ public class DataBagColumnEditor extends EditorPart implements
 		commandStack.addCommandStackListener
 			(new CommandStackListener() {
 				 public void commandStackChanged(final EventObject event) {
-//					 getContainer().getDisplay().asyncExec
 					 getEditorSite().getShell().getDisplay().asyncExec
 						 (new Runnable() {
 							  public void run() {
@@ -256,41 +281,6 @@ public class DataBagColumnEditor extends EditorPart implements
 		viewer.addDropSupport(dndOperations, transfers, new EditingDomainViewerDropAdapter(editingDomain, viewer));
 	}
 
-	/**
-	 * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void createModel() {
-		Exception exception = null;
-		try {
-			// Load the resource through the editing domain.
-			editingDomain.getResourceSet().getResourceFactoryRegistry().getContentTypeToFactoryMap().put("databag", resFactory);
-
-			List<DataBagItem> items = new ArrayList<DataBagItem>();
-			if (dataBagEObject instanceof DataBag) {
-				items = ((DataBag) dataBagEObject).getItems();
-			} else {
-				items.add((DataBagItem) dataBagEObject);
-			}
-			
-			for (DataBagItem item : items) {
-				Resource res = editingDomain.getResourceSet().createResource(URI.createPlatformResourceURI(item.getJsonResource().getFullPath().toOSString(), false), "databag");
-				res.load(null);
-			}
-		}
-		catch (Exception e) {
-			exception = e;
-		}
-
-//		Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
-//		if (diagnostic.getSeverity() != Diagnostic.OK) {
-//			resourceToDiagnosticMap.put(resource,  analyzeResourceProblems(resource, exception));
-//		}
-//		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
-	}
-
     /*
      * (non-Javadoc)
      * @see org.eclipse.ui.part.EditorPart#init(org.eclipse.ui.IEditorSite,
@@ -305,14 +295,11 @@ public class DataBagColumnEditor extends EditorPart implements
         setSite(site);
 		setInputWithNotify(input);
         setPartName(input.getName());
-//        setCommandStack(new CommandStack());
-//        getCommandStack().addCommandStackListener(this);
 		site.setSelectionProvider(this);
 //		site.getPage().addPartListener(partListener);
 //		ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener, IResourceChangeEvent.POST_CHANGE);
         
         try {
-        	createModel();
         } catch (Exception e) {
             MessageDialog.open(MessageDialog.ERROR, getSite().getShell(),
                     "Error while trying to load JSON file", e.getMessage(), SWT.NONE);
@@ -327,7 +314,7 @@ public class DataBagColumnEditor extends EditorPart implements
 	@Override
 	public void setFocus() {
 		if (viewer != null) {
-			viewer.getTree().setFocus();
+//			viewer.getTree().setFocus();
 		}
 		else {
 //			getControl(getActivePage()).setFocus();
@@ -377,7 +364,7 @@ public class DataBagColumnEditor extends EditorPart implements
 //		for (ISelectionChangedListener listener : selectionChangedListeners) {
 //			listener.selectionChanged(new SelectionChangedEvent(this, selection));
 //		}
-//		setStatusLineManager(selection);
+		setStatusLineManager(selection);
 	}
 
 
@@ -509,43 +496,43 @@ public class DataBagColumnEditor extends EditorPart implements
 	public void doSave(IProgressMonitor progressMonitor) {
 		// Save only resources that have actually changed.
 		//
-		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
-		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
+//		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+//		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
-		WorkspaceModifyOperation operation =
-			new WorkspaceModifyOperation() {
-				// This is the method that gets invoked when the operation runs.
-				//
-				@Override
-				public void execute(IProgressMonitor monitor) {
-					// Save the resources to the file system.
-					//
-					boolean first = true;
-					for (Resource resource : editingDomain.getResourceSet().getResources()) {
-						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
-							try {
-								long timeStamp = resource.getTimeStamp();
-								resource.save(saveOptions);
-								if (resource.getTimeStamp() != timeStamp) {
-									savedResources.add(resource);
-								}
-							}
-							catch (Exception exception) {
-//								resourceToDiagnosticCCMap.put(resource, analyzeResourceProblems(resource, exception));
-							}
-							first = false;
-						}
-					}
-				}
-			};
+//		WorkspaceModifyOperation operation =
+//			new WorkspaceModifyOperation() {
+//				// This is the method that gets invoked when the operation runs.
+//				//
+//				@Override
+//				public void execute(IProgressMonitor monitor) {
+//					// Save the resources to the file system.
+//					//
+//					boolean first = true;
+//					for (Resource resource : editingDomain.getResourceSet().getResources()) {
+//						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
+//							try {
+//								long timeStamp = resource.getTimeStamp();
+//								resource.save(saveOptions);
+//								if (resource.getTimeStamp() != timeStamp) {
+//									savedResources.add(resource);
+//								}
+//							}
+//							catch (Exception exception) {
+////								resourceToDiagnosticCCMap.put(resource, analyzeResourceProblems(resource, exception));
+//							}
+//							first = false;
+//						}
+//					}
+//				}
+//			};
 
 //		updateProblemIndication = false;
 		try {
 			// This runs the options, and shows progress.
 			//
-			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
+//			new ProgressMonitorDialog(getSite().getShell()).run(true, false, operation);
 
 			// Refresh the necessary state.
 			//
@@ -603,15 +590,15 @@ public class DataBagColumnEditor extends EditorPart implements
 	 */
 	@Override
 	public void doSaveAs() {
-		SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
-		saveAsDialog.open();
-		IPath path = saveAsDialog.getResult();
-		if (path != null) {
-			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-			if (file != null) {
-				doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true), new FileEditorInput(file));
-			}
-		}
+//		SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
+//		saveAsDialog.open();
+//		IPath path = saveAsDialog.getResult();
+//		if (path != null) {
+//			IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
+//			if (file != null) {
+//				doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(), true), new FileEditorInput(file));
+//			}
+//		}
 	}
 
 	/**
@@ -620,7 +607,7 @@ public class DataBagColumnEditor extends EditorPart implements
 	 * @generated
 	 */
 	protected void doSaveAs(URI uri, IEditorInput editorInput) {
-		(editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
+//		(editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
 		IProgressMonitor progressMonitor =
@@ -650,9 +637,6 @@ public class DataBagColumnEditor extends EditorPart implements
      */
     @Override
     public void createPartControl(Composite parent) {
-    	// Creates the model from the editor input
-//		createModel();
-
 		// Only creates the other pages if there is something that can be edited
 		if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
 			Group editorGroup = new Group(parent, SWT.NONE);
@@ -663,10 +647,10 @@ public class DataBagColumnEditor extends EditorPart implements
 //		        viewer.setLabelProvider(new DataBagValueLabelProvider(nodesMap));
 //	        viewer.setLabelProvider(new AdapterFactoryLabelProvider(new JsonItemProviderAdapterFactory()));
 	
-	        Model model = DataBagEditorManager.INSTANCE.createSchemaModel(editingDomain.getResourceSet());
-	        viewer.setInput(model);
-	        viewer.expandAll();
-	
+	        setViewerInput();
+
+			changeAdapter.setTarget(editingDomain.getResourceSet());
+	        
 	        new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 	        
 	        createContextMenuFor(viewer);
@@ -676,6 +660,12 @@ public class DataBagColumnEditor extends EditorPart implements
 	                .applyTo(viewer.getTree());
 		}
     }
+
+	public void setViewerInput() {
+		Model model = DataBagEditorManager.INSTANCE.createSchemaModel(editingDomain.getResourceSet());
+		viewer.setInput(model);
+		viewer.expandAll();
+	}
 
 	private TreeViewer doCreateViewer(Composite parent) {
         final Composite bar = new Composite(parent, SWT.NULL);
@@ -878,5 +868,169 @@ public class DataBagColumnEditor extends EditorPart implements
 
 	public ResourceSet getResourceSet() {
 		return editingDomain.getResourceSet();
+	}
+	
+	public void setStatusLineManager(ISelection selection) {
+		IStatusLineManager statusLineManager = viewer != null
+				&& viewer == contentOutlineViewer ? contentOutlineStatusLineManager
+				: getActionBars().getStatusLineManager();
+
+		if (statusLineManager != null) {
+			if (selection instanceof IStructuredSelection) {
+				Collection<?> collection = ((IStructuredSelection) selection)
+						.toList();
+				switch (collection.size()) {
+				case 0: {
+					statusLineManager
+							.setMessage("Selected Nothing");
+					break;
+				}
+				case 1: {
+					String text = new AdapterFactoryItemDelegator(
+							adapterFactory).getText(collection.iterator()
+							.next());
+					statusLineManager.setMessage(getString(
+							"Selected Object: {0}", text));
+					break;
+				}
+				default: {
+					statusLineManager.setMessage(getString(
+							"Selected {0} Objects",
+							Integer.toString(collection.size())));
+					break;
+				}
+				}
+			} else {
+				statusLineManager.setMessage("");
+			}
+		}
+	}
+
+	
+	private String getString(String string, Object arg) {
+		return MessageFormat.format(string, arg);
+	}
+
+	/**
+	 * This deals with how we want selection in the outliner to affect the other views.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void handleContentOutlineSelection(ISelection selection) {
+		if (viewer != null && !selection.isEmpty()
+				&& selection instanceof IStructuredSelection) {
+			Iterator<?> selectedElements = ((IStructuredSelection) selection)
+					.iterator();
+			if (selectedElements.hasNext()) {
+				// Get the first selected element.
+				//
+				Object selectedElement = selectedElements.next();
+
+				// If it's the selection viewer, then we want it to select the same selection as this selection.
+				//
+				ArrayList<Object> selectionList = new ArrayList<Object>();
+				selectionList.add(selectedElement);
+				while (selectedElements.hasNext()) {
+					selectionList.add(selectedElements.next());
+				}
+
+				// Set the selection to the widget.
+				//
+//				viewer.setSelection(new StructuredSelection(
+//						selectionList));
+			}
+		}
+	}
+
+	/**
+	 * This accesses a cached version of the content outliner.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IContentOutlinePage getContentOutlinePage() {
+		if (contentOutlinePage == null) {
+			// The content outline is just a tree.
+			//
+			class MyContentOutlinePage extends ContentOutlinePage {
+				@Override
+				public void createControl(Composite parent) {
+					super.createControl(parent);
+					contentOutlineViewer = getTreeViewer();
+					contentOutlineViewer.addSelectionChangedListener(this);
+
+					// Set up the tree viewer.
+					//
+					contentOutlineViewer
+							.setContentProvider(new AdapterFactoryContentProvider(
+									adapterFactory));
+					contentOutlineViewer
+							.setLabelProvider(new AdapterFactoryLabelProvider.FontAndColorProvider(
+									adapterFactory, contentOutlineViewer));
+					contentOutlineViewer.setInput(editingDomain
+							.getResourceSet());
+
+					// Make sure our popups work.
+					//
+					createContextMenuFor(contentOutlineViewer);
+
+					if (!editingDomain.getResourceSet().getResources()
+							.isEmpty()) {
+						// Select the root object in the view.
+						//
+						contentOutlineViewer
+								.setSelection(new StructuredSelection(
+										editingDomain.getResourceSet()
+												.getResources().get(0)), true);
+					}
+				}
+
+				@Override
+				public void makeContributions(IMenuManager menuManager,
+						IToolBarManager toolBarManager,
+						IStatusLineManager statusLineManager) {
+					super.makeContributions(menuManager, toolBarManager,
+							statusLineManager);
+					contentOutlineStatusLineManager = statusLineManager;
+				}
+
+				@Override
+				public void setActionBars(IActionBars actionBars) {
+					super.setActionBars(actionBars);
+//					getActionBarContributor().shareGlobalActions(this,
+//							actionBars);
+				}
+			}
+
+			contentOutlinePage = new MyContentOutlinePage();
+
+			// Listen to selection so that we can handle it is a special way.
+			//
+			contentOutlinePage
+					.addSelectionChangedListener(new ISelectionChangedListener() {
+						// This ensures that we handle selections correctly.
+						//
+						public void selectionChanged(SelectionChangedEvent event) {
+							handleContentOutlineSelection(event.getSelection());
+						}
+					});
+		}
+
+		return contentOutlinePage;
+	}
+
+	
+	/**
+	 * This is how the framework determines which interfaces we implement.
+	 */
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Object getAdapter(Class key) {
+		if (key.equals(IContentOutlinePage.class)) {
+			return getContentOutlinePage();
+		} else {
+			return super.getAdapter(key);
+		}
 	}
 }

@@ -1,43 +1,29 @@
 package org.limepepper.chefclipse.databag.editor.editors;
 
 
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
-
-import org.codehaus.jackson.JsonNode;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyledText;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.FontDialog;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
-import org.eclipse.xtext.resource.XtextResourceFactory;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
-import org.eclipse.xtext.ui.editor.info.ResourceWorkingCopyFileEditorInput;
-import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
+import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.databag.editor.Activator;
@@ -68,26 +54,13 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	@Inject
 	private Provider<XtextEditor> editorProvider;
 
-	private XtextEditor xtext;
+//	@Inject
+//	private XtextResourceFactory resourceFactory;
 
-	@Inject
-	private OutlinePage outlinePage;
-	
-	@Inject
-	private XtextResourceFactory resourceFactory;
-
-	/** The font chosen in page 1. */
-	private Font font;
-
-	/** The text widget used in page 2. */
 	private StyledText text;
 
     private EObject dataBagEObject;
 
-    private Map<String, JsonNode> nodesMap;
-
-	private ResourceSet resourceSet;
-	
 	public MultiPageDataBagEditor() {
 		super();
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
@@ -99,9 +72,9 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
      */
     void createColumnEditorPage() {
         try {
-        	columnEditor = new DataBagColumnEditor(resourceFactory);
-            int index = addPage(columnEditor, getEditorInput());
-            resourceSet = columnEditor.getResourceSet();
+//        	columnEditor = new DataBagColumnEditor();
+        	int index = 0;
+            addPage(index, columnEditor, getEditorInput());
             setPageText(index, "Column DataBag Editor");
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.COLUMN_PAGE).createImage());
         } catch (PartInitException e) {
@@ -112,6 +85,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
                     e.getStatus());
         }
     }
+    
 	/**
 	 * Creates pages for each {@link DataBagItem} contained in the opened
 	 * {@link DataBag}. Each page contains a JSON editor. If the item being
@@ -119,54 +93,35 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * 
 	 */
 	void createJsonEditorPages() {
-		Iterator<Resource> res = resourceSet.getResources().iterator();
 	    if (dataBagEObject instanceof DataBag) {
 	        DataBag dataBag = (DataBag) dataBagEObject;
 	        for (DataBagItem dataBagItem : dataBag.getItems()) {
-	            createJsonEditorForDataBagItem(dataBagItem, res.next());
+	            createJsonEditorForDataBagItem(dataBagItem/*, res.next()*/);
 	        }
 	    } else if (dataBagEObject instanceof DataBagItem) {
-	        createJsonEditorForDataBagItem((DataBagItem) dataBagEObject, res.next());
+	        createJsonEditorForDataBagItem((DataBagItem) dataBagEObject/*, res.next()*/);
 	    }
-
-//		Composite composite = new Composite(getContainer(), SWT.NONE);
-//		GridLayout layout = new GridLayout();
-//		composite.setLayout(layout);
-//		layout.numColumns = 2;
-//
-//		Button fontButton = new Button(composite, SWT.NONE);
-//		GridData gd = new GridData(GridData.BEGINNING);
-//		gd.horizontalSpan = 2;
-//		fontButton.setLayoutData(gd);
-//		fontButton.setText("Change Font...");
-//		
-//		fontButton.addSelectionListener(new SelectionAdapter() {
-//			public void widgetSelected(SelectionEvent event) {
-//				setFont();
-//			}
-//		});
-//
-//		int index = addPage(composite);
-//		setPageText(index, "Properties");
 	}
 
-    private void createJsonEditorForDataBagItem(DataBagItem dataBagItem, Resource resource) {
+    private void createJsonEditorForDataBagItem(DataBagItem dataBagItem/*, Resource resource*/) {
         try {
-        	xtext = editorProvider.get();
+        	XtextEditor xtext = editorProvider.get();
 
-        	ResourceWorkingCopyFileEditorInput xtextInput = new ResourceWorkingCopyFileEditorInput(resource);
-        	
-        	int index = addPage(xtext, xtextInput);
-        	
-            //TextEditor editor = new TextEditor();
-            //int index = addPage(editor, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
+            int index = addPage(xtext, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
+            XtextResource res = xtext.getDocument().readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
+				@Override
+				public XtextResource exec(XtextResource resource) throws Exception {
+					return resource;
+				}
+            });
+            columnEditor.getEditingDomain().getResourceSet().getResources().add(res);
             setPageText(index, dataBagItem.getName());
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_ITEM_PAGE).createImage());
         } catch (PartInitException e) {
         	ErrorDialog.openError(getSite().getShell(),
 					"Error creating nested text editor", null, e.getStatus());
             e.printStackTrace();
-        } catch (IllegalArgumentException | IOException e) {
+        } catch (IllegalArgumentException e) {
         	ErrorDialog.openError(getSite().getShell(),
         			"Error creating nested text editor", null, null);
         	e.printStackTrace();
@@ -193,10 +148,13 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * Creates the pages of the multi-page data bag editor.
 	 */
 	protected void createPages() {
-		createColumnEditorPage();
+		columnEditor = new DataBagColumnEditor();
+		
 		createRowEditorPage();
 		createJsonEditorPages();
+		createColumnEditorPage();
 	}
+	
 	/**
 	 * The <code>MultiPageEditorPart</code> implementation of this 
 	 * <code>IWorkbenchPart</code> method disposes all nested editors.
@@ -213,38 +171,36 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * Method declared on IEditorPart.
 	 */
 	public boolean isSaveAsAllowed() {
-		return true;
+		return false;
 	}
-
+	
 	/**
 	 * Saves the multi-page editor's document.
 	 */
 	public void doSave(IProgressMonitor monitor) {
-		xtext.doSave(monitor);
-//		getEditor(0).doSave(monitor);
+		for (int i = 0 ; i < getPageCount(); i++) {
+			IEditorPart editor = getEditor(i);
+			if (editor != null) {
+				editor.doSave(monitor);
+//				setPageText(i, editor.getTitle());
+//				setInput(getEditorInput());
+			}
+		}
 	}
+
 	/**
 	 * Saves the multi-page editor's document as another file.
 	 * Also updates the text for page 0's tab, and updates this multi-page editor's input
 	 * to correspond to the nested editor's.
 	 */
 	public void doSaveAs() {
-		xtext.doSaveAs();
-		setPageText(0, xtext.getTitle());
-		setInput(xtext.getEditorInput());
-
-//		IEditorPart editor = getEditor(0);
-//		editor.doSaveAs();
-//		setPageText(0, editor.getTitle());
-//		setInput(editor.getEditorInput());
 	}
 	
 	/* (non-Javadoc)
 	 * Method declared on IEditorPart
 	 */
 	public void gotoMarker(IMarker marker) {
-		setActivePage(0);
-		IDE.gotoMarker(getEditor(0), marker);
+		IDE.gotoMarker(columnEditor, marker);
 	}
 	/**
 	 * Initialize the current multi page editor. It checks that the input is an instance 
@@ -259,21 +215,9 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		dataBagEObject = ((DataBagEditorInput) editorInput).geteObject();
 		
 		super.init(site, editorInput);
-//		setInput(editorInput);
-//		setSite(site);
 		setPartName(editorInput.getName());
-		nodesMap = ((DataBagEditorInput) editorInput).getNodesMap();
 	}
 	
-	/**
-	 * Calculates the contents of page 2 when the it is activated.
-	 */
-	protected void pageChange(int newPageIndex) {
-		super.pageChange(newPageIndex);
-		if (newPageIndex == 2) {
-			sortWords();
-		}
-	}
 	/**
 	 * Closes all project files on project close.
 	 */
@@ -292,51 +236,40 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 //			});
 //		}
 	}
-	/**
-	 * Sets the font related data to be applied to the text in page 2.
-	 */
-	void setFont() {
-		FontDialog fontDialog = new FontDialog(getSite().getShell());
-		fontDialog.setFontList(text.getFont().getFontData());
-		FontData fontData = fontDialog.open();
-		if (fontData != null) {
-			if (font != null)
-				font.dispose();
-			font = new Font(text.getDisplay(), fontData);
-			text.setFont(font);
-		}
+	
+	@Override
+	protected void pageChange(int newPageIndex) {
+		super.pageChange(newPageIndex);
+//		if (outline != null) {
+//			Composite parent = outline.getControl().getParent();
+//			outline.getControl().dispose();
+//			setOutline(IContentOutlinePage.class);
+//			outline.createControl(parent);
+//			outline.setActionBars(outline.actionBars);
+//		}
+	}
+	
+	public boolean isXtextEditor(IEditorPart editor) {
+		return editor instanceof XtextEditor;
 	}
 	
 	@Override
 	public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
 		if (IContentOutlinePage.class.equals(adapter)) {
-			outlinePage.setSourceViewer(xtext.getInternalSourceViewer());
-			return outlinePage;
+//			outline = new Outline();
+//			setOutline(adapter);
+//			return outline;
+			return getActiveEditor().getAdapter(adapter);
+//			if (isXtextEditor(pageEditor)) {
+//				outlinePage.setSourceViewer(((XtextEditor)pageEditor).getInternalSourceViewer());
+//				return outlinePage;
+//			}
 		}
 		return super.getAdapter(adapter);
 	}
-	
-	/**
-	 * Sorts the words in page 0, and shows them in page 2.
-	 */
-	void sortWords() {
 
-//		String editorText =
-//			editor.getDocumentProvider().getDocument(editor.getEditorInput()).get();
-//
-//		StringTokenizer tokenizer =
-//			new StringTokenizer(editorText, " \t\n\r\f!@#\u0024%^&*()-_=+`~[]{};:'\",.<>/?|\\");
-//		ArrayList editorWords = new ArrayList();
-//		while (tokenizer.hasMoreTokens()) {
-//			editorWords.add(tokenizer.nextToken());
-//		}
-//
-//		Collections.sort(editorWords, Collator.getInstance());
-//		StringWriter displayText = new StringWriter();
-//		for (int i = 0; i < editorWords.size(); i++) {
-//			displayText.write(((String) editorWords.get(i)));
-//			displayText.write(System.getProperty("line.separator"));
-//		}
-//		text.setText(displayText.toString());
-	}
+//	public void setOutline(Class<?> adapter) {
+//		outline.setDelegate((IContentOutlinePage) getActiveEditor().getAdapter(adapter));
+//	}
+	
 }
