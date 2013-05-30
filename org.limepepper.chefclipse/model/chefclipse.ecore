@@ -27,7 +27,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//chefserver/Environment"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="server" lowerBound="1"
           eType="#//chefserver/Server"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="client" eType="#//chefclient/Client"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="client" eType="#//chefclient/ChefClient"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" eType="#//cookbook/Attribute"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="run_list_items" upperBound="-1"
           eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
@@ -49,7 +49,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="environments" upperBound="-1"
           eType="#//chefserver/Environment" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="clients" upperBound="-1"
-          eType="#//chefclient/Client"/>
+          eType="#//chefclient/ChefClient"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="webuiport" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="sandboxes" upperBound="-1"
           eType="#//chefserver/Sandbox"/>
@@ -103,10 +103,11 @@
           eOpposite="#//knife/KnifeConfig/serverCookbookVersion"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RunListItem"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Client" eSuperTypes="#//utility/NamedDescribedObject"/>
   </eSubpackages>
   <eSubpackages name="chefclient" nsURI="http://limepepper.org/v1/chefclipse/chefclient"
       nsPrefix="org.limepepper.chefclipse">
-    <eClassifiers xsi:type="ecore:EClass" name="Client">
+    <eClassifiers xsi:type="ecore:EClass" name="ChefClient">
       <eStructuralFeatures xsi:type="ecore:EReference" name="server" lowerBound="1"
           eType="#//chefserver/Server"/>
     </eClassifiers>

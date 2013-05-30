@@ -3,7 +3,7 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
 import org.limepepper.chefclipse.utility.NamedDescribedObject;
 
@@ -116,24 +116,24 @@ public interface Node extends NamedDescribedObject {
      * </p>
      * <!-- end-user-doc -->
 	 * @return the value of the '<em>Client</em>' reference.
-	 * @see #setClient(Client)
+	 * @see #setClient(ChefClient)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getNode_Client()
 	 * @model
 	 * @generated
 	 */
-    Client getClient();
+    ChefClient getClient();
 
     /**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.Node#getClient <em>Client</em>}' reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Client</em>' reference.
 	 * @see #getClient()
 	 * @generated
 	 */
-    void setClient(Client value);
+	void setClient(ChefClient value);
 
-    /**
+				/**
 	 * Returns the value of the '<em><b>Attributes</b></em>' reference.
 	 * <!-- begin-user-doc -->
      * <p>

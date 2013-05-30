@@ -56,34 +56,34 @@ public interface ChefclientPackage extends EPackage {
     ChefclientPackage eINSTANCE = org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl.init();
 
     /**
-	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefclient.impl.ClientImpl <em>Client</em>}' class.
+	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefclient.impl.ChefClientImpl <em>Chef Client</em>}' class.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @see org.limepepper.chefclipse.common.chefclient.impl.ClientImpl
-	 * @see org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl#getClient()
+	 * <!-- end-user-doc -->
+	 * @see org.limepepper.chefclipse.common.chefclient.impl.ChefClientImpl
+	 * @see org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl#getChefClient()
 	 * @generated
 	 */
-    int CLIENT = 0;
+	int CHEF_CLIENT = 0;
 
-    /**
+				/**
 	 * The feature id for the '<em><b>Server</b></em>' reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT__SERVER = 0;
+	int CHEF_CLIENT__SERVER = 0;
 
-    /**
-	 * The number of structural features of the '<em>Client</em>' class.
+				/**
+	 * The number of structural features of the '<em>Chef Client</em>' class.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int CLIENT_FEATURE_COUNT = 1;
+	int CHEF_CLIENT_FEATURE_COUNT = 1;
 
-    /**
+				/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefclient.impl.OhaiImpl <em>Ohai</em>}' class.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -205,27 +205,27 @@ public interface ChefclientPackage extends EPackage {
 
 
     /**
-	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefclient.Client <em>Client</em>}'.
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefclient.ChefClient <em>Chef Client</em>}'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Client</em>'.
-	 * @see org.limepepper.chefclipse.common.chefclient.Client
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Chef Client</em>'.
+	 * @see org.limepepper.chefclipse.common.chefclient.ChefClient
 	 * @generated
 	 */
-    EClass getClient();
+	EClass getChefClient();
 
-    /**
-	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.chefclient.Client#getServer <em>Server</em>}'.
+				/**
+	 * Returns the meta object for the reference '{@link org.limepepper.chefclipse.common.chefclient.ChefClient#getServer <em>Server</em>}'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Server</em>'.
-	 * @see org.limepepper.chefclipse.common.chefclient.Client#getServer()
-	 * @see #getClient()
+	 * @see org.limepepper.chefclipse.common.chefclient.ChefClient#getServer()
+	 * @see #getChefClient()
 	 * @generated
 	 */
-    EReference getClient_Server();
+	EReference getChefClient_Server();
 
-    /**
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefclient.Ohai <em>Ohai</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -278,24 +278,24 @@ public interface ChefclientPackage extends EPackage {
 	 */
     interface Literals {
         /**
-		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefclient.impl.ClientImpl <em>Client</em>}' class.
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefclient.impl.ChefClientImpl <em>Chef Client</em>}' class.
 		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-		 * @see org.limepepper.chefclipse.common.chefclient.impl.ClientImpl
-		 * @see org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl#getClient()
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.common.chefclient.impl.ChefClientImpl
+		 * @see org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl#getChefClient()
 		 * @generated
 		 */
-        EClass CLIENT = eINSTANCE.getClient();
+		EClass CHEF_CLIENT = eINSTANCE.getChefClient();
 
-        /**
+					/**
 		 * The meta object literal for the '<em><b>Server</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-        EReference CLIENT__SERVER = eINSTANCE.getClient_Server();
+		EReference CHEF_CLIENT__SERVER = eINSTANCE.getChefClient_Server();
 
-        /**
+								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefclient.impl.OhaiImpl <em>Ohai</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

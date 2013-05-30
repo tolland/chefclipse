@@ -157,6 +157,15 @@ public interface ChefserverFactory extends EFactory {
     RunListItem createRunListItem();
 
     /**
+	 * Returns a new object of class '<em>Client</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Client</em>'.
+	 * @generated
+	 */
+	Client createClient();
+
+				/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

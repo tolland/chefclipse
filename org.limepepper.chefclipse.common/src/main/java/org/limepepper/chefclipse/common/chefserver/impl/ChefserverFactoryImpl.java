@@ -10,7 +10,9 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -84,6 +86,7 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 			case ChefserverPackage.SERVER_COOKBOOK_FILE: return createServerCookbookFile();
 			case ChefserverPackage.SERVER_COOKBOOK_VERSION: return createServerCookbookVersion();
 			case ChefserverPackage.RUN_LIST_ITEM: return createRunListItem();
+			case ChefserverPackage.CLIENT: return createClient();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -240,6 +243,16 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Client createClient() {
+		ClientImpl client = new ClientImpl();
+		return client;
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated

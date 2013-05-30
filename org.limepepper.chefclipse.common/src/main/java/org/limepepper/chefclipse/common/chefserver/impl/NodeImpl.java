@@ -4,7 +4,7 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
@@ -151,20 +151,20 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Client getClient() {
-		return (Client)eGet(ChefserverPackage.Literals.NODE__CLIENT, true);
+    public ChefClient getClient() {
+		return (ChefClient)eGet(ChefserverPackage.Literals.NODE__CLIENT, true);
 	}
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setClient(Client newClient) {
+	public void setClient(ChefClient newClient) {
 		eSet(ChefserverPackage.Literals.NODE__CLIENT, newClient);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated

@@ -66,19 +66,15 @@ public class LoggerPlugin extends Plugin {
 						Object value = event.getNewValue();
 						if (value == null)
 							value = event.getOldValue();
-						switch (key) {
-						case PreferenceConstants.P_LEVEL:
+						if (key.equals(PreferenceConstants.P_LEVEL)) {
 							Logger root = (Logger) LoggerFactory
 									.getLogger(Logger.ROOT_LOGGER_NAME);
 							root.setLevel(Level.toLevel((String) value));
 							log.info("Logging level changed to: " + value);
-							break;
-						case PreferenceConstants.P_REMOTEHOST:
-							break;
-						case PreferenceConstants.P_PORT:
-							break;
-						default:
-							break;
+						} else if (key.equals(PreferenceConstants.P_REMOTEHOST)) {
+
+						} else if (key.equals(PreferenceConstants.P_PORT)) {
+
 						}
 					}
 				});

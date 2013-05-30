@@ -1075,6 +1075,53 @@ public interface ChefserverPackage extends EPackage {
 
 
     /**
+	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ClientImpl <em>Client</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.limepepper.chefclipse.common.chefserver.impl.ClientImpl
+	 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getClient()
+	 * @generated
+	 */
+	int CLIENT = 15;
+
+				/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+
+				/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
+
+				/**
+	 * The feature id for the '<em><b>ID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
+
+				/**
+	 * The number of structural features of the '<em>Client</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLIENT_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+
+
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Environment <em>Environment</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1665,6 +1712,16 @@ public interface ChefserverPackage extends EPackage {
     EClass getRunListItem();
 
     /**
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.chefserver.Client <em>Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Client</em>'.
+	 * @see org.limepepper.chefclipse.common.chefserver.Client
+	 * @generated
+	 */
+	EClass getClient();
+
+				/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2155,6 +2212,16 @@ public interface ChefserverPackage extends EPackage {
 		 * @generated
 		 */
         EClass RUN_LIST_ITEM = eINSTANCE.getRunListItem();
+
+								/**
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.chefserver.impl.ClientImpl <em>Client</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.common.chefserver.impl.ClientImpl
+		 * @see org.limepepper.chefclipse.common.chefserver.impl.ChefserverPackageImpl#getClient()
+		 * @generated
+		 */
+		EClass CLIENT = eINSTANCE.getClient();
 
     }
 

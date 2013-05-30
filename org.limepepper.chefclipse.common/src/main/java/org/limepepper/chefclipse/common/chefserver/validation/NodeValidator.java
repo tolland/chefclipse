@@ -5,7 +5,8 @@
 package org.limepepper.chefclipse.common.chefserver.validation;
 
 import org.eclipse.emf.common.util.EList;
-import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
+import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.Server;
@@ -22,6 +23,8 @@ public interface NodeValidator {
 
 	boolean validateEnvironment(Environment value);
 	boolean validateServer(Server value);
+	boolean validateClient(ChefClient value);
+
 	boolean validateClient(Client value);
 	boolean validateAttributes(Attribute value);
 	boolean validateRun_list_items(EList<String> value);

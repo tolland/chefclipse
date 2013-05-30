@@ -33,6 +33,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jface,
  org.eclipse.ui.workbench,
  org.slf4j.log4j;bundle-version="1.6.4",
- chefclipse.ui;bundle-version="0.1.1"
+ chefclipse.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .

@@ -1,12 +1,13 @@
 /**
  */
-package org.limepepper.chefclipse.common.chefclient.tests;
+package org.limepepper.chefclipse.common.chefserver.tests;
 
-import junit.framework.TestCase;
 import junit.textui.TestRunner;
 
-import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
-import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
+import org.limepepper.chefclipse.common.chefserver.Client;
+
+import org.limepepper.chefclipse.utility.tests.DescribedObjectTest;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,15 +15,7 @@ import org.limepepper.chefclipse.common.chefclient.Client;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ClientTest extends TestCase {
-
-	/**
-	 * The fixture for this Client test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected Client fixture = null;
+public class ClientTest extends DescribedObjectTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -44,23 +37,14 @@ public class ClientTest extends TestCase {
 	}
 
 	/**
-	 * Sets the fixture for this Client test case.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void setFixture(Client fixture) {
-		this.fixture = fixture;
-	}
-
-	/**
 	 * Returns the fixture for this Client test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected Client getFixture() {
-		return fixture;
+		return (Client)fixture;
 	}
 
 	/**
@@ -71,7 +55,7 @@ public class ClientTest extends TestCase {
 	 */
 	@Override
 	protected void setUp() throws Exception {
-		setFixture(ChefclientFactory.eINSTANCE.createClient());
+		setFixture(ChefserverFactory.eINSTANCE.createClient());
 	}
 
 	/**

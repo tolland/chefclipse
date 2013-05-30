@@ -22,15 +22,15 @@ public interface ChefclientFactory extends EFactory {
     ChefclientFactory eINSTANCE = org.limepepper.chefclipse.common.chefclient.impl.ChefclientFactoryImpl.init();
 
     /**
-	 * Returns a new object of class '<em>Client</em>'.
+	 * Returns a new object of class '<em>Chef Client</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Client</em>'.
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Chef Client</em>'.
 	 * @generated
 	 */
-    Client createClient();
+	ChefClient createChefClient();
 
-    /**
+				/**
 	 * Returns a new object of class '<em>Ohai</em>'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

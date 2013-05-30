@@ -4,7 +4,6 @@ package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
  * <!-- begin-user-doc -->

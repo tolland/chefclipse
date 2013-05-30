@@ -4,7 +4,9 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
+import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
@@ -49,4 +51,17 @@ public interface ChefServerApi {
 	List<Role> getRoles();
 
 	Role getRole(String name);
+
+	List<Client> getClients();
+	Client getClient(String name);
+
+	void setClient(String name);
+
+	List<DataBag> getDataBags();
+	DataBag getDataBag(String name);
+
+	void setDataBag(String name);
+
+
+
 }

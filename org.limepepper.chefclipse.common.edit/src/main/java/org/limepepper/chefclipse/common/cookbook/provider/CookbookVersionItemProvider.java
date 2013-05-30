@@ -70,6 +70,11 @@ public class CookbookVersionItemProvider
 			addChef_typePropertyDescriptor(object);
 			addEnvironmentPropertyDescriptor(object);
 			addTemplatesPropertyDescriptor(object);
+			addRecipesPropertyDescriptor(object);
+			addDefinitionsPropertyDescriptor(object);
+			addResourcesPropertyDescriptor(object);
+			addRoot_filesPropertyDescriptor(object);
+			addAttributesPropertyDescriptor(object);
 			addCatalogPropertyDescriptor(object);
 			addDependsPropertyDescriptor(object);
 			addMissingPropertyDescriptor(object);
@@ -204,6 +209,116 @@ public class CookbookVersionItemProvider
 				 true,
 				 false,
 				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Recipes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRecipesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookVersion_recipes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_recipes_feature", "_UI_CookbookVersion_type"),
+				 CookbookPackage.Literals.COOKBOOK_VERSION__RECIPES,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Definitions feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDefinitionsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookVersion_definitions_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_definitions_feature", "_UI_CookbookVersion_type"),
+				 CookbookPackage.Literals.COOKBOOK_VERSION__DEFINITIONS,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Resources feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addResourcesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookVersion_resources_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_resources_feature", "_UI_CookbookVersion_type"),
+				 CookbookPackage.Literals.COOKBOOK_VERSION__RESOURCES,
+				 true,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Root files feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRoot_filesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookVersion_root_files_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_root_files_feature", "_UI_CookbookVersion_type"),
+				 CookbookPackage.Literals.COOKBOOK_VERSION__ROOT_FILES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Attributes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAttributesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CookbookVersion_attributes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookVersion_attributes_feature", "_UI_CookbookVersion_type"),
+				 CookbookPackage.Literals.COOKBOOK_VERSION__ATTRIBUTES,
+				 true,
+				 false,
+				 false,
 				 null,
 				 null,
 				 null));

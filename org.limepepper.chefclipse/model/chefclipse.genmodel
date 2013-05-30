@@ -98,12 +98,13 @@
             ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/ServerCookbookVersion/knifeConfig"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/RunListItem"/>
+      <genClasses ecoreClass="chefclipse.ecore#//chefserver/Client"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Chefclient" basePackage="org.limepepper.chefclipse.common"
         resource="XMI" disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefclient">
-      <genClasses ecoreClass="chefclipse.ecore#//chefclient/Client">
+      <genClasses ecoreClass="chefclipse.ecore#//chefclient/ChefClient">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference chefclipse.ecore#//chefclient/Client/server"/>
+            ecoreFeature="ecore:EReference chefclipse.ecore#//chefclient/ChefClient/server"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//chefclient/Ohai"/>
       <genClasses ecoreClass="chefclipse.ecore#//chefclient/Search"/>
@@ -118,16 +119,16 @@
             ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/environment"/>
         <genFeatures children="true" createChild="true" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/templates"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/recipes"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/definitions"/>
+        <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/recipes"/>
+        <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/definitions"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/files"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/resources"/>
+        <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/resources"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/libraries"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/metadata"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/providers"/>
-        <genFeatures property="None" children="true" createChild="true" propertyCategory=""
-            propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/root_files"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/attributes"/>
+        <genFeatures children="true" createChild="true" propertyCategory="" propertyDescription=""
+            propertySortChoices="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/root_files"/>
+        <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/attributes"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//cookbook/CookbookVersion/catalog"/>
         <genFeatures notify="false" children="true" createChild="true" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/CookbookVersion/depends"/>
@@ -219,6 +220,8 @@
             ecoreFeature="ecore:EReference chefclipse.ecore#//knife/KnifeConfig/server"/>
         <genFeatures notify="false" children="true" createChild="true" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//knife/KnifeConfig/serverCookbookVersion"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//knife/KnifeConfig/repository"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//knife/Plugin"/>
       <genClasses ecoreClass="chefclipse.ecore#//knife/KnifeSearch"/>

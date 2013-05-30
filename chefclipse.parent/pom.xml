@@ -21,6 +21,28 @@
   <name>Chefclipse</name>
   <url>https://github.com/limepepper/chefclipse</url>
 
+  <mailingLists>
+    <mailingList>
+      <name/>
+      <subscribe/>
+      <unsubscribe/>
+      <post>chefclipse-project@limepepper.co.uk</post>
+      <archive/>
+      <otherArchives/>
+    </mailingList>
+  </mailingLists>
+
+  <issueManagement>
+    <system>github</system>
+    <url>https://github.com/limepepper/chefclipse/issues?labels=enhancement&amp;state=open</url>
+  </issueManagement>
+
+  <distributionManagement>
+    <site>
+      <id>www.limepepper.co.uk/chefclipse</id>
+      <url>scp://www.limepepper.co.uk:7022/opt/limepepper.co.uk/html/chefclipse/</url>
+    </site>
+  </distributionManagement>
 
   <!--distributionManagement>
     <repository>
@@ -34,6 +56,8 @@
     <url>s3://chefclipse-packages/snapshot</url>
     </snapshotRepository>
     </distributionManagement -->
+
+
 
   <profiles>
     <profile>
@@ -385,6 +409,11 @@
 
   <build>
     <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-site-plugin</artifactId>
+      <version>3.3</version>
+    </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -473,6 +502,25 @@
       </plugin>
     </plugins>
 
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.3</version>
+          <dependencies>
+            <dependency><!-- add support for ssh/scp -->
+              <groupId>org.apache.maven.wagon</groupId>
+              <artifactId>wagon-ssh</artifactId>
+              <version>1.0</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+
     <extensions>
       <extension>
         <groupId>org.springframework.build</groupId>
@@ -531,5 +579,9 @@
   </dependencyManagement>
 
 
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>http://www.limepepper.co.uk/jenkins</url>
+  </ciManagement>
 </project>
 

@@ -32,7 +32,9 @@ import org.eclipselabs.emfjson.EMFJs;
 import org.eclipselabs.emfjson.resource.JsResourceFactoryImpl;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
@@ -558,6 +560,42 @@ public class ChefServerApiImpl implements ChefServerApi {
 		}
 
 		return null;
+	}
+
+	@Override
+	public List<Client> getClients() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Client getClient(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setClient(String name) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<DataBag> getDataBags() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public DataBag getDataBag(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setDataBag(String name) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
