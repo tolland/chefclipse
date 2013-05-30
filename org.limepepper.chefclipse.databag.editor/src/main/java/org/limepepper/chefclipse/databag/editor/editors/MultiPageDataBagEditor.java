@@ -11,6 +11,7 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
@@ -27,6 +28,8 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
+import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
@@ -240,9 +243,21 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
         actionRegistry.put(removeDataBagItemAction.getId(), removeDataBagItemAction);
         AddJsonPropertyAction addJsonPropertyAction = new AddJsonPropertyAction(null);
         actionRegistry.put(addJsonPropertyAction.getId(), addJsonPropertyAction);
-	    RemoveJsonPropertyAction removeJsonPropertyAction = new RemoveJsonPropertyAction(null);
+	    RemoveJsonPropertyAction removeJsonPropertyAction = new RemoveJsonPropertyAction(null, this);
         actionRegistry.put(removeJsonPropertyAction.getId(), removeJsonPropertyAction);
     }
+	
+	public IXtextDocument getXtextDocument(Resource resource) {
+		for (int i = 0 ; i < getPageCount(); i++) {
+			IEditorPart editor = getEditor(i);
+			if (isXtextEditor(editor)) {
+				XtextEditor x = (XtextEditor) editor;
+				if (resource.getURI().lastSegment().equals(((FileEditorInput)x.getEditorInput()).getName()))
+					return x.getDocument();
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Closes all project files on project close.
@@ -276,7 +291,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	}
 	
 	public boolean isXtextEditor(IEditorPart editor) {
-		return editor instanceof XtextEditor;
+		return editor != null && editor instanceof XtextEditor;
 	}
 	
 	@Override

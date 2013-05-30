@@ -63,6 +63,9 @@ public class RemoveDataBagItemAction extends CommandActionHandler {
     @Override
     public Command createCommand(Collection<?> selection) {
         DataBagItem selectedDataBagItem = ((DataBagColumnEditor) editor).getSelectedDataBagItem();
+        if (selectedDataBagItem == null) {
+        	return super.createCommand(selection);
+        }
         URI itemURI = URI.createPlatformResourceURI(selectedDataBagItem.getJsonResource()
                 .getFullPath().toOSString(), false);
         Resource dataBagItemResource = getResourceFromURI(itemURI);
