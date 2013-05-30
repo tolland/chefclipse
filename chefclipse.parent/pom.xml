@@ -85,6 +85,7 @@
         <!-- logger -->
         <module>../org.limepepper.chefclipse.logger</module>
         <module>../org.limepepper.chefclipse.logger.ui</module>
+        <module>../org.limepepper.chefclipse.logger.test</module>
 
         <!-- merged into chefclipse.core as non generated -->
         <!--module>org.limepepper.chefclipse.model</module -->

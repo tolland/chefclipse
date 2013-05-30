@@ -59,11 +59,6 @@ public class LoggerPlugin extends Plugin {
 		return InstanceScope.INSTANCE.getNode(PLUGIN_ID);
 	}
 
-	public static void trace(String message) {
-		log.trace(message);
-
-	}
-
 	/*
 	 * (non-Javadoc)
 	 *
