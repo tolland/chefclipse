@@ -123,10 +123,6 @@ public class CookbookSwitch<T> extends Switch<T> {
 			case CookbookPackage.ATTRIBUTE: {
 				Attribute attribute = (Attribute)theEObject;
 				T result = caseAttribute(attribute);
-				if (result == null) result = caseCookbookFile(attribute);
-				if (result == null) result = caseNamedObject(attribute);
-				if (result == null) result = caseChecksumFile(attribute);
-				if (result == null) result = caseSandboxedObject(attribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

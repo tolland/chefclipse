@@ -14,7 +14,7 @@ import org.limepepper.chefclipse.common.chefserver.RunList;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RunListTest extends TestCase {
+public abstract class RunListTest extends TestCase {
 
 	/**
 	 * The fixture for this Run List test case.
@@ -23,15 +23,6 @@ public class RunListTest extends TestCase {
 	 * @generated
 	 */
 	protected RunList fixture = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static void main(String[] args) {
-		TestRunner.run(RunListTest.class);
-	}
 
 	/**
 	 * Constructs a new Run List test case with the given name.
@@ -61,28 +52,6 @@ public class RunListTest extends TestCase {
 	 */
 	protected RunList getFixture() {
 		return fixture;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#setUp()
-	 * @generated
-	 */
-	@Override
-	protected void setUp() throws Exception {
-		setFixture(ChefserverFactory.eINSTANCE.createRunList());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see junit.framework.TestCase#tearDown()
-	 * @generated
-	 */
-	@Override
-	protected void tearDown() throws Exception {
-		setFixture(null);
 	}
 
 } //RunListTest

@@ -15,7 +15,6 @@ import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

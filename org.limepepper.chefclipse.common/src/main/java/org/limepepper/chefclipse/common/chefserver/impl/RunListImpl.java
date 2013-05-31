@@ -10,6 +10,7 @@ import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 
@@ -20,17 +21,17 @@ import org.limepepper.chefclipse.common.cookbook.Recipe;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getNode <em>Node</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getEnvironment <em>Environment</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getRole <em>Role</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getRecipes <em>Recipes</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getRun_list_items <em>Run list items</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getRun_list <em>Run list</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.RunListImpl#getServer <em>Server</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class RunListImpl extends EObjectImpl implements RunList {
+public abstract class RunListImpl extends EObjectImpl implements RunList {
     /**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -65,24 +66,6 @@ public class RunListImpl extends EObjectImpl implements RunList {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Node getNode() {
-		return (Node)eGet(ChefserverPackage.Literals.RUN_LIST__NODE, true);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public void setNode(Node newNode) {
-		eSet(ChefserverPackage.Literals.RUN_LIST__NODE, newNode);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public Environment getEnvironment() {
 		return (Environment)eGet(ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, true);
 	}
@@ -101,24 +84,6 @@ public class RunListImpl extends EObjectImpl implements RunList {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Role getRole() {
-		return (Role)eGet(ChefserverPackage.Literals.RUN_LIST__ROLE, true);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public void setRole(Role newRole) {
-		eSet(ChefserverPackage.Literals.RUN_LIST__ROLE, newRole);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     @SuppressWarnings("unchecked")
     public EList<Recipe> getRecipes() {
 		return (EList<Recipe>)eGet(ChefserverPackage.Literals.RUN_LIST__RECIPES, true);
@@ -130,8 +95,36 @@ public class RunListImpl extends EObjectImpl implements RunList {
 	 * @generated
 	 */
     @SuppressWarnings("unchecked")
-    public EList<RunListItem> getRun_list_items() {
-		return (EList<RunListItem>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS, true);
+    public EList<String> getRun_list_items() {
+		return (EList<String>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<RunList> getRun_list() {
+		return (EList<RunList>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Server getServer() {
+		return (Server)eGet(ChefserverPackage.Literals.RUN_LIST__SERVER, true);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setServer(Server newServer) {
+		eSet(ChefserverPackage.Literals.RUN_LIST__SERVER, newServer);
 	}
 
 } //RunListImpl

@@ -57,34 +57,12 @@ public class RunListItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addNodePropertyDescriptor(object);
 			addEnvironmentPropertyDescriptor(object);
-			addRolePropertyDescriptor(object);
 			addRecipesPropertyDescriptor(object);
+			addRun_listPropertyDescriptor(object);
+			addServerPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-    /**
-	 * This adds a property descriptor for the Node feature.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected void addNodePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_RunList_node_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_RunList_node_feature", "_UI_RunList_type"),
-				 ChefserverPackage.Literals.RUN_LIST__NODE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
     /**
@@ -101,28 +79,6 @@ public class RunListItemProvider
 				 getString("_UI_RunList_environment_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_RunList_environment_feature", "_UI_RunList_type"),
 				 ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-    /**
-	 * This adds a property descriptor for the Role feature.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected void addRolePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_RunList_role_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_RunList_role_feature", "_UI_RunList_type"),
-				 ChefserverPackage.Literals.RUN_LIST__ROLE,
 				 true,
 				 false,
 				 true,
@@ -154,6 +110,50 @@ public class RunListItemProvider
 	}
 
     /**
+	 * This adds a property descriptor for the Run list feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRun_listPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_RunList_run_list_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RunList_run_list_feature", "_UI_RunList_type"),
+				 ChefserverPackage.Literals.RUN_LIST__RUN_LIST,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+				/**
+	 * This adds a property descriptor for the Server feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addServerPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_RunList_server_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_RunList_server_feature", "_UI_RunList_type"),
+				 ChefserverPackage.Literals.RUN_LIST__SERVER,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+				/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -238,17 +238,7 @@ public class RunListItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS,
-				 ChefserverFactory.eINSTANCE.createRole()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS,
-				 ChefserverFactory.eINSTANCE.createRunListItem()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS,
-				 CookbookFactory.eINSTANCE.createRecipe()));
+				 ""));
 	}
 
     /**

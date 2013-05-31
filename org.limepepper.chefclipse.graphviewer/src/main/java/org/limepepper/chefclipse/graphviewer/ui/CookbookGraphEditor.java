@@ -2,7 +2,6 @@ package org.limepepper.chefclipse.graphviewer.ui;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
@@ -43,7 +42,6 @@ import org.eclipse.zest.layouts.algorithms.CompositeLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.GridLayoutAlgorithm;
 import org.eclipse.zest.layouts.algorithms.HorizontalShiftAlgorithm;
 import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
-import org.limepepper.chefclipse.utility.NamedObject;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
@@ -58,6 +56,7 @@ import org.limepepper.chefclipse.graphviewer.figure.CookbookFigure;
 import org.limepepper.chefclipse.graphviewer.figure.FolderFigure;
 import org.limepepper.chefclipse.graphviewer.model.CookbookModel;
 import org.limepepper.chefclipse.graphviewer.model.CookbookModel.ICookbookChangeListener;
+import org.limepepper.chefclipse.utility.NamedObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

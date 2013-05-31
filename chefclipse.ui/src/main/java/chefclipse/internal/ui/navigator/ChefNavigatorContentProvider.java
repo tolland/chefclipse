@@ -64,9 +64,6 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider 
 				for (KnifeConfig knifeConfig : ChefConfigManager.instance()
 						.retrieveChefConfigurations()) {
 
-					Server server = ChefserverFactory.eINSTANCE.createServer();
-					server.setWebuiport(4040);
-					knifeConfig.setServer(server);
 
 					children.add(knifeConfig);
 				}

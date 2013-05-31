@@ -13,22 +13,24 @@
     <tycho-extras-version>0.17.0</tycho-extras-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
+  <description>chefclipse.parent - This is the description of the thing </description>
 
   <organization>
     <name>Lime Pepper Ltd</name>
     <url>http://www.limepepper.co.uk</url>
   </organization>
-  <name>Chefclipse</name>
-  <url>https://github.com/limepepper/chefclipse</url>
+  <name>chefclipse.parent - Chefclipse Parent project</name>
+  <!--url>https://github.com/limepepper/chefclipse</url-->
 
   <mailingLists>
     <mailingList>
-      <name/>
-      <subscribe/>
-      <unsubscribe/>
+      <name />
+      <subscribe />
+      <unsubscribe />
       <post>chefclipse-project@limepepper.co.uk</post>
-      <archive/>
-      <otherArchives/>
+      <archive />
+      <otherArchives />
     </mailingList>
   </mailingLists>
 
@@ -57,7 +59,10 @@
     </snapshotRepository>
     </distributionManagement -->
 
-
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>http://www.limepepper.co.uk/jenkins</url>
+  </ciManagement>
 
   <profiles>
     <profile>
@@ -142,6 +147,11 @@
 
         <!-- missing form orbit bundles -->
         <module>../libs/com.sun.jersey.bundle</module>
+
+
+
+
+        <!--module>../chefclipse.site</module-->
       </modules>
       <build>
         <plugins>
@@ -180,6 +190,18 @@
     </profile>
 
 
+
+
+    <!-- izpack creates a install.jar, depends on the build profile -->
+    <profile>
+      <id>site</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <modules>
+        <module>../chefclipse.site</module>
+      </modules>
+    </profile>
 
 
 
@@ -409,11 +431,11 @@
 
   <build>
     <plugins>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-site-plugin</artifactId>
-      <version>3.3</version>
-    </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.3</version>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -427,6 +449,11 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+            <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.14.1</version>
       </plugin>
       <plugin>
         <groupId>com.github.koraktor</groupId>
@@ -517,6 +544,11 @@
             </dependency>
           </dependencies>
         </plugin>
+                <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>2.14.1</version>
+        </plugin>
       </plugins>
     </pluginManagement>
 
@@ -579,9 +611,115 @@
   </dependencyManagement>
 
 
-  <ciManagement>
-    <system>Jenkins</system>
-    <url>http://www.limepepper.co.uk/jenkins</url>
-  </ciManagement>
+  <contributors>
+    <contributor>
+      <name>Tom Hodder</name>
+      <email>tom@limepepper.co.uk</email>
+      <roles>
+        <role>sysadmin</role>
+      </roles>
+    </contributor>
+  </contributors>
+
+  <reporting>
+    <plugins>
+      <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<links>
+						<link>http://commons.apache.org/lang/api</link>
+						<link>http://java.sun.com/j2se/1.5.0/docs/api</link>
+					</links>
+				</configuration>
+			</plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.6</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.14.1</version>
+        <configuration>
+          <showSuccess>true</showSuccess>
+          <!--outputName>newname</outputName-->
+          <aggregate>true</aggregate>
+          
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.3</version>
+        <reportSets>
+          <reportSet>
+            <id>aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.5.2</version>
+			</plugin>
+			<!--plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changelog-plugin</artifactId>
+				<version>2.2</version>
+			</plugin-->
+			<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.10</version>
+				<configuration>
+					<!--configLocation>config/sun_checks.xml</configLocation--><!-- default -->
+					<!-- <configLocation>config/maven_checks.xml</configLocation> -->
+					<!-- <configLocation>config/turbine_checks.xml</configLocation> -->
+					<!-- <configLocation>config/avalon_checks.xml</configLocation> -->
+				</configuration>
+			</plugin>
+			<!--plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <version>2.5.3-SNAPSHOT</version>
+				<configuration>
+					<threshold>Low</threshold>
+					<effort>Default</effort>
+				</configuration>
+			</plugin-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.0.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9</version>
+        <reportSets>
+          <reportSet><!-- by default, id = "default" -->
+            <reports><!-- select non-aggregate reports -->
+              <report>javadoc</report>
+              <report>test-javadoc</report>
+            </reports>
+          </reportSet>
+          <reportSet><!-- aggregate reportSet, to define in poms having modules -->
+            <id>aggregate</id>
+            <inherited>false</inherited><!-- don't run aggregate in child modules -->
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
 

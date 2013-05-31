@@ -7,7 +7,6 @@ import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
-import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableContainer;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook.DrawableFolder;
 
 public class FolderFigure extends Figure {

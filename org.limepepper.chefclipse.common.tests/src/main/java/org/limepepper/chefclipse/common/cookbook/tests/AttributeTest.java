@@ -2,6 +2,8 @@
  */
 package org.limepepper.chefclipse.common.cookbook.tests;
 
+import junit.framework.TestCase;
+
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.Attribute;
@@ -13,7 +15,15 @@ import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AttributeTest extends CookbookFileTest {
+public class AttributeTest extends TestCase {
+
+	/**
+	 * The fixture for this Attribute test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Attribute fixture = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -35,14 +45,23 @@ public class AttributeTest extends CookbookFileTest {
 	}
 
 	/**
+	 * Sets the fixture for this Attribute test case.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void setFixture(Attribute fixture) {
+		this.fixture = fixture;
+	}
+
+	/**
 	 * Returns the fixture for this Attribute test case.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	protected Attribute getFixture() {
-		return (Attribute)fixture;
+		return fixture;
 	}
 
 	/**

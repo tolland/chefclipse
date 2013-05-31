@@ -8,6 +8,8 @@ import org.eclipse.emf.common.util.EList;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
+import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 
@@ -25,4 +27,10 @@ public interface RunListValidator {
 	boolean validateRole(Role value);
 	boolean validateRecipes(EList<Recipe> value);
 	boolean validateRun_list_items(EList<RunListItem> value);
+
+	boolean validateRun_list(EList<RunList> value);
+
+	boolean validateServer(Server value);
+
+	boolean validateRun_list(RunList value);
 }

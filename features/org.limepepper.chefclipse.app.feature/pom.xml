@@ -9,6 +9,7 @@
     <relativePath>../../chefclipse.parent</relativePath>
   </parent>
   <groupId>org.limepepper.chefclipse</groupId>
+  <name>org.limepepper.chefclipse.app.feature</name>
   <artifactId>org.limepepper.chefclipse.app.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 </project>

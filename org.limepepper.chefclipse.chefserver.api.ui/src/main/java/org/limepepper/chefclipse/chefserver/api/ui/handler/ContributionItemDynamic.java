@@ -19,110 +19,80 @@ import chefclipse.core.managers.ChefRepositoryManager;
 
 public class ContributionItemDynamic extends CompoundContributionItem {
 
-    IWorkbenchWindow      workbench             = PlatformUI
-                                                        .getWorkbench()
-                                                        .getActiveWorkbenchWindow();
+	IWorkbenchWindow workbench = PlatformUI.getWorkbench()
+			.getActiveWorkbenchWindow();
 
-    ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager
-                                                        .INSTANCE;
+	ChefRepositoryManager chefRepositoryManager = ChefRepositoryManager.INSTANCE;
 
-    KnifeConfigController api = KnifeConfigController.INSTANCE;
+	KnifeConfigController api = KnifeConfigController.INSTANCE;
 
-    Map<String, String>   menuItems             = new HashMap<String, String>();
-    Map<String, String>   remoteMenuItems       = new HashMap<String, String>();
+	Map<String, String> menuItems = new HashMap<String, String>();
+	Map<String, String> remoteMenuItems = new HashMap<String, String>();
 
+	@Override
+	protected IContributionItem[] getContributionItems() {
 
-    @Override
-    protected IContributionItem[] getContributionItems() {
+		System.err.println("in the api.ui");
 
-        System.err.println("in the api.ui");
+		IStructuredSelection selection = (IStructuredSelection) PlatformUI
+				.getWorkbench().getActiveWorkbenchWindow()
+				.getSelectionService().getSelection();
+		if (selection == null)
+			return new IContributionItem[] {};
 
-        IStructuredSelection selection = (IStructuredSelection) PlatformUI
-                .getWorkbench().getActiveWorkbenchWindow()
-                .getSelectionService().getSelection();
-        if (selection == null)
-            return new IContributionItem[] {};
+		return fillMenu();
+	}
 
+	IContributionItem[] fillMenu() {
 
+		// api.getServer(knifeConfig)
 
-        System.err.println("in the api.ui2");
+		menuItems.put("runlist.editor", "show run list editor");
+		menuItems.put("refresh.chefserver", "update remote model");
+		menuItems.put("connect.chefserver", "connect to this Server");
+		menuItems.put("connect.chefserver.knife",
+				"populate KnifeConfig server node");
 
-        Object item = selection.getFirstElement();
-        // if (item instanceof IResource) {
+		List<IContributionItem> iContItems = new ArrayList<IContributionItem>();
+		for (Entry<String, String> entry : menuItems.entrySet()) {
+			iContItems.add(menuItem(entry));
 
-/*        if (ChefTester.testResource(item, "isCookbook")) {
-            menuItems.put("compare.cookbook", "Compare with server1");
-        }
-        if (ChefTester.testResource(item, "isKnifeConfig")) {
-            menuItems.put("open.knifeconfig", "parse knife ecores");
-            menuItems
-                    .put("open.remoteconnection", "OPen remote to this server");
-        }
-        if (ChefTester.testResource(item, "isKnifeConfigFile")) {
-            menuItems.put("open.knifeconfig", "parse knife ecores");
-        }
+		}
 
-        if (ChefTester.testResource(item, "isChefserver")) {
-            menuItems.put("open.remoteconnection",
-                    "open this server connection");
-            menuItems.put("refresh.remoteconnection",
-                    "refresh this model from server");
-        }*/
-        // }
-        return fillMenu();
-        // return new IContributionItem[] {};
-    }
+		remoteMenuItems.put("runlist.editor", "show run list editor");
+		remoteMenuItems.put("get.cookbook", "Get cookbook remote");
 
-    IContributionItem[] fillMenu() {
+		// @todo fix this
+		for (Entry<String, String> entry : remoteMenuItems.entrySet()) {
+			iContItems.add(menuItem(entry,
+					"chefclipse.chefserver.api.ui.command"));
+		}
+		return iContItems.toArray(new IContributionItem[0]);
+
+	}
 
 
-     //   api.getServer(knifeConfig)
+	IContributionItem menuItem(Entry<String, String> entry) {
+		// @todo monkey hack
+		IContributionItem menuItem = menuItem(entry,
+				"org.limepepper.chefclipse.api.ui.popupContext");
 
+		return menuItem;
+	}
 
-        menuItems.put("refresh.chefserver", "update remote model");
-        menuItems.put("connect.chefserver", "connect to this Server");
-        menuItems.put("connect.chefserver.knife", "populate KnifeConfig server node");
+	IContributionItem menuItem(Entry<String, String> entry, String commandId) {
 
-        List<IContributionItem> iContItems = new ArrayList<IContributionItem>();
-        for (Entry<String, String> entry : menuItems.entrySet()) {
-            iContItems.add(menuItem(entry));
+		workbench = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 
-        }
+		CommandContributionItemParameter ccip = new CommandContributionItemParameter(
+				workbench, entry.getKey(), commandId,
+				CommandContributionItem.STYLE_PUSH);
 
-        remoteMenuItems.put("get.cookbook", "Get cookbook remote");
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("commandParameter1", entry.getKey());
+		ccip.parameters = params;
+		ccip.label = entry.getValue();
 
-        // @todo fix this
-        for (Entry<String, String> entry : remoteMenuItems.entrySet()) {
-            iContItems.add(menuItem(entry,
-                    "org.limepepper.chefclipse.api.ui.popupContext"));
-        }
-        return iContItems.toArray(new IContributionItem[0]);
-
-    }
-
-    // org.limepepper.chefclipse.chefserver.api.ui.handler
-
-    IContributionItem menuItem(Entry<String, String> entry) {
-        // @todo monkey hack
-        IContributionItem menuItem = menuItem(entry,
-                "org.limepepper.chefclipse.api.ui.popupContext");
-
-        return menuItem;
-    }
-
-    IContributionItem menuItem(Entry<String, String> entry, String commandId) {
-
-        workbench = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-
-        CommandContributionItemParameter ccip = new CommandContributionItemParameter(
-                workbench, entry.getKey(), commandId,
-                CommandContributionItem.STYLE_PUSH);
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("commandParameter1", entry.getKey());
-        ccip.parameters = params;
-        ccip.label = entry.getValue();
-
-        return new CommandContributionItem(ccip);
-    }
+		return new CommandContributionItem(ccip);
+	}
 }

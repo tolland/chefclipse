@@ -324,7 +324,7 @@ public class ServerAPITests {
         assertNotNull(item);
         assertNotNull(item.getName());
 
-        RunList runList = item.getRun_list();
+		RunList runList = item;
         assertNotNull(runList);
         assertNotNull(runList.getRun_list_items());
         assertTrue(runList.getRun_list_items().size() > 0);

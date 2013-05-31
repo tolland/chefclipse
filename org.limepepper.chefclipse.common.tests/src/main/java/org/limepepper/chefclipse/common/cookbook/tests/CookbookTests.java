@@ -32,7 +32,6 @@ public class CookbookTests extends TestSuite {
 		TestSuite suite = new CookbookTests("cookbook Tests");
 		suite.addTestSuite(DefinitionTest.class);
 		suite.addTestSuite(LibraryTest.class);
-		suite.addTestSuite(AttributeTest.class);
 		suite.addTestSuite(RecipeTest.class);
 		suite.addTestSuite(ResourceTest.class);
 		suite.addTestSuite(TemplateTest.class);

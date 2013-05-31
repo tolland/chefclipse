@@ -257,7 +257,7 @@ public class ChefConfigManager {
 		List<KnifeConfig> configs = retrieveChefConfigurations();
 		KnifeConfig defaultConfig = retrieveDefaultChefConfig();
 
-		IScopeContext projectScope = new ProjectScope(project.getProject());
+		IScopeContext projectScope = new ProjectScope((IProject)project);
 		IEclipsePreferences projectNode = projectScope
 				.getNode(Activator.PLUGIN_ID);
 		String selectedUrl = "";

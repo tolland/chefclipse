@@ -154,6 +154,10 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 				return createClientAdapter();
 			}
 			@Override
+			public Adapter caseOrganization(Organization object) {
+				return createOrganizationAdapter();
+			}
+			@Override
 			public Adapter caseDescribedObject(DescribedObject object) {
 				return createDescribedObjectAdapter();
 			}
@@ -426,6 +430,20 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createClientAdapter() {
+		return null;
+	}
+
+				/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefserver.Organization <em>Organization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.common.chefserver.Organization
+	 * @generated
+	 */
+	public Adapter createOrganizationAdapter() {
 		return null;
 	}
 

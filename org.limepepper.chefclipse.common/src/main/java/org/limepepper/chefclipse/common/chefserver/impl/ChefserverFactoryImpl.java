@@ -77,7 +77,6 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 			case ChefserverPackage.NODE: return createNode();
 			case ChefserverPackage.SERVER: return createServer();
 			case ChefserverPackage.PLATFORM: return createPlatform();
-			case ChefserverPackage.RUN_LIST: return createRunList();
 			case ChefserverPackage.SERVER_CONFIG: return createServerConfig();
 			case ChefserverPackage.DATA_BAG_ITEM: return createDataBagItem();
 			case ChefserverPackage.SANDBOX: return createSandbox();
@@ -87,6 +86,7 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 			case ChefserverPackage.SERVER_COOKBOOK_VERSION: return createServerCookbookVersion();
 			case ChefserverPackage.RUN_LIST_ITEM: return createRunListItem();
 			case ChefserverPackage.CLIENT: return createClient();
+			case ChefserverPackage.ORGANIZATION: return createOrganization();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -150,16 +150,6 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
     public Platform createPlatform() {
 		PlatformImpl platform = new PlatformImpl();
 		return platform;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public RunList createRunList() {
-		RunListImpl runList = new RunListImpl();
-		return runList;
 	}
 
     /**
@@ -250,6 +240,16 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 	public Client createClient() {
 		ClientImpl client = new ClientImpl();
 		return client;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Organization createOrganization() {
+		OrganizationImpl organization = new OrganizationImpl();
+		return organization;
 	}
 
 				/**

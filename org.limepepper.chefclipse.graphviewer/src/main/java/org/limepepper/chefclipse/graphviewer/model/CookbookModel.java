@@ -8,8 +8,9 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import chefclipse.core.managers.ChefRepositoryManager;
 import org.limepepper.chefclipse.graphviewer.common.DrawableCookbook;
+
+import chefclipse.core.managers.ChefRepositoryManager;
 
 /**
  * this is a cookbook Model, I wonder a cookbook model is

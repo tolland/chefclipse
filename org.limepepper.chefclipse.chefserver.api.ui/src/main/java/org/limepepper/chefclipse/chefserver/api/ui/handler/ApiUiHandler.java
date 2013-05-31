@@ -12,17 +12,21 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.eclipse.ui.ide.IDE;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
+import org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditorInput;
+import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
+import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import chefclipse.core.managers.ChefRepositoryManagerImpl;
 
 public class ApiUiHandler extends AbstractHandler implements IHandler {
 
@@ -41,10 +45,11 @@ public class ApiUiHandler extends AbstractHandler implements IHandler {
 
 		IWorkbenchWindow window = HandlerUtil
 				.getActiveWorkbenchWindowChecked(event);
-		IStructuredSelection selection = (IStructuredSelection) PlatformUI
+		final IStructuredSelection selection = (IStructuredSelection) PlatformUI
 				.getWorkbench().getActiveWorkbenchWindow()
 				.getSelectionService().getSelection();
-
+		final IWorkbenchPage workbenchPage = HandlerUtil
+				.getActiveWorkbenchWindow(event).getActivePage();
 		final Object item = selection.getFirstElement();
 		final String name = event.getParameter("commandParameter1");
 
@@ -53,11 +58,48 @@ public class ApiUiHandler extends AbstractHandler implements IHandler {
 			protected IStatus run(IProgressMonitor monitor) {
 
 				KnifeConfigController api = KnifeConfigController.INSTANCE;
-				System.err.println("execturing the handler");
+				System.err
+						.println("execturing the chefclipse.chefserver.api.ui.command hanlder");
 
-				if (name.equals("get.cookbooks")) {
+				if (name.equals("runlist.editor")) {
 
 					logger.info("made the call");
+					new Thread(new Runnable() {
+						public void run() {
+							while (true) {
+								try {
+									Thread.sleep(1000);
+								} catch (Exception e) {
+								}
+								Display.getDefault().asyncExec(new Runnable() {
+									public void run() {
+										try {
+											RunListEditorInput input = null;
+											IWorkbenchPage page = PlatformUI
+													.getWorkbench()
+													.getActiveWorkbenchWindow()
+													.getActivePage();
+											if (page == null) {
+
+												System.out
+														.println("page is NULL");
+											}
+											IDE.openEditor(
+													page,
+													new RunListEditorInput((KnifeConfig) item,
+															ChefserverFactory.eINSTANCE
+																	.createNode()),
+													"chefserver.api.ui.editors.RunListEditor",
+													true);
+										} catch (PartInitException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									}
+								});
+							}
+						}
+					}).start();
 
 				} else if (name.equals("connect.chefserver")) {
 

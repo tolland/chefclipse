@@ -9,6 +9,7 @@
     <relativePath>../chefclipse.parent</relativePath>
   </parent>
   <artifactId>chefclipse.ui</artifactId>
+  <name>chefclipse.ui - Chefclipse UI components</name>
   <packaging>eclipse-plugin</packaging>
   <version>0.1.2-SNAPSHOT</version>
 </project>

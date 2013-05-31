@@ -644,70 +644,16 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ATTRIBUTE__NAME = COOKBOOK_FILE__NAME;
+    int ATTRIBUTE__NAME = 0;
 
 				/**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-    int ATTRIBUTE__ID = COOKBOOK_FILE__ID;
-
-				/**
-	 * The feature id for the '<em><b>Checksum</b></em>' attribute.
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ATTRIBUTE__CHECKSUM = COOKBOOK_FILE__CHECKSUM;
-
-				/**
-	 * The feature id for the '<em><b>Url</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__URL = COOKBOOK_FILE__URL;
-
-				/**
-	 * The feature id for the '<em><b>Bytes</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__BYTES = COOKBOOK_FILE__BYTES;
-
-				/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__PATH = COOKBOOK_FILE__PATH;
-
-				/**
-	 * The feature id for the '<em><b>Specificity</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__SPECIFICITY = COOKBOOK_FILE__SPECIFICITY;
-
-				/**
-	 * The feature id for the '<em><b>Cookbook</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ATTRIBUTE__COOKBOOK = COOKBOOK_FILE__COOKBOOK;
+	int ATTRIBUTE__VALUE = 1;
 
 				/**
 	 * The number of structural features of the '<em>Attribute</em>' class.
@@ -716,7 +662,7 @@ public interface CookbookPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-    int ATTRIBUTE_FEATURE_COUNT = COOKBOOK_FILE_FEATURE_COUNT + 0;
+    int ATTRIBUTE_FEATURE_COUNT = 2;
 
 				/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2050,6 +1996,28 @@ public interface CookbookPackage extends EPackage {
     EClass getAttribute();
 
     /**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.Attribute#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.limepepper.chefclipse.common.cookbook.Attribute#getName()
+	 * @see #getAttribute()
+	 * @generated
+	 */
+	EAttribute getAttribute_Name();
+
+				/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.common.cookbook.Attribute#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.limepepper.chefclipse.common.cookbook.Attribute#getValue()
+	 * @see #getAttribute()
+	 * @generated
+	 */
+	EAttribute getAttribute_Value();
+
+				/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.cookbook.Recipe <em>Recipe</em>}'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2552,6 +2520,22 @@ public interface CookbookPackage extends EPackage {
         EClass ATTRIBUTE = eINSTANCE.getAttribute();
 
         /**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATTRIBUTE__NAME = eINSTANCE.getAttribute_Name();
+
+								/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ATTRIBUTE__VALUE = eINSTANCE.getAttribute_Value();
+
+								/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.cookbook.impl.RecipeImpl <em>Recipe</em>}' class.
 		 * <!-- begin-user-doc -->
          * <!-- end-user-doc -->

@@ -6,7 +6,6 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.Client;
-
 import org.limepepper.chefclipse.utility.tests.DescribedObjectTest;
 
 /**

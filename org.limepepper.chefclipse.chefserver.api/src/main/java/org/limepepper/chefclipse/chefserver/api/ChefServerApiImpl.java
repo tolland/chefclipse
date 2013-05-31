@@ -10,6 +10,7 @@ import static org.limepepper.chefclipse.emfjson.chefserver.internal.ChefServerCl
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -38,6 +39,7 @@ import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
+import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
@@ -52,15 +54,12 @@ import org.limepepper.chefclipse.utility.VersionUrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.sun.jersey.api.client.ClientResponse;
-
 /**
  *
  * @author tolland
  */
 public class ChefServerApiImpl implements ChefServerApi {
 
-	private JSONRestWrapper jSONRestWrapper;
 	static Logger logger = LoggerFactory.getLogger(ChefServerApiImpl.class);
 
 	AuthCredentials auth = null;
@@ -79,19 +78,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 
 		options.put("knifeConfig", knifeConfig);
 
-		try {
-			auth = new AuthCredentials(knifeConfig.getNode_name(),
-					knifeConfig.getClient_key());
-			if (auth != null) {
-				jSONRestWrapper = new JSONRestWrapper(auth,
-						knifeConfig.getChef_server_url());
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	URL getUrl() {
@@ -200,12 +186,7 @@ public class ChefServerApiImpl implements ChefServerApi {
 				Role role = getRole(runListItem.substring("role[".length(),
 						runListItem.length() - 1));
 
-				if (eObject.getRun_list() == null) {
-					eObject.setRun_list(ChefserverFactory.eINSTANCE
-							.createRunList());
-				}
-
-				eObject.getRun_list().getRun_list_items().add(role);
+				eObject.getRun_list().add(role);
 
 			} else if (runListItem.startsWith("recipe[")) {
 
@@ -216,12 +197,73 @@ public class ChefServerApiImpl implements ChefServerApi {
 	}
 
 	@Override
-	public String getServerInfo() {
-		Map<String, List<String>> query_params = new HashMap<String, List<String>>();
+	public Server getChefServer() {
 
-		ClientResponse cr = jSONRestWrapper.rest_head("/", query_params);
+		try {
+			getServerInfo();
+		} catch (IOException e) {
 
-		return cr.toString();
+		}
+
+		Server server;
+		KnifeConfig knifeConfig = (KnifeConfig) options.get("knifeConfig");
+
+		if (knifeConfig.getServer() == null) {
+			server = ChefserverFactory.eINSTANCE.createServer();
+		} else {
+			server = knifeConfig.getServer();
+		}
+
+		return null;
+	}
+
+	@Override
+	public String getServerInfo() throws IOException {
+
+		options.put(EMFJs.OPTION_ROOT_ELEMENT,
+				ChefserverPackage.eINSTANCE.getNode());
+
+		ResourceSetImpl resourceSet = new ResourceSetImpl();
+
+		resourceSet.getURIConverter().getURIHandlers()
+				.add(0, new ChefServerURIHandler());
+
+		URI uri = URI
+				.createURI(((Config) options.get("knifeConfig"))
+						.getChef_server_url().toString()
+						+ "/nodes/non_existing_node_but_should_return_404_for_correct_auth");
+
+		Resource resource = resourceSet.createResource(uri);
+
+		try {
+			resource.load(options);
+		} catch (FileNotFoundException e) {
+			// return "OK-Authenticated";
+		} catch (IOException e) {
+			throw e;
+		}
+/*
+		Node eObject = (Node) resource.getContents().get(0);
+
+		assertNotNull(eObject);
+		assertTrue(eObject.getName() != null);
+
+		EList<String> runList = eObject.getRun_list_items();
+		for (String runListItem : runList) {
+			System.out.println("text is :" + runListItem);
+			if (runListItem.startsWith("role[")) {
+				Role role = getRole(runListItem.substring("role[".length(),
+						runListItem.length() - 1));
+
+				eObject.getRun_list().add(role);
+
+			} else if (runListItem.startsWith("recipe[")) {
+
+			}
+		}*/
+
+		return "OK-Authenticated";
+
 	}
 
 	public void connectChefServer() {

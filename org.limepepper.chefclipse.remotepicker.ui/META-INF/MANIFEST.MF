@@ -19,7 +19,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.compare,
  org.limepepper.chefclipse.common,
  org.junit;bundle-version="4.10.0",
- org.slf4j.log4j;bundle-version="1.6.4",
  org.limepepper.chefclipse.logger,
  chefclipse.ui;bundle-version="0.1.1"
 Bundle-ActivationPolicy: lazy

@@ -134,7 +134,7 @@ public class NodeTable extends Composite {
 			super(viewer);
 		}
 
-		@Override
+/*		@Override
 		public boolean performDrop(Object data) {
 			if (data == null)
 				return false;
@@ -163,7 +163,7 @@ public class NodeTable extends Composite {
 			}
 			return false;
 		}
-
+*/
 		@Override
 		public boolean validateDrop(Object target, int operation,
 				TransferData transferType) {
@@ -174,6 +174,12 @@ public class NodeTable extends Composite {
 				return false;
 			}
 			return true;
+		}
+
+		@Override
+		public boolean performDrop(Object data) {
+			// TODO Auto-generated method stub
+			return false;
 		}
 
 	}

@@ -3,7 +3,7 @@
  */
 package org.limepepper.chefclipse.remotepicker.test.api;
 
-import static org.fest.assertions.api.Assertions.*;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 import java.io.File;
 import java.io.IOException;

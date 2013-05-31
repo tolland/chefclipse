@@ -8,9 +8,12 @@ import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
+import org.limepepper.chefclipse.common.cookbook.Recipe;
 import org.limepepper.chefclipse.utility.NamedObject;
 import org.limepepper.chefclipse.utility.UtilityPackage;
 import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
@@ -25,11 +28,12 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getID <em>ID</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getRecipes <em>Recipes</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getRun_list_items <em>Run list items</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getRun_list <em>Run list</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getServer <em>Server</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getClient <em>Client</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getAttributes <em>Attributes</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getRun_list_items <em>Run list items</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.NodeImpl#getRun_list <em>Run list</em>}</li>
  * </ul>
  * </p>
  *
@@ -97,17 +101,8 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 * @generated
 	 */
     @SuppressWarnings("unchecked")
-    public RunList getRun_list() {
-		return (RunList)eGet(ChefserverPackage.Literals.NODE__RUN_LIST, true);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public void setRun_list(RunList newRun_list) {
-		eSet(ChefserverPackage.Literals.NODE__RUN_LIST, newRun_list);
+    public EList<RunList> getRun_list() {
+		return (EList<RunList>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST, true);
 	}
 
     /**
@@ -116,7 +111,7 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 * @generated
 	 */
     public Environment getEnvironment() {
-		return (Environment)eGet(ChefserverPackage.Literals.NODE__ENVIRONMENT, true);
+		return (Environment)eGet(ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, true);
 	}
 
     /**
@@ -125,16 +120,26 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 * @generated
 	 */
     public void setEnvironment(Environment newEnvironment) {
-		eSet(ChefserverPackage.Literals.NODE__ENVIRONMENT, newEnvironment);
+		eSet(ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, newEnvironment);
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	public EList<Recipe> getRecipes() {
+		return (EList<Recipe>)eGet(ChefserverPackage.Literals.RUN_LIST__RECIPES, true);
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
     public Server getServer() {
-		return (Server)eGet(ChefserverPackage.Literals.NODE__SERVER, true);
+		return (Server)eGet(ChefserverPackage.Literals.RUN_LIST__SERVER, true);
 	}
 
     /**
@@ -143,7 +148,7 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 * @generated
 	 */
     public void setServer(Server newServer) {
-		eSet(ChefserverPackage.Literals.NODE__SERVER, newServer);
+		eSet(ChefserverPackage.Literals.RUN_LIST__SERVER, newServer);
 	}
 
     /**
@@ -189,7 +194,7 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 	 */
     @SuppressWarnings("unchecked")
     public EList<String> getRun_list_items() {
-		return (EList<String>)eGet(ChefserverPackage.Literals.NODE__RUN_LIST_ITEMS, true);
+		return (EList<String>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS, true);
 	}
 
     /**
@@ -203,6 +208,16 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 			switch (derivedFeatureID) {
 				case ChefserverPackage.NODE__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
 				case ChefserverPackage.NODE__ID: return UtilityPackage.NAMED_OBJECT__ID;
+				default: return -1;
+			}
+		}
+		if (baseClass == RunList.class) {
+			switch (derivedFeatureID) {
+				case ChefserverPackage.NODE__ENVIRONMENT: return ChefserverPackage.RUN_LIST__ENVIRONMENT;
+				case ChefserverPackage.NODE__RECIPES: return ChefserverPackage.RUN_LIST__RECIPES;
+				case ChefserverPackage.NODE__RUN_LIST_ITEMS: return ChefserverPackage.RUN_LIST__RUN_LIST_ITEMS;
+				case ChefserverPackage.NODE__RUN_LIST: return ChefserverPackage.RUN_LIST__RUN_LIST;
+				case ChefserverPackage.NODE__SERVER: return ChefserverPackage.RUN_LIST__SERVER;
 				default: return -1;
 			}
 		}
@@ -220,6 +235,16 @@ public class NodeImpl extends DescribedObjectImpl implements Node {
 			switch (baseFeatureID) {
 				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.NODE__NAME;
 				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.NODE__ID;
+				default: return -1;
+			}
+		}
+		if (baseClass == RunList.class) {
+			switch (baseFeatureID) {
+				case ChefserverPackage.RUN_LIST__ENVIRONMENT: return ChefserverPackage.NODE__ENVIRONMENT;
+				case ChefserverPackage.RUN_LIST__RECIPES: return ChefserverPackage.NODE__RECIPES;
+				case ChefserverPackage.RUN_LIST__RUN_LIST_ITEMS: return ChefserverPackage.NODE__RUN_LIST_ITEMS;
+				case ChefserverPackage.RUN_LIST__RUN_LIST: return ChefserverPackage.NODE__RUN_LIST;
+				case ChefserverPackage.RUN_LIST__SERVER: return ChefserverPackage.NODE__SERVER;
 				default: return -1;
 			}
 		}
