@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
-import org.limepepper.chefclipse.common.cookbook.*;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
 import org.limepepper.chefclipse.common.cookbook.Attributes;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;

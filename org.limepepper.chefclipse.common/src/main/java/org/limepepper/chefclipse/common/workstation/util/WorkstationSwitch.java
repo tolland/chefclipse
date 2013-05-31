@@ -5,7 +5,6 @@ package org.limepepper.chefclipse.common.workstation.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
-import org.limepepper.chefclipse.common.workstation.*;
 import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
 import org.limepepper.chefclipse.common.workstation.ConfigFolder;
 import org.limepepper.chefclipse.common.workstation.CookbooksFolder;

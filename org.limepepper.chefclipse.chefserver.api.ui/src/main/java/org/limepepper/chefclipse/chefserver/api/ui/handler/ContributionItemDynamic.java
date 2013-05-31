@@ -45,22 +45,19 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 
 	IContributionItem[] fillMenu() {
 
-		// api.getServer(knifeConfig)
-
-		menuItems.put("runlist.editor", "show run list editor");
-		menuItems.put("refresh.chefserver", "update remote model");
-		menuItems.put("connect.chefserver", "connect to this Server");
-		menuItems.put("connect.chefserver.knife",
-				"populate KnifeConfig server node");
 
 		List<IContributionItem> iContItems = new ArrayList<IContributionItem>();
-		for (Entry<String, String> entry : menuItems.entrySet()) {
-			iContItems.add(menuItem(entry));
 
-		}
+		IStructuredSelection selection = (IStructuredSelection) PlatformUI
+				.getWorkbench().getActiveWorkbenchWindow()
+				.getSelectionService().getSelection();
 
 		remoteMenuItems.put("runlist.editor", "show run list editor");
 		remoteMenuItems.put("get.cookbook", "Get cookbook remote");
+
+		//if (selection instanceof KnifeConfig) {
+			remoteMenuItems.put("get.the.server.for.this.knife", "Get server for this config");
+		//}
 
 		// @todo fix this
 		for (Entry<String, String> entry : remoteMenuItems.entrySet()) {
@@ -70,7 +67,6 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 		return iContItems.toArray(new IContributionItem[0]);
 
 	}
-
 
 	IContributionItem menuItem(Entry<String, String> entry) {
 		// @todo monkey hack

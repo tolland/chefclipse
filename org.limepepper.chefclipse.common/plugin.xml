@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated chefclipse -->
-      <package
-            uri="http://limepepper.org/v1/chefclipse/"
-            class="org.limepepper.chefclipse.ChefclipsePackage"/>
-   </extension>
-
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated chefclipse -->
-      <parser
-            type="chefclipse"
-            class="org.limepepper.chefclipse.util.ChefclipseResourceFactoryImpl"/>
-   </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated chefclipse -->
@@ -101,18 +87,5 @@
             class="org.limepepper.chefclipse.common.knife.util.KnifeResourceFactoryImpl"/>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated chefclipse -->
-      <package
-            uri="http://limepepper.org/v1/chefclipse/REST"
-            class="org.limepepper.chefclipse.REST.RESTPackage"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated chefclipse -->
-      <parser
-            type="rest"
-            class="org.limepepper.chefclipse.REST.util.RESTResourceFactoryImpl"/>
-   </extension>
 
 </plugin>

@@ -12,34 +12,6 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.limepepper.chefclipse.presentation.ChefclipseModelWizardID"
-            name="%_UI_ChefclipseModelWizard_label"
-            class="org.limepepper.chefclipse.presentation.ChefclipseModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/ChefclipseModelFile.gif">
-         <description>%_UI_ChefclipseModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
-
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated chefclipse -->
-      <editor
-            id="org.limepepper.chefclipse.presentation.ChefclipseEditorID"
-            name="%_UI_ChefclipseEditor_label"
-            icon="icons/full/obj16/ChefclipseModelFile.gif"
-            extensions="chefclipse"
-            class="org.limepepper.chefclipse.presentation.ChefclipseEditor"
-            contributorClass="org.limepepper.chefclipse.presentation.ChefclipseActionBarContributor">
-      </editor>
-   </extension>
-
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated chefclipse -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
             id="org.limepepper.chefclipse.common.chefserver.presentation.ChefserverModelWizardID"
             name="%_UI_ChefserverModelWizard_label"
             class="org.limepepper.chefclipse.common.chefserver.presentation.ChefserverModelWizard"

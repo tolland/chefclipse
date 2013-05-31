@@ -1,4 +1,4 @@
-package chefclipse.core.behaviours;
+package chefclipse.chefserver.api.behaviour.providers;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -13,6 +13,7 @@ import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
+import chefclipse.core.behaviours.DownloadBehaviour;
 import chefclipse.core.managers.ChefRepositoryManagerImpl;
 
 public class DownloadBehaviourAdapter extends AdapterImpl implements

@@ -20,10 +20,8 @@ import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.RunList;
-import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 
 /**

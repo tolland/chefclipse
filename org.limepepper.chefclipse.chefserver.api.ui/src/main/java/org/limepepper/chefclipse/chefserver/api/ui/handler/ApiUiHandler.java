@@ -19,10 +19,10 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.ide.IDE;
+import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditorInput;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
-import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.slf4j.Logger;
@@ -61,7 +61,28 @@ public class ApiUiHandler extends AbstractHandler implements IHandler {
 				System.err
 						.println("execturing the chefclipse.chefserver.api.ui.command hanlder");
 
-				if (name.equals("runlist.editor")) {
+				if (name.equals("get.the.server.for.this.knife")) {
+
+					logger.info("getting the server for this knife");
+
+					// (KnifeConfig) item,
+					// ChefserverFactory.eINSTANCE .createNode()
+
+					KnifeConfig knifeConfig = (KnifeConfig) item;
+
+					ChefServerApi server = KnifeConfigController.INSTANCE
+							.getServer((KnifeConfig) item);
+
+					try {
+						final String info = server.getServerInfo();
+						// if(knifeConfig.getServer()==null){
+						knifeConfig.setServer(server.getChefServer());
+						// }
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+				} else if (name.equals("runlist.editor")) {
 
 					logger.info("made the call");
 					new Thread(new Runnable() {
@@ -86,7 +107,8 @@ public class ApiUiHandler extends AbstractHandler implements IHandler {
 											}
 											IDE.openEditor(
 													page,
-													new RunListEditorInput((KnifeConfig) item,
+													new RunListEditorInput(
+															(KnifeConfig) item,
 															ChefserverFactory.eINSTANCE
 																	.createNode()),
 													"chefserver.api.ui.editors.RunListEditor",

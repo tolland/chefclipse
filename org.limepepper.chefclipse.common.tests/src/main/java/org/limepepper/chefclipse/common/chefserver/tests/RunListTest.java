@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.common.chefserver.tests;
 
 import junit.framework.TestCase;
-import junit.textui.TestRunner;
 
-import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.RunList;
 
 /**

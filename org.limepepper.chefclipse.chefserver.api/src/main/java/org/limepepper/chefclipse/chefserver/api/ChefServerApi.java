@@ -5,6 +5,10 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
@@ -67,5 +71,12 @@ public interface ChefServerApi {
 	DataBag getDataBag(String name);
 
 	void setDataBag(String name);
+
+	EObject createDataBag(IFolder resource) throws CoreException;
+
+	EObject createDataBagItem(IFile resource);
+
+
+
 
 }

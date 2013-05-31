@@ -14,10 +14,13 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,8 +51,9 @@ public class DeltaProcessingState implements IResourceChangeListener,
 
 			IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
-			IWorkspaceRunnable myRunnable = new IWorkspaceRunnable() {
-				public void run(IProgressMonitor monitor) throws CoreException {
+			Job job = new WorkspaceJob("Creating folders") {
+				public IStatus runInWorkspace(IProgressMonitor monitor)
+						throws CoreException {
 					// do the actual work in here
 					if (fAdded.size() > 0) {
 						logger.debug("processing added");
@@ -70,11 +74,10 @@ public class DeltaProcessingState implements IResourceChangeListener,
 									.remove(iterable_element);
 						}
 					}
-
+					return Status.OK_STATUS;
 				}
 			};
-
-			workspace.run(myRunnable, null, IWorkspace.AVOID_UPDATE, null);
+			job.schedule();
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

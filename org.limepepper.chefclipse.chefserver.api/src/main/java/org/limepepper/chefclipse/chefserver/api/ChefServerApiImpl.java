@@ -23,10 +23,14 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import opscode.chef.REST.AuthCredentials;
-import opscode.chef.REST.JSONRestWrapper;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipselabs.emfjson.EMFJs;
@@ -36,6 +40,7 @@ import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
@@ -46,9 +51,11 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.emfjson.EmfJsonWrapper;
 import org.limepepper.chefclipse.emfjson.chefserver.ChefServerURIHandler;
 import org.limepepper.chefclipse.emfjson.chefserver.internal.ChefRequest;
+import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.utility.Config;
 import org.limepepper.chefclipse.utility.NameUrlMap;
 import org.limepepper.chefclipse.utility.NameVersionMap;
+import org.limepepper.chefclipse.utility.NamedObject;
 import org.limepepper.chefclipse.utility.UtilityPackage;
 import org.limepepper.chefclipse.utility.VersionUrl;
 import org.slf4j.Logger;
@@ -64,6 +71,7 @@ public class ChefServerApiImpl implements ChefServerApi {
 
 	AuthCredentials auth = null;
 	Map<String, Object> options = new HashMap<String, Object>();
+	private static ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 	ChefServerApiImpl(KnifeConfig knifeConfig) {
 
@@ -78,6 +86,9 @@ public class ChefServerApiImpl implements ChefServerApi {
 
 		options.put("knifeConfig", knifeConfig);
 
+		resourceSet.getURIConverter().getURIHandlers()
+				.add(0, new ChefServerURIHandler());
+
 	}
 
 	URL getUrl() {
@@ -88,16 +99,39 @@ public class ChefServerApiImpl implements ChefServerApi {
 		return (KnifeConfig) options.get("knifeConfig");
 	}
 
+	@Override
+	public EObject createDataBag(IFolder resource) throws CoreException {
+		DataBag eObject = ChefserverFactory.eINSTANCE.createDataBag();
+		eObject.setDescription("databag description");
+		eObject.setID(eObject.eClass().getInstanceTypeName().toLowerCase()
+				+ "-" + ((NamedObject) eObject).getName() + "-");
+		// TODO set the server to the data bag.
+		eObject.setName(resource.getName());
+		eObject.setResource(resource);
+		logger.debug("creating data bag:" + resource.getName());
+
+		KnifeConfig chefProjectConfig = ChefConfigManager.instance()
+				.retrieveProjectChefConfig(resource.getProject());
+
+		return eObject;
+	}
+
+	@Override
+	public EObject createDataBagItem(IFile resource) {
+		DataBagItem eObject = ChefserverFactory.eINSTANCE.createDataBagItem();
+		eObject.setID(eObject.eClass().getInstanceTypeName().toLowerCase()
+				+ "-" + ((NamedObject) eObject).getName() + "-");
+		eObject.setName(resource.getName());
+		eObject.setJsonResource(resource);
+
+		return eObject;
+	}
+
 	public ServerCookbookVersion getCookbookVersion(String string,
 			String version) {
 
 		options.put(EMFJs.OPTION_ROOT_ELEMENT,
 				ChefserverPackage.eINSTANCE.getServerCookbookVersion());
-
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
-
-		resourceSet.getURIConverter().getURIHandlers()
-				.add(0, new ChefServerURIHandler());
 
 		KnifeConfig knifeConfig = (KnifeConfig) options.get("knifeConfig");
 		URI uri = URI.createURI((knifeConfig).getChef_server_url().toString()
@@ -157,11 +191,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		options.put(EMFJs.OPTION_ROOT_ELEMENT,
 				ChefserverPackage.eINSTANCE.getNode());
 
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
-
-		resourceSet.getURIConverter().getURIHandlers()
-				.add(0, new ChefServerURIHandler());
-
 		URI uri = URI.createURI(((Config) options.get("knifeConfig"))
 				.getChef_server_url().toString() + "/nodes/" + name);
 
@@ -202,7 +231,8 @@ public class ChefServerApiImpl implements ChefServerApi {
 		try {
 			getServerInfo();
 		} catch (IOException e) {
-
+			e.printStackTrace();
+			return null;
 		}
 
 		Server server;
@@ -214,7 +244,19 @@ public class ChefServerApiImpl implements ChefServerApi {
 			server = knifeConfig.getServer();
 		}
 
-		return null;
+		server.getNodes().removeAll(server.getNodes());
+		server.getNodes().addAll(getNodes());
+
+		server.getRoles().removeAll(server.getRoles());
+		server.getRoles().addAll(getRoles());
+
+		server.getEnvironments().removeAll(server.getEnvironments());
+		server.getEnvironments().addAll(getEnvironments());
+
+		server.getCookbooks().removeAll(server.getCookbooks());
+		server.getCookbooks().addAll(getCookbooks());
+
+		return server;
 	}
 
 	@Override
@@ -223,7 +265,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		options.put(EMFJs.OPTION_ROOT_ELEMENT,
 				ChefserverPackage.eINSTANCE.getNode());
 
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 		resourceSet.getURIConverter().getURIHandlers()
 				.add(0, new ChefServerURIHandler());
@@ -242,25 +283,23 @@ public class ChefServerApiImpl implements ChefServerApi {
 		} catch (IOException e) {
 			throw e;
 		}
-/*
-		Node eObject = (Node) resource.getContents().get(0);
-
-		assertNotNull(eObject);
-		assertTrue(eObject.getName() != null);
-
-		EList<String> runList = eObject.getRun_list_items();
-		for (String runListItem : runList) {
-			System.out.println("text is :" + runListItem);
-			if (runListItem.startsWith("role[")) {
-				Role role = getRole(runListItem.substring("role[".length(),
-						runListItem.length() - 1));
-
-				eObject.getRun_list().add(role);
-
-			} else if (runListItem.startsWith("recipe[")) {
-
-			}
-		}*/
+		/*
+		 * Node eObject = (Node) resource.getContents().get(0);
+		 *
+		 * assertNotNull(eObject); assertTrue(eObject.getName() != null);
+		 *
+		 * EList<String> runList = eObject.getRun_list_items(); for (String
+		 * runListItem : runList) { System.out.println("text is :" +
+		 * runListItem); if (runListItem.startsWith("role[")) { Role role =
+		 * getRole(runListItem.substring("role[".length(), runListItem.length()
+		 * - 1));
+		 *
+		 * eObject.getRun_list().add(role);
+		 *
+		 * } else if (runListItem.startsWith("recipe[")) {
+		 *
+		 * } }
+		 */
 
 		return "OK-Authenticated";
 
@@ -279,7 +318,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		try {
 
 			assertNotNull(uri);
-			ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 			HttpURLConnection connection = getConnection(new ChefRequest(uri,
 					getConfig()), "GET");
@@ -346,7 +384,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		try {
 
 			assertNotNull(uri);
-			ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 			HttpURLConnection connection = getConnection(new ChefRequest(uri,
 					getConfig()), "GET");
@@ -396,7 +433,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		try {
 
 			assertNotNull(uri);
-			ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 			HttpURLConnection connection = getConnection(new ChefRequest(uri,
 					getConfig()), "GET");
@@ -451,7 +487,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		options.put(EMFJs.OPTION_ROOT_ELEMENT,
 				ChefserverPackage.eINSTANCE.getEnvironment());
 
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 		resourceSet.getURIConverter().getURIHandlers()
 				.add(0, new ChefServerURIHandler());
@@ -493,7 +528,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		options.put(EMFJs.OPTION_ROOT_ELEMENT,
 				ChefserverPackage.eINSTANCE.getRole());
 
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 		resourceSet.getURIConverter().getURIHandlers()
 				.add(0, new ChefServerURIHandler());
@@ -524,7 +558,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		try {
 
 			assertNotNull(uri);
-			ResourceSetImpl resourceSet = new ResourceSetImpl();
 
 			HttpURLConnection connection = getConnection(new ChefRequest(uri,
 					getConfig()), "GET");
@@ -604,6 +637,11 @@ public class ChefServerApiImpl implements ChefServerApi {
 		return null;
 	}
 
+	public static void registerAdapter(AdapterFactory factory) {
+		resourceSet.getAdapterFactories().add(factory);
+
+	}
+
 	@Override
 	public List<Client> getClients() {
 		// TODO Auto-generated method stub
@@ -638,6 +676,10 @@ public class ChefServerApiImpl implements ChefServerApi {
 	public void setDataBag(String name) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public static ResourceSetImpl getResourceSet() {
+		return resourceSet;
 	}
 
 }

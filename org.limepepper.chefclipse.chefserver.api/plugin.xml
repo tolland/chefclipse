@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.limepepper.chefclipse.common.cookbook.CookbookFile"
+            class="chefclipse.chefserver.api.behaviour.providers.DownloadBehaviourAdapterFactory">
+         <adapter
+               type="chefclipse.core.behaviours.DownloadBehaviour">
+         </adapter>
+      </factory>
+   </extension>
+
+</plugin>

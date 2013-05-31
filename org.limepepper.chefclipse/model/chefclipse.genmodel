@@ -24,21 +24,14 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/DataBag/resource"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/Role">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/Role/run_list"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/Role/environment"/>
+            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/Role/attributes"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/Node">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/Node/environment"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/Node/server"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/Node/client"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/Node/attributes"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/Node/run_list_items"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/Node/run_list"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/Server">
         <genFeatures notify="false" children="true" createChild="true" propertySortChoices="true"
@@ -62,14 +55,14 @@
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/RunList">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/RunList/node"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/RunList/environment"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/RunList/role"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/RunList/recipes"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/RunList/run_list_items"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EAttribute chefclipse.ecore#//chefserver/RunList/run_list_items"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/RunList/run_list"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference chefclipse.ecore#//chefserver/RunList/server"/>
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/ServerConfig"/>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/DataBagItem">
@@ -99,6 +92,7 @@
       </genClasses>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/RunListItem"/>
       <genClasses ecoreClass="chefclipse.ecore#//chefserver/Client"/>
+      <genClasses ecoreClass="chefclipse.ecore#//chefserver/Organization"/>
     </nestedGenPackages>
     <nestedGenPackages prefix="Chefclient" basePackage="org.limepepper.chefclipse.common"
         resource="XMI" disposableProviderFactory="true" ecorePackage="chefclipse.ecore#//chefclient">
@@ -137,7 +131,10 @@
       </genClasses>
       <genClasses provider="Stateful" ecoreClass="chefclipse.ecore#//cookbook/Definition"/>
       <genClasses ecoreClass="chefclipse.ecore#//cookbook/Library"/>
-      <genClasses ecoreClass="chefclipse.ecore#//cookbook/Attribute"/>
+      <genClasses ecoreClass="chefclipse.ecore#//cookbook/Attribute">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//cookbook/Attribute/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//cookbook/Attribute/value"/>
+      </genClasses>
       <genClasses provider="Stateful" ecoreClass="chefclipse.ecore#//cookbook/Recipe">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//cookbook/Recipe/role"/>
@@ -216,8 +213,8 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//knife/KnifeConfig/cookbook_email"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//knife/KnifeConfig/cookbook_license"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute chefclipse.ecore#//knife/KnifeConfig/path"/>
-        <genFeatures notify="false" children="true" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference chefclipse.ecore#//knife/KnifeConfig/server"/>
+        <genFeatures property="Readonly" notify="false" children="true" createChild="false"
+            propertySortChoices="true" ecoreFeature="ecore:EReference chefclipse.ecore#//knife/KnifeConfig/server"/>
         <genFeatures notify="false" children="true" createChild="true" propertySortChoices="true"
             ecoreFeature="ecore:EReference chefclipse.ecore#//knife/KnifeConfig/serverCookbookVersion"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"

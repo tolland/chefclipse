@@ -3,7 +3,6 @@
 package org.limepepper.chefclipse.common.cookbook.tests;
 
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.Attribute;

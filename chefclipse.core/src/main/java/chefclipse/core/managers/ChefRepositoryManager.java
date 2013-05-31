@@ -7,6 +7,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
@@ -61,10 +62,12 @@ public interface ChefRepositoryManager {
 
 	public EObject getElement(IResource resource);
 
+	public EObject create(IResource resource);
+
 	public EObject createDataBag(IFolder resource) throws CoreException;
 
 	public EObject createDataBagItem(IFile resource);
 
-	public EObject create(IResource resource);
+	public void registerAdapter(AdapterFactory factory);
 
 }

@@ -26,12 +26,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.limepepper.chefclipse.chefserver.api.ChefServerApiImpl;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.utility.Config;
 import org.osgi.service.prefs.BackingStoreException;
+
+import chefclipse.core.ChefCore;
 
 /**
  * Manager that allow to persist and retrieve chef configurations.
@@ -75,13 +76,12 @@ public class ChefConfigManager {
 
 		if (defaultChefConfigsList != null
 				&& !defaultChefConfigsList.equals(CHEF_CONFIGS_LIST)) {
-			KnifePackage.eINSTANCE.eClass();
 
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 			Map<String, Object> m = reg.getExtensionToFactoryMap();
 			m.put("knife", new XMIResourceFactoryImpl()); //$NON-NLS-1$
 
-			ResourceSet resSet = new ResourceSetImpl();
+			ResourceSet resSet = ChefServerApiImpl.getResourceSet();
 
 			Resource resource = resSet.createResource(URI
 					.createFileURI(getConfigListFile() + ".tmp")); //$NON-NLS-1$
@@ -93,10 +93,10 @@ public class ChefConfigManager {
 				configs.addAll((Collection<? extends KnifeConfig>) result);
 				return configs;
 			} catch (IOException e) {
-				Platform.getLog(Activator.getContext().getBundle())
+				Platform.getLog(ChefCore.getContext().getBundle())
 						.log(new Status(
 								IStatus.ERROR,
-								Activator.PLUGIN_ID,
+								ChefCore.PLUGIN_ID,
 								"Failed to retrieve Chef Configuration from configuration preference", e)); //$NON-NLS-1$
 			}
 		}
@@ -104,7 +104,7 @@ public class ChefConfigManager {
 	}
 
 	public IEclipsePreferences getPreferences() {
-		return ConfigurationScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+		return ConfigurationScope.INSTANCE.getNode(ChefCore.PLUGIN_ID);
 	}
 
 	/**
@@ -118,13 +118,12 @@ public class ChefConfigManager {
 		EList<Config> configList = new BasicEList<Config>();
 		configList.addAll(chefConfigs);
 
-		KnifePackage.eINSTANCE.eClass();
 
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
 		m.put("knife", new XMIResourceFactoryImpl()); //$NON-NLS-1$
 
-		ResourceSet resSet = new ResourceSetImpl();
+		ResourceSet resSet = ChefServerApiImpl.getResourceSet();
 
 		Resource resource = resSet.createResource(URI
 				.createFileURI(getConfigListFile()));
@@ -139,16 +138,16 @@ public class ChefConfigManager {
 			preferences.put(CHEF_CONFIGS_LIST, stringWriter.toString());
 			preferences.flush();
 		} catch (BackingStoreException e) {
-			Platform.getLog(Activator.getContext().getBundle())
+			Platform.getLog(ChefCore.getContext().getBundle())
 					.log(new Status(
 							IStatus.ERROR,
-							Activator.PLUGIN_ID,
+							ChefCore.PLUGIN_ID,
 							"Failed to save Chef Configuration to configuration preference", e)); //$NON-NLS-1$
 		} catch (IOException e) {
-			Platform.getLog(Activator.getContext().getBundle())
+			Platform.getLog(ChefCore.getContext().getBundle())
 					.log(new Status(
 							IStatus.ERROR,
-							Activator.PLUGIN_ID,
+							ChefCore.PLUGIN_ID,
 							"Failed to save Chef Configuration to configuration preference", e)); //$NON-NLS-1$
 		}
 	}
@@ -189,10 +188,10 @@ public class ChefConfigManager {
 			saveChefConfig(currentDefaultConfig, preferences);
 		} catch (BackingStoreException e) {
 
-			Platform.getLog(Activator.getContext().getBundle())
+			Platform.getLog(ChefCore.getContext().getBundle())
 					.log(new Status(
 							IStatus.ERROR,
-							Activator.PLUGIN_ID,
+							ChefCore.PLUGIN_ID,
 							"Failed to save default Chef Configuration to configuration preference", e)); //$NON-NLS-1$
 
 		}
@@ -231,15 +230,15 @@ public class ChefConfigManager {
 
 		IScopeContext projectScope = new ProjectScope(iproject);
 		IEclipsePreferences projectNode = projectScope
-				.getNode(Activator.PLUGIN_ID);
+				.getNode(ChefCore.PLUGIN_ID);
 		if (projectNode != null) {
 			try {
 				saveChefConfig(config, projectNode);
 			} catch (BackingStoreException e) {
-				Platform.getLog(Activator.getContext().getBundle())
+				Platform.getLog(ChefCore.getContext().getBundle())
 						.log(new Status(
 								IStatus.ERROR,
-								Activator.PLUGIN_ID,
+								ChefCore.PLUGIN_ID,
 								"Failed to save Chef Configuration to project association preference", e)); //$NON-NLS-1$
 			}
 		}
@@ -257,9 +256,9 @@ public class ChefConfigManager {
 		List<KnifeConfig> configs = retrieveChefConfigurations();
 		KnifeConfig defaultConfig = retrieveDefaultChefConfig();
 
-		IScopeContext projectScope = new ProjectScope((IProject)project);
+		IScopeContext projectScope = new ProjectScope((IProject) project);
 		IEclipsePreferences projectNode = projectScope
-				.getNode(Activator.PLUGIN_ID);
+				.getNode(ChefCore.PLUGIN_ID);
 		String selectedUrl = "";
 		String selectedName = "";
 		if (defaultConfig != null) {

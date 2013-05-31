@@ -9,8 +9,8 @@ import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
-import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
+import org.limepepper.chefclipse.common.chefserver.Server;
 import org.limepepper.chefclipse.common.cookbook.Recipe;
 
 /**
