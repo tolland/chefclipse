@@ -8,28 +8,21 @@ import static org.fest.assertions.api.Assertions.*;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.resource.IFragmentProvider;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.IFragmentProvider.Fallback;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
-import org.fest.assertions.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.limepepper.chefclipse.json.JsonInjectorProvider;
-import org.limepepper.chefclipse.json.JsonUiInjectorProvider;
-import org.limepepper.chefclipse.json.QualifiedNameFragmentProvider;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.Pair;
 
 import com.google.inject.Inject;
-import com.google.inject.Injector;
 import com.google.inject.Provider;
-import com.google.inject.Provides;
-import com.google.inject.name.Named;
 
 /**
  * @author Guillermo Zunino
@@ -66,7 +59,7 @@ public class FragmentProviderTest {
 		assertThat(fragment).isNotNull();
 		
 		resSet = new XtextResourceSet();
-		res = resSet.createResource(URI.createFileURI("testFragments.json"));
+		res = resSet.createResource(URI.createFileURI("resources/testFragments.json"));
 		assertThat(res).isNotNull();
 		res.load(null);
 		root = (Model) res.getContents().get(0);
