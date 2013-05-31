@@ -2,7 +2,9 @@ package org.limepepper.chefclipse.chefserver.api;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
@@ -56,6 +58,13 @@ public class KnifeConfigControllerImpl implements KnifeConfigController {
 
 		return (ChefServerApi) instances.get(knifeConfig);
 
+	}
+
+	@Override
+	public List<KnifeConfig> getKnifeConfigs() {
+		// List<String> list = new ArrayList<String>(listOfTopicAuthors);
+
+		return new ArrayList<KnifeConfig>(instances.keySet());
 	}
 
 }

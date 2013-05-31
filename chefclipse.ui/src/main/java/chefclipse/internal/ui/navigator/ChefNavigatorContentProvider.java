@@ -9,6 +9,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
@@ -30,6 +31,7 @@ import chefclipse.core.providers.ChefProjectAdapterFactory;
  */
 public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider {
 
+	KnifeConfigController api = KnifeConfigController.INSTANCE;
 
 	private static Logger log = LoggerFactory.getLogger(ChefNavigatorContentProvider.class);
 	public ChefNavigatorContentProvider() {
