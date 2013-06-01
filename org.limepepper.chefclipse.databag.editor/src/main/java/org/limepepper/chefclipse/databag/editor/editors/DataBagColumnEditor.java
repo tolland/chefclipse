@@ -16,23 +16,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
-import org.eclipse.core.resources.IResourceDelta;
-import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -106,7 +100,6 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
-import org.limepepper.chefclipse.databag.editor.Activator;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.editing.FieldEditingSupport;
 import org.limepepper.chefclipse.json.json.Model;
@@ -187,7 +180,7 @@ public class DataBagColumnEditor extends EditorPart implements
                     public void run() {
                         if (viewer != null && !viewer.getTree().isDisposed()) {
                             setViewerInput();
-                            // viewer.refresh();
+//                            viewer.refresh();
                         }
                     }
                 });
@@ -211,55 +204,6 @@ public class DataBagColumnEditor extends EditorPart implements
         this.selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
         ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
         initializeEditingDomain();
-    }
-
-    private void initializeActionListeners() {
-        ResourceSet resourceSet = editingDomain.getResourceSet();
-        for (Resource resource : resourceSet.getResources()) {
-            resource.eAdapters().add(new AdapterImpl() {
-                @Override
-                public void notifyChanged(Notification msg) {
-                    // if (msg.getFeature().equals(
-                    // BowlingPackage.eINSTANCE.getTournament_Matchups())) {
-                    // updateNumberOfMatchups();
-                    // }
-                    super.notifyChanged(msg);
-                }
-            });
-            resource.eAdapters().add(new AdapterImpl() {
-                @Override
-                public void notifyChanged(Notification msg) {
-                    // if (msg.getFeature().equals(
-                    // BowlingPackage.eINSTANCE.getTournament_Matchups())) {
-                    // updateNumberOfMatchups();
-                    // }
-                    super.notifyChanged(msg);
-                }
-            });
-        }
-        resourceSet.eAdapters().add(new AdapterImpl() {
-            @Override
-            public void notifyChanged(Notification msg) {
-                // if (msg.getFeature().equals(
-                // BowlingPackage.eINSTANCE.getTournament_Matchups())) {
-                // updateNumberOfMatchups();
-                // }
-                super.notifyChanged(msg);
-            }
-        });
-        resourceSet.eAdapters().add(new AdapterImpl() {
-            @Override
-            public void notifyChanged(Notification msg) {
-                // if (msg.getFeature().equals(
-                // BowlingPackage.eINSTANCE.getTournament_Matchups())) {
-                // updateNumberOfMatchups();
-                // }
-                super.notifyChanged(msg);
-            }
-        });
-        // Collection<EObject> eObjects =
-        // DataBagEditorUtils.INSTANCE.getEObjectsOfKey(entryElement,
-        // domain.getResourceSet().getResources());
     }
 
     /**
@@ -300,22 +244,7 @@ public class DataBagColumnEditor extends EditorPart implements
                                                 .getSource()).getMostRecentCommand();
                                         if (mostRecentCommand != null) {
 //                                            setSelectionToViewer(mostRecentCommand
-//                                                    .getAffectedObjects());
                                         }
-                                        // for (Iterator<PropertySheetPage> i =
-                                        // propertySheetPages.iterator();
-                                        // i.hasNext(); ) {
-                                        // PropertySheetPage propertySheetPage =
-                                        // i.next();
-                                        // if
-                                        // (propertySheetPage.getControl().isDisposed())
-                                        // {
-                                        // i.remove();
-                                        // }
-                                        // else {
-                                        // propertySheetPage.refresh();
-                                        // }
-                                        // }
                                     }
                                 });
                     }
@@ -337,8 +266,7 @@ public class DataBagColumnEditor extends EditorPart implements
         final Collection<?> theSelection = collection;
         // Make sure it's okay.
         //
-        if (theSelection != null && !theSelection.isEmpty())
-        {
+        if (theSelection != null && !theSelection.isEmpty()) {
             Runnable runnable =
                     new Runnable()
                     {
@@ -429,18 +357,8 @@ public class DataBagColumnEditor extends EditorPart implements
             MessageDialog.open(MessageDialog.ERROR, getSite().getShell(),
                     "Error while trying to load JSON file", e.getMessage(), SWT.NONE);
         }
-//        initializeActionListeners();
-//        generateDataBagItems();
     }
-//
-//    private void generateDataBagItems() {
-//        items = new ArrayList<DataBagItem>();
-//        if (dataBagEObject instanceof DataBag) {
-//            items = ((DataBag) dataBagEObject).getItems();
-//        } else {
-//            items.add((DataBagItem) dataBagEObject);
-//        }
-//    }
+
 
     /*
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -498,7 +416,7 @@ public class DataBagColumnEditor extends EditorPart implements
         editorSelection = selection;
         for (ISelectionChangedListener listener : selectionChangedListeners) {
             if (listener instanceof RemoveDataBagItemAction) {
-                URI selectedDataBagItem = getSelectedDataBagItem();
+                URI selectedDataBagItem = getURIOfSelectedDBItem();
                 if (selectedDataBagItem != null) {
                     ((RemoveDataBagItemAction) listener).setEnabled(true);
                     ((RemoveDataBagItemAction) listener)
@@ -605,18 +523,7 @@ public class DataBagColumnEditor extends EditorPart implements
         manager.update(true);
     }
 
-    public URI getSelectedDataBagItem() {
-//        if (focusCellManager != null) {
-//            ViewerCell focusCell = focusCellManager.getFocusCell();
-//            if (viewer != null && !viewer.getTree().isDisposed() && focusCell != null) {
-//                int columnIndex = focusCell.getColumnIndex();
-//                if (columnIndex > 0 && columnIndex <= items.size()) {
-//                    return items.get(columnIndex - 1);
-//                }
-//            }
-//
-//        }
-//        return null;
+    public URI getURIOfSelectedDBItem() {
         if (focusCellManager != null) {
             ViewerCell focusCell = focusCellManager.getFocusCell();
             if (viewer != null && !viewer.getTree().isDisposed() && focusCell != null) {
@@ -811,36 +718,40 @@ public class DataBagColumnEditor extends EditorPart implements
             // GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(editorGroup);
             // GridDataFactory.fillDefaults().align(SWT.FILL,
             // SWT.FILL).grab(true, true).applyTo(editorGroup);
-            viewer = doCreateViewer(parent);
-            viewer.setContentProvider(new AdapterFactoryContentProvider(
-                    new JsonItemProviderAdapterFactory()));
-            // viewer.setLabelProvider(new DataBagValueLabelProvider(nodesMap));
-            // viewer.setLabelProvider(new AdapterFactoryLabelProvider(new
-            // JsonItemProviderAdapterFactory()));
-
-            setViewerInput();
-
-            changeAdapter.setTarget(editingDomain.getResourceSet());
-
-            new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
-
-            createContextMenuFor(viewer);
-
-            GridLayoutFactory.swtDefaults().equalWidth(false).applyTo(viewer.getTree());
-            GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true)
-                    .applyTo(viewer.getTree());
+            createViewer(parent);
         }
     }
 
+    private void createViewer(Composite parent) {
+        viewer = doCreateViewer(parent);
+        viewer.setContentProvider(new AdapterFactoryContentProvider(
+                adapterFactory));
+        // viewer.setLabelProvider(new DataBagValueLabelProvider(nodesMap));
+        // viewer.setLabelProvider(new AdapterFactoryLabelProvider(new
+        // JsonItemProviderAdapterFactory()));
+
+        setViewerInput();
+
+        changeAdapter.setTarget(editingDomain.getResourceSet());
+
+        new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
+
+        createContextMenuFor(viewer);
+
+        GridLayoutFactory.swtDefaults().equalWidth(false).applyTo(viewer.getTree());
+        GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true)
+                .applyTo(viewer.getTree());
+    }
+
     public void setViewerInput() {
-        if (getResourceSet().getResources().size() > 0) {
+//        if (getResourceSet().getResources().size() > 0) {
             Model model = DataBagEditorManager.INSTANCE.createSchemaModel(editingDomain
                     .getResourceSet());
             viewer.setInput(model);
             viewer.expandAll();
-        } else {
-            viewer.setInput(null);
-        }
+//        } else {
+//            viewer.setInput(null);
+//        }
     }
 
     private TreeViewer doCreateViewer(Composite parent) {
@@ -945,37 +856,18 @@ public class DataBagColumnEditor extends EditorPart implements
         filterControl.setSize(fieldColumn.getColumn().getWidth(), filterControl.getSize().y);
 
         TreeColumnLayout treeLayout = new TreeColumnLayout();
-        // GridLayoutFactory.swtDefaults().margins(0, 0).spacing(0,
-        // 0).applyTo(treeViewer.getTree());
         treeViewer.getTree().setLayout(treeLayout);
-        // GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).indent(0,
-        // 0).grab(true, true).applyTo(treeViewer.getTree());
-
         treeLayout.setColumnData(fieldColumn.getColumn(), new
                 ColumnWeightData(500, 150));
 
         if (dataBagEObject instanceof DataBag) {
             int columnWeight = 450;
             for (Resource res : editingDomain.getResourceSet().getResources()) {
-
-                // for (String columnName : nodesMap.keySet()) {
                 createColumn(treeViewer, treeLayout, --columnWeight, res);
             }
-//            createColumns(treeViewer, /* nodesMap, */treeLayout);
         } else { // it's a databagitem
-//            TreeViewerColumn valueColumn = new TreeViewerColumn(treeViewer, SWT.LEFT);
-//            valueColumn.getColumn().setAlignment(SWT.LEFT);
-//            valueColumn.getColumn().setText("Value");
-//            valueColumn.getColumn().setWidth(150);
-            // valueColumn.setEditingSupport(new ValueEditingSupport(viewer,
-            // textCellEditor));
-//            treeLayout.setColumnData(valueColumn.getColumn(),
-//                    new ColumnWeightData(30, 150));
             Resource resource = getResourceSet()
                     .getResources().get(0);
-//            valueColumn.setLabelProvider(new DataBagLabelProvider(resource));
-//            columnsToUris.put(1, resource.getURI());
-//            urisToColumns.put(resource.getURI(), 1);
             createColumn(treeViewer, treeLayout, 30, resource);
         }
         treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -985,22 +877,6 @@ public class DataBagColumnEditor extends EditorPart implements
             }
         });
         return treeViewer;
-    }
-
-    private void createColumns(TreeViewer treeViewer,/*
-                                                      * Map<String, JsonNode>
-                                                      * nodesMap,
-                                                      */
-            TreeColumnLayout columnLayout) {
-        // final TextCellEditor textCellEditor = new
-        // TextCellEditor(treeViewer.getTree());
-        int columnWeight = 20;
-
-        for (Resource res : editingDomain.getResourceSet().getResources()) {
-
-            // for (String columnName : nodesMap.keySet()) {
-            createColumn(treeViewer, columnLayout, --columnWeight, res);
-        }
     }
 
     private int createColumn(TreeViewer treeViewer, TreeColumnLayout columnLayout,
@@ -1024,129 +900,63 @@ public class DataBagColumnEditor extends EditorPart implements
         return columnWeight;
     }
 
-    class ResourceDeltaVisitor implements IResourceDeltaVisitor {
-        protected ResourceSet resourceSet = editingDomain.getResourceSet();
-        protected Collection<Resource> changedResources = new ArrayList<Resource>();
-        protected Collection<Resource> removedResources = new ArrayList<Resource>();
-        protected Collection<Resource> addedResources = new ArrayList<Resource>();
-
-        public boolean visit(IResourceDelta delta) {
-            if (delta.getResource().getType() == IResource.FILE) {
-                if (delta.getKind() == IResourceDelta.REMOVED ||
-                        delta.getKind() == IResourceDelta.CHANGED
-                        && delta.getFlags() != IResourceDelta.MARKERS) {
-                    Resource resource = resourceSet.getResource(URI
-                            .createPlatformResourceURI(delta.getFullPath()
-                                    .toString(), true), false);
-                    if (resource != null) {
-                        if (delta.getKind() == IResourceDelta.REMOVED) {
-                            removedResources.add(resource);
-                        } else if (delta.getKind() == IResourceDelta.ADDED){
-                            addedResources.add(resource);
-                        }
-                        else if (!savedResources.remove(resource)) {
-                            changedResources.add(resource);
-                        }
-                    }
-                }
-            }
-            return true;
-        }
-
-        public Collection<Resource> getChangedResources() {
-            return changedResources;
-        }
-
-        public Collection<Resource> getRemovedResources() {
-            return removedResources;
-        }
-        
-        public Collection<Resource> getAddedResources() {
-            return addedResources;
-        }
-    }
-
     @Override
     public void resourceChanged(IResourceChangeEvent event) {
-        System.out.println("dsada");
-        IResourceDelta delta = event.getDelta();
-        try {
-            final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
-            delta.accept(visitor);
-
-            if (!visitor.getRemovedResources().isEmpty()) {
-                getSite().getShell().getDisplay().asyncExec
-                        (new Runnable() {
-                            public void run() {
-//                                removedResources.addAll(visitor.getRemovedResources());
-                                for (Resource resource : visitor.getRemovedResources()) {
-                                    Integer columnNumber = urisToColumns.get(resource.getURI().toString());
-                                    urisToColumns.remove(resource.getURI());
-                                    columnsToUris.remove(columnNumber);
-                                    viewer.getTree().getColumn(columnNumber).dispose();
-                                    viewer.getTree().setRedraw(true);
-//                                    TreeColumn[] columns = viewer.getTree().getColumns();
-//                                    for (TreeColumn treeColumn : columns) {
-//                                        String columnText = treeColumn.getText();
-//                                        if (columnText.equals("Data bag item: " + resource.getURI().trimFileExtension().lastSegment())) {
-//                                            treeColumn.dispose();
-//                                        }
-//                                    }
-                                    getResourceSet().getResources().remove(resource);
-                                    setViewerInput();
-                                }
-                                
-//                                if (!isDirty()) {
-//                                    getSite().getPage().closeEditor(DataBagColumnEditor.this,
-//                                            false);
+//        final IResourceDelta delta = event.getDelta();
+//        try {
+//            final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor(getResourceSet());
+//            delta.accept(visitor);
+//
+//            if (!visitor.getRemovedResources().isEmpty()) {
+//                getSite().getShell().getDisplay().asyncExec
+//                        (new Runnable() {
+//                            public void run() {
+////                                removedResources.addAll(visitor.getRemovedResources());
+//                                for (Resource resource : visitor.getRemovedResources()) {
+//                                    Integer column = urisToColumns.get(resource.getURI().toString());
+//                                    urisToColumns.remove(resource.getURI().toString());
+//                                    viewer.getTree().getColumn(column).dispose();
+//                                    columnsToUris.remove(column);
+//                                    viewer.getTree().setRedraw(true);
+//                                    viewer.expandAll();
+//
 //                                }
-                                
-                            }
-                        });
-            }
-            if (!visitor.getAddedResources().isEmpty()) {
-                getSite().getShell().getDisplay().asyncExec
-                        (new Runnable() {
-                            public void run() {
-                                for (Resource resource : visitor.getAddedResources()) {
-                                    getResourceSet().createResource(resource.getURI(), "databag");
-
-                                    TreeColumnLayout treeLayout = new TreeColumnLayout();
-                                    viewer.getTree().setLayout(treeLayout);
-                                    createColumn(viewer, treeLayout, 50, resource);
-                                    
-                                    GridLayoutFactory.swtDefaults().equalWidth(false).applyTo(viewer.getTree());
-                                    
-                                    setViewerInput();
-                                    viewer.getTree().layout();
-                                    viewer.getTree().setRedraw(true);
-                                }
-//                                changedResources.addAll(visitor.getChangedResources());
+//                            }
+//                        });
+//            }
+//            if (!visitor.getAddedResources().isEmpty()) {
+//                getSite().getShell().getDisplay().asyncExec
+//                        (new Runnable() {
+//                            public void run() {
+//                                for (Resource resource : visitor.getAddedResources()) {
+//                                    TreeColumnLayout treeLayout = new TreeColumnLayout();
+//                                    createColumn(viewer, treeLayout, 0, resource);
+//                                    setViewerInput();
+//                                    viewer.getTree().setRedraw(true);
+//                                    viewer.expandAll();
+//                                }
+//                            }
+//                        });
+//            }
+//            
+//            if (!visitor.getChangedResources().isEmpty()) {
+//                getSite().getShell().getDisplay().asyncExec
+//                        (new Runnable() {
+//                            public void run() {
+////                                changedResources.addAll(visitor.getChangedResources());
 //                                if (getSite().getPage().getActiveEditor() == DataBagColumnEditor.this) {
-//                                     handleActivate();
+//                                    // handleActivate();
 //                                }
-                            }
-                        });
-            }
-            
-            if (!visitor.getChangedResources().isEmpty()) {
-                getSite().getShell().getDisplay().asyncExec
-                        (new Runnable() {
-                            public void run() {
-//                                changedResources.addAll(visitor.getChangedResources());
-                                if (getSite().getPage().getActiveEditor() == DataBagColumnEditor.this) {
-                                    // handleActivate();
-                                }
-                            }
-                        });
-            }
-        } catch (CoreException exception) {
-            Activator
-                    .getDefault()
-                    .getLog()
-                    .log(new Status(Status.ERROR, Activator.PLUGIN_ID,
-                            Status.ERROR, exception.getMessage(), exception));
-        }
+//                            }
+//                        });
+//            }
+//        } catch (CoreException exception) {
+//            Activator
+//                    .getDefault()
+//                    .getLog()
+//                    .log(new Status(Status.ERROR, Activator.PLUGIN_ID,
+//                            Status.ERROR, exception.getMessage(), exception));
+//        }
     }
 
     private void setFilterControl(Composite filterControl) {
@@ -1316,5 +1126,22 @@ public class DataBagColumnEditor extends EditorPart implements
         } else {
             return super.getAdapter(key);
         }
+    }
+
+    public void addDBItemColumn(Resource resource) {
+        TreeColumnLayout treeLayout = new TreeColumnLayout();
+        createColumn(viewer, treeLayout, 0, resource);
+        setViewerInput();
+        viewer.getTree().setRedraw(true);
+        viewer.expandAll();
+    }
+
+    public void removeDBItemColumn(Resource resource) {
+        Integer column = urisToColumns.get(resource.getURI().toString());
+        urisToColumns.remove(resource.getURI().toString());
+        viewer.getTree().getColumn(column).dispose();
+        columnsToUris.remove(column);
+        viewer.getTree().setRedraw(true);
+        viewer.expandAll();
     }
 }

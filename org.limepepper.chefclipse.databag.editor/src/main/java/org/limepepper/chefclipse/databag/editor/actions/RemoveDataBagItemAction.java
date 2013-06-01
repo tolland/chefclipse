@@ -7,8 +7,8 @@ package org.limepepper.chefclipse.databag.editor.actions;
 import java.util.Collection;
 
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -20,6 +20,7 @@ import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.databag.editor.Activator;
 import org.limepepper.chefclipse.databag.editor.commands.RemoveDataBagItemCommand;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagColumnEditor;
+import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
 import org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor;
 import org.limepepper.chefclipse.databag.editor.utils.DataBagEditorUtils;
 
@@ -53,31 +54,21 @@ public class RemoveDataBagItemAction extends CommandActionHandler {
 
     @Override
     public boolean isEnabled() {
-        URI resoureUri = ((DataBagColumnEditor) editor).getSelectedDataBagItem();
+        URI resoureUri = ((DataBagColumnEditor) editor).getURIOfSelectedDBItem();
         return (resoureUri != null);
     }
 
     @Override
     public Command createCommand(Collection<?> selection) {
-        URI dbItemUri = ((DataBagColumnEditor) editor).getSelectedDataBagItem();
-        if (dbItemUri.isPlatformResource()) {
-            String platformString = dbItemUri.toPlatformString(true);
-            IResource dbItemResource = ResourcesPlugin.getWorkspace().getRoot()
-                    .findMember(platformString);
+        URI dbItemUri = ((DataBagColumnEditor) editor).getURIOfSelectedDBItem();
+        DataBagEditorManager.INSTANCE.getResourceFromUri(dbItemUri);
+        IResource dbItemResource = DataBagEditorManager.INSTANCE.getResourceFromUri(dbItemUri);
+        if (dbItemResource != null) {
             RemoveDataBagItemCommand removeDataBagItemCommand = new RemoveDataBagItemCommand(
                     domain, dbItemResource);
             return removeDataBagItemCommand;
         }
-        return null;
-        // if (selectedDataBagItem == null) {
-        // return super.createCommand(selection);
-        // }
-
-        // URI itemURI =
-        // URI.createPlatformResourceURI(selectedDataBagItem.getJsonResource()
-        // .getFullPath().toOSString(), false);
-        // Resource dataBagItemResource = getResourceFromURI(itemURI);
-
+        return UnexecutableCommand.INSTANCE;
     }
 
     public void setActiveWorkbenchPart(IWorkbenchPart workbenchPart) {
