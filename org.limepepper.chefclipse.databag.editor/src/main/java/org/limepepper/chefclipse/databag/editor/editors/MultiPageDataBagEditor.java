@@ -239,7 +239,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	private void initActionRegistry() {
 	    AddNewDataBagItemAction addNewDataBagItemAction = new AddNewDataBagItemAction(null);
         actionRegistry.put(addNewDataBagItemAction.getId(), addNewDataBagItemAction);
-        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null);
+        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null, this);
         actionRegistry.put(removeDataBagItemAction.getId(), removeDataBagItemAction);
         AddJsonPropertyAction addJsonPropertyAction = new AddJsonPropertyAction(null);
         actionRegistry.put(addJsonPropertyAction.getId(), addJsonPropertyAction);

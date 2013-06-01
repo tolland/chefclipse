@@ -119,7 +119,7 @@ public class DataBagActionContributor extends
 
         removeDataBagItemAction = (RemoveDataBagItemAction) editor.getActionRegistry().get(
                 RemoveDataBagItemAction.ID);
-//        removeDataBagItemAction.setEnabled(false);
+        removeDataBagItemAction.setEnabled(false);
         removeJsonPropertyAction = (RemoveJsonPropertyAction) editor.getActionRegistry().get(
                 RemoveJsonPropertyAction.ID);
         addNewDataBagItemAction = (AddNewDataBagItemAction) editor.getActionRegistry().get(
@@ -246,9 +246,9 @@ public class DataBagActionContributor extends
             IStructuredSelection structuredSelection =
                     selection instanceof IStructuredSelection ? (IStructuredSelection) selection
                             : StructuredSelection.EMPTY;
-//            if (removeDataBagItemAction.isEnabled()) {
+            if (removeDataBagItemAction.isEnabled()) {
                 removeDataBagItemAction.updateSelection(structuredSelection);
-//            }
+            }
             addNewDataBagItemAction.updateSelection(structuredSelection);
             removeJsonPropertyAction.updateSelection(structuredSelection);
             addJsonPropertyAction.updateSelection(structuredSelection);
