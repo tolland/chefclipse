@@ -143,6 +143,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 				}
             });
             columnEditor.getEditingDomain().getResourceSet().getResources().add(res);
+//            columnEditor.getEditingDomain().getResourceSet().getResource(res.getURI(), true);
             setPageText(index, dataBagItem.getName());
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_ITEM_PAGE).createImage());
         } catch (PartInitException e) {
@@ -240,17 +241,17 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		if (!(editorInput instanceof DataBagEditorInput)) {
 			throw new PartInitException("Invalid Input: Must be DataBagEditorInput");
 		}
-		initActionRegistry();
 		dataBagEObject = ((DataBagEditorInput) editorInput).geteObject();
-		dataBagActionContributor = new DataBagActionContributor(this);
 		super.init(site, editorInput);
+		initActionRegistry();
+        dataBagActionContributor = new DataBagActionContributor(this);
 		setPartName(editorInput.getName());
 	}
 
 	private void initActionRegistry() {
-	    AddNewDataBagItemAction addNewDataBagItemAction = new AddNewDataBagItemAction(null);
+	    AddNewDataBagItemAction addNewDataBagItemAction = new AddNewDataBagItemAction(null, ((DataBagEditorInput)getEditorInput()).getParentFolder());
         actionRegistry.put(addNewDataBagItemAction.getId(), addNewDataBagItemAction);
-        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null, this);
+        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null);
         actionRegistry.put(removeDataBagItemAction.getId(), removeDataBagItemAction);
         AddJsonPropertyAction addJsonPropertyAction = new AddJsonPropertyAction(null);
         actionRegistry.put(addJsonPropertyAction.getId(), addJsonPropertyAction);
@@ -348,9 +349,13 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
                             public void run() {
                                 for (Resource resource : visitor.getRemovedResources()) {
                                     removePage(getXTextEditorIndex(resource));
-                                    resourceSet.getResources().remove(resource);
-                                    resource.unload();
-                                    columnEditor.removeDBItemColumn(resource);
+//                                    resourceSet.getResources().remove(resource);
+                                    try {
+                                        resource.delete(new HashMap<Object, Object>());
+                                        columnEditor.removeDBItemColumn(resource);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                         });
