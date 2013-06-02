@@ -71,13 +71,11 @@ public class OpenDataBagEditorAction extends Action {
     public void run() {
         if (eObject != null) {
             try {
-                Map<String, JsonNode> nodesMap = DataBagEditorManager.INSTANCE.retrieveNodes(eObject);
-                DataBagEditorInput input = new DataBagEditorInput(eObject, nodesMap);
+//                Map<String, JsonNode> nodesMap = DataBagEditorManager.INSTANCE.retrieveNodes(eObject);
+                DataBagEditorInput input = new DataBagEditorInput(eObject);
                 page.openEditor(input, MultiPageDataBagEditor.ID);
 //                page.openEditor(input, "org.limepepper.chefclipse.databag.mpe.editor.DatabagMPE");
             } catch (PartInitException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
                 // TODO log the exception and present some error dialog: some file
                 // could not be parsed.
                 MessageDialog.open(MessageDialog.ERROR, page.getActivePart().getSite().getShell(), "Error while trying to read JSON file", e.getMessage(), SWT.NONE);

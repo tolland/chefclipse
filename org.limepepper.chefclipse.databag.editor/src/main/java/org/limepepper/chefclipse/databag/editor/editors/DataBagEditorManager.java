@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.json.json.JsonFactory;
 import org.limepepper.chefclipse.json.json.JsonObjectValue;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.Value;
@@ -279,8 +280,9 @@ public enum DataBagEditorManager {
 		
 		trimValues(schemaRes);
 		
-		if (schemaRes.getContents().isEmpty())
-			throw new RuntimeException("Couldn't create schema model");
+		if (schemaRes.getContents().isEmpty()) {
+			schemaRes.getContents().add(JsonFactory.eINSTANCE.createModel());
+		}
 		
 		return (Model) schemaRes.getContents().get(0);
 	}

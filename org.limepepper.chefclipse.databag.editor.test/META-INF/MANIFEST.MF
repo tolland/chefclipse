@@ -3,7 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: DataBag editor Test
 Bundle-SymbolicName: org.limepepper.chefclipse.databag.editor.test
 Bundle-Version: 0.1.0.qualifier
-Bundle-Activator: org.limepepper.chefclipse.databag.editor.test.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.limepepper.chefclipse.databag.editor;bundle-version="0.1.0",
@@ -15,8 +14,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.xtext,
  org.limepepper.chefclipse.json,
  org.limepepper.chefclipse.common,
- org.limepepper.chefclipse.json.tests;bundle-version="1.0.0",
- org.limepepper.chefclipse.testing;bundle-version="1.0.0"
+ org.limepepper.chefclipse.json.tests,
+ org.limepepper.chefclipse.testing,
+ org.eclipse.ui.ide;bundle-version="3.8.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .

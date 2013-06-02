@@ -32,6 +32,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.WizardNewProjectReferencePage;
+import org.eclipse.xtext.builder.nature.ToggleXtextNatureAction;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.ui.builder.ChefProjectNature;
@@ -43,6 +44,7 @@ import org.limepepper.chefclipse.databag.editor.Activator;
  * 
  * @author Sebastian Sampaoli
  */
+@SuppressWarnings("restriction")
 public class BasicNewDataBagWizard extends Wizard implements INewWizard {
 
     private static final String PROJECT_SELECTION_MESSAGE_DIALOG = "Choose the Chef projects to which you want to create an empty Data Bag.";
@@ -150,14 +152,15 @@ public class BasicNewDataBagWizard extends Wizard implements INewWizard {
                     nature = iProject
                             .getNature(ChefProjectNature.NATURE_ID);
                     if (nature != null) {
+						final ToggleXtextNatureAction xtextNature = new ToggleXtextNatureAction();
 
                         final IWorkspaceRunnable createDataBagOperation =
                                 new IWorkspaceRunnable() {
                                     public void run(IProgressMonitor monitor) throws CoreException {
+                                    	xtextNature.toggleNature(iProject);
                                         createNewDataBag(iProject);
                                         iProject.refreshLocal(IResource.DEPTH_INFINITE,
-                                                 new
-                                                 NullProgressMonitor());
+                                                 new NullProgressMonitor());
                                     }
                                 };
                         workspace.run(createDataBagOperation, null);

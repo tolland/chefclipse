@@ -4,8 +4,6 @@
 package org.limepepper.chefclipse.json.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.resource.IFragmentProvider;
-import org.limepepper.chefclipse.json.QualifiedNameFragmentProvider;
 
 /**
  * Use this class to register components to be used within the IDE.

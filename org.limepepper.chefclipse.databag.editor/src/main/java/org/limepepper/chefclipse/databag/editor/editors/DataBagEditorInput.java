@@ -23,16 +23,14 @@ public class DataBagEditorInput implements IEditorInput {
 
     private EObject eObject;
     private String name;
-    private Map<String, JsonNode> nodesMap;
 
-    public DataBagEditorInput(EObject eObject, Map<String, JsonNode> nodesMap) {
+    public DataBagEditorInput(EObject eObject/*, Map<String, JsonNode> nodesMap*/) {
         this.seteObject(eObject);
         if (eObject instanceof DataBag) {
             name = ((DataBag) eObject).getName();
         } else if (eObject instanceof DataBagItem) {
             name =  ((DataBagItem) eObject).getName();
         }
-        this.nodesMap = nodesMap;
     }
     /* (non-Javadoc)
      * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
@@ -111,11 +109,5 @@ public class DataBagEditorInput implements IEditorInput {
     
     public void seteObject(EObject eObject) {
         this.eObject = eObject;
-    }
-    public Map<String, JsonNode> getNodesMap() {
-        return nodesMap;
-    }
-    public void setNodesMap(Map<String, JsonNode> nodesMap) {
-        this.nodesMap = nodesMap;
     }
 }
