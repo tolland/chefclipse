@@ -1,17 +1,28 @@
 package org.limepepper.chefclipse.databag.editor.editors;
 
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
@@ -29,10 +40,10 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.databag.editor.Activator;
 import org.limepepper.chefclipse.databag.editor.actions.AddJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.actions.AddNewDataBagItemAction;
@@ -239,7 +250,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	private void initActionRegistry() {
 	    AddNewDataBagItemAction addNewDataBagItemAction = new AddNewDataBagItemAction(null);
         actionRegistry.put(addNewDataBagItemAction.getId(), addNewDataBagItemAction);
-        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null);
+        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null, this);
         actionRegistry.put(removeDataBagItemAction.getId(), removeDataBagItemAction);
         AddJsonPropertyAction addJsonPropertyAction = new AddJsonPropertyAction(null);
         actionRegistry.put(addJsonPropertyAction.getId(), addJsonPropertyAction);
@@ -248,21 +259,122 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
     }
 	
 	public IXtextDocument getXtextDocument(Resource resource) {
-		for (int i = 0 ; i < getPageCount(); i++) {
-			IEditorPart editor = getEditor(i);
-			if (isXtextEditor(editor)) {
-				XtextEditor x = (XtextEditor) editor;
-				if (resource.getURI().lastSegment().equals(((FileEditorInput)x.getEditorInput()).getName()))
-					return x.getDocument();
-			}
-		}
-		return null;
+	    int editorIndex = getXTextEditorIndex(resource);
+	    if (editorIndex != -1) {
+	        XtextEditor editor = (XtextEditor) getEditor(editorIndex);
+	        return editor.getDocument();
+	    }
+	    return null;
 	}
+	
+	public int getXTextEditorIndex(Resource resource) {
+	    for (int i = 0 ; i < getPageCount(); i++) {
+            IEditorPart editor = getEditor(i);
+            if (isXtextEditor(editor)) {
+                XtextEditor x = (XtextEditor) editor;
+                if (resource.getURI().lastSegment().equals(((FileEditorInput)x.getEditorInput()).getName()))
+                    return i;
+            }
+        }
+        return -1;
+	}
+	
+	static class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+        protected ResourceSet resourceSet;
+        protected Collection<Resource> changedResources = new ArrayList<Resource>();
+        protected Collection<Resource> removedResources = new ArrayList<Resource>();
+        protected Collection<Resource> addedResources = new ArrayList<Resource>();
+        protected Collection<Resource> savedResources = new ArrayList<Resource>();
+        
+        public ResourceDeltaVisitor(ResourceSet resourceSet) {
+            this.resourceSet = resourceSet;
+        }
+        
+        public boolean visit(IResourceDelta delta) {
+            if (delta.getResource().getType() == IResource.FILE && delta.getFlags() != IResourceDelta.MARKERS) {
+                if (delta.getKind() == IResourceDelta.REMOVED ||
+                        delta.getKind() == IResourceDelta.CHANGED) {
+                    Resource resource = resourceSet.getResource(URI
+                            .createPlatformResourceURI(delta.getFullPath()
+                                    .toString(), true), false);
+                    if (resource != null) {
+                        if (delta.getKind() == IResourceDelta.REMOVED) {
+                            removedResources.add(resource);
+                        } else if (!savedResources.remove(resource)) {
+                            changedResources.add(resource);
+                        }
+                    }
+                } else if (delta.getKind() == IResourceDelta.ADDED) {
+                    ResourceSet resSet = new ResourceSetImpl();
+                    Resource resource = resSet.createResource(URI
+                            .createPlatformResourceURI(delta.getFullPath()
+                                    .toString(), true), "databag");
+                    addedResources.add(resource);
+                }
+            }
+            return true;
+        }
+
+        public Collection<Resource> getChangedResources() {
+            return changedResources;
+        }
+
+        public Collection<Resource> getRemovedResources() {
+            return removedResources;
+        }
+        
+        public Collection<Resource> getAddedResources() {
+            return addedResources;
+        }
+        
+        public Collection<Resource> getSavedResources() {
+            return savedResources;
+        }
+    }
 
 	/**
 	 * Closes all project files on project close.
 	 */
 	public void resourceChanged(final IResourceChangeEvent event){
+	    final IResourceDelta delta = event.getDelta();
+        try {
+            final ResourceSet resourceSet = columnEditor.getEditingDomain().getResourceSet();
+            final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor(resourceSet);
+            delta.accept(visitor);
+
+            if (!visitor.getRemovedResources().isEmpty()) {
+                getSite().getShell().getDisplay().asyncExec
+                        (new Runnable() {
+                            public void run() {
+                                for (Resource resource : visitor.getRemovedResources()) {
+                                    removePage(getXTextEditorIndex(resource));
+                                    resourceSet.getResources().remove(resource);
+                                    resource.unload();
+                                    columnEditor.removeDBItemColumn(resource);
+                                }
+                            }
+                        });
+            }
+            if (!visitor.getAddedResources().isEmpty()) {
+                getSite().getShell().getDisplay().asyncExec
+                        (new Runnable() {
+                            public void run() {
+                                for (Resource resource : visitor.getAddedResources()) {
+                                    IFile dbFile = (IFile) DataBagEditorManager.INSTANCE.getResourceFromUri(resource.getURI());
+                                    DataBagItem dataBagItem = (DataBagItem) ChefRepositoryManager.INSTANCE.createDataBagItem(dbFile);
+                                    createJsonEditorForDataBagItem(dataBagItem);
+                                    columnEditor.addDBItemColumn(resource);
+                                }
+                            }
+                        });
+            }
+        } catch (CoreException exception) {
+            Activator
+                    .getDefault()
+                    .getLog()
+                    .log(new Status(Status.ERROR, Activator.PLUGIN_ID,
+                            Status.ERROR, exception.getMessage(), exception));
+        }
 //		if(event.getType() == IResourceChangeEvent.PRE_CLOSE){
 //			Display.getDefault().asyncExec(new Runnable(){
 //				public void run(){
