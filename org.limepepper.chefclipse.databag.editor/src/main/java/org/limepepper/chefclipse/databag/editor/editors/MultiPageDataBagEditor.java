@@ -1,7 +1,6 @@
 package org.limepepper.chefclipse.databag.editor.editors;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -240,17 +239,17 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		if (!(editorInput instanceof DataBagEditorInput)) {
 			throw new PartInitException("Invalid Input: Must be DataBagEditorInput");
 		}
-		initActionRegistry();
 		dataBagEObject = ((DataBagEditorInput) editorInput).geteObject();
-		dataBagActionContributor = new DataBagActionContributor(this);
 		super.init(site, editorInput);
+		initActionRegistry();
+        dataBagActionContributor = new DataBagActionContributor(this);
 		setPartName(editorInput.getName());
 	}
 
 	private void initActionRegistry() {
-	    AddNewDataBagItemAction addNewDataBagItemAction = new AddNewDataBagItemAction(null);
+	    AddNewDataBagItemAction addNewDataBagItemAction = new AddNewDataBagItemAction(null, ((DataBagEditorInput)getEditorInput()).getParentFolder());
         actionRegistry.put(addNewDataBagItemAction.getId(), addNewDataBagItemAction);
-        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null, this);
+        RemoveDataBagItemAction removeDataBagItemAction = new RemoveDataBagItemAction(null);
         actionRegistry.put(removeDataBagItemAction.getId(), removeDataBagItemAction);
         AddJsonPropertyAction addJsonPropertyAction = new AddJsonPropertyAction(null);
         actionRegistry.put(addJsonPropertyAction.getId(), addJsonPropertyAction);

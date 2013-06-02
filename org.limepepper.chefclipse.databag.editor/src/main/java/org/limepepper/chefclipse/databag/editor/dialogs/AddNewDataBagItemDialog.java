@@ -4,6 +4,9 @@
 
 package org.limepepper.chefclipse.databag.editor.dialogs;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.layout.GridDataFactory;
@@ -27,11 +30,14 @@ public class AddNewDataBagItemDialog extends TitleAreaDialog {
     private Text text;
     private boolean editMode;
     private String dataBagitemName;
+    private Pattern pattern;
 
     public AddNewDataBagItemDialog(Shell parentShell, String oldValue, boolean edit) {
         super(parentShell);
         setDataBagitemName(oldValue);
         editMode = edit;
+        String filePattern = "[_a-zA-Z0-9\\-\\.]+";
+        pattern = Pattern.compile(filePattern);
     }
 
     protected void configureShell(Shell shell) {
@@ -39,7 +45,6 @@ public class AddNewDataBagItemDialog extends TitleAreaDialog {
     }
 
     protected Control createDialogArea(Composite parent) {
-
         parent = (Composite) super.createDialogArea(parent);
 
         if (editMode) {
@@ -71,7 +76,8 @@ public class AddNewDataBagItemDialog extends TitleAreaDialog {
 
             @Override
             public void modifyText(ModifyEvent arg0) {
-                if (text.getText().isEmpty()) {
+                Matcher matcher = pattern.matcher(text.getText());
+                if (!matcher.matches()) {
                     getButton(IDialogConstants.OK_ID).setEnabled(false);
                 } else {
                     setDataBagitemName(text.getText());
