@@ -214,6 +214,9 @@ public enum DataBagEditorManager {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode node = null;
         try {
+            if (jsonFile.length() == 0) {
+                return mapper.createObjectNode();
+            }
             node = mapper.readValue(jsonFile, JsonNode.class);
         } catch (IOException e) {
             throw new IOException("The " + jsonFile.getName()

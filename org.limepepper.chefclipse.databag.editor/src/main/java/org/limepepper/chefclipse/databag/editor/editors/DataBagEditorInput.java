@@ -6,6 +6,7 @@ package org.limepepper.chefclipse.databag.editor.editors;
 import java.util.Map;
 
 import org.codehaus.jackson.JsonNode;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
@@ -24,13 +25,18 @@ public class DataBagEditorInput implements IEditorInput {
     private EObject eObject;
     private String name;
     private Map<String, JsonNode> nodesMap;
+    private IFolder parentFolder;
 
     public DataBagEditorInput(EObject eObject, Map<String, JsonNode> nodesMap) {
         this.seteObject(eObject);
         if (eObject instanceof DataBag) {
-            name = ((DataBag) eObject).getName();
+            DataBag dataBag = (DataBag) eObject;
+            name = dataBag.getName();
+            setParentFolder((IFolder) dataBag.getResource());
         } else if (eObject instanceof DataBagItem) {
-            name =  ((DataBagItem) eObject).getName();
+            DataBagItem dataBagItem = (DataBagItem) eObject;
+            name =  dataBagItem.getName();
+            setParentFolder((IFolder) dataBagItem.getJsonResource().getParent());
         }
         this.nodesMap = nodesMap;
     }
@@ -117,5 +123,11 @@ public class DataBagEditorInput implements IEditorInput {
     }
     public void setNodesMap(Map<String, JsonNode> nodesMap) {
         this.nodesMap = nodesMap;
+    }
+    public IFolder getParentFolder() {
+        return parentFolder;
+    }
+    public void setParentFolder(IFolder parentFolder) {
+        this.parentFolder = parentFolder;
     }
 }

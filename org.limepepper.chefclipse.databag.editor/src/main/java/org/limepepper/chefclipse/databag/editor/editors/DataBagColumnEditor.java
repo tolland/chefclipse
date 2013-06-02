@@ -18,7 +18,6 @@ import java.util.Map;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -202,7 +201,6 @@ public class DataBagColumnEditor extends EditorPart implements
         // this.nodesMap = nodesMap;
         this.actionContributor = dataBagActionContributor;
         this.selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
-        ResourcesPlugin.getWorkspace().addResourceChangeListener(this);
         initializeEditingDomain();
     }
 
