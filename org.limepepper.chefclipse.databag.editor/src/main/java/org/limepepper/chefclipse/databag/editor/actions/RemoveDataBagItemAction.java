@@ -21,7 +21,6 @@ import org.limepepper.chefclipse.databag.editor.Activator;
 import org.limepepper.chefclipse.databag.editor.commands.RemoveDataBagItemCommand;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagColumnEditor;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
-import org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor;
 import org.limepepper.chefclipse.databag.editor.utils.DataBagEditorUtils;
 
 /**
@@ -36,8 +35,7 @@ public class RemoveDataBagItemAction extends CommandActionHandler {
     public static final String ID = REMOVE_JSON_PROPERTY_ACTION;
     private IWorkbenchPart editor;
 
-    public RemoveDataBagItemAction(EditingDomain editingDomain,
-            MultiPageDataBagEditor multiPageDataBagEditor) {
+    public RemoveDataBagItemAction(EditingDomain editingDomain) {
         super(editingDomain, REMOVE_JSON_PROPERTY_ACTION);
         setId(ID);
         setToolTipText(REMOVE_JSON_PROPERTY_TOOLTIP);
