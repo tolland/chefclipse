@@ -1,6 +1,7 @@
 package org.limepepper.chefclipse.databag.editor.editors;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -142,6 +143,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 				}
             });
             columnEditor.getEditingDomain().getResourceSet().getResources().add(res);
+//            columnEditor.getEditingDomain().getResourceSet().getResource(res.getURI(), true);
             setPageText(index, dataBagItem.getName());
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_ITEM_PAGE).createImage());
         } catch (PartInitException e) {
@@ -347,9 +349,13 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
                             public void run() {
                                 for (Resource resource : visitor.getRemovedResources()) {
                                     removePage(getXTextEditorIndex(resource));
-                                    resourceSet.getResources().remove(resource);
-                                    resource.unload();
-                                    columnEditor.removeDBItemColumn(resource);
+//                                    resourceSet.getResources().remove(resource);
+                                    try {
+                                        resource.delete(new HashMap<Object, Object>());
+                                        columnEditor.removeDBItemColumn(resource);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                         });

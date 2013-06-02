@@ -10,10 +10,8 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EventObject;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
@@ -190,8 +188,8 @@ public class DataBagColumnEditor extends EditorPart implements
     private List<ISelectionChangedListener> selectionChangedListeners;
     private TreeViewerFocusCellManager focusCellManager;
 //    private List<DataBagItem> items;
-    private Map<Integer, URI> columnsToUris = new HashMap<Integer, URI>();
-    private Map<String, Integer> urisToColumns = new HashMap<String, Integer>();
+    private List<URI> columnsToUris = new ArrayList<URI>();
+//    private Map<String, Integer> urisToColumns = new HashMap<String, Integer>();
 
     /**
      * @param resourceFactory
@@ -477,7 +475,7 @@ public class DataBagColumnEditor extends EditorPart implements
     @Override
     public void dispose() {
         columnsToUris.clear();
-        urisToColumns.clear();
+//        urisToColumns.clear();
         // updateProblemIndication = false;
 
         // ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
@@ -527,7 +525,7 @@ public class DataBagColumnEditor extends EditorPart implements
             if (viewer != null && !viewer.getTree().isDisposed() && focusCell != null) {
                 int columnIndex = focusCell.getColumnIndex();
                 if (columnIndex > 0 && columnIndex <= columnsToUris.size()) {
-                    return columnsToUris.get(columnIndex);
+                    return columnsToUris.get(columnIndex - 1);
                 }
             }
 
@@ -891,10 +889,10 @@ public class DataBagColumnEditor extends EditorPart implements
         columnLayout.setColumnData(valueColumn.getColumn(), new
                 ColumnWeightData(
                         columnWeight, 150));
-        int columnSize = columnsToUris.values().size() + 1;
-        columnsToUris.put(columnSize, res.getURI());
-        int uriSize = urisToColumns.values().size() + 1;
-        urisToColumns.put(res.getURI().toString(), uriSize);
+//        int columnSize = columnsToUris.values().size() + 1;
+        columnsToUris.add(res.getURI());
+//        int uriSize = urisToColumns.values().size() + 1;
+//        urisToColumns.put(res.getURI().toString(), uriSize);
         return columnWeight;
     }
 
@@ -1135,8 +1133,10 @@ public class DataBagColumnEditor extends EditorPart implements
     }
 
     public void removeDBItemColumn(Resource resource) {
-        Integer column = urisToColumns.get(resource.getURI().toString());
-        urisToColumns.remove(resource.getURI().toString());
+//        Integer column = urisToColumns.get(resource.getURI().toString());
+//        urisToColumns.remove(resource.getURI().toString());
+        int column = columnsToUris.indexOf(resource.getURI()) + 1;
+//        columnsToUris.remove(resource.getURI().toString());
         viewer.getTree().getColumn(column).dispose();
         columnsToUris.remove(column);
         viewer.getTree().setRedraw(true);
