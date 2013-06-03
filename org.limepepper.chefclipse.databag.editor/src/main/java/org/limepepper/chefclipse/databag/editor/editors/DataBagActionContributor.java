@@ -4,16 +4,33 @@
 
 package org.limepepper.chefclipse.databag.editor.editors;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.IContributionManager;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPropertyListener;
@@ -32,12 +49,17 @@ public class DataBagActionContributor extends
         MultiPageEditorActionBarContributor
         implements
         IMenuListener,
-        IPropertyListener {
+        IPropertyListener, ISelectionChangedListener {
 
-    /**
-     * This keeps track of the current editor part.
-     */
-    protected IEditorPart activeEditor;
+    protected IEditorPart activeEditorPart;
+
+    protected ISelectionProvider selectionProvider;
+
+    protected Collection<IAction> createChildActions;
+
+    protected Map<String, Collection<IAction>> createChildSubmenuActions;
+
+    protected IMenuManager createChildMenuManager;
 
     /**
      * This is the action used to remove an existing JSON property.
@@ -163,21 +185,43 @@ public class DataBagActionContributor extends
     }
 
     public IEditorPart getActiveEditor() {
-        return activeEditor;
+        return activeEditorPart;
     }
 
     @Override
     public void setActiveEditor(IEditorPart part) {
         super.setActiveEditor(part);
-
-        if (part != activeEditor) {
-            if (activeEditor != null) {
+        if (part != activeEditorPart) {
+            if (activeEditorPart != null) {
                 deactivate();
             }
 
             if (part instanceof IEditingDomainProvider) {
-                activeEditor = part;
+                activeEditorPart = part;
                 activate();
+            }
+        }
+        // Switch to the new selection provider.
+        //
+        if (selectionProvider != null)
+        {
+            selectionProvider.removeSelectionChangedListener(this);
+        }
+        if (part == null)
+        {
+            selectionProvider = null;
+        }
+        else
+        {
+            selectionProvider = part.getSite().getSelectionProvider();
+            selectionProvider.addSelectionChangedListener(this);
+
+            // Fake a selection changed event to update the menus.
+            //
+            if (selectionProvider.getSelection() != null)
+            {
+                selectionChanged(new SelectionChangedEvent(selectionProvider,
+                        selectionProvider.getSelection()));
             }
         }
     }
@@ -188,7 +232,7 @@ public class DataBagActionContributor extends
     }
 
     public void deactivate() {
-        activeEditor.removePropertyListener(this);
+        activeEditorPart.removePropertyListener(this);
 
         removeDataBagItemAction.setActiveWorkbenchPart(null);
         addNewDataBagItemAction.setActiveWorkbenchPart(null);
@@ -198,9 +242,9 @@ public class DataBagActionContributor extends
         redoAction.setActiveWorkbenchPart(null);
 
         ISelectionProvider selectionProvider =
-                activeEditor instanceof ISelectionProvider ?
-                        (ISelectionProvider) activeEditor :
-                        activeEditor.getEditorSite().getSelectionProvider();
+                activeEditorPart instanceof ISelectionProvider ?
+                        (ISelectionProvider) activeEditorPart :
+                            activeEditorPart.getEditorSite().getSelectionProvider();
 
         if (selectionProvider != null) {
             selectionProvider.removeSelectionChangedListener(removeJsonPropertyAction);
@@ -211,19 +255,19 @@ public class DataBagActionContributor extends
     }
 
     public void activate() {
-        activeEditor.addPropertyListener(this);
+        activeEditorPart.addPropertyListener(this);
 
-        removeDataBagItemAction.setActiveWorkbenchPart(activeEditor);
-        addNewDataBagItemAction.setActiveWorkbenchPart(activeEditor);
-        removeJsonPropertyAction.setActiveWorkbenchPart(activeEditor);
-        addJsonPropertyAction.setActiveWorkbenchPart(activeEditor);
-        undoAction.setActiveWorkbenchPart(activeEditor);
-        redoAction.setActiveWorkbenchPart(activeEditor);
+        removeDataBagItemAction.setActiveWorkbenchPart(activeEditorPart);
+        addNewDataBagItemAction.setActiveWorkbenchPart(activeEditorPart);
+        removeJsonPropertyAction.setActiveWorkbenchPart(activeEditorPart);
+        addJsonPropertyAction.setActiveWorkbenchPart(activeEditorPart);
+        undoAction.setActiveWorkbenchPart(activeEditorPart);
+        redoAction.setActiveWorkbenchPart(activeEditorPart);
 
         ISelectionProvider selectionProvider =
-                activeEditor instanceof ISelectionProvider ?
-                        (ISelectionProvider) activeEditor :
-                        activeEditor.getEditorSite().getSelectionProvider();
+                activeEditorPart instanceof ISelectionProvider ?
+                        (ISelectionProvider) activeEditorPart :
+                            activeEditorPart.getEditorSite().getSelectionProvider();
 
         if (selectionProvider != null) {
             selectionProvider.addSelectionChangedListener(removeDataBagItemAction);
@@ -237,10 +281,10 @@ public class DataBagActionContributor extends
 
     public void update() {
         ISelectionProvider selectionProvider =
-                activeEditor instanceof ISelectionProvider ?
-                        (ISelectionProvider) activeEditor :
-                        activeEditor.getEditorSite().getSelectionProvider();
-                       
+                activeEditorPart instanceof ISelectionProvider ?
+                        (ISelectionProvider) activeEditorPart :
+                            activeEditorPart.getEditorSite().getSelectionProvider();
+
         if (selectionProvider != null) {
             ISelection selection = selectionProvider.getSelection();
             IStructuredSelection structuredSelection =
@@ -257,6 +301,178 @@ public class DataBagActionContributor extends
         redoAction.update();
     }
 
+    @Override
+    public void selectionChanged(SelectionChangedEvent event) {
+        // Remove any menu items for old selection.
+        //
+        if (createChildMenuManager != null) {
+            depopulateManager(createChildMenuManager, createChildSubmenuActions);
+            depopulateManager(createChildMenuManager, createChildActions);
+        }
+
+        // Query the new selection for appropriate new child descriptors
+        //
+        Collection<?> newChildDescriptors = null;
+
+        ISelection selection = event.getSelection();
+        if (selection instanceof IStructuredSelection
+                && ((IStructuredSelection) selection).size() == 1) {
+            Object object = ((IStructuredSelection) selection).getFirstElement();
+
+            EditingDomain domain = ((IEditingDomainProvider) activeEditorPart).getEditingDomain();
+
+            newChildDescriptors = domain.getNewChildDescriptors(object, null);
+        }
+
+        // Generate actions for selection; populate and redraw the menus.
+        //
+        createChildActions = generateCreateChildActions(newChildDescriptors, selection);
+        createChildSubmenuActions = extractSubmenuActions(createChildActions);
+
+        if (createChildMenuManager != null) {
+            populateManager(createChildMenuManager, createChildSubmenuActions, null);
+            populateManager(createChildMenuManager, createChildActions, null);
+            createChildMenuManager.update(true);
+        }
+    }
+
+    protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors,
+            ISelection selection) {
+        Collection<IAction> actions = new ArrayList<IAction>();
+        if (descriptors != null) {
+            for (Object descriptor : descriptors) {
+                actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
+            }
+        }
+        return actions;
+    }
+
+    protected Map<String, Collection<IAction>> extractSubmenuActions(
+            Collection<IAction> createActions) {
+        Map<String, Collection<IAction>> createSubmenuActions = new LinkedHashMap<String, Collection<IAction>>();
+        if (createActions != null) {
+            for (Iterator<IAction> actions = createActions.iterator(); actions.hasNext();) {
+                IAction action = actions.next();
+                StringTokenizer st = new StringTokenizer(action.getText(), "|");
+                if (st.countTokens() == 2) {
+                    String text = st.nextToken().trim();
+                    Collection<IAction> submenuActions = createSubmenuActions.get(text);
+                    if (submenuActions == null) {
+                        createSubmenuActions.put(text, submenuActions = new ArrayList<IAction>());
+                    }
+                    action.setText(st.nextToken().trim());
+                    submenuActions.add(action);
+                    actions.remove();
+                }
+            }
+        }
+        return createSubmenuActions;
+    }
+
+    protected void populateManager(IContributionManager manager,
+            Map<String, Collection<IAction>> submenuActions, String contributionID) {
+        if (submenuActions != null) {
+            for (Map.Entry<String, Collection<IAction>> entry : submenuActions.entrySet()) {
+                MenuManager submenuManager = new MenuManager(entry.getKey());
+                if (contributionID != null) {
+                    manager.insertBefore(contributionID, submenuManager);
+                }
+                else {
+                    manager.add(submenuManager);
+                }
+                populateManager(submenuManager, entry.getValue(), null);
+            }
+        }
+    }
+
+    protected void populateManager(IContributionManager manager,
+            Collection<? extends IAction> actions, String contributionID) {
+        if (actions != null) {
+            for (IAction action : actions) {
+                if (contributionID != null) {
+                    manager.insertBefore(contributionID, action);
+                }
+                else {
+                    manager.add(action);
+                }
+            }
+        }
+    }
+
+    protected void depopulateManager(IContributionManager manager,
+            Collection<? extends IAction> actions) {
+        if (actions != null) {
+            IContributionItem[] items = manager.getItems();
+            for (int i = 0; i < items.length; i++) {
+                // Look into SubContributionItems
+                //
+                IContributionItem contributionItem = items[i];
+                while (contributionItem instanceof SubContributionItem) {
+                    contributionItem = ((SubContributionItem) contributionItem).getInnerItem();
+                }
+
+                // Delete the ActionContributionItems with matching action.
+                //
+                if (contributionItem instanceof ActionContributionItem) {
+                    IAction action = ((ActionContributionItem) contributionItem).getAction();
+                    if (actions.contains(action)) {
+                        manager.remove(contributionItem);
+                    }
+                }
+            }
+        }
+    }
+
+    protected void depopulateManager(IContributionManager manager,
+            Map<String, Collection<IAction>> submenuActions) {
+        if (submenuActions != null) {
+            IContributionItem[] items = manager.getItems();
+            for (int i = 0; i < items.length; i++) {
+                IContributionItem contributionItem = items[i];
+                if (contributionItem instanceof MenuManager) {
+                    MenuManager submenuManager = (MenuManager) contributionItem;
+                    if (submenuActions.containsKey(submenuManager.getMenuText())) {
+                        depopulateManager(submenuManager, submenuActions.get(contributionItem));
+                        manager.remove(contributionItem);
+                    }
+                }
+            }
+        }
+    }
+    
+    @Override
+    public void contributeToMenu(IMenuManager menuManager)
+    {
+        super.contributeToMenu(menuManager);
+
+        IMenuManager submenuManager = new MenuManager(
+                "Data Bag editor menu",
+                "org.limepepper.chefclipse.json.jsonMenuID");
+        menuManager.insertAfter("additions", submenuManager);
+        submenuManager.add(new Separator("settings"));
+        submenuManager.add(new Separator("actions"));
+        submenuManager.add(new Separator("additions"));
+        submenuManager.add(new Separator("additions-end"));
+
+        // Prepare for CreateChild item addition or removal.
+        //
+        createChildMenuManager = new MenuManager(
+                "new chilllddd");
+        submenuManager.insertBefore("additions", createChildMenuManager);
+        // Force an update because Eclipse hides empty menus now.
+        //
+        submenuManager.addMenuListener
+                (new IMenuListener()
+                {
+                    public void menuAboutToShow(IMenuManager menuManager)
+                    {
+                        menuManager.updateAll(true);
+                    }
+                });
+
+//        addGlobalActions(submenuManager);
+    }
+    
     /**
      * This implements {@link org.eclipse.jface.action.IMenuListener} to help
      * fill the context menus with contributions from the Edit menu.
@@ -264,11 +480,19 @@ public class DataBagActionContributor extends
     public void menuAboutToShow(IMenuManager menuManager) {
         // Add our standard marker.
         //
-        if ((style & ADDITIONS_LAST_STYLE) == 0)
-        {
-            menuManager.add(new Separator("additions"));
+//        if ((style & ADDITIONS_LAST_STYLE) == 0) {
+//            menuManager.add(new Separator("additions"));
+//        }
+//        menuManager.add(new Separator("edit"));
+        if ((style & ADDITIONS_LAST_STYLE) == 0) {
+          menuManager.add(new Separator("additions"));
         }
         menuManager.add(new Separator("edit"));
+        MenuManager submenuManager = new MenuManager(
+                "dsadada menu");
+        populateManager(submenuManager, createChildSubmenuActions, null);
+        populateManager(submenuManager, createChildActions, null);
+        menuManager.insertBefore("edit", submenuManager);
 
         // Add the edit menu actions.
         //
