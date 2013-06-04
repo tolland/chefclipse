@@ -101,7 +101,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 //        	columnEditor = new DataBagColumnEditor();
         	int index = 0;
             addPage(index, columnEditor, getEditorInput());
-            setPageText(index, "Column DataBag Editor");
+            setPageText(index, "Column Editor");
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.COLUMN_PAGE).createImage());
         } catch (PartInitException e) {
             ErrorDialog.openError(
@@ -138,7 +138,12 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
             int index = addPage(xtext, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
             XtextResource res = addXtextResource(xtext);
 //            columnEditor.getEditingDomain().getResourceSet().getResource(res.getURI(), true);
-            setPageText(index, dataBagItem.getName());
+            String dbItemName = dataBagItem.getName();
+            int lastDot = dbItemName.lastIndexOf(".");
+            if (lastDot != -1) {
+                dbItemName = dbItemName.substring(0, lastDot);
+            }
+            setPageText(index, dbItemName);
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_ITEM_PAGE).createImage());
             return res;
         } catch (PartInitException e) {
@@ -181,7 +186,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		text.setEditable(false);
 
 		int index = addPage(composite);
-		setPageText(index, "Row DataBag Editor");
+		setPageText(index, "Row Editor");
 		setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.ROW_PAGE).createImage());
 	}
 

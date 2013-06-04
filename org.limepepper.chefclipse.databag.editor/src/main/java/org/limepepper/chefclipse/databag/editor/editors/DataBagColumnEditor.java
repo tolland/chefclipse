@@ -37,7 +37,6 @@ import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
-import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
@@ -452,7 +451,7 @@ public class DataBagColumnEditor extends EditorPart implements
      * @generated
      */
     public void menuAboutToShow(IMenuManager menuManager) {
-        ((IMenuListener) getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
+        actionContributor.menuAboutToShow(menuManager);
     }
 
     /**
@@ -460,8 +459,8 @@ public class DataBagColumnEditor extends EditorPart implements
      * 
      * @generated
      */
-    public EditingDomainActionBarContributor getActionBarContributor() {
-        return (EditingDomainActionBarContributor) getEditorSite().getActionBarContributor();
+    public DataBagActionContributor getActionBarContributor() {
+        return actionContributor;
     }
 
     /**
@@ -470,8 +469,7 @@ public class DataBagColumnEditor extends EditorPart implements
      * @generated
      */
     public IActionBars getActionBars() {
-        // return getActionBarContributor().getActionBars();
-        return null;
+        return getActionBarContributor().getActionBars();
     }
 
     /**
