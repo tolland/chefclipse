@@ -22,7 +22,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.gef;bundle-version="3.9.0",
  org.limepepper.chefclipse.json.ui;bundle-version="0.1.0",
  org.limepepper.chefclipse.json.edit,
- org.eclipse.xtext.builder
+ org.eclipse.xtext.builder,
+ org.limepepper.chefclipse.model;bundle-version="0.1.0",
+ org.eclipse.ui.navigator.resources;bundle-version="3.4.400"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.limepepper.chefclipse.databag.editor,
