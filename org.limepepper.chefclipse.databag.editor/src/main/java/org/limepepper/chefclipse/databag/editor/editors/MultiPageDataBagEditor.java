@@ -232,11 +232,18 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 			IEditorPart editor = getEditor(i);
 			if (editor != null) {
 				editor.doSave(monitor);
-				if (isXtextEditor(editor)) {
-					addXtextResource((XtextEditor) editor);
-				}
+//				if (isXtextEditor(editor)) {
+//					addXtextResource((XtextEditor) editor);
+//				}
 //				setPageText(i, editor.getTitle());
 //				setInput(getEditorInput());
+			}
+		}
+
+		for (int i = 0 ; i < getPageCount(); i++) {
+			IEditorPart editor = getEditor(i);
+			if (isXtextEditor(editor)) {
+				addXtextResource((XtextEditor) editor);
 			}
 		}
 		columnEditor.setShouldUpdate(true);

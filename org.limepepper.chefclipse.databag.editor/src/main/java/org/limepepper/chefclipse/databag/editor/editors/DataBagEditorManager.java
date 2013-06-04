@@ -314,8 +314,7 @@ public enum DataBagEditorManager {
 				it.prune();
 				continue;
 			}
-			String uriFragment = eObject.eResource().getURIFragment(eObject);
-			EObject eObjectSchema = schemaRes.getEObject(uriFragment);
+			EObject eObjectSchema = getEObjectOfKey(eObject, schemaRes);
 			if (eObjectSchema == null) {
 				EObject copy = EcoreUtil.copy(eObject);
 				addToSchema(schemaRes, eObject, copy);
@@ -326,8 +325,7 @@ public enum DataBagEditorManager {
 	public void addToSchema(final Resource schemaRes, EObject eObject,
 			EObject copy) {
 		if (eObject.eContainer() != null) {
-			String containerFragment = eObject.eResource().getURIFragment(eObject.eContainer());
-			EObject schemaContainer = schemaRes.getEObject(containerFragment);
+			EObject schemaContainer = getEObjectOfKey(eObject.eContainer(), schemaRes);
 			if (schemaContainer == null) {
 				throw new RuntimeException("This should never happen");
 			}
@@ -347,12 +345,24 @@ public enum DataBagEditorManager {
 		return eObject instanceof Value && !(eObject instanceof JsonObjectValue);
 	}
 	
+	public EObject getEObjectOfKey(EObject entryElement, Resource resource) {
+		String uriFragment = entryElement.eResource().getURIFragment(entryElement);
+		EObject value = null;
+		try {
+			value = resource.getEObject(uriFragment);
+		} catch (ClassCastException e) {
+			// no EObject found for that key
+		}
+		return value;
+	}
+	
 	public Collection<EObject> getEObjectsOfKey(EObject entry, List<Resource> resources) {
         List<EObject> values = new ArrayList<EObject>();
         for (Resource resource : resources) {
-            String uriFragment = entry.eResource().getURIFragment(entry);
-            EObject value = resource.getEObject(uriFragment);
-            values.add(value);
+    		EObject value = getEObjectOfKey(entry, resource);
+    		if (value != null) {
+    			values.add(value);
+    		}
         }
         return values;
     }

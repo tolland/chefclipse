@@ -87,8 +87,7 @@ public class DataBagLabelProvider extends StyledCellLabelProvider implements ICo
         if (columnIndex == 0) {
         	return adapterProvider.getText(entryElement);
         }
-    	String uriFragment = entryElement.eResource().getURIFragment(entryElement);
-    	EObject value = resource.getEObject(uriFragment);
+    	EObject value = DataBagEditorManager.INSTANCE.getEObjectOfKey(entryElement, resource);
     	if (value != null && value instanceof Pair) {
     		Pair pair = (Pair) value;
     		if (pair.getValue() != null && !(pair.getValue() instanceof JsonObjectValue)) {
