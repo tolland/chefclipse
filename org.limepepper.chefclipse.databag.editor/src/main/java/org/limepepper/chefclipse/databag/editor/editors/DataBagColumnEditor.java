@@ -52,7 +52,9 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.jface.dialogs.IPageChangedListener;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.PageChangedEvent;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.layout.TreeColumnLayout;
@@ -107,7 +109,7 @@ import org.limepepper.chefclipse.json.json.provider.JsonItemProviderAdapterFacto
  */
 public class DataBagColumnEditor extends EditorPart implements
         IResourceChangeListener, IEditingDomainProvider, ISelectionProvider, IMenuListener,
-        IViewerProvider, IGotoMarker {
+        IViewerProvider, IGotoMarker, IPageChangedListener {
 
     private EObject dataBagEObject;
     private TreeViewer viewer;
@@ -171,18 +173,26 @@ public class DataBagColumnEditor extends EditorPart implements
         public void notifyChanged(Notification notification) {
             super.notifyChanged(notification);
             // handles all changes except adapter updates
-            if (notification.getEventType() < Notification.REMOVING_ADAPTER) {
-                getSite().getShell().getDisplay().asyncExec(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (viewer != null && !viewer.getTree().isDisposed()) {
-                            setViewerInput();
-//                            viewer.refresh();
-                        }
-                    }
-                });
+            if (isChangeNotification(notification)) {
+            	if (shouldUpdate) {
+	                processChange();
+            	} else {
+            		pendingNotification = notification;
+            	}
             }
         }
+
+		public void processChange() {
+			getSite().getShell().getDisplay().asyncExec(new Runnable() {
+			    @Override
+			    public void run() {
+			        if (viewer != null && !viewer.getTree().isDisposed()) {
+			            setViewerInput();
+//                            viewer.refresh();
+			        }
+			    }
+			});
+		}
     };
 
     private List<ISelectionChangedListener> selectionChangedListeners;
@@ -190,6 +200,8 @@ public class DataBagColumnEditor extends EditorPart implements
 //    private List<DataBagItem> items;
     private List<URI> columnsToUris = new ArrayList<URI>();
 //    private Map<String, Integer> urisToColumns = new HashMap<String, Integer>();
+	private boolean shouldUpdate;
+	private Notification pendingNotification;
 
     /**
      * @param resourceFactory
@@ -252,7 +264,11 @@ public class DataBagColumnEditor extends EditorPart implements
         editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet);
     }
 
-    /**
+    public boolean isChangeNotification(Notification notification) {
+		return notification.getEventType() < Notification.REMOVING_ADAPTER;
+	}
+
+	/**
      * This sets the selection into whichever viewer is active. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1142,4 +1158,21 @@ public class DataBagColumnEditor extends EditorPart implements
         viewer.getTree().setRedraw(true);
         viewer.expandAll();
     }
+
+	@Override
+	public void pageChanged(PageChangedEvent event) {
+		shouldUpdate = (event.getSelectedPage() == this);
+		processPendingNotification();
+	}
+
+	public void processPendingNotification() {
+		if (shouldUpdate && pendingNotification != null) {
+			changeAdapter.notifyChanged(pendingNotification);
+			pendingNotification = null;
+		}
+	}
+
+	public void setShouldUpdate(boolean shouldUpdate) {
+		this.shouldUpdate = shouldUpdate;
+	}
 }

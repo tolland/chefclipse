@@ -18,11 +18,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.swt.SWT;
@@ -124,28 +122,25 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	    if (dataBagEObject instanceof DataBag) {
 	        DataBag dataBag = (DataBag) dataBagEObject;
 	        for (DataBagItem dataBagItem : dataBag.getItems()) {
-	            createJsonEditorForDataBagItem(dataBagItem/*, res.next()*/);
+	        	if (dataBagItem.getJsonResource().exists()) {
+	        		createJsonEditorForDataBagItem(dataBagItem/*, res.next()*/);
+	        	}
 	        }
 	    } else if (dataBagEObject instanceof DataBagItem) {
 	        createJsonEditorForDataBagItem((DataBagItem) dataBagEObject/*, res.next()*/);
 	    }
 	}
 
-    private void createJsonEditorForDataBagItem(DataBagItem dataBagItem/*, Resource resource*/) {
+    private XtextResource createJsonEditorForDataBagItem(DataBagItem dataBagItem/*, Resource resource*/) {
         try {
         	XtextEditor xtext = editorProvider.get();
 
             int index = addPage(xtext, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
-            XtextResource res = xtext.getDocument().readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
-				@Override
-				public XtextResource exec(XtextResource resource) throws Exception {
-					return resource;
-				}
-            });
-            columnEditor.getEditingDomain().getResourceSet().getResources().add(res);
+            XtextResource res = addXtextResource(xtext);
 //            columnEditor.getEditingDomain().getResourceSet().getResource(res.getURI(), true);
             setPageText(index, dataBagItem.getName());
             setPageImage(index, Activator.getDefault().getImageRegistry().getDescriptor(Activator.DATA_BAG_ITEM_PAGE).createImage());
+            return res;
         } catch (PartInitException e) {
         	ErrorDialog.openError(getSite().getShell(),
 					"Error creating nested text editor", null, e.getStatus());
@@ -155,7 +150,24 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
         			"Error creating nested text editor", null, null);
         	e.printStackTrace();
         }
+        return null;
     }
+
+	public XtextResource addXtextResource(XtextEditor xtext) {
+		XtextResource res = getXtextResource(xtext);
+		columnEditor.getEditingDomain().getResourceSet().getResources().add(res);
+		return res;
+	}
+
+	public XtextResource getXtextResource(XtextEditor xtext) {
+		XtextResource res = xtext.getDocument().readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
+			@Override
+			public XtextResource exec(XtextResource resource) throws Exception {
+				return resource;
+			}
+		});
+		return res;
+	}
 	/**
 	 * Creates last page of this editor. This page shows an editor which manages
 	 * all data bag items as rows in the viewer. The JSON properties are showed in a
@@ -178,6 +190,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 */
 	protected void createPages() {
 		columnEditor = new DataBagColumnEditor(dataBagActionContributor);
+		super.addPageChangedListener(columnEditor);
 		
 		createRowEditorPage();
 		createJsonEditorPages();
@@ -190,6 +203,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * Subclasses may extend.
 	 */
 	public void dispose() {
+		super.removePageChangedListener(columnEditor);
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
 		if (getSite() != null) {
 		    super.dispose();
@@ -207,14 +221,20 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * Saves the multi-page editor's document.
 	 */
 	public void doSave(IProgressMonitor monitor) {
+		columnEditor.setShouldUpdate(false);
+		columnEditor.getEditingDomain().getResourceSet().getResources().clear();
 		for (int i = 0 ; i < getPageCount(); i++) {
 			IEditorPart editor = getEditor(i);
 			if (editor != null) {
 				editor.doSave(monitor);
+				if (isXtextEditor(editor)) {
+					addXtextResource((XtextEditor) editor);
+				}
 //				setPageText(i, editor.getTitle());
 //				setInput(getEditorInput());
 			}
 		}
+		columnEditor.setShouldUpdate(true);
 	}
 
 	/**
@@ -260,7 +280,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
     }
 	
 	public IXtextDocument getXtextDocument(Resource resource) {
-	    int editorIndex = getXTextEditorIndex(resource);
+	    int editorIndex = getXTextEditorIndex(resource.getURI().lastSegment());
 	    if (editorIndex != -1) {
 	        XtextEditor editor = (XtextEditor) getEditor(editorIndex);
 	        return editor.getDocument();
@@ -268,12 +288,12 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	    return null;
 	}
 	
-	public int getXTextEditorIndex(Resource resource) {
+	public int getXTextEditorIndex(String lastSegment) {
 	    for (int i = 0 ; i < getPageCount(); i++) {
             IEditorPart editor = getEditor(i);
             if (isXtextEditor(editor)) {
                 XtextEditor x = (XtextEditor) editor;
-                if (resource.getURI().lastSegment().equals(((FileEditorInput)x.getEditorInput()).getName()))
+                if (lastSegment.equals(((FileEditorInput)x.getEditorInput()).getName()))
                     return i;
             }
         }
@@ -281,55 +301,37 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	}
 	
 	static class ResourceDeltaVisitor implements IResourceDeltaVisitor {
-        protected ResourceSet resourceSet;
-        protected Collection<Resource> changedResources = new ArrayList<Resource>();
-        protected Collection<Resource> removedResources = new ArrayList<Resource>();
-        protected Collection<Resource> addedResources = new ArrayList<Resource>();
-        protected Collection<Resource> savedResources = new ArrayList<Resource>();
+        protected Collection<IFile> changedResources = new ArrayList<IFile>();
+        protected Collection<IFile> removedResources = new ArrayList<IFile>();
+        protected Collection<IFile> addedResources = new ArrayList<IFile>();
         
         public ResourceDeltaVisitor(ResourceSet resourceSet) {
-            this.resourceSet = resourceSet;
         }
         
         public boolean visit(IResourceDelta delta) {
             if (delta.getResource().getType() == IResource.FILE && delta.getFlags() != IResourceDelta.MARKERS) {
                 if (delta.getKind() == IResourceDelta.REMOVED ||
                         delta.getKind() == IResourceDelta.CHANGED) {
-                    Resource resource = resourceSet.getResource(URI
-                            .createPlatformResourceURI(delta.getFullPath()
-                                    .toString(), true), false);
-                    if (resource != null) {
-                        if (delta.getKind() == IResourceDelta.REMOVED) {
-                            removedResources.add(resource);
-                        } else if (!savedResources.remove(resource)) {
-                            changedResources.add(resource);
-                        }
+                    if (delta.getKind() == IResourceDelta.REMOVED) {
+                        removedResources.add((IFile)delta.getResource());
                     }
                 } else if (delta.getKind() == IResourceDelta.ADDED) {
-                    ResourceSet resSet = new ResourceSetImpl();
-                    Resource resource = resSet.createResource(URI
-                            .createPlatformResourceURI(delta.getFullPath()
-                                    .toString(), true), "databag");
-                    addedResources.add(resource);
+                    addedResources.add((IFile)delta.getResource());
                 }
             }
             return true;
         }
 
-        public Collection<Resource> getChangedResources() {
+        public Collection<IFile> getChangedResources() {
             return changedResources;
         }
 
-        public Collection<Resource> getRemovedResources() {
+        public Collection<IFile> getRemovedResources() {
             return removedResources;
         }
         
-        public Collection<Resource> getAddedResources() {
+        public Collection<IFile> getAddedResources() {
             return addedResources;
-        }
-        
-        public Collection<Resource> getSavedResources() {
-            return savedResources;
         }
     }
 
@@ -345,33 +347,38 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 
             if (!visitor.getRemovedResources().isEmpty()) {
                 getSite().getShell().getDisplay().asyncExec
-                        (new Runnable() {
-                            public void run() {
-                                for (Resource resource : visitor.getRemovedResources()) {
-                                    removePage(getXTextEditorIndex(resource));
-//                                    resourceSet.getResources().remove(resource);
-                                    try {
-                                        resource.delete(new HashMap<Object, Object>());
-                                        columnEditor.removeDBItemColumn(resource);
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
+                    (new Runnable() {
+                        public void run() {
+                        	columnEditor.setShouldUpdate(false);
+                            for (IFile resource : visitor.getRemovedResources()) {
+                                int xTextEditorIndex = getXTextEditorIndex(resource.getFullPath().lastSegment());
+								XtextResource res = getXtextResource((XtextEditor) getEditor(xTextEditorIndex));
+								removePage(xTextEditorIndex);
+//                                    resourceSet.getResources().remove(res);
+                                try {
+                                    res.delete(new HashMap<Object, Object>());
+                                    columnEditor.removeDBItemColumn(res);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
                                 }
                             }
-                        });
+                            columnEditor.setShouldUpdate(true);
+                        }
+                    });
             }
             if (!visitor.getAddedResources().isEmpty()) {
                 getSite().getShell().getDisplay().asyncExec
-                        (new Runnable() {
-                            public void run() {
-                                for (Resource resource : visitor.getAddedResources()) {
-                                    IFile dbFile = (IFile) DataBagEditorManager.INSTANCE.getResourceFromUri(resource.getURI());
-                                    DataBagItem dataBagItem = (DataBagItem) ChefRepositoryManager.INSTANCE.createDataBagItem(dbFile);
-                                    createJsonEditorForDataBagItem(dataBagItem);
-                                    columnEditor.addDBItemColumn(resource);
-                                }
+                    (new Runnable() {
+                        public void run() {
+                        	columnEditor.setShouldUpdate(false);
+                            for (IFile resource : visitor.getAddedResources()) {
+                                DataBagItem dataBagItem = (DataBagItem) ChefRepositoryManager.INSTANCE.createDataBagItem(resource);
+                                XtextResource res = createJsonEditorForDataBagItem(dataBagItem);
+                                columnEditor.addDBItemColumn(res);
                             }
-                        });
+                            columnEditor.setShouldUpdate(true);
+                        }
+                    });
             }
         } catch (CoreException exception) {
             Activator
