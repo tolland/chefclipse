@@ -70,7 +70,6 @@ public class RemoveJsonPropertyAction extends CommandActionHandler {
 				} catch (RuntimeException exception) {
 					// Skip over the command that threw the exception.
 					commands.previous();
-
 					try {
 						// Iterate back over the executed commands to undo them.
 						while (commands.hasPrevious()) {
@@ -85,7 +84,6 @@ public class RemoveJsonPropertyAction extends CommandActionHandler {
 						CommonPlugin.INSTANCE.log(new WrappedException(
 										CommonPlugin.INSTANCE.getString("_UI_IgnoreException_exception"), nestedException).fillInStackTrace());
 					}
-
 					throw exception;
 				}
 			}

@@ -861,7 +861,7 @@ public class DataBagColumnEditor extends EditorPart implements
         fieldColumn.getColumn().setText("Field name");
         fieldColumn.getColumn().setWidth(150);
         fieldColumn.setEditingSupport(new FieldEditingSupport(treeViewer,
-                textCellEditor));
+                textCellEditor, getEditingDomain(), multiPageDataBagEditor));
         fieldColumn.setLabelProvider(new DataBagLabelProvider(null));
         fieldColumn.getColumn().addListener(SWT.Resize, new Listener() {
 
