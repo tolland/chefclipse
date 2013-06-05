@@ -283,7 +283,7 @@ public enum DataBagEditorManager {
 			mergeResource(schemaRes, res);
 		}
 		
-		trimValues(schemaRes);
+		trimValues(schemaRes.getAllContents());
 		
 		if (schemaRes.getContents().isEmpty()) {
 			schemaRes.getContents().add(JsonFactory.eINSTANCE.createModel());
@@ -292,8 +292,7 @@ public enum DataBagEditorManager {
 		return (Model) schemaRes.getContents().get(0);
 	}
 
-	public void trimValues(final Resource schemaRes) {
-		TreeIterator<EObject> it = schemaRes.getAllContents();
+	public void trimValues(final TreeIterator<EObject> it) {
 		List<EObject> toRemove = new ArrayList<EObject>();
 		while (it.hasNext()) {
 			EObject eObject = (EObject) it.next();
@@ -317,6 +316,7 @@ public enum DataBagEditorManager {
 			EObject eObjectSchema = getEObjectOfKey(eObject, schemaRes);
 			if (eObjectSchema == null) {
 				EObject copy = EcoreUtil.copy(eObject);
+				trimValues(copy.eAllContents());
 				addToSchema(schemaRes, eObject, copy);
 			}
 		}

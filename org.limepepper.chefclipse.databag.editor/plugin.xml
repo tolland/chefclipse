@@ -34,4 +34,10 @@
             name="New Data Bag">
       </wizard>
    </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.limepepper.chefclipse.databag.editor.editing.ActiveEditorTracker">
+      </startup>
+   </extension>
 </plugin>
