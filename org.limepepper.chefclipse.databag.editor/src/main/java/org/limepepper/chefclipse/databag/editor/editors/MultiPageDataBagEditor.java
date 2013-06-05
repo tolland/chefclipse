@@ -194,7 +194,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	 * Creates the pages of the multi-page data bag editor.
 	 */
 	protected void createPages() {
-		columnEditor = new DataBagColumnEditor(dataBagActionContributor);
+		columnEditor = new DataBagColumnEditor(dataBagActionContributor, this);
 		super.addPageChangedListener(columnEditor);
 		
 		createRowEditorPage();
@@ -228,7 +228,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	public void doSave(IProgressMonitor monitor) {
 		columnEditor.setShouldUpdate(false);
 		columnEditor.getEditingDomain().getResourceSet().getResources().clear();
-		for (int i = 0 ; i < getPageCount(); i++) {
+		for (int i = getPageCount()-1 ; i >= 0; i--) {
 			IEditorPart editor = getEditor(i);
 			if (editor != null) {
 				editor.doSave(monitor);

@@ -100,6 +100,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.editing.FieldEditingSupport;
+import org.limepepper.chefclipse.databag.editor.editing.ValueEditingSupport;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.provider.JsonItemProviderAdapterFactory;
 
@@ -201,12 +202,15 @@ public class DataBagColumnEditor extends EditorPart implements
 //    private Map<String, Integer> urisToColumns = new HashMap<String, Integer>();
 	private boolean shouldUpdate;
 	private Notification pendingNotification;
+	private MultiPageDataBagEditor multiPageDataBagEditor;
 
     /**
      * @param resourceFactory
      * @param dataBagActionContributor
+     * @param multiPageDataBagEditor 
      */
-    public DataBagColumnEditor(DataBagActionContributor dataBagActionContributor) {
+    public DataBagColumnEditor(DataBagActionContributor dataBagActionContributor, MultiPageDataBagEditor multiPageDataBagEditor) {
+    	this.multiPageDataBagEditor = multiPageDataBagEditor;
         // this.nodesMap = nodesMap;
         this.actionContributor = dataBagActionContributor;
         this.selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
@@ -570,6 +574,9 @@ public class DataBagColumnEditor extends EditorPart implements
      */
     @Override
     public void doSave(IProgressMonitor progressMonitor) {
+    	pendingNotification = null;
+    	changeAdapter.unsetTarget(editingDomain.getResourceSet());
+    	
         // Save only resources that have actually changed.
         //
         // final Map<Object, Object> saveOptions = new HashMap<Object,
@@ -629,6 +636,7 @@ public class DataBagColumnEditor extends EditorPart implements
         }
         // updateProblemIndication = true;
         // updateProblemIndication();
+        changeAdapter.setTarget(editingDomain.getResourceSet());
     }
 
     /**
@@ -736,6 +744,7 @@ public class DataBagColumnEditor extends EditorPart implements
         viewer = doCreateViewer(parent);
         viewer.setContentProvider(new AdapterFactoryContentProvider(
                 adapterFactory));
+        getEditorSite().setSelectionProvider(viewer);
         // viewer.setLabelProvider(new DataBagValueLabelProvider(nodesMap));
         // viewer.setLabelProvider(new AdapterFactoryLabelProvider(new
         // JsonItemProviderAdapterFactory()));
@@ -865,12 +874,13 @@ public class DataBagColumnEditor extends EditorPart implements
         });
         filterControl.setSize(fieldColumn.getColumn().getWidth(), filterControl.getSize().y);
 
-        TreeColumnLayout treeLayout = new TreeColumnLayout();
-        treeViewer.getTree().setLayout(treeLayout);
-        treeLayout.setColumnData(fieldColumn.getColumn(), new
-                ColumnWeightData(500, 150));
+//        TreeColumnLayout treeLayout = new TreeColumnLayout();
+//        treeViewer.getTree().setLayout(treeLayout);
+//        treeLayout.setColumnData(fieldColumn.getColumn(), new
+//                ColumnWeightData(500, 150));
 
-        if (dataBagEObject instanceof DataBag) {
+        TreeColumnLayout treeLayout = null;
+		if (dataBagEObject instanceof DataBag) {
             int columnWeight = 450;
             for (Resource res : editingDomain.getResourceSet().getResources()) {
                 createColumn(treeViewer, treeLayout, --columnWeight, res);
@@ -897,12 +907,12 @@ public class DataBagColumnEditor extends EditorPart implements
         valueColumn.getColumn().setText(
                 "Data bag item: " + res.getURI().trimFileExtension().lastSegment());
         valueColumn.getColumn().setWidth(150);
-        // valueColumn.setEditingSupport(new ValueEditingSupport(treeViewer,
-        // textCellEditor));
+//        final TextCellEditor textCellEditor = new TextCellEditor(treeViewer.getTree());;
+		valueColumn.setEditingSupport(new ValueEditingSupport(treeViewer, res, multiPageDataBagEditor.getXtextDocument(res)));
         valueColumn.setLabelProvider(new DataBagLabelProvider(res));
-        columnLayout.setColumnData(valueColumn.getColumn(), new
-                ColumnWeightData(
-                        columnWeight, 150));
+//        columnLayout.setColumnData(valueColumn.getColumn(), new
+//                ColumnWeightData(
+//                        columnWeight, 150));
 //        int columnSize = columnsToUris.values().size() + 1;
         columnsToUris.add(res.getURI());
 //        int uriSize = urisToColumns.values().size() + 1;
@@ -1172,5 +1182,6 @@ public class DataBagColumnEditor extends EditorPart implements
 
 	public void setShouldUpdate(boolean shouldUpdate) {
 		this.shouldUpdate = shouldUpdate;
+		processPendingNotification();
 	}
 }
