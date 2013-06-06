@@ -4,16 +4,11 @@
 
 package org.limepepper.chefclipse.databag.editor.editors;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.edit.ui.action.CreateChildAction;
 import org.eclipse.emf.edit.ui.action.RedoAction;
 import org.eclipse.emf.edit.ui.action.UndoAction;
 import org.eclipse.jface.action.ActionContributionItem;
@@ -213,7 +208,9 @@ public class DataBagActionContributor extends
         }
         else
         {
-            selectionProvider = part.getSite().getSelectionProvider();
+            selectionProvider = activeEditorPart instanceof ISelectionProvider ?
+                    (ISelectionProvider) activeEditorPart :
+                        activeEditorPart.getEditorSite().getSelectionProvider();
             selectionProvider.addSelectionChangedListener(this);
 
             // Fake a selection changed event to update the menus.
@@ -312,7 +309,7 @@ public class DataBagActionContributor extends
 
         // Query the new selection for appropriate new child descriptors
         //
-        Collection<?> newChildDescriptors = null;
+//        Collection<?> newChildDescriptors = null;
 
         ISelection selection = event.getSelection();
         if (selection instanceof IStructuredSelection
@@ -321,13 +318,13 @@ public class DataBagActionContributor extends
 
             EditingDomain domain = ((IEditingDomainProvider) activeEditorPart).getEditingDomain();
 
-            newChildDescriptors = domain.getNewChildDescriptors(object, null);
+//            newChildDescriptors = domain.getNewChildDescriptors(object, null);
         }
 
         // Generate actions for selection; populate and redraw the menus.
         //
-        createChildActions = generateCreateChildActions(newChildDescriptors, selection);
-        createChildSubmenuActions = extractSubmenuActions(createChildActions);
+//        createChildActions = generateCreateChildActions(newChildDescriptors, selection);
+//        createChildSubmenuActions = extractSubmenuActions(createChildActions);
 
         if (createChildMenuManager != null) {
             populateManager(createChildMenuManager, createChildSubmenuActions, null);
@@ -336,38 +333,38 @@ public class DataBagActionContributor extends
         }
     }
 
-    protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors,
-            ISelection selection) {
-        Collection<IAction> actions = new ArrayList<IAction>();
-        if (descriptors != null) {
-            for (Object descriptor : descriptors) {
-                actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
-            }
-        }
-        return actions;
-    }
+//    protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors,
+//            ISelection selection) {
+//        Collection<IAction> actions = new ArrayList<IAction>();
+//        if (descriptors != null) {
+//            for (Object descriptor : descriptors) {
+//                actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
+//            }
+//        }
+//        return actions;
+//    }
 
-    protected Map<String, Collection<IAction>> extractSubmenuActions(
-            Collection<IAction> createActions) {
-        Map<String, Collection<IAction>> createSubmenuActions = new LinkedHashMap<String, Collection<IAction>>();
-        if (createActions != null) {
-            for (Iterator<IAction> actions = createActions.iterator(); actions.hasNext();) {
-                IAction action = actions.next();
-                StringTokenizer st = new StringTokenizer(action.getText(), "|");
-                if (st.countTokens() == 2) {
-                    String text = st.nextToken().trim();
-                    Collection<IAction> submenuActions = createSubmenuActions.get(text);
-                    if (submenuActions == null) {
-                        createSubmenuActions.put(text, submenuActions = new ArrayList<IAction>());
-                    }
-                    action.setText(st.nextToken().trim());
-                    submenuActions.add(action);
-                    actions.remove();
-                }
-            }
-        }
-        return createSubmenuActions;
-    }
+//    protected Map<String, Collection<IAction>> extractSubmenuActions(
+//            Collection<IAction> createActions) {
+//        Map<String, Collection<IAction>> createSubmenuActions = new LinkedHashMap<String, Collection<IAction>>();
+//        if (createActions != null) {
+//            for (Iterator<IAction> actions = createActions.iterator(); actions.hasNext();) {
+//                IAction action = actions.next();
+//                StringTokenizer st = new StringTokenizer(action.getText(), "|");
+//                if (st.countTokens() == 2) {
+//                    String text = st.nextToken().trim();
+//                    Collection<IAction> submenuActions = createSubmenuActions.get(text);
+//                    if (submenuActions == null) {
+//                        createSubmenuActions.put(text, submenuActions = new ArrayList<IAction>());
+//                    }
+//                    action.setText(st.nextToken().trim());
+//                    submenuActions.add(action);
+//                    actions.remove();
+//                }
+//            }
+//        }
+//        return createSubmenuActions;
+//    }
 
     protected void populateManager(IContributionManager manager,
             Map<String, Collection<IAction>> submenuActions, String contributionID) {
@@ -484,15 +481,20 @@ public class DataBagActionContributor extends
 //            menuManager.add(new Separator("additions"));
 //        }
 //        menuManager.add(new Separator("edit"));
-        if ((style & ADDITIONS_LAST_STYLE) == 0) {
-          menuManager.add(new Separator("additions"));
-        }
-        menuManager.add(new Separator("edit"));
-        MenuManager submenuManager = new MenuManager(
-                "dsadada menu");
-        populateManager(submenuManager, createChildSubmenuActions, null);
-        populateManager(submenuManager, createChildActions, null);
-        menuManager.insertBefore("edit", submenuManager);
+        menuManager.add(addJsonPropertyAction);
+        menuManager.add(removeJsonPropertyAction);
+        menuManager.add(addNewDataBagItemAction);
+        menuManager.add(removeDataBagItemAction);
+        menuManager.add(undoAction);
+        menuManager.add(redoAction);
+//        if ((style & ADDITIONS_LAST_STYLE) == 0) {
+//          menuManager.add(new Separator("additions"));
+//        }
+//        menuManager.add(new Separator("edit"));
+//        MenuManager submenuManager = new MenuManager();
+//        populateManager(submenuManager, createChildSubmenuActions, null);
+//        populateManager(submenuManager, createChildActions, null);
+//        menuManager.insertBefore("edit", submenuManager);
 
         // Add the edit menu actions.
         //
@@ -515,38 +517,38 @@ public class DataBagActionContributor extends
         // //
         // menuManager.add(new Separator("additions-end"));
         //
-        // addGlobalActions(menuManager);
+//        addGlobalActions(menuManager);
     }
 
-    /**
-     * This inserts global actions before the "additions-end" separator.
-     */
-    // protected void addGlobalActions(IMenuManager menuManager) {
-    // String key = (style & ADDITIONS_LAST_STYLE) == 0 ? "additions-end" :
-    // "additions";
-    // if (validateAction != null)
-    // {
-    // menuManager.insertBefore(key, new
-    // ActionContributionItem(validateAction));
-    // }
-    //
-    // if (controlAction != null)
-    // {
-    // menuManager.insertBefore(key, new ActionContributionItem(controlAction));
-    // }
-    //
-    // if (validateAction != null || controlAction != null)
-    // {
-    // menuManager.insertBefore(key, new Separator());
-    // }
-    //
-    // if (loadResourceAction != null)
-    // {
-    // menuManager.insertBefore("additions-end",
-    // new ActionContributionItem(loadResourceAction));
-    // menuManager.insertBefore("additions-end", new Separator());
-    // }
-    // }
+//    /**
+//     * This inserts global actions before the "additions-end" separator.
+//     */
+//     protected void addGlobalActions(IMenuManager menuManager) {
+//     String key = (style & ADDITIONS_LAST_STYLE) == 0 ? "additions-end" :
+//     "additions";
+//     if (validateAction != null)
+//     {
+//     menuManager.insertBefore(key, new
+//     ActionContributionItem(validateAction));
+//     }
+//    
+//     if (controlAction != null)
+//     {
+//     menuManager.insertBefore(key, new ActionContributionItem(controlAction));
+//     }
+//    
+//     if (validateAction != null || controlAction != null)
+//     {
+//     menuManager.insertBefore(key, new Separator());
+//     }
+//    
+//     if (loadResourceAction != null)
+//     {
+//     menuManager.insertBefore("additions-end",
+//     new ActionContributionItem(loadResourceAction));
+//     menuManager.insertBefore("additions-end", new Separator());
+//     }
+//     }
 
     public void propertyChanged(Object source, int id) {
         update();
