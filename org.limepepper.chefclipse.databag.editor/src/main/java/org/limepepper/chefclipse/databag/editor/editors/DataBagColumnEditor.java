@@ -44,6 +44,7 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -60,7 +61,6 @@ import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
-import org.eclipse.jface.viewers.ColumnWeightData;
 import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -98,13 +98,18 @@ import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.databag.editor.actions.AddJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
+import org.limepepper.chefclipse.databag.editor.actions.RemoveJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.editing.FieldEditingSupport;
 import org.limepepper.chefclipse.databag.editor.editing.ValueEditingSupport;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.provider.JsonItemProviderAdapterFactory;
 
 /**
+ * Column editor for editing {@link DataBag}s and {@link DataBagItem}s.
+ * 
  * @author Sebastian Sampaoli
  */
 public class DataBagColumnEditor extends EditorPart implements
@@ -174,43 +179,45 @@ public class DataBagColumnEditor extends EditorPart implements
             super.notifyChanged(notification);
             // handles all changes except adapter updates
             if (isChangeNotification(notification)) {
-            	if (shouldUpdate) {
-	                processChange();
-            	} else {
-            		pendingNotification = notification;
-            	}
+                if (shouldUpdate) {
+                    processChange();
+                } else {
+                    pendingNotification = notification;
+                }
             }
         }
 
-		public void processChange() {
-			getSite().getShell().getDisplay().asyncExec(new Runnable() {
-			    @Override
-			    public void run() {
-			        if (viewer != null && !viewer.getTree().isDisposed()) {
-			            setViewerInput();
-//                            viewer.refresh();
-			        }
-			    }
-			});
-		}
+        public void processChange() {
+            getSite().getShell().getDisplay().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    if (viewer != null && !viewer.getTree().isDisposed()) {
+                        setViewerInput();
+                        // viewer.refresh();
+                    }
+                }
+            });
+        }
     };
 
     private List<ISelectionChangedListener> selectionChangedListeners;
     private TreeViewerFocusCellManager focusCellManager;
-//    private List<DataBagItem> items;
+    // private List<DataBagItem> items;
     private List<URI> columnsToUris = new ArrayList<URI>();
-//    private Map<String, Integer> urisToColumns = new HashMap<String, Integer>();
-	private boolean shouldUpdate;
-	private Notification pendingNotification;
-	private MultiPageDataBagEditor multiPageDataBagEditor;
+    // private Map<String, Integer> urisToColumns = new HashMap<String,
+    // Integer>();
+    private boolean shouldUpdate;
+    private Notification pendingNotification;
+    private MultiPageDataBagEditor multiPageDataBagEditor;
 
     /**
      * @param resourceFactory
      * @param dataBagActionContributor
-     * @param multiPageDataBagEditor 
+     * @param multiPageDataBagEditor
      */
-    public DataBagColumnEditor(DataBagActionContributor dataBagActionContributor, MultiPageDataBagEditor multiPageDataBagEditor) {
-    	this.multiPageDataBagEditor = multiPageDataBagEditor;
+    public DataBagColumnEditor(DataBagActionContributor dataBagActionContributor,
+            MultiPageDataBagEditor multiPageDataBagEditor) {
+        this.multiPageDataBagEditor = multiPageDataBagEditor;
         // this.nodesMap = nodesMap;
         this.actionContributor = dataBagActionContributor;
         this.selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
@@ -254,7 +261,8 @@ public class DataBagColumnEditor extends EditorPart implements
                                         Command mostRecentCommand = ((CommandStack) event
                                                 .getSource()).getMostRecentCommand();
                                         if (mostRecentCommand != null) {
-//                                            setSelectionToViewer(mostRecentCommand
+                                            setViewerInput();
+                                            // setSelectionToViewer(mostRecentCommand
                                         }
                                     }
                                 });
@@ -268,10 +276,10 @@ public class DataBagColumnEditor extends EditorPart implements
     }
 
     public boolean isChangeNotification(Notification notification) {
-		return notification.getEventType() < Notification.REMOVING_ADAPTER;
-	}
+        return notification.getEventType() < Notification.REMOVING_ADAPTER;
+    }
 
-	/**
+    /**
      * This sets the selection into whichever viewer is active. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -374,7 +382,6 @@ public class DataBagColumnEditor extends EditorPart implements
         }
     }
 
-
     /*
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
@@ -429,6 +436,7 @@ public class DataBagColumnEditor extends EditorPart implements
      */
     public void setSelection(ISelection selection) {
         editorSelection = selection;
+        int columnNumber = getCurrentColumnNumber();
         for (ISelectionChangedListener listener : selectionChangedListeners) {
             if (listener instanceof RemoveDataBagItemAction) {
                 URI selectedDataBagItem = getURIOfSelectedDBItem();
@@ -440,6 +448,9 @@ public class DataBagColumnEditor extends EditorPart implements
                 } else {
                     ((RemoveDataBagItemAction) listener).setEnabled(false);
                 }
+            } else if (listener instanceof AddJsonPropertyAction || listener instanceof RemoveJsonPropertyAction) {
+                ((Action) listener).setEnabled(columnNumber == 0);
+                listener.selectionChanged(new SelectionChangedEvent(this, selection));
             } else {
                 listener.selectionChanged(new SelectionChangedEvent(this, selection));
             }
@@ -493,7 +504,7 @@ public class DataBagColumnEditor extends EditorPart implements
     @Override
     public void dispose() {
         columnsToUris.clear();
-//        urisToColumns.clear();
+        // urisToColumns.clear();
         // updateProblemIndication = false;
 
         // ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
@@ -538,17 +549,21 @@ public class DataBagColumnEditor extends EditorPart implements
     }
 
     public URI getURIOfSelectedDBItem() {
+        int currentColumnNumber = getCurrentColumnNumber();
+        if (currentColumnNumber > 0 && currentColumnNumber <= columnsToUris.size()) {
+            return columnsToUris.get(currentColumnNumber - 1);
+        }
+        return null;
+    }
+
+    public int getCurrentColumnNumber() {
         if (focusCellManager != null) {
             ViewerCell focusCell = focusCellManager.getFocusCell();
             if (viewer != null && !viewer.getTree().isDisposed() && focusCell != null) {
-                int columnIndex = focusCell.getColumnIndex();
-                if (columnIndex > 0 && columnIndex <= columnsToUris.size()) {
-                    return columnsToUris.get(columnIndex - 1);
-                }
+                return focusCell.getColumnIndex();
             }
-
         }
-        return null;
+        return -1;
     }
 
     /*
@@ -574,9 +589,9 @@ public class DataBagColumnEditor extends EditorPart implements
      */
     @Override
     public void doSave(IProgressMonitor progressMonitor) {
-    	pendingNotification = null;
-    	changeAdapter.unsetTarget(editingDomain.getResourceSet());
-    	
+        pendingNotification = null;
+        changeAdapter.unsetTarget(editingDomain.getResourceSet());
+
         // Save only resources that have actually changed.
         //
         // final Map<Object, Object> saveOptions = new HashMap<Object,
@@ -731,13 +746,13 @@ public class DataBagColumnEditor extends EditorPart implements
     @Override
     public void createPartControl(Composite parent) {
         // Only creates the other pages if there is something that can be edited
-        if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
-            // Group editorGroup = new Group(parent, SWT.NONE);
-            // GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(editorGroup);
-            // GridDataFactory.fillDefaults().align(SWT.FILL,
-            // SWT.FILL).grab(true, true).applyTo(editorGroup);
-            createViewer(parent);
-        }
+        // if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
+        // Group editorGroup = new Group(parent, SWT.NONE);
+        // GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(editorGroup);
+        // GridDataFactory.fillDefaults().align(SWT.FILL,
+        // SWT.FILL).grab(true, true).applyTo(editorGroup);
+        createViewer(parent);
+        // }
     }
 
     private void createViewer(Composite parent) {
@@ -763,14 +778,14 @@ public class DataBagColumnEditor extends EditorPart implements
     }
 
     public void setViewerInput() {
-//        if (getResourceSet().getResources().size() > 0) {
-            Model model = DataBagEditorManager.INSTANCE.createSchemaModel(editingDomain
-                    .getResourceSet());
-            viewer.setInput(model);
-            viewer.expandAll();
-//        } else {
-//            viewer.setInput(null);
-//        }
+        // if (getResourceSet().getResources().size() > 0) {
+        Model model = DataBagEditorManager.INSTANCE.createSchemaModel(editingDomain
+                .getResourceSet());
+        viewer.setInput(model);
+        viewer.expandAll();
+        // } else {
+        // viewer.setInput(null);
+        // }
     }
 
     private TreeViewer doCreateViewer(Composite parent) {
@@ -874,13 +889,13 @@ public class DataBagColumnEditor extends EditorPart implements
         });
         filterControl.setSize(fieldColumn.getColumn().getWidth(), filterControl.getSize().y);
 
-//        TreeColumnLayout treeLayout = new TreeColumnLayout();
-//        treeViewer.getTree().setLayout(treeLayout);
-//        treeLayout.setColumnData(fieldColumn.getColumn(), new
-//                ColumnWeightData(500, 150));
+        // TreeColumnLayout treeLayout = new TreeColumnLayout();
+        // treeViewer.getTree().setLayout(treeLayout);
+        // treeLayout.setColumnData(fieldColumn.getColumn(), new
+        // ColumnWeightData(500, 150));
 
         TreeColumnLayout treeLayout = null;
-		if (dataBagEObject instanceof DataBag) {
+        if (dataBagEObject instanceof DataBag) {
             int columnWeight = 450;
             for (Resource res : editingDomain.getResourceSet().getResources()) {
                 createColumn(treeViewer, treeLayout, --columnWeight, res);
@@ -907,76 +922,80 @@ public class DataBagColumnEditor extends EditorPart implements
         valueColumn.getColumn().setText(
                 "Data bag item: " + res.getURI().trimFileExtension().lastSegment());
         valueColumn.getColumn().setWidth(150);
-//        final TextCellEditor textCellEditor = new TextCellEditor(treeViewer.getTree());;
-		valueColumn.setEditingSupport(new ValueEditingSupport(treeViewer, res, multiPageDataBagEditor.getXtextDocument(res)));
+        // final TextCellEditor textCellEditor = new
+        // TextCellEditor(treeViewer.getTree());;
+        valueColumn.setEditingSupport(new ValueEditingSupport(this, treeViewer, res,
+                multiPageDataBagEditor.getXtextDocument(res)));
         valueColumn.setLabelProvider(new DataBagLabelProvider(res));
-//        columnLayout.setColumnData(valueColumn.getColumn(), new
-//                ColumnWeightData(
-//                        columnWeight, 150));
-//        int columnSize = columnsToUris.values().size() + 1;
+        // columnLayout.setColumnData(valueColumn.getColumn(), new
+        // ColumnWeightData(
+        // columnWeight, 150));
+        // int columnSize = columnsToUris.values().size() + 1;
         columnsToUris.add(res.getURI());
-//        int uriSize = urisToColumns.values().size() + 1;
-//        urisToColumns.put(res.getURI().toString(), uriSize);
+        // int uriSize = urisToColumns.values().size() + 1;
+        // urisToColumns.put(res.getURI().toString(), uriSize);
         return columnWeight;
     }
 
     @Override
     public void resourceChanged(IResourceChangeEvent event) {
-//        final IResourceDelta delta = event.getDelta();
-//        try {
-//            final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor(getResourceSet());
-//            delta.accept(visitor);
-//
-//            if (!visitor.getRemovedResources().isEmpty()) {
-//                getSite().getShell().getDisplay().asyncExec
-//                        (new Runnable() {
-//                            public void run() {
-////                                removedResources.addAll(visitor.getRemovedResources());
-//                                for (Resource resource : visitor.getRemovedResources()) {
-//                                    Integer column = urisToColumns.get(resource.getURI().toString());
-//                                    urisToColumns.remove(resource.getURI().toString());
-//                                    viewer.getTree().getColumn(column).dispose();
-//                                    columnsToUris.remove(column);
-//                                    viewer.getTree().setRedraw(true);
-//                                    viewer.expandAll();
-//
-//                                }
-//                            }
-//                        });
-//            }
-//            if (!visitor.getAddedResources().isEmpty()) {
-//                getSite().getShell().getDisplay().asyncExec
-//                        (new Runnable() {
-//                            public void run() {
-//                                for (Resource resource : visitor.getAddedResources()) {
-//                                    TreeColumnLayout treeLayout = new TreeColumnLayout();
-//                                    createColumn(viewer, treeLayout, 0, resource);
-//                                    setViewerInput();
-//                                    viewer.getTree().setRedraw(true);
-//                                    viewer.expandAll();
-//                                }
-//                            }
-//                        });
-//            }
-//            
-//            if (!visitor.getChangedResources().isEmpty()) {
-//                getSite().getShell().getDisplay().asyncExec
-//                        (new Runnable() {
-//                            public void run() {
-////                                changedResources.addAll(visitor.getChangedResources());
-//                                if (getSite().getPage().getActiveEditor() == DataBagColumnEditor.this) {
-//                                    // handleActivate();
-//                                }
-//                            }
-//                        });
-//            }
-//        } catch (CoreException exception) {
-//            Activator
-//                    .getDefault()
-//                    .getLog()
-//                    .log(new Status(Status.ERROR, Activator.PLUGIN_ID,
-//                            Status.ERROR, exception.getMessage(), exception));
-//        }
+        // final IResourceDelta delta = event.getDelta();
+        // try {
+        // final ResourceDeltaVisitor visitor = new
+        // ResourceDeltaVisitor(getResourceSet());
+        // delta.accept(visitor);
+        //
+        // if (!visitor.getRemovedResources().isEmpty()) {
+        // getSite().getShell().getDisplay().asyncExec
+        // (new Runnable() {
+        // public void run() {
+        // // removedResources.addAll(visitor.getRemovedResources());
+        // for (Resource resource : visitor.getRemovedResources()) {
+        // Integer column = urisToColumns.get(resource.getURI().toString());
+        // urisToColumns.remove(resource.getURI().toString());
+        // viewer.getTree().getColumn(column).dispose();
+        // columnsToUris.remove(column);
+        // viewer.getTree().setRedraw(true);
+        // viewer.expandAll();
+        //
+        // }
+        // }
+        // });
+        // }
+        // if (!visitor.getAddedResources().isEmpty()) {
+        // getSite().getShell().getDisplay().asyncExec
+        // (new Runnable() {
+        // public void run() {
+        // for (Resource resource : visitor.getAddedResources()) {
+        // TreeColumnLayout treeLayout = new TreeColumnLayout();
+        // createColumn(viewer, treeLayout, 0, resource);
+        // setViewerInput();
+        // viewer.getTree().setRedraw(true);
+        // viewer.expandAll();
+        // }
+        // }
+        // });
+        // }
+        //
+        // if (!visitor.getChangedResources().isEmpty()) {
+        // getSite().getShell().getDisplay().asyncExec
+        // (new Runnable() {
+        // public void run() {
+        // // changedResources.addAll(visitor.getChangedResources());
+        // if (getSite().getPage().getActiveEditor() ==
+        // DataBagColumnEditor.this) {
+        // // handleActivate();
+        // }
+        // }
+        // });
+        // }
+        // } catch (CoreException exception) {
+        // Activator
+        // .getDefault()
+        // .getLog()
+        // .log(new Status(Status.ERROR, Activator.PLUGIN_ID,
+        // Status.ERROR, exception.getMessage(), exception));
+        // }
     }
 
     private void setFilterControl(Composite filterControl) {
@@ -1157,31 +1176,31 @@ public class DataBagColumnEditor extends EditorPart implements
     }
 
     public void removeDBItemColumn(Resource resource) {
-//        Integer column = urisToColumns.get(resource.getURI().toString());
-//        urisToColumns.remove(resource.getURI().toString());
+        // Integer column = urisToColumns.get(resource.getURI().toString());
+        // urisToColumns.remove(resource.getURI().toString());
         int column = columnsToUris.indexOf(resource.getURI()) + 1;
-//        columnsToUris.remove(resource.getURI().toString());
+        // columnsToUris.remove(resource.getURI().toString());
         viewer.getTree().getColumn(column).dispose();
-        columnsToUris.remove(column);
+        columnsToUris.remove(column - 1);
         viewer.getTree().setRedraw(true);
         viewer.expandAll();
     }
 
-	@Override
-	public void pageChanged(PageChangedEvent event) {
-		shouldUpdate = (event.getSelectedPage() == this);
-		processPendingNotification();
-	}
+    @Override
+    public void pageChanged(PageChangedEvent event) {
+        shouldUpdate = (event.getSelectedPage() == this);
+        processPendingNotification();
+    }
 
-	public void processPendingNotification() {
-		if (shouldUpdate && pendingNotification != null) {
-			changeAdapter.notifyChanged(pendingNotification);
-			pendingNotification = null;
-		}
-	}
+    public void processPendingNotification() {
+        if (shouldUpdate && pendingNotification != null) {
+            changeAdapter.notifyChanged(pendingNotification);
+            pendingNotification = null;
+        }
+    }
 
-	public void setShouldUpdate(boolean shouldUpdate) {
-		this.shouldUpdate = shouldUpdate;
-		processPendingNotification();
-	}
+    public void setShouldUpdate(boolean shouldUpdate) {
+        this.shouldUpdate = shouldUpdate;
+        processPendingNotification();
+    }
 }

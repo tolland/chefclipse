@@ -3,10 +3,6 @@
  */
 package org.limepepper.chefclipse.databag.editor.actions;
 
-import java.io.IOException;
-import java.util.Map;
-
-import org.codehaus.jackson.JsonNode;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
@@ -21,7 +17,6 @@ import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.ui.resources.ChefRepositoryManager;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorInput;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
 import org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor;
 
 /**
@@ -49,12 +44,12 @@ public class OpenDataBagEditorAction extends Action {
             IStructuredSelection selection = (IStructuredSelection) sel;
             if (selection.size() == 1) {
                 if (isDataBagOrDataBagItem(selection.getFirstElement())) {
-                    seteObject((EObject) selection.getFirstElement());
+                    this.eObject = (EObject) selection.getFirstElement();
                     return true;
                 } else if (selection.getFirstElement() instanceof IResource) {
                     IResource resource = (IResource) selection.getFirstElement();
                     EObject eObject = ChefRepositoryManager.INSTANCE.getElement(resource);
-                    seteObject(eObject);
+                    this.eObject = eObject;
                     return (isDataBagOrDataBagItem(eObject));
                 }
             }
@@ -82,13 +77,5 @@ public class OpenDataBagEditorAction extends Action {
                 e.printStackTrace();
             }
         }
-    }
-
-    public EObject geteObject() {
-        return eObject;
-    }
-
-    public void seteObject(EObject eObject) {
-        this.eObject = eObject;
     }
 }

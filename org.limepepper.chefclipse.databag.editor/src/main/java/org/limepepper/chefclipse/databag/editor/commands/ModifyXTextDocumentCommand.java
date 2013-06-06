@@ -6,7 +6,7 @@ import org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor;
 
 public interface ModifyXTextDocumentCommand {
 
-    EObject getEObjectFromCommand(Command command);
+    EObject getAffectedEObject(Command command);
 
     MultiPageDataBagEditor getEditor();
 }

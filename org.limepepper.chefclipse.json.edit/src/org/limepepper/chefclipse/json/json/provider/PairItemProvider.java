@@ -3,6 +3,7 @@
 package org.limepepper.chefclipse.json.json.provider;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -109,6 +110,9 @@ public class PairItemProvider extends ItemProviderAdapter implements
 		if (pair.getValue() != null
 				&& pair.getValue() instanceof JsonObjectValue) {
 			JsonObject objectValue = ((JsonObjectValue) pair.getValue()).getValue();
+			if (objectValue == null) {
+			    return Collections.EMPTY_LIST;
+			}
 			ItemProviderAdapter provider = (ItemProviderAdapter) adapterFactory.adapt(objectValue, JsonObjectItemProvider.class);
 			return provider.getChildren(objectValue);
 		}

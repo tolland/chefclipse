@@ -3,26 +3,21 @@
  */
 package org.limepepper.chefclipse.databag.editor.editing;
 
-import java.util.Map.Entry;
-
-import org.codehaus.jackson.JsonNode;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
-import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
-import org.eclipse.xtext.ui.editor.model.XtextDocument;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+import org.limepepper.chefclipse.databag.editor.editors.DataBagColumnEditor;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
 import org.limepepper.chefclipse.json.json.JsonFactory;
 import org.limepepper.chefclipse.json.json.Pair;
@@ -44,13 +39,15 @@ public class ValueEditingSupport extends EditingSupport {
 	private AdapterFactoryLabelProvider adapterProvider;
 	private IXtextDocument xTextDocument;
 	DataBagEditorManager manager = DataBagEditorManager.INSTANCE;
+    private DataBagColumnEditor editor;
     /**
      * @param viewer
      * @param res
      * @param iXtextDocument 
      */
-    public ValueEditingSupport(TreeViewer viewer, Resource res, IXtextDocument iXtextDocument) {
+    public ValueEditingSupport(DataBagColumnEditor editor, TreeViewer viewer, Resource res, IXtextDocument iXtextDocument) {
         super(viewer);
+        this.editor = editor;
         this.xTextDocument = iXtextDocument;
         this.resource = res;
         xtextEditor = new XtextStyledTextCellEditor(SWT.SINGLE, JsonActivator.getInstance().getInjector(JsonActivator.ORG_LIMEPEPPER_CHEFCLIPSE_JSON_JSON));
@@ -98,7 +95,9 @@ public class ValueEditingSupport extends EditingSupport {
         	Value val = ((Pair) pair).getValue();
         	INode node = NodeModelUtils.findActualNodeFor(val);
 //        	node = NodeModelUtils.getNode(val);
-        	return NodeModelUtils.getTokenText(node);
+        	if (node != null) {
+        	    return NodeModelUtils.getTokenText(node);
+        	}
 //        	return adapterProvider.getText(((Pair) pair).getValue());
         }
         return "";
@@ -132,6 +131,7 @@ public class ValueEditingSupport extends EditingSupport {
     		if (newValue.equals(origText))
     			return;
     		modifyXtext(newValue, node);
+    		editor.setViewerInput();
 //        	return adapterProvider.getText(((Pair) pair).getValue());
         }
     }

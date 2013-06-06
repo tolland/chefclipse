@@ -110,7 +110,7 @@ public class StringValueItemProvider extends ValueItemProvider implements
 	@Override
 	public String getText(Object object) {
 		String label = ((StringValue) object).getValue();
-		return label == null || label.length() == 0 ? getString("_UI_StringValue_type")
+		return label == null || label.length() == 0 ? ""
 				: label;
 	}
 

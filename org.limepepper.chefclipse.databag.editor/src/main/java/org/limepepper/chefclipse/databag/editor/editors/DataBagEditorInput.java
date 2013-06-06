@@ -22,6 +22,7 @@ public class DataBagEditorInput implements IEditorInput {
     private EObject eObject;
     private String name;
     private IFolder parentFolder;
+    private boolean dataBag;
 
     public DataBagEditorInput(EObject eObject/*, Map<String, JsonNode> nodesMap*/) {
         this.seteObject(eObject);
@@ -29,10 +30,12 @@ public class DataBagEditorInput implements IEditorInput {
             DataBag dataBag = (DataBag) eObject;
             name = dataBag.getName();
             setParentFolder((IFolder) dataBag.getResource());
+            setDataBag(true);
         } else if (eObject instanceof DataBagItem) {
             DataBagItem dataBagItem = (DataBagItem) eObject;
             name =  dataBagItem.getName();
             setParentFolder((IFolder) dataBagItem.getJsonResource().getParent());
+            setDataBag(false);
         }
     }
     /* (non-Javadoc)
@@ -118,5 +121,11 @@ public class DataBagEditorInput implements IEditorInput {
     }
     public void setParentFolder(IFolder parentFolder) {
         this.parentFolder = parentFolder;
+    }
+    public boolean isDataBag() {
+        return dataBag;
+    }
+    public void setDataBag(boolean dataBag) {
+        this.dataBag = dataBag;
     }
 }

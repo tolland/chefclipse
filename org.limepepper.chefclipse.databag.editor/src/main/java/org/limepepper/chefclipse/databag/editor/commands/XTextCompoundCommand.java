@@ -31,7 +31,7 @@ public class XTextCompoundCommand extends CompoundCommand {
         for (ListIterator<Command> commands = commandList.listIterator(); commands.hasNext();) {
             try {
                 final Command command = commands.next();
-                EObject object = xTextCommand.getEObjectFromCommand(command);
+                EObject object = xTextCommand.getAffectedEObject(command);
 //                final DeleteCommand command = (DeleteCommand) commands.next();
 //                EObject object = (EObject) command.getCollection().iterator().next();
                 if (object.eResource() instanceof XtextResource) {

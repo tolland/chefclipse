@@ -59,7 +59,7 @@ public class RemoveDataBagItemAction extends CommandActionHandler {
     @Override
     public Command createCommand(Collection<?> selection) {
         URI dbItemUri = ((DataBagColumnEditor) editor).getURIOfSelectedDBItem();
-        DataBagEditorManager.INSTANCE.getResourceFromUri(dbItemUri);
+//        DataBagEditorManager.INSTANCE.getResourceFromUri(dbItemUri);
         IResource dbItemResource = DataBagEditorManager.INSTANCE.getResourceFromUri(dbItemUri);
         if (dbItemResource != null) {
             RemoveDataBagItemCommand removeDataBagItemCommand = new RemoveDataBagItemCommand(

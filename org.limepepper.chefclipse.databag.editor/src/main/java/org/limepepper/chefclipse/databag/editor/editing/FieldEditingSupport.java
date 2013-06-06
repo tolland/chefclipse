@@ -8,7 +8,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.CellEditor;
@@ -17,7 +16,6 @@ import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.limepepper.chefclipse.databag.editor.commands.ModifyXTextDocumentCommand;
 import org.limepepper.chefclipse.databag.editor.commands.XTextCompoundCommand;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagColumnEditor;
 import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
 import org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor;
 import org.limepepper.chefclipse.json.json.JsonPackage;
@@ -92,11 +90,11 @@ public class FieldEditingSupport extends EditingSupport {
 			public MultiPageDataBagEditor getEditor() {
 				return editor;
 			}
-			
-			@Override
-			public EObject getEObjectFromCommand(Command command) {
-				return ((SetCommand) command).getOwner();
-			}
+
+            @Override
+            public EObject getAffectedEObject(Command command) {
+                return ((SetCommand) command).getOwner();
+            }
 		});
     	for (Resource res : editingDomain.getResourceSet().getResources()) {
     		Object owner = DataBagEditorManager.INSTANCE.getEObjectOfKey((EObject) element, res);
