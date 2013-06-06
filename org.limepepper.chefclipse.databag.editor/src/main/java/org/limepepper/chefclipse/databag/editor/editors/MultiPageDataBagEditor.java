@@ -16,6 +16,7 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
@@ -47,6 +48,11 @@ import org.limepepper.chefclipse.databag.editor.actions.AddJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.actions.AddNewDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveJsonPropertyAction;
+import org.limepepper.chefclipse.json.json.JsonFactory;
+import org.limepepper.chefclipse.json.json.JsonObject;
+import org.limepepper.chefclipse.json.json.Model;
+import org.limepepper.chefclipse.json.json.Pair;
+import org.limepepper.chefclipse.json.json.StringValue;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -312,7 +318,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
         return -1;
 	}
 	
-	static class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+	class ResourceDeltaVisitor implements IResourceDeltaVisitor {
         protected Collection<IFile> changedResources = new ArrayList<IFile>();
         protected Collection<IFile> removedResources = new ArrayList<IFile>();
         protected Collection<IFile> addedResources = new ArrayList<IFile>();
@@ -321,14 +327,27 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
         }
         
         public boolean visit(IResourceDelta delta) {
+            DataBagEditorInput editorInput = (DataBagEditorInput) getEditorInput();
             if (delta.getResource().getType() == IResource.FILE && delta.getFlags() != IResourceDelta.MARKERS) {
+                IFile resource = (IFile) delta.getResource();
+                if (editorInput.isDataBag()) {
+                    IPath dataBagLocation = ((DataBag)editorInput.geteObject()).getResource().getRawLocation();
+                    if (!resource.getParent().getRawLocation().equals(dataBagLocation)){
+                        return false;
+                    }
+                } else {
+                    IPath dataBagItemLocation = ((DataBagItem)editorInput.geteObject()).getJsonResource().getRawLocation();
+                    if (!resource.getRawLocation().equals(dataBagItemLocation)){
+                        return false;
+                    }
+                }
                 if (delta.getKind() == IResourceDelta.REMOVED ||
                         delta.getKind() == IResourceDelta.CHANGED) {
                     if (delta.getKind() == IResourceDelta.REMOVED) {
-                        removedResources.add((IFile)delta.getResource());
+                        removedResources.add((IFile)resource);
                     }
                 } else if (delta.getKind() == IResourceDelta.ADDED) {
-                    addedResources.add((IFile)delta.getResource());
+                    addedResources.add((IFile)resource);
                 }
             }
             return true;
@@ -385,7 +404,29 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
                         	columnEditor.setShouldUpdate(false);
                             for (IFile resource : visitor.getAddedResources()) {
                                 DataBagItem dataBagItem = (DataBagItem) ChefRepositoryManager.INSTANCE.createDataBagItem(resource);
-                                XtextResource res = createJsonEditorForDataBagItem(dataBagItem);
+                                final XtextResource res = createJsonEditorForDataBagItem(dataBagItem);
+//                                EditingDomain editingDomain = columnEditor.getEditingDomain();
+//                                Model model = DataBagEditorManager.INSTANCE.createSchemaModel(editingDomain.getResourceSet());
+                                IXtextDocument xtextDocument = getXtextDocument(res);
+                                xtextDocument.modify(new IUnitOfWork.Void<XtextResource>() {
+                                    @Override
+                                    public void process(XtextResource state) throws Exception {
+                                        res.getContents().add(JsonFactory.eINSTANCE.createModel());
+                                        EObject model = res.getContents().get(0);
+                                        JsonObject createdJsonObject = JsonFactory.eINSTANCE.createJsonObject();
+                                        ((Model) model).getObjects().add(createdJsonObject);
+                                        Pair createPair = JsonFactory.eINSTANCE.createPair();
+                                        createPair.setString("id");
+                                        StringValue stringValue = JsonFactory.eINSTANCE.createStringValue();
+                                        stringValue.setValue("");
+                                        createPair.setValue(stringValue);
+                                        createdJsonObject.getPairs().add(createPair);
+                                    }
+                                });
+                                
+//                                Command command = AddCommand.create(editingDomain, model,
+//                                        JsonPackage.eINSTANCE.getModel_Objects(), createdJsonObject);
+//                                command.execute();
                                 columnEditor.addDBItemColumn(res);
                             }
                             columnEditor.setShouldUpdate(true);
