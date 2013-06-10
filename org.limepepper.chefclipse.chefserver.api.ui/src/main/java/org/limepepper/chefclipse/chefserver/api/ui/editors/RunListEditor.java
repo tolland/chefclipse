@@ -389,7 +389,7 @@ public class RunListEditor extends EditorPart {
 
 		@Override
 		public Color getBackground(final Object object, final int columnIndex) {
-			// TODO Auto-generated method stub
+			
 			return super.getBackground(object, columnIndex);
 		}
 

@@ -5,13 +5,14 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor"
-            contributorClass="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditorContributor"
-            icon="icons/sample.gif"
+            class="org.limepepper.chefclipse.databag.editor.DatabagExecutableExtensionFactory:org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor"
+            contributorClass="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditorContributorCopy"
+            icon="icons/data_bag_editor.png"
             id="org.limepepper.chefclipse.databag.editor.editors.MultiPageDataBagEditor"
             name="Data Bag Multi-page Editor">
       </editor>
    </extension>
+
    <extension
          point="org.eclipse.ui.newWizards">
       <category
@@ -25,9 +26,132 @@
             class="org.limepepper.chefclipse.databag.editor.wizards.SampleNewWizard"
             id="org.limepepper.chefclipse.databag.editor.wizards.SampleNewWizard">
       </wizard>
+      <wizard
+            category="org.limepepper.chefclipse.ui.wizards.category"
+            class="org.limepepper.chefclipse.databag.editor.wizards.BasicNewDataBagWizard"
+            hasPages="true"
+            icon="icons/data_bag_editor.png"
+            id="org.limepepper.chefclipse.databag.editor.createdatabag"
+            name="New Data Bag">
+      </wizard>
    </extension>
 
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.limepepper.chefclipse.databag.editor.editing.ActiveEditorTracker">
+      </startup>
+   </extension>
 
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="chefclipse.ui.databag.editor.databag.editor.navigatorContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.views.ResourceNavigator">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="chefclipse.ui.databag.editor.databag.editor.navigatorContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.eclipse.jdt.ui.PackageExplorer">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="chefclipse.ui.databag.editor.databag.editor.navigatorContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerContentBinding
+            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension
+                  isRoot="false"
+                  pattern="chefclipse.ui.databag.editor.databag.editor.navigatorContent">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+   </extension>
+
+  <!-- =================================================================================== -->
+  <!-- the viewer  -->
+  <!-- =================================================================================== -->
+
+
+    <extension
+            point="org.eclipse.ui.navigator.viewer">
+        <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+            <includes>
+                <contentExtension pattern="chefclipse.ui.databag.editor.navigatorContent" />
+            </includes>
+        </viewerContentBinding>
+    </extension>
+
+  <extension point="org.eclipse.ui.navigator.viewer">
+    <viewerContentBinding viewerId="chefclipse.navigatorview">
+      <includes>
+        <contentExtension
+              isRoot="false"
+              pattern="chefclipse.ui.databag.editor.navigatorContent"/>
+      </includes>
+    </viewerContentBinding>
+
+  </extension>
+
+     <extension
+            point="org.eclipse.ui.navigator.navigatorContent">
+        <navigatorContent
+              activeByDefault="true"
+              contentProvider="org.limepepper.chefclipse.databag.providers.DatabagEditorContentProvider"
+              icon="icons/packagefolder_obj.png"
+              id="chefclipse.ui.databag.editor.navigatorContent"
+              labelProvider="org.limepepper.chefclipse.databag.providers.DatabagEditorLabelProvider"
+              name="commonNavigatorContentForDataBagEditor"
+              priority="high">
+            <triggerPoints>
+                <or>
+                    <adapt type="org.eclipse.core.resources.IProject" >
+                        <test property="org.eclipse.core.resources.projectNature"
+                        value="chefclipse.core.builders.ChefProjectNature"/>
+                    </adapt>
+                    <instanceof value="org.eclipse.core.resources.IResource" />
+                    <instanceof value="chefclipse.core.ChefResource" />
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
+
+                </or>
+            </triggerPoints>
+            <possibleChildren>
+                <or>
+                    <instanceof value="org.eclipse.core.resources.IResource" />
+                    <instanceof value="chefclipse.core.ChefResource" />
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
+                </or>
+            </possibleChildren>
+            <override
+                  policy="InvokeAlwaysRegardlessOfSuppressedExt"
+                  suppressedExtensionId="org.eclipse.ui.navigator.resourceContent">
+            </override>
+          	<actionProvider
+                 class="org.limepepper.chefclipse.databag.editor.actions.OpenDataBagActionProvider">
+          	</actionProvider>
+           <actionProvider
+                 class="org.limepepper.chefclipse.databag.editor.actions.NewDataBagActionProvider">
+           </actionProvider>
+        </navigatorContent>
+
+   </extension>
 
 
 </plugin>

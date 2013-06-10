@@ -105,10 +105,8 @@ public class ChefProject extends Openable implements IChefProject, IOpenable,
 
 	@Override
 	protected boolean buildStructure(OpenableElementInfo info,
-			IProgressMonitor pm, Map newElements, IResource underlyingResource)
+			IProgressMonitor pm, @SuppressWarnings("rawtypes") Map newElements, IResource underlyingResource)
 			throws ChefModelException {
-		Repository repository = ChefRepositoryManager.INSTANCE
-				.getRepository(project);
 		try {
 			int length = project.members().length;
 			IResource[] members;

@@ -8,9 +8,10 @@
     <groupId>org.limepepper.chefclipse</groupId>
     <artifactId>org.limepepper.chefclipse</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <relativePath>../chefclipse.parent</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.limepepper.chefclipse</groupId>
+  <name>org.limepepper.chefclipse.remotepicker.api</name>
   <artifactId>org.limepepper.chefclipse.remotepicker.api</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>

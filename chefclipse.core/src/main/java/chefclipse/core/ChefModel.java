@@ -33,7 +33,7 @@ public class ChefModel extends Openable implements IChefModel {
 
 	/**
 	 * parent of self...
-	 * 
+	 *
 	 */
 	// @todo is this the correct way?
 	@Override
@@ -44,7 +44,7 @@ public class ChefModel extends Openable implements IChefModel {
 	/**
 	 * Returns the active Java project associated with the specified resource,
 	 * or <code>null</code> if no Java project yet exists for the resource.
-	 * 
+	 *
 	 * @exception IllegalArgumentException
 	 *                if the given resource is not one of an IProject, IFolder,
 	 *                or IFile.
@@ -65,7 +65,7 @@ public class ChefModel extends Openable implements IChefModel {
 
 	@Override
 	protected boolean buildStructure(OpenableElementInfo info,
-			IProgressMonitor pm, Map newElements, IResource underlyingResource)
+			IProgressMonitor pm, @SuppressWarnings("rawtypes") Map newElements, IResource underlyingResource)
 			throws ChefModelException {
 		IProject[] projects = ResourcesPlugin.getWorkspace().getRoot()
 				.getProjects();

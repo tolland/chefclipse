@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "installing the chefclipse IDE using p2"
+
+cd /tmp
+
+curl -L https://dl.dropboxusercontent.com/u/4171924/install.jar -o /tmp/install.jar
+
+java -jar /tmp/install.jar
+
+

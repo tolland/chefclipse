@@ -3,6 +3,7 @@
  */
 package org.limepepper.chefclipse.databag.editor.editors;
 
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
@@ -11,20 +12,30 @@ import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 
 /**
+ * Input for the {@link MultiPageDataBagEditor}.
+ * 
  * @author Sebastian Sampaoli
- *
+ * 
  */
 public class DataBagEditorInput implements IEditorInput {
 
     private EObject eObject;
     private String name;
+    private IFolder parentFolder;
+    private boolean dataBag;
 
-    public DataBagEditorInput(EObject eObject) {
+    public DataBagEditorInput(EObject eObject/*, Map<String, JsonNode> nodesMap*/) {
         this.seteObject(eObject);
         if (eObject instanceof DataBag) {
-            name = ((DataBag) eObject).getName();
+            DataBag dataBag = (DataBag) eObject;
+            name = dataBag.getName();
+            setParentFolder((IFolder) dataBag.getResource());
+            setDataBag(true);
         } else if (eObject instanceof DataBagItem) {
-            name =  ((DataBagItem) eObject).getName();
+            DataBagItem dataBagItem = (DataBagItem) eObject;
+            name =  dataBagItem.getName();
+            setParentFolder((IFolder) dataBagItem.getJsonResource().getParent());
+            setDataBag(false);
         }
     }
     /* (non-Javadoc)
@@ -104,5 +115,17 @@ public class DataBagEditorInput implements IEditorInput {
     
     public void seteObject(EObject eObject) {
         this.eObject = eObject;
+    }
+    public IFolder getParentFolder() {
+        return parentFolder;
+    }
+    public void setParentFolder(IFolder parentFolder) {
+        this.parentFolder = parentFolder;
+    }
+    public boolean isDataBag() {
+        return dataBag;
+    }
+    public void setDataBag(boolean dataBag) {
+        this.dataBag = dataBag;
     }
 }

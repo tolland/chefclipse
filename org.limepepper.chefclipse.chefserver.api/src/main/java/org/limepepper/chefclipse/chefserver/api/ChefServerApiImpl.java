@@ -644,37 +644,37 @@ public class ChefServerApiImpl implements ChefServerApi {
 
 	@Override
 	public List<Client> getClients() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Client getClient(String name) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void setClient(String name) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public List<DataBag> getDataBags() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public DataBag getDataBag(String name) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void setDataBag(String name) {
-		// TODO Auto-generated method stub
+		
 
 	}
 

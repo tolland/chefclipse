@@ -169,7 +169,7 @@ public class NodeTable extends Composite {
 
 		@Override
 		public boolean performDrop(Object data) {
-			// TODO Auto-generated method stub
+			
 			return false;
 		}
 

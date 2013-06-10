@@ -32,7 +32,7 @@ public class ChefModelItemProviderAdapterFactory implements AdapterFactory {
 	}
 
 	public static AdapterFactory getAdapterFactory() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
