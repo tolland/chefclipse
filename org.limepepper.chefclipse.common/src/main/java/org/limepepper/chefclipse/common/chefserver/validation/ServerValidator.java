@@ -5,6 +5,7 @@
 package org.limepepper.chefclipse.common.chefserver.validation;
 
 import org.eclipse.emf.common.util.EList;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.Environment;

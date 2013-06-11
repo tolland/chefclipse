@@ -43,59 +43,9 @@
       </startup>
    </extension>
 
-   <extension
-         point="org.eclipse.ui.navigator.viewer">
-      <viewerContentBinding
-            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
-         <includes>
-            <contentExtension
-                  isRoot="false"
-                  pattern="chefclipse.ui.databag.editor.databag.editor.navigatorContent">
-            </contentExtension>
-         </includes>
-      </viewerContentBinding>
-      <viewerContentBinding
-            viewerId="org.eclipse.ui.views.ResourceNavigator">
-         <includes>
-            <contentExtension
-                  isRoot="false"
-                  pattern="chefclipse.ui.databag.editor.databag.editor.navigatorContent">
-            </contentExtension>
-         </includes>
-      </viewerContentBinding>
-      <viewerContentBinding
-            viewerId="org.eclipse.jdt.ui.PackageExplorer">
-         <includes>
-            <contentExtension
-                  isRoot="false"
-                  pattern="chefclipse.ui.databag.editor.databag.editor.navigatorContent">
-            </contentExtension>
-         </includes>
-      </viewerContentBinding>
-      <viewerContentBinding
-            viewerId="org.eclipse.ui.navigator.ProjectExplorer">
-         <includes>
-            <contentExtension
-                  isRoot="false"
-                  pattern="chefclipse.ui.databag.editor.databag.editor.navigatorContent">
-            </contentExtension>
-         </includes>
-      </viewerContentBinding>
-   </extension>
-
   <!-- =================================================================================== -->
   <!-- the viewer  -->
   <!-- =================================================================================== -->
-
-
-    <extension
-            point="org.eclipse.ui.navigator.viewer">
-        <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
-            <includes>
-                <contentExtension pattern="chefclipse.ui.databag.editor.navigatorContent" />
-            </includes>
-        </viewerContentBinding>
-    </extension>
 
   <extension point="org.eclipse.ui.navigator.viewer">
     <viewerContentBinding viewerId="chefclipse.navigatorview">
@@ -105,7 +55,6 @@
               pattern="chefclipse.ui.databag.editor.navigatorContent"/>
       </includes>
     </viewerContentBinding>
-
   </extension>
 
      <extension

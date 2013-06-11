@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.forms.widgets.ExpandableComposite;
-import org.limepepper.chefclipse.preferences.ui.Activator;
+import org.limepepper.chefclipse.preferences.ui.PreferencesActivator;
 
 /**
  * Factory class to create some SWT resources. 
@@ -642,7 +642,7 @@ public class SWTFactory {
 	 * @since 3.2
 	 */
 	public static void showPreferencePage(String id) {
-		PreferencesUtil.createPreferenceDialogOn(Activator.getShell(), id, new String[] {id}, null).open();
+		PreferencesUtil.createPreferenceDialogOn(PreferencesActivator.getShell(), id, new String[] {id}, null).open();
 	}
 	
 	/**
@@ -658,6 +658,6 @@ public class SWTFactory {
 	 * @since 3.6
 	 */
 	public static void showPreferencePage(String page_id, String[] page_filters) {
-		PreferencesUtil.createPreferenceDialogOn(Activator.getShell(), page_id, page_filters, null).open();
+		PreferencesUtil.createPreferenceDialogOn(PreferencesActivator.getShell(), page_id, page_filters, null).open();
 	}
 }

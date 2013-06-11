@@ -5,6 +5,7 @@
 package org.limepepper.chefclipse.common.chefserver.validation;
 
 import org.eclipse.emf.common.util.EList;
+import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**

@@ -25,7 +25,7 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getOS <em>OS</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getCookbooks <em>Cookbooks</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getKnife <em>Knife</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getKnives <em>Knives</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl#getCookbookFolders <em>Cookbook Folders</em>}</li>
  * </ul>
  * </p>
@@ -136,15 +136,15 @@ public class RepositoryImpl extends DescribedObjectImpl implements Repository {
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<KnifeConfig> getKnife() {
-		return (EList<KnifeConfig>)eGet(WorkstationPackage.Literals.REPOSITORY__KNIFE, true);
+	@SuppressWarnings("unchecked")
+	public EList<KnifeConfig> getKnives() {
+		return (EList<KnifeConfig>)eGet(WorkstationPackage.Literals.REPOSITORY__KNIVES, true);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

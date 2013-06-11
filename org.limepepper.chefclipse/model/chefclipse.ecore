@@ -216,7 +216,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="basepath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="cookbooks" upperBound="-1"
           eType="#//cookbook/CookbookVersion" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="knife" upperBound="-1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="knives" upperBound="-1"
           eType="#//knife/KnifeConfig" eOpposite="#//knife/KnifeConfig/repository"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="cookbookFolders" lowerBound="1"
           upperBound="-1" eType="#//workstation/CookbooksFolder"/>
@@ -251,7 +251,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="serverCookbookVersion"
           upperBound="-1" eType="#//chefserver/ServerCookbookVersion" eOpposite="#//chefserver/ServerCookbookVersion/knifeConfig"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="repository" eType="#//workstation/Repository"
-          eOpposite="#//workstation/Repository/knife"/>
+          eOpposite="#//workstation/Repository/knives"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Plugin"/>
     <eClassifiers xsi:type="ecore:EClass" name="KnifeSearch"/>

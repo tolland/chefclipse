@@ -42,7 +42,8 @@ import chefclipse.core.providers.ChefProjectAdapterFactory;
  *
  */
 public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
-		implements IPipelinedTreeContentProvider,IPipelinedTreeContentProvider2 {
+		implements IPipelinedTreeContentProvider,
+		IPipelinedTreeContentProvider2 {
 
 	KnifeConfigController api = KnifeConfigController.INSTANCE;
 
@@ -74,8 +75,7 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
 
 				children.add(repository);
 
-				for (KnifeConfig knifeConfig : ChefConfigManager.instance()
-						.retrieveChefConfigurations()) {
+				for (KnifeConfig knifeConfig : repository.getKnives()) {
 
 					children.add(knifeConfig);
 				}
@@ -205,19 +205,16 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
 
 	@Override
 	public void init(ICommonContentExtensionSite aConfig) {
-		
 
 	}
 
 	@Override
 	public void restoreState(IMemento aMemento) {
-		
 
 	}
 
 	@Override
 	public void saveState(IMemento aMemento) {
-		
 
 	}
 
@@ -225,7 +222,8 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
 		// Replace any model projects with a ChefModelProject
 		if (anInput instanceof IWorkspaceRoot) {
 			List<Object> newProjects = new ArrayList<Object>();
-			for (Iterator<Object> iter = theCurrentElements.iterator(); iter.hasNext();) {
+			for (Iterator<Object> iter = theCurrentElements.iterator(); iter
+					.hasNext();) {
 				Object element = iter.next();
 				if (element instanceof IProject) {
 					IProject project = (IProject) element;
@@ -264,37 +262,37 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
 	@Override
 	public PipelinedShapeModification interceptAdd(
 			PipelinedShapeModification anAddModification) {
-		
+
 		return null;
 	}
 
 	@Override
 	public PipelinedShapeModification interceptRemove(
 			PipelinedShapeModification aRemoveModification) {
-		
+
 		return null;
 	}
 
 	@Override
 	public boolean interceptRefresh(
 			PipelinedViewerUpdate aRefreshSynchronization) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean interceptUpdate(PipelinedViewerUpdate anUpdateSynchronization) {
-		
+
 		return false;
 	}
 
 	@Override
 	public boolean hasPipelinedChildren(Object anInput,
 			boolean currentHasChildren) {
-        if ((anInput instanceof IFolder)) {
-            return true;
-        }
-        return currentHasChildren;
+		if ((anInput instanceof IFolder)) {
+			return true;
+		}
+		return currentHasChildren;
 	}
 
 }

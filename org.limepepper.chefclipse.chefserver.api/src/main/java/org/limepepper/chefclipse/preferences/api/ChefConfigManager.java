@@ -29,10 +29,12 @@ import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApiImpl;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.utility.Config;
 import org.osgi.service.prefs.BackingStoreException;
 
 import chefclipse.core.ChefCore;
+import chefclipse.core.managers.ChefRepositoryManager;
 
 /**
  * Manager that allow to persist and retrieve chef configurations.
@@ -91,6 +93,7 @@ public class ChefConfigManager {
 				EList<EObject> result = resource.getContents();
 				List<KnifeConfig> configs = new ArrayList<KnifeConfig>();
 				configs.addAll((Collection<? extends KnifeConfig>) result);
+
 				return configs;
 			} catch (IOException e) {
 				Platform.getLog(ChefCore.getContext().getBundle())
@@ -117,7 +120,6 @@ public class ChefConfigManager {
 	public void saveChefConfigs(final List<? extends Config> chefConfigs) {
 		EList<Config> configList = new BasicEList<Config>();
 		configList.addAll(chefConfigs);
-
 
 		Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 		Map<String, Object> m = reg.getExtensionToFactoryMap();
@@ -271,7 +273,11 @@ public class ChefConfigManager {
 					selectedName);
 		}
 
+		Repository repository = ChefRepositoryManager.INSTANCE
+				.getRepository((IProject) project);
+
 		for (KnifeConfig knifeConfig : configs) {
+			repository.getKnives().add(knifeConfig);
 			if (selectedUrl.equals(serverUrl(knifeConfig))
 					&& selectedName.equals(knifeConfig.getNode_name())) {
 				return knifeConfig;

@@ -283,7 +283,7 @@ public interface KnifeConfig extends Config {
 
 				/**
 	 * Returns the value of the '<em><b>Repository</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.workstation.Repository#getKnife <em>Knife</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.workstation.Repository#getKnives <em>Knives</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Repository</em>' reference isn't clear,
@@ -293,8 +293,8 @@ public interface KnifeConfig extends Config {
 	 * @return the value of the '<em>Repository</em>' reference.
 	 * @see #setRepository(Repository)
 	 * @see org.limepepper.chefclipse.common.knife.KnifePackage#getKnifeConfig_Repository()
-	 * @see org.limepepper.chefclipse.common.workstation.Repository#getKnife
-	 * @model opposite="knife"
+	 * @see org.limepepper.chefclipse.common.workstation.Repository#getKnives
+	 * @model opposite="knives"
 	 * @generated
 	 */
 	Repository getRepository();

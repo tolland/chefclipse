@@ -65,7 +65,7 @@ public class RepositoryItemProvider
 			addOSPropertyDescriptor(object);
 			addBasepathPropertyDescriptor(object);
 			addCookbooksPropertyDescriptor(object);
-			addKnifePropertyDescriptor(object);
+			addKnivesPropertyDescriptor(object);
 			addCookbookFoldersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -182,19 +182,19 @@ public class RepositoryItemProvider
 	}
 
     /**
-	 * This adds a property descriptor for the Knife feature.
+	 * This adds a property descriptor for the Knives feature.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected void addKnifePropertyDescriptor(Object object) {
+	protected void addKnivesPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Repository_knife_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Repository_knife_feature", "_UI_Repository_type"),
-				 WorkstationPackage.Literals.REPOSITORY__KNIFE,
+				 getString("_UI_Repository_knives_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Repository_knives_feature", "_UI_Repository_type"),
+				 WorkstationPackage.Literals.REPOSITORY__KNIVES,
 				 true,
 				 false,
 				 true,
@@ -203,7 +203,7 @@ public class RepositoryItemProvider
 				 null));
 	}
 
-    /**
+				/**
 	 * This adds a property descriptor for the Cookbook Folders feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -322,11 +322,6 @@ public class RepositoryItemProvider
 			(createChildParameter
 				(WorkstationPackage.Literals.REPOSITORY__COOKBOOKS,
 				 CookbookFactory.eINSTANCE.createCookbookVersion()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(WorkstationPackage.Literals.REPOSITORY__KNIFE,
-				 KnifeFactory.eINSTANCE.createKnifeConfig()));
 	}
 
     /**

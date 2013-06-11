@@ -225,14 +225,14 @@
   <!-- =================================================================================== -->
   <!-- new org.eclipse.ui.popupMenus   -->
   <!-- =================================================================================== -->
-  <extension point="org.eclipse.ui.popupMenus">
+<!--   <extension point="org.eclipse.ui.popupMenus">
     <objectContribution adaptable="true" id="chefclipse.popupmenu.compare.with"
     objectClass="org.eclipse.core.resources.IResource">
       <action class="chefclipse.ui.actions.Action1" id="chefclipse.ui.action1"
       label="%action.label" menubarPath="compareWithMenu/compareWithGroup">
       </action>
     </objectContribution>
-  </extension>
+  </extension> -->
   <!-- =================================================================================== -->
   <!-- new project wizards  -->
   <!-- =================================================================================== -->

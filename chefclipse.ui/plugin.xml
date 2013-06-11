@@ -381,7 +381,7 @@
   <!-- new org.eclipse.ui.popupMenus   -->
   <!-- =================================================================================== -->
 
-  <extension point="org.eclipse.ui.popupMenus">
+  <!--extension point="org.eclipse.ui.popupMenus">
     <objectContribution
       adaptable="true"
       id="chefclipse.popupmenu.compare.with"
@@ -391,7 +391,7 @@
         menubarPath="compareWithMenu/compareWithGroup">
       </action>
     </objectContribution>
-  </extension>
+  </extension-->
 
 
   <!-- =================================================================================== -->
