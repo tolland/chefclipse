@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse;
+package org.limepepper.chefclipse.chefserver.api;
 
 import java.util.List;
 

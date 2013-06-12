@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.api;
+package org.limepepper.chefclipse.chefserver.api.tests;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -13,7 +13,7 @@ import java.util.Properties;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.Api;
+import org.limepepper.chefclipse.chefserver.api.Api;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;

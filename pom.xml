@@ -127,7 +127,8 @@
         <module>org.limepepper.chefclipse.common.edit</module>
         <module>org.limepepper.chefclipse.common.editor</module>
 
-        <module>org.limepepper.chefclipse.api</module>
+        <!-- merged the api object with core -->
+        <!--module>org.limepepper.chefclipse.api</module-->
         <module>org.limepepper.chefclipse.app</module>
         <module>org.limepepper.chefclipse.chefserver.api</module>
         <module>org.limepepper.chefclipse.chefserver.api.ui</module>
