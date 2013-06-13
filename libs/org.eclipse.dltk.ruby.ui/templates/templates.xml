@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+
+<!--  source for these completion templates https://github.com/cabeca/SublimeChef  -->
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="execute command"
+    id="org.eclipse.dltk.ruby.ui.templates.execute-full"
+    name="execute"><![CDATA[
+execute "${name}" do
+	action :${run}
+	command "${ls}"
+	creates "${something}"
+	cwd "${tmp}"
+	environment ({'HOME' => '/home/myhome'})
+	user "${root}"
+	group "${root}"
+	path "['/opt/bin','/opt/sbin']"
+	timeout 3600
+	returns 0
+	umask "00022"
+end
+
+]]></template>
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="execute nothing"
+    id="org.eclipse.dltk.ruby.ui.templates.execute-nothing"
+    name="execute"><![CDATA[
+execute "${name}" do
+  action :${run}
+  command "${ls}"
+  action :${nothing}
+end
+
+]]></template>
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="cookbook_file full"
+    id="org.eclipse.dltk.ruby.ui.templates.cookbook_file-full"
+    name="cookbook_file-full"><![CDATA[
+cookbook_file "${path}/${name}" do
+  action :${create}
+  path "${path}/${name}"
+  source "${name}.erb"
+  owner "${root}"
+  group "${root}"
+  mode 00644
+  backup 5
+  #cookbook "${cookbook}"
+end
+]]></template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="cookbook_file short"
+    id="org.eclipse.dltk.ruby.ui.templates.cookbook_file"
+    name="cookbook_file"><![CDATA[
+cookbook_file "${path}/${name}" do
+	source "${name}.erb"
+	owner "root"
+	group "root"
+	mode 00644
+end
+]]></template>
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="template full"
+    id="org.eclipse.dltk.ruby.ui.templates.template-full"
+    name="template-full"><![CDATA[
+template "${path}/${name}" do
+  source "${name}.erb"
+  owner "root"
+  group "root"
+  mode 00644
+  variables( ${cursor} )
+end
+]]></template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert variables into template"
+    id="org.eclipse.dltk.ruby.ui.templates.variables"
+    name="variables"><![CDATA[variables( ${vars} )
+]]></template>
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert owner into template"
+    id="org.eclipse.dltk.ruby.ui.templates.owner"
+    name="owner"><![CDATA[owner "${owner}"]]></template>
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert group into template"
+    id="org.eclipse.dltk.ruby.ui.templates.group"
+    name="group"><![CDATA[group "${group}"
+]]></template>
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert mode into template"
+    id="org.eclipse.dltk.ruby.ui.templates.mode"
+    name="mode"><![CDATA[mode "00644${mode}"
+]]></template>
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert not_if into resource"
+    id="org.eclipse.dltk.ruby.ui.templates.not_if"
+    name="not_if"><![CDATA[not_if "${condition}"
+]]></template>
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert not_if into resource"
+    id="org.eclipse.dltk.ruby.ui.templates.not_if-file"
+    name="not_if"><![CDATA[not_if "test -f ${file}"
+]]></template>
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert only_if into resource"
+    id="org.eclipse.dltk.ruby.ui.templates.only_if"
+    name="only_if"><![CDATA[only_if "${condition}"
+]]></template>
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert only_if file check"
+    id="org.eclipse.dltk.ruby.ui.templates.only_if-file"
+    name="only_if"><![CDATA[only_if "test -f ${file}"
+]]></template>
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert ignore_failure into resource"
+    id="org.eclipse.dltk.ruby.ui.templates.ignore_failure"
+    name="ignore_failure"><![CDATA[ignore_failure "${true}"
+]]></template>
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert provider into resource"
+    id="org.eclipse.dltk.ruby.ui.templates.provider"
+    name="provider"><![CDATA[provider Chef::Provider::$provider"
+]]></template>
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert retries into resource"
+    id="org.eclipse.dltk.ruby.ui.templates.retries"
+    name="retries"><![CDATA[retries ${retries}
+retry_delay ${delay}
+]]></template>
+
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert supports into resource"
+    id="org.eclipse.dltk.ruby.ui.templates.supports"
+    name="supports"><![CDATA[supports :status => :${status}, :restart => :${restart}, :reload => :${reload}
+]]></template>
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert attribute into metadata.rb"
+    id="org.eclipse.dltk.ruby.ui.templates.attribute"
+    name="attribute"><![CDATA[
+attribute "${name}",
+  :display_name => "${display_name}",
+  :description => "${display_name}",
+  :default => "${default_value}"
+
+]]></template>
+
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="template short"
+    id="org.eclipse.dltk.ruby.ui.templates.template-short"
+    name="template"><![CDATA[
+template "${path}/${name}" do
+  source "${name}.erb"
+  owner "root"
+  group "root"
+  mode 00644
+end
+]]></template>
+
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert ruby_block"
+    id="org.eclipse.dltk.ruby.ui.templates.ruby_block"
+    name="ruby_block"><![CDATA[
+ruby_block "${name}" do
+	block do
+		${cursor}
+	end
+end
+]]></template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="insert a link resource"
+    id="org.eclipse.dltk.ruby.ui.templates.link"
+    name="link"><![CDATA[
+link
+  "${name}" do
+  to "${target}"
+end
+  ]]></template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="log something"
+    id="org.eclipse.dltk.ruby.ui.templates.log"
+    name="log"><![CDATA[
+log ("${log_message}") { level :debug }
+  ]]></template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%forTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.for1"
+    name="for">for ${obj} in ${collection}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%forTemplate2.description"
+    id="org.eclipse.dltk.ruby.ui.templates.for2"
+    name="for">for ${i} in ${start_num}..${end_num}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%defTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.def1"
+    name="def">def ${method_name}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%whileTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.while1"
+    name="while">while ${condition}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%whileTemplate2.description"
+    id="org.eclipse.dltk.ruby.ui.templates.while2"
+    name="while">while ${condition}</template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%classTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.class1"
+    name="class">class ${ClassName}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%classTemplate2.description"
+    id="org.eclipse.dltk.ruby.ui.templates.class2"
+    name="class">class &lt;&lt; ${obj}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%moduleTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.module1"
+    name="module">module ${ModuleName}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%doTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.do1"
+    name="do">do |${block_var}|
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%ifTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.if1"
+    name="if">if ${condition}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%ifTemplate2.description"
+    id="org.eclipse.dltk.ruby.ui.templates.if2"
+    name="if">if __FILE__ == $$0
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%ifelseTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.ifelse1"
+    name="ifelse">if ${condition}
+    ${if_body}
+    else
+    ${else_body}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%elsifTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.elsif1"
+    name="elsif">elsif ${condition}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%caseTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.case"
+    name="case">case ${condition}
+    when ${comparison1}
+    ${comparison1_body}
+    when
+    ${comparison2}
+    ${comparison2_body}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%elseTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.else"
+    name="else">else ${condition}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%beginTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.begin1"
+    name="begin">begin
+    ${body}
+    end until ${condition}
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%beginTemplate2.description"
+    id="org.eclipse.dltk.ruby.ui.templates.begin2"
+    name="begin">begin
+    ${body}
+    end while ${condition}
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%beginTemplate3.description"
+    id="org.eclipse.dltk.ruby.ui.templates.begin3"
+    name="begin">begin
+    ${begin_body}
+    rescue ${ErrorType}
+    ${rescue_body}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%beginTemplate4.description"
+    id="org.eclipse.dltk.ruby.ui.templates.begin4"
+    name="begin">begin
+    ${begin_body}
+    rescue ${ErrorType}
+    ${rescue_body}
+    ensure
+    ${ensure_body}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%untilTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.until1"
+    name="until">until ${condition}
+    ${cursor}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%aliasTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.alias1"
+    name="alias">alias :${new_method} :${old_method}</template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%rescueTemplate1.description"
+    id="org.eclipse.dltk.ruby.ui.templates.rescue1"
+    name="rescue">rescue ${ErrorType}
+    ${rescue_body}
+    end
+  </template>
+
+  <template
+    context="rubyUniversalTemplateContextType"
+    description="%rescueTemplate2.description"
+    id="org.eclipse.dltk.ruby.ui.templates.rescue2"
+    name="rescue">rescue ${ErrorType} =&gt; ${error_var}
+    ${rescue_body}
+    end
+  </template>
+
+  <!--
+    vim: list lcs=tab\:[~ noet ts=8 sts=8 sw=8
+  -->
+</templates>
