@@ -41,6 +41,13 @@ public class RubyEditor extends ScriptEditor {
 	private org.eclipse.dltk.internal.ui.editor.BracketInserter fBracketInserter = new RubyBracketInserter(
 			this);
 
+	private static RubyOutlinePageFactory rubyOutlinePageFactory = new RubyOutlinePageFactory();
+
+	public static void setRubyOutlinePageFactory(
+			RubyOutlinePageFactory rubyOutlinePageFactory) {
+		RubyEditor.rubyOutlinePageFactory = rubyOutlinePageFactory;
+	}
+
 	protected void initializeEditor() {
 		super.initializeEditor();
 		setEditorContextMenuId(EDITOR_CONTEXT);
@@ -56,8 +63,8 @@ public class RubyEditor extends ScriptEditor {
 	}
 
 	protected ScriptOutlinePage doCreateOutlinePage() {
-		return new RubyOutlinePage(this, RubyUI.getDefault()
-				.getPreferenceStore());
+		return rubyOutlinePageFactory.createOutlinePage(this, RubyUI
+				.getDefault().getPreferenceStore());
 	}
 
 	protected void connectPartitioningToElement(IEditorInput input,
