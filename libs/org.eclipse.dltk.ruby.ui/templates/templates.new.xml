@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<templates>
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="group ub efwefk"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.coookbook_recipe"
+    name="cookbook_recipe"><![CDATA[
+coookbook_recipe
+  "${begin_body}" do
+  rescue ${ErrorType}
+  ${rescue_body}
+  ensure
+  ${ensure_body}
+end
+]]></template>
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="soft link"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.link"
+    name="link"><![CDATA[
+link
+  "${name}" do
+  to "${target}"
+end
+  ]]></template>
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="hard link"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.link-hard"
+    name="link-hard"><![CDATA[
+link
+  "${name}" do
+  to "${target}"
+  link_type :hard
+end
+  ]]></template>
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="hard link"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.link-hard2"
+    name="link-hard"><![CDATA[
+link
+  "${name}" do
+  to "${target}"
+  link_type :hard
+end
+  ]]></template>
+
+
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="template"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.template-with-variables"
+    name="template"><![CDATA[
+link
+  "${name}" do
+  to "${target}"
+  link_type :hard
+end
+  ]]></template>
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="template with variables"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.template-with-variables"
+    name="template-with"><![CDATA[
+template "${name}" do
+  variables(
+    ${cursor}
+  )
+end
+  ]]></template>
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="directory resource"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.directory-resource"
+    name="directory"><![CDATA[
+directory "${name}" do
+  owner "root"
+  group "root"
+  mode 0755
+  action :create
+end
+  ]]></template>
+  <!-- template autoinsert="true" context="rubyUniversalTemplateContextType" deleted="false"
+    description="execute a script delivered by a template" enabled="true" id="org.eclipse.dltk.ruby.ui.templates.service-resource"
+    name="service-template"><![CDATA[ <![CDATA[ service "${1:name}" do pattern "${2:pattern}"
+    supports :status => ${3:true}, :restart => ${4:true}, :reload => ${5:true} action
+    ${6:[ :enable, :start ]} end ]]></template -->
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="check that a remote file has been modifed, if so download, untar and install it"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.get-remote-file-and-deploy-resource"
+    name="remote_file-and-deploy"><![CDATA[
+remote_file "#{Chef::Config[:file_cache_path]}/${name}" do
+  source ${source_url}
+  action :nothing
+end
+
+http_request "HEAD #{node[:eclipse][:e4_url]}" do
+  message ""
+  url node[:eclipse][:e4_url]
+  action :head
+  if File.exists?("#{Chef::Config[:file_cache_path]}/eclipse-rcp-juno-SR2-linux-gtk-x86_64.tar.gz")
+    headers "If-Modified-Since" => File.mtime("#{Chef::Config[:file_cache_path]}/eclipse-rcp-juno-SR2-linux-gtk-x86_64.tar.gz").httpdate
+  end
+  notifies :create, "${columns:link(1, 2, 3, 4, 5)}", :immediately
+end
+
+
+  ]]></template>
+
+
+  <template
+    autoinsert="true"
+    context="chefclipse.contexttype"
+    deleted="false"
+    description="basic service resource"
+    enabled="true"
+    id="org.eclipse.dltk.ruby.ui.templates.service-resource"
+    name="service-resource"><![CDATA[
+remote_file "#{Chef::Config[:file_cache_path]}/${name}" do
+  source ${source_url}
+  action :nothing
+end
+
+http_request "HEAD #{node[:eclipse][:e4_url]}" do
+  message ""
+  url node[:eclipse][:e4_url]
+  action :head
+  if File.exists?("#{Chef::Config[:file_cache_path]}/eclipse-rcp-juno-SR2-linux-gtk-x86_64.tar.gz")
+    headers "If-Modified-Since" => File.mtime("#{Chef::Config[:file_cache_path]}/eclipse-rcp-juno-SR2-linux-gtk-x86_64.tar.gz").httpdate
+  end
+  notifies :create, "${columns:link(1, 2, 3, 4, 5)}", :immediately
+end
+
+
+  ]]></template>
+
+
+
+
+
+</templates>
