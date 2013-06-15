@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.dltk.core.DLTKCore;
+import org.eclipse.dltk.core.ElementChangedEvent;
 import org.eclipse.dltk.core.ISourceModule;
 import org.eclipse.dltk.internal.ui.editor.ScriptEditor;
 import org.eclipse.dltk.ruby.internal.ui.editor.RubyOutlinePage;
@@ -14,13 +16,42 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.limepepper.chefclipse.dltk.model.ChefParser;
 import org.limepepper.chefclipse.dltk.model.ModelRoot;
 import org.limepepper.chefclipse.dltk.model.Resource;
 
 public class ChefRubyOutlinePage extends RubyOutlinePage {
 
-	private static class DelegatingLabelProvider implements ILabelProvider {
+	/**
+	 * The default listener does not update the outline tree in case a chef
+	 * element changes, because it is not recognised / not included in the DLTK
+	 * model. So we need to override the default element change listener in
+	 * order to make the outline view to refresh when a chef element changes.
+	 * 
+	 */
+	private class GreedyElementChangeListener extends ElementChangedListener {
+		@Override
+		public void elementChanged(final ElementChangedEvent e) {
+			if (getControl() == null) {
+				return;
+			}
+
+			Display d = getControl().getDisplay();
+			if (d != null) {
+				d.asyncExec(new Runnable() {
+					public void run() {
+						if (e.getDelta() != null && fOutlineViewer != null) {
+							fOutlineViewer.reconcile(e.getDelta());
+						}
+
+					}
+				});
+			}
+		}
+	}
+
+	private class DelegatingLabelProvider implements ILabelProvider {
 
 		private final ILabelProvider wrapped;
 
@@ -29,7 +60,7 @@ public class ChefRubyOutlinePage extends RubyOutlinePage {
 		}
 
 		public Image getImage(Object element) {
-			if (element instanceof Resource) {
+			if (element instanceof ChefResourceOutlineElement) {
 				return Activator.getDefault().getImageRegistry()
 						.get(Activator.CHEFCLIPSE_ICON);
 			}
@@ -37,8 +68,8 @@ public class ChefRubyOutlinePage extends RubyOutlinePage {
 		}
 
 		public String getText(Object element) {
-			if (element instanceof Resource) {
-				return ((Resource) element).getDisplayName();
+			if (element instanceof ChefResourceOutlineElement) {
+				return ((ChefResourceOutlineElement) element).getChefResource().getDisplayName();
 			}
 			return wrapped.getText(element);
 		}
@@ -60,13 +91,17 @@ public class ChefRubyOutlinePage extends RubyOutlinePage {
 		}
 	}
 
-	private static class DelegatingContentProvider implements
-			ITreeContentProvider {
+	private class DelegatingContentProvider implements ITreeContentProvider {
 
 		private final ITreeContentProvider wrapped;
 
 		private ChefParser parser = new ChefParser();
 
+		private ElementChangedListener fListener;
+
+		/**
+		 * Override this method to add parsed chef elements
+		 */
 		public Object[] getElements(Object inputElement) {
 			List elements = new ArrayList();
 			elements.addAll(Arrays.asList(wrapped.getElements(inputElement)));
@@ -75,7 +110,7 @@ public class ChefRubyOutlinePage extends RubyOutlinePage {
 				ISourceModule sourceModule = (ISourceModule) inputElement;
 				ModelRoot modelRoot = parser.parse(sourceModule);
 				for (Resource resource : modelRoot.getResources()) {
-					elements.add(resource);
+					elements.add(new ChefResourceOutlineElement(resource, sourceModule));
 				}
 			}
 
@@ -86,8 +121,19 @@ public class ChefRubyOutlinePage extends RubyOutlinePage {
 			wrapped.dispose();
 		}
 
+		/**
+		 * Override this method to add a custom listener to trigger refresh
+		 */
 		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-			wrapped.inputChanged(viewer, oldInput, newInput);
+			boolean isCU = (newInput instanceof ISourceModule);
+
+			if (isCU && fListener == null) {
+				fListener = new GreedyElementChangeListener();
+				DLTKCore.addElementChangedListener(fListener);
+			} else if (!isCU && fListener != null) {
+				DLTKCore.removeElementChangedListener(fListener);
+				fListener = null;
+			}
 		}
 
 		public Object[] getChildren(Object parentElement) {

@@ -78,4 +78,5 @@ public class Resource {
 	public String getDisplayName() {
 		return resourceType + " " + (name != null ? name : "");
 	}
+
 }

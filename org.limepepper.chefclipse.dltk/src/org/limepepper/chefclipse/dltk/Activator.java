@@ -14,12 +14,6 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
- * @TODO: handle updates
- * @TODO: other artifacts than resources?
- * @TODO: handle navigation to source
- * @TODO: selection synchronization (outline -> source)
- * @TODO: javadoc
- * @TODO: contribute to properties when a resource is selected -> show actions/attributes
  * @TODO: junits?
  */
 public class Activator extends AbstractUIPlugin {
