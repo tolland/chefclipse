@@ -170,5 +170,7 @@ public class ChefRubyOutlinePage extends RubyOutlinePage {
 		ILabelProvider labelProvider = (ILabelProvider) viewer
 				.getLabelProvider();
 		viewer.setLabelProvider(new DelegatingLabelProvider(labelProvider));
+		
+		viewer.refresh();
 	}
 }

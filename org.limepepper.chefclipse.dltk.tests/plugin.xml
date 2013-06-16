@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.dltk.ui.modelContentProvider">
+      <modelContentProvider
+            class="org.limepepper.chefclipse.dltk.tests.ChefModelContentProvider"
+            id="org.limepepper.chefclipse.dltk.chefModelContentProvider"
+            language="org.eclipse.dltk.ruby.core.nature">
+      </modelContentProvider>
+   </extension>
+   <extension
+         point="org.eclipse.dltk.ui.modelLabelProvider">
+      <modelLabelProvider
+            class="org.limepepper.chefclipse.dltk.tests.ChefLabelProvider"
+            id="org.limepepper.chefclipse.dltk.chefModelLabelProvider"
+            language="org.eclipse.dltk.ruby.core.nature">
+      </modelLabelProvider>
+   </extension>
+
+</plugin>

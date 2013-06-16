@@ -11,20 +11,27 @@ import org.eclipse.dltk.core.SourceParserUtil;
 import org.eclipse.dltk.ruby.ast.RubyBlock;
 import org.eclipse.dltk.ruby.ast.RubyCallArgument;
 
+/**
+ * Parses a DLTK source module in order to retrieve Chef elements (resources,
+ * etc.)
+ * 
+ * @author Dinko Ivanov
+ * 
+ */
 public class ChefParser {
-	
+
 	public ModelRoot parse(ISourceModule sourceModule) {
-		
+
 		ModelRoot sourceFile = new ModelRoot();
 		sourceFile.setSourceModule(sourceModule);
-		
+
 		IModuleDeclaration parsed = SourceParserUtil.parse(sourceModule, null);
 		if (parsed instanceof ModuleDeclaration) {
 			ModuleDeclaration moduleDeclaration = (ModuleDeclaration) parsed;
 			List statements = moduleDeclaration.getStatements();
 			for (Object statement : statements) {
 				if (statement instanceof CallExpression) {
-					CallExpression callExpression = (CallExpression)statement;
+					CallExpression callExpression = (CallExpression) statement;
 					String name = callExpression.getName();
 					if (Resource.RESOURCE_TYPES.contains(name)) {
 						Resource resource = parseResource(callExpression);
@@ -36,7 +43,7 @@ public class ChefParser {
 
 		return sourceFile;
 	}
-	
+
 	private Resource parseResource(CallExpression callExpression) {
 		Resource resource = new Resource();
 		resource.setResourceType(callExpression.getName());
@@ -48,10 +55,11 @@ public class ChefParser {
 				Object first = children.get(0);
 				if (first instanceof RubyCallArgument) {
 					RubyCallArgument rubyCallArgument = (RubyCallArgument) first;
-					String resourceName = rubyCallArgument.getValue() != null ? rubyCallArgument.getValue().toString() : null;
-					resource.setName(resourceName);					
+					String resourceName = rubyCallArgument.getValue() != null ? rubyCallArgument
+							.getValue().toString() : null;
+					resource.setName(resourceName);
 				}
-				
+
 				if (children.size() > 1) {
 					Object second = children.get(1);
 					if (second instanceof RubyBlock) {

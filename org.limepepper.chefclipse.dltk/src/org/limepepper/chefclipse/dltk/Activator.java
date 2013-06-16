@@ -14,7 +14,9 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
- * @TODO: junits?
+ * 
+ * @author Dinko Ivanov
+ *
  */
 public class Activator extends AbstractUIPlugin {
 
