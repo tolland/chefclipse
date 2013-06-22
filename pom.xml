@@ -10,6 +10,7 @@
   <properties>
     <tycho-version>0.17.0</tycho-version>
     <tycho-extras-version>0.17.0</tycho-extras-version>
+    <tycho-extras.version>0.17.0</tycho-extras.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <github.global.server>github</github.global.server>
   </properties>
@@ -151,7 +152,7 @@
         <!-- object editors -->
         <module>org.limepepper.chefclipse.databag.editor</module>
         <module>org.limepepper.chefclipse.databag.editor.test</module>
-        
+
         <!-- json stuff -->
 				<module>org.limepepper.chefclipse.json</module>
 				<module>org.limepepper.chefclipse.json.ui</module>
@@ -493,13 +494,13 @@
 
   <build>
     <plugins>
-      
-     
+
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.3</version>
-        
+
               <dependencies>
               <dependency>
           <groupId>lt.velykis.maven.skins</groupId>
@@ -513,7 +514,7 @@
           <version>1.7</version>
         </dependency>
       </dependencies>
-        
+
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
