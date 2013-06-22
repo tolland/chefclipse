@@ -113,15 +113,15 @@
       </properties>
       <build>
 
-        <resources>
+        <!-- resources>
           <resource>
-            <directory></directory>
+            <directory>/</directory>
             <filtering>true</filtering>
             <includes>
               <include>*.product</include>
             </includes>
           </resource>
-        </resources>
+        </resources-->
 
         <plugins>
           <plugin>
