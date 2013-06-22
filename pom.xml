@@ -9,6 +9,7 @@
   <packaging>pom</packaging>
   <properties>
     <tycho-version>0.17.0</tycho-version>
+    <tycho.version>0.17.0</tycho.version>
     <tycho-extras-version>0.17.0</tycho-extras-version>
     <tycho-extras.version>0.17.0</tycho-extras.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -129,7 +130,7 @@
         <module>org.limepepper.chefclipse.common.editor</module>
 
         <!-- merged the api object with core -->
-        <!--module>org.limepepper.chefclipse.api</module-->
+        <!--module>org.limepepper.chefclipse.api</module -->
         <module>org.limepepper.chefclipse.app</module>
         <module>org.limepepper.chefclipse.chefserver.api</module>
         <module>org.limepepper.chefclipse.chefserver.api.ui</module>
@@ -154,10 +155,10 @@
         <module>org.limepepper.chefclipse.databag.editor.test</module>
 
         <!-- json stuff -->
-				<module>org.limepepper.chefclipse.json</module>
-				<module>org.limepepper.chefclipse.json.ui</module>
-				<module>org.limepepper.chefclipse.json.edit</module>
-				<module>org.limepepper.chefclipse.json.tests</module>
+        <module>org.limepepper.chefclipse.json</module>
+        <module>org.limepepper.chefclipse.json.ui</module>
+        <module>org.limepepper.chefclipse.json.edit</module>
+        <module>org.limepepper.chefclipse.json.tests</module>
 
         <!-- module>org.limepepper.chefclipse.navigator</module -->
         <!-- merged into chefclipse.core as non generated @todo remove -->
@@ -194,7 +195,7 @@
       <!--build>
         <plugins>
         </plugins>
-      </build-->
+        </build -->
     </profile>
 
 
@@ -501,19 +502,19 @@
         <artifactId>maven-site-plugin</artifactId>
         <version>3.3</version>
 
-              <dependencies>
-              <dependency>
-          <groupId>lt.velykis.maven.skins</groupId>
-          <artifactId>reflow-velocity-tools</artifactId>
-          <version>1.0.0</version>
-        </dependency>
-        <!-- Reflow skin requires Velocity >= 1.7  -->
-        <dependency>
-          <groupId>org.apache.velocity</groupId>
-          <artifactId>velocity</artifactId>
-          <version>1.7</version>
-        </dependency>
-      </dependencies>
+        <dependencies>
+          <dependency>
+            <groupId>lt.velykis.maven.skins</groupId>
+            <artifactId>reflow-velocity-tools</artifactId>
+            <version>1.0.0</version>
+          </dependency>
+          <!-- Reflow skin requires Velocity >= 1.7 -->
+          <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+          </dependency>
+        </dependencies>
 
       </plugin>
       <plugin>
@@ -534,7 +535,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
         <version>2.14.1</version>
-      </plugin-->
+        </plugin -->
       <plugin>
         <groupId>com.github.koraktor</groupId>
         <artifactId>mavanagaiata</artifactId>
@@ -628,6 +629,36 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-report-plugin</artifactId>
           <version>2.14.1</version>
+        </plugin>
+        <!-- plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-packaging-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.eclipse.tycho.extras</groupId>
+              <artifactId>tycho-buildtimestamp-jgit</artifactId>
+              <version>${tycho-extras.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <timestampProvider>jgit</timestampProvider>
+            <jgit.ignore>
+              pom.xml
+            </jgit.ignore>
+          </configuration>
+        </plugin -->
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-p2-plugin</artifactId>
+          <version>${tycho.version}</version>
+          <!--  configuration>
+            <baselineRepositories>
+              <repository>
+                <url>[some url]</url>
+              </repository>
+            </baselineRepositories>
+          </configuration-->
         </plugin>
       </plugins>
     </pluginManagement>
@@ -723,15 +754,15 @@
         <artifactId>maven-jxr-plugin</artifactId>
         <version>2.3</version>
         <reportSets>
-          <reportSet>
-            <id>aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>aggregate</report>
-            </reports>
-          </reportSet>
+        <reportSet>
+        <id>aggregate</id>
+        <inherited>false</inherited>
+        <reports>
+        <report>aggregate</report>
+        </reports>
+        </reportSet>
         </reportSets>
-      </plugin-->
+        </plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
