@@ -3,14 +3,6 @@
  */
 package org.limepepper.chefclipse.preferences.test;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.Matchers.nullValue;
-import static org.mockito.Mockito.RETURNS_MOCKS;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collections;
@@ -18,6 +10,7 @@ import java.util.Collections;
 import org.eclipse.core.resources.IProject;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
@@ -50,6 +43,7 @@ public class ChefConfigManagerTest {
 	}
 
 	@Test
+	@Ignore
 	public void testSaveInvalidProjectConfig() {
 		IProject project = mockProject();
 		Config config = mock(KnifeConfig.class, RETURNS_MOCKS);
@@ -61,6 +55,7 @@ public class ChefConfigManagerTest {
 	}
 
 	@Test
+	@Ignore
 	public void testSaveValidProjectConfig() {
 		IProject project = mockProject();
 		KnifeConfig config = createConfig();

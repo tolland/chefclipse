@@ -152,13 +152,13 @@
 
         <!-- object editors -->
         <module>org.limepepper.chefclipse.databag.editor</module>
-        <module>org.limepepper.chefclipse.databag.editor.test</module>
+        <!--module>org.limepepper.chefclipse.databag.editor.test</module-->
 
         <!-- json stuff -->
         <module>org.limepepper.chefclipse.json</module>
         <module>org.limepepper.chefclipse.json.ui</module>
         <module>org.limepepper.chefclipse.json.edit</module>
-        <module>org.limepepper.chefclipse.json.tests</module>
+        <!--module>org.limepepper.chefclipse.json.tests</module-->
 
         <!-- module>org.limepepper.chefclipse.navigator</module -->
         <!-- merged into chefclipse.core as non generated @todo remove -->
@@ -176,7 +176,7 @@
         <!-- preferences -->
         <module>org.limepepper.chefclipse.preferences.api</module>
         <module>org.limepepper.chefclipse.preferences.ui</module>
-        <module>org.limepepper.chefclipse.preferences.test</module>
+        <!--module>org.limepepper.chefclipse.preferences.test</module-->
 
         <!-- test bundles -->
         <module>org.limepepper.chefclipse.testing</module>
