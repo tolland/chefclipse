@@ -8,9 +8,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.limepepper.chefclipse.common.chefclient.*;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-import org.limepepper.chefclipse.common.chefclient.Client;
 import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.limepepper.chefclipse.common.chefclient.Ohai;
 import org.limepepper.chefclipse.common.chefclient.Search;
@@ -59,7 +59,7 @@ public class ChefclientFactoryImpl extends EFactoryImpl implements ChefclientFac
     @Override
     public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ChefclientPackage.CLIENT: return createClient();
+			case ChefclientPackage.CHEF_CLIENT: return createChefClient();
 			case ChefclientPackage.OHAI: return createOhai();
 			case ChefclientPackage.SEARCH: return createSearch();
 			case ChefclientPackage.CLIENT_CONFIG: return createClientConfig();
@@ -70,15 +70,15 @@ public class ChefclientFactoryImpl extends EFactoryImpl implements ChefclientFac
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Client createClient() {
-		ClientImpl client = new ClientImpl();
-		return client;
+	public ChefClient createChefClient() {
+		ChefClientImpl chefClient = new ChefClientImpl();
+		return chefClient;
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated

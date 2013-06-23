@@ -1,0 +1,14 @@
+instructions.configure=\
+  addRepository(type:0,location:https${#58}//github.com/limepepper/p2/raw/master/chefclipse/tomhodder2/update-site);\
+  addRepository(type:1,location:https${#58}//github.com/limepepper/p2/raw/master/chefclipse/tomhodder2/update-site);
+  requires.1.namespace = org.eclipse.equinox.p2.iu
+  requires.1.name = org.limepepper.chefclipse.ui.feature.feature.group
+  requires.1.range = (0.0.0, 2.0.0)
+  requires.2.namespace = org.eclipse.equinox.p2.iu
+  requires.2.name = org.limepepper.chefclipse.app.feature.feature.group
+  requires.2.range = (0.0.0, 2.0.0)
+  requires.3.namespace = org.eclipse.equinox.p2.iu
+  requires.3.name = org.limepepper.chefclipse.devel.feature.feature.group
+  requires.3.range = (0.0.0, 2.0.0)
+  setProgramProperty(propName:osgi.instance.area.default,propValue:@user.home/workspace-chefclipse-${mvngit.branch});
+  setProgramProperty(propName:osgi.instance.area,propValue:@user.home/workspace-chefclipse-${mvngit.branch});

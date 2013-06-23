@@ -210,29 +210,6 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 	}
 
     /**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.RunList} instances.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    protected RunListItemProvider runListItemProvider;
-
-    /**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.RunList}.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    @Override
-    public Adapter createRunListAdapter() {
-		if (runListItemProvider == null) {
-			runListItemProvider = new RunListItemProvider(this);
-		}
-
-		return runListItemProvider;
-	}
-
-    /**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.ServerConfig} instances.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -417,6 +394,52 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 	}
 
     /**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Client} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ClientItemProvider clientItemProvider;
+
+				/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Client}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createClientAdapter() {
+		if (clientItemProvider == null) {
+			clientItemProvider = new ClientItemProvider(this);
+		}
+
+		return clientItemProvider;
+	}
+
+				/**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefserver.Organization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OrganizationItemProvider organizationItemProvider;
+
+				/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefserver.Organization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOrganizationAdapter() {
+		if (organizationItemProvider == null) {
+			organizationItemProvider = new OrganizationItemProvider(this);
+		}
+
+		return organizationItemProvider;
+	}
+
+				/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -521,7 +544,6 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		if (nodeItemProvider != null) nodeItemProvider.dispose();
 		if (serverItemProvider != null) serverItemProvider.dispose();
 		if (platformItemProvider != null) platformItemProvider.dispose();
-		if (runListItemProvider != null) runListItemProvider.dispose();
 		if (serverConfigItemProvider != null) serverConfigItemProvider.dispose();
 		if (dataBagItemItemProvider != null) dataBagItemItemProvider.dispose();
 		if (sandboxItemProvider != null) sandboxItemProvider.dispose();
@@ -530,6 +552,8 @@ public class ChefserverItemProviderAdapterFactory extends ChefserverAdapterFacto
 		if (serverCookbookFileItemProvider != null) serverCookbookFileItemProvider.dispose();
 		if (serverCookbookVersionItemProvider != null) serverCookbookVersionItemProvider.dispose();
 		if (runListItemItemProvider != null) runListItemItemProvider.dispose();
+		if (clientItemProvider != null) clientItemProvider.dispose();
+		if (organizationItemProvider != null) organizationItemProvider.dispose();
 	}
 
 }

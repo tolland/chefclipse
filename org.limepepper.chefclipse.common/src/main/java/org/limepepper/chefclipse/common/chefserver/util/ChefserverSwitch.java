@@ -7,11 +7,14 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Organization;
 import org.limepepper.chefclipse.common.chefserver.Platform;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
@@ -110,6 +113,7 @@ public class ChefserverSwitch<T> extends Switch<T> {
 				T result = caseRole(role);
 				if (result == null) result = caseNamedDescribedObject(role);
 				if (result == null) result = caseRunListItem(role);
+				if (result == null) result = caseRunList(role);
 				if (result == null) result = caseDescribedObject(role);
 				if (result == null) result = caseNamedObject(role);
 				if (result == null) result = defaultCase(theEObject);
@@ -119,6 +123,7 @@ public class ChefserverSwitch<T> extends Switch<T> {
 				Node node = (Node)theEObject;
 				T result = caseNode(node);
 				if (result == null) result = caseNamedDescribedObject(node);
+				if (result == null) result = caseRunList(node);
 				if (result == null) result = caseDescribedObject(node);
 				if (result == null) result = caseNamedObject(node);
 				if (result == null) result = defaultCase(theEObject);
@@ -197,6 +202,24 @@ public class ChefserverSwitch<T> extends Switch<T> {
 			case ChefserverPackage.RUN_LIST_ITEM: {
 				RunListItem runListItem = (RunListItem)theEObject;
 				T result = caseRunListItem(runListItem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.CLIENT: {
+				Client client = (Client)theEObject;
+				T result = caseClient(client);
+				if (result == null) result = caseNamedDescribedObject(client);
+				if (result == null) result = caseDescribedObject(client);
+				if (result == null) result = caseNamedObject(client);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.ORGANIZATION: {
+				Organization organization = (Organization)theEObject;
+				T result = caseOrganization(organization);
+				if (result == null) result = caseNamedDescribedObject(organization);
+				if (result == null) result = caseDescribedObject(organization);
+				if (result == null) result = caseNamedObject(organization);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -430,6 +453,36 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
     /**
+	 * Returns the result of interpreting the object as an instance of '<em>Client</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Client</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClient(Client object) {
+		return null;
+	}
+
+				/**
+	 * Returns the result of interpreting the object as an instance of '<em>Organization</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Organization</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOrganization(Organization object) {
+		return null;
+	}
+
+				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Described Object</em>'.
 	 * <!-- begin-user-doc -->
      * This implementation returns null;

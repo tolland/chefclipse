@@ -58,12 +58,13 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import chefclipse.core.managers.ChefRepositoryManager;
-import chefclipse.core.CookbookFolder;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
+
+import chefclipse.core.CookbookFolder;
+import chefclipse.core.managers.ChefRepositoryManager;
 
 /**
  * A two-way compare for arbitrary IResources.

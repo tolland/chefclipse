@@ -6,6 +6,8 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: chefclipse.core.ChefCore
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.core.runtime,
+ org.slf4j.api;bundle-version="1.6.4",
+ org.slf4j.log4j;bundle-version="1.6.4",
  org.junit;bundle-version="4.10.0",
  org.limepepper.chefclipse.common;bundle-version="0.1.0";visibility:=reexport,
  org.limepepper.chefclipse.common.edit;bundle-version="0.1.0",

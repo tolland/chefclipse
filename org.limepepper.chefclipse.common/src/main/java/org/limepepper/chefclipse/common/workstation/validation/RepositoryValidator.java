@@ -21,6 +21,8 @@ public interface RepositoryValidator {
 	boolean validateOS(String value);
 	boolean validateBasepath(String value);
 	boolean validateCookbooks(EList<CookbookVersion> value);
+	boolean validateKnives(EList<KnifeConfig> value);
+
 	boolean validateKnife(EList<KnifeConfig> value);
 	boolean validateCookbookFolders(EList<CookbooksFolder> value);
 }

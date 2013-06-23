@@ -76,15 +76,6 @@ public interface ChefserverFactory extends EFactory {
     Platform createPlatform();
 
     /**
-	 * Returns a new object of class '<em>Run List</em>'.
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Run List</em>'.
-	 * @generated
-	 */
-    RunList createRunList();
-
-    /**
 	 * Returns a new object of class '<em>Server Config</em>'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -157,6 +148,24 @@ public interface ChefserverFactory extends EFactory {
     RunListItem createRunListItem();
 
     /**
+	 * Returns a new object of class '<em>Client</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Client</em>'.
+	 * @generated
+	 */
+	Client createClient();
+
+				/**
+	 * Returns a new object of class '<em>Organization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Organization</em>'.
+	 * @generated
+	 */
+	Organization createOrganization();
+
+				/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->

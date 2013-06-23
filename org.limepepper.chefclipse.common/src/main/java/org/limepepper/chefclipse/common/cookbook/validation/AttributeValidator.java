@@ -16,6 +16,10 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 public interface AttributeValidator {
 	boolean validate();
 
+	boolean validateName(String value);
+
+	boolean validateValue(String value);
+
 	boolean validateCookbook(CookbookVersion value);
 
 }

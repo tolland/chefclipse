@@ -282,7 +282,7 @@ public class Application implements IApplication, IExecutableExtension {
         }
     }
 
-    private static boolean isDevLaunchMode(Map args) {
+    private static boolean isDevLaunchMode(Map<?, ?> args) {
         // see org.eclipse.pde.internal.core.PluginPathFinder.isDevLaunchMode()
         if (Boolean.getBoolean("eclipse.pde.launch")) //$NON-NLS-1$
             return true;

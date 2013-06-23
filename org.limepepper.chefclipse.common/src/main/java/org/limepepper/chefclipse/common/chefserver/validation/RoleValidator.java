@@ -4,8 +4,10 @@
  */
 package org.limepepper.chefclipse.common.chefserver.validation;
 
+import org.eclipse.emf.common.util.EList;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.RunList;
+import org.limepepper.chefclipse.common.cookbook.Attribute;
 
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.chefserver.Role}.
@@ -17,5 +19,7 @@ public interface RoleValidator {
 	boolean validate();
 
 	boolean validateRun_list(RunList value);
+	boolean validateAttributes(EList<Attribute> value);
+
 	boolean validateEnvironment(Environment value);
 }

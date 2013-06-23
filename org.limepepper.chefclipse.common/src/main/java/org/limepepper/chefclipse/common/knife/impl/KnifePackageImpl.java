@@ -348,7 +348,7 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		initEAttribute(getKnifeConfig_Path(), theUtilityPackage.getFile(), "path", null, 1, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKnifeConfig_Server(), theChefserverPackage.getServer(), theChefserverPackage.getServer_KnifeConfig(), "server", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getKnifeConfig_ServerCookbookVersion(), theChefserverPackage.getServerCookbookVersion(), theChefserverPackage.getServerCookbookVersion_KnifeConfig(), "serverCookbookVersion", null, 0, -1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getKnifeConfig_Repository(), theWorkstationPackage.getRepository(), theWorkstationPackage.getRepository_Knife(), "repository", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getKnifeConfig_Repository(), theWorkstationPackage.getRepository(), theWorkstationPackage.getRepository_Knives(), "repository", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

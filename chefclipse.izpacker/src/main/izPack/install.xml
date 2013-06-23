@@ -117,9 +117,9 @@ http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
 
   <locale>
     <langpack iso3="eng" />
-    <langpack iso3="rus" />
-    <langpack iso3="spa" />
-    <langpack iso3="pol" />
+    <!-- langpack iso3="rus" /-->
+    <!--langpack iso3="spa" /-->
+    <!--langpack iso3="pol" /-->
   </locale>
 
   <guiprefs

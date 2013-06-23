@@ -8,11 +8,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Organization;
 import org.limepepper.chefclipse.common.chefserver.Platform;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
@@ -146,6 +149,14 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseRunListItem(RunListItem object) {
 				return createRunListItemAdapter();
+			}
+			@Override
+			public Adapter caseClient(Client object) {
+				return createClientAdapter();
+			}
+			@Override
+			public Adapter caseOrganization(Organization object) {
+				return createOrganizationAdapter();
 			}
 			@Override
 			public Adapter caseDescribedObject(DescribedObject object) {
@@ -410,6 +421,34 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 	}
 
     /**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefserver.Client <em>Client</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.common.chefserver.Client
+	 * @generated
+	 */
+	public Adapter createClientAdapter() {
+		return null;
+	}
+
+				/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.chefserver.Organization <em>Organization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.common.chefserver.Organization
+	 * @generated
+	 */
+	public Adapter createOrganizationAdapter() {
+		return null;
+	}
+
+				/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.DescribedObject <em>Described Object</em>}'.
 	 * <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore cases;

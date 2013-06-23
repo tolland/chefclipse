@@ -1,8 +1,8 @@
 package org.limepepper.chefclipse.common;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.core.runtime.Plugin;
 
-public class Activator extends AbstractUIPlugin {
+public class Activator extends Plugin {
 
     public Activator() {
     }

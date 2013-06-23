@@ -381,7 +381,7 @@
   <!-- new org.eclipse.ui.popupMenus   -->
   <!-- =================================================================================== -->
 
-  <extension point="org.eclipse.ui.popupMenus">
+  <!--extension point="org.eclipse.ui.popupMenus">
     <objectContribution
       adaptable="true"
       id="chefclipse.popupmenu.compare.with"
@@ -391,7 +391,7 @@
         menubarPath="compareWithMenu/compareWithGroup">
       </action>
     </objectContribution>
-  </extension>
+  </extension-->
 
 
   <!-- =================================================================================== -->
@@ -403,11 +403,12 @@
       id="org.limepepper.chefclipse.ui.wizards.category"
       name="%category.name.0" />
 
-    <wizard category="org.limepepper.chefclipse.ui.wizards.category"
+<!-- temporarily removing this, as it appears to be broken -->
+    <!--wizard category="org.limepepper.chefclipse.ui.wizards.category"
     class="chefclipse.ui.wizards.NewChefProjectWizard"
     icon="icons/cc1.ico"
     id="org.limepepper.chefclipse.ui.wizards.NewChefProjectWizard"
-    name="%wizard.name" project="true"></wizard>
+    name="%wizard.name" project="true"></wizard-->
     <category
           id="chefclipse.ui"
           name="%category.name.1">
@@ -455,10 +456,10 @@
    </extension>
 
 
-   <extension
+   <!--extension
          point="org.eclipse.ui.editors.templates">
     <contextType
-          class="org.eclipse.dltk.ruby.internal.ui.templates.RubyUniversalTemplateContextType"
+          class="chefclipse.ui.internal.templates.RubyUniversalTemplateContextType"
           id="chefclipse.contexttype"
           name="%contextType.name">
     </contextType>
@@ -466,7 +467,7 @@
           file="resources/templates.new.xml"
           >
     </include>
-  </extension>
+  </extension-->
    <extension
          point="org.eclipse.ui.importWizards">
       <category

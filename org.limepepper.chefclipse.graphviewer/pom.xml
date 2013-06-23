@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.limepepper.chefclipse</groupId>
     <artifactId>org.limepepper.chefclipse</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <relativePath>../chefclipse.parent</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>org.limepepper</groupId>
+  <name>org.limepepper.chefclipse.graphviewer</name>
   <artifactId>org.limepepper.chefclipse.graphviewer</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
-  	<!--repositories>
-		<repository>
-			<id>zest2.0</id>
-			<layout>p2</layout>
-			<url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>
-		</repository>
-	</repositories-->
+  <!--repositories>
+    <repository>
+    <id>zest2.0</id>
+    <layout>p2</layout>
+    <url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>
+    </repository>
+    </repositories -->
 </project>

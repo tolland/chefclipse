@@ -12,6 +12,8 @@ public interface KnifeConfigController {
     ChefServerApi getServer(KnifeConfig knifeConfig);
 
 
-    List<KnifeConfig> knifeConfigs = ChefServerApiImpl.getKnifeConfigs();
+    List<KnifeConfig> knifeConfigs = KnifeConfigControllerImpl.init().getKnifeConfigs();
+
+	List<KnifeConfig> getKnifeConfigs();
 
 }

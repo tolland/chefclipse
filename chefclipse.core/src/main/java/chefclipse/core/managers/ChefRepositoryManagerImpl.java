@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -59,7 +60,6 @@ import org.limepepper.chefclipse.common.cookbook.util.CookbookSwitch;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
-import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.utility.ChecksumFile;
 import org.limepepper.chefclipse.utility.NamedObject;
 import org.slf4j.Logger;
@@ -100,6 +100,11 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		}
 
 		return instance;
+	}
+
+	public void registerAdapter(AdapterFactory factory) {
+		resourceSet.getAdapterFactories().add(factory);
+
 	}
 
 	protected ChefRepositoryManagerImpl() {
@@ -388,8 +393,6 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 
 		addMapping(resource, eObject);
 
-		KnifeConfig chefProjectConfig = ChefConfigManager.instance()
-				.retrieveProjectChefConfig(resource.getProject());
 		// add the data bag to the databag list of the server. maybe retrieve
 		// the server from preferences.
 

@@ -10,14 +10,16 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Organization;
 import org.limepepper.chefclipse.common.chefserver.Platform;
 import org.limepepper.chefclipse.common.chefserver.Role;
-import org.limepepper.chefclipse.common.chefserver.RunList;
 import org.limepepper.chefclipse.common.chefserver.RunListItem;
 import org.limepepper.chefclipse.common.chefserver.Sandbox;
 import org.limepepper.chefclipse.common.chefserver.Server;
@@ -75,7 +77,6 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 			case ChefserverPackage.NODE: return createNode();
 			case ChefserverPackage.SERVER: return createServer();
 			case ChefserverPackage.PLATFORM: return createPlatform();
-			case ChefserverPackage.RUN_LIST: return createRunList();
 			case ChefserverPackage.SERVER_CONFIG: return createServerConfig();
 			case ChefserverPackage.DATA_BAG_ITEM: return createDataBagItem();
 			case ChefserverPackage.SANDBOX: return createSandbox();
@@ -84,6 +85,8 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 			case ChefserverPackage.SERVER_COOKBOOK_FILE: return createServerCookbookFile();
 			case ChefserverPackage.SERVER_COOKBOOK_VERSION: return createServerCookbookVersion();
 			case ChefserverPackage.RUN_LIST_ITEM: return createRunListItem();
+			case ChefserverPackage.CLIENT: return createClient();
+			case ChefserverPackage.ORGANIZATION: return createOrganization();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -147,16 +150,6 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
     public Platform createPlatform() {
 		PlatformImpl platform = new PlatformImpl();
 		return platform;
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public RunList createRunList() {
-		RunListImpl runList = new RunListImpl();
-		return runList;
 	}
 
     /**
@@ -240,6 +233,26 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 	}
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Client createClient() {
+		ClientImpl client = new ClientImpl();
+		return client;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Organization createOrganization() {
+		OrganizationImpl organization = new OrganizationImpl();
+		return organization;
+	}
+
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated

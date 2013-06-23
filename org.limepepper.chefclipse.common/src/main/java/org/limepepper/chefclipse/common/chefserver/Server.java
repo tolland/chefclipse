@@ -4,7 +4,7 @@ package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
 /**
@@ -140,7 +140,7 @@ public interface Server extends EObject {
 
     /**
 	 * Returns the value of the '<em><b>Clients</b></em>' reference list.
-	 * The list contents are of type {@link org.limepepper.chefclipse.common.chefclient.Client}.
+	 * The list contents are of type {@link org.limepepper.chefclipse.common.chefclient.ChefClient}.
 	 * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Clients</em>' reference list isn't clear,
@@ -152,7 +152,7 @@ public interface Server extends EObject {
 	 * @model
 	 * @generated
 	 */
-    EList<Client> getClients();
+    EList<ChefClient> getClients();
 
     /**
 	 * Returns the value of the '<em><b>Webuiport</b></em>' attribute.

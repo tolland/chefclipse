@@ -31,7 +31,7 @@ import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
-import org.limepepper.chefclipse.preferences.ui.Activator;
+import org.limepepper.chefclipse.preferences.ui.PreferencesActivator;
 import org.limepepper.chefclipse.preferences.ui.preferences.AddChefConfigurationPreferencePage;
 import org.limepepper.chefclipse.preferences.ui.preferences.ChefConfigurationPreferenceStore;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
@@ -168,7 +168,7 @@ public class AddChefConfigurationPreferenceContainer extends TitleAreaDialog
 		createdKnifeConfig.setValidation_key(getFileOrNull(validationKey));
 
 		IEclipsePreferences workspacePreferences = ConfigurationScope.INSTANCE
-				.getNode(Activator.PLUGIN_ID);
+				.getNode(PreferencesActivator.PLUGIN_ID);
 		String cookbookCopyright = workspacePreferences.get(
 				PreferenceConstants.P_COOKBOOK_COPYRIGHT, "");
 		createdKnifeConfig.setCookbook_copyright(cookbookCopyright);

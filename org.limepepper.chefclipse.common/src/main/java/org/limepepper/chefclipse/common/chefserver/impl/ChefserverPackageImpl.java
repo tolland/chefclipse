@@ -11,12 +11,14 @@ import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
+import org.limepepper.chefclipse.common.chefserver.Organization;
 import org.limepepper.chefclipse.common.chefserver.Platform;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
@@ -148,6 +150,20 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
     private EClass runListItemEClass = null;
 
     /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass clientEClass = null;
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass organizationEClass = null;
+
+				/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -290,23 +306,14 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRole_Run_list() {
+	public EReference getRole_Attributes() {
 		return (EReference)roleEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getRole_Environment() {
-		return (EReference)roleEClass.getEStructuralFeatures().get(1);
-	}
-
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -320,16 +327,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getNode_Run_list() {
-		return (EReference)nodeEClass.getEStructuralFeatures().get(5);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getNode_Environment() {
+    public EReference getNode_Client() {
 		return (EReference)nodeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -338,35 +336,8 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getNode_Server() {
-		return (EReference)nodeEClass.getEStructuralFeatures().get(1);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EReference getNode_Client() {
-		return (EReference)nodeEClass.getEStructuralFeatures().get(2);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
     public EReference getNode_Attributes() {
-		return (EReference)nodeEClass.getEStructuralFeatures().get(3);
-	}
-
-    /**
-	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @generated
-	 */
-    public EAttribute getNode_Run_list_items() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(4);
+		return (EReference)nodeEClass.getEStructuralFeatures().get(1);
 	}
 
     /**
@@ -500,7 +471,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRunList_Node() {
+    public EReference getRunList_Environment() {
 		return (EReference)runListEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -509,7 +480,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRunList_Environment() {
+    public EReference getRunList_Recipes() {
 		return (EReference)runListEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -518,29 +489,29 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRunList_Role() {
-		return (EReference)runListEClass.getEStructuralFeatures().get(2);
+    public EAttribute getRunList_Run_list_items() {
+		return (EAttribute)runListEClass.getEStructuralFeatures().get(2);
 	}
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRunList_Recipes() {
+	public EReference getRunList_Run_list() {
 		return (EReference)runListEClass.getEStructuralFeatures().get(3);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRunList_Run_list_items() {
+	public EReference getRunList_Server() {
 		return (EReference)runListEClass.getEStructuralFeatures().get(4);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -722,6 +693,24 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getClient() {
+		return clientEClass;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOrganization() {
+		return organizationEClass;
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -757,16 +746,11 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		createEAttribute(dataBagEClass, DATA_BAG__RESOURCE);
 
 		roleEClass = createEClass(ROLE);
-		createEReference(roleEClass, ROLE__RUN_LIST);
-		createEReference(roleEClass, ROLE__ENVIRONMENT);
+		createEReference(roleEClass, ROLE__ATTRIBUTES);
 
 		nodeEClass = createEClass(NODE);
-		createEReference(nodeEClass, NODE__ENVIRONMENT);
-		createEReference(nodeEClass, NODE__SERVER);
 		createEReference(nodeEClass, NODE__CLIENT);
 		createEReference(nodeEClass, NODE__ATTRIBUTES);
-		createEAttribute(nodeEClass, NODE__RUN_LIST_ITEMS);
-		createEReference(nodeEClass, NODE__RUN_LIST);
 
 		serverEClass = createEClass(SERVER);
 		createEReference(serverEClass, SERVER__COOKBOOKS);
@@ -784,11 +768,11 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		createEAttribute(platformEClass, PLATFORM__TEST_VAL);
 
 		runListEClass = createEClass(RUN_LIST);
-		createEReference(runListEClass, RUN_LIST__NODE);
 		createEReference(runListEClass, RUN_LIST__ENVIRONMENT);
-		createEReference(runListEClass, RUN_LIST__ROLE);
 		createEReference(runListEClass, RUN_LIST__RECIPES);
-		createEReference(runListEClass, RUN_LIST__RUN_LIST_ITEMS);
+		createEAttribute(runListEClass, RUN_LIST__RUN_LIST_ITEMS);
+		createEReference(runListEClass, RUN_LIST__RUN_LIST);
+		createEReference(runListEClass, RUN_LIST__SERVER);
 
 		serverConfigEClass = createEClass(SERVER_CONFIG);
 
@@ -817,6 +801,10 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		createEReference(serverCookbookVersionEClass, SERVER_COOKBOOK_VERSION__KNIFE_CONFIG);
 
 		runListItemEClass = createEClass(RUN_LIST_ITEM);
+
+		clientEClass = createEClass(CLIENT);
+
+		organizationEClass = createEClass(ORGANIZATION);
 	}
 
     /**
@@ -844,8 +832,8 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
 		// Obtain other dependent packages
 		UtilityPackage theUtilityPackage = (UtilityPackage)EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI);
-		ChefclientPackage theChefclientPackage = (ChefclientPackage)EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI);
 		CookbookPackage theCookbookPackage = (CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI);
+		ChefclientPackage theChefclientPackage = (ChefclientPackage)EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI);
 		KnifePackage theKnifePackage = (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
 
 		// Create type parameters
@@ -857,11 +845,15 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		dataBagEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
 		roleEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
 		roleEClass.getESuperTypes().add(this.getRunListItem());
+		roleEClass.getESuperTypes().add(this.getRunList());
 		nodeEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
+		nodeEClass.getESuperTypes().add(this.getRunList());
 		dataBagItemEClass.getESuperTypes().add(theUtilityPackage.getNamedObject());
 		serverCookbookFileEClass.getESuperTypes().add(theUtilityPackage.getSandboxedObject());
 		serverCookbookFileEClass.getESuperTypes().add(theCookbookPackage.getCookbookFile());
 		serverCookbookVersionEClass.getESuperTypes().add(theCookbookPackage.getCookbookVersion());
+		clientEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
+		organizationEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(environmentEClass, Environment.class, "Environment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -873,16 +865,11 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		initEAttribute(getDataBag_Resource(), theUtilityPackage.getIResource(), "resource", "", 1, 1, DataBag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRole_Run_list(), this.getRunList(), null, "run_list", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRole_Environment(), this.getEnvironment(), null, "environment", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRole_Attributes(), theCookbookPackage.getAttribute(), null, "attributes", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNode_Environment(), this.getEnvironment(), null, "environment", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNode_Server(), this.getServer(), null, "server", null, 1, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNode_Client(), theChefclientPackage.getClient(), null, "client", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNode_Client(), theChefclientPackage.getChefClient(), null, "client", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNode_Attributes(), theCookbookPackage.getAttribute(), null, "attributes", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNode_Run_list_items(), ecorePackage.getEString(), "run_list_items", null, 0, -1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNode_Run_list(), this.getRunList(), null, "run_list", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serverEClass, Server.class, "Server", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getServer_Cookbooks(), this.getServerCookbookVersion(), null, "cookbooks", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -890,7 +877,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		initEReference(getServer_Nodes(), this.getNode(), null, "nodes", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServer_Databags(), this.getDataBag(), this.getDataBag_Server(), "databags", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServer_Environments(), this.getEnvironment(), null, "environments", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getServer_Clients(), theChefclientPackage.getClient(), null, "clients", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getServer_Clients(), theChefclientPackage.getChefClient(), null, "clients", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getServer_Webuiport(), ecorePackage.getEInt(), "webuiport", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServer_Sandboxes(), this.getSandbox(), null, "sandboxes", null, 0, -1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getServer_Config(), this.getServerConfig(), null, "config", null, 0, 1, Server.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -899,12 +886,12 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 		initEClass(platformEClass, Platform.class, "Platform", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPlatform_TestVal(), ecorePackage.getEInt(), "TestVal", null, 0, 1, Platform.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(runListEClass, RunList.class, "RunList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRunList_Node(), this.getNode(), null, "node", null, 0, 1, RunList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(runListEClass, RunList.class, "RunList", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRunList_Environment(), this.getEnvironment(), null, "environment", null, 0, 1, RunList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunList_Role(), this.getRole(), null, "role", null, 0, 1, RunList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRunList_Recipes(), theCookbookPackage.getRecipe(), null, "recipes", null, 0, -1, RunList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRunList_Run_list_items(), this.getRunListItem(), null, "run_list_items", null, 0, -1, RunList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRunList_Run_list_items(), ecorePackage.getEString(), "run_list_items", null, 0, -1, RunList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunList_Run_list(), this.getRunList(), null, "run_list", null, 0, -1, RunList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRunList_Server(), this.getServer(), null, "server", null, 1, 1, RunList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(serverConfigEClass, ServerConfig.class, "ServerConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -934,6 +921,10 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 
 		initEClass(runListItemEClass, RunListItem.class, "RunListItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(clientEClass, Client.class, "Client", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(organizationEClass, Organization.class, "Organization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -957,7 +948,7 @@ public class ChefserverPackageImpl extends EPackageImpl implements ChefserverPac
 			 "root", "true"
 		   });		
 		addAnnotation
-		  (getNode_Run_list_items(), 
+		  (getRunList_Run_list_items(), 
 		   source, 
 		   new String[] {
 			 "element", "run_list"

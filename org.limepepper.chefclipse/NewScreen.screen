@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Window" id="1" x="40" y="56" width="377" height="249" text="Window" measuredWidth="377" measuredHeight="249"/>
+  <widgets xsi:type="model:Arrow" id="2" x="457" y="201" width="99" height="49" measuredWidth="99" measuredHeight="49" annotation="true" left="false" right="true"/>
+  <widgets xsi:type="model:Note" id="3" x="304" y="376" width="241" height="121" text="Note" measuredWidth="241" measuredHeight="121" annotation="true">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

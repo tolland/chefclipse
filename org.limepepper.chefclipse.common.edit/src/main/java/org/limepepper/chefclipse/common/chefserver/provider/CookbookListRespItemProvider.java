@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
-import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 
 /**

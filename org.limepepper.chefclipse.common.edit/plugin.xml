@@ -9,20 +9,6 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated chefclipse -->
       <factory
-            uri="http://limepepper.org/v1/chefclipse/"
-            class="org.limepepper.chefclipse.provider.ChefclipseItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource
-               org.eclipse.emf.edit.provider.ITableItemLabelProvider"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated chefclipse -->
-      <factory
             uri="http://limepepper.org/v1/chefclipse/chefserver"
             class="org.limepepper.chefclipse.common.chefserver.provider.ChefserverItemProviderAdapterFactory"
             supportedTypes=

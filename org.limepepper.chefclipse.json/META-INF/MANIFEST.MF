@@ -1,0 +1,35 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.limepepper.chefclipse.json
+Bundle-Vendor: My Company
+Bundle-Version: 0.1.0.qualifier
+Bundle-SymbolicName: org.limepepper.chefclipse.json; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.limepepper.chefclipse.logger,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.limepepper.chefclipse.json,
+ org.limepepper.chefclipse.json.services,
+ org.limepepper.chefclipse.json.json,
+ org.limepepper.chefclipse.json.json.impl,
+ org.limepepper.chefclipse.json.json.util,
+ org.limepepper.chefclipse.json.serializer,
+ org.limepepper.chefclipse.json.parser.antlr,
+ org.limepepper.chefclipse.json.parser.antlr.internal,
+ org.limepepper.chefclipse.json.validation,
+ org.limepepper.chefclipse.json.scoping,
+ org.limepepper.chefclipse.json.generator,
+ org.limepepper.chefclipse.json.formatting
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib

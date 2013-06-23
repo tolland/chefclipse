@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
-import org.limepepper.chefclipse.preferences.ui.Activator;
+import org.limepepper.chefclipse.preferences.ui.PreferencesActivator;
 import org.limepepper.chefclipse.preferences.ui.dialogs.AddChefConfigurationPreferenceContainer;
 import org.limepepper.chefclipse.preferences.ui.preferences.PreferenceConstants;
 import org.limepepper.chefclipse.utility.Config;
@@ -109,9 +109,9 @@ public class SearchKnifeConfigAction extends Action {
 			chefServerUrl = new URL(urlValue);
 			knifeConfig.setChef_server_url(chefServerUrl);
 		} catch (MalformedURLException ex) {
-			IStatus status = new Status(Status.ERROR, Activator.PLUGIN_ID,
+			IStatus status = new Status(Status.ERROR, PreferencesActivator.PLUGIN_ID,
 					ex.getMessage(), ex);
-			Platform.getLog(Activator.getDefault().getBundle()).log(status);
+			Platform.getLog(PreferencesActivator.getDefault().getBundle()).log(status);
 		}
 		knifeConfig.setNode_name(parseFileAndGetPropertyValue(knifeConfigFile,
 				PreferenceConstants.P_NODE_NAME));
@@ -179,9 +179,9 @@ public class SearchKnifeConfigAction extends Action {
 				}
 			}
 		} catch (IOException ex) {
-			IStatus status = new Status(Status.ERROR, Activator.PLUGIN_ID,
+			IStatus status = new Status(Status.ERROR, PreferencesActivator.PLUGIN_ID,
 					ex.getMessage(), ex);
-			Platform.getLog(Activator.getDefault().getBundle()).log(status);
+			Platform.getLog(PreferencesActivator.getDefault().getBundle()).log(status);
 		}
 		return "";
 	}

@@ -27,14 +27,15 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.Hyperlink;
-import org.limepepper.chefclipse.utility.Config;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
-import chefclipse.ui.messages.Messages;
 import org.limepepper.chefclipse.ui.properties.ChefConfigurationPropertyPage;
 import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
+import org.limepepper.chefclipse.utility.Config;
+
+import chefclipse.ui.messages.Messages;
 
 /**
  * Implements {@link ICookbooksRepository.Builder} to provide a dialog to select a Chef Server Configuration.

@@ -6,19 +6,17 @@ import org.eclipse.compare.IStreamContentAccessor;
 import org.eclipse.compare.ITypedElement;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 
 import chefclipse.core.behaviours.DownloadBehaviour;
-import chefclipse.core.behaviours.DownloadBehaviourAdapterFactory;
 
 class CookbookFileNode extends CookbookResourceNode implements
 		IStreamContentAccessor, ITypedElement {
 
 	private byte[] fContents;
 	private String md5Sum;
-	static KnifeConfigController api = KnifeConfigController.INSTANCE;
 
 	private CookbookFile cookbookFile;
 
@@ -59,8 +57,17 @@ class CookbookFileNode extends CookbookResourceNode implements
 	@Override
 	public InputStream getContents() throws CoreException {
 
-		DownloadBehaviour downloader = (DownloadBehaviour) DownloadBehaviourAdapterFactory.INSTANCE
-				.adapt(cookbookFile, DownloadBehaviour.class);
+		DownloadBehaviour downloader = (DownloadBehaviour) EcoreUtil
+				.getRegisteredAdapter(cookbookFile, DownloadBehaviour.class);
+
+		if (downloader == null) {
+			System.err.println("downloader is     null "+cookbookFile.getClass());
+			System.err.println("cookbookFile"+cookbookFile.eContainer().eClass());
+			return null;
+		} else {
+			System.out.println("downloader is not null "+cookbookFile.getClass());
+			System.out.println("cookbookFile"+cookbookFile.eContainer().eClass());
+		}
 
 		return downloader.getContentStream();
 	}

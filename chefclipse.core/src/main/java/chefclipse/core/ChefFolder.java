@@ -10,13 +10,13 @@ public class ChefFolder extends ChefContainer {
 
 	@Override
 	public boolean exists() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
 	@Override
 	public IChefElement getParent() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

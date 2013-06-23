@@ -6,8 +6,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.limepepper.chefclipse.common.chefclient.*;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-import org.limepepper.chefclipse.common.chefclient.Client;
 import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.limepepper.chefclipse.common.chefclient.Ohai;
 import org.limepepper.chefclipse.common.chefclient.Search;
@@ -70,9 +70,9 @@ public class ChefclientSwitch<T> extends Switch<T> {
     @Override
     protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ChefclientPackage.CLIENT: {
-				Client client = (Client)theEObject;
-				T result = caseClient(client);
+			case ChefclientPackage.CHEF_CLIENT: {
+				ChefClient chefClient = (ChefClient)theEObject;
+				T result = caseChefClient(chefClient);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -100,21 +100,21 @@ public class ChefclientSwitch<T> extends Switch<T> {
 	}
 
     /**
-	 * Returns the result of interpreting the object as an instance of '<em>Client</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Chef Client</em>'.
 	 * <!-- begin-user-doc -->
-     * This implementation returns null;
-     * returning a non-null result will terminate the switch.
-     * <!-- end-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Client</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Chef Client</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-    public T caseClient(Client object) {
+	public T caseChefClient(ChefClient object) {
 		return null;
 	}
 
-    /**
+				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Ohai</em>'.
 	 * <!-- begin-user-doc -->
      * This implementation returns null;

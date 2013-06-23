@@ -1,9 +1,7 @@
 package org.limepepper.chefclipse.chefserver.api.ui.views;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.TableViewer;
@@ -20,19 +18,12 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ResourceTransfer;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
-import org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditor;
-import org.limepepper.chefclipse.chefserver.api.ui.editors.RunListEditorInput;
 import org.limepepper.chefclipse.common.chefserver.Node;
-import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
-import chefclipse.core.managers.ChefRepositoryManager;
 import chefclipse.core.providers.ChefProjectAdapterFactory;
-import chefclipse.core.testers.ChefTester;
 
 public class NodeTable extends Composite {
 
@@ -134,7 +125,7 @@ public class NodeTable extends Composite {
 			super(viewer);
 		}
 
-		@Override
+/*		@Override
 		public boolean performDrop(Object data) {
 			if (data == null)
 				return false;
@@ -163,7 +154,7 @@ public class NodeTable extends Composite {
 			}
 			return false;
 		}
-
+*/
 		@Override
 		public boolean validateDrop(Object target, int operation,
 				TransferData transferType) {
@@ -174,6 +165,12 @@ public class NodeTable extends Composite {
 				return false;
 			}
 			return true;
+		}
+
+		@Override
+		public boolean performDrop(Object data) {
+			
+			return false;
 		}
 
 	}

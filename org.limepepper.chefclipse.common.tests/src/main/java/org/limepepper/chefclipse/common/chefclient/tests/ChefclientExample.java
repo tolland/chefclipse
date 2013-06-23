@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-import org.limepepper.chefclipse.common.chefclient.Client;
 import org.limepepper.chefclipse.common.chefclient.util.ChefclientResourceFactoryImpl;
 
 /**
@@ -54,7 +54,7 @@ public class ChefclientExample {
 			System.out.println("Enter a list of file paths or URIs that have content like this:");
 			try {
 				Resource resource = resourceSet.createResource(URI.createURI("http:///My.chefclient"));
-				Client root = ChefclientFactory.eINSTANCE.createClient();
+				ChefClient root = ChefclientFactory.eINSTANCE.createChefClient();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
 			}
@@ -95,7 +95,7 @@ public class ChefclientExample {
 			}
 		}
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * Prints diagnostics with indentation.

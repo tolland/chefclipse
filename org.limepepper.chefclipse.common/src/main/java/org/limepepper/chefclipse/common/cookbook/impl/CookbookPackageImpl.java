@@ -407,6 +407,24 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 
     /**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAttribute_Name() {
+		return (EAttribute)attributeEClass.getEStructuralFeatures().get(0);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAttribute_Value() {
+		return (EAttribute)attributeEClass.getEStructuralFeatures().get(1);
+	}
+
+				/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -733,6 +751,8 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		libraryEClass = createEClass(LIBRARY);
 
 		attributeEClass = createEClass(ATTRIBUTE);
+		createEAttribute(attributeEClass, ATTRIBUTE__NAME);
+		createEAttribute(attributeEClass, ATTRIBUTE__VALUE);
 
 		recipeEClass = createEClass(RECIPE);
 		createEReference(recipeEClass, RECIPE__ROLE);
@@ -815,7 +835,6 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		cookbookVersionEClass.getESuperTypes().add(this.getCookbook());
 		definitionEClass.getESuperTypes().add(this.getCookbookFile());
 		libraryEClass.getESuperTypes().add(this.getCookbookFile());
-		attributeEClass.getESuperTypes().add(this.getCookbookFile());
 		recipeEClass.getESuperTypes().add(this.getCookbookFile());
 		recipeEClass.getESuperTypes().add(theUtilityPackage.getRubyFile());
 		recipeEClass.getESuperTypes().add(theChefserverPackage.getRunListItem());
@@ -859,6 +878,8 @@ public class CookbookPackageImpl extends EPackageImpl implements CookbookPackage
 		initEClass(libraryEClass, Library.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAttribute_Name(), ecorePackage.getEString(), "name", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttribute_Value(), ecorePackage.getEString(), "value", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(recipeEClass, Recipe.class, "Recipe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRecipe_Role(), theChefserverPackage.getRole(), null, "role", null, 0, -1, Recipe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

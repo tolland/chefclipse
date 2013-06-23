@@ -8,4 +8,11 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>pom.xml</name>
+			<type>1</type>
+			<location>/home/tomhodder/git/chefclipse-tomhodder2/pom.xml</location>
+		</link>
+	</linkedResources>
 </projectDescription>

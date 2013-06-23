@@ -18,7 +18,7 @@ import org.limepepper.chefclipse.utility.NamedDescribedObject;
  *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getOS <em>OS</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getBasepath <em>Basepath</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbooks <em>Cookbooks</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getKnife <em>Knife</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getKnives <em>Knives</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbookFolders <em>Cookbook Folders</em>}</li>
  * </ul>
  * </p>
@@ -97,22 +97,22 @@ public interface Repository extends NamedDescribedObject {
     EList<CookbookVersion> getCookbooks();
 
     /**
-	 * Returns the value of the '<em><b>Knife</b></em>' reference list.
+	 * Returns the value of the '<em><b>Knives</b></em>' reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.knife.KnifeConfig}.
 	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.knife.KnifeConfig#getRepository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Knife</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-	 * @return the value of the '<em>Knife</em>' reference list.
-	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Knife()
+	 * <p>
+	 * If the meaning of the '<em>Knives</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Knives</em>' reference list.
+	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#getRepository_Knives()
 	 * @see org.limepepper.chefclipse.common.knife.KnifeConfig#getRepository
 	 * @model opposite="repository"
 	 * @generated
 	 */
-    EList<KnifeConfig> getKnife();
+	EList<KnifeConfig> getKnives();
 
 				/**
 	 * Returns the value of the '<em><b>Cookbook Folders</b></em>' reference list.

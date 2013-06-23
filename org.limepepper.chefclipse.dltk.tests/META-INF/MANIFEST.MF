@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: DLTK Extensions Tests
+Bundle-SymbolicName: org.limepepper.chefclipse.dltk.tests;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.core.resources,
+ org.junit,
+ org.eclipse.dltk.core,
+ org.limepepper.chefclipse.dltk,
+ org.eclipse.dltk.ruby,
+ org.eclipse.dltk.ruby.core
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Activator: org.limepepper.chefclipse.dltk.tests.Activator

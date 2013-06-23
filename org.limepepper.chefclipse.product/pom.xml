@@ -9,9 +9,10 @@
     <groupId>org.limepepper.chefclipse</groupId>
     <artifactId>org.limepepper.chefclipse</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <relativePath>../chefclipse.parent</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <name>org.limepepper.chefclipse.product</name>
   <artifactId>org.limepepper.chefclipse.product</artifactId>
   <packaging>eclipse-repository</packaging>
   <version>0.1.0-SNAPSHOT</version>
@@ -112,15 +113,15 @@
       </properties>
       <build>
 
-        <resources>
+        <!-- resources>
           <resource>
-            <directory></directory>
+            <directory>/</directory>
             <filtering>true</filtering>
             <includes>
               <include>*.product</include>
             </includes>
           </resource>
-        </resources>
+        </resources-->
 
         <plugins>
           <plugin>

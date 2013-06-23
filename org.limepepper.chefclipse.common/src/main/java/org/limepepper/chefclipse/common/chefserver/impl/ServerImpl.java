@@ -5,7 +5,7 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.limepepper.chefclipse.common.chefclient.Client;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.Environment;
@@ -143,8 +143,8 @@ public class ServerImpl extends EObjectImpl implements Server {
 	 * @generated
 	 */
     @SuppressWarnings("unchecked")
-    public EList<Client> getClients() {
-		return (EList<Client>)eGet(ChefserverPackage.Literals.SERVER__CLIENTS, true);
+    public EList<ChefClient> getClients() {
+		return (EList<ChefClient>)eGet(ChefserverPackage.Literals.SERVER__CLIENTS, true);
 	}
 
     /**

@@ -6,7 +6,7 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.limepepper.chefclipse.preferences.ui.Activator;
+import org.limepepper.chefclipse.preferences.ui.PreferencesActivator;
 
 import chefclipse.ui.messages.Messages;
 
@@ -18,7 +18,7 @@ public class ChefclipseRootPreferencePage extends FieldEditorPreferencePage impl
 
 	public ChefclipseRootPreferencePage() {
 		super(GRID);
-		setPreferenceStore(new ScopedPreferenceStore(ConfigurationScope.INSTANCE, Activator.PLUGIN_ID));
+		setPreferenceStore(new ScopedPreferenceStore(ConfigurationScope.INSTANCE, PreferencesActivator.PLUGIN_ID));
 		setDescription(Messages.ChefclipseRootPreferencePage_Description);
 	}
 

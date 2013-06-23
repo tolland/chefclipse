@@ -1,6 +1,6 @@
 package org.limepepper.chefclipse.testing;
 
-import static org.fest.assertions.api.Fail.*;
+import static org.fest.assertions.api.Fail.fail;
 
 import java.io.File;
 import java.io.IOException;

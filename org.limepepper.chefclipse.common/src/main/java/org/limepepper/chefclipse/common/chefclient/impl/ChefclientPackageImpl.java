@@ -6,9 +6,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.limepepper.chefclipse.common.chefclient.ChefClient;
 import org.limepepper.chefclipse.common.chefclient.ChefclientFactory;
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
-import org.limepepper.chefclipse.common.chefclient.Client;
 import org.limepepper.chefclipse.common.chefclient.ClientConfig;
 import org.limepepper.chefclipse.common.chefclient.Ohai;
 import org.limepepper.chefclipse.common.chefclient.Search;
@@ -32,12 +32,12 @@ import org.limepepper.chefclipse.utility.impl.UtilityPackageImpl;
 public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPackage {
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass clientEClass = null;
+	private EClass chefClientEClass = null;
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -138,23 +138,23 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
 
     /**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getClient() {
-		return clientEClass;
+	public EClass getChefClient() {
+		return chefClientEClass;
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getClient_Server() {
-		return (EReference)clientEClass.getEStructuralFeatures().get(0);
+	public EReference getChefClient_Server() {
+		return (EReference)chefClientEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
+				/**
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
@@ -209,8 +209,8 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
 		isCreated = true;
 
 		// Create classes and their features
-		clientEClass = createEClass(CLIENT);
-		createEReference(clientEClass, CLIENT__SERVER);
+		chefClientEClass = createEClass(CHEF_CLIENT);
+		createEReference(chefClientEClass, CHEF_CLIENT__SERVER);
 
 		ohaiEClass = createEClass(OHAI);
 
@@ -254,8 +254,8 @@ public class ChefclientPackageImpl extends EPackageImpl implements ChefclientPac
 		clientConfigEClass.getESuperTypes().add(theUtilityPackage.getConfig());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(clientEClass, Client.class, "Client", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getClient_Server(), theChefserverPackage.getServer(), null, "server", null, 1, 1, Client.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(chefClientEClass, ChefClient.class, "ChefClient", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChefClient_Server(), theChefserverPackage.getServer(), null, "server", null, 1, 1, ChefClient.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(ohaiEClass, Ohai.class, "Ohai", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

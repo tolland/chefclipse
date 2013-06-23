@@ -121,15 +121,15 @@ public interface WorkstationPackage extends EPackage {
     int REPOSITORY__COOKBOOKS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
     /**
-	 * The feature id for the '<em><b>Knife</b></em>' reference list.
+	 * The feature id for the '<em><b>Knives</b></em>' reference list.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-    int REPOSITORY__KNIFE = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+	int REPOSITORY__KNIVES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
 
-    /**
+				/**
 	 * The feature id for the '<em><b>Cookbook Folders</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -480,17 +480,17 @@ public interface WorkstationPackage extends EPackage {
     EReference getRepository_Cookbooks();
 
     /**
-	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getKnife <em>Knife</em>}'.
+	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getKnives <em>Knives</em>}'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Knife</em>'.
-	 * @see org.limepepper.chefclipse.common.workstation.Repository#getKnife()
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Knives</em>'.
+	 * @see org.limepepper.chefclipse.common.workstation.Repository#getKnives()
 	 * @see #getRepository()
 	 * @generated
 	 */
-    EReference getRepository_Knife();
+	EReference getRepository_Knives();
 
-    /**
+				/**
 	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbookFolders <em>Cookbook Folders</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -649,14 +649,14 @@ public interface WorkstationPackage extends EPackage {
         EReference REPOSITORY__COOKBOOKS = eINSTANCE.getRepository_Cookbooks();
 
         /**
-		 * The meta object literal for the '<em><b>Knife</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Knives</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-        EReference REPOSITORY__KNIFE = eINSTANCE.getRepository_Knife();
+		EReference REPOSITORY__KNIVES = eINSTANCE.getRepository_Knives();
 
-        /**
+								/**
 		 * The meta object literal for the '<em><b>Cookbook Folders</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

@@ -72,29 +72,29 @@ public class ChefclientItemProviderAdapterFactory extends ChefclientAdapterFacto
 	}
 
     /**
-	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefclient.Client} instances.
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefclient.ChefClient} instances.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    protected ClientItemProvider clientItemProvider;
+	protected ChefClientItemProvider chefClientItemProvider;
 
-    /**
-	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefclient.Client}.
+				/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.common.chefclient.ChefClient}.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public Adapter createClientAdapter() {
-		if (clientItemProvider == null) {
-			clientItemProvider = new ClientItemProvider(this);
+	@Override
+	public Adapter createChefClientAdapter() {
+		if (chefClientItemProvider == null) {
+			chefClientItemProvider = new ChefClientItemProvider(this);
 		}
 
-		return clientItemProvider;
+		return chefClientItemProvider;
 	}
 
-    /**
+				/**
 	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.common.chefclient.Ohai} instances.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -262,7 +262,7 @@ public class ChefclientItemProviderAdapterFactory extends ChefclientAdapterFacto
 	 * @generated
 	 */
     public void dispose() {
-		if (clientItemProvider != null) clientItemProvider.dispose();
+		if (chefClientItemProvider != null) chefClientItemProvider.dispose();
 		if (ohaiItemProvider != null) ohaiItemProvider.dispose();
 		if (searchItemProvider != null) searchItemProvider.dispose();
 		if (clientConfigItemProvider != null) clientConfigItemProvider.dispose();

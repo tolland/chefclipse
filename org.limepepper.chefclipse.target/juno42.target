@@ -58,6 +58,12 @@
 <unit id="org.eclipse.equinox.serverside.sdk.feature.group" version="3.8.0.v20121212-203907-9Q7dFt0FYGis9ucXkdoWbkfz-dEi"/>
 <repository location="http://download.eclipse.org/releases/juno"/>
 </location>
+<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.xtext.ui.feature.group" version="2.4.1.v201304180855"/>
+<unit id="org.eclipse.xtext.runtime.feature.group" version="2.4.1.v201304180855"/>
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.4.1.v201304180855"/>
+<repository location="http://download.itemis.com/updates/releases"/>
+</location>
 </locations>
 <launcherArgs>
 <vmArgs>-Dsun.awt.disablegrab=true -Dosgi.requiredJavaVersion=1.5 -Dhelp.lucene.tokenizer=standard -XX:MaxPermSize=512m -Xms96m -Xmx1524m</vmArgs>

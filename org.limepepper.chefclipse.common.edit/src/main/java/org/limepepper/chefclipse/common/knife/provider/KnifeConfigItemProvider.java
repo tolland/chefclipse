@@ -240,7 +240,7 @@ public class KnifeConfigItemProvider
 				 getString("_UI_KnifeConfig_server_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_KnifeConfig_server_feature", "_UI_KnifeConfig_type"),
 				 KnifePackage.Literals.KNIFE_CONFIG__SERVER,
-				 true,
+				 false,
 				 false,
 				 true,
 				 null,
