@@ -89,8 +89,8 @@
 					<with variable="selection">
 			   		    <iterate operator="and" ifEmpty="false">
 			      			<adapt type="org.eclipse.core.resources.IProject">
-			                	<test property="org.eclipse.core.resources.projectNature" 
-			           	   			value="org.limepepper.chefclipse.ChefProjectNature"/>
+			                	<test property="org.eclipse.core.resources.projectNature"
+			           	   			value="chefclipse.chefnature"/>
 			      			</adapt>
 			   		    </iterate>
 					</with>
