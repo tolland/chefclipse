@@ -133,11 +133,13 @@ public class DatabagEditorContentProvider extends AdapterFactoryContentProvider
 				Object element = iter.next();
 				if (element instanceof IProject) {
 					IProject project = (IProject) element;
-					// @todo change to static import
-					if (isChefProject(project)) {
-						DatabagEditorActivator.log("pipelining project");
-						// iter.remove();
-						// newProjects.add(ChefCore.create(project));
+					if (project.isAccessible()) {
+						// @todo change to static import
+						if (isChefProject(project)) {
+							DatabagEditorActivator.log("pipelining project");
+							// iter.remove();
+							// newProjects.add(ChefCore.create(project));
+						}
 					}
 				}
 			}

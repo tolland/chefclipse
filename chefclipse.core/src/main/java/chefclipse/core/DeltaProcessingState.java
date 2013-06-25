@@ -14,7 +14,6 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
@@ -70,7 +69,7 @@ public class DeltaProcessingState implements IResourceChangeListener,
 					if (fRemoved.size() > 0) {
 						logger.debug("processing removed");
 						for (IResource iterable_element : fRemoved) {
-							logger.debug("rmovig {}",
+							logger.debug("removig {}",
 									iterable_element.getName());
 							ChefRepositoryManager.INSTANCE
 									.remove(iterable_element);

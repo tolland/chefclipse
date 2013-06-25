@@ -101,7 +101,7 @@ public class ChefModelProvider extends ModelProvider implements
             if (fRemoved.size() > 0) {
                 logger.debug("processing removed");
                 for (IResource iterable_element : fRemoved) {
-                    logger.debug("rmovig {}", iterable_element.getName());
+                    logger.debug("removing {}", iterable_element.getName());
                     ChefRepositoryManager.INSTANCE.remove(iterable_element);
                 }
             }

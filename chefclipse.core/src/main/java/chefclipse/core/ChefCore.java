@@ -41,6 +41,7 @@ public class ChefCore extends Plugin implements BundleActivator {
 
 	public ChefCore() {
 		super();
+		plugin = this;
 	}
 
 	static Logger logger = LoggerFactory.getLogger(ChefCore.class);
@@ -51,6 +52,11 @@ public class ChefCore extends Plugin implements BundleActivator {
 	public static final String BUILDER_ID = "chefclipse.chefbuilder"; //$NON-NLS-1$
 	public static final String MODEL_ID = "chefclipse.chefmodel"; //$NON-NLS-1$
 	public static final String NATURE_ID = "chefclipse.chefnature"; //$NON-NLS-1$
+
+
+	// The shared instance.
+	private static ChefCore plugin;
+
 
 	private static BundleContext context;
 
@@ -112,6 +118,7 @@ public class ChefCore extends Plugin implements BundleActivator {
 		} finally {
 			// ensure we call super.stop as the last thing
 			super.stop(context);
+			plugin = null;
 		}
 	}
 

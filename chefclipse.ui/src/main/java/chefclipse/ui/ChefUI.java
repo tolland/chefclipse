@@ -48,8 +48,6 @@ public class ChefUI extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		log("creating the workspaceRoot will trigger a walk of each of the open projects"); //$NON-NLS-1$
-		ChefCore.create(ResourcesPlugin.getWorkspace().getRoot());
 	}
 
 	/*
