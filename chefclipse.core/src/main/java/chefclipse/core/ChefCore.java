@@ -41,18 +41,16 @@ public class ChefCore extends Plugin implements BundleActivator {
 
 	public ChefCore() {
 		super();
-		CHEF_CORE_PLUGIN = this;
 	}
 
 	static Logger logger = LoggerFactory.getLogger(ChefCore.class);
 
 	private static final IResource[] NO_GENERATED_RESOURCES = new IResource[0];
 
-	private static Plugin CHEF_CORE_PLUGIN = null;
 	public static final String PLUGIN_ID = "chefclipse.core"; //$NON-NLS-1$
-	public static final String BUILDER_ID = PLUGIN_ID + ".chefbuilder"; //$NON-NLS-1$
-	public static final String MODEL_ID = PLUGIN_ID + ".chefmodel"; //$NON-NLS-1$
-	public static final String NATURE_ID = PLUGIN_ID + ".chefnature"; //$NON-NLS-1$
+	public static final String BUILDER_ID = "chefclipse.chefbuilder"; //$NON-NLS-1$
+	public static final String MODEL_ID = "chefclipse.chefmodel"; //$NON-NLS-1$
+	public static final String NATURE_ID = "chefclipse.chefnature"; //$NON-NLS-1$
 
 	private static BundleContext context;
 
@@ -183,7 +181,7 @@ public class ChefCore extends Plugin implements BundleActivator {
 	}
 
 	public static void debug(Object class1) {
-		//logger.debug("debug was: {}", class1);
+		// logger.debug("debug was: {}", class1);
 	}
 
 	public static void error(String string) {

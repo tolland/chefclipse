@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: chefclipse.ui;singleton:=true
 Bundle-Version: 0.1.2.qualifier
-Bundle-Activator: chefclipse.ui.ChefPlugin
+Bundle-Activator: chefclipse.ui.ChefUI
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

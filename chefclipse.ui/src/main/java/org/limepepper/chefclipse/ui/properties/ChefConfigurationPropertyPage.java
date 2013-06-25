@@ -29,7 +29,7 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.limepepper.chefclipse.utility.Config;
 
-import chefclipse.ui.ChefPlugin;
+import chefclipse.ui.ChefUI;
 import chefclipse.ui.messages.Messages;
 
 /**
@@ -42,7 +42,7 @@ import chefclipse.ui.messages.Messages;
 public class ChefConfigurationPropertyPage extends PropertyPage {
 
 	public static final String CHEF_CONFIG_PREFERENCE_ID = "org.limepepper.chefclipse.preferences.ui.preferences.ChefServerConfigurationsPreferencePage"; //$NON-NLS-1$
-	public static final String PROPERTIES_PAGE = ChefPlugin.PLUGIN_ID
+	public static final String PROPERTIES_PAGE = ChefUI.PLUGIN_ID
 			+ ".chef_config__properties_page"; //$NON-NLS-1$
 
 	private IProject project;
@@ -78,7 +78,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		data.horizontalSpan = 1;
 		control.setLayoutData(data);
 
-		configsViewer.restoreColumnSettings(ChefPlugin.getDefault()
+		configsViewer.restoreColumnSettings(ChefUI.getDefault()
 				.getDialogSettings(), PROPERTIES_PAGE);
 
 		configsViewer
@@ -227,7 +227,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 		savePreference(configsViewer.getCheckedConfig());
 
 		// save column widths
-		IDialogSettings settings = ChefPlugin.getDefault().getDialogSettings();
+		IDialogSettings settings = ChefUI.getDefault().getDialogSettings();
 		configsViewer.saveColumnSettings(settings, PROPERTIES_PAGE);
 		return super.performOk();
 	}

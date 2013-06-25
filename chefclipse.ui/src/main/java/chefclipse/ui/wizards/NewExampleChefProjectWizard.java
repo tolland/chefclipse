@@ -35,7 +35,7 @@ import org.osgi.framework.Bundle;
 
 import chefclipse.core.builders.ChefProjectNature;
 import chefclipse.core.managers.ChefRepositoryManager;
-import chefclipse.ui.ChefPlugin;
+import chefclipse.ui.ChefUI;
 
 public class NewExampleChefProjectWizard extends ChefProjectWizard implements INewWizard {
 	ChefRepositoryWizardPage repoPage = new ChefRepositoryWizardPage();
@@ -65,7 +65,7 @@ public class NewExampleChefProjectWizard extends ChefProjectWizard implements IN
 					throws InvocationTargetException {
 				try {
 
-					Bundle bundle = ChefPlugin.getDefault().getBundle();
+					Bundle bundle = ChefUI.getDefault().getBundle();
 					IPath path = new Path("resources/chef-repo-example");
 					URL setupUrl = FileLocator.find(bundle, path,
 							Collections.EMPTY_MAP);
