@@ -890,7 +890,9 @@ public class ChefserverPackageImpl extends EPackageImpl implements
 				theUtilityPackage.getNamedDescribedObject());
 		nodeEClass.getESuperTypes().add(this.getRunList());
 		dataBagItemEClass.getESuperTypes().add(
-				theUtilityPackage.getNamedObject());
+				theUtilityPackage.getIdentObject());
+		dataBagItemEClass.getESuperTypes().add(
+				theUtilityPackage.getJsonObject());
 		serverCookbookFileEClass.getESuperTypes().add(
 				theUtilityPackage.getSandboxedObject());
 		serverCookbookFileEClass.getESuperTypes().add(

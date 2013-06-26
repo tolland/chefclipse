@@ -1,0 +1,14 @@
+{
+   "id":"tomhodder",
+   "shell":"/bin/bash",
+   "comment":"Tommy trouble",
+   "email":"tom@limepepper.co.uk",
+   "groups":[
+      "syncusers",
+      "sysadmins",
+      "rootkey"
+   ],
+   "ssh_keys":[
+      "ssh-dss AAAAB3NzaC1kc3MAAACBAOMgEh1JJF6QB26phJw9Jkt9M2rIpS7E+qbWfWH+a4ZK/q8urZi+FOqZU9iROfc3WuQvjNN/3no0E5g9nKsws1uNvmxhcpjYZQ0LNZVz0jsMFiW/shUyKGRXGI3mCvg8JPfZc27Dk6fx4Ppbywovr24wH++H5poKZI/y3iw77AzNAAAAFQDe218SQ4bzBEOdLcm5tzb8o6MlnwAAAIBF+DtO3wNt8Paujdd8JDOX9M9EuiD4Tt3hI8U4PCRDtPqZlmkIJUEjXa3p5iW1bHx6swBgGENs6AO8Y3ghgNGkEW9Kr6UNrfyGYptnSeqdidtVKI1jqz4iQ7q3Nfp+vkzeG5YgzdHDmUXt4B+S9sl1mOivrIVKWb4f5fLzgWKgsgAAAIBwOEUEnbDTpokDILBk63Y/nInQ1ZJEfyNxa0nRRqlKdoZS4MVFIk+zdhCT9ZOH6pdmca7TOjoe/Hs/X/fhJOQuS9PcnnYMXxngcHlBvOMX2+FDsxACXxlYYeul0FZiOyzkdKM/5Gq85To1gz1t8RpWbSpYUNm7AJfqwr1130FIWw== tom@limepepper.co.uk"
+   ]
+}

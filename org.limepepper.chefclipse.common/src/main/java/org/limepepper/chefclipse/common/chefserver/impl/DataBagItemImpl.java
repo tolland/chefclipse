@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.utility.impl.IdentObjectImpl;
 import org.limepepper.chefclipse.utility.impl.NamedObjectImpl;
 
 /**
@@ -23,7 +24,7 @@ import org.limepepper.chefclipse.utility.impl.NamedObjectImpl;
  *
  * @generated
  */
-public class DataBagItemImpl extends NamedObjectImpl implements DataBagItem {
+public class DataBagItemImpl extends IdentObjectImpl implements DataBagItem {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

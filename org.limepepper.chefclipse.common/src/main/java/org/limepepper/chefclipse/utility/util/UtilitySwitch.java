@@ -191,6 +191,20 @@ public class UtilitySwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case UtilityPackage.IDENT_OBJECT: {
+			IdentObject identObject = (IdentObject) theEObject;
+			T result = caseIdentObject(identObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.JSON_OBJECT: {
+			JsonObject jsonObject = (JsonObject) theEObject;
+			T result = caseJsonObject(jsonObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -418,6 +432,36 @@ public class UtilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNameVersionMap(NameVersionMap object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ident Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ident Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentObject(IdentObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Json Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Json Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJsonObject(JsonObject object) {
 		return null;
 	}
 

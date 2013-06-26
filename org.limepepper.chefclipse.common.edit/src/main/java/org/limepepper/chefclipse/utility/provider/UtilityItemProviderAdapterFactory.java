@@ -398,6 +398,52 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.utility.IdentObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IdentObjectItemProvider identObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.utility.IdentObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIdentObjectAdapter() {
+		if (identObjectItemProvider == null) {
+			identObjectItemProvider = new IdentObjectItemProvider(this);
+		}
+
+		return identObjectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.utility.JsonObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected JsonObjectItemProvider jsonObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.utility.JsonObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createJsonObjectAdapter() {
+		if (jsonObjectItemProvider == null) {
+			jsonObjectItemProvider = new JsonObjectItemProvider(this);
+		}
+
+		return jsonObjectItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -527,6 +573,10 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory
 			urlEntryTestItemProvider.dispose();
 		if (nameVersionMapItemProvider != null)
 			nameVersionMapItemProvider.dispose();
+		if (identObjectItemProvider != null)
+			identObjectItemProvider.dispose();
+		if (jsonObjectItemProvider != null)
+			jsonObjectItemProvider.dispose();
 	}
 
 }

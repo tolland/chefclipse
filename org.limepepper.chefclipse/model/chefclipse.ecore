@@ -65,7 +65,7 @@
           eType="#//chefserver/Server" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ServerConfig"/>
-    <eClassifiers xsi:type="ecore:EClass" name="DataBagItem" eSuperTypes="#//utility/NamedObject">
+    <eClassifiers xsi:type="ecore:EClass" name="DataBagItem" eSuperTypes="#//utility/IdentObject #//utility/JsonObject">
       <eStructuralFeatures xsi:type="ecore:EReference" name="dataBag" lowerBound="1"
           eType="#//chefserver/DataBag"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="jsonResource" lowerBound="1"
@@ -355,5 +355,9 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IdentObject">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="JsonObject"/>
   </eSubpackages>
 </ecore:EPackage>

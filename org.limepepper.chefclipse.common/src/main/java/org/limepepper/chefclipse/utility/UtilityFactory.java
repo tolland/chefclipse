@@ -140,6 +140,24 @@ public interface UtilityFactory extends EFactory {
 	NameVersionMap createNameVersionMap();
 
 	/**
+	 * Returns a new object of class '<em>Ident Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ident Object</em>'.
+	 * @generated
+	 */
+	IdentObject createIdentObject();
+
+	/**
+	 * Returns a new object of class '<em>Json Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Json Object</em>'.
+	 * @generated
+	 */
+	JsonObject createJsonObject();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

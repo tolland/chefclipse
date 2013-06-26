@@ -3,6 +3,8 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.core.resources.IResource;
+import org.limepepper.chefclipse.utility.IdentObject;
+import org.limepepper.chefclipse.utility.JsonObject;
 import org.limepepper.chefclipse.utility.NamedObject;
 
 /**
@@ -22,7 +24,7 @@ import org.limepepper.chefclipse.utility.NamedObject;
  * @model
  * @generated
  */
-public interface DataBagItem extends NamedObject {
+public interface DataBagItem extends IdentObject, JsonObject {
 	/**
 	 * Returns the value of the '<em><b>Data Bag</b></em>' reference.
 	 * <!-- begin-user-doc -->

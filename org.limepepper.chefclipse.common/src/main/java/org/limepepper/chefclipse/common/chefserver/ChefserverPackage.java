@@ -626,22 +626,13 @@ public interface ChefserverPackage extends EPackage {
 	int DATA_BAG_ITEM = 8;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BAG_ITEM__NAME = UtilityPackage.NAMED_OBJECT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>ID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_BAG_ITEM__ID = UtilityPackage.NAMED_OBJECT__ID;
+	int DATA_BAG_ITEM__ID = UtilityPackage.IDENT_OBJECT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Data Bag</b></em>' reference.
@@ -650,7 +641,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BAG_ITEM__DATA_BAG = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 0;
+	int DATA_BAG_ITEM__DATA_BAG = UtilityPackage.IDENT_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Json Resource</b></em>' attribute.
@@ -659,7 +650,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BAG_ITEM__JSON_RESOURCE = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 1;
+	int DATA_BAG_ITEM__JSON_RESOURCE = UtilityPackage.IDENT_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Data Bag Item</em>' class.
@@ -668,7 +659,7 @@ public interface ChefserverPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DATA_BAG_ITEM_FEATURE_COUNT = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 2;
+	int DATA_BAG_ITEM_FEATURE_COUNT = UtilityPackage.IDENT_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.chefserver.impl.SandboxImpl <em>Sandbox</em>}' class.

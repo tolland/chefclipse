@@ -119,9 +119,9 @@ public class ChefServerApiImpl implements ChefServerApi {
 	@Override
 	public EObject createDataBagItem(IFile resource) {
 		DataBagItem eObject = ChefserverFactory.eINSTANCE.createDataBagItem();
-		eObject.setID(eObject.eClass().getInstanceTypeName().toLowerCase()
+		eObject.setId(eObject.eClass().getInstanceTypeName().toLowerCase()
 				+ "-" + ((NamedObject) eObject).getName() + "-");
-		eObject.setName(resource.getName());
+		eObject.setId(resource.getName());
 		eObject.setJsonResource(resource);
 
 		return eObject;
@@ -264,7 +264,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 
 		options.put(EMFJs.OPTION_ROOT_ELEMENT,
 				ChefserverPackage.eINSTANCE.getNode());
-
 
 		resourceSet.getURIConverter().getURIHandlers()
 				.add(0, new ChefServerURIHandler());
@@ -487,7 +486,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 		options.put(EMFJs.OPTION_ROOT_ELEMENT,
 				ChefserverPackage.eINSTANCE.getEnvironment());
 
-
 		resourceSet.getURIConverter().getURIHandlers()
 				.add(0, new ChefServerURIHandler());
 
@@ -527,7 +525,6 @@ public class ChefServerApiImpl implements ChefServerApi {
 	public Role getRole(String name) {
 		options.put(EMFJs.OPTION_ROOT_ELEMENT,
 				ChefserverPackage.eINSTANCE.getRole());
-
 
 		resourceSet.getURIConverter().getURIHandlers()
 				.add(0, new ChefServerURIHandler());
@@ -644,42 +641,200 @@ public class ChefServerApiImpl implements ChefServerApi {
 
 	@Override
 	public List<Client> getClients() {
-		
+
 		return null;
 	}
 
 	@Override
 	public Client getClient(String name) {
-		
+
 		return null;
 	}
 
 	@Override
 	public void setClient(String name) {
-		
 
 	}
 
+	/*
+	 * @Override public List<DataBag> getDataBags() {
+	 * List<ServerCookbookVersion> items = new
+	 * ArrayList<ServerCookbookVersion>(); Map<String, VersionUrl> list =
+	 * getCookbooksVersions("1"); for (Entry<String, VersionUrl> entry :
+	 * list.entrySet()) { items.add(getCookbookVersion(entry.getKey())); }
+	 * return items; }
+	 */
+
 	@Override
-	public List<DataBag> getDataBags() {
-		
+	public Map<String, String> getDataBagsList() {
+		URI uri = URI.createURI(getUrl().toString() + "/data");
+		try {
+
+			assertNotNull(uri);
+
+			HttpURLConnection connection = getConnection(new ChefRequest(uri,
+					getConfig()), "GET");
+
+			Map<String, Object> options = new HashMap<String, Object>();
+
+			options.put(EMFJs.OPTION_ROOT_ELEMENT,
+					UtilityPackage.eINSTANCE.getNameUrlMap());
+
+			URL url = null;
+
+			Resource resource = resourceSet.createResource(uri,
+					"application/json");
+
+			assertNotNull(resource);
+
+			final InputStream inStream = connection.getInputStream();
+
+			resource.load(inStream, options);
+
+			inStream.close();
+
+			NameUrlMap user = (NameUrlMap) resource.getContents().get(0);
+
+			assertTrue(user.getEntries() != null);
+			assertTrue(user.getEntries().size() > 0);
+
+			return user.getEntries().map();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail("error");
+		} finally {
+
+		}
+
 		return null;
 	}
 
 	@Override
-	public DataBag getDataBag(String name) {
-		
-		return null;
+	public List<DataBagItem> getDataBagItems(String bagName) {
+		List<DataBagItem> items = new ArrayList<DataBagItem>();
+		Map<String, String> list = getDataBagItemsList(bagName);
+		for (Entry<String, String> entry : list.entrySet()) {
+			items.add(getDataBagItem(bagName, entry.getKey()));
+		}
+		return items;
 	}
 
 	@Override
-	public void setDataBag(String name) {
-		
+	public void createDataBag(String name) {
 
 	}
 
 	public static ResourceSetImpl getResourceSet() {
 		return resourceSet;
+	}
+
+	@Override
+	public DataBagItem getDataBagItem(String bagName, String name) {
+
+		options.put(EMFJs.OPTION_ROOT_ELEMENT,
+				ChefserverPackage.eINSTANCE.getDataBagItem());
+
+		resourceSet.getURIConverter().getURIHandlers()
+				.add(0, new ChefServerURIHandler());
+
+		URI uri = URI.createURI(((Config) options.get("knifeConfig"))
+				.getChef_server_url().toString()
+				+ "/data"
+				+ "/"
+				+ bagName
+				+ "/" + name);
+
+		Resource resource = resourceSet.createResource(uri);
+
+		try {
+			resource.load(options);
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail("failed to load resource");
+		}
+
+		DataBagItem eObject = (DataBagItem) resource.getContents().get(0);
+
+		assertNotNull(eObject);
+		assertTrue(eObject.getId() != null);
+
+		return eObject;
+	}
+
+	@Override
+	public void setDataBag(DataBag dataBag) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setDataBagItem(DataBagItem dataBagItem) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void deleteDataBag(DataBag databag) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void deleteDataBagItem(DataBagItem dataBagItem) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Map<String, String> getDataBagItemsList(String bagName) {
+		URI uri = URI.createURI(getUrl().toString() + "/data" + "/" + bagName);
+		try {
+
+			assertNotNull(uri);
+
+			HttpURLConnection connection = getConnection(new ChefRequest(uri,
+					getConfig()), "GET");
+
+			Map<String, Object> options = new HashMap<String, Object>();
+
+			options.put(EMFJs.OPTION_ROOT_ELEMENT,
+					UtilityPackage.eINSTANCE.getNameUrlMap());
+
+			URL url = null;
+
+			Resource resource = resourceSet.createResource(uri,
+					"application/json");
+
+			assertNotNull(resource);
+
+			final InputStream inStream = connection.getInputStream();
+
+			resource.load(inStream, options);
+
+			inStream.close();
+
+			NameUrlMap item = (NameUrlMap) resource.getContents().get(0);
+
+			assertTrue(item.getEntries() != null);
+			assertTrue(item.getEntries().size() > 0);
+
+			return item.getEntries().map();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			fail("error");
+		} finally {
+
+		}
+
+		return null;
+	}
+
+	@Override
+	public DataBag getDataBag(String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

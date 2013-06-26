@@ -30,6 +30,8 @@ import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.utility.ChecksumFile;
 import org.limepepper.chefclipse.utility.DescribedObject;
+import org.limepepper.chefclipse.utility.IdentObject;
+import org.limepepper.chefclipse.utility.JsonObject;
 import org.limepepper.chefclipse.utility.NamedDescribedObject;
 import org.limepepper.chefclipse.utility.NamedObject;
 import org.limepepper.chefclipse.utility.SandboxedObject;
@@ -188,6 +190,16 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
 			return createNamedDescribedObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseIdentObject(IdentObject object) {
+			return createIdentObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseJsonObject(JsonObject object) {
+			return createJsonObjectAdapter();
 		}
 
 		@Override
@@ -511,6 +523,34 @@ public class ChefserverAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNamedDescribedObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.IdentObject <em>Ident Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.utility.IdentObject
+	 * @generated
+	 */
+	public Adapter createIdentObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.JsonObject <em>Json Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.utility.JsonObject
+	 * @generated
+	 */
+	public Adapter createJsonObjectAdapter() {
 		return null;
 	}
 

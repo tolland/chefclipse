@@ -1,13 +1,15 @@
 /**
  */
-package org.limepepper.chefclipse.common.chefserver.provider;
+package org.limepepper.chefclipse.utility.provider;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -17,20 +19,21 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
-import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
-import org.limepepper.chefclipse.utility.provider.IdentObjectItemProvider;
-import org.limepepper.chefclipse.utility.provider.NamedObjectItemProvider;
+
+import org.limepepper.chefclipse.utility.IdentObject;
+import org.limepepper.chefclipse.utility.UtilityPackage;
 
 /**
- * This is the item provider adapter for a {@link org.limepepper.chefclipse.common.chefserver.DataBagItem} object.
+ * This is the item provider adapter for a {@link org.limepepper.chefclipse.utility.IdentObject} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class DataBagItemItemProvider extends IdentObjectItemProvider implements
+public class IdentObjectItemProvider extends ItemProviderAdapter implements
 		IEditingDomainItemProvider, IStructuredItemContentProvider,
 		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
@@ -40,7 +43,7 @@ public class DataBagItemItemProvider extends IdentObjectItemProvider implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DataBagItemItemProvider(AdapterFactory adapterFactory) {
+	public IdentObjectItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -55,53 +58,31 @@ public class DataBagItemItemProvider extends IdentObjectItemProvider implements
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDataBagPropertyDescriptor(object);
-			addJsonResourcePropertyDescriptor(object);
+			addIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Data Bag feature.
+	 * This adds a property descriptor for the Id feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDataBagPropertyDescriptor(Object object) {
+	protected void addIdPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
 				((ComposeableAdapterFactory) adapterFactory)
 						.getRootAdapterFactory(),
 				getResourceLocator(),
-				getString("_UI_DataBagItem_dataBag_feature"),
+				getString("_UI_IdentObject_id_feature"),
 				getString("_UI_PropertyDescriptor_description",
-						"_UI_DataBagItem_dataBag_feature",
-						"_UI_DataBagItem_type"),
-				ChefserverPackage.Literals.DATA_BAG_ITEM__DATA_BAG, true,
-				false, true, null, null, null));
+						"_UI_IdentObject_id_feature", "_UI_IdentObject_type"),
+				UtilityPackage.Literals.IDENT_OBJECT__ID, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Json Resource feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addJsonResourcePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_DataBagItem_jsonResource_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_DataBagItem_jsonResource_feature",
-						"_UI_DataBagItem_type"),
-				ChefserverPackage.Literals.DATA_BAG_ITEM__JSON_RESOURCE, true,
-				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-				null));
-	}
-
-	/**
-	 * This returns DataBagItem.gif.
+	 * This returns IdentObject.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -109,20 +90,20 @@ public class DataBagItemItemProvider extends IdentObjectItemProvider implements
 	@Override
 	public Object getImage(Object object) {
 		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/DataBagItem"));
+				getResourceLocator().getImage("full/obj16/IdentObject"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DataBagItem) object).getId();
-		return label == null || label.length() == 0 ? getString("_UI_DataBagItem_type")
-				: label;
+		String label = ((IdentObject) object).getId();
+		return label == null || label.length() == 0 ? getString("_UI_IdentObject_type")
+				: getString("_UI_IdentObject_type") + " " + label;
 	}
 
 	/**
@@ -136,8 +117,8 @@ public class DataBagItemItemProvider extends IdentObjectItemProvider implements
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(DataBagItem.class)) {
-		case ChefserverPackage.DATA_BAG_ITEM__JSON_RESOURCE:
+		switch (notification.getFeatureID(IdentObject.class)) {
+		case UtilityPackage.IDENT_OBJECT__ID:
 			fireNotifyChanged(new ViewerNotification(notification,
 					notification.getNotifier(), false, true));
 			return;

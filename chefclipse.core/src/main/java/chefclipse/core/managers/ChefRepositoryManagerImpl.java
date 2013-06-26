@@ -404,9 +404,9 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	@Override
 	public EObject createDataBagItem(IFile resource) {
 		DataBagItem eObject = ChefserverFactory.eINSTANCE.createDataBagItem();
-		eObject.setID(eObject.eClass().getInstanceTypeName().toLowerCase()
+		eObject.setId(eObject.eClass().getInstanceTypeName().toLowerCase()
 				+ "-" + ((NamedObject) eObject).getName() + "-");
-		eObject.setName(resource.getName());
+		eObject.setId(resource.getName());
 		eObject.setJsonResource(resource);
 		IContainer parent = resource.getParent();
 		DataBag dataBag = (DataBag) getElement(parent);

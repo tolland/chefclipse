@@ -604,6 +604,53 @@ public interface UtilityPackage extends EPackage {
 	int NAME_VERSION_MAP_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.limepepper.chefclipse.utility.impl.IdentObjectImpl <em>Ident Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.limepepper.chefclipse.utility.impl.IdentObjectImpl
+	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getIdentObject()
+	 * @generated
+	 */
+	int IDENT_OBJECT = 15;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENT_OBJECT__ID = 0;
+
+	/**
+	 * The number of structural features of the '<em>Ident Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENT_OBJECT_FEATURE_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.limepepper.chefclipse.utility.impl.JsonObjectImpl <em>Json Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.limepepper.chefclipse.utility.impl.JsonObjectImpl
+	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getJsonObject()
+	 * @generated
+	 */
+	int JSON_OBJECT = 16;
+
+	/**
+	 * The number of structural features of the '<em>Json Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JSON_OBJECT_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '<em>URL</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,7 +658,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getURL()
 	 * @generated
 	 */
-	int URL = 15;
+	int URL = 17;
 
 	/**
 	 * The meta object id for the '<em>File</em>' data type.
@@ -621,7 +668,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getFile()
 	 * @generated
 	 */
-	int FILE = 16;
+	int FILE = 18;
 
 	/**
 	 * The meta object id for the '<em>Chef type</em>' data type.
@@ -631,7 +678,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getChef_type()
 	 * @generated
 	 */
-	int CHEF_TYPE = 17;
+	int CHEF_TYPE = 19;
 
 	/**
 	 * The meta object id for the '<em>Email</em>' data type.
@@ -641,7 +688,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getEmail()
 	 * @generated
 	 */
-	int EMAIL = 18;
+	int EMAIL = 20;
 
 	/**
 	 * The meta object id for the '<em>Text</em>' data type.
@@ -651,7 +698,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getText()
 	 * @generated
 	 */
-	int TEXT = 19;
+	int TEXT = 21;
 
 	/**
 	 * The meta object id for the '<em>Version</em>' data type.
@@ -661,7 +708,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 20;
+	int VERSION = 22;
 
 	/**
 	 * The meta object id for the '<em>Name</em>' data type.
@@ -671,7 +718,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getName_()
 	 * @generated
 	 */
-	int NAME = 21;
+	int NAME = 23;
 
 	/**
 	 * The meta object id for the '<em>Description</em>' data type.
@@ -681,7 +728,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getDescription()
 	 * @generated
 	 */
-	int DESCRIPTION = 22;
+	int DESCRIPTION = 24;
 
 	/**
 	 * The meta object id for the '<em>Object</em>' data type.
@@ -691,7 +738,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getObject()
 	 * @generated
 	 */
-	int OBJECT = 23;
+	int OBJECT = 25;
 
 	/**
 	 * The meta object id for the '<em>Name Url Data Type</em>' data type.
@@ -701,7 +748,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getNameUrlDataType()
 	 * @generated
 	 */
-	int NAME_URL_DATA_TYPE = 24;
+	int NAME_URL_DATA_TYPE = 26;
 
 	/**
 	 * The meta object id for the '<em>Map Test</em>' data type.
@@ -711,7 +758,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getMapTest()
 	 * @generated
 	 */
-	int MAP_TEST = 25;
+	int MAP_TEST = 27;
 
 	/**
 	 * The meta object id for the '<em>IResource</em>' data type.
@@ -721,7 +768,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getIResource()
 	 * @generated
 	 */
-	int IRESOURCE = 26;
+	int IRESOURCE = 28;
 
 	/**
 	 * The meta object id for the '<em>EInput Stream</em>' data type.
@@ -731,7 +778,7 @@ public interface UtilityPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getEInputStream()
 	 * @generated
 	 */
-	int EINPUT_STREAM = 27;
+	int EINPUT_STREAM = 29;
 
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.utility.NamedDescribedObject <em>Named Described Object</em>}'.
@@ -1170,6 +1217,37 @@ public interface UtilityPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNameVersionMap_Entries();
+
+	/**
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.utility.IdentObject <em>Ident Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Ident Object</em>'.
+	 * @see org.limepepper.chefclipse.utility.IdentObject
+	 * @generated
+	 */
+	EClass getIdentObject();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.limepepper.chefclipse.utility.IdentObject#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.limepepper.chefclipse.utility.IdentObject#getId()
+	 * @see #getIdentObject()
+	 * @generated
+	 */
+	EAttribute getIdentObject_Id();
+
+	/**
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.utility.JsonObject <em>Json Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Json Object</em>'.
+	 * @see org.limepepper.chefclipse.utility.JsonObject
+	 * @generated
+	 */
+	EClass getJsonObject();
 
 	/**
 	 * Returns the meta object for data type '{@link java.net.URL <em>URL</em>}'.
@@ -1708,6 +1786,34 @@ public interface UtilityPackage extends EPackage {
 		 */
 		EReference NAME_VERSION_MAP__ENTRIES = eINSTANCE
 				.getNameVersionMap_Entries();
+
+		/**
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.utility.impl.IdentObjectImpl <em>Ident Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.utility.impl.IdentObjectImpl
+		 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getIdentObject()
+		 * @generated
+		 */
+		EClass IDENT_OBJECT = eINSTANCE.getIdentObject();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IDENT_OBJECT__ID = eINSTANCE.getIdentObject_Id();
+
+		/**
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.utility.impl.JsonObjectImpl <em>Json Object</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.utility.impl.JsonObjectImpl
+		 * @see org.limepepper.chefclipse.utility.impl.UtilityPackageImpl#getJsonObject()
+		 * @generated
+		 */
+		EClass JSON_OBJECT = eINSTANCE.getJsonObject();
 
 		/**
 		 * The meta object literal for the '<em>URL</em>' data type.

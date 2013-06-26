@@ -103,6 +103,10 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 			return createURLEntryTest();
 		case UtilityPackage.NAME_VERSION_MAP:
 			return createNameVersionMap();
+		case UtilityPackage.IDENT_OBJECT:
+			return createIdentObject();
+		case UtilityPackage.JSON_OBJECT:
+			return createJsonObject();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
@@ -323,6 +327,26 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	public NameVersionMap createNameVersionMap() {
 		NameVersionMapImpl nameVersionMap = new NameVersionMapImpl();
 		return nameVersionMap;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IdentObject createIdentObject() {
+		IdentObjectImpl identObject = new IdentObjectImpl();
+		return identObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JsonObject createJsonObject() {
+		JsonObjectImpl jsonObject = new JsonObjectImpl();
+		return jsonObject;
 	}
 
 	/**

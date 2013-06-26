@@ -27,6 +27,8 @@ import org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl;
 import org.limepepper.chefclipse.utility.ChecksumFile;
 import org.limepepper.chefclipse.utility.Config;
 import org.limepepper.chefclipse.utility.DescribedObject;
+import org.limepepper.chefclipse.utility.IdentObject;
+import org.limepepper.chefclipse.utility.JsonObject;
 import org.limepepper.chefclipse.utility.MaintainedObject;
 import org.limepepper.chefclipse.utility.MapTestContainer;
 import org.limepepper.chefclipse.utility.NameUrlMap;
@@ -152,6 +154,20 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	private EClass nameVersionMapEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass identObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jsonObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -725,6 +741,33 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIdentObject() {
+		return identObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentObject_Id() {
+		return (EAttribute) identObjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJsonObject() {
+		return jsonObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getURL() {
 		return urlEDataType;
 	}
@@ -924,6 +967,11 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 
 		nameVersionMapEClass = createEClass(NAME_VERSION_MAP);
 		createEReference(nameVersionMapEClass, NAME_VERSION_MAP__ENTRIES);
+
+		identObjectEClass = createEClass(IDENT_OBJECT);
+		createEAttribute(identObjectEClass, IDENT_OBJECT__ID);
+
+		jsonObjectEClass = createEClass(JSON_OBJECT);
 
 		// Create data types
 		urlEDataType = createEDataType(URL);
@@ -1135,6 +1183,16 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 				NameVersionMap.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(identObjectEClass, IdentObject.class, "IdentObject",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdentObject_Id(), ecorePackage.getEString(), "id",
+				null, 1, 1, IdentObject.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(jsonObjectEClass, JsonObject.class, "JsonObject",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE,

@@ -29,6 +29,8 @@ import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.utility.ChecksumFile;
 import org.limepepper.chefclipse.utility.DescribedObject;
+import org.limepepper.chefclipse.utility.IdentObject;
+import org.limepepper.chefclipse.utility.JsonObject;
 import org.limepepper.chefclipse.utility.NamedDescribedObject;
 import org.limepepper.chefclipse.utility.NamedObject;
 import org.limepepper.chefclipse.utility.SandboxedObject;
@@ -180,7 +182,9 @@ public class ChefserverSwitch<T> extends Switch<T> {
 			DataBagItem dataBagItem = (DataBagItem) theEObject;
 			T result = caseDataBagItem(dataBagItem);
 			if (result == null)
-				result = caseNamedObject(dataBagItem);
+				result = caseIdentObject(dataBagItem);
+			if (result == null)
+				result = caseJsonObject(dataBagItem);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -573,6 +577,36 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNamedDescribedObject(NamedDescribedObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ident Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ident Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentObject(IdentObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Json Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Json Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJsonObject(JsonObject object) {
 		return null;
 	}
 
