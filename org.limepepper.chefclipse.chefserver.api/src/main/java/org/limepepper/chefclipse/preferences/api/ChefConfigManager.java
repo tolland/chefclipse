@@ -223,7 +223,7 @@ public class ChefConfigManager {
 	 *            the {@link Config} to apply
 	 */
 	public void saveProjectChefConfig(final IResource project,
-			final Config config) {
+			final KnifeConfig config) {
 		assert project != null;
 		IProject iproject = project.getProject();
 		if (iproject == null || !iproject.isAccessible()) {
@@ -235,6 +235,12 @@ public class ChefConfigManager {
 				.getNode(ChefCore.PLUGIN_ID);
 		if (projectNode != null) {
 			try {
+
+				Repository repository = ChefRepositoryManager.INSTANCE
+						.getRepository((IProject) project);
+
+				repository.getKnives().add(config);
+
 				saveChefConfig(config, projectNode);
 			} catch (BackingStoreException e) {
 				Platform.getLog(ChefCore.getContext().getBundle())

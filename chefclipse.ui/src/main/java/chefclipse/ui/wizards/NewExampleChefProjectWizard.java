@@ -98,6 +98,12 @@ public class NewExampleChefProjectWizard extends ChefProjectWizard implements
 									ResourcesPlugin.getWorkspace().getRoot()
 											.getLocation().toString()
 											+ "/chef-repo-example/config/knife-example2-chefclipse.rb"));
+					List<KnifeConfig> configs = ChefConfigManager.instance()
+							.retrieveChefConfigurations();
+					configs.add(knifeConfig);
+					ChefConfigManager.instance().saveChefConfigs(configs);
+				/*	ChefConfigManager.instance().saveDefaultChefConfig(
+							getCurrentDefaultConfig());*/
 
 					ChefConfigManager.instance().saveProjectChefConfig(proj,
 							knifeConfig);

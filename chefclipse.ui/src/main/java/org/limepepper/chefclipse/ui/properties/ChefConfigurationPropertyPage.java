@@ -240,7 +240,7 @@ public class ChefConfigurationPropertyPage extends PropertyPage {
 	 */
 	private void savePreference(Config selected) {
 		ChefConfigManager.instance().saveProjectChefConfig(this.project,
-				selected);
+				(KnifeConfig) selected);
 	}
 
 	public boolean isModified() {
