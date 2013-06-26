@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated chefclipse -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.common.chefserver.presentation.ChefserverModelWizardID"
+            name="%_UI_ChefserverModelWizard_label"
+            class="org.limepepper.chefclipse.common.chefserver.presentation.ChefserverModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ChefserverModelFile.gif">
+         <description>%_UI_ChefserverModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated chefclipse -->
+      <editor
+            id="org.limepepper.chefclipse.common.chefserver.presentation.ChefserverEditorID"
+            name="%_UI_ChefserverEditor_label"
+            icon="icons/full/obj16/ChefserverModelFile.gif"
+            extensions="chefserver"
+            class="org.limepepper.chefclipse.common.chefserver.presentation.ChefserverEditor"
+            contributorClass="org.limepepper.chefclipse.common.chefserver.presentation.ChefserverActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated chefclipse -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.common.chefclient.presentation.ChefclientModelWizardID"
+            name="%_UI_ChefclientModelWizard_label"
+            class="org.limepepper.chefclipse.common.chefclient.presentation.ChefclientModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ChefclientModelFile.gif">
+         <description>%_UI_ChefclientModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated chefclipse -->
+      <editor
+            id="org.limepepper.chefclipse.common.chefclient.presentation.ChefclientEditorID"
+            name="%_UI_ChefclientEditor_label"
+            icon="icons/full/obj16/ChefclientModelFile.gif"
+            extensions="chefclient"
+            class="org.limepepper.chefclipse.common.chefclient.presentation.ChefclientEditor"
+            contributorClass="org.limepepper.chefclipse.common.chefclient.presentation.ChefclientActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated chefclipse -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.common.cookbook.presentation.CookbookModelWizardID"
+            name="%_UI_CookbookModelWizard_label"
+            class="org.limepepper.chefclipse.common.cookbook.presentation.CookbookModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CookbookModelFile.gif">
+         <description>%_UI_CookbookModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated chefclipse -->
+      <editor
+            id="org.limepepper.chefclipse.common.cookbook.presentation.CookbookEditorID"
+            name="%_UI_CookbookEditor_label"
+            icon="icons/full/obj16/CookbookModelFile.gif"
+            class="org.limepepper.chefclipse.common.cookbook.presentation.CookbookEditor"
+            contributorClass="org.limepepper.chefclipse.common.cookbook.presentation.CookbookActionBarContributor">
+         <contentTypeBinding contentTypeId="org.limepepper.chefclipse.content-types.cookbook"/>
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated chefclipse -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.common.workstation.presentation.WorkstationModelWizardID"
+            name="%_UI_WorkstationModelWizard_label"
+            class="org.limepepper.chefclipse.common.workstation.presentation.WorkstationModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/WorkstationModelFile.gif">
+         <description>%_UI_WorkstationModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated chefclipse -->
+      <editor
+            id="org.limepepper.chefclipse.common.workstation.presentation.WorkstationEditorID"
+            name="%_UI_WorkstationEditor_label"
+            icon="icons/full/obj16/WorkstationModelFile.gif"
+            extensions="workstation"
+            class="org.limepepper.chefclipse.common.workstation.presentation.WorkstationEditor"
+            contributorClass="org.limepepper.chefclipse.common.workstation.presentation.WorkstationActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated chefclipse -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.common.knife.presentation.KnifeModelWizardID"
+            name="%_UI_KnifeModelWizard_label"
+            class="org.limepepper.chefclipse.common.knife.presentation.KnifeModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/KnifeModelFile.gif">
+         <description>%_UI_KnifeModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated chefclipse -->
+      <editor
+            id="org.limepepper.chefclipse.common.knife.presentation.KnifeEditorID"
+            name="%_UI_KnifeEditor_label"
+            icon="icons/full/obj16/KnifeModelFile.gif"
+            extensions="knife"
+            class="org.limepepper.chefclipse.common.knife.presentation.KnifeEditor"
+            contributorClass="org.limepepper.chefclipse.common.knife.presentation.KnifeActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated chefclipse -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.limepepper.chefclipse.REST.presentation.RESTModelWizardID"
+            name="%_UI_RESTModelWizard_label"
+            class="org.limepepper.chefclipse.REST.presentation.RESTModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/RESTModelFile.gif">
+         <description>%_UI_RESTModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated chefclipse -->
+      <editor
+            id="org.limepepper.chefclipse.REST.presentation.RESTEditorID"
+            name="%_UI_RESTEditor_label"
+            icon="icons/full/obj16/RESTModelFile.gif"
+            extensions="rest"
+            class="org.limepepper.chefclipse.REST.presentation.RESTEditor"
+            contributorClass="org.limepepper.chefclipse.REST.presentation.RESTActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
