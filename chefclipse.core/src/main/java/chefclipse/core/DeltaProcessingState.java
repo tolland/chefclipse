@@ -14,7 +14,6 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -39,7 +38,7 @@ public class DeltaProcessingState implements IResourceChangeListener,
 		// ChefModelManager.getChefModelManager().getChefModel().getChefProject();
 
 		if (event == null || event.getDelta() == null) {
-			logger.trace("test");
+			logger.debug("event or event delta was null");
 			return;
 		}
 
@@ -49,17 +48,31 @@ public class DeltaProcessingState implements IResourceChangeListener,
 			event.getDelta().accept(this);
 			// @todo don't want to process anything if accept failed?
 
-			IWorkspace workspace = ResourcesPlugin.getWorkspace();
+			// IWorkspace workspace = ResourcesPlugin.getWorkspace();
 
+			if (fAdded.size() > 0) {
+				for (IResource iterable_element : fAdded) {
+					logger.debug("add item: {}", iterable_element.getName());
+
+				}
+
+			}
+
+			if (fRemoved.size() > 0) {
+				for (IResource iterable_element : fRemoved) {
+					logger.debug("remove item: {}", iterable_element.getName());
+				}
+			}
 
 			Job job = new WorkspaceJob("Creating folders") {
 				public IStatus runInWorkspace(IProgressMonitor monitor)
 						throws CoreException {
 					// do the actual work in here
 					if (fAdded.size() > 0) {
-						logger.debug("processing added");
 						for (IResource iterable_element : fAdded) {
-							logger.debug(iterable_element.getName());
+							logger.debug(
+									"calling ChefRepositoryManager.add on: {}",
+									iterable_element.getName());
 							ChefRepositoryManager.INSTANCE
 									.add(iterable_element);
 						}
@@ -67,9 +80,9 @@ public class DeltaProcessingState implements IResourceChangeListener,
 					}
 
 					if (fRemoved.size() > 0) {
-						logger.debug("processing removed");
 						for (IResource iterable_element : fRemoved) {
-							logger.debug("removig {}",
+							logger.debug(
+									"calling ChefRepositoryManager.remove on: {}",
 									iterable_element.getName());
 							ChefRepositoryManager.INSTANCE
 									.remove(iterable_element);
@@ -79,39 +92,27 @@ public class DeltaProcessingState implements IResourceChangeListener,
 				}
 			};
 
+			/*
+			 * IWorkspaceRunnable myRunnable = new IWorkspaceRunnable() { public
+			 * void run(IProgressMonitor monitor) throws CoreException { // do
+			 * the actual work in here if (fAdded.size() > 0) {
+			 * logger.debug("processing added"); for (IResource iterable_element
+			 * : fAdded) { logger.debug(iterable_element.getName());
+			 * ChefRepositoryManager.INSTANCE .add(iterable_element); }
+			 *
+			 * }
+			 *
+			 * if (fRemoved.size() > 0) { logger.debug("processing removed");
+			 * for (IResource iterable_element : fRemoved) {
+			 * logger.debug("rmovig {}", iterable_element.getName());
+			 * ChefRepositoryManager.INSTANCE .remove(iterable_element); } }
+			 * //return Status.OK_STATUS; } };
+			 */
 
-/*			IWorkspaceRunnable myRunnable =
-					new IWorkspaceRunnable() {
-						public void run(IProgressMonitor monitor) throws CoreException {
-							// do the actual work in here
-							if (fAdded.size() > 0) {
-								logger.debug("processing added");
-								for (IResource iterable_element : fAdded) {
-									logger.debug(iterable_element.getName());
-									ChefRepositoryManager.INSTANCE
-											.add(iterable_element);
-								}
-
-							}
-
-							if (fRemoved.size() > 0) {
-								logger.debug("processing removed");
-								for (IResource iterable_element : fRemoved) {
-									logger.debug("rmovig {}",
-											iterable_element.getName());
-									ChefRepositoryManager.INSTANCE
-											.remove(iterable_element);
-								}
-							}
-							//return Status.OK_STATUS;
-						}
-				};
-*/
-
-//		job.setRule(workspace);
+			// job.setRule(workspace);
 			job.schedule();
 
-//			workspace.run(myRunnable, null, IWorkspace.AVOID_UPDATE, null);
+			// workspace.run(myRunnable, null, IWorkspace.AVOID_UPDATE, null);
 
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block

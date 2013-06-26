@@ -95,7 +95,7 @@ public class SearchKnifeConfigAction extends Action {
 	 * @param knifeConfigFile
 	 * @return a knifeConfig
 	 */
-	public KnifeConfig parse(File knifeConfigFile) {
+	public static KnifeConfig parse(File knifeConfigFile) {
 		KnifeConfig knifeConfig = KnifeFactory.eINSTANCE.createKnifeConfig();
 		knifeConfig.setCache_option(parseFileAndGetPropertyValue(
 				knifeConfigFile, PreferenceConstants.P_CACHE_OPTIONS));
@@ -143,7 +143,7 @@ public class SearchKnifeConfigAction extends Action {
 		return knifeConfig;
 	}
 
-	private String parseFileAndGetPropertyValue(File knifeConfigFile,
+	private static String parseFileAndGetPropertyValue(File knifeConfigFile,
 			String variable) {
 		Path path = Paths.get(knifeConfigFile.getAbsolutePath());
 		Pattern pattern = Pattern.compile("\\s*" + variable
@@ -186,7 +186,7 @@ public class SearchKnifeConfigAction extends Action {
 		return "";
 	}
 
-	private String checkForSpecificPattern(String variable, Pattern pattern,
+	private static String checkForSpecificPattern(String variable, Pattern pattern,
 			String line, String varValue, String expectedVariable) {
 		if (line.contains(expectedVariable)
 				&& variable.equals(expectedVariable)) {

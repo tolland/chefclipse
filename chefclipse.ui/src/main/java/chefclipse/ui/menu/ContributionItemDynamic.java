@@ -63,6 +63,7 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 		log.debug("here si the message");
 
 		menuItems.put("compare.cookbook", "1Compare with ... ");
+		menuItems.put("debug.show.listeners", "Show listeners");
 
 		return fillMenu();
 	}

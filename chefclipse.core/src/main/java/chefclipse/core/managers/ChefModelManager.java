@@ -106,7 +106,7 @@ public class ChefModelManager implements IContentTypeChangeListener {
 
 	public void shutdown() {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
-		// workspace.removeResourceChangeListener(this.deltaState);
+		workspace.removeResourceChangeListener(this.deltaState);
 		// workspace.removeSaveParticipant(ChefCore.PLUGIN_ID);
 
 		// Stop listening to content-type changes
@@ -164,11 +164,13 @@ public class ChefModelManager implements IContentTypeChangeListener {
 		 * update spec in JavaCore#addPreProcessingResourceChangedListener(...)
 		 * if adding more event types
 		 */
-		IResourceChangeEvent.PRE_BUILD | IResourceChangeEvent.POST_BUILD
-				| IResourceChangeEvent.POST_CHANGE
-				| IResourceChangeEvent.PRE_DELETE
-				| IResourceChangeEvent.PRE_CLOSE
-				| IResourceChangeEvent.PRE_REFRESH);
+		IResourceChangeEvent.POST_CHANGE);
+
+		/*
+		 * IResourceChangeEvent.PRE_BUILD | IResourceChangeEvent.POST_BUILD |
+		 * IResourceChangeEvent.POST_CHANGE | IResourceChangeEvent.PRE_DELETE |
+		 * IResourceChangeEvent.PRE_CLOSE | IResourceChangeEvent.PRE_REFRESH
+		 */
 
 		// startIndexing();
 	}
