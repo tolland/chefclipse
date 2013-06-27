@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AttributeItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class AttributeItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,19 +67,15 @@ public class AttributeItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Attribute_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Attribute_name_feature", "_UI_Attribute_type"),
-				 CookbookPackage.Literals.ATTRIBUTE__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Attribute_name_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Attribute_name_feature", "_UI_Attribute_type"),
+				CookbookPackage.Literals.ATTRIBUTE__NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -95,19 +85,15 @@ public class AttributeItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Attribute_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Attribute_value_feature", "_UI_Attribute_type"),
-				 CookbookPackage.Literals.ATTRIBUTE__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Attribute_value_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Attribute_value_feature", "_UI_Attribute_type"),
+				CookbookPackage.Literals.ATTRIBUTE__VALUE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -118,7 +104,8 @@ public class AttributeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Attribute"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Attribute"));
 	}
 
 	/**
@@ -129,10 +116,9 @@ public class AttributeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Attribute)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Attribute_type") :
-			getString("_UI_Attribute_type") + " " + label;
+		String label = ((Attribute) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Attribute_type")
+				: getString("_UI_Attribute_type") + " " + label;
 	}
 
 	/**
@@ -147,10 +133,11 @@ public class AttributeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Attribute.class)) {
-			case CookbookPackage.ATTRIBUTE__NAME:
-			case CookbookPackage.ATTRIBUTE__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case CookbookPackage.ATTRIBUTE__NAME:
+		case CookbookPackage.ATTRIBUTE__VALUE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -163,7 +150,8 @@ public class AttributeItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -175,7 +163,7 @@ public class AttributeItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

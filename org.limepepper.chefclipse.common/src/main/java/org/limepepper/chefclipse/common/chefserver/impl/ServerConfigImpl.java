@@ -17,32 +17,32 @@ import org.limepepper.chefclipse.common.chefserver.ServerConfig;
  * @generated
  */
 public class ServerConfigImpl extends EObjectImpl implements ServerConfig {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ServerConfigImpl() {
+	public ServerConfigImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.SERVER_CONFIG;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 

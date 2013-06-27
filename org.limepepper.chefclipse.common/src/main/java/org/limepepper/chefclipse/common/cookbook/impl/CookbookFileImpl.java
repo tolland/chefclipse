@@ -32,36 +32,38 @@ import org.limepepper.chefclipse.utility.impl.NamedObjectImpl;
  *
  * @generated
  */
-public abstract class CookbookFileImpl extends NamedObjectImpl implements CookbookFile {
-    /**
+public abstract class CookbookFileImpl extends NamedObjectImpl implements
+		CookbookFile {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookFileImpl() {
+	public CookbookFileImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.COOKBOOK_FILE;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getChecksum() {
-		return (String)eGet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM, true);
+		return (String) eGet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM,
+				true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -70,16 +72,16 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 		eSet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM, newChecksum);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getPath() {
-		return (String)eGet(CookbookPackage.Literals.COOKBOOK_FILE__PATH, true);
+		return (String) eGet(CookbookPackage.Literals.COOKBOOK_FILE__PATH, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -88,34 +90,37 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 		eSet(CookbookPackage.Literals.COOKBOOK_FILE__PATH, newPath);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getSpecificity() {
-		return (String)eGet(CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, true);
+		return (String) eGet(
+				CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSpecificity(String newSpecificity) {
-		eSet(CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, newSpecificity);
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY,
+				newSpecificity);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public CookbookVersion getCookbook() {
-		return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
+		return (CookbookVersion) eGet(
+				CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -124,16 +129,16 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 		eSet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, newCookbook);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public URL getUrl() {
-		return (URL)eGet(UtilityPackage.Literals.SANDBOXED_OBJECT__URL, true);
+		return (URL) eGet(UtilityPackage.Literals.SANDBOXED_OBJECT__URL, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -142,16 +147,17 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 		eSet(UtilityPackage.Literals.SANDBOXED_OBJECT__URL, newUrl);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public byte[] getBytes() {
-		return (byte[])eGet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, true);
+		return (byte[]) eGet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES,
+				true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -160,7 +166,7 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 		eSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, newBytes);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -169,7 +175,7 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 		eUnset(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -178,7 +184,7 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 		return eIsSet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -189,7 +195,7 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 		throw new UnsupportedOperationException();
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -198,20 +204,24 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == ChecksumFile.class) {
 			switch (derivedFeatureID) {
-				case CookbookPackage.COOKBOOK_FILE__CHECKSUM: return UtilityPackage.CHECKSUM_FILE__CHECKSUM;
-				default: return -1;
+			case CookbookPackage.COOKBOOK_FILE__CHECKSUM:
+				return UtilityPackage.CHECKSUM_FILE__CHECKSUM;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == SandboxedObject.class) {
 			switch (derivedFeatureID) {
-				case CookbookPackage.COOKBOOK_FILE__URL: return UtilityPackage.SANDBOXED_OBJECT__URL;
-				default: return -1;
+			case CookbookPackage.COOKBOOK_FILE__URL:
+				return UtilityPackage.SANDBOXED_OBJECT__URL;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -220,14 +230,18 @@ public abstract class CookbookFileImpl extends NamedObjectImpl implements Cookbo
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == ChecksumFile.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.CHECKSUM_FILE__CHECKSUM: return CookbookPackage.COOKBOOK_FILE__CHECKSUM;
-				default: return -1;
+			case UtilityPackage.CHECKSUM_FILE__CHECKSUM:
+				return CookbookPackage.COOKBOOK_FILE__CHECKSUM;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == SandboxedObject.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.SANDBOXED_OBJECT__URL: return CookbookPackage.COOKBOOK_FILE__URL;
-				default: return -1;
+			case UtilityPackage.SANDBOXED_OBJECT__URL:
+				return CookbookPackage.COOKBOOK_FILE__URL;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

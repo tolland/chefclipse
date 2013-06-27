@@ -19,6 +19,7 @@ public interface DataBagValidator {
 	boolean validate();
 
 	boolean validateServer(Server value);
+
 	boolean validateItems(EList<DataBagItem> value);
 
 	boolean validateResource(IResource value);

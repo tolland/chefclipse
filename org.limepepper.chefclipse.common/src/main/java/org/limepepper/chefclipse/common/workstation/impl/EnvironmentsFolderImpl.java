@@ -15,23 +15,24 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  *
  * @generated
  */
-public class EnvironmentsFolderImpl extends WorkstationFolderImpl implements EnvironmentsFolder {
-    /**
+public class EnvironmentsFolderImpl extends WorkstationFolderImpl implements
+		EnvironmentsFolder {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EnvironmentsFolderImpl() {
+	public EnvironmentsFolderImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return WorkstationPackage.Literals.ENVIRONMENTS_FOLDER;
 	}
 

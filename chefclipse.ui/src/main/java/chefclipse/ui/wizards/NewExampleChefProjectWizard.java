@@ -31,13 +31,15 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
+import org.limepepper.chefclipse.preferences.ui.actions.SearchKnifeConfigAction;
 import org.osgi.framework.Bundle;
 
 import chefclipse.core.builders.ChefProjectNature;
 import chefclipse.core.managers.ChefRepositoryManager;
-import chefclipse.ui.ChefPlugin;
+import chefclipse.ui.ChefUI;
 
-public class NewExampleChefProjectWizard extends ChefProjectWizard implements INewWizard {
+public class NewExampleChefProjectWizard extends ChefProjectWizard implements
+		INewWizard {
 	ChefRepositoryWizardPage repoPage = new ChefRepositoryWizardPage();
 
 	public NewExampleChefProjectWizard() {
@@ -55,7 +57,6 @@ public class NewExampleChefProjectWizard extends ChefProjectWizard implements IN
 		addPage(repoPage);
 	}
 
-
 	@Override
 	public boolean performFinish() {
 
@@ -65,7 +66,7 @@ public class NewExampleChefProjectWizard extends ChefProjectWizard implements IN
 					throws InvocationTargetException {
 				try {
 
-					Bundle bundle = ChefPlugin.getDefault().getBundle();
+					Bundle bundle = ChefUI.getDefault().getBundle();
 					IPath path = new Path("resources/chef-repo-example");
 					URL setupUrl = FileLocator.find(bundle, path,
 							Collections.EMPTY_MAP);
@@ -91,6 +92,22 @@ public class NewExampleChefProjectWizard extends ChefProjectWizard implements IN
 					}
 
 					importKnivesToChefConfig(proj);
+
+					KnifeConfig knifeConfig = SearchKnifeConfigAction
+							.parse(new File(
+									ResourcesPlugin.getWorkspace().getRoot()
+											.getLocation().toString()
+											+ "/chef-repo-example/config/knife-example2-chefclipse.rb"));
+					List<KnifeConfig> configs = ChefConfigManager.instance()
+							.retrieveChefConfigurations();
+					configs.add(knifeConfig);
+					ChefConfigManager.instance().saveChefConfigs(configs);
+				/*	ChefConfigManager.instance().saveDefaultChefConfig(
+							getCurrentDefaultConfig());*/
+
+					ChefConfigManager.instance().saveProjectChefConfig(proj,
+							knifeConfig);
+
 				} catch (CoreException e) {
 					e.printStackTrace();
 					throw new InvocationTargetException(e);
@@ -140,6 +157,7 @@ public class NewExampleChefProjectWizard extends ChefProjectWizard implements IN
 			configManager.saveProjectChefConfig(proj, projectConfig);
 		}
 	}
+
 	public static void copyFolder(final File src, final File dest)
 			throws IOException {
 

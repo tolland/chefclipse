@@ -15,23 +15,24 @@ import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
  *
  * @generated
  */
-public class MinimalMetadataImpl extends MetadataImpl implements MinimalMetadata {
-    /**
+public class MinimalMetadataImpl extends MetadataImpl implements
+		MinimalMetadata {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public MinimalMetadataImpl() {
+	public MinimalMetadataImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.MINIMAL_METADATA;
 	}
 

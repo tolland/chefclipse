@@ -3,6 +3,8 @@
 package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.core.resources.IResource;
+import org.limepepper.chefclipse.utility.IdentObject;
+import org.limepepper.chefclipse.utility.JsonObject;
 import org.limepepper.chefclipse.utility.NamedObject;
 
 /**
@@ -22,34 +24,34 @@ import org.limepepper.chefclipse.utility.NamedObject;
  * @model
  * @generated
  */
-public interface DataBagItem extends NamedObject {
-    /**
+public interface DataBagItem extends IdentObject, JsonObject {
+	/**
 	 * Returns the value of the '<em><b>Data Bag</b></em>' reference.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Data Bag</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Data Bag</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Data Bag</em>' reference.
 	 * @see #setDataBag(DataBag)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBagItem_DataBag()
 	 * @model required="true"
 	 * @generated
 	 */
-    DataBag getDataBag();
+	DataBag getDataBag();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getDataBag <em>Data Bag</em>}' reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Data Bag</em>' reference.
 	 * @see #getDataBag()
 	 * @generated
 	 */
-    void setDataBag(DataBag value);
+	void setDataBag(DataBag value);
 
-				/**
+	/**
 	 * Returns the value of the '<em><b>Json Resource</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -65,7 +67,7 @@ public interface DataBagItem extends NamedObject {
 	 */
 	IResource getJsonResource();
 
-				/**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getJsonResource <em>Json Resource</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

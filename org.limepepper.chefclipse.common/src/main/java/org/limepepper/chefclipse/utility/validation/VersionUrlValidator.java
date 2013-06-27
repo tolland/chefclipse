@@ -17,5 +17,6 @@ public interface VersionUrlValidator {
 	boolean validate();
 
 	boolean validateUrl(String value);
+
 	boolean validateVersions(EList<URLEntryTest> value);
 }

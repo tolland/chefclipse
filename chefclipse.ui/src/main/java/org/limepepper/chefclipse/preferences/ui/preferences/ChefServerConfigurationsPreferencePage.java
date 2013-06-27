@@ -41,7 +41,7 @@ import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 import org.limepepper.chefclipse.ui.properties.ChefConfigurationsViewer;
 import org.limepepper.chefclipse.utility.Config;
 
-import chefclipse.ui.ChefPlugin;
+import chefclipse.ui.ChefUI;
 import chefclipse.ui.messages.Messages;
 
 /**
@@ -52,7 +52,7 @@ import chefclipse.ui.messages.Messages;
 
 public class ChefServerConfigurationsPreferencePage extends PreferencePage implements IWorkbenchPreferencePage{
 
-	private static final String PREFERENCE_PAGE = ChefPlugin.PLUGIN_ID + ".chef_configs_preference_page"; //$NON-NLS-1$
+	private static final String PREFERENCE_PAGE = ChefUI.PLUGIN_ID + ".chef_configs_preference_page"; //$NON-NLS-1$
 	private ChefConfigurationsViewer chefConfigurationsViewer;
 	private Button editButton;
 	private Button addButton;
@@ -88,7 +88,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 		chefConfigurationsViewer.createControl(ancestor);
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(chefConfigurationsViewer.getControl());
 
-		chefConfigurationsViewer.restoreColumnSettings(ChefPlugin.getDefault().getDialogSettings(), PREFERENCE_PAGE);
+		chefConfigurationsViewer.restoreColumnSettings(ChefUI.getDefault().getDialogSettings(), PREFERENCE_PAGE);
 
 		chefConfigurationsViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent e) {
@@ -208,7 +208,7 @@ public class ChefServerConfigurationsPreferencePage extends PreferencePage imple
 				ChefConfigManager.instance().saveDefaultChefConfig(getCurrentDefaultConfig());
 			}
 		});
-		IDialogSettings settings = ChefPlugin.getDefault().getDialogSettings();
+		IDialogSettings settings = ChefUI.getDefault().getDialogSettings();
 		chefConfigurationsViewer.saveColumnSettings(settings, PREFERENCE_PAGE);
 
 		return super.performOk();

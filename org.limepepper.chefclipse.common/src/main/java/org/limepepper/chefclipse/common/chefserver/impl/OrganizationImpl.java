@@ -23,7 +23,8 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  *
  * @generated
  */
-public class OrganizationImpl extends DescribedObjectImpl implements Organization {
+public class OrganizationImpl extends DescribedObjectImpl implements
+		Organization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -49,7 +50,7 @@ public class OrganizationImpl extends DescribedObjectImpl implements Organizatio
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
 	/**
@@ -67,7 +68,7 @@ public class OrganizationImpl extends DescribedObjectImpl implements Organizatio
 	 * @generated
 	 */
 	public String getID() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
 	/**
@@ -88,9 +89,12 @@ public class OrganizationImpl extends DescribedObjectImpl implements Organizatio
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.ORGANIZATION__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.ORGANIZATION__ID: return UtilityPackage.NAMED_OBJECT__ID;
-				default: return -1;
+			case ChefserverPackage.ORGANIZATION__NAME:
+				return UtilityPackage.NAMED_OBJECT__NAME;
+			case ChefserverPackage.ORGANIZATION__ID:
+				return UtilityPackage.NAMED_OBJECT__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -105,9 +109,12 @@ public class OrganizationImpl extends DescribedObjectImpl implements Organizatio
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.ORGANIZATION__NAME;
-				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.ORGANIZATION__ID;
-				default: return -1;
+			case UtilityPackage.NAMED_OBJECT__NAME:
+				return ChefserverPackage.ORGANIZATION__NAME;
+			case UtilityPackage.NAMED_OBJECT__ID:
+				return ChefserverPackage.ORGANIZATION__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

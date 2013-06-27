@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.net.URL;
 import java.util.Collection;
 import java.util.List;
@@ -31,14 +30,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SandboxedObjectItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class SandboxedObjectItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,19 +67,16 @@ public class SandboxedObjectItemProvider
 	 * @generated
 	 */
 	protected void addUrlPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SandboxedObject_url_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SandboxedObject_url_feature", "_UI_SandboxedObject_type"),
-				 UtilityPackage.Literals.SANDBOXED_OBJECT__URL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SandboxedObject_url_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SandboxedObject_url_feature",
+						"_UI_SandboxedObject_type"),
+				UtilityPackage.Literals.SANDBOXED_OBJECT__URL, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -96,7 +87,8 @@ public class SandboxedObjectItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SandboxedObject"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/SandboxedObject"));
 	}
 
 	/**
@@ -107,11 +99,10 @@ public class SandboxedObjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		URL labelValue = ((SandboxedObject)object).getUrl();
+		URL labelValue = ((SandboxedObject) object).getUrl();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_SandboxedObject_type") :
-			getString("_UI_SandboxedObject_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_SandboxedObject_type")
+				: getString("_UI_SandboxedObject_type") + " " + label;
 	}
 
 	/**
@@ -126,9 +117,10 @@ public class SandboxedObjectItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SandboxedObject.class)) {
-			case UtilityPackage.SANDBOXED_OBJECT__URL:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.SANDBOXED_OBJECT__URL:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -141,7 +133,8 @@ public class SandboxedObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

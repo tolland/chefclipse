@@ -17,22 +17,22 @@ import org.limepepper.chefclipse.utility.impl.ConfigImpl;
  * @generated
  */
 public class ClientConfigImpl extends ConfigImpl implements ClientConfig {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ClientConfigImpl() {
+	public ClientConfigImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefclientPackage.Literals.CLIENT_CONFIG;
 	}
 

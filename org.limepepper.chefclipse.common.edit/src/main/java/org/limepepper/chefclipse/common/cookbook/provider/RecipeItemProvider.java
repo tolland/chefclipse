@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -28,14 +27,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RecipeItemProvider
-	extends CookbookFileItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class RecipeItemProvider extends CookbookFileItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -72,19 +66,15 @@ public class RecipeItemProvider
 	 * @generated
 	 */
 	protected void addExtensionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_RubyFile_extension_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_RubyFile_extension_feature", "_UI_RubyFile_type"),
-				 UtilityPackage.Literals.RUBY_FILE__EXTENSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_RubyFile_extension_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_RubyFile_extension_feature", "_UI_RubyFile_type"),
+				UtilityPackage.Literals.RUBY_FILE__EXTENSION, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -94,19 +84,15 @@ public class RecipeItemProvider
 	 * @generated
 	 */
 	protected void addRolePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Recipe_role_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Recipe_role_feature", "_UI_Recipe_type"),
-				 CookbookPackage.Literals.RECIPE__ROLE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Recipe_role_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Recipe_role_feature", "_UI_Recipe_type"),
+				CookbookPackage.Literals.RECIPE__ROLE, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -116,19 +102,15 @@ public class RecipeItemProvider
 	 * @generated
 	 */
 	protected void addRunlistPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Recipe_runlist_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Recipe_runlist_feature", "_UI_Recipe_type"),
-				 CookbookPackage.Literals.RECIPE__RUNLIST,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Recipe_runlist_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Recipe_runlist_feature", "_UI_Recipe_type"),
+				CookbookPackage.Literals.RECIPE__RUNLIST, true, false, true,
+				null, null, null));
 	}
 
 	/**
@@ -139,7 +121,8 @@ public class RecipeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Recipe"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Recipe"));
 	}
 
 	/**
@@ -150,10 +133,9 @@ public class RecipeItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Recipe)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Recipe_type") :
-			getString("_UI_Recipe_type") + " " + label;
+		String label = ((Recipe) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Recipe_type")
+				: getString("_UI_Recipe_type") + " " + label;
 	}
 
 	/**
@@ -168,9 +150,10 @@ public class RecipeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Recipe.class)) {
-			case CookbookPackage.RECIPE__EXTENSION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case CookbookPackage.RECIPE__EXTENSION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -183,7 +166,8 @@ public class RecipeItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

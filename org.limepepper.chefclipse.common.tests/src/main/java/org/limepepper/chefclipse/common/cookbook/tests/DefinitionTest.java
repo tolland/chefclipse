@@ -42,7 +42,7 @@ public class DefinitionTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Definition getFixture() {
-		return (Definition)fixture;
+		return (Definition) fixture;
 	}
 
 	/**

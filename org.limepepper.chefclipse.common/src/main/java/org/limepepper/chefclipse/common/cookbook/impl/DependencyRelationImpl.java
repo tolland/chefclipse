@@ -16,33 +16,34 @@ import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
  *
  * @generated
  */
-public class DependencyRelationImpl extends EObjectImpl implements DependencyRelation {
-    /**
+public class DependencyRelationImpl extends EObjectImpl implements
+		DependencyRelation {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public DependencyRelationImpl() {
+	public DependencyRelationImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.DEPENDENCY_RELATION;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 

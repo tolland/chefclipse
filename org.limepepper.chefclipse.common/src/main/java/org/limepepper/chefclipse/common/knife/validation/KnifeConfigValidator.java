@@ -22,13 +22,21 @@ public interface KnifeConfigValidator {
 	boolean validate();
 
 	boolean validatePlugins(EList<Plugin> value);
+
 	boolean validateCache_type(String value);
+
 	boolean validateCache_option(String value);
+
 	boolean validateCookbook_path(File value);
+
 	boolean validateCookbook_copyright(String value);
+
 	boolean validateCookbook_email(String value);
+
 	boolean validateCookbook_license(String value);
+
 	boolean validatePath(File value);
+
 	boolean validateServer(Server value);
 
 	boolean validateServerCookbookVersion(EList<ServerCookbookVersion> value);

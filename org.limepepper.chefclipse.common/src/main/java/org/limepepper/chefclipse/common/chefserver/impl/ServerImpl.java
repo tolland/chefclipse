@@ -40,167 +40,177 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
  * @generated
  */
 public class ServerImpl extends EObjectImpl implements Server {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ServerImpl() {
+	public ServerImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.SERVER;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<ServerCookbookVersion> getCookbooks() {
-		return (EList<ServerCookbookVersion>)eGet(ChefserverPackage.Literals.SERVER__COOKBOOKS, true);
+	@SuppressWarnings("unchecked")
+	public EList<ServerCookbookVersion> getCookbooks() {
+		return (EList<ServerCookbookVersion>) eGet(
+				ChefserverPackage.Literals.SERVER__COOKBOOKS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void unsetCookbooks() {
+	public void unsetCookbooks() {
 		eUnset(ChefserverPackage.Literals.SERVER__COOKBOOKS);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public boolean isSetCookbooks() {
+	public boolean isSetCookbooks() {
 		return eIsSet(ChefserverPackage.Literals.SERVER__COOKBOOKS);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<Role> getRoles() {
-		return (EList<Role>)eGet(ChefserverPackage.Literals.SERVER__ROLES, true);
+	@SuppressWarnings("unchecked")
+	public EList<Role> getRoles() {
+		return (EList<Role>) eGet(ChefserverPackage.Literals.SERVER__ROLES,
+				true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<Node> getNodes() {
-		return (EList<Node>)eGet(ChefserverPackage.Literals.SERVER__NODES, true);
+	@SuppressWarnings("unchecked")
+	public EList<Node> getNodes() {
+		return (EList<Node>) eGet(ChefserverPackage.Literals.SERVER__NODES,
+				true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<DataBag> getDatabags() {
-		return (EList<DataBag>)eGet(ChefserverPackage.Literals.SERVER__DATABAGS, true);
+	@SuppressWarnings("unchecked")
+	public EList<DataBag> getDatabags() {
+		return (EList<DataBag>) eGet(
+				ChefserverPackage.Literals.SERVER__DATABAGS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<Environment> getEnvironments() {
-		return (EList<Environment>)eGet(ChefserverPackage.Literals.SERVER__ENVIRONMENTS, true);
+	@SuppressWarnings("unchecked")
+	public EList<Environment> getEnvironments() {
+		return (EList<Environment>) eGet(
+				ChefserverPackage.Literals.SERVER__ENVIRONMENTS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<ChefClient> getClients() {
-		return (EList<ChefClient>)eGet(ChefserverPackage.Literals.SERVER__CLIENTS, true);
+	@SuppressWarnings("unchecked")
+	public EList<ChefClient> getClients() {
+		return (EList<ChefClient>) eGet(
+				ChefserverPackage.Literals.SERVER__CLIENTS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public int getWebuiport() {
-		return (Integer)eGet(ChefserverPackage.Literals.SERVER__WEBUIPORT, true);
+	public int getWebuiport() {
+		return (Integer) eGet(ChefserverPackage.Literals.SERVER__WEBUIPORT,
+				true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setWebuiport(int newWebuiport) {
+	public void setWebuiport(int newWebuiport) {
 		eSet(ChefserverPackage.Literals.SERVER__WEBUIPORT, newWebuiport);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<Sandbox> getSandboxes() {
-		return (EList<Sandbox>)eGet(ChefserverPackage.Literals.SERVER__SANDBOXES, true);
+	@SuppressWarnings("unchecked")
+	public EList<Sandbox> getSandboxes() {
+		return (EList<Sandbox>) eGet(
+				ChefserverPackage.Literals.SERVER__SANDBOXES, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ServerConfig getConfig() {
-		return (ServerConfig)eGet(ChefserverPackage.Literals.SERVER__CONFIG, true);
+	public ServerConfig getConfig() {
+		return (ServerConfig) eGet(ChefserverPackage.Literals.SERVER__CONFIG,
+				true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setConfig(ServerConfig newConfig) {
+	public void setConfig(ServerConfig newConfig) {
 		eSet(ChefserverPackage.Literals.SERVER__CONFIG, newConfig);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<KnifeConfig> getKnifeConfig() {
-		return (EList<KnifeConfig>)eGet(ChefserverPackage.Literals.SERVER__KNIFE_CONFIG, true);
+		return (EList<KnifeConfig>) eGet(
+				ChefserverPackage.Literals.SERVER__KNIFE_CONFIG, true);
 	}
 
 } //ServerImpl

@@ -42,7 +42,7 @@ public class EnvironmentsFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected EnvironmentsFolder getFixture() {
-		return (EnvironmentsFolder)fixture;
+		return (EnvironmentsFolder) fixture;
 	}
 
 	/**

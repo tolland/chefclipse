@@ -22,7 +22,8 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  *
  * @generated
  */
-public class MaintainedObjectImpl extends EObjectImpl implements MaintainedObject {
+public class MaintainedObjectImpl extends EObjectImpl implements
+		MaintainedObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +59,8 @@ public class MaintainedObjectImpl extends EObjectImpl implements MaintainedObjec
 	 * @generated
 	 */
 	public String getMaintainer() {
-		return (String)eGet(UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER, true);
+		return (String) eGet(
+				UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER, true);
 	}
 
 	/**
@@ -67,7 +69,8 @@ public class MaintainedObjectImpl extends EObjectImpl implements MaintainedObjec
 	 * @generated
 	 */
 	public void setMaintainer(String newMaintainer) {
-		eSet(UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER, newMaintainer);
+		eSet(UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER,
+				newMaintainer);
 	}
 
 	/**
@@ -76,7 +79,9 @@ public class MaintainedObjectImpl extends EObjectImpl implements MaintainedObjec
 	 * @generated
 	 */
 	public String getMaintainer_email() {
-		return (String)eGet(UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL, true);
+		return (String) eGet(
+				UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL,
+				true);
 	}
 
 	/**
@@ -85,7 +90,8 @@ public class MaintainedObjectImpl extends EObjectImpl implements MaintainedObjec
 	 * @generated
 	 */
 	public void setMaintainer_email(String newMaintainer_email) {
-		eSet(UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL, newMaintainer_email);
+		eSet(UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL,
+				newMaintainer_email);
 	}
 
 	/**
@@ -94,7 +100,8 @@ public class MaintainedObjectImpl extends EObjectImpl implements MaintainedObjec
 	 * @generated
 	 */
 	public String getLicense() {
-		return (String)eGet(UtilityPackage.Literals.MAINTAINED_OBJECT__LICENSE, true);
+		return (String) eGet(
+				UtilityPackage.Literals.MAINTAINED_OBJECT__LICENSE, true);
 	}
 
 	/**

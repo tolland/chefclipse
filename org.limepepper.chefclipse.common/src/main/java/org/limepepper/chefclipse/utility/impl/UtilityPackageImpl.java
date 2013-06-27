@@ -27,6 +27,8 @@ import org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl;
 import org.limepepper.chefclipse.utility.ChecksumFile;
 import org.limepepper.chefclipse.utility.Config;
 import org.limepepper.chefclipse.utility.DescribedObject;
+import org.limepepper.chefclipse.utility.IdentObject;
+import org.limepepper.chefclipse.utility.JsonObject;
 import org.limepepper.chefclipse.utility.MaintainedObject;
 import org.limepepper.chefclipse.utility.MapTestContainer;
 import org.limepepper.chefclipse.utility.NameUrlMap;
@@ -158,6 +160,20 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass identObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass jsonObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EDataType urlEDataType = null;
 
 	/**
@@ -283,19 +299,37 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public static UtilityPackage init() {
-		if (isInited) return (UtilityPackage)EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI);
+		if (isInited)
+			return (UtilityPackage) EPackage.Registry.INSTANCE
+					.getEPackage(UtilityPackage.eNS_URI);
 
 		// Obtain or create and register package
-		UtilityPackageImpl theUtilityPackage = (UtilityPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof UtilityPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new UtilityPackageImpl());
+		UtilityPackageImpl theUtilityPackage = (UtilityPackageImpl) (EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof UtilityPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI) : new UtilityPackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		ChefserverPackageImpl theChefserverPackage = (ChefserverPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) : ChefserverPackage.eINSTANCE);
-		ChefclientPackageImpl theChefclientPackage = (ChefclientPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
-		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
-		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
-		KnifePackageImpl theKnifePackage = (KnifePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
+		ChefserverPackageImpl theChefserverPackage = (ChefserverPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(ChefserverPackage.eNS_URI)
+				: ChefserverPackage.eINSTANCE);
+		ChefclientPackageImpl theChefclientPackage = (ChefclientPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(ChefclientPackage.eNS_URI)
+				: ChefclientPackage.eINSTANCE);
+		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(CookbookPackage.eNS_URI)
+				: CookbookPackage.eINSTANCE);
+		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(WorkstationPackage.eNS_URI)
+				: WorkstationPackage.eINSTANCE);
+		KnifePackageImpl theKnifePackage = (KnifePackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theUtilityPackage.createPackageContents();
@@ -316,9 +350,9 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 		// Mark meta-data to indicate it can't be changed
 		theUtilityPackage.freeze();
 
-  
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(UtilityPackage.eNS_URI, theUtilityPackage);
+		EPackage.Registry.INSTANCE.put(UtilityPackage.eNS_URI,
+				theUtilityPackage);
 		return theUtilityPackage;
 	}
 
@@ -346,7 +380,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getVersionedObject_NUM_VERSIONS() {
-		return (EAttribute)versionedObjectEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) versionedObjectEClass.getEStructuralFeatures().get(
+				0);
 	}
 
 	/**
@@ -355,7 +390,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getVersionedObject_Version() {
-		return (EAttribute)versionedObjectEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) versionedObjectEClass.getEStructuralFeatures().get(
+				1);
 	}
 
 	/**
@@ -373,7 +409,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getSandboxedObject_Url() {
-		return (EAttribute)sandboxedObjectEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) sandboxedObjectEClass.getEStructuralFeatures().get(
+				0);
 	}
 
 	/**
@@ -391,7 +428,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getRubyFile_Extension() {
-		return (EAttribute)rubyFileEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) rubyFileEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -409,7 +446,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getNamedObject_Name() {
-		return (EAttribute)namedObjectEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) namedObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -418,7 +455,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getNamedObject_ID() {
-		return (EAttribute)namedObjectEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) namedObjectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -436,7 +473,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getDescribedObject_Description() {
-		return (EAttribute)describedObjectEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) describedObjectEClass.getEStructuralFeatures().get(
+				0);
 	}
 
 	/**
@@ -454,7 +492,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getChecksumFile_Checksum() {
-		return (EAttribute)checksumFileEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) checksumFileEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -472,7 +510,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getMaintainedObject_Maintainer() {
-		return (EAttribute)maintainedObjectEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) maintainedObjectEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -481,7 +520,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getMaintainedObject_Maintainer_email() {
-		return (EAttribute)maintainedObjectEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) maintainedObjectEClass.getEStructuralFeatures()
+				.get(1);
 	}
 
 	/**
@@ -490,7 +530,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getMaintainedObject_License() {
-		return (EAttribute)maintainedObjectEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) maintainedObjectEClass.getEStructuralFeatures()
+				.get(2);
 	}
 
 	/**
@@ -508,7 +549,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getConfig_Chef_server_url() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) configEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -517,7 +558,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getConfig_Client_key() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(1);
+		return (EAttribute) configEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -526,7 +567,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getConfig_Node_name() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(2);
+		return (EAttribute) configEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -535,7 +576,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getConfig_Log_level() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) configEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -544,7 +585,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getConfig_Validation_key() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) configEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -553,7 +594,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getConfig_Version() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) configEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -562,7 +603,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getConfig_Validation_client_name() {
-		return (EAttribute)configEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) configEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -580,7 +621,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EReference getNameUrlMap_Entries() {
-		return (EReference)nameUrlMapEClass.getEStructuralFeatures().get(0);
+		return (EReference) nameUrlMapEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -598,7 +639,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getMapTestContainer_Entries() {
-		return (EAttribute)mapTestContainerEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) mapTestContainerEClass.getEStructuralFeatures()
+				.get(0);
 	}
 
 	/**
@@ -616,7 +658,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getEStringToVersionUrlMap_Key() {
-		return (EAttribute)eStringToVersionUrlMapEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) eStringToVersionUrlMapEClass
+				.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -625,7 +668,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EReference getEStringToVersionUrlMap_Value() {
-		return (EReference)eStringToVersionUrlMapEClass.getEStructuralFeatures().get(1);
+		return (EReference) eStringToVersionUrlMapEClass
+				.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -643,7 +687,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getVersionUrl_Url() {
-		return (EAttribute)versionUrlEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) versionUrlEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -652,7 +696,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EReference getVersionUrl_Versions() {
-		return (EReference)versionUrlEClass.getEStructuralFeatures().get(1);
+		return (EReference) versionUrlEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -670,7 +714,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EAttribute getURLEntryTest_Url() {
-		return (EAttribute)urlEntryTestEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) urlEntryTestEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -688,7 +732,35 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public EReference getNameVersionMap_Entries() {
-		return (EReference)nameVersionMapEClass.getEStructuralFeatures().get(0);
+		return (EReference) nameVersionMapEClass.getEStructuralFeatures()
+				.get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIdentObject() {
+		return identObjectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIdentObject_Id() {
+		return (EAttribute) identObjectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJsonObject() {
+		return jsonObjectEClass;
 	}
 
 	/**
@@ -814,7 +886,7 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public UtilityFactory getUtilityFactory() {
-		return (UtilityFactory)getEFactoryInstance();
+		return (UtilityFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -832,7 +904,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public void createPackageContents() {
-		if (isCreated) return;
+		if (isCreated)
+			return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -860,7 +933,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 
 		maintainedObjectEClass = createEClass(MAINTAINED_OBJECT);
 		createEAttribute(maintainedObjectEClass, MAINTAINED_OBJECT__MAINTAINER);
-		createEAttribute(maintainedObjectEClass, MAINTAINED_OBJECT__MAINTAINER_EMAIL);
+		createEAttribute(maintainedObjectEClass,
+				MAINTAINED_OBJECT__MAINTAINER_EMAIL);
 		createEAttribute(maintainedObjectEClass, MAINTAINED_OBJECT__LICENSE);
 
 		configEClass = createEClass(CONFIG);
@@ -879,8 +953,10 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 		createEAttribute(mapTestContainerEClass, MAP_TEST_CONTAINER__ENTRIES);
 
 		eStringToVersionUrlMapEClass = createEClass(ESTRING_TO_VERSION_URL_MAP);
-		createEAttribute(eStringToVersionUrlMapEClass, ESTRING_TO_VERSION_URL_MAP__KEY);
-		createEReference(eStringToVersionUrlMapEClass, ESTRING_TO_VERSION_URL_MAP__VALUE);
+		createEAttribute(eStringToVersionUrlMapEClass,
+				ESTRING_TO_VERSION_URL_MAP__KEY);
+		createEReference(eStringToVersionUrlMapEClass,
+				ESTRING_TO_VERSION_URL_MAP__VALUE);
 
 		versionUrlEClass = createEClass(VERSION_URL);
 		createEAttribute(versionUrlEClass, VERSION_URL__URL);
@@ -891,6 +967,11 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 
 		nameVersionMapEClass = createEClass(NAME_VERSION_MAP);
 		createEReference(nameVersionMapEClass, NAME_VERSION_MAP__ENTRIES);
+
+		identObjectEClass = createEClass(IDENT_OBJECT);
+		createEAttribute(identObjectEClass, IDENT_OBJECT__ID);
+
+		jsonObjectEClass = createEClass(JSON_OBJECT);
 
 		// Create data types
 		urlEDataType = createEDataType(URL);
@@ -923,7 +1004,8 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	public void initializePackageContents() {
-		if (isInitialized) return;
+		if (isInitialized)
+			return;
 		isInitialized = true;
 
 		// Initialize package
@@ -936,80 +1018,210 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		namedDescribedObjectEClass.getESuperTypes().add(this.getDescribedObject());
+		namedDescribedObjectEClass.getESuperTypes().add(
+				this.getDescribedObject());
 		namedDescribedObjectEClass.getESuperTypes().add(this.getNamedObject());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(namedDescribedObjectEClass, NamedDescribedObject.class, "NamedDescribedObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(namedDescribedObjectEClass, NamedDescribedObject.class,
+				"NamedDescribedObject", IS_ABSTRACT, IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(versionedObjectEClass, VersionedObject.class, "VersionedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVersionedObject_NUM_VERSIONS(), ecorePackage.getEIntegerObject(), "NUM_VERSIONS", "3", 1, 1, VersionedObject.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVersionedObject_Version(), this.getVersion(), "version", "0.0.0", 1, 1, VersionedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(versionedObjectEClass, VersionedObject.class,
+				"VersionedObject", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVersionedObject_NUM_VERSIONS(),
+				ecorePackage.getEIntegerObject(), "NUM_VERSIONS", "3", 1, 1,
+				VersionedObject.class, !IS_TRANSIENT, !IS_VOLATILE,
+				!IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getVersionedObject_Version(), this.getVersion(),
+				"version", "0.0.0", 1, 1, VersionedObject.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(sandboxedObjectEClass, SandboxedObject.class, "SandboxedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSandboxedObject_Url(), this.getURL(), "url", null, 0, 1, SandboxedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(sandboxedObjectEClass, SandboxedObject.class,
+				"SandboxedObject", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSandboxedObject_Url(), this.getURL(), "url", null, 0,
+				1, SandboxedObject.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(rubyFileEClass, RubyFile.class, "RubyFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRubyFile_Extension(), ecorePackage.getEString(), "extension", "rb", 0, 1, RubyFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(rubyFileEClass, RubyFile.class, "RubyFile", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRubyFile_Extension(), ecorePackage.getEString(),
+				"extension", "rb", 0, 1, RubyFile.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(namedObjectEClass, NamedObject.class, "NamedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNamedObject_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNamedObject_ID(), ecorePackage.getEString(), "ID", null, 1, 1, NamedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(namedObjectEClass, NamedObject.class, "NamedObject",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedObject_Name(), ecorePackage.getEString(),
+				"name", null, 1, 1, NamedObject.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNamedObject_ID(), ecorePackage.getEString(), "ID",
+				null, 1, 1, NamedObject.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(describedObjectEClass, DescribedObject.class, "DescribedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDescribedObject_Description(), ecorePackage.getEString(), "description", null, 0, 1, DescribedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(describedObjectEClass, DescribedObject.class,
+				"DescribedObject", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDescribedObject_Description(),
+				ecorePackage.getEString(), "description", null, 0, 1,
+				DescribedObject.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(checksumFileEClass, ChecksumFile.class, "ChecksumFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getChecksumFile_Checksum(), ecorePackage.getEString(), "checksum", null, 1, 1, ChecksumFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(checksumFileEClass, ChecksumFile.class, "ChecksumFile",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getChecksumFile_Checksum(), ecorePackage.getEString(),
+				"checksum", null, 1, 1, ChecksumFile.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(maintainedObjectEClass, MaintainedObject.class, "MaintainedObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMaintainedObject_Maintainer(), ecorePackage.getEString(), "maintainer", null, 1, 1, MaintainedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMaintainedObject_Maintainer_email(), this.getEmail(), "maintainer_email", null, 1, 1, MaintainedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMaintainedObject_License(), this.getText(), "license", null, 0, 1, MaintainedObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(maintainedObjectEClass, MaintainedObject.class,
+				"MaintainedObject", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMaintainedObject_Maintainer(),
+				ecorePackage.getEString(), "maintainer", null, 1, 1,
+				MaintainedObject.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getMaintainedObject_Maintainer_email(), this.getEmail(),
+				"maintainer_email", null, 1, 1, MaintainedObject.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMaintainedObject_License(), this.getText(),
+				"license", null, 0, 1, MaintainedObject.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getConfig_Chef_server_url(), this.getURL(), "chef_server_url", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_Client_key(), this.getFile(), "client_key", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_Node_name(), ecorePackage.getEString(), "node_name", null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_Log_level(), ecorePackage.getEString(), "log_level", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_Validation_key(), this.getFile(), "validation_key", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_Version(), this.getVersion(), "version", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConfig_Validation_client_name(), ecorePackage.getEString(), "validation_client_name", null, 0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(configEClass, Config.class, "Config", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getConfig_Chef_server_url(), this.getURL(),
+				"chef_server_url", null, 1, 1, Config.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfig_Client_key(), this.getFile(), "client_key",
+				null, 1, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getConfig_Node_name(), ecorePackage.getEString(),
+				"node_name", null, 1, 1, Config.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfig_Log_level(), ecorePackage.getEString(),
+				"log_level", null, 0, 1, Config.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfig_Validation_key(), this.getFile(),
+				"validation_key", null, 0, 1, Config.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfig_Version(), this.getVersion(), "version", null,
+				0, 1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getConfig_Validation_client_name(),
+				ecorePackage.getEString(), "validation_client_name", null, 0,
+				1, Config.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(nameUrlMapEClass, NameUrlMap.class, "NameUrlMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNameUrlMap_Entries(), ecorePackage.getEStringToStringMapEntry(), null, "entries", null, 0, -1, NameUrlMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(nameUrlMapEClass, NameUrlMap.class, "NameUrlMap",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNameUrlMap_Entries(),
+				ecorePackage.getEStringToStringMapEntry(), null, "entries",
+				null, 0, -1, NameUrlMap.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(mapTestContainerEClass, MapTestContainer.class, "MapTestContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMapTestContainer_Entries(), this.getMapTest(), "entries", null, 0, -1, MapTestContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(mapTestContainerEClass, MapTestContainer.class,
+				"MapTestContainer", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapTestContainer_Entries(), this.getMapTest(),
+				"entries", null, 0, -1, MapTestContainer.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(eStringToVersionUrlMapEClass, Map.Entry.class, "EStringToVersionUrlMap", !IS_ABSTRACT, !IS_INTERFACE, !IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEStringToVersionUrlMap_Key(), ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEStringToVersionUrlMap_Value(), this.getVersionUrl(), null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(eStringToVersionUrlMapEClass, Map.Entry.class,
+				"EStringToVersionUrlMap", !IS_ABSTRACT, !IS_INTERFACE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getEStringToVersionUrlMap_Key(),
+				ecorePackage.getEString(), "key", null, 1, 1, Map.Entry.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEStringToVersionUrlMap_Value(), this.getVersionUrl(),
+				null, "value", null, 1, 1, Map.Entry.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(versionUrlEClass, VersionUrl.class, "VersionUrl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getVersionUrl_Url(), ecorePackage.getEString(), "url", null, 1, 1, VersionUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVersionUrl_Versions(), this.getURLEntryTest(), null, "versions", null, 1, -1, VersionUrl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(versionUrlEClass, VersionUrl.class, "VersionUrl",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVersionUrl_Url(), ecorePackage.getEString(), "url",
+				null, 1, 1, VersionUrl.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getVersionUrl_Versions(), this.getURLEntryTest(), null,
+				"versions", null, 1, -1, VersionUrl.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(urlEntryTestEClass, URLEntryTest.class, "URLEntryTest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getURLEntryTest_Url(), ecorePackage.getEString(), "url", null, 1, 1, URLEntryTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(urlEntryTestEClass, URLEntryTest.class, "URLEntryTest",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getURLEntryTest_Url(), ecorePackage.getEString(), "url",
+				null, 1, 1, URLEntryTest.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(nameVersionMapEClass, NameVersionMap.class, "NameVersionMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNameVersionMap_Entries(), this.getEStringToVersionUrlMap(), null, "entries", null, 0, -1, NameVersionMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(nameVersionMapEClass, NameVersionMap.class,
+				"NameVersionMap", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNameVersionMap_Entries(),
+				this.getEStringToVersionUrlMap(), null, "entries", null, 0, -1,
+				NameVersionMap.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(identObjectEClass, IdentObject.class, "IdentObject",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIdentObject_Id(), ecorePackage.getEString(), "id",
+				null, 1, 1, IdentObject.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(jsonObjectEClass, JsonObject.class, "JsonObject",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
-		initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(chef_typeEDataType, String.class, "Chef_type", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(emailEDataType, String.class, "Email", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(textEDataType, String.class, "Text", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(versionEDataType, String.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(nameEDataType, Object.class, "Name", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(descriptionEDataType, Object.class, "Description", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(nameUrlDataTypeEDataType, Object.class, "NameUrlDataType", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(mapTestEDataType, HashMap.class, "MapTest", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(iResourceEDataType, IResource.class, "IResource", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(eInputStreamEDataType, InputStream.class, "EInputStream", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(urlEDataType, java.net.URL.class, "URL", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(fileEDataType, File.class, "File", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(chef_typeEDataType, String.class, "Chef_type",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(emailEDataType, String.class, "Email", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(textEDataType, String.class, "Text", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(versionEDataType, String.class, "Version",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(nameEDataType, Object.class, "Name", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(descriptionEDataType, Object.class, "Description",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(objectEDataType, Object.class, "Object", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(nameUrlDataTypeEDataType, Object.class,
+				"NameUrlDataType", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(mapTestEDataType, HashMap.class, "MapTest",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(iResourceEDataType, IResource.class, "IResource",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(eInputStreamEDataType, InputStream.class, "EInputStream",
+				!IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1026,19 +1238,11 @@ public class UtilityPackageImpl extends EPackageImpl implements UtilityPackage {
 	 * @generated
 	 */
 	protected void createJSONAnnotations() {
-		String source = "JSON";		
-		addAnnotation
-		  (getNameUrlMap_Entries(), 
-		   source, 
-		   new String[] {
-			 "AnonRoot", "true"
-		   });		
-		addAnnotation
-		  (getNameVersionMap_Entries(), 
-		   source, 
-		   new String[] {
-			 "AnonRoot", "true"
-		   });
+		String source = "JSON";
+		addAnnotation(getNameUrlMap_Entries(), source, new String[] {
+				"AnonRoot", "true" });
+		addAnnotation(getNameVersionMap_Entries(), source, new String[] {
+				"AnonRoot", "true" });
 	}
 
 } //UtilityPackageImpl

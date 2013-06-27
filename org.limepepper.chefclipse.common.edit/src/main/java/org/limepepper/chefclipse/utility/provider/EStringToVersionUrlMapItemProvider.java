@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EStringToVersionUrlMapItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class EStringToVersionUrlMapItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,19 +67,17 @@ public class EStringToVersionUrlMapItemProvider
 	 * @generated
 	 */
 	protected void addKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EStringToVersionUrlMap_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EStringToVersionUrlMap_key_feature", "_UI_EStringToVersionUrlMap_type"),
-				 UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__KEY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_EStringToVersionUrlMap_key_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_EStringToVersionUrlMap_key_feature",
+						"_UI_EStringToVersionUrlMap_type"),
+				UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__KEY, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -95,19 +87,16 @@ public class EStringToVersionUrlMapItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EStringToVersionUrlMap_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EStringToVersionUrlMap_value_feature", "_UI_EStringToVersionUrlMap_type"),
-				 UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_EStringToVersionUrlMap_value_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_EStringToVersionUrlMap_value_feature",
+						"_UI_EStringToVersionUrlMap_type"),
+				UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE,
+				true, false, true, null, null, null));
 	}
 
 	/**
@@ -118,7 +107,10 @@ public class EStringToVersionUrlMapItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/EStringToVersionUrlMap"));
+		return overlayImage(
+				object,
+				getResourceLocator().getImage(
+						"full/obj16/EStringToVersionUrlMap"));
 	}
 
 	/**
@@ -129,8 +121,9 @@ public class EStringToVersionUrlMapItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Map.Entry<?, ?> eStringToVersionUrlMap = (Map.Entry<?, ?>)object;
-		return "" + eStringToVersionUrlMap.getKey() + " -> " + eStringToVersionUrlMap.getValue();
+		Map.Entry<?, ?> eStringToVersionUrlMap = (Map.Entry<?, ?>) object;
+		return "" + eStringToVersionUrlMap.getKey() + " -> "
+				+ eStringToVersionUrlMap.getValue();
 	}
 
 	/**
@@ -145,9 +138,10 @@ public class EStringToVersionUrlMapItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Map.Entry.class)) {
-			case UtilityPackage.ESTRING_TO_VERSION_URL_MAP__KEY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.ESTRING_TO_VERSION_URL_MAP__KEY:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -160,7 +154,8 @@ public class EStringToVersionUrlMapItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

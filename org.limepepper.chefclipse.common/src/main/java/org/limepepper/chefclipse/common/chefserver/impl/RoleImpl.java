@@ -37,81 +37,82 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  * @generated
  */
 public class RoleImpl extends DescribedObjectImpl implements Role {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RoleImpl() {
+	public RoleImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.ROLE;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
+	public String getName() {
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getID() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
+	public String getID() {
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setID(String newID) {
+	public void setID(String newID) {
 		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-				public EList<RunList> getRun_list() {
-		return (EList<RunList>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST, true);
+	@SuppressWarnings("unchecked")
+	public EList<RunList> getRun_list() {
+		return (EList<RunList>) eGet(
+				ChefserverPackage.Literals.RUN_LIST__RUN_LIST, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Server getServer() {
-		return (Server)eGet(ChefserverPackage.Literals.RUN_LIST__SERVER, true);
+		return (Server) eGet(ChefserverPackage.Literals.RUN_LIST__SERVER, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -120,113 +121,137 @@ public class RoleImpl extends DescribedObjectImpl implements Role {
 		eSet(ChefserverPackage.Literals.RUN_LIST__SERVER, newServer);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Attribute> getAttributes() {
-		return (EList<Attribute>)eGet(ChefserverPackage.Literals.ROLE__ATTRIBUTES, true);
+		return (EList<Attribute>) eGet(
+				ChefserverPackage.Literals.ROLE__ATTRIBUTES, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Environment getEnvironment() {
-		return (Environment)eGet(ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, true);
+	public Environment getEnvironment() {
+		return (Environment) eGet(
+				ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setEnvironment(Environment newEnvironment) {
+	public void setEnvironment(Environment newEnvironment) {
 		eSet(ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, newEnvironment);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Recipe> getRecipes() {
-		return (EList<Recipe>)eGet(ChefserverPackage.Literals.RUN_LIST__RECIPES, true);
+		return (EList<Recipe>) eGet(
+				ChefserverPackage.Literals.RUN_LIST__RECIPES, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<String> getRun_list_items() {
-		return (EList<String>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS, true);
+		return (EList<String>) eGet(
+				ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.ROLE__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.ROLE__ID: return UtilityPackage.NAMED_OBJECT__ID;
-				default: return -1;
+			case ChefserverPackage.ROLE__NAME:
+				return UtilityPackage.NAMED_OBJECT__NAME;
+			case ChefserverPackage.ROLE__ID:
+				return UtilityPackage.NAMED_OBJECT__ID;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == RunListItem.class) {
 			switch (derivedFeatureID) {
-				default: return -1;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == RunList.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.ROLE__ENVIRONMENT: return ChefserverPackage.RUN_LIST__ENVIRONMENT;
-				case ChefserverPackage.ROLE__RECIPES: return ChefserverPackage.RUN_LIST__RECIPES;
-				case ChefserverPackage.ROLE__RUN_LIST_ITEMS: return ChefserverPackage.RUN_LIST__RUN_LIST_ITEMS;
-				case ChefserverPackage.ROLE__RUN_LIST: return ChefserverPackage.RUN_LIST__RUN_LIST;
-				case ChefserverPackage.ROLE__SERVER: return ChefserverPackage.RUN_LIST__SERVER;
-				default: return -1;
+			case ChefserverPackage.ROLE__ENVIRONMENT:
+				return ChefserverPackage.RUN_LIST__ENVIRONMENT;
+			case ChefserverPackage.ROLE__RECIPES:
+				return ChefserverPackage.RUN_LIST__RECIPES;
+			case ChefserverPackage.ROLE__RUN_LIST_ITEMS:
+				return ChefserverPackage.RUN_LIST__RUN_LIST_ITEMS;
+			case ChefserverPackage.ROLE__RUN_LIST:
+				return ChefserverPackage.RUN_LIST__RUN_LIST;
+			case ChefserverPackage.ROLE__SERVER:
+				return ChefserverPackage.RUN_LIST__SERVER;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.ROLE__NAME;
-				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.ROLE__ID;
-				default: return -1;
+			case UtilityPackage.NAMED_OBJECT__NAME:
+				return ChefserverPackage.ROLE__NAME;
+			case UtilityPackage.NAMED_OBJECT__ID:
+				return ChefserverPackage.ROLE__ID;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == RunListItem.class) {
 			switch (baseFeatureID) {
-				default: return -1;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == RunList.class) {
 			switch (baseFeatureID) {
-				case ChefserverPackage.RUN_LIST__ENVIRONMENT: return ChefserverPackage.ROLE__ENVIRONMENT;
-				case ChefserverPackage.RUN_LIST__RECIPES: return ChefserverPackage.ROLE__RECIPES;
-				case ChefserverPackage.RUN_LIST__RUN_LIST_ITEMS: return ChefserverPackage.ROLE__RUN_LIST_ITEMS;
-				case ChefserverPackage.RUN_LIST__RUN_LIST: return ChefserverPackage.ROLE__RUN_LIST;
-				case ChefserverPackage.RUN_LIST__SERVER: return ChefserverPackage.ROLE__SERVER;
-				default: return -1;
+			case ChefserverPackage.RUN_LIST__ENVIRONMENT:
+				return ChefserverPackage.ROLE__ENVIRONMENT;
+			case ChefserverPackage.RUN_LIST__RECIPES:
+				return ChefserverPackage.ROLE__RECIPES;
+			case ChefserverPackage.RUN_LIST__RUN_LIST_ITEMS:
+				return ChefserverPackage.ROLE__RUN_LIST_ITEMS;
+			case ChefserverPackage.RUN_LIST__RUN_LIST:
+				return ChefserverPackage.ROLE__RUN_LIST;
+			case ChefserverPackage.RUN_LIST__SERVER:
+				return ChefserverPackage.ROLE__SERVER;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

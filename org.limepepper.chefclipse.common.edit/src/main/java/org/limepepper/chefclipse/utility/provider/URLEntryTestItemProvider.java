@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class URLEntryTestItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class URLEntryTestItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -72,19 +66,18 @@ public class URLEntryTestItemProvider
 	 * @generated
 	 */
 	protected void addUrlPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_URLEntryTest_url_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_URLEntryTest_url_feature", "_UI_URLEntryTest_type"),
-				 UtilityPackage.Literals.URL_ENTRY_TEST__URL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_URLEntryTest_url_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_URLEntryTest_url_feature",
+								"_UI_URLEntryTest_type"),
+						UtilityPackage.Literals.URL_ENTRY_TEST__URL, true,
+						false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -95,7 +88,8 @@ public class URLEntryTestItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/URLEntryTest"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/URLEntryTest"));
 	}
 
 	/**
@@ -106,10 +100,9 @@ public class URLEntryTestItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((URLEntryTest)object).getUrl();
-		return label == null || label.length() == 0 ?
-			getString("_UI_URLEntryTest_type") :
-			getString("_UI_URLEntryTest_type") + " " + label;
+		String label = ((URLEntryTest) object).getUrl();
+		return label == null || label.length() == 0 ? getString("_UI_URLEntryTest_type")
+				: getString("_UI_URLEntryTest_type") + " " + label;
 	}
 
 	/**
@@ -124,9 +117,10 @@ public class URLEntryTestItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(URLEntryTest.class)) {
-			case UtilityPackage.URL_ENTRY_TEST__URL:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.URL_ENTRY_TEST__URL:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -139,7 +133,8 @@ public class URLEntryTestItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

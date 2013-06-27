@@ -35,34 +35,36 @@ public class ChefclientExample {
 		// Create a resource set to hold the resources.
 		//
 		ResourceSet resourceSet = new ResourceSetImpl();
-		
+
 		// Register the appropriate resource factory to handle all file extensions.
 		//
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put
-			(Resource.Factory.Registry.DEFAULT_EXTENSION, 
-			 new ChefclientResourceFactoryImpl());
+		resourceSet
+				.getResourceFactoryRegistry()
+				.getExtensionToFactoryMap()
+				.put(Resource.Factory.Registry.DEFAULT_EXTENSION,
+						new ChefclientResourceFactoryImpl());
 
 		// Register the package to ensure it is available during loading.
 		//
-		resourceSet.getPackageRegistry().put
-			(ChefclientPackage.eNS_URI, 
-			 ChefclientPackage.eINSTANCE);
-        
+		resourceSet.getPackageRegistry().put(ChefclientPackage.eNS_URI,
+				ChefclientPackage.eINSTANCE);
+
 		// If there are no arguments, emit an appropriate usage message.
 		//
 		if (args.length == 0) {
-			System.out.println("Enter a list of file paths or URIs that have content like this:");
+			System.out
+					.println("Enter a list of file paths or URIs that have content like this:");
 			try {
-				Resource resource = resourceSet.createResource(URI.createURI("http:///My.chefclient"));
-				ChefClient root = ChefclientFactory.eINSTANCE.createChefClient();
+				Resource resource = resourceSet.createResource(URI
+						.createURI("http:///My.chefclient"));
+				ChefClient root = ChefclientFactory.eINSTANCE
+						.createChefClient();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
-			}
-			catch (IOException exception) {
+			} catch (IOException exception) {
 				exception.printStackTrace();
 			}
-		}
-		else {
+		} else {
 			// Iterate over all the arguments.
 			//
 			for (int i = 0; i < args.length; ++i) {
@@ -71,7 +73,8 @@ public class ChefclientExample {
 				// Otherwise, it's directly treated as a URL.
 				//
 				File file = new File(args[i]);
-				URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI(args[i]);
+				URI uri = file.isFile() ? URI.createFileURI(file
+						.getAbsolutePath()) : URI.createURI(args[i]);
 
 				try {
 					// Demand load resource for this file.
@@ -82,13 +85,13 @@ public class ChefclientExample {
 					// Validate the contents of the loaded resource.
 					//
 					for (EObject eObject : resource.getContents()) {
-						Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
+						Diagnostic diagnostic = Diagnostician.INSTANCE
+								.validate(eObject);
 						if (diagnostic.getSeverity() != Diagnostic.OK) {
 							printDiagnostic(diagnostic, "");
 						}
 					}
-				}
-				catch (RuntimeException exception) {
+				} catch (RuntimeException exception) {
 					System.out.println("Problem loading " + uri);
 					exception.printStackTrace();
 				}

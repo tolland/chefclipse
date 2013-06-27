@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -28,14 +27,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourceItemProvider
-	extends CookbookFileItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class ResourceItemProvider extends CookbookFileItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -70,19 +64,15 @@ public class ResourceItemProvider
 	 * @generated
 	 */
 	protected void addExtensionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_RubyFile_extension_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_RubyFile_extension_feature", "_UI_RubyFile_type"),
-				 UtilityPackage.Literals.RUBY_FILE__EXTENSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_RubyFile_extension_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_RubyFile_extension_feature", "_UI_RubyFile_type"),
+				UtilityPackage.Literals.RUBY_FILE__EXTENSION, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -93,7 +83,8 @@ public class ResourceItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Resource"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Resource"));
 	}
 
 	/**
@@ -104,10 +95,9 @@ public class ResourceItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Resource)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Resource_type") :
-			getString("_UI_Resource_type") + " " + label;
+		String label = ((Resource) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Resource_type")
+				: getString("_UI_Resource_type") + " " + label;
 	}
 
 	/**
@@ -122,9 +112,10 @@ public class ResourceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Resource.class)) {
-			case CookbookPackage.RESOURCE__EXTENSION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case CookbookPackage.RESOURCE__EXTENSION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -137,7 +128,8 @@ public class ResourceItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

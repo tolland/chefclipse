@@ -58,7 +58,7 @@ public class SandboxedObjectImpl extends EObjectImpl implements SandboxedObject 
 	 * @generated
 	 */
 	public URL getUrl() {
-		return (URL)eGet(UtilityPackage.Literals.SANDBOXED_OBJECT__URL, true);
+		return (URL) eGet(UtilityPackage.Literals.SANDBOXED_OBJECT__URL, true);
 	}
 
 	/**

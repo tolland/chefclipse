@@ -27,65 +27,65 @@ import org.limepepper.chefclipse.common.cookbook.Recipe;
  * @generated
  */
 public interface RunList extends EObject {
-    /**
+	/**
 	 * Returns the value of the '<em><b>Environment</b></em>' reference.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Environment</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Environment</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Environment</em>' reference.
 	 * @see #setEnvironment(Environment)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getRunList_Environment()
 	 * @model
 	 * @generated
 	 */
-    Environment getEnvironment();
+	Environment getEnvironment();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.RunList#getEnvironment <em>Environment</em>}' reference.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Environment</em>' reference.
 	 * @see #getEnvironment()
 	 * @generated
 	 */
-    void setEnvironment(Environment value);
+	void setEnvironment(Environment value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Recipes</b></em>' reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Recipe}.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Recipes</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Recipes</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Recipes</em>' reference list.
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getRunList_Recipes()
 	 * @model
 	 * @generated
 	 */
-    EList<Recipe> getRecipes();
+	EList<Recipe> getRecipes();
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Run list items</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Run list items</em>' containment reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Run list items</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Run list items</em>' attribute list.
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getRunList_Run_list_items()
 	 * @model annotation="JSON element='run_list'"
 	 * @generated
 	 */
-    EList<String> getRun_list_items();
+	EList<String> getRun_list_items();
 
-				/**
+	/**
 	 * Returns the value of the '<em><b>Run list</b></em>' containment reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.RunList}.
 	 * <!-- begin-user-doc -->
@@ -101,7 +101,7 @@ public interface RunList extends EObject {
 	 */
 	EList<RunList> getRun_list();
 
-				/**
+	/**
 	 * Returns the value of the '<em><b>Server</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -117,7 +117,7 @@ public interface RunList extends EObject {
 	 */
 	Server getServer();
 
-				/**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.RunList#getServer <em>Server</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

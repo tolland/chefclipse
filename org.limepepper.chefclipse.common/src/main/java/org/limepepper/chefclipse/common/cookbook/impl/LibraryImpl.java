@@ -16,22 +16,22 @@ import org.limepepper.chefclipse.common.cookbook.Library;
  * @generated
  */
 public class LibraryImpl extends CookbookFileImpl implements Library {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public LibraryImpl() {
+	public LibraryImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.LIBRARY;
 	}
 

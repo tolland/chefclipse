@@ -42,7 +42,7 @@ public class MetadataTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Metadata getFixture() {
-		return (Metadata)fixture;
+		return (Metadata) fixture;
 	}
 
 	/**

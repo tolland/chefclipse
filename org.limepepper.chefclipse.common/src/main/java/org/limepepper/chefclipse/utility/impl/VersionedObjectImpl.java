@@ -57,7 +57,8 @@ public class VersionedObjectImpl extends EObjectImpl implements VersionedObject 
 	 * @generated
 	 */
 	public Integer getNUM_VERSIONS() {
-		return (Integer)eGet(UtilityPackage.Literals.VERSIONED_OBJECT__NUM_VERSIONS, true);
+		return (Integer) eGet(
+				UtilityPackage.Literals.VERSIONED_OBJECT__NUM_VERSIONS, true);
 	}
 
 	/**
@@ -66,7 +67,8 @@ public class VersionedObjectImpl extends EObjectImpl implements VersionedObject 
 	 * @generated
 	 */
 	public String getVersion() {
-		return (String)eGet(UtilityPackage.Literals.VERSIONED_OBJECT__VERSION, true);
+		return (String) eGet(UtilityPackage.Literals.VERSIONED_OBJECT__VERSION,
+				true);
 	}
 
 	/**

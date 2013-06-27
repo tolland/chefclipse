@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.workstation.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -25,14 +24,9 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CookbooksFolderItemProvider
-	extends WorkstationFolderItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class CookbooksFolderItemProvider extends WorkstationFolderItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -67,19 +61,16 @@ public class CookbooksFolderItemProvider
 	 * @generated
 	 */
 	protected void addCookbooksPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CookbooksFolder_cookbooks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CookbooksFolder_cookbooks_feature", "_UI_CookbooksFolder_type"),
-				 WorkstationPackage.Literals.COOKBOOKS_FOLDER__COOKBOOKS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_CookbooksFolder_cookbooks_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_CookbooksFolder_cookbooks_feature",
+						"_UI_CookbooksFolder_type"),
+				WorkstationPackage.Literals.COOKBOOKS_FOLDER__COOKBOOKS, true,
+				false, true, null, null, null));
 	}
 
 	/**
@@ -90,7 +81,8 @@ public class CookbooksFolderItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CookbooksFolder"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/CookbooksFolder"));
 	}
 
 	/**
@@ -101,10 +93,9 @@ public class CookbooksFolderItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CookbooksFolder)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_CookbooksFolder_type") :
-			getString("_UI_CookbooksFolder_type") + " " + label;
+		String label = ((CookbooksFolder) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_CookbooksFolder_type")
+				: getString("_UI_CookbooksFolder_type") + " " + label;
 	}
 
 	/**
@@ -128,7 +119,8 @@ public class CookbooksFolderItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

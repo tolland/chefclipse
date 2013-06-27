@@ -26,13 +26,21 @@ public interface ServerValidator {
 	boolean validate();
 
 	boolean validateCookbooks(EList<ServerCookbookVersion> value);
+
 	boolean validateRoles(EList<Role> value);
+
 	boolean validateNodes(EList<Node> value);
+
 	boolean validateDatabags(EList<DataBag> value);
+
 	boolean validateEnvironments(EList<Environment> value);
+
 	boolean validateClients(EList<Client> value);
+
 	boolean validateWebuiport(int value);
+
 	boolean validateSandboxes(EList<Sandbox> value);
+
 	boolean validateConfig(ServerConfig value);
 
 	boolean validateKnifeConfig(EList<KnifeConfig> value);

@@ -42,8 +42,8 @@ public class DataBagTest extends DescribedObjectTest {
 	 * @generated
 	 */
 	@Override
-    protected DataBag getFixture() {
-		return (DataBag)fixture;
+	protected DataBag getFixture() {
+		return (DataBag) fixture;
 	}
 
 	/**

@@ -42,7 +42,7 @@ public class LibraryTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Library getFixture() {
-		return (Library)fixture;
+		return (Library) fixture;
 	}
 
 	/**

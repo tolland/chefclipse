@@ -23,91 +23,98 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  *
  * @generated
  */
-public class RecipeDescriptionImpl extends DescribedObjectImpl implements RecipeDescription {
-    /**
+public class RecipeDescriptionImpl extends DescribedObjectImpl implements
+		RecipeDescription {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RecipeDescriptionImpl() {
+	public RecipeDescriptionImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.RECIPE_DESCRIPTION;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
+	public String getName() {
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getID() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
+	public String getID() {
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setID(String newID) {
+	public void setID(String newID) {
 		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case CookbookPackage.RECIPE_DESCRIPTION__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
-				case CookbookPackage.RECIPE_DESCRIPTION__ID: return UtilityPackage.NAMED_OBJECT__ID;
-				default: return -1;
+			case CookbookPackage.RECIPE_DESCRIPTION__NAME:
+				return UtilityPackage.NAMED_OBJECT__NAME;
+			case CookbookPackage.RECIPE_DESCRIPTION__ID:
+				return UtilityPackage.NAMED_OBJECT__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.NAMED_OBJECT__NAME: return CookbookPackage.RECIPE_DESCRIPTION__NAME;
-				case UtilityPackage.NAMED_OBJECT__ID: return CookbookPackage.RECIPE_DESCRIPTION__ID;
-				default: return -1;
+			case UtilityPackage.NAMED_OBJECT__NAME:
+				return CookbookPackage.RECIPE_DESCRIPTION__NAME;
+			case UtilityPackage.NAMED_OBJECT__ID:
+				return CookbookPackage.RECIPE_DESCRIPTION__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

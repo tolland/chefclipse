@@ -23,7 +23,8 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  *
  * @generated
  */
-public class MapTestContainerImpl extends EObjectImpl implements MapTestContainer {
+public class MapTestContainerImpl extends EObjectImpl implements
+		MapTestContainer {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,7 +61,8 @@ public class MapTestContainerImpl extends EObjectImpl implements MapTestContaine
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<HashMap> getEntries() {
-		return (EList<HashMap>)eGet(UtilityPackage.Literals.MAP_TEST_CONTAINER__ENTRIES, true);
+		return (EList<HashMap>) eGet(
+				UtilityPackage.Literals.MAP_TEST_CONTAINER__ENTRIES, true);
 	}
 
 } //MapTestContainerImpl

@@ -15,7 +15,8 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  *
  * @generated
  */
-public class DataBagsFolderImpl extends WorkstationFolderImpl implements DataBagsFolder {
+public class DataBagsFolderImpl extends WorkstationFolderImpl implements
+		DataBagsFolder {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

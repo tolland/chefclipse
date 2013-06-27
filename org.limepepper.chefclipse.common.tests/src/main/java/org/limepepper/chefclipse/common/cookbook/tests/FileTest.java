@@ -42,7 +42,7 @@ public class FileTest extends CookbookFileTest {
 	 */
 	@Override
 	protected File getFixture() {
-		return (File)fixture;
+		return (File) fixture;
 	}
 
 	/**

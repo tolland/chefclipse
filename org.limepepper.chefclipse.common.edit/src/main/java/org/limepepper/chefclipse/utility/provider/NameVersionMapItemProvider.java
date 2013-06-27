@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NameVersionMapItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class NameVersionMapItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,10 +67,12 @@ public class NameVersionMapItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UtilityPackage.Literals.NAME_VERSION_MAP__ENTRIES);
+			childrenFeatures
+					.add(UtilityPackage.Literals.NAME_VERSION_MAP__ENTRIES);
 		}
 		return childrenFeatures;
 	}
@@ -102,7 +98,8 @@ public class NameVersionMapItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/NameVersionMap"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/NameVersionMap"));
 	}
 
 	/**
@@ -128,9 +125,10 @@ public class NameVersionMapItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(NameVersionMap.class)) {
-			case UtilityPackage.NAME_VERSION_MAP__ENTRIES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case UtilityPackage.NAME_VERSION_MAP__ENTRIES:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -143,13 +141,15 @@ public class NameVersionMapItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(UtilityPackage.Literals.NAME_VERSION_MAP__ENTRIES,
-				 UtilityFactory.eINSTANCE.create(UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP)));
+		newChildDescriptors
+				.add(createChildParameter(
+						UtilityPackage.Literals.NAME_VERSION_MAP__ENTRIES,
+						UtilityFactory.eINSTANCE
+								.create(UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP)));
 	}
 
 	/**

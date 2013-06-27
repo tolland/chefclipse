@@ -36,39 +36,46 @@ public class CookbookExample {
 		// Create a resource set to hold the resources.
 		//
 		ResourceSet resourceSet = new ResourceSetImpl();
-		
+
 		// Register the appropriate resource factory to handle the content type.
 		//
-		resourceSet.getResourceFactoryRegistry().getContentTypeToFactoryMap().put
-			(CookbookPackage.eCONTENT_TYPE,
-			 new CookbookResourceFactoryImpl());
-		
+		resourceSet
+				.getResourceFactoryRegistry()
+				.getContentTypeToFactoryMap()
+				.put(CookbookPackage.eCONTENT_TYPE,
+						new CookbookResourceFactoryImpl());
+
 		// Register the appropriate content handler for all file extensions and any element from the package's namespace.
 		//
-		resourceSet.getURIConverter().getContentHandlers().add
-			(new RootXMLContentHandlerImpl(CookbookPackage.eCONTENT_TYPE, null, null, CookbookPackage.eNS_URI, null));
+		resourceSet
+				.getURIConverter()
+				.getContentHandlers()
+				.add(new RootXMLContentHandlerImpl(
+						CookbookPackage.eCONTENT_TYPE, null, null,
+						CookbookPackage.eNS_URI, null));
 
 		// Register the package to ensure it is available during loading.
 		//
-		resourceSet.getPackageRegistry().put
-			(CookbookPackage.eNS_URI, 
-			 CookbookPackage.eINSTANCE);
-        
+		resourceSet.getPackageRegistry().put(CookbookPackage.eNS_URI,
+				CookbookPackage.eINSTANCE);
+
 		// If there are no arguments, emit an appropriate usage message.
 		//
 		if (args.length == 0) {
-			System.out.println("Enter a list of file paths or URIs that have content like this:");
+			System.out
+					.println("Enter a list of file paths or URIs that have content like this:");
 			try {
-				Resource resource = resourceSet.createResource(URI.createURI("http:///My.cookbook"), CookbookPackage.eCONTENT_TYPE);
-				CookbookVersion root = CookbookFactory.eINSTANCE.createCookbookVersion();
+				Resource resource = resourceSet.createResource(
+						URI.createURI("http:///My.cookbook"),
+						CookbookPackage.eCONTENT_TYPE);
+				CookbookVersion root = CookbookFactory.eINSTANCE
+						.createCookbookVersion();
 				resource.getContents().add(root);
 				resource.save(System.out, null);
-			}
-			catch (IOException exception) {
+			} catch (IOException exception) {
 				exception.printStackTrace();
 			}
-		}
-		else {
+		} else {
 			// Iterate over all the arguments.
 			//
 			for (int i = 0; i < args.length; ++i) {
@@ -77,7 +84,8 @@ public class CookbookExample {
 				// Otherwise, it's directly treated as a URL.
 				//
 				File file = new File(args[i]);
-				URI uri = file.isFile() ? URI.createFileURI(file.getAbsolutePath()): URI.createURI(args[i]);
+				URI uri = file.isFile() ? URI.createFileURI(file
+						.getAbsolutePath()) : URI.createURI(args[i]);
 
 				try {
 					// Demand load resource for this file.
@@ -88,20 +96,20 @@ public class CookbookExample {
 					// Validate the contents of the loaded resource.
 					//
 					for (EObject eObject : resource.getContents()) {
-						Diagnostic diagnostic = Diagnostician.INSTANCE.validate(eObject);
+						Diagnostic diagnostic = Diagnostician.INSTANCE
+								.validate(eObject);
 						if (diagnostic.getSeverity() != Diagnostic.OK) {
 							printDiagnostic(diagnostic, "");
 						}
 					}
-				}
-				catch (RuntimeException exception) {
+				} catch (RuntimeException exception) {
 					System.out.println("Problem loading " + uri);
 					exception.printStackTrace();
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * Prints diagnostics with indentation.

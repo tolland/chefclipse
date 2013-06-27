@@ -56,7 +56,7 @@ public class RubyFileImpl extends EObjectImpl implements RubyFile {
 	 * @generated
 	 */
 	public String getExtension() {
-		return (String)eGet(UtilityPackage.Literals.RUBY_FILE__EXTENSION, true);
+		return (String) eGet(UtilityPackage.Literals.RUBY_FILE__EXTENSION, true);
 	}
 
 	/**

@@ -22,11 +22,16 @@ public interface NodeValidator {
 	boolean validate();
 
 	boolean validateEnvironment(Environment value);
+
 	boolean validateServer(Server value);
+
 	boolean validateClient(ChefClient value);
 
 	boolean validateClient(Client value);
+
 	boolean validateAttributes(Attribute value);
+
 	boolean validateRun_list_items(EList<String> value);
+
 	boolean validateRun_list(RunList value);
 }

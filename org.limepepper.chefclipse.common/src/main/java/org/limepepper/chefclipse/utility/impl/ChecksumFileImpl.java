@@ -56,7 +56,8 @@ public class ChecksumFileImpl extends EObjectImpl implements ChecksumFile {
 	 * @generated
 	 */
 	public String getChecksum() {
-		return (String)eGet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM, true);
+		return (String) eGet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM,
+				true);
 	}
 
 	/**

@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -29,14 +28,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NameUrlMapItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class NameUrlMapItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -72,7 +66,8 @@ public class NameUrlMapItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(
+			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(UtilityPackage.Literals.NAME_URL_MAP__ENTRIES);
@@ -101,7 +96,8 @@ public class NameUrlMapItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/NameUrlMap"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/NameUrlMap"));
 	}
 
 	/**
@@ -127,9 +123,10 @@ public class NameUrlMapItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(NameUrlMap.class)) {
-			case UtilityPackage.NAME_URL_MAP__ENTRIES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case UtilityPackage.NAME_URL_MAP__ENTRIES:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -142,7 +139,8 @@ public class NameUrlMapItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

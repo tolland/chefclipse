@@ -31,99 +31,101 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  * @generated
  */
 public class DataBagImpl extends DescribedObjectImpl implements DataBag {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public DataBagImpl() {
+	public DataBagImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.DATA_BAG;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
+	public String getName() {
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getID() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
+	public String getID() {
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setID(String newID) {
+	public void setID(String newID) {
 		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Server getServer() {
-		return (Server)eGet(ChefserverPackage.Literals.DATA_BAG__SERVER, true);
+	public Server getServer() {
+		return (Server) eGet(ChefserverPackage.Literals.DATA_BAG__SERVER, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setServer(Server newServer) {
+	public void setServer(Server newServer) {
 		eSet(ChefserverPackage.Literals.DATA_BAG__SERVER, newServer);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<DataBagItem> getItems() {
-		return (EList<DataBagItem>)eGet(ChefserverPackage.Literals.DATA_BAG__ITEMS, true);
+	@SuppressWarnings("unchecked")
+	public EList<DataBagItem> getItems() {
+		return (EList<DataBagItem>) eGet(
+				ChefserverPackage.Literals.DATA_BAG__ITEMS, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public IResource getResource() {
-		return (IResource)eGet(ChefserverPackage.Literals.DATA_BAG__RESOURCE, true);
+		return (IResource) eGet(ChefserverPackage.Literals.DATA_BAG__RESOURCE,
+				true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -132,35 +134,41 @@ public class DataBagImpl extends DescribedObjectImpl implements DataBag {
 		eSet(ChefserverPackage.Literals.DATA_BAG__RESOURCE, newResource);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.DATA_BAG__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.DATA_BAG__ID: return UtilityPackage.NAMED_OBJECT__ID;
-				default: return -1;
+			case ChefserverPackage.DATA_BAG__NAME:
+				return UtilityPackage.NAMED_OBJECT__NAME;
+			case ChefserverPackage.DATA_BAG__ID:
+				return UtilityPackage.NAMED_OBJECT__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.DATA_BAG__NAME;
-				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.DATA_BAG__ID;
-				default: return -1;
+			case UtilityPackage.NAMED_OBJECT__NAME:
+				return ChefserverPackage.DATA_BAG__NAME;
+			case UtilityPackage.NAMED_OBJECT__ID:
+				return ChefserverPackage.DATA_BAG__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

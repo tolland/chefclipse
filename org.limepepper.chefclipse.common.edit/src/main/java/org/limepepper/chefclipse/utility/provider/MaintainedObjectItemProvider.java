@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MaintainedObjectItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class MaintainedObjectItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -74,19 +68,17 @@ public class MaintainedObjectItemProvider
 	 * @generated
 	 */
 	protected void addMaintainerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MaintainedObject_maintainer_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MaintainedObject_maintainer_feature", "_UI_MaintainedObject_type"),
-				 UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MaintainedObject_maintainer_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_MaintainedObject_maintainer_feature",
+						"_UI_MaintainedObject_type"),
+				UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -96,19 +88,17 @@ public class MaintainedObjectItemProvider
 	 * @generated
 	 */
 	protected void addMaintainer_emailPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MaintainedObject_maintainer_email_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MaintainedObject_maintainer_email_feature", "_UI_MaintainedObject_type"),
-				 UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MaintainedObject_maintainer_email_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_MaintainedObject_maintainer_email_feature",
+						"_UI_MaintainedObject_type"),
+				UtilityPackage.Literals.MAINTAINED_OBJECT__MAINTAINER_EMAIL,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -118,19 +108,17 @@ public class MaintainedObjectItemProvider
 	 * @generated
 	 */
 	protected void addLicensePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MaintainedObject_license_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MaintainedObject_license_feature", "_UI_MaintainedObject_type"),
-				 UtilityPackage.Literals.MAINTAINED_OBJECT__LICENSE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MaintainedObject_license_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_MaintainedObject_license_feature",
+						"_UI_MaintainedObject_type"),
+				UtilityPackage.Literals.MAINTAINED_OBJECT__LICENSE, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -141,7 +129,8 @@ public class MaintainedObjectItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MaintainedObject"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/MaintainedObject"));
 	}
 
 	/**
@@ -152,10 +141,9 @@ public class MaintainedObjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MaintainedObject)object).getMaintainer();
-		return label == null || label.length() == 0 ?
-			getString("_UI_MaintainedObject_type") :
-			getString("_UI_MaintainedObject_type") + " " + label;
+		String label = ((MaintainedObject) object).getMaintainer();
+		return label == null || label.length() == 0 ? getString("_UI_MaintainedObject_type")
+				: getString("_UI_MaintainedObject_type") + " " + label;
 	}
 
 	/**
@@ -170,11 +158,12 @@ public class MaintainedObjectItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MaintainedObject.class)) {
-			case UtilityPackage.MAINTAINED_OBJECT__MAINTAINER:
-			case UtilityPackage.MAINTAINED_OBJECT__MAINTAINER_EMAIL:
-			case UtilityPackage.MAINTAINED_OBJECT__LICENSE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.MAINTAINED_OBJECT__MAINTAINER:
+		case UtilityPackage.MAINTAINED_OBJECT__MAINTAINER_EMAIL:
+		case UtilityPackage.MAINTAINED_OBJECT__LICENSE:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -187,7 +176,8 @@ public class MaintainedObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

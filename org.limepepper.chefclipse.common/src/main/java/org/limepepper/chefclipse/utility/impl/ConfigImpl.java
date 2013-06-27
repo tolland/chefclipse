@@ -65,7 +65,7 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public URL getChef_server_url() {
-		return (URL)eGet(UtilityPackage.Literals.CONFIG__CHEF_SERVER_URL, true);
+		return (URL) eGet(UtilityPackage.Literals.CONFIG__CHEF_SERVER_URL, true);
 	}
 
 	/**
@@ -74,7 +74,8 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public void setChef_server_url(URL newChef_server_url) {
-		eSet(UtilityPackage.Literals.CONFIG__CHEF_SERVER_URL, newChef_server_url);
+		eSet(UtilityPackage.Literals.CONFIG__CHEF_SERVER_URL,
+				newChef_server_url);
 	}
 
 	/**
@@ -83,7 +84,7 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public File getClient_key() {
-		return (File)eGet(UtilityPackage.Literals.CONFIG__CLIENT_KEY, true);
+		return (File) eGet(UtilityPackage.Literals.CONFIG__CLIENT_KEY, true);
 	}
 
 	/**
@@ -101,7 +102,7 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public String getNode_name() {
-		return (String)eGet(UtilityPackage.Literals.CONFIG__NODE_NAME, true);
+		return (String) eGet(UtilityPackage.Literals.CONFIG__NODE_NAME, true);
 	}
 
 	/**
@@ -119,7 +120,7 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public String getLog_level() {
-		return (String)eGet(UtilityPackage.Literals.CONFIG__LOG_LEVEL, true);
+		return (String) eGet(UtilityPackage.Literals.CONFIG__LOG_LEVEL, true);
 	}
 
 	/**
@@ -137,7 +138,7 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public File getValidation_key() {
-		return (File)eGet(UtilityPackage.Literals.CONFIG__VALIDATION_KEY, true);
+		return (File) eGet(UtilityPackage.Literals.CONFIG__VALIDATION_KEY, true);
 	}
 
 	/**
@@ -155,7 +156,7 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public String getVersion() {
-		return (String)eGet(UtilityPackage.Literals.CONFIG__VERSION, true);
+		return (String) eGet(UtilityPackage.Literals.CONFIG__VERSION, true);
 	}
 
 	/**
@@ -173,7 +174,8 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public String getValidation_client_name() {
-		return (String)eGet(UtilityPackage.Literals.CONFIG__VALIDATION_CLIENT_NAME, true);
+		return (String) eGet(
+				UtilityPackage.Literals.CONFIG__VALIDATION_CLIENT_NAME, true);
 	}
 
 	/**
@@ -182,7 +184,8 @@ public class ConfigImpl extends EObjectImpl implements Config {
 	 * @generated
 	 */
 	public void setValidation_client_name(String newValidation_client_name) {
-		eSet(UtilityPackage.Literals.CONFIG__VALIDATION_CLIENT_NAME, newValidation_client_name);
+		eSet(UtilityPackage.Literals.CONFIG__VALIDATION_CLIENT_NAME,
+				newValidation_client_name);
 	}
 
 } //ConfigImpl

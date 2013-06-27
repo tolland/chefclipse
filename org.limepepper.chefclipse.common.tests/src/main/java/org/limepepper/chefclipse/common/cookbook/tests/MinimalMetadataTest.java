@@ -42,7 +42,7 @@ public class MinimalMetadataTest extends MetadataTest {
 	 */
 	@Override
 	protected MinimalMetadata getFixture() {
-		return (MinimalMetadata)fixture;
+		return (MinimalMetadata) fixture;
 	}
 
 	/**

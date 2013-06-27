@@ -271,10 +271,11 @@ public class GitHubCookbookRepository implements ICookbooksRepository {
 	}
 
 	private JSONArray getRestCookbooks(int page, int items) {
-		return getService().path("users").path(githubUser).path("repos")
+		JSONArray jsonArray = getService().path("users").path(githubUser).path("repos")
 				.queryParam("page", String.valueOf(page))
 				.queryParam("per_page", String.valueOf(items))
 				.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONArray.class);
+		return jsonArray;
 	}
 
 	protected int getRestCookbooksLast(int items) {

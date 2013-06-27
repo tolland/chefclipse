@@ -4,7 +4,6 @@ package org.limepepper.chefclipse.common.cookbook;
 
 import org.limepepper.chefclipse.utility.RubyFile;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Attributes</b></em>'.

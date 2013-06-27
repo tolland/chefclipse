@@ -42,7 +42,7 @@ public class CookbooksFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected CookbooksFolder getFixture() {
-		return (CookbooksFolder)fixture;
+		return (CookbooksFolder) fixture;
 	}
 
 	/**

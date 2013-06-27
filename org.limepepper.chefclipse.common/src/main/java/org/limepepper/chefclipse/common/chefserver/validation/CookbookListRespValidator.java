@@ -18,6 +18,8 @@ public interface CookbookListRespValidator {
 	boolean validate();
 
 	boolean validateName(String value);
+
 	boolean validateVersions(EList<CookbookVersion> value);
+
 	boolean validateUrl(String value);
 }

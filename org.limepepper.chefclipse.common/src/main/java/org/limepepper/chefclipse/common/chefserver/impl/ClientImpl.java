@@ -49,7 +49,7 @@ public class ClientImpl extends DescribedObjectImpl implements Client {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class ClientImpl extends DescribedObjectImpl implements Client {
 	 * @generated
 	 */
 	public String getID() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
 	/**
@@ -88,9 +88,12 @@ public class ClientImpl extends DescribedObjectImpl implements Client {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.CLIENT__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.CLIENT__ID: return UtilityPackage.NAMED_OBJECT__ID;
-				default: return -1;
+			case ChefserverPackage.CLIENT__NAME:
+				return UtilityPackage.NAMED_OBJECT__NAME;
+			case ChefserverPackage.CLIENT__ID:
+				return UtilityPackage.NAMED_OBJECT__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -105,9 +108,12 @@ public class ClientImpl extends DescribedObjectImpl implements Client {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.CLIENT__NAME;
-				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.CLIENT__ID;
-				default: return -1;
+			case UtilityPackage.NAMED_OBJECT__NAME:
+				return ChefserverPackage.CLIENT__NAME;
+			case UtilityPackage.NAMED_OBJECT__ID:
+				return ChefserverPackage.CLIENT__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

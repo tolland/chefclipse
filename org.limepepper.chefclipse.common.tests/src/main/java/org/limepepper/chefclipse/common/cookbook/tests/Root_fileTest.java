@@ -42,7 +42,7 @@ public class Root_fileTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Root_file getFixture() {
-		return (Root_file)fixture;
+		return (Root_file) fixture;
 	}
 
 	/**

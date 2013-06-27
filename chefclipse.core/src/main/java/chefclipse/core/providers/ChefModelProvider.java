@@ -101,7 +101,7 @@ public class ChefModelProvider extends ModelProvider implements
             if (fRemoved.size() > 0) {
                 logger.debug("processing removed");
                 for (IResource iterable_element : fRemoved) {
-                    logger.debug("rmovig {}", iterable_element.getName());
+                    logger.debug("removing {}", iterable_element.getName());
                     ChefRepositoryManager.INSTANCE.remove(iterable_element);
                 }
             }
@@ -121,7 +121,7 @@ public class ChefModelProvider extends ModelProvider implements
 
             // seems to send an emtpy workspace notification and work down.
             if (resource instanceof IWorkspaceRoot) {
-                logger.debug("on workspace Root {}", resource);
+                logger.debug("visiting workspace Root: {}", resource);
 
                 switch (delta.getKind()) {
                 // @todo can't open here?
@@ -275,7 +275,7 @@ public class ChefModelProvider extends ModelProvider implements
                 }
 
             } else if (resource instanceof IWorkspace) {
-                logger.debug("on workspace {}", resource);
+                logger.debug("on workspace: {}", resource);
 
             }
 

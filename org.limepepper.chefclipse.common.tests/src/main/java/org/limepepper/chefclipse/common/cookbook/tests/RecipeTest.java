@@ -42,7 +42,7 @@ public class RecipeTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Recipe getFixture() {
-		return (Recipe)fixture;
+		return (Recipe) fixture;
 	}
 
 	/**

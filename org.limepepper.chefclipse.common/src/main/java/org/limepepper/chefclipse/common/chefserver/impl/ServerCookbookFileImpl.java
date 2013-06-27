@@ -34,7 +34,8 @@ import org.limepepper.chefclipse.utility.impl.SandboxedObjectImpl;
  *
  * @generated
  */
-public class ServerCookbookFileImpl extends SandboxedObjectImpl implements ServerCookbookFile {
+public class ServerCookbookFileImpl extends SandboxedObjectImpl implements
+		ServerCookbookFile {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,7 +61,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
 	/**
@@ -78,7 +79,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getID() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
 	/**
@@ -96,7 +97,8 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getChecksum() {
-		return (String)eGet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM, true);
+		return (String) eGet(UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM,
+				true);
 	}
 
 	/**
@@ -114,7 +116,7 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getPath() {
-		return (String)eGet(CookbookPackage.Literals.COOKBOOK_FILE__PATH, true);
+		return (String) eGet(CookbookPackage.Literals.COOKBOOK_FILE__PATH, true);
 	}
 
 	/**
@@ -132,7 +134,8 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public String getSpecificity() {
-		return (String)eGet(CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, true);
+		return (String) eGet(
+				CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, true);
 	}
 
 	/**
@@ -141,7 +144,8 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public void setSpecificity(String newSpecificity) {
-		eSet(CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, newSpecificity);
+		eSet(CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY,
+				newSpecificity);
 	}
 
 	/**
@@ -150,7 +154,8 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public CookbookVersion getCookbook() {
-		return (CookbookVersion)eGet(CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
+		return (CookbookVersion) eGet(
+				CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true);
 	}
 
 	/**
@@ -168,7 +173,8 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	 * @generated
 	 */
 	public byte[] getBytes() {
-		return (byte[])eGet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES, true);
+		return (byte[]) eGet(CookbookPackage.Literals.COOKBOOK_FILE__BYTES,
+				true);
 	}
 
 	/**
@@ -218,24 +224,34 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__ID: return UtilityPackage.NAMED_OBJECT__ID;
-				default: return -1;
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__NAME:
+				return UtilityPackage.NAMED_OBJECT__NAME;
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__ID:
+				return UtilityPackage.NAMED_OBJECT__ID;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == ChecksumFile.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM: return UtilityPackage.CHECKSUM_FILE__CHECKSUM;
-				default: return -1;
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM:
+				return UtilityPackage.CHECKSUM_FILE__CHECKSUM;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == CookbookFile.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES: return CookbookPackage.COOKBOOK_FILE__BYTES;
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__PATH: return CookbookPackage.COOKBOOK_FILE__PATH;
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY: return CookbookPackage.COOKBOOK_FILE__SPECIFICITY;
-				case ChefserverPackage.SERVER_COOKBOOK_FILE__COOKBOOK: return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
-				default: return -1;
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES:
+				return CookbookPackage.COOKBOOK_FILE__BYTES;
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__PATH:
+				return CookbookPackage.COOKBOOK_FILE__PATH;
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY:
+				return CookbookPackage.COOKBOOK_FILE__SPECIFICITY;
+			case ChefserverPackage.SERVER_COOKBOOK_FILE__COOKBOOK:
+				return CookbookPackage.COOKBOOK_FILE__COOKBOOK;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -250,24 +266,34 @@ public class ServerCookbookFileImpl extends SandboxedObjectImpl implements Serve
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.SERVER_COOKBOOK_FILE__NAME;
-				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.SERVER_COOKBOOK_FILE__ID;
-				default: return -1;
+			case UtilityPackage.NAMED_OBJECT__NAME:
+				return ChefserverPackage.SERVER_COOKBOOK_FILE__NAME;
+			case UtilityPackage.NAMED_OBJECT__ID:
+				return ChefserverPackage.SERVER_COOKBOOK_FILE__ID;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == ChecksumFile.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.CHECKSUM_FILE__CHECKSUM: return ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM;
-				default: return -1;
+			case UtilityPackage.CHECKSUM_FILE__CHECKSUM:
+				return ChefserverPackage.SERVER_COOKBOOK_FILE__CHECKSUM;
+			default:
+				return -1;
 			}
 		}
 		if (baseClass == CookbookFile.class) {
 			switch (baseFeatureID) {
-				case CookbookPackage.COOKBOOK_FILE__BYTES: return ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES;
-				case CookbookPackage.COOKBOOK_FILE__PATH: return ChefserverPackage.SERVER_COOKBOOK_FILE__PATH;
-				case CookbookPackage.COOKBOOK_FILE__SPECIFICITY: return ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY;
-				case CookbookPackage.COOKBOOK_FILE__COOKBOOK: return ChefserverPackage.SERVER_COOKBOOK_FILE__COOKBOOK;
-				default: return -1;
+			case CookbookPackage.COOKBOOK_FILE__BYTES:
+				return ChefserverPackage.SERVER_COOKBOOK_FILE__BYTES;
+			case CookbookPackage.COOKBOOK_FILE__PATH:
+				return ChefserverPackage.SERVER_COOKBOOK_FILE__PATH;
+			case CookbookPackage.COOKBOOK_FILE__SPECIFICITY:
+				return ChefserverPackage.SERVER_COOKBOOK_FILE__SPECIFICITY;
+			case CookbookPackage.COOKBOOK_FILE__COOKBOOK:
+				return ChefserverPackage.SERVER_COOKBOOK_FILE__COOKBOOK;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

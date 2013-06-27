@@ -42,7 +42,7 @@ public class RolesFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected RolesFolder getFixture() {
-		return (RolesFolder)fixture;
+		return (RolesFolder) fixture;
 	}
 
 	/**

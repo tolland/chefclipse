@@ -16,5 +16,6 @@ public interface SandboxValidator {
 	boolean validate();
 
 	boolean validateChecksum(String value);
+
 	boolean validateUrl(URL value);
 }

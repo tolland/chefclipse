@@ -16,22 +16,22 @@ import chefclipse.core.ChefCore;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class ChefPlugin extends AbstractUIPlugin {
+public class ChefUI extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "chefclipse.ui"; //$NON-NLS-1$
 
 	public static final String PROJECT_EXPLORER_ID = "chefclipse.navigatorview"; //$NON-NLS-1$
 
-	static Logger logger = LoggerFactory.getLogger(ChefPlugin.class);
+	static Logger logger = LoggerFactory.getLogger(ChefUI.class);
 
 	// The shared instance
-	private static ChefPlugin plugin;
+	private static ChefUI plugin;
 
 	/**
 	 * The constructor
 	 */
-	public ChefPlugin() {
+	public ChefUI() {
 
 		super();
 		plugin = this;
@@ -48,8 +48,6 @@ public class ChefPlugin extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
-		log("creating the workspaceRoot will trigger a walk of each of the open projects"); //$NON-NLS-1$
-		ChefCore.create(ResourcesPlugin.getWorkspace().getRoot());
 	}
 
 	/*
@@ -90,7 +88,7 @@ public class ChefPlugin extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static ChefPlugin getDefault() {
+	public static ChefUI getDefault() {
 		return plugin;
 	}
 

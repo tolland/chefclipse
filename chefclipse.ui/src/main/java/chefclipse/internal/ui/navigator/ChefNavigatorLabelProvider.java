@@ -5,7 +5,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
 
 import chefclipse.core.providers.ChefProjectAdapterFactory;
-import chefclipse.ui.ChefPlugin;
+import chefclipse.ui.ChefUI;
 
 public class ChefNavigatorLabelProvider extends AdapterFactoryLabelProvider {
 
@@ -20,7 +20,7 @@ public class ChefNavigatorLabelProvider extends AdapterFactoryLabelProvider {
 		} else if (element instanceof String) {
 
 		} else if (element instanceof MenuLevelHolder) {
-			return ChefPlugin.imageDescriptorFromPlugin(ChefPlugin.PLUGIN_ID,
+			return ChefUI.imageDescriptorFromPlugin(ChefUI.PLUGIN_ID,
 					"icons/file_obj.png").createImage();
 			// imageDescriptorFromPlugin(getBundle().getSymbolicName(),
 			// "icons/iu_obj.gif")

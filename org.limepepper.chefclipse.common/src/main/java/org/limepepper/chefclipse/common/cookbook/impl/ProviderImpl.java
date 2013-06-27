@@ -16,22 +16,22 @@ import org.limepepper.chefclipse.common.cookbook.Provider;
  * @generated
  */
 public class ProviderImpl extends CookbookFileImpl implements Provider {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ProviderImpl() {
+	public ProviderImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.PROVIDER;
 	}
 

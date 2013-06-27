@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Named Described Object</b></em>'.

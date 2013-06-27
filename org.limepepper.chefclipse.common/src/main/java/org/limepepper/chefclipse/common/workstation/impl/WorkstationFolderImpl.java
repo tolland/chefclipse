@@ -16,7 +16,8 @@ import org.limepepper.chefclipse.utility.impl.NamedObjectImpl;
  *
  * @generated
  */
-public class WorkstationFolderImpl extends NamedObjectImpl implements WorkstationFolder {
+public class WorkstationFolderImpl extends NamedObjectImpl implements
+		WorkstationFolder {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

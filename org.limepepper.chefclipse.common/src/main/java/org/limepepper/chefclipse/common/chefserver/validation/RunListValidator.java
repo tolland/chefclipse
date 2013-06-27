@@ -23,9 +23,13 @@ public interface RunListValidator {
 	boolean validate();
 
 	boolean validateNode(Node value);
+
 	boolean validateEnvironment(Environment value);
+
 	boolean validateRole(Role value);
+
 	boolean validateRecipes(EList<Recipe> value);
+
 	boolean validateRun_list_items(EList<RunListItem> value);
 
 	boolean validateRun_list(EList<RunList> value);

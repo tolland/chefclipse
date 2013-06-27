@@ -21,54 +21,60 @@ import org.limepepper.chefclipse.common.chefclient.Search;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChefclientFactoryImpl extends EFactoryImpl implements ChefclientFactory {
-    /**
+public class ChefclientFactoryImpl extends EFactoryImpl implements
+		ChefclientFactory {
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static ChefclientFactory init() {
+	public static ChefclientFactory init() {
 		try {
-			ChefclientFactory theChefclientFactory = (ChefclientFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/chefclient"); 
+			ChefclientFactory theChefclientFactory = (ChefclientFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://limepepper.org/v1/chefclipse/chefclient");
 			if (theChefclientFactory != null) {
 				return theChefclientFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ChefclientFactoryImpl();
 	}
 
-    /**
+	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ChefclientFactoryImpl() {
+	public ChefclientFactoryImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public EObject create(EClass eClass) {
+	@Override
+	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ChefclientPackage.CHEF_CLIENT: return createChefClient();
-			case ChefclientPackage.OHAI: return createOhai();
-			case ChefclientPackage.SEARCH: return createSearch();
-			case ChefclientPackage.CLIENT_CONFIG: return createClientConfig();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case ChefclientPackage.CHEF_CLIENT:
+			return createChefClient();
+		case ChefclientPackage.OHAI:
+			return createOhai();
+		case ChefclientPackage.SEARCH:
+			return createSearch();
+		case ChefclientPackage.CLIENT_CONFIG:
+			return createClientConfig();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -78,53 +84,53 @@ public class ChefclientFactoryImpl extends EFactoryImpl implements ChefclientFac
 		return chefClient;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Ohai createOhai() {
+	public Ohai createOhai() {
 		OhaiImpl ohai = new OhaiImpl();
 		return ohai;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Search createSearch() {
+	public Search createSearch() {
 		SearchImpl search = new SearchImpl();
 		return search;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ClientConfig createClientConfig() {
+	public ClientConfig createClientConfig() {
 		ClientConfigImpl clientConfig = new ClientConfigImpl();
 		return clientConfig;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ChefclientPackage getChefclientPackage() {
-		return (ChefclientPackage)getEPackage();
+	public ChefclientPackage getChefclientPackage() {
+		return (ChefclientPackage) getEPackage();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
-    @Deprecated
-    public static ChefclientPackage getPackage() {
+	@Deprecated
+	public static ChefclientPackage getPackage() {
 		return ChefclientPackage.eINSTANCE;
 	}
 

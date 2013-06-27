@@ -26,100 +26,108 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  * @generated
  */
 public class EnvironmentImpl extends DescribedObjectImpl implements Environment {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EnvironmentImpl() {
+	public EnvironmentImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.ENVIRONMENT;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
+	public String getName() {
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		eSet(UtilityPackage.Literals.NAMED_OBJECT__NAME, newName);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getID() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
+	public String getID() {
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setID(String newID) {
+	public void setID(String newID) {
 		eSet(UtilityPackage.Literals.NAMED_OBJECT__ID, newID);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<String> getOverride_attributes() {
-		return (EList<String>)eGet(ChefserverPackage.Literals.ENVIRONMENT__OVERRIDE_ATTRIBUTES, true);
+	@SuppressWarnings("unchecked")
+	public EList<String> getOverride_attributes() {
+		return (EList<String>) eGet(
+				ChefserverPackage.Literals.ENVIRONMENT__OVERRIDE_ATTRIBUTES,
+				true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (derivedFeatureID) {
-				case ChefserverPackage.ENVIRONMENT__NAME: return UtilityPackage.NAMED_OBJECT__NAME;
-				case ChefserverPackage.ENVIRONMENT__ID: return UtilityPackage.NAMED_OBJECT__ID;
-				default: return -1;
+			case ChefserverPackage.ENVIRONMENT__NAME:
+				return UtilityPackage.NAMED_OBJECT__NAME;
+			case ChefserverPackage.ENVIRONMENT__ID:
+				return UtilityPackage.NAMED_OBJECT__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == NamedObject.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.NAMED_OBJECT__NAME: return ChefserverPackage.ENVIRONMENT__NAME;
-				case UtilityPackage.NAMED_OBJECT__ID: return ChefserverPackage.ENVIRONMENT__ID;
-				default: return -1;
+			case UtilityPackage.NAMED_OBJECT__NAME:
+				return ChefserverPackage.ENVIRONMENT__NAME;
+			case UtilityPackage.NAMED_OBJECT__ID:
+				return ChefserverPackage.ENVIRONMENT__ID;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.chefserver.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -31,14 +30,9 @@ import org.limepepper.chefclipse.utility.provider.DescribedObjectItemProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OrganizationItemProvider
-	extends DescribedObjectItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class OrganizationItemProvider extends DescribedObjectItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -74,19 +68,18 @@ public class OrganizationItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NamedObject_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
-				 UtilityPackage.Literals.NAMED_OBJECT__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_NamedObject_name_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_NamedObject_name_feature",
+								"_UI_NamedObject_type"),
+						UtilityPackage.Literals.NAMED_OBJECT__NAME, true,
+						false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -96,19 +89,15 @@ public class OrganizationItemProvider
 	 * @generated
 	 */
 	protected void addIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NamedObject_ID_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
-				 UtilityPackage.Literals.NAMED_OBJECT__ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_NamedObject_ID_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
+				UtilityPackage.Literals.NAMED_OBJECT__ID, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -119,7 +108,8 @@ public class OrganizationItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Organization"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Organization"));
 	}
 
 	/**
@@ -130,10 +120,9 @@ public class OrganizationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Organization)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Organization_type") :
-			getString("_UI_Organization_type") + " " + label;
+		String label = ((Organization) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_Organization_type")
+				: getString("_UI_Organization_type") + " " + label;
 	}
 
 	/**
@@ -148,10 +137,11 @@ public class OrganizationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Organization.class)) {
-			case ChefserverPackage.ORGANIZATION__NAME:
-			case ChefserverPackage.ORGANIZATION__ID:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case ChefserverPackage.ORGANIZATION__NAME:
+		case ChefserverPackage.ORGANIZATION__ID:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -164,7 +154,8 @@ public class OrganizationItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

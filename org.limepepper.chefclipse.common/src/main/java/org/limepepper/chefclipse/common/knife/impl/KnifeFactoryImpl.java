@@ -21,98 +21,102 @@ import org.limepepper.chefclipse.common.knife.Plugin;
  * @generated
  */
 public class KnifeFactoryImpl extends EFactoryImpl implements KnifeFactory {
-    /**
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static KnifeFactory init() {
+	public static KnifeFactory init() {
 		try {
-			KnifeFactory theKnifeFactory = (KnifeFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/knife"); 
+			KnifeFactory theKnifeFactory = (KnifeFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://limepepper.org/v1/chefclipse/knife");
 			if (theKnifeFactory != null) {
 				return theKnifeFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new KnifeFactoryImpl();
 	}
 
-    /**
+	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public KnifeFactoryImpl() {
+	public KnifeFactoryImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public EObject create(EClass eClass) {
+	@Override
+	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case KnifePackage.KNIFE_CONFIG: return createKnifeConfig();
-			case KnifePackage.PLUGIN: return createPlugin();
-			case KnifePackage.KNIFE_SEARCH: return createKnifeSearch();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case KnifePackage.KNIFE_CONFIG:
+			return createKnifeConfig();
+		case KnifePackage.PLUGIN:
+			return createPlugin();
+		case KnifePackage.KNIFE_SEARCH:
+			return createKnifeSearch();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public KnifeConfig createKnifeConfig() {
+	public KnifeConfig createKnifeConfig() {
 		KnifeConfigImpl knifeConfig = new KnifeConfigImpl();
 		return knifeConfig;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Plugin createPlugin() {
+	public Plugin createPlugin() {
 		PluginImpl plugin = new PluginImpl();
 		return plugin;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public KnifeSearch createKnifeSearch() {
+	public KnifeSearch createKnifeSearch() {
 		KnifeSearchImpl knifeSearch = new KnifeSearchImpl();
 		return knifeSearch;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public KnifePackage getKnifePackage() {
-		return (KnifePackage)getEPackage();
+	public KnifePackage getKnifePackage() {
+		return (KnifePackage) getEPackage();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
-    @Deprecated
-    public static KnifePackage getPackage() {
+	@Deprecated
+	public static KnifePackage getPackage() {
 		return KnifePackage.eINSTANCE;
 	}
 

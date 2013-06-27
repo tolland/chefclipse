@@ -42,7 +42,7 @@ public class ProviderTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Provider getFixture() {
-		return (Provider)fixture;
+		return (Provider) fixture;
 	}
 
 	/**

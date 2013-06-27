@@ -17,32 +17,32 @@ import org.limepepper.chefclipse.common.chefserver.RunListItem;
  * @generated
  */
 public class RunListItemImpl extends EObjectImpl implements RunListItem {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RunListItemImpl() {
+	public RunListItemImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.RUN_LIST_ITEM;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 

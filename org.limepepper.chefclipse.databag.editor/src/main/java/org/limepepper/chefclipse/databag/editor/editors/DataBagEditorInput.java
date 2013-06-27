@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.databag.editor.editors;
 
@@ -13,9 +13,9 @@ import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 
 /**
  * Input for the {@link MultiPageDataBagEditor}.
- * 
+ *
  * @author Sebastian Sampaoli
- * 
+ *
  */
 public class DataBagEditorInput implements IEditorInput {
 
@@ -33,7 +33,7 @@ public class DataBagEditorInput implements IEditorInput {
             setDataBag(true);
         } else if (eObject instanceof DataBagItem) {
             DataBagItem dataBagItem = (DataBagItem) eObject;
-            name =  dataBagItem.getName();
+            name =  dataBagItem.getId();
             setParentFolder((IFolder) dataBagItem.getJsonResource().getParent());
             setDataBag(false);
         }
@@ -86,7 +86,7 @@ public class DataBagEditorInput implements IEditorInput {
     public String getToolTipText() {
         return "Displays a Data Bag";
     }
-    
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -108,11 +108,11 @@ public class DataBagEditorInput implements IEditorInput {
             return false;
         return true;
     }
-    
+
     public EObject geteObject() {
         return eObject;
     }
-    
+
     public void seteObject(EObject eObject) {
         this.eObject = eObject;
     }

@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -31,14 +30,9 @@ import org.limepepper.chefclipse.utility.provider.NamedObjectItemProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CookbookFileItemProvider
-	extends NamedObjectItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class CookbookFileItemProvider extends NamedObjectItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -78,19 +72,16 @@ public class CookbookFileItemProvider
 	 * @generated
 	 */
 	protected void addChecksumPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ChecksumFile_checksum_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_checksum_feature", "_UI_ChecksumFile_type"),
-				 UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ChecksumFile_checksum_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ChecksumFile_checksum_feature",
+						"_UI_ChecksumFile_type"),
+				UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -100,19 +91,16 @@ public class CookbookFileItemProvider
 	 * @generated
 	 */
 	protected void addUrlPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_SandboxedObject_url_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SandboxedObject_url_feature", "_UI_SandboxedObject_type"),
-				 UtilityPackage.Literals.SANDBOXED_OBJECT__URL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_SandboxedObject_url_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SandboxedObject_url_feature",
+						"_UI_SandboxedObject_type"),
+				UtilityPackage.Literals.SANDBOXED_OBJECT__URL, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -122,19 +110,16 @@ public class CookbookFileItemProvider
 	 * @generated
 	 */
 	protected void addBytesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CookbookFile_bytes_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_bytes_feature", "_UI_CookbookFile_type"),
-				 CookbookPackage.Literals.COOKBOOK_FILE__BYTES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_CookbookFile_bytes_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_CookbookFile_bytes_feature",
+						"_UI_CookbookFile_type"),
+				CookbookPackage.Literals.COOKBOOK_FILE__BYTES, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -144,19 +129,16 @@ public class CookbookFileItemProvider
 	 * @generated
 	 */
 	protected void addPathPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CookbookFile_path_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_path_feature", "_UI_CookbookFile_type"),
-				 CookbookPackage.Literals.COOKBOOK_FILE__PATH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_CookbookFile_path_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_CookbookFile_path_feature",
+						"_UI_CookbookFile_type"),
+				CookbookPackage.Literals.COOKBOOK_FILE__PATH, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -166,19 +148,17 @@ public class CookbookFileItemProvider
 	 * @generated
 	 */
 	protected void addSpecificityPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CookbookFile_specificity_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_specificity_feature", "_UI_CookbookFile_type"),
-				 CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_CookbookFile_specificity_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_CookbookFile_specificity_feature",
+						"_UI_CookbookFile_type"),
+				CookbookPackage.Literals.COOKBOOK_FILE__SPECIFICITY, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -188,19 +168,16 @@ public class CookbookFileItemProvider
 	 * @generated
 	 */
 	protected void addCookbookPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CookbookFile_cookbook_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookFile_cookbook_feature", "_UI_CookbookFile_type"),
-				 CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_CookbookFile_cookbook_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_CookbookFile_cookbook_feature",
+						"_UI_CookbookFile_type"),
+				CookbookPackage.Literals.COOKBOOK_FILE__COOKBOOK, true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -211,10 +188,9 @@ public class CookbookFileItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CookbookFile)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_CookbookFile_type") :
-			getString("_UI_CookbookFile_type") + " " + label;
+		String label = ((CookbookFile) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_CookbookFile_type")
+				: getString("_UI_CookbookFile_type") + " " + label;
 	}
 
 	/**
@@ -229,13 +205,15 @@ public class CookbookFileItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CookbookFile.class)) {
-			case CookbookPackage.COOKBOOK_FILE__CHECKSUM:
-			case CookbookPackage.COOKBOOK_FILE__URL:
-			case CookbookPackage.COOKBOOK_FILE__BYTES:
-			case CookbookPackage.COOKBOOK_FILE__PATH:
-			case CookbookPackage.COOKBOOK_FILE__SPECIFICITY:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case CookbookPackage.COOKBOOK_FILE__CHECKSUM:
+		case CookbookPackage.COOKBOOK_FILE__URL:
+		case CookbookPackage.COOKBOOK_FILE__BYTES:
+		case CookbookPackage.COOKBOOK_FILE__PATH:
+		case CookbookPackage.COOKBOOK_FILE__SPECIFICITY:
+		case CookbookPackage.COOKBOOK_FILE__COOKBOOK:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -248,7 +226,8 @@ public class CookbookFileItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -260,7 +239,7 @@ public class CookbookFileItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

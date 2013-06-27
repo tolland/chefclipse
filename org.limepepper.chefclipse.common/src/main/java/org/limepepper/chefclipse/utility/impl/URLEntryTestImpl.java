@@ -56,7 +56,7 @@ public class URLEntryTestImpl extends EObjectImpl implements URLEntryTest {
 	 * @generated
 	 */
 	public String getUrl() {
-		return (String)eGet(UtilityPackage.Literals.URL_ENTRY_TEST__URL, true);
+		return (String) eGet(UtilityPackage.Literals.URL_ENTRY_TEST__URL, true);
 	}
 
 	/**

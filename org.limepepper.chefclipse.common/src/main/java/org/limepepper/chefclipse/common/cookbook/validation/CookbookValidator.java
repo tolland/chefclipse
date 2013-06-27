@@ -4,7 +4,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook.validation;
 
-
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.cookbook.Cookbook}.
  * This doesn't really do anything, and it's not a real EMF artifact.
@@ -15,5 +14,6 @@ public interface CookbookValidator {
 	boolean validate();
 
 	boolean validateJson_class(String value);
+
 	boolean validateChef_type(String value);
 }

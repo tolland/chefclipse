@@ -42,7 +42,7 @@ public class CertificatesFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected CertificatesFolder getFixture() {
-		return (CertificatesFolder)fixture;
+		return (CertificatesFolder) fixture;
 	}
 
 	/**

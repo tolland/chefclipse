@@ -145,7 +145,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
             int index = addPage(xtext, new FileEditorInput((IFile) dataBagItem.getJsonResource()));
             XtextResource res = addXtextResource(xtext);
 //            columnEditor.getEditingDomain().getResourceSet().getResource(res.getURI(), true);
-            String dbItemName = dataBagItem.getName();
+            String dbItemName = dataBagItem.getId();
             int lastDot = dbItemName.lastIndexOf(".");
             if (lastDot != -1) {
                 dbItemName = dbItemName.substring(0, lastDot);

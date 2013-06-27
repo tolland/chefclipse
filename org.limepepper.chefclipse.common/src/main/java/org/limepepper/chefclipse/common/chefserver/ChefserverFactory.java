@@ -13,96 +13,97 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface ChefserverFactory extends EFactory {
-    /**
+	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    ChefserverFactory eINSTANCE = org.limepepper.chefclipse.common.chefserver.impl.ChefserverFactoryImpl.init();
+	ChefserverFactory eINSTANCE = org.limepepper.chefclipse.common.chefserver.impl.ChefserverFactoryImpl
+			.init();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Environment</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Environment</em>'.
 	 * @generated
 	 */
-    Environment createEnvironment();
+	Environment createEnvironment();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Data Bag</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Data Bag</em>'.
 	 * @generated
 	 */
-    DataBag createDataBag();
+	DataBag createDataBag();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Role</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Role</em>'.
 	 * @generated
 	 */
-    Role createRole();
+	Role createRole();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Node</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Node</em>'.
 	 * @generated
 	 */
-    Node createNode();
+	Node createNode();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Server</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Server</em>'.
 	 * @generated
 	 */
-    Server createServer();
+	Server createServer();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Platform</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Platform</em>'.
 	 * @generated
 	 */
-    Platform createPlatform();
+	Platform createPlatform();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Server Config</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Server Config</em>'.
 	 * @generated
 	 */
-    ServerConfig createServerConfig();
+	ServerConfig createServerConfig();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Data Bag Item</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Data Bag Item</em>'.
 	 * @generated
 	 */
-    DataBagItem createDataBagItem();
+	DataBagItem createDataBagItem();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Sandbox</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Sandbox</em>'.
 	 * @generated
 	 */
-    Sandbox createSandbox();
+	Sandbox createSandbox();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Cookbook List Version Resp</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,16 +112,16 @@ public interface ChefserverFactory extends EFactory {
 	 */
 	CookbookListVersionResp createCookbookListVersionResp();
 
-				/**
+	/**
 	 * Returns a new object of class '<em>Cookbook List Resp</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Cookbook List Resp</em>'.
 	 * @generated
 	 */
-    CookbookListResp createCookbookListResp();
+	CookbookListResp createCookbookListResp();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Server Cookbook File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,25 +130,25 @@ public interface ChefserverFactory extends EFactory {
 	 */
 	ServerCookbookFile createServerCookbookFile();
 
-				/**
+	/**
 	 * Returns a new object of class '<em>Server Cookbook Version</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Server Cookbook Version</em>'.
 	 * @generated
 	 */
-    ServerCookbookVersion createServerCookbookVersion();
+	ServerCookbookVersion createServerCookbookVersion();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Run List Item</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Run List Item</em>'.
 	 * @generated
 	 */
-    RunListItem createRunListItem();
+	RunListItem createRunListItem();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Client</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,7 +157,7 @@ public interface ChefserverFactory extends EFactory {
 	 */
 	Client createClient();
 
-				/**
+	/**
 	 * Returns a new object of class '<em>Organization</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,13 +166,13 @@ public interface ChefserverFactory extends EFactory {
 	 */
 	Organization createOrganization();
 
-				/**
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-    ChefserverPackage getChefserverPackage();
+	ChefserverPackage getChefserverPackage();
 
 } //ChefserverFactory

@@ -174,8 +174,8 @@
         <!-- module>../org.limepepper.chefclipse.remotepicker.test</module -->
 
         <!-- preferences -->
-        <module>org.limepepper.chefclipse.preferences.api</module>
-        <module>org.limepepper.chefclipse.preferences.ui</module>
+        <!--module>org.limepepper.chefclipse.preferences.api</module-->
+        <!-- module>org.limepepper.chefclipse.preferences.ui</module-->
         <!--module>org.limepepper.chefclipse.preferences.test</module-->
 
         <!-- test bundles -->

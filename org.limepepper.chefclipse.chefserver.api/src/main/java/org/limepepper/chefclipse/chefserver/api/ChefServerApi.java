@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
 import org.limepepper.chefclipse.common.chefserver.Role;
@@ -66,17 +67,46 @@ public interface ChefServerApi {
 
 	void setClient(String name);
 
-	List<DataBag> getDataBags();
+	/**
+	 * http://docs.opscode.com/api_chef_server_data_bag.html#get
+	 *
+	 * @param name
+	 * @return
+	 */
+	//List<DataBag> getDataBags();
 
 	DataBag getDataBag(String name);
 
-	void setDataBag(String name);
+	DataBagItem getDataBagItem(String bagName, String name);
+
+	/**
+	 * http://docs.opscode.com/api_chef_server_data_bag_item.html#delete
+	 *
+	 *
+	 */
+	void deleteDataBag(DataBag databag);
+
+	void deleteDataBagItem(DataBagItem dataBagItem);
+
+	/**
+	 * http://docs.opscode.com/api_chef_server_data_bag.html#post
+	 *
+	 * @param name
+	 */
+	void createDataBag(String name);
+
+	void setDataBag(DataBag dataBag);
+
+	void setDataBagItem(DataBagItem dataBagItem);
 
 	EObject createDataBag(IFolder resource) throws CoreException;
 
 	EObject createDataBagItem(IFile resource);
 
+	Map<String, String> getDataBagsList();
 
+	Map<String, String> getDataBagItemsList(String bagName);
 
+	List<DataBagItem> getDataBagItems(String bagName);
 
 }

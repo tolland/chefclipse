@@ -4,7 +4,6 @@
  */
 package org.limepepper.chefclipse.utility.validation;
 
-
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.utility.MaintainedObject}.
  * This doesn't really do anything, and it's not a real EMF artifact.
@@ -15,6 +14,8 @@ public interface MaintainedObjectValidator {
 	boolean validate();
 
 	boolean validateMaintainer(String value);
+
 	boolean validateMaintainer_email(String value);
+
 	boolean validateLicense(String value);
 }

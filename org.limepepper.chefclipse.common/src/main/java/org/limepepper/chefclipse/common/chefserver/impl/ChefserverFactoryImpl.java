@@ -33,156 +33,174 @@ import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFactory {
-    /**
+public class ChefserverFactoryImpl extends EFactoryImpl implements
+		ChefserverFactory {
+	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static ChefserverFactory init() {
+	public static ChefserverFactory init() {
 		try {
-			ChefserverFactory theChefserverFactory = (ChefserverFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/chefserver"); 
+			ChefserverFactory theChefserverFactory = (ChefserverFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://limepepper.org/v1/chefclipse/chefserver");
 			if (theChefserverFactory != null) {
 				return theChefserverFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new ChefserverFactoryImpl();
 	}
 
-    /**
+	/**
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ChefserverFactoryImpl() {
+	public ChefserverFactoryImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    public EObject create(EClass eClass) {
+	@Override
+	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ChefserverPackage.ENVIRONMENT: return createEnvironment();
-			case ChefserverPackage.DATA_BAG: return createDataBag();
-			case ChefserverPackage.ROLE: return createRole();
-			case ChefserverPackage.NODE: return createNode();
-			case ChefserverPackage.SERVER: return createServer();
-			case ChefserverPackage.PLATFORM: return createPlatform();
-			case ChefserverPackage.SERVER_CONFIG: return createServerConfig();
-			case ChefserverPackage.DATA_BAG_ITEM: return createDataBagItem();
-			case ChefserverPackage.SANDBOX: return createSandbox();
-			case ChefserverPackage.COOKBOOK_LIST_VERSION_RESP: return createCookbookListVersionResp();
-			case ChefserverPackage.COOKBOOK_LIST_RESP: return createCookbookListResp();
-			case ChefserverPackage.SERVER_COOKBOOK_FILE: return createServerCookbookFile();
-			case ChefserverPackage.SERVER_COOKBOOK_VERSION: return createServerCookbookVersion();
-			case ChefserverPackage.RUN_LIST_ITEM: return createRunListItem();
-			case ChefserverPackage.CLIENT: return createClient();
-			case ChefserverPackage.ORGANIZATION: return createOrganization();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case ChefserverPackage.ENVIRONMENT:
+			return createEnvironment();
+		case ChefserverPackage.DATA_BAG:
+			return createDataBag();
+		case ChefserverPackage.ROLE:
+			return createRole();
+		case ChefserverPackage.NODE:
+			return createNode();
+		case ChefserverPackage.SERVER:
+			return createServer();
+		case ChefserverPackage.PLATFORM:
+			return createPlatform();
+		case ChefserverPackage.SERVER_CONFIG:
+			return createServerConfig();
+		case ChefserverPackage.DATA_BAG_ITEM:
+			return createDataBagItem();
+		case ChefserverPackage.SANDBOX:
+			return createSandbox();
+		case ChefserverPackage.COOKBOOK_LIST_VERSION_RESP:
+			return createCookbookListVersionResp();
+		case ChefserverPackage.COOKBOOK_LIST_RESP:
+			return createCookbookListResp();
+		case ChefserverPackage.SERVER_COOKBOOK_FILE:
+			return createServerCookbookFile();
+		case ChefserverPackage.SERVER_COOKBOOK_VERSION:
+			return createServerCookbookVersion();
+		case ChefserverPackage.RUN_LIST_ITEM:
+			return createRunListItem();
+		case ChefserverPackage.CLIENT:
+			return createClient();
+		case ChefserverPackage.ORGANIZATION:
+			return createOrganization();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Environment createEnvironment() {
+	public Environment createEnvironment() {
 		EnvironmentImpl environment = new EnvironmentImpl();
 		return environment;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public DataBag createDataBag() {
+	public DataBag createDataBag() {
 		DataBagImpl dataBag = new DataBagImpl();
 		return dataBag;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Role createRole() {
+	public Role createRole() {
 		RoleImpl role = new RoleImpl();
 		return role;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Node createNode() {
+	public Node createNode() {
 		NodeImpl node = new NodeImpl();
 		return node;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Server createServer() {
+	public Server createServer() {
 		ServerImpl server = new ServerImpl();
 		return server;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Platform createPlatform() {
+	public Platform createPlatform() {
 		PlatformImpl platform = new PlatformImpl();
 		return platform;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ServerConfig createServerConfig() {
+	public ServerConfig createServerConfig() {
 		ServerConfigImpl serverConfig = new ServerConfigImpl();
 		return serverConfig;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public DataBagItem createDataBagItem() {
+	public DataBagItem createDataBagItem() {
 		DataBagItemImpl dataBagItem = new DataBagItemImpl();
 		return dataBagItem;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Sandbox createSandbox() {
+	public Sandbox createSandbox() {
 		SandboxImpl sandbox = new SandboxImpl();
 		return sandbox;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -192,17 +210,17 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 		return cookbookListVersionResp;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookListResp createCookbookListResp() {
+	public CookbookListResp createCookbookListResp() {
 		CookbookListRespImpl cookbookListResp = new CookbookListRespImpl();
 		return cookbookListResp;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -212,27 +230,27 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 		return serverCookbookFile;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ServerCookbookVersion createServerCookbookVersion() {
+	public ServerCookbookVersion createServerCookbookVersion() {
 		ServerCookbookVersionImpl serverCookbookVersion = new ServerCookbookVersionImpl();
 		return serverCookbookVersion;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RunListItem createRunListItem() {
+	public RunListItem createRunListItem() {
 		RunListItemImpl runListItem = new RunListItemImpl();
 		return runListItem;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -242,7 +260,7 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 		return client;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -252,23 +270,23 @@ public class ChefserverFactoryImpl extends EFactoryImpl implements ChefserverFac
 		return organization;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ChefserverPackage getChefserverPackage() {
-		return (ChefserverPackage)getEPackage();
+	public ChefserverPackage getChefserverPackage() {
+		return (ChefserverPackage) getEPackage();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
-    @Deprecated
-    public static ChefserverPackage getPackage() {
+	@Deprecated
+	public static ChefserverPackage getPackage() {
 		return ChefserverPackage.eINSTANCE;
 	}
 

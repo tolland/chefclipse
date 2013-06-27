@@ -59,7 +59,7 @@ public class VersionUrlImpl extends EObjectImpl implements VersionUrl {
 	 * @generated
 	 */
 	public String getUrl() {
-		return (String)eGet(UtilityPackage.Literals.VERSION_URL__URL, true);
+		return (String) eGet(UtilityPackage.Literals.VERSION_URL__URL, true);
 	}
 
 	/**
@@ -78,7 +78,8 @@ public class VersionUrlImpl extends EObjectImpl implements VersionUrl {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<URLEntryTest> getVersions() {
-		return (EList<URLEntryTest>)eGet(UtilityPackage.Literals.VERSION_URL__VERSIONS, true);
+		return (EList<URLEntryTest>) eGet(
+				UtilityPackage.Literals.VERSION_URL__VERSIONS, true);
 	}
 
 } //VersionUrlImpl

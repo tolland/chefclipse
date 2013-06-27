@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.workstation.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -26,14 +25,9 @@ import org.limepepper.chefclipse.utility.provider.NamedObjectItemProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WorkstationFolderItemProvider
-	extends NamedObjectItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class WorkstationFolderItemProvider extends NamedObjectItemProvider
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -68,7 +62,8 @@ public class WorkstationFolderItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/WorkstationFolder"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/WorkstationFolder"));
 	}
 
 	/**
@@ -79,10 +74,9 @@ public class WorkstationFolderItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((WorkstationFolder)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_WorkstationFolder_type") :
-			getString("_UI_WorkstationFolder_type") + " " + label;
+		String label = ((WorkstationFolder) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_WorkstationFolder_type")
+				: getString("_UI_WorkstationFolder_type") + " " + label;
 	}
 
 	/**
@@ -106,7 +100,8 @@ public class WorkstationFolderItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -16,5 +16,6 @@ public interface EStringToVersionUrlMapValidator {
 	boolean validate();
 
 	boolean validateTypedKey(String value);
+
 	boolean validateTypedValue(VersionUrl value);
 }

@@ -30,7 +30,7 @@ public abstract class NamedDescribedObjectTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected NamedDescribedObject getFixture() {
-		return (NamedDescribedObject)fixture;
+		return (NamedDescribedObject) fixture;
 	}
 
 } //NamedDescribedObjectTest

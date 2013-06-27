@@ -24,79 +24,83 @@ import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
  *
  * @generated
  */
-public class CookbookListRespImpl extends EObjectImpl implements CookbookListResp {
-    /**
+public class CookbookListRespImpl extends EObjectImpl implements
+		CookbookListResp {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public CookbookListRespImpl() {
+	public CookbookListRespImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.COOKBOOK_LIST_RESP;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getName() {
-		return (String)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__NAME, true);
+	public String getName() {
+		return (String) eGet(
+				ChefserverPackage.Literals.COOKBOOK_LIST_RESP__NAME, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setName(String newName) {
+	public void setName(String newName) {
 		eSet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__NAME, newName);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<CookbookListVersionResp> getVersions() {
-		return (EList<CookbookListVersionResp>)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__VERSIONS, true);
+		return (EList<CookbookListVersionResp>) eGet(
+				ChefserverPackage.Literals.COOKBOOK_LIST_RESP__VERSIONS, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getUrl() {
-		return (String)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__URL, true);
+	public String getUrl() {
+		return (String) eGet(
+				ChefserverPackage.Literals.COOKBOOK_LIST_RESP__URL, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setUrl(String newUrl) {
+	public void setUrl(String newUrl) {
 		eSet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__URL, newUrl);
 	}
 

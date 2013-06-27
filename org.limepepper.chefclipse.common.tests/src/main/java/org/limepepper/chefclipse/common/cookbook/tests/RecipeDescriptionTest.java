@@ -43,7 +43,7 @@ public class RecipeDescriptionTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected RecipeDescription getFixture() {
-		return (RecipeDescription)fixture;
+		return (RecipeDescription) fixture;
 	}
 
 	/**

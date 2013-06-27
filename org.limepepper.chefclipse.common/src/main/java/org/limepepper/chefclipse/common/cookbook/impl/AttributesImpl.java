@@ -22,35 +22,35 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * @generated
  */
 public class AttributesImpl extends CookbookFileImpl implements Attributes {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public AttributesImpl() {
+	public AttributesImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.ATTRIBUTES;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getExtension() {
-		return (String)eGet(UtilityPackage.Literals.RUBY_FILE__EXTENSION, true);
+		return (String) eGet(UtilityPackage.Literals.RUBY_FILE__EXTENSION, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -59,7 +59,7 @@ public class AttributesImpl extends CookbookFileImpl implements Attributes {
 		eSet(UtilityPackage.Literals.RUBY_FILE__EXTENSION, newExtension);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -68,14 +68,16 @@ public class AttributesImpl extends CookbookFileImpl implements Attributes {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == RubyFile.class) {
 			switch (derivedFeatureID) {
-				case CookbookPackage.ATTRIBUTES__EXTENSION: return UtilityPackage.RUBY_FILE__EXTENSION;
-				default: return -1;
+			case CookbookPackage.ATTRIBUTES__EXTENSION:
+				return UtilityPackage.RUBY_FILE__EXTENSION;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -84,8 +86,10 @@ public class AttributesImpl extends CookbookFileImpl implements Attributes {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == RubyFile.class) {
 			switch (baseFeatureID) {
-				case UtilityPackage.RUBY_FILE__EXTENSION: return CookbookPackage.ATTRIBUTES__EXTENSION;
-				default: return -1;
+			case UtilityPackage.RUBY_FILE__EXTENSION:
+				return CookbookPackage.ATTRIBUTES__EXTENSION;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

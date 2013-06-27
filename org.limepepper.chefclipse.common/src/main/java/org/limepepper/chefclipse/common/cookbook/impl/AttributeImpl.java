@@ -22,26 +22,26 @@ import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
  * @generated
  */
 public class AttributeImpl extends EObjectImpl implements Attribute {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public AttributeImpl() {
+	public AttributeImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.ATTRIBUTE;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -51,16 +51,16 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		return 0;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eGet(CookbookPackage.Literals.ATTRIBUTE__NAME, true);
+		return (String) eGet(CookbookPackage.Literals.ATTRIBUTE__NAME, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -69,16 +69,16 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 		eSet(CookbookPackage.Literals.ATTRIBUTE__NAME, newName);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getValue() {
-		return (String)eGet(CookbookPackage.Literals.ATTRIBUTE__VALUE, true);
+		return (String) eGet(CookbookPackage.Literals.ATTRIBUTE__VALUE, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

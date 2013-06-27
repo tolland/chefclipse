@@ -42,7 +42,7 @@ public class AttributesTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Attributes getFixture() {
-		return (Attributes)fixture;
+		return (Attributes) fixture;
 	}
 
 	/**

@@ -35,71 +35,72 @@ import org.limepepper.chefclipse.utility.impl.UtilityPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class WorkstationPackageImpl extends EPackageImpl implements WorkstationPackage {
-    /**
+public class WorkstationPackageImpl extends EPackageImpl implements
+		WorkstationPackage {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass repositoryEClass = null;
+	private EClass repositoryEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass configFolderEClass = null;
+	private EClass configFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass certificatesFolderEClass = null;
+	private EClass certificatesFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass dataBagsFolderEClass = null;
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass environmentsFolderEClass = null;
+	private EClass environmentsFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass rolesFolderEClass = null;
+	private EClass rolesFolderEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private EClass rakefileEClass = null;
+	private EClass rakefileEClass = null;
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass workstationFolderEClass = null;
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass cookbooksFolderEClass = null;
 
-				/**
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -108,49 +109,66 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 	 * initialization of the package, or returns the registered package,
 	 * if one already exists.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.limepepper.chefclipse.common.workstation.WorkstationPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-    private WorkstationPackageImpl() {
+	private WorkstationPackageImpl() {
 		super(eNS_URI, WorkstationFactory.eINSTANCE);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private static boolean isInited = false;
+	private static boolean isInited = false;
 
-    /**
+	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 * 
 	 * <p>This method is used to initialize {@link WorkstationPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-    public static WorkstationPackage init() {
-		if (isInited) return (WorkstationPackage)EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI);
+	public static WorkstationPackage init() {
+		if (isInited)
+			return (WorkstationPackage) EPackage.Registry.INSTANCE
+					.getEPackage(WorkstationPackage.eNS_URI);
 
 		// Obtain or create and register package
-		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new WorkstationPackageImpl());
+		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl) (EPackage.Registry.INSTANCE
+				.get(eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE
+				.get(eNS_URI) : new WorkstationPackageImpl());
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		ChefserverPackageImpl theChefserverPackage = (ChefserverPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) : ChefserverPackage.eINSTANCE);
-		ChefclientPackageImpl theChefclientPackage = (ChefclientPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
-		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
-		KnifePackageImpl theKnifePackage = (KnifePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
-		UtilityPackageImpl theUtilityPackage = (UtilityPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI) instanceof UtilityPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI) : UtilityPackage.eINSTANCE);
+		ChefserverPackageImpl theChefserverPackage = (ChefserverPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(ChefserverPackage.eNS_URI)
+				: ChefserverPackage.eINSTANCE);
+		ChefclientPackageImpl theChefclientPackage = (ChefclientPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(ChefclientPackage.eNS_URI)
+				: ChefclientPackage.eINSTANCE);
+		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(CookbookPackage.eNS_URI)
+				: CookbookPackage.eINSTANCE);
+		KnifePackageImpl theKnifePackage = (KnifePackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(KnifePackage.eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(KnifePackage.eNS_URI) : KnifePackage.eINSTANCE);
+		UtilityPackageImpl theUtilityPackage = (UtilityPackageImpl) (EPackage.Registry.INSTANCE
+				.getEPackage(UtilityPackage.eNS_URI) instanceof UtilityPackageImpl ? EPackage.Registry.INSTANCE
+				.getEPackage(UtilityPackage.eNS_URI) : UtilityPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theWorkstationPackage.createPackageContents();
@@ -171,85 +189,85 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		// Mark meta-data to indicate it can't be changed
 		theWorkstationPackage.freeze();
 
-  
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(WorkstationPackage.eNS_URI, theWorkstationPackage);
+		EPackage.Registry.INSTANCE.put(WorkstationPackage.eNS_URI,
+				theWorkstationPackage);
 		return theWorkstationPackage;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getRepository() {
+	public EClass getRepository() {
 		return repositoryEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getRepository_OS() {
-		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getRepository_OS() {
+		return (EAttribute) repositoryEClass.getEStructuralFeatures().get(0);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EAttribute getRepository_Basepath() {
-		return (EAttribute)repositoryEClass.getEStructuralFeatures().get(1);
+	public EAttribute getRepository_Basepath() {
+		return (EAttribute) repositoryEClass.getEStructuralFeatures().get(1);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EReference getRepository_Cookbooks() {
-		return (EReference)repositoryEClass.getEStructuralFeatures().get(2);
+	public EReference getRepository_Cookbooks() {
+		return (EReference) repositoryEClass.getEStructuralFeatures().get(2);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getRepository_Knives() {
-		return (EReference)repositoryEClass.getEStructuralFeatures().get(3);
+		return (EReference) repositoryEClass.getEStructuralFeatures().get(3);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getRepository_CookbookFolders() {
-		return (EReference)repositoryEClass.getEStructuralFeatures().get(4);
+		return (EReference) repositoryEClass.getEStructuralFeatures().get(4);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getConfigFolder() {
+	public EClass getConfigFolder() {
 		return configFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getCertificatesFolder() {
+	public EClass getCertificatesFolder() {
 		return certificatesFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -258,34 +276,34 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		return dataBagsFolderEClass;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getEnvironmentsFolder() {
+	public EClass getEnvironmentsFolder() {
 		return environmentsFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getRolesFolder() {
+	public EClass getRolesFolder() {
 		return rolesFolderEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EClass getRakefile() {
+	public EClass getRakefile() {
 		return rakefileEClass;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -294,7 +312,7 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		return workstationFolderEClass;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -303,40 +321,42 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		return cookbooksFolderEClass;
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getCookbooksFolder_Cookbooks() {
-		return (EReference)cookbooksFolderEClass.getEStructuralFeatures().get(0);
+		return (EReference) cookbooksFolderEClass.getEStructuralFeatures().get(
+				0);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public WorkstationFactory getWorkstationFactory() {
-		return (WorkstationFactory)getEFactoryInstance();
+	public WorkstationFactory getWorkstationFactory() {
+		return (WorkstationFactory) getEFactoryInstance();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private boolean isCreated = false;
+	private boolean isCreated = false;
 
-    /**
+	/**
 	 * Creates the meta-model objects for the package.  This method is
 	 * guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void createPackageContents() {
-		if (isCreated) return;
+	public void createPackageContents() {
+		if (isCreated)
+			return;
 		isCreated = true;
 
 		// Create classes and their features
@@ -365,22 +385,23 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		createEReference(cookbooksFolderEClass, COOKBOOKS_FOLDER__COOKBOOKS);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    private boolean isInitialized = false;
+	private boolean isInitialized = false;
 
-    /**
+	/**
 	 * Complete the initialization of the package and its meta-model.  This
 	 * method is guarded to have no affect on any invocation but its first.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void initializePackageContents() {
-		if (isInitialized) return;
+	public void initializePackageContents() {
+		if (isInitialized)
+			return;
 		isInitialized = true;
 
 		// Initialize package
@@ -389,48 +410,92 @@ public class WorkstationPackageImpl extends EPackageImpl implements WorkstationP
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		UtilityPackage theUtilityPackage = (UtilityPackage)EPackage.Registry.INSTANCE.getEPackage(UtilityPackage.eNS_URI);
-		CookbookPackage theCookbookPackage = (CookbookPackage)EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI);
-		KnifePackage theKnifePackage = (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
+		UtilityPackage theUtilityPackage = (UtilityPackage) EPackage.Registry.INSTANCE
+				.getEPackage(UtilityPackage.eNS_URI);
+		CookbookPackage theCookbookPackage = (CookbookPackage) EPackage.Registry.INSTANCE
+				.getEPackage(CookbookPackage.eNS_URI);
+		KnifePackage theKnifePackage = (KnifePackage) EPackage.Registry.INSTANCE
+				.getEPackage(KnifePackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		repositoryEClass.getESuperTypes().add(theUtilityPackage.getNamedDescribedObject());
+		repositoryEClass.getESuperTypes().add(
+				theUtilityPackage.getNamedDescribedObject());
 		configFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
-		certificatesFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
+		certificatesFolderEClass.getESuperTypes().add(
+				this.getWorkstationFolder());
 		dataBagsFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
-		environmentsFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
+		environmentsFolderEClass.getESuperTypes().add(
+				this.getWorkstationFolder());
 		rolesFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
-		workstationFolderEClass.getESuperTypes().add(theUtilityPackage.getNamedObject());
+		workstationFolderEClass.getESuperTypes().add(
+				theUtilityPackage.getNamedObject());
 		cookbooksFolderEClass.getESuperTypes().add(this.getWorkstationFolder());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(repositoryEClass, Repository.class, "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRepository_OS(), ecorePackage.getEString(), "OS", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getRepository_Basepath(), ecorePackage.getEString(), "basepath", null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRepository_Cookbooks(), theCookbookPackage.getCookbookVersion(), null, "cookbooks", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRepository_Knives(), theKnifePackage.getKnifeConfig(), theKnifePackage.getKnifeConfig_Repository(), "knives", null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRepository_CookbookFolders(), this.getCookbooksFolder(), null, "cookbookFolders", null, 1, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(repositoryEClass, Repository.class, "Repository",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRepository_OS(), ecorePackage.getEString(), "OS",
+				null, 0, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getRepository_Basepath(), ecorePackage.getEString(),
+				"basepath", null, 0, 1, Repository.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getRepository_Cookbooks(),
+				theCookbookPackage.getCookbookVersion(), null, "cookbooks",
+				null, 0, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRepository_Knives(),
+				theKnifePackage.getKnifeConfig(),
+				theKnifePackage.getKnifeConfig_Repository(), "knives", null, 0,
+				-1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRepository_CookbookFolders(),
+				this.getCookbooksFolder(), null, "cookbookFolders", null, 1,
+				-1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(configFolderEClass, ConfigFolder.class, "ConfigFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(configFolderEClass, ConfigFolder.class, "ConfigFolder",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(certificatesFolderEClass, CertificatesFolder.class, "CertificatesFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(certificatesFolderEClass, CertificatesFolder.class,
+				"CertificatesFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(dataBagsFolderEClass, DataBagsFolder.class, "DataBagsFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(dataBagsFolderEClass, DataBagsFolder.class,
+				"DataBagsFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(environmentsFolderEClass, EnvironmentsFolder.class, "EnvironmentsFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(environmentsFolderEClass, EnvironmentsFolder.class,
+				"EnvironmentsFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(rolesFolderEClass, RolesFolder.class, "RolesFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(rolesFolderEClass, RolesFolder.class, "RolesFolder",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(rakefileEClass, Rakefile.class, "Rakefile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(rakefileEClass, Rakefile.class, "Rakefile", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(workstationFolderEClass, WorkstationFolder.class, "WorkstationFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(workstationFolderEClass, WorkstationFolder.class,
+				"WorkstationFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(cookbooksFolderEClass, CookbooksFolder.class, "CookbooksFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCookbooksFolder_Cookbooks(), theCookbookPackage.getCookbookVersion(), null, "cookbooks", null, 0, -1, CookbooksFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(cookbooksFolderEClass, CookbooksFolder.class,
+				"CookbooksFolder", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCookbooksFolder_Cookbooks(),
+				theCookbookPackage.getCookbookVersion(), null, "cookbooks",
+				null, 0, -1, CookbooksFolder.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

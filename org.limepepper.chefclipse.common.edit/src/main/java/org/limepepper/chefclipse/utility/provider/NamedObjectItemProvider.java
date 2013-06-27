@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NamedObjectItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class NamedObjectItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,19 +67,18 @@ public class NamedObjectItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NamedObject_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_name_feature", "_UI_NamedObject_type"),
-				 UtilityPackage.Literals.NAMED_OBJECT__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_NamedObject_name_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_NamedObject_name_feature",
+								"_UI_NamedObject_type"),
+						UtilityPackage.Literals.NAMED_OBJECT__NAME, true,
+						false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -95,19 +88,15 @@ public class NamedObjectItemProvider
 	 * @generated
 	 */
 	protected void addIDPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NamedObject_ID_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
-				 UtilityPackage.Literals.NAMED_OBJECT__ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_NamedObject_ID_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_NamedObject_ID_feature", "_UI_NamedObject_type"),
+				UtilityPackage.Literals.NAMED_OBJECT__ID, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -118,7 +107,8 @@ public class NamedObjectItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/NamedObject"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/NamedObject"));
 	}
 
 	/**
@@ -129,10 +119,9 @@ public class NamedObjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((NamedObject)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_NamedObject_type") :
-			getString("_UI_NamedObject_type") + " " + label;
+		String label = ((NamedObject) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_NamedObject_type")
+				: getString("_UI_NamedObject_type") + " " + label;
 	}
 
 	/**
@@ -147,10 +136,11 @@ public class NamedObjectItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(NamedObject.class)) {
-			case UtilityPackage.NAMED_OBJECT__NAME:
-			case UtilityPackage.NAMED_OBJECT__ID:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.NAMED_OBJECT__NAME:
+		case UtilityPackage.NAMED_OBJECT__ID:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -163,7 +153,8 @@ public class NamedObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

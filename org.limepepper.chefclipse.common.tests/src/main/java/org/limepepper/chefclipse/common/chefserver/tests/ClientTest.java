@@ -43,7 +43,7 @@ public class ClientTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected Client getFixture() {
-		return (Client)fixture;
+		return (Client) fixture;
 	}
 
 	/**

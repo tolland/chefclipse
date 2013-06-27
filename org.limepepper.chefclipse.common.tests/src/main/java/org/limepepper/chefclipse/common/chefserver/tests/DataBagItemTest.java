@@ -6,6 +6,7 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.chefserver.ChefserverFactory;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+import org.limepepper.chefclipse.utility.tests.IdentObjectTest;
 import org.limepepper.chefclipse.utility.tests.NamedObjectTest;
 
 /**
@@ -14,7 +15,7 @@ import org.limepepper.chefclipse.utility.tests.NamedObjectTest;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DataBagItemTest extends NamedObjectTest {
+public class DataBagItemTest extends IdentObjectTest {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -43,7 +44,7 @@ public class DataBagItemTest extends NamedObjectTest {
 	 */
 	@Override
 	protected DataBagItem getFixture() {
-		return (DataBagItem)fixture;
+		return (DataBagItem) fixture;
 	}
 
 	/**

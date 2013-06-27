@@ -43,7 +43,7 @@ public class ClientConfigTest extends ConfigTest {
 	 */
 	@Override
 	protected ClientConfig getFixture() {
-		return (ClientConfig)fixture;
+		return (ClientConfig) fixture;
 	}
 
 	/**

@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.chefserver.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CookbookListVersionRespItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class CookbookListVersionRespItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,19 +67,17 @@ public class CookbookListVersionRespItemProvider
 	 * @generated
 	 */
 	protected void addUrlPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CookbookListVersionResp_url_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookListVersionResp_url_feature", "_UI_CookbookListVersionResp_type"),
-				 ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__URL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_CookbookListVersionResp_url_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_CookbookListVersionResp_url_feature",
+						"_UI_CookbookListVersionResp_type"),
+				ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__URL,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -95,19 +87,17 @@ public class CookbookListVersionRespItemProvider
 	 * @generated
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CookbookListVersionResp_version_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CookbookListVersionResp_version_feature", "_UI_CookbookListVersionResp_type"),
-				 ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_CookbookListVersionResp_version_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_CookbookListVersionResp_version_feature",
+						"_UI_CookbookListVersionResp_type"),
+				ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -118,7 +108,10 @@ public class CookbookListVersionRespItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CookbookListVersionResp"));
+		return overlayImage(
+				object,
+				getResourceLocator().getImage(
+						"full/obj16/CookbookListVersionResp"));
 	}
 
 	/**
@@ -129,10 +122,9 @@ public class CookbookListVersionRespItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CookbookListVersionResp)object).getUrl();
-		return label == null || label.length() == 0 ?
-			getString("_UI_CookbookListVersionResp_type") :
-			getString("_UI_CookbookListVersionResp_type") + " " + label;
+		String label = ((CookbookListVersionResp) object).getUrl();
+		return label == null || label.length() == 0 ? getString("_UI_CookbookListVersionResp_type")
+				: getString("_UI_CookbookListVersionResp_type") + " " + label;
 	}
 
 	/**
@@ -147,10 +139,11 @@ public class CookbookListVersionRespItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CookbookListVersionResp.class)) {
-			case ChefserverPackage.COOKBOOK_LIST_VERSION_RESP__URL:
-			case ChefserverPackage.COOKBOOK_LIST_VERSION_RESP__VERSION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case ChefserverPackage.COOKBOOK_LIST_VERSION_RESP__URL:
+		case ChefserverPackage.COOKBOOK_LIST_VERSION_RESP__VERSION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -163,7 +156,8 @@ public class CookbookListVersionRespItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

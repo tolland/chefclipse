@@ -42,7 +42,7 @@ public class ConfigFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected ConfigFolder getFixture() {
-		return (ConfigFolder)fixture;
+		return (ConfigFolder) fixture;
 	}
 
 	/**

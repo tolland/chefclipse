@@ -16,22 +16,22 @@ import org.limepepper.chefclipse.common.cookbook.Template;
  * @generated
  */
 public class TemplateImpl extends CookbookFileImpl implements Template {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public TemplateImpl() {
+	public TemplateImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.TEMPLATE;
 	}
 

@@ -19,6 +19,7 @@ public interface RecipeValidator {
 	boolean validate();
 
 	boolean validateRole(EList<Role> value);
+
 	boolean validateRunlist(EList<RunList> value);
 
 	boolean validateCookbook(CookbookVersion value);

@@ -16,22 +16,22 @@ import org.limepepper.chefclipse.common.cookbook.Definition;
  * @generated
  */
 public class DefinitionImpl extends CookbookFileImpl implements Definition {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public DefinitionImpl() {
+	public DefinitionImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.DEFINITION;
 	}
 

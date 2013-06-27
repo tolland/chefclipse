@@ -19,7 +19,8 @@ public interface UtilityFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	UtilityFactory eINSTANCE = org.limepepper.chefclipse.utility.impl.UtilityFactoryImpl.init();
+	UtilityFactory eINSTANCE = org.limepepper.chefclipse.utility.impl.UtilityFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>Versioned Object</em>'.
@@ -137,6 +138,24 @@ public interface UtilityFactory extends EFactory {
 	 * @generated
 	 */
 	NameVersionMap createNameVersionMap();
+
+	/**
+	 * Returns a new object of class '<em>Ident Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Ident Object</em>'.
+	 * @generated
+	 */
+	IdentObject createIdentObject();
+
+	/**
+	 * Returns a new object of class '<em>Json Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Json Object</em>'.
+	 * @generated
+	 */
+	JsonObject createJsonObject();
 
 	/**
 	 * Returns the package supported by this factory.

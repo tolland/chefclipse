@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.chefserver.presentation;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -60,7 +59,6 @@ import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
 import org.limepepper.chefclipse.common.editor.presentation.ChefclipseEditorPlugin;
 
-
 /**
  * This is a simple wizard for creating a new model file.
  * <!-- begin-user-doc -->
@@ -74,8 +72,10 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<String> FILE_EXTENSIONS =
-		Collections.unmodifiableList(Arrays.asList(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverEditorFilenameExtensions").split("\\s*,\\s*")));
+	public static final List<String> FILE_EXTENSIONS = Collections
+			.unmodifiableList(Arrays.asList(ChefclipseEditorPlugin.INSTANCE
+					.getString("_UI_ChefserverEditorFilenameExtensions").split(
+							"\\s*,\\s*")));
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
@@ -83,8 +83,9 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final String FORMATTED_FILE_EXTENSIONS =
-		ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+	public static final String FORMATTED_FILE_EXTENSIONS = ChefclipseEditorPlugin.INSTANCE
+			.getString("_UI_ChefserverEditorFilenameExtensions").replaceAll(
+					"\\s*,\\s*", ", ");
 
 	/**
 	 * This caches an instance of the model package.
@@ -100,7 +101,8 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChefserverFactory chefserverFactory = chefserverPackage.getChefserverFactory();
+	protected ChefserverFactory chefserverFactory = chefserverPackage
+			.getChefserverFactory();
 
 	/**
 	 * This is the file creation page.
@@ -151,8 +153,11 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
-		setWindowTitle(ChefclipseEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(ChefclipseEditorPlugin.INSTANCE.getImage("full/wizban/NewChefserver")));
+		setWindowTitle(ChefclipseEditorPlugin.INSTANCE
+				.getString("_UI_Wizard_label"));
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE
+				.getImageDescriptor(ChefclipseEditorPlugin.INSTANCE
+						.getImage("full/wizban/NewChefserver")));
 	}
 
 	/**
@@ -166,13 +171,14 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 			initialObjectNames = new ArrayList<String>();
 			for (EClassifier eClassifier : chefserverPackage.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass)eClassifier;
+					EClass eClass = (EClass) eClassifier;
 					if (!eClass.isAbstract()) {
 						initialObjectNames.add(eClass.getName());
 					}
 				}
 			}
-			Collections.sort(initialObjectNames, CommonPlugin.INSTANCE.getComparator());
+			Collections.sort(initialObjectNames,
+					CommonPlugin.INSTANCE.getComparator());
 		}
 		return initialObjectNames;
 	}
@@ -184,7 +190,9 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass)chefserverPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		EClass eClass = (EClass) chefserverPackage
+				.getEClassifier(initialObjectCreationPage
+						.getInitialObjectName());
 		EObject rootObject = chefserverFactory.create(eClass);
 		return rootObject;
 	}
@@ -204,77 +212,83 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 
 			// Do the work within an operation.
 			//
-			WorkspaceModifyOperation operation =
-				new WorkspaceModifyOperation() {
-					@Override
-					protected void execute(IProgressMonitor progressMonitor) {
-						try {
-							// Create a resource set
-							//
-							ResourceSet resourceSet = new ResourceSetImpl();
+			WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+				@Override
+				protected void execute(IProgressMonitor progressMonitor) {
+					try {
+						// Create a resource set
+						//
+						ResourceSet resourceSet = new ResourceSetImpl();
 
-							// Get the URI of the model file.
-							//
-							URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+						// Get the URI of the model file.
+						//
+						URI fileURI = URI.createPlatformResourceURI(modelFile
+								.getFullPath().toString(), true);
 
-							// Create a resource for this file.
-							//
-							Resource resource = resourceSet.createResource(fileURI);
+						// Create a resource for this file.
+						//
+						Resource resource = resourceSet.createResource(fileURI);
 
-							// Add the initial model object to the contents.
-							//
-							EObject rootObject = createInitialModel();
-							if (rootObject != null) {
-								resource.getContents().add(rootObject);
-							}
-
-							// Save the contents of the resource to the file system.
-							//
-							Map<Object, Object> options = new HashMap<Object, Object>();
-							options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
-							resource.save(options);
+						// Add the initial model object to the contents.
+						//
+						EObject rootObject = createInitialModel();
+						if (rootObject != null) {
+							resource.getContents().add(rootObject);
 						}
-						catch (Exception exception) {
-							ChefclipseEditorPlugin.INSTANCE.log(exception);
-						}
-						finally {
-							progressMonitor.done();
-						}
+
+						// Save the contents of the resource to the file system.
+						//
+						Map<Object, Object> options = new HashMap<Object, Object>();
+						options.put(XMLResource.OPTION_ENCODING,
+								initialObjectCreationPage.getEncoding());
+						resource.save(options);
+					} catch (Exception exception) {
+						ChefclipseEditorPlugin.INSTANCE.log(exception);
+					} finally {
+						progressMonitor.done();
 					}
-				};
+				}
+			};
 
 			getContainer().run(false, false, operation);
 
 			// Select the new file resource in the current view.
 			//
-			IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
+			IWorkbenchWindow workbenchWindow = workbench
+					.getActiveWorkbenchWindow();
 			IWorkbenchPage page = workbenchWindow.getActivePage();
 			final IWorkbenchPart activePart = page.getActivePart();
 			if (activePart instanceof ISetSelectionTarget) {
-				final ISelection targetSelection = new StructuredSelection(modelFile);
-				getShell().getDisplay().asyncExec
-					(new Runnable() {
-						 public void run() {
-							 ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
-						 }
-					 });
+				final ISelection targetSelection = new StructuredSelection(
+						modelFile);
+				getShell().getDisplay().asyncExec(new Runnable() {
+					public void run() {
+						((ISetSelectionTarget) activePart)
+								.selectReveal(targetSelection);
+					}
+				});
 			}
 
 			// Open an editor on the new file.
 			//
 			try {
-				page.openEditor
-					(new FileEditorInput(modelFile),
-					 workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());					 	 
-			}
-			catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), ChefclipseEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
+				page.openEditor(
+						new FileEditorInput(modelFile),
+						workbench
+								.getEditorRegistry()
+								.getDefaultEditor(
+										modelFile.getFullPath().toString())
+								.getId());
+			} catch (PartInitException exception) {
+				MessageDialog.openError(workbenchWindow.getShell(),
+						ChefclipseEditorPlugin.INSTANCE
+								.getString("_UI_OpenEditorError_label"),
+						exception.getMessage());
 				return false;
 			}
 
 			return true;
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			ChefclipseEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
@@ -286,14 +300,16 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class ChefserverModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
+	public class ChefserverModelWizardNewFileCreationPage extends
+			WizardNewFileCreationPage {
 		/**
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		public ChefserverModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
+		public ChefserverModelWizardNewFileCreationPage(String pageId,
+				IStructuredSelection selection) {
 			super(pageId, selection);
 		}
 
@@ -308,8 +324,10 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 			if (super.validatePage()) {
 				String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-					setErrorMessage(ChefclipseEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
+					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions"
+							: "_WARN_FilenameExtension";
+					setErrorMessage(ChefclipseEditorPlugin.INSTANCE.getString(
+							key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
 				return true;
@@ -323,7 +341,8 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public IFile getModelFile() {
-			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
+			return ResourcesPlugin.getWorkspace().getRoot()
+					.getFile(getContainerFullPath().append(getFileName()));
 		}
 	}
 
@@ -333,7 +352,8 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public class ChefserverModelWizardInitialObjectCreationPage extends WizardPage {
+	public class ChefserverModelWizardInitialObjectCreationPage extends
+			WizardPage {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -371,7 +391,8 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE); {
+			Composite composite = new Composite(parent, SWT.NONE);
+			{
 				GridLayout layout = new GridLayout();
 				layout.numColumns = 1;
 				layout.verticalSpacing = 12;
@@ -386,7 +407,8 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 
 			Label containerLabel = new Label(composite, SWT.LEFT);
 			{
-				containerLabel.setText(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
+				containerLabel.setText(ChefclipseEditorPlugin.INSTANCE
+						.getString("_UI_ModelObject"));
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -412,7 +434,8 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 
 			Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
-				encodingLabel.setText(ChefclipseEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
+				encodingLabel.setText(ChefclipseEditorPlugin.INSTANCE
+						.getString("_UI_XMLEncoding"));
 
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -442,12 +465,11 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		protected ModifyListener validator =
-			new ModifyListener() {
-				public void modifyText(ModifyEvent e) {
-					setPageComplete(validatePage());
-				}
-			};
+		protected ModifyListener validator = new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				setPageComplete(validatePage());
+			}
+		};
 
 		/**
 		 * <!-- begin-user-doc -->
@@ -455,7 +477,8 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 		 * @generated
 		 */
 		protected boolean validatePage() {
-			return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
+			return getInitialObjectName() != null
+					&& getEncodings().contains(encodingField.getText());
 		}
 
 		/**
@@ -470,8 +493,7 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 				if (initialObjectField.getItemCount() == 1) {
 					initialObjectField.clearSelection();
 					encodingField.setFocus();
-				}
-				else {
+				} else {
 					encodingField.clearSelection();
 					initialObjectField.setFocus();
 				}
@@ -511,9 +533,9 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 		 */
 		protected String getLabel(String typeName) {
 			try {
-				return ChefclipseEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
-			}
-			catch(MissingResourceException mre) {
+				return ChefclipseEditPlugin.INSTANCE.getString("_UI_"
+						+ typeName + "_type");
+			} catch (MissingResourceException mre) {
 				ChefclipseEditorPlugin.INSTANCE.log(mre);
 			}
 			return typeName;
@@ -527,7 +549,10 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 		protected Collection<String> getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(ChefclipseEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
+				for (StringTokenizer stringTokenizer = new StringTokenizer(
+						ChefclipseEditorPlugin.INSTANCE
+								.getString("_UI_XMLEncodingChoices")); stringTokenizer
+						.hasMoreTokens();) {
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -541,14 +566,20 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-		@Override
+	@Override
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
-		newFileCreationPage = new ChefserverModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverModelWizard_label"));
-		newFileCreationPage.setDescription(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverModelWizard_description"));
-		newFileCreationPage.setFileName(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
+		newFileCreationPage = new ChefserverModelWizardNewFileCreationPage(
+				"Whatever", selection);
+		newFileCreationPage.setTitle(ChefclipseEditorPlugin.INSTANCE
+				.getString("_UI_ChefserverModelWizard_label"));
+		newFileCreationPage.setDescription(ChefclipseEditorPlugin.INSTANCE
+				.getString("_UI_ChefserverModelWizard_description"));
+		newFileCreationPage.setFileName(ChefclipseEditorPlugin.INSTANCE
+				.getString("_UI_ChefserverEditorFilenameDefaultBase")
+				+ "."
+				+ FILE_EXTENSIONS.get(0));
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -560,33 +591,44 @@ public class ChefserverModelWizard extends Wizard implements INewWizard {
 			if (selectedElement instanceof IResource) {
 				// Get the resource parent, if its a file.
 				//
-				IResource selectedResource = (IResource)selectedElement;
+				IResource selectedResource = (IResource) selectedElement;
 				if (selectedResource.getType() == IResource.FILE) {
 					selectedResource = selectedResource.getParent();
 				}
 
 				// This gives us a directory...
 				//
-				if (selectedResource instanceof IFolder || selectedResource instanceof IProject) {
+				if (selectedResource instanceof IFolder
+						|| selectedResource instanceof IProject) {
 					// Set this for the container.
 					//
-					newFileCreationPage.setContainerFullPath(selectedResource.getFullPath());
+					newFileCreationPage.setContainerFullPath(selectedResource
+							.getFullPath());
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverEditorFilenameDefaultBase");
-					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
-					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
-					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
-						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
+					String defaultModelBaseFilename = ChefclipseEditorPlugin.INSTANCE
+							.getString("_UI_ChefserverEditorFilenameDefaultBase");
+					String defaultModelFilenameExtension = FILE_EXTENSIONS
+							.get(0);
+					String modelFilename = defaultModelBaseFilename + "."
+							+ defaultModelFilenameExtension;
+					for (int i = 1; ((IContainer) selectedResource)
+							.findMember(modelFilename) != null; ++i) {
+						modelFilename = defaultModelBaseFilename + i + "."
+								+ defaultModelFilenameExtension;
 					}
 					newFileCreationPage.setFileName(modelFilename);
 				}
 			}
 		}
-		initialObjectCreationPage = new ChefserverModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(ChefclipseEditorPlugin.INSTANCE.getString("_UI_ChefserverModelWizard_label"));
-		initialObjectCreationPage.setDescription(ChefclipseEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+		initialObjectCreationPage = new ChefserverModelWizardInitialObjectCreationPage(
+				"Whatever2");
+		initialObjectCreationPage.setTitle(ChefclipseEditorPlugin.INSTANCE
+				.getString("_UI_ChefserverModelWizard_label"));
+		initialObjectCreationPage
+				.setDescription(ChefclipseEditorPlugin.INSTANCE
+						.getString("_UI_Wizard_initial_object_description"));
 		addPage(initialObjectCreationPage);
 	}
 

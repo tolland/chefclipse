@@ -68,7 +68,7 @@ public class UtilityAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -79,73 +79,98 @@ public class UtilityAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UtilitySwitch<Adapter> modelSwitch =
-		new UtilitySwitch<Adapter>() {
-			@Override
-			public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
-				return createNamedDescribedObjectAdapter();
-			}
-			@Override
-			public Adapter caseVersionedObject(VersionedObject object) {
-				return createVersionedObjectAdapter();
-			}
-			@Override
-			public Adapter caseSandboxedObject(SandboxedObject object) {
-				return createSandboxedObjectAdapter();
-			}
-			@Override
-			public Adapter caseRubyFile(RubyFile object) {
-				return createRubyFileAdapter();
-			}
-			@Override
-			public Adapter caseNamedObject(NamedObject object) {
-				return createNamedObjectAdapter();
-			}
-			@Override
-			public Adapter caseDescribedObject(DescribedObject object) {
-				return createDescribedObjectAdapter();
-			}
-			@Override
-			public Adapter caseChecksumFile(ChecksumFile object) {
-				return createChecksumFileAdapter();
-			}
-			@Override
-			public Adapter caseMaintainedObject(MaintainedObject object) {
-				return createMaintainedObjectAdapter();
-			}
-			@Override
-			public Adapter caseConfig(Config object) {
-				return createConfigAdapter();
-			}
-			@Override
-			public Adapter caseNameUrlMap(NameUrlMap object) {
-				return createNameUrlMapAdapter();
-			}
-			@Override
-			public Adapter caseMapTestContainer(MapTestContainer object) {
-				return createMapTestContainerAdapter();
-			}
-			@Override
-			public Adapter caseEStringToVersionUrlMap(Map.Entry<String, VersionUrl> object) {
-				return createEStringToVersionUrlMapAdapter();
-			}
-			@Override
-			public Adapter caseVersionUrl(VersionUrl object) {
-				return createVersionUrlAdapter();
-			}
-			@Override
-			public Adapter caseURLEntryTest(URLEntryTest object) {
-				return createURLEntryTestAdapter();
-			}
-			@Override
-			public Adapter caseNameVersionMap(NameVersionMap object) {
-				return createNameVersionMapAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+	protected UtilitySwitch<Adapter> modelSwitch = new UtilitySwitch<Adapter>() {
+		@Override
+		public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
+			return createNamedDescribedObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseVersionedObject(VersionedObject object) {
+			return createVersionedObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseSandboxedObject(SandboxedObject object) {
+			return createSandboxedObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseRubyFile(RubyFile object) {
+			return createRubyFileAdapter();
+		}
+
+		@Override
+		public Adapter caseNamedObject(NamedObject object) {
+			return createNamedObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseDescribedObject(DescribedObject object) {
+			return createDescribedObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseChecksumFile(ChecksumFile object) {
+			return createChecksumFileAdapter();
+		}
+
+		@Override
+		public Adapter caseMaintainedObject(MaintainedObject object) {
+			return createMaintainedObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseConfig(Config object) {
+			return createConfigAdapter();
+		}
+
+		@Override
+		public Adapter caseNameUrlMap(NameUrlMap object) {
+			return createNameUrlMapAdapter();
+		}
+
+		@Override
+		public Adapter caseMapTestContainer(MapTestContainer object) {
+			return createMapTestContainerAdapter();
+		}
+
+		@Override
+		public Adapter caseEStringToVersionUrlMap(
+				Map.Entry<String, VersionUrl> object) {
+			return createEStringToVersionUrlMapAdapter();
+		}
+
+		@Override
+		public Adapter caseVersionUrl(VersionUrl object) {
+			return createVersionUrlAdapter();
+		}
+
+		@Override
+		public Adapter caseURLEntryTest(URLEntryTest object) {
+			return createURLEntryTestAdapter();
+		}
+
+		@Override
+		public Adapter caseNameVersionMap(NameVersionMap object) {
+			return createNameVersionMapAdapter();
+		}
+
+		@Override
+		public Adapter caseIdentObject(IdentObject object) {
+			return createIdentObjectAdapter();
+		}
+
+		@Override
+		public Adapter caseJsonObject(JsonObject object) {
+			return createJsonObjectAdapter();
+		}
+
+		@Override
+		public Adapter defaultCase(EObject object) {
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -157,9 +182,8 @@ public class UtilityAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.NamedDescribedObject <em>Named Described Object</em>}'.
@@ -368,6 +392,34 @@ public class UtilityAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNameVersionMapAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.IdentObject <em>Ident Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.utility.IdentObject
+	 * @generated
+	 */
+	public Adapter createIdentObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.JsonObject <em>Json Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.limepepper.chefclipse.utility.JsonObject
+	 * @generated
+	 */
+	public Adapter createJsonObjectAdapter() {
 		return null;
 	}
 

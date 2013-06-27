@@ -29,93 +29,97 @@ import org.limepepper.chefclipse.common.cookbook.Recipe;
  * @generated
  */
 public abstract class RunListImpl extends EObjectImpl implements RunList {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RunListImpl() {
+	public RunListImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.RUN_LIST;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected int eStaticFeatureCount() {
+	@Override
+	protected int eStaticFeatureCount() {
 		return 0;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Environment getEnvironment() {
-		return (Environment)eGet(ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, true);
+	public Environment getEnvironment() {
+		return (Environment) eGet(
+				ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setEnvironment(Environment newEnvironment) {
+	public void setEnvironment(Environment newEnvironment) {
 		eSet(ChefserverPackage.Literals.RUN_LIST__ENVIRONMENT, newEnvironment);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<Recipe> getRecipes() {
-		return (EList<Recipe>)eGet(ChefserverPackage.Literals.RUN_LIST__RECIPES, true);
+	@SuppressWarnings("unchecked")
+	public EList<Recipe> getRecipes() {
+		return (EList<Recipe>) eGet(
+				ChefserverPackage.Literals.RUN_LIST__RECIPES, true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @SuppressWarnings("unchecked")
-    public EList<String> getRun_list_items() {
-		return (EList<String>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS, true);
+	@SuppressWarnings("unchecked")
+	public EList<String> getRun_list_items() {
+		return (EList<String>) eGet(
+				ChefserverPackage.Literals.RUN_LIST__RUN_LIST_ITEMS, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<RunList> getRun_list() {
-		return (EList<RunList>)eGet(ChefserverPackage.Literals.RUN_LIST__RUN_LIST, true);
+		return (EList<RunList>) eGet(
+				ChefserverPackage.Literals.RUN_LIST__RUN_LIST, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Server getServer() {
-		return (Server)eGet(ChefserverPackage.Literals.RUN_LIST__SERVER, true);
+		return (Server) eGet(ChefserverPackage.Literals.RUN_LIST__SERVER, true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

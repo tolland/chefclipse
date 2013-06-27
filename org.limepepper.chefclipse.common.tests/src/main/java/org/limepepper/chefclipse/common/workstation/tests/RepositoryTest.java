@@ -43,7 +43,7 @@ public class RepositoryTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected Repository getFixture() {
-		return (Repository)fixture;
+		return (Repository) fixture;
 	}
 
 	/**

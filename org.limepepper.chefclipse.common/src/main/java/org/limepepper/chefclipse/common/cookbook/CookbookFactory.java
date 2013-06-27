@@ -13,96 +13,97 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface CookbookFactory extends EFactory {
-    /**
+	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    CookbookFactory eINSTANCE = org.limepepper.chefclipse.common.cookbook.impl.CookbookFactoryImpl.init();
+	CookbookFactory eINSTANCE = org.limepepper.chefclipse.common.cookbook.impl.CookbookFactoryImpl
+			.init();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Version</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Version</em>'.
 	 * @generated
 	 */
-    CookbookVersion createCookbookVersion();
+	CookbookVersion createCookbookVersion();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Definition</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Definition</em>'.
 	 * @generated
 	 */
-    Definition createDefinition();
+	Definition createDefinition();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Library</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Library</em>'.
 	 * @generated
 	 */
-    Library createLibrary();
+	Library createLibrary();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Attribute</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Attribute</em>'.
 	 * @generated
 	 */
-    Attribute createAttribute();
+	Attribute createAttribute();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Recipe</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Recipe</em>'.
 	 * @generated
 	 */
-    Recipe createRecipe();
+	Recipe createRecipe();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Recipe Description</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Recipe Description</em>'.
 	 * @generated
 	 */
-    RecipeDescription createRecipeDescription();
+	RecipeDescription createRecipeDescription();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Resource</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Resource</em>'.
 	 * @generated
 	 */
-    Resource createResource();
+	Resource createResource();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Template</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Template</em>'.
 	 * @generated
 	 */
-    Template createTemplate();
+	Template createTemplate();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Attributes</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Attributes</em>'.
 	 * @generated
 	 */
-    Attributes createAttributes();
+	Attributes createAttributes();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>File</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,52 +112,52 @@ public interface CookbookFactory extends EFactory {
 	 */
 	File createFile();
 
-				/**
+	/**
 	 * Returns a new object of class '<em>Dependency Relation</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Dependency Relation</em>'.
 	 * @generated
 	 */
-    DependencyRelation createDependencyRelation();
+	DependencyRelation createDependencyRelation();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Metadata</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Metadata</em>'.
 	 * @generated
 	 */
-    Metadata createMetadata();
+	Metadata createMetadata();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Provider</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Provider</em>'.
 	 * @generated
 	 */
-    Provider createProvider();
+	Provider createProvider();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Root file</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Root file</em>'.
 	 * @generated
 	 */
-    Root_file createRoot_file();
+	Root_file createRoot_file();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Minimal Metadata</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Minimal Metadata</em>'.
 	 * @generated
 	 */
-    MinimalMetadata createMinimalMetadata();
+	MinimalMetadata createMinimalMetadata();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Cookbook</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,13 +166,13 @@ public interface CookbookFactory extends EFactory {
 	 */
 	Cookbook createCookbook();
 
-				/**
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-    CookbookPackage getCookbookPackage();
+	CookbookPackage getCookbookPackage();
 
 } //CookbookFactory

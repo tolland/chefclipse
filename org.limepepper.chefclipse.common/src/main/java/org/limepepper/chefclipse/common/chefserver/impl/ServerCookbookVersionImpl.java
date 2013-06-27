@@ -23,78 +23,88 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
  *
  * @generated
  */
-public class ServerCookbookVersionImpl extends CookbookVersionImpl implements ServerCookbookVersion {
-    /**
+public class ServerCookbookVersionImpl extends CookbookVersionImpl implements
+		ServerCookbookVersion {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ServerCookbookVersionImpl() {
+	public ServerCookbookVersionImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getVersion() {
-		return (String)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION, true);
+	public String getVersion() {
+		return (String) eGet(
+				ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION,
+				true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setVersion(String newVersion) {
-		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION, newVersion);
+	public void setVersion(String newVersion) {
+		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION,
+				newVersion);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public String getCookbook_name() {
-		return (String)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME, true);
+	public String getCookbook_name() {
+		return (String) eGet(
+				ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME,
+				true);
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public void setCookbook_name(String newCookbook_name) {
-		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME, newCookbook_name);
+	public void setCookbook_name(String newCookbook_name) {
+		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME,
+				newCookbook_name);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public KnifeConfig getKnifeConfig() {
-		return (KnifeConfig)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__KNIFE_CONFIG, true);
+		return (KnifeConfig) eGet(
+				ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__KNIFE_CONFIG,
+				true);
 	}
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setKnifeConfig(KnifeConfig newKnifeConfig) {
-		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__KNIFE_CONFIG, newKnifeConfig);
+		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__KNIFE_CONFIG,
+				newKnifeConfig);
 	}
 
 } //ServerCookbookVersionImpl

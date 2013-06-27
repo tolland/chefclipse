@@ -13,15 +13,16 @@ import org.eclipse.emf.ecore.EFactory;
  * @generated
  */
 public interface ChefclientFactory extends EFactory {
-    /**
+	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    ChefclientFactory eINSTANCE = org.limepepper.chefclipse.common.chefclient.impl.ChefclientFactoryImpl.init();
+	ChefclientFactory eINSTANCE = org.limepepper.chefclipse.common.chefclient.impl.ChefclientFactoryImpl
+			.init();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Chef Client</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -30,40 +31,40 @@ public interface ChefclientFactory extends EFactory {
 	 */
 	ChefClient createChefClient();
 
-				/**
+	/**
 	 * Returns a new object of class '<em>Ohai</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Ohai</em>'.
 	 * @generated
 	 */
-    Ohai createOhai();
+	Ohai createOhai();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Search</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Search</em>'.
 	 * @generated
 	 */
-    Search createSearch();
+	Search createSearch();
 
-    /**
+	/**
 	 * Returns a new object of class '<em>Client Config</em>'.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return a new object of class '<em>Client Config</em>'.
 	 * @generated
 	 */
-    ClientConfig createClientConfig();
+	ClientConfig createClientConfig();
 
-    /**
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-    ChefclientPackage getChefclientPackage();
+	ChefclientPackage getChefclientPackage();
 
 } //ChefclientFactory

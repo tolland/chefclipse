@@ -46,12 +46,12 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 */
 	public static UtilityFactory init() {
 		try {
-			UtilityFactory theUtilityFactory = (UtilityFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/internal"); 
+			UtilityFactory theUtilityFactory = (UtilityFactory) EPackage.Registry.INSTANCE
+					.getEFactory("http://limepepper.org/v1/chefclipse/internal");
 			if (theUtilityFactory != null) {
 				return theUtilityFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new UtilityFactoryImpl();
@@ -75,22 +75,41 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case UtilityPackage.VERSIONED_OBJECT: return createVersionedObject();
-			case UtilityPackage.SANDBOXED_OBJECT: return createSandboxedObject();
-			case UtilityPackage.RUBY_FILE: return createRubyFile();
-			case UtilityPackage.NAMED_OBJECT: return createNamedObject();
-			case UtilityPackage.DESCRIBED_OBJECT: return createDescribedObject();
-			case UtilityPackage.CHECKSUM_FILE: return createChecksumFile();
-			case UtilityPackage.MAINTAINED_OBJECT: return createMaintainedObject();
-			case UtilityPackage.CONFIG: return createConfig();
-			case UtilityPackage.NAME_URL_MAP: return createNameUrlMap();
-			case UtilityPackage.MAP_TEST_CONTAINER: return createMapTestContainer();
-			case UtilityPackage.ESTRING_TO_VERSION_URL_MAP: return (EObject)createEStringToVersionUrlMap();
-			case UtilityPackage.VERSION_URL: return createVersionUrl();
-			case UtilityPackage.URL_ENTRY_TEST: return createURLEntryTest();
-			case UtilityPackage.NAME_VERSION_MAP: return createNameVersionMap();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case UtilityPackage.VERSIONED_OBJECT:
+			return createVersionedObject();
+		case UtilityPackage.SANDBOXED_OBJECT:
+			return createSandboxedObject();
+		case UtilityPackage.RUBY_FILE:
+			return createRubyFile();
+		case UtilityPackage.NAMED_OBJECT:
+			return createNamedObject();
+		case UtilityPackage.DESCRIBED_OBJECT:
+			return createDescribedObject();
+		case UtilityPackage.CHECKSUM_FILE:
+			return createChecksumFile();
+		case UtilityPackage.MAINTAINED_OBJECT:
+			return createMaintainedObject();
+		case UtilityPackage.CONFIG:
+			return createConfig();
+		case UtilityPackage.NAME_URL_MAP:
+			return createNameUrlMap();
+		case UtilityPackage.MAP_TEST_CONTAINER:
+			return createMapTestContainer();
+		case UtilityPackage.ESTRING_TO_VERSION_URL_MAP:
+			return (EObject) createEStringToVersionUrlMap();
+		case UtilityPackage.VERSION_URL:
+			return createVersionUrl();
+		case UtilityPackage.URL_ENTRY_TEST:
+			return createURLEntryTest();
+		case UtilityPackage.NAME_VERSION_MAP:
+			return createNameVersionMap();
+		case UtilityPackage.IDENT_OBJECT:
+			return createIdentObject();
+		case UtilityPackage.JSON_OBJECT:
+			return createJsonObject();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName()
+					+ "' is not a valid classifier");
 		}
 	}
 
@@ -102,32 +121,33 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case UtilityPackage.URL:
-				return createURLFromString(eDataType, initialValue);
-			case UtilityPackage.FILE:
-				return createFileFromString(eDataType, initialValue);
-			case UtilityPackage.CHEF_TYPE:
-				return createChef_typeFromString(eDataType, initialValue);
-			case UtilityPackage.EMAIL:
-				return createEmailFromString(eDataType, initialValue);
-			case UtilityPackage.TEXT:
-				return createTextFromString(eDataType, initialValue);
-			case UtilityPackage.VERSION:
-				return createVersionFromString(eDataType, initialValue);
-			case UtilityPackage.NAME:
-				return createNameFromString(eDataType, initialValue);
-			case UtilityPackage.DESCRIPTION:
-				return createDescriptionFromString(eDataType, initialValue);
-			case UtilityPackage.OBJECT:
-				return createObjectFromString(eDataType, initialValue);
-			case UtilityPackage.NAME_URL_DATA_TYPE:
-				return createNameUrlDataTypeFromString(eDataType, initialValue);
-			case UtilityPackage.MAP_TEST:
-				return createMapTestFromString(eDataType, initialValue);
-			case UtilityPackage.IRESOURCE:
-				return createIResourceFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case UtilityPackage.URL:
+			return createURLFromString(eDataType, initialValue);
+		case UtilityPackage.FILE:
+			return createFileFromString(eDataType, initialValue);
+		case UtilityPackage.CHEF_TYPE:
+			return createChef_typeFromString(eDataType, initialValue);
+		case UtilityPackage.EMAIL:
+			return createEmailFromString(eDataType, initialValue);
+		case UtilityPackage.TEXT:
+			return createTextFromString(eDataType, initialValue);
+		case UtilityPackage.VERSION:
+			return createVersionFromString(eDataType, initialValue);
+		case UtilityPackage.NAME:
+			return createNameFromString(eDataType, initialValue);
+		case UtilityPackage.DESCRIPTION:
+			return createDescriptionFromString(eDataType, initialValue);
+		case UtilityPackage.OBJECT:
+			return createObjectFromString(eDataType, initialValue);
+		case UtilityPackage.NAME_URL_DATA_TYPE:
+			return createNameUrlDataTypeFromString(eDataType, initialValue);
+		case UtilityPackage.MAP_TEST:
+			return createMapTestFromString(eDataType, initialValue);
+		case UtilityPackage.IRESOURCE:
+			return createIResourceFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -139,32 +159,33 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case UtilityPackage.URL:
-				return convertURLToString(eDataType, instanceValue);
-			case UtilityPackage.FILE:
-				return convertFileToString(eDataType, instanceValue);
-			case UtilityPackage.CHEF_TYPE:
-				return convertChef_typeToString(eDataType, instanceValue);
-			case UtilityPackage.EMAIL:
-				return convertEmailToString(eDataType, instanceValue);
-			case UtilityPackage.TEXT:
-				return convertTextToString(eDataType, instanceValue);
-			case UtilityPackage.VERSION:
-				return convertVersionToString(eDataType, instanceValue);
-			case UtilityPackage.NAME:
-				return convertNameToString(eDataType, instanceValue);
-			case UtilityPackage.DESCRIPTION:
-				return convertDescriptionToString(eDataType, instanceValue);
-			case UtilityPackage.OBJECT:
-				return convertObjectToString(eDataType, instanceValue);
-			case UtilityPackage.NAME_URL_DATA_TYPE:
-				return convertNameUrlDataTypeToString(eDataType, instanceValue);
-			case UtilityPackage.MAP_TEST:
-				return convertMapTestToString(eDataType, instanceValue);
-			case UtilityPackage.IRESOURCE:
-				return convertIResourceToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case UtilityPackage.URL:
+			return convertURLToString(eDataType, instanceValue);
+		case UtilityPackage.FILE:
+			return convertFileToString(eDataType, instanceValue);
+		case UtilityPackage.CHEF_TYPE:
+			return convertChef_typeToString(eDataType, instanceValue);
+		case UtilityPackage.EMAIL:
+			return convertEmailToString(eDataType, instanceValue);
+		case UtilityPackage.TEXT:
+			return convertTextToString(eDataType, instanceValue);
+		case UtilityPackage.VERSION:
+			return convertVersionToString(eDataType, instanceValue);
+		case UtilityPackage.NAME:
+			return convertNameToString(eDataType, instanceValue);
+		case UtilityPackage.DESCRIPTION:
+			return convertDescriptionToString(eDataType, instanceValue);
+		case UtilityPackage.OBJECT:
+			return convertObjectToString(eDataType, instanceValue);
+		case UtilityPackage.NAME_URL_DATA_TYPE:
+			return convertNameUrlDataTypeToString(eDataType, instanceValue);
+		case UtilityPackage.MAP_TEST:
+			return convertMapTestToString(eDataType, instanceValue);
+		case UtilityPackage.IRESOURCE:
+			return convertIResourceToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException("The datatype '"
+					+ eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -313,8 +334,28 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public IdentObject createIdentObject() {
+		IdentObjectImpl identObject = new IdentObjectImpl();
+		return identObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public JsonObject createJsonObject() {
+		JsonObjectImpl jsonObject = new JsonObjectImpl();
+		return jsonObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public URL createURLFromString(EDataType eDataType, String initialValue) {
-		return (URL)super.createFromString(eDataType, initialValue);
+		return (URL) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -332,7 +373,7 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * @generated
 	 */
 	public File createFileFromString(EDataType eDataType, String initialValue) {
-		return (File)super.createFromString(eDataType, initialValue);
+		return (File) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -349,8 +390,9 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String createChef_typeFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
+	public String createChef_typeFromString(EDataType eDataType,
+			String initialValue) {
+		return (String) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -358,7 +400,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertChef_typeToString(EDataType eDataType, Object instanceValue) {
+	public String convertChef_typeToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -368,7 +411,7 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * @generated
 	 */
 	public String createEmailFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
+		return (String) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -386,7 +429,7 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * @generated
 	 */
 	public String createTextFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
+		return (String) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -403,8 +446,9 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String createVersionFromString(EDataType eDataType, String initialValue) {
-		return (String)super.createFromString(eDataType, initialValue);
+	public String createVersionFromString(EDataType eDataType,
+			String initialValue) {
+		return (String) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -412,7 +456,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVersionToString(EDataType eDataType, Object instanceValue) {
+	public String convertVersionToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -439,7 +484,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object createDescriptionFromString(EDataType eDataType, String initialValue) {
+	public Object createDescriptionFromString(EDataType eDataType,
+			String initialValue) {
 		return super.createFromString(eDataType, initialValue);
 	}
 
@@ -448,7 +494,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertDescriptionToString(EDataType eDataType, Object instanceValue) {
+	public String convertDescriptionToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -457,7 +504,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object createObjectFromString(EDataType eDataType, String initialValue) {
+	public Object createObjectFromString(EDataType eDataType,
+			String initialValue) {
 		return super.createFromString(eDataType, initialValue);
 	}
 
@@ -466,7 +514,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertObjectToString(EDataType eDataType, Object instanceValue) {
+	public String convertObjectToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -475,7 +524,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object createNameUrlDataTypeFromString(EDataType eDataType, String initialValue) {
+	public Object createNameUrlDataTypeFromString(EDataType eDataType,
+			String initialValue) {
 		return super.createFromString(eDataType, initialValue);
 	}
 
@@ -484,7 +534,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertNameUrlDataTypeToString(EDataType eDataType, Object instanceValue) {
+	public String convertNameUrlDataTypeToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -493,8 +544,9 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public HashMap createMapTestFromString(EDataType eDataType, String initialValue) {
-		return (HashMap)super.createFromString(eDataType, initialValue);
+	public HashMap createMapTestFromString(EDataType eDataType,
+			String initialValue) {
+		return (HashMap) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -502,7 +554,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertMapTestToString(EDataType eDataType, Object instanceValue) {
+	public String convertMapTestToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -511,8 +564,9 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IResource createIResourceFromString(EDataType eDataType, String initialValue) {
-		return (IResource)super.createFromString(eDataType, initialValue);
+	public IResource createIResourceFromString(EDataType eDataType,
+			String initialValue) {
+		return (IResource) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -520,7 +574,8 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertIResourceToString(EDataType eDataType, Object instanceValue) {
+	public String convertIResourceToString(EDataType eDataType,
+			Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -530,7 +585,7 @@ public class UtilityFactoryImpl extends EFactoryImpl implements UtilityFactory {
 	 * @generated
 	 */
 	public UtilityPackage getUtilityPackage() {
-		return (UtilityPackage)getEPackage();
+		return (UtilityPackage) getEPackage();
 	}
 
 	/**

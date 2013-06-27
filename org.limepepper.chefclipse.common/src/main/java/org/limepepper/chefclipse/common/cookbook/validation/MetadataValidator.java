@@ -17,14 +17,23 @@ public interface MetadataValidator {
 	boolean validate();
 
 	boolean validateCookbookVersion(CookbookVersion value);
+
 	boolean validateLong_description(String value);
+
 	boolean validateVersion(String value);
+
 	boolean validateReplaces(EMap<String, String> value);
+
 	boolean validateProvides(EMap<String, String> value);
+
 	boolean validateConflicts(EMap<String, String> value);
+
 	boolean validateSuggests(EMap<String, String> value);
+
 	boolean validateDependencies(EMap<String, String> value);
+
 	boolean validatePlatforms(EMap<String, String> value);
+
 	boolean validateRecipes(EMap<String, String> value);
 
 	boolean validateReplacing(String value);

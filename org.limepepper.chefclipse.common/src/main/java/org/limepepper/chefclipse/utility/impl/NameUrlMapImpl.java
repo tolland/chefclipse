@@ -58,7 +58,8 @@ public class NameUrlMapImpl extends EObjectImpl implements NameUrlMap {
 	 */
 	@SuppressWarnings("unchecked")
 	public EMap<String, String> getEntries() {
-		return (EMap<String, String>)eGet(UtilityPackage.Literals.NAME_URL_MAP__ENTRIES, true);
+		return (EMap<String, String>) eGet(
+				UtilityPackage.Literals.NAME_URL_MAP__ENTRIES, true);
 	}
 
 } //NameUrlMapImpl

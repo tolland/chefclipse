@@ -43,7 +43,7 @@ public class RoleTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected Role getFixture() {
-		return (Role)fixture;
+		return (Role) fixture;
 	}
 
 	/**

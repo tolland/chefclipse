@@ -16,22 +16,22 @@ import org.limepepper.chefclipse.common.cookbook.Root_file;
  * @generated
  */
 public class Root_fileImpl extends CookbookFileImpl implements Root_file {
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public Root_fileImpl() {
+	public Root_fileImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.ROOT_FILE;
 	}
 

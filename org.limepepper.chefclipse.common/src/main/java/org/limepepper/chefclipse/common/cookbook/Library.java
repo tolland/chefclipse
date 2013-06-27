@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Library</b></em>'.

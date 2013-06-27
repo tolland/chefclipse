@@ -43,7 +43,7 @@ public abstract class CookbookFileTest extends NamedObjectTest {
 	 */
 	@Override
 	protected CookbookFile getFixture() {
-		return (CookbookFile)fixture;
+		return (CookbookFile) fixture;
 	}
 
 	/**

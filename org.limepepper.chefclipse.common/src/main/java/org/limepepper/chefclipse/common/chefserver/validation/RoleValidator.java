@@ -19,6 +19,7 @@ public interface RoleValidator {
 	boolean validate();
 
 	boolean validateRun_list(RunList value);
+
 	boolean validateAttributes(EList<Attribute> value);
 
 	boolean validateEnvironment(Environment value);

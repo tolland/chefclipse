@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -23,14 +22,9 @@ import org.limepepper.chefclipse.common.cookbook.File;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FileItemProvider
-	extends CookbookFileItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class FileItemProvider extends CookbookFileItemProvider implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -65,7 +59,8 @@ public class FileItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/File"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/File"));
 	}
 
 	/**
@@ -76,10 +71,9 @@ public class FileItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((File)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_File_type") :
-			getString("_UI_File_type") + " " + label;
+		String label = ((File) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_File_type")
+				: getString("_UI_File_type") + " " + label;
 	}
 
 	/**
@@ -103,7 +97,8 @@ public class FileItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

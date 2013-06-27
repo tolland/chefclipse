@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.VersionedObject;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VersionedObjectItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class VersionedObjectItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,19 +67,17 @@ public class VersionedObjectItemProvider
 	 * @generated
 	 */
 	protected void addNUM_VERSIONSPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_VersionedObject_NUM_VERSIONS_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_VersionedObject_NUM_VERSIONS_feature", "_UI_VersionedObject_type"),
-				 UtilityPackage.Literals.VERSIONED_OBJECT__NUM_VERSIONS,
-				 false,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_VersionedObject_NUM_VERSIONS_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_VersionedObject_NUM_VERSIONS_feature",
+						"_UI_VersionedObject_type"),
+				UtilityPackage.Literals.VERSIONED_OBJECT__NUM_VERSIONS, false,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -95,19 +87,16 @@ public class VersionedObjectItemProvider
 	 * @generated
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_VersionedObject_version_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_VersionedObject_version_feature", "_UI_VersionedObject_type"),
-				 UtilityPackage.Literals.VERSIONED_OBJECT__VERSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_VersionedObject_version_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_VersionedObject_version_feature",
+						"_UI_VersionedObject_type"),
+				UtilityPackage.Literals.VERSIONED_OBJECT__VERSION, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -118,7 +107,8 @@ public class VersionedObjectItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/VersionedObject"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/VersionedObject"));
 	}
 
 	/**
@@ -129,11 +119,10 @@ public class VersionedObjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		Integer labelValue = ((VersionedObject)object).getNUM_VERSIONS();
+		Integer labelValue = ((VersionedObject) object).getNUM_VERSIONS();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_VersionedObject_type") :
-			getString("_UI_VersionedObject_type") + " " + label;
+		return label == null || label.length() == 0 ? getString("_UI_VersionedObject_type")
+				: getString("_UI_VersionedObject_type") + " " + label;
 	}
 
 	/**
@@ -148,10 +137,11 @@ public class VersionedObjectItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(VersionedObject.class)) {
-			case UtilityPackage.VERSIONED_OBJECT__NUM_VERSIONS:
-			case UtilityPackage.VERSIONED_OBJECT__VERSION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.VERSIONED_OBJECT__NUM_VERSIONS:
+		case UtilityPackage.VERSIONED_OBJECT__VERSION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -164,7 +154,8 @@ public class VersionedObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

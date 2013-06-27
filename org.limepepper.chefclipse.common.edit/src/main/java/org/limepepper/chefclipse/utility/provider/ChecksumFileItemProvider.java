@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChecksumFileItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class ChecksumFileItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -72,19 +66,16 @@ public class ChecksumFileItemProvider
 	 * @generated
 	 */
 	protected void addChecksumPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ChecksumFile_checksum_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ChecksumFile_checksum_feature", "_UI_ChecksumFile_type"),
-				 UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ChecksumFile_checksum_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ChecksumFile_checksum_feature",
+						"_UI_ChecksumFile_type"),
+				UtilityPackage.Literals.CHECKSUM_FILE__CHECKSUM, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -95,7 +86,8 @@ public class ChecksumFileItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChecksumFile"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/ChecksumFile"));
 	}
 
 	/**
@@ -106,10 +98,9 @@ public class ChecksumFileItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ChecksumFile)object).getChecksum();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ChecksumFile_type") :
-			getString("_UI_ChecksumFile_type") + " " + label;
+		String label = ((ChecksumFile) object).getChecksum();
+		return label == null || label.length() == 0 ? getString("_UI_ChecksumFile_type")
+				: getString("_UI_ChecksumFile_type") + " " + label;
 	}
 
 	/**
@@ -124,9 +115,10 @@ public class ChecksumFileItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ChecksumFile.class)) {
-			case UtilityPackage.CHECKSUM_FILE__CHECKSUM:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.CHECKSUM_FILE__CHECKSUM:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -139,7 +131,8 @@ public class ChecksumFileItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

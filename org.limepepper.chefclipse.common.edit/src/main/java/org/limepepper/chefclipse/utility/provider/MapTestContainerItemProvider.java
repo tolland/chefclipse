@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MapTestContainerItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class MapTestContainerItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -72,19 +66,17 @@ public class MapTestContainerItemProvider
 	 * @generated
 	 */
 	protected void addEntriesPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MapTestContainer_entries_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MapTestContainer_entries_feature", "_UI_MapTestContainer_type"),
-				 UtilityPackage.Literals.MAP_TEST_CONTAINER__ENTRIES,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MapTestContainer_entries_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_MapTestContainer_entries_feature",
+						"_UI_MapTestContainer_type"),
+				UtilityPackage.Literals.MAP_TEST_CONTAINER__ENTRIES, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -95,7 +87,8 @@ public class MapTestContainerItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MapTestContainer"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/MapTestContainer"));
 	}
 
 	/**
@@ -121,9 +114,10 @@ public class MapTestContainerItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MapTestContainer.class)) {
-			case UtilityPackage.MAP_TEST_CONTAINER__ENTRIES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.MAP_TEST_CONTAINER__ENTRIES:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -136,7 +130,8 @@ public class MapTestContainerItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

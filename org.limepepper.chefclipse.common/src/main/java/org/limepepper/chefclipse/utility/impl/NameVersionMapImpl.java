@@ -59,7 +59,8 @@ public class NameVersionMapImpl extends EObjectImpl implements NameVersionMap {
 	 */
 	@SuppressWarnings("unchecked")
 	public EMap<String, VersionUrl> getEntries() {
-		return (EMap<String, VersionUrl>)eGet(UtilityPackage.Literals.NAME_VERSION_MAP__ENTRIES, true);
+		return (EMap<String, VersionUrl>) eGet(
+				UtilityPackage.Literals.NAME_VERSION_MAP__ENTRIES, true);
 	}
 
 } //NameVersionMapImpl

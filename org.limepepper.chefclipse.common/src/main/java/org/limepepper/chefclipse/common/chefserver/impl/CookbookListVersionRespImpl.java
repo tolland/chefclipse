@@ -21,7 +21,8 @@ import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
  *
  * @generated
  */
-public class CookbookListVersionRespImpl extends EObjectImpl implements CookbookListVersionResp {
+public class CookbookListVersionRespImpl extends EObjectImpl implements
+		CookbookListVersionResp {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,7 +58,9 @@ public class CookbookListVersionRespImpl extends EObjectImpl implements Cookbook
 	 * @generated
 	 */
 	public String getUrl() {
-		return (String)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__URL, true);
+		return (String) eGet(
+				ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__URL,
+				true);
 	}
 
 	/**
@@ -75,7 +78,9 @@ public class CookbookListVersionRespImpl extends EObjectImpl implements Cookbook
 	 * @generated
 	 */
 	public String getVersion() {
-		return (String)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION, true);
+		return (String) eGet(
+				ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION,
+				true);
 	}
 
 	/**
@@ -84,7 +89,8 @@ public class CookbookListVersionRespImpl extends EObjectImpl implements Cookbook
 	 * @generated
 	 */
 	public void setVersion(String newVersion) {
-		eSet(ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION, newVersion);
+		eSet(ChefserverPackage.Literals.COOKBOOK_LIST_VERSION_RESP__VERSION,
+				newVersion);
 	}
 
 } //CookbookListVersionRespImpl

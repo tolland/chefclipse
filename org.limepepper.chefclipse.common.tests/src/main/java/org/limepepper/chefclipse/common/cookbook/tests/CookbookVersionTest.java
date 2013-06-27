@@ -43,7 +43,7 @@ public class CookbookVersionTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected CookbookVersion getFixture() {
-		return (CookbookVersion)fixture;
+		return (CookbookVersion) fixture;
 	}
 
 	/**

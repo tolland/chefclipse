@@ -42,7 +42,7 @@ public class DataBagsFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected DataBagsFolder getFixture() {
-		return (DataBagsFolder)fixture;
+		return (DataBagsFolder) fixture;
 	}
 
 	/**

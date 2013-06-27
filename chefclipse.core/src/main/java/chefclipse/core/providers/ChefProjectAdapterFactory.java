@@ -14,24 +14,25 @@ import org.limepepper.chefclipse.common.workstation.provider.WorkstationItemProv
 import chefclipse.core.factories.ChefModelItemProviderAdapterFactory;
 
 public class ChefProjectAdapterFactory {
-    private static ComposedAdapterFactory adapterFactory;
 
-    public final static List<AdapterFactory> createFactoryList(){
-        List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
+	private static ComposedAdapterFactory adapterFactory;
 
-        factories.add(new ChefclientItemProviderAdapterFactory());
-        factories.add(new ChefserverItemProviderAdapterFactory());
-        factories.add(new CookbookItemProviderAdapterFactory());
-        factories.add(new KnifeItemProviderAdapterFactory());
-        factories.add(new WorkstationItemProviderAdapterFactory());
-        factories.add(new ChefModelItemProviderAdapterFactory());
+	public final static List<AdapterFactory> createFactoryList() {
+		List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 
-        return factories;
-      }
+		factories.add(new ChefclientItemProviderAdapterFactory());
+		factories.add(new ChefserverItemProviderAdapterFactory());
+		factories.add(new CookbookItemProviderAdapterFactory());
+		factories.add(new KnifeItemProviderAdapterFactory());
+		factories.add(new WorkstationItemProviderAdapterFactory());
+		factories.add(new ChefModelItemProviderAdapterFactory());
 
-    public final static ComposedAdapterFactory getAdapterFactory(){
-        if (adapterFactory == null)
-          adapterFactory = new ComposedAdapterFactory(createFactoryList());
-        return adapterFactory;
-      }
+		return factories;
+	}
+
+	public final static ComposedAdapterFactory getAdapterFactory() {
+		if (adapterFactory == null)
+			adapterFactory = new ComposedAdapterFactory(createFactoryList());
+		return adapterFactory;
+	}
 }

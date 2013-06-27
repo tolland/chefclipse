@@ -39,7 +39,7 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.utility.Config;
 
-import chefclipse.ui.ChefPlugin;
+import chefclipse.ui.ChefUI;
 import chefclipse.ui.messages.Messages;
 
 /**
@@ -125,7 +125,7 @@ public class ChefConfigurationsViewer implements ISelectionProvider {
 		 */
 		public Image getColumnImage(Object element, int columnIndex) {
 			if (columnIndex == 0) {
-				return ChefPlugin
+				return ChefUI
 						.getImageDescriptor("icons/chefserver.png").createImage(); //$NON-NLS-1$
 			}
 			return null;

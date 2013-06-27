@@ -57,7 +57,8 @@ public class CookbookImpl extends EObjectImpl implements Cookbook {
 	 * @generated
 	 */
 	public String getJson_class() {
-		return (String)eGet(CookbookPackage.Literals.COOKBOOK__JSON_CLASS, true);
+		return (String) eGet(CookbookPackage.Literals.COOKBOOK__JSON_CLASS,
+				true);
 	}
 
 	/**
@@ -75,7 +76,7 @@ public class CookbookImpl extends EObjectImpl implements Cookbook {
 	 * @generated
 	 */
 	public String getChef_type() {
-		return (String)eGet(CookbookPackage.Literals.COOKBOOK__CHEF_TYPE, true);
+		return (String) eGet(CookbookPackage.Literals.COOKBOOK__CHEF_TYPE, true);
 	}
 
 	/**

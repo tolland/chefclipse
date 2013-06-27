@@ -39,7 +39,9 @@ import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
+public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable,
+		IChildCreationExtender {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -70,7 +72,8 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ChefclipseEditPlugin.INSTANCE, CookbookPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
+			ChefclipseEditPlugin.INSTANCE, CookbookPackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -191,7 +194,8 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
 	@Override
 	public Adapter createRecipeDescriptionAdapter() {
 		if (recipeDescriptionItemProvider == null) {
-			recipeDescriptionItemProvider = new RecipeDescriptionItemProvider(this);
+			recipeDescriptionItemProvider = new RecipeDescriptionItemProvider(
+					this);
 		}
 
 		return recipeDescriptionItemProvider;
@@ -294,7 +298,8 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
 	@Override
 	public Adapter createDependencyRelationAdapter() {
 		if (dependencyRelationItemProvider == null) {
-			dependencyRelationItemProvider = new DependencyRelationItemProvider(this);
+			dependencyRelationItemProvider = new DependencyRelationItemProvider(
+					this);
 		}
 
 		return dependencyRelationItemProvider;
@@ -410,7 +415,8 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory
+				.getRootAdapterFactory();
 	}
 
 	/**
@@ -419,7 +425,8 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(
+			ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -453,7 +460,8 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>)
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -489,8 +497,10 @@ public class CookbookItemProviderAdapterFactory extends CookbookAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+	public Collection<?> getNewChildDescriptors(Object object,
+			EditingDomain editingDomain) {
+		return childCreationExtenderManager.getNewChildDescriptors(object,
+				editingDomain);
 	}
 
 	/**

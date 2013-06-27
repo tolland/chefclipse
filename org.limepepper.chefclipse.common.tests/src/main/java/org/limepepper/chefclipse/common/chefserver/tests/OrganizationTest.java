@@ -43,7 +43,7 @@ public class OrganizationTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected Organization getFixture() {
-		return (Organization)fixture;
+		return (Organization) fixture;
 	}
 
 	/**

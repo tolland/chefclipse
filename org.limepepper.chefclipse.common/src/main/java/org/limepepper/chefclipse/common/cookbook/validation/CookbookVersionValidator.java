@@ -30,17 +30,30 @@ public interface CookbookVersionValidator {
 	boolean validate();
 
 	boolean validateEnvironment(Environment value);
+
 	boolean validateTemplates(EList<Template> value);
+
 	boolean validateRecipes(EList<Recipe> value);
+
 	boolean validateDefinitions(EList<Definition> value);
+
 	boolean validateFiles(EList<File> value);
+
 	boolean validateResources(EList<Resource> value);
+
 	boolean validateLibraries(EList<Library> value);
+
 	boolean validateMetadata(Metadata value);
+
 	boolean validateProviders(EList<Provider> value);
+
 	boolean validateRoot_files(EList<Root_file> value);
+
 	boolean validateAttributes(EList<Attributes> value);
+
 	boolean validateCatalog(String value);
+
 	boolean validateDepends(EList<CookbookVersion> value);
+
 	boolean validateMissing(EList<Map.Entry<String, String>> value);
 }

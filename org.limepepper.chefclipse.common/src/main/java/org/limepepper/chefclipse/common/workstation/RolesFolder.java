@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.workstation;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Roles Folder</b></em>'.

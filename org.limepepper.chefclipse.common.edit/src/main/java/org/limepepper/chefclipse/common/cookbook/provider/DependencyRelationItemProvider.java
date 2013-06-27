@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.cookbook.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -25,14 +24,9 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DependencyRelationItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class DependencyRelationItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -67,7 +61,8 @@ public class DependencyRelationItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DependencyRelation"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/DependencyRelation"));
 	}
 
 	/**
@@ -102,7 +97,8 @@ public class DependencyRelationItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -114,7 +110,7 @@ public class DependencyRelationItemProvider
 	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

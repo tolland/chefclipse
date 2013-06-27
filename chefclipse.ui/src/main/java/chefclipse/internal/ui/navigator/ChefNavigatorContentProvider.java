@@ -14,6 +14,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.IPipelinedTreeContentProvider;
@@ -23,9 +24,7 @@ import org.eclipse.ui.navigator.PipelinedViewerUpdate;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
-import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
-import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -55,6 +54,13 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
 		super(ChefProjectAdapterFactory.getAdapterFactory());
 	}
 
+	@Override
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		// this makes the Viewer as viewer
+		super.inputChanged(viewer, oldInput, newInput);
+
+	}
+
 	/**
 	 * add the bare ecore Repository object into the children, so there is a
 	 * virtual resource to access the model use the emf generated factories to
@@ -75,10 +81,10 @@ public class ChefNavigatorContentProvider extends AdapterFactoryContentProvider
 
 				children.add(repository);
 
-				for (KnifeConfig knifeConfig : repository.getKnives()) {
+/*				for (KnifeConfig knifeConfig : repository.getKnives()) {
 
 					children.add(knifeConfig);
-				}
+				}*/
 
 				return children.toArray();
 

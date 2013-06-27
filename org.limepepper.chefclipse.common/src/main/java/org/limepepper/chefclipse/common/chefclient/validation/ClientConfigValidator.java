@@ -4,7 +4,6 @@
  */
 package org.limepepper.chefclipse.common.chefclient.validation;
 
-
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.chefclient.ClientConfig}.
  * This doesn't really do anything, and it's not a real EMF artifact.

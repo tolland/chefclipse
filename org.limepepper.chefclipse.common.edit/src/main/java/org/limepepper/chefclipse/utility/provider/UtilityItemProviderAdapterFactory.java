@@ -31,7 +31,8 @@ import org.limepepper.chefclipse.utility.util.UtilityAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
+public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -226,7 +227,8 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory imp
 	@Override
 	public Adapter createMaintainedObjectAdapter() {
 		if (maintainedObjectItemProvider == null) {
-			maintainedObjectItemProvider = new MaintainedObjectItemProvider(this);
+			maintainedObjectItemProvider = new MaintainedObjectItemProvider(
+					this);
 		}
 
 		return maintainedObjectItemProvider;
@@ -295,7 +297,8 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory imp
 	@Override
 	public Adapter createMapTestContainerAdapter() {
 		if (mapTestContainerItemProvider == null) {
-			mapTestContainerItemProvider = new MapTestContainerItemProvider(this);
+			mapTestContainerItemProvider = new MapTestContainerItemProvider(
+					this);
 		}
 
 		return mapTestContainerItemProvider;
@@ -318,7 +321,8 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory imp
 	@Override
 	public Adapter createEStringToVersionUrlMapAdapter() {
 		if (eStringToVersionUrlMapItemProvider == null) {
-			eStringToVersionUrlMapItemProvider = new EStringToVersionUrlMapItemProvider(this);
+			eStringToVersionUrlMapItemProvider = new EStringToVersionUrlMapItemProvider(
+					this);
 		}
 
 		return eStringToVersionUrlMapItemProvider;
@@ -394,13 +398,60 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.utility.IdentObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IdentObjectItemProvider identObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.utility.IdentObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIdentObjectAdapter() {
+		if (identObjectItemProvider == null) {
+			identObjectItemProvider = new IdentObjectItemProvider(this);
+		}
+
+		return identObjectItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.limepepper.chefclipse.utility.JsonObject} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected JsonObjectItemProvider jsonObjectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.limepepper.chefclipse.utility.JsonObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createJsonObjectAdapter() {
+		if (jsonObjectItemProvider == null) {
+			jsonObjectItemProvider = new JsonObjectItemProvider(this);
+		}
+
+		return jsonObjectItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory
+				.getRootAdapterFactory();
 	}
 
 	/**
@@ -409,7 +460,8 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+	public void setParentAdapterFactory(
+			ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -443,7 +495,8 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory imp
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>)
+					|| (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -492,20 +545,38 @@ public class UtilityItemProviderAdapterFactory extends UtilityAdapterFactory imp
 	 * @generated
 	 */
 	public void dispose() {
-		if (versionedObjectItemProvider != null) versionedObjectItemProvider.dispose();
-		if (sandboxedObjectItemProvider != null) sandboxedObjectItemProvider.dispose();
-		if (rubyFileItemProvider != null) rubyFileItemProvider.dispose();
-		if (namedObjectItemProvider != null) namedObjectItemProvider.dispose();
-		if (describedObjectItemProvider != null) describedObjectItemProvider.dispose();
-		if (checksumFileItemProvider != null) checksumFileItemProvider.dispose();
-		if (maintainedObjectItemProvider != null) maintainedObjectItemProvider.dispose();
-		if (configItemProvider != null) configItemProvider.dispose();
-		if (nameUrlMapItemProvider != null) nameUrlMapItemProvider.dispose();
-		if (mapTestContainerItemProvider != null) mapTestContainerItemProvider.dispose();
-		if (eStringToVersionUrlMapItemProvider != null) eStringToVersionUrlMapItemProvider.dispose();
-		if (versionUrlItemProvider != null) versionUrlItemProvider.dispose();
-		if (urlEntryTestItemProvider != null) urlEntryTestItemProvider.dispose();
-		if (nameVersionMapItemProvider != null) nameVersionMapItemProvider.dispose();
+		if (versionedObjectItemProvider != null)
+			versionedObjectItemProvider.dispose();
+		if (sandboxedObjectItemProvider != null)
+			sandboxedObjectItemProvider.dispose();
+		if (rubyFileItemProvider != null)
+			rubyFileItemProvider.dispose();
+		if (namedObjectItemProvider != null)
+			namedObjectItemProvider.dispose();
+		if (describedObjectItemProvider != null)
+			describedObjectItemProvider.dispose();
+		if (checksumFileItemProvider != null)
+			checksumFileItemProvider.dispose();
+		if (maintainedObjectItemProvider != null)
+			maintainedObjectItemProvider.dispose();
+		if (configItemProvider != null)
+			configItemProvider.dispose();
+		if (nameUrlMapItemProvider != null)
+			nameUrlMapItemProvider.dispose();
+		if (mapTestContainerItemProvider != null)
+			mapTestContainerItemProvider.dispose();
+		if (eStringToVersionUrlMapItemProvider != null)
+			eStringToVersionUrlMapItemProvider.dispose();
+		if (versionUrlItemProvider != null)
+			versionUrlItemProvider.dispose();
+		if (urlEntryTestItemProvider != null)
+			urlEntryTestItemProvider.dispose();
+		if (nameVersionMapItemProvider != null)
+			nameVersionMapItemProvider.dispose();
+		if (identObjectItemProvider != null)
+			identObjectItemProvider.dispose();
+		if (jsonObjectItemProvider != null)
+			jsonObjectItemProvider.dispose();
 	}
 
 }

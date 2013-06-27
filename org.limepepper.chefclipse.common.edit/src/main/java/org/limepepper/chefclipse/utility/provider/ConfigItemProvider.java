@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ConfigItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class ConfigItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -78,19 +72,18 @@ public class ConfigItemProvider
 	 * @generated
 	 */
 	protected void addChef_server_urlPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Config_chef_server_url_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Config_chef_server_url_feature", "_UI_Config_type"),
-				 UtilityPackage.Literals.CONFIG__CHEF_SERVER_URL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_Config_chef_server_url_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_Config_chef_server_url_feature",
+								"_UI_Config_type"),
+						UtilityPackage.Literals.CONFIG__CHEF_SERVER_URL, true,
+						false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -100,19 +93,15 @@ public class ConfigItemProvider
 	 * @generated
 	 */
 	protected void addClient_keyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Config_client_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Config_client_key_feature", "_UI_Config_type"),
-				 UtilityPackage.Literals.CONFIG__CLIENT_KEY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Config_client_key_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Config_client_key_feature", "_UI_Config_type"),
+				UtilityPackage.Literals.CONFIG__CLIENT_KEY, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -122,19 +111,15 @@ public class ConfigItemProvider
 	 * @generated
 	 */
 	protected void addNode_namePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Config_node_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Config_node_name_feature", "_UI_Config_type"),
-				 UtilityPackage.Literals.CONFIG__NODE_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Config_node_name_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Config_node_name_feature", "_UI_Config_type"),
+				UtilityPackage.Literals.CONFIG__NODE_NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -144,19 +129,15 @@ public class ConfigItemProvider
 	 * @generated
 	 */
 	protected void addLog_levelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Config_log_level_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Config_log_level_feature", "_UI_Config_type"),
-				 UtilityPackage.Literals.CONFIG__LOG_LEVEL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Config_log_level_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Config_log_level_feature", "_UI_Config_type"),
+				UtilityPackage.Literals.CONFIG__LOG_LEVEL, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -166,19 +147,18 @@ public class ConfigItemProvider
 	 * @generated
 	 */
 	protected void addValidation_keyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Config_validation_key_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Config_validation_key_feature", "_UI_Config_type"),
-				 UtilityPackage.Literals.CONFIG__VALIDATION_KEY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_Config_validation_key_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_Config_validation_key_feature",
+								"_UI_Config_type"),
+						UtilityPackage.Literals.CONFIG__VALIDATION_KEY, true,
+						false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -188,19 +168,15 @@ public class ConfigItemProvider
 	 * @generated
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Config_version_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Config_version_feature", "_UI_Config_type"),
-				 UtilityPackage.Literals.CONFIG__VERSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Config_version_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Config_version_feature", "_UI_Config_type"),
+				UtilityPackage.Literals.CONFIG__VERSION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -210,19 +186,17 @@ public class ConfigItemProvider
 	 * @generated
 	 */
 	protected void addValidation_client_namePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Config_validation_client_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Config_validation_client_name_feature", "_UI_Config_type"),
-				 UtilityPackage.Literals.CONFIG__VALIDATION_CLIENT_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Config_validation_client_name_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Config_validation_client_name_feature",
+						"_UI_Config_type"),
+				UtilityPackage.Literals.CONFIG__VALIDATION_CLIENT_NAME, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -233,7 +207,8 @@ public class ConfigItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Config"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/Config"));
 	}
 
 	/**
@@ -244,10 +219,9 @@ public class ConfigItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Config)object).getNode_name();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Config_type") :
-			getString("_UI_Config_type") + " " + label;
+		String label = ((Config) object).getNode_name();
+		return label == null || label.length() == 0 ? getString("_UI_Config_type")
+				: getString("_UI_Config_type") + " " + label;
 	}
 
 	/**
@@ -262,15 +236,16 @@ public class ConfigItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Config.class)) {
-			case UtilityPackage.CONFIG__CHEF_SERVER_URL:
-			case UtilityPackage.CONFIG__CLIENT_KEY:
-			case UtilityPackage.CONFIG__NODE_NAME:
-			case UtilityPackage.CONFIG__LOG_LEVEL:
-			case UtilityPackage.CONFIG__VALIDATION_KEY:
-			case UtilityPackage.CONFIG__VERSION:
-			case UtilityPackage.CONFIG__VALIDATION_CLIENT_NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.CONFIG__CHEF_SERVER_URL:
+		case UtilityPackage.CONFIG__CLIENT_KEY:
+		case UtilityPackage.CONFIG__NODE_NAME:
+		case UtilityPackage.CONFIG__LOG_LEVEL:
+		case UtilityPackage.CONFIG__VALIDATION_KEY:
+		case UtilityPackage.CONFIG__VERSION:
+		case UtilityPackage.CONFIG__VALIDATION_CLIENT_NAME:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -283,7 +258,8 @@ public class ConfigItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -43,7 +43,7 @@ public class ServerCookbookVersionTest extends CookbookVersionTest {
 	 */
 	@Override
 	protected ServerCookbookVersion getFixture() {
-		return (ServerCookbookVersion)fixture;
+		return (ServerCookbookVersion) fixture;
 	}
 
 	/**

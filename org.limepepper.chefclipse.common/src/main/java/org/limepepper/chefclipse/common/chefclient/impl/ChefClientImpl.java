@@ -57,7 +57,8 @@ public class ChefClientImpl extends EObjectImpl implements ChefClient {
 	 * @generated
 	 */
 	public Server getServer() {
-		return (Server)eGet(ChefclientPackage.Literals.CHEF_CLIENT__SERVER, true);
+		return (Server) eGet(ChefclientPackage.Literals.CHEF_CLIENT__SERVER,
+				true);
 	}
 
 	/**

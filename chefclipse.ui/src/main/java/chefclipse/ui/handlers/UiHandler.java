@@ -4,6 +4,7 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.IHandler;
 import org.eclipse.core.commands.IHandlerListener;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -20,6 +21,7 @@ import org.limepepper.chefclipse.logger.LoggerPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import chefclipse.core.ChefCore;
 import chefclipse.core.managers.ChefRepositoryManager;
 
 public class UiHandler implements IHandler {
@@ -79,6 +81,15 @@ public class UiHandler implements IHandler {
 								.getNodeList());
 
 					}
+
+				} else if (name.equals("debug.show.listeners")) {
+
+
+
+						logger.debug("showing listeners");
+
+
+						logger.debug("is locked: "+ResourcesPlugin.getWorkspace().isTreeLocked());
 
 				}
 

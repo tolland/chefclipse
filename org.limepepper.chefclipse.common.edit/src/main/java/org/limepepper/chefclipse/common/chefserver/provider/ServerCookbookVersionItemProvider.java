@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.chefserver.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,15 +29,10 @@ import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ServerCookbookVersionItemProvider
-	extends CookbookVersionItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
-		ITableItemLabelProvider {
+public class ServerCookbookVersionItemProvider extends
+		CookbookVersionItemProvider implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider,
+		IItemLabelProvider, IItemPropertySource, ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -74,19 +68,17 @@ public class ServerCookbookVersionItemProvider
 	 * @generated
 	 */
 	protected void addVersionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ServerCookbookVersion_version_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServerCookbookVersion_version_feature", "_UI_ServerCookbookVersion_type"),
-				 ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ServerCookbookVersion_version_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_ServerCookbookVersion_version_feature",
+						"_UI_ServerCookbookVersion_type"),
+				ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION,
+				true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null, null));
 	}
 
 	/**
@@ -96,19 +88,19 @@ public class ServerCookbookVersionItemProvider
 	 * @generated
 	 */
 	protected void addCookbook_namePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ServerCookbookVersion_cookbook_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServerCookbookVersion_cookbook_name_feature", "_UI_ServerCookbookVersion_type"),
-				 ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_ServerCookbookVersion_cookbook_name_feature"),
+						getString(
+								"_UI_PropertyDescriptor_description",
+								"_UI_ServerCookbookVersion_cookbook_name_feature",
+								"_UI_ServerCookbookVersion_type"),
+						ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME,
+						true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -118,19 +110,18 @@ public class ServerCookbookVersionItemProvider
 	 * @generated
 	 */
 	protected void addKnifeConfigPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ServerCookbookVersion_knifeConfig_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ServerCookbookVersion_knifeConfig_feature", "_UI_ServerCookbookVersion_type"),
-				 ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__KNIFE_CONFIG,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_ServerCookbookVersion_knifeConfig_feature"),
+						getString(
+								"_UI_PropertyDescriptor_description",
+								"_UI_ServerCookbookVersion_knifeConfig_feature",
+								"_UI_ServerCookbookVersion_type"),
+						ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__KNIFE_CONFIG,
+						true, false, true, null, null, null));
 	}
 
 	/**
@@ -141,7 +132,10 @@ public class ServerCookbookVersionItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ServerCookbookVersion"));
+		return overlayImage(
+				object,
+				getResourceLocator().getImage(
+						"full/obj16/ServerCookbookVersion"));
 	}
 
 	/**
@@ -152,10 +146,9 @@ public class ServerCookbookVersionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ServerCookbookVersion)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ServerCookbookVersion_type") :
-			getString("_UI_ServerCookbookVersion_type") + " " + label;
+		String label = ((ServerCookbookVersion) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_ServerCookbookVersion_type")
+				: getString("_UI_ServerCookbookVersion_type") + " " + label;
 	}
 
 	/**
@@ -170,10 +163,11 @@ public class ServerCookbookVersionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ServerCookbookVersion.class)) {
-			case ChefserverPackage.SERVER_COOKBOOK_VERSION__VERSION:
-			case ChefserverPackage.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case ChefserverPackage.SERVER_COOKBOOK_VERSION__VERSION:
+		case ChefserverPackage.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -186,7 +180,8 @@ public class ServerCookbookVersionItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -56,7 +56,8 @@ public class DescribedObjectImpl extends EObjectImpl implements DescribedObject 
 	 * @generated
 	 */
 	public String getDescription() {
-		return (String)eGet(UtilityPackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, true);
+		return (String) eGet(
+				UtilityPackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, true);
 	}
 
 	/**
@@ -65,7 +66,8 @@ public class DescribedObjectImpl extends EObjectImpl implements DescribedObject 
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
-		eSet(UtilityPackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, newDescription);
+		eSet(UtilityPackage.Literals.DESCRIBED_OBJECT__DESCRIPTION,
+				newDescription);
 	}
 
 } //DescribedObjectImpl

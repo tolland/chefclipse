@@ -24,7 +24,7 @@ import org.limepepper.chefclipse.utility.NamedDescribedObject;
  */
 public interface Role extends NamedDescribedObject, RunListItem, RunList {
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Attributes</b></em>' reference list.
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Attribute}.
 	 * <!-- begin-user-doc -->

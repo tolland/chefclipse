@@ -42,8 +42,8 @@ public class EnvironmentTest extends DescribedObjectTest {
 	 * @generated
 	 */
 	@Override
-    protected Environment getFixture() {
-		return (Environment)fixture;
+	protected Environment getFixture() {
+		return (Environment) fixture;
 	}
 
 	/**

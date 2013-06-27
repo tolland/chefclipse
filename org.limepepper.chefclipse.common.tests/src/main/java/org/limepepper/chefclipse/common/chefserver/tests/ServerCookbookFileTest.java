@@ -28,59 +28,59 @@ import org.limepepper.chefclipse.utility.tests.SandboxedObjectTest;
  */
 public class ServerCookbookFileTest extends SandboxedObjectTest {
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		TestRunner.run(ServerCookbookFileTest.class);
 	}
 
-    /**
+	/**
 	 * Constructs a new Server Cookbook File test case with the given name.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public ServerCookbookFileTest(String name) {
+	public ServerCookbookFileTest(String name) {
 		super(name);
 	}
 
-    /**
+	/**
 	 * Returns the fixture for this Server Cookbook File test case.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected ServerCookbookFile getFixture() {
-		return (ServerCookbookFile)fixture;
+	@Override
+	protected ServerCookbookFile getFixture() {
+		return (ServerCookbookFile) fixture;
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#setUp()
 	 * @generated
 	 */
-    @Override
-    protected void setUp() throws Exception {
+	@Override
+	protected void setUp() throws Exception {
 		setFixture(ChefserverFactory.eINSTANCE.createServerCookbookFile());
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @see junit.framework.TestCase#tearDown()
 	 * @generated
 	 */
-    @Override
-    protected void tearDown() throws Exception {
+	@Override
+	protected void tearDown() throws Exception {
 		setFixture(null);
 	}
 
-				/**
+	/**
 	 * Tests the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getBytes() <em>Bytes</em>}' feature getter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,7 +93,7 @@ public class ServerCookbookFileTest extends SandboxedObjectTest {
 		fail();
 	}
 
-				/**
+	/**
 	 * Tests the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#setBytes(byte[]) <em>Bytes</em>}' feature setter.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -106,7 +106,7 @@ public class ServerCookbookFileTest extends SandboxedObjectTest {
 		fail();
 	}
 
-				/**
+	/**
 	 * Tests the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#unsetBytes() <em>unsetBytes()</em>}' method.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,7 +119,7 @@ public class ServerCookbookFileTest extends SandboxedObjectTest {
 		fail();
 	}
 
-				/**
+	/**
 	 * Tests the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#isSetBytes() <em>isSetBytes()</em>}' method.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,7 +132,7 @@ public class ServerCookbookFileTest extends SandboxedObjectTest {
 		fail();
 	}
 
-				/**
+	/**
 	 * Tests the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getContentStream() <em>Get Content Stream</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

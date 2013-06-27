@@ -42,7 +42,7 @@ public class TemplateTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Template getFixture() {
-		return (Template)fixture;
+		return (Template) fixture;
 	}
 
 	/**

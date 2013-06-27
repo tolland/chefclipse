@@ -13,14 +13,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  * @generated
  */
 public class ChefserverResourceImpl extends XMIResourceImpl {
-    /**
+	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param uri the URI of the new resource.
 	 * @generated
 	 */
-    public ChefserverResourceImpl(URI uri) {
+	public ChefserverResourceImpl(URI uri) {
 		super(uri);
 	}
 

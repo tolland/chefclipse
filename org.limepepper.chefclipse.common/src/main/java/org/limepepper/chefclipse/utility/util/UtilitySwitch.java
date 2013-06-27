@@ -81,99 +81,132 @@ public class UtilitySwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case UtilityPackage.NAMED_DESCRIBED_OBJECT: {
-				NamedDescribedObject namedDescribedObject = (NamedDescribedObject)theEObject;
-				T result = caseNamedDescribedObject(namedDescribedObject);
-				if (result == null) result = caseDescribedObject(namedDescribedObject);
-				if (result == null) result = caseNamedObject(namedDescribedObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.VERSIONED_OBJECT: {
-				VersionedObject versionedObject = (VersionedObject)theEObject;
-				T result = caseVersionedObject(versionedObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.SANDBOXED_OBJECT: {
-				SandboxedObject sandboxedObject = (SandboxedObject)theEObject;
-				T result = caseSandboxedObject(sandboxedObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.RUBY_FILE: {
-				RubyFile rubyFile = (RubyFile)theEObject;
-				T result = caseRubyFile(rubyFile);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.NAMED_OBJECT: {
-				NamedObject namedObject = (NamedObject)theEObject;
-				T result = caseNamedObject(namedObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.DESCRIBED_OBJECT: {
-				DescribedObject describedObject = (DescribedObject)theEObject;
-				T result = caseDescribedObject(describedObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.CHECKSUM_FILE: {
-				ChecksumFile checksumFile = (ChecksumFile)theEObject;
-				T result = caseChecksumFile(checksumFile);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.MAINTAINED_OBJECT: {
-				MaintainedObject maintainedObject = (MaintainedObject)theEObject;
-				T result = caseMaintainedObject(maintainedObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.CONFIG: {
-				Config config = (Config)theEObject;
-				T result = caseConfig(config);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.NAME_URL_MAP: {
-				NameUrlMap nameUrlMap = (NameUrlMap)theEObject;
-				T result = caseNameUrlMap(nameUrlMap);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.MAP_TEST_CONTAINER: {
-				MapTestContainer mapTestContainer = (MapTestContainer)theEObject;
-				T result = caseMapTestContainer(mapTestContainer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.ESTRING_TO_VERSION_URL_MAP: {
-				@SuppressWarnings("unchecked") Map.Entry<String, VersionUrl> eStringToVersionUrlMap = (Map.Entry<String, VersionUrl>)theEObject;
-				T result = caseEStringToVersionUrlMap(eStringToVersionUrlMap);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.VERSION_URL: {
-				VersionUrl versionUrl = (VersionUrl)theEObject;
-				T result = caseVersionUrl(versionUrl);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.URL_ENTRY_TEST: {
-				URLEntryTest urlEntryTest = (URLEntryTest)theEObject;
-				T result = caseURLEntryTest(urlEntryTest);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UtilityPackage.NAME_VERSION_MAP: {
-				NameVersionMap nameVersionMap = (NameVersionMap)theEObject;
-				T result = caseNameVersionMap(nameVersionMap);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
+		case UtilityPackage.NAMED_DESCRIBED_OBJECT: {
+			NamedDescribedObject namedDescribedObject = (NamedDescribedObject) theEObject;
+			T result = caseNamedDescribedObject(namedDescribedObject);
+			if (result == null)
+				result = caseDescribedObject(namedDescribedObject);
+			if (result == null)
+				result = caseNamedObject(namedDescribedObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.VERSIONED_OBJECT: {
+			VersionedObject versionedObject = (VersionedObject) theEObject;
+			T result = caseVersionedObject(versionedObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.SANDBOXED_OBJECT: {
+			SandboxedObject sandboxedObject = (SandboxedObject) theEObject;
+			T result = caseSandboxedObject(sandboxedObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.RUBY_FILE: {
+			RubyFile rubyFile = (RubyFile) theEObject;
+			T result = caseRubyFile(rubyFile);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.NAMED_OBJECT: {
+			NamedObject namedObject = (NamedObject) theEObject;
+			T result = caseNamedObject(namedObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.DESCRIBED_OBJECT: {
+			DescribedObject describedObject = (DescribedObject) theEObject;
+			T result = caseDescribedObject(describedObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.CHECKSUM_FILE: {
+			ChecksumFile checksumFile = (ChecksumFile) theEObject;
+			T result = caseChecksumFile(checksumFile);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.MAINTAINED_OBJECT: {
+			MaintainedObject maintainedObject = (MaintainedObject) theEObject;
+			T result = caseMaintainedObject(maintainedObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.CONFIG: {
+			Config config = (Config) theEObject;
+			T result = caseConfig(config);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.NAME_URL_MAP: {
+			NameUrlMap nameUrlMap = (NameUrlMap) theEObject;
+			T result = caseNameUrlMap(nameUrlMap);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.MAP_TEST_CONTAINER: {
+			MapTestContainer mapTestContainer = (MapTestContainer) theEObject;
+			T result = caseMapTestContainer(mapTestContainer);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.ESTRING_TO_VERSION_URL_MAP: {
+			@SuppressWarnings("unchecked")
+			Map.Entry<String, VersionUrl> eStringToVersionUrlMap = (Map.Entry<String, VersionUrl>) theEObject;
+			T result = caseEStringToVersionUrlMap(eStringToVersionUrlMap);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.VERSION_URL: {
+			VersionUrl versionUrl = (VersionUrl) theEObject;
+			T result = caseVersionUrl(versionUrl);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.URL_ENTRY_TEST: {
+			URLEntryTest urlEntryTest = (URLEntryTest) theEObject;
+			T result = caseURLEntryTest(urlEntryTest);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.NAME_VERSION_MAP: {
+			NameVersionMap nameVersionMap = (NameVersionMap) theEObject;
+			T result = caseNameVersionMap(nameVersionMap);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.IDENT_OBJECT: {
+			IdentObject identObject = (IdentObject) theEObject;
+			T result = caseIdentObject(identObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case UtilityPackage.JSON_OBJECT: {
+			JsonObject jsonObject = (JsonObject) theEObject;
+			T result = caseJsonObject(jsonObject);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 
@@ -399,6 +432,36 @@ public class UtilitySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNameVersionMap(NameVersionMap object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Ident Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Ident Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentObject(IdentObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Json Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Json Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJsonObject(JsonObject object) {
 		return null;
 	}
 

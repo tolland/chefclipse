@@ -16,6 +16,7 @@ public interface CookbookFileValidator {
 	boolean validate();
 
 	boolean validateCookbook(CookbookVersion value);
+
 	boolean validateBytes(byte[] value);
 
 	boolean validatePath(String value);

@@ -6,7 +6,6 @@ package org.limepepper.chefclipse.common.chefserver.validation;
 
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 
-
 /**
  * A sample validator interface for {@link org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion}.
  * This doesn't really do anything, and it's not a real EMF artifact.
@@ -17,6 +16,7 @@ public interface ServerCookbookVersionValidator {
 	boolean validate();
 
 	boolean validateVersion(String value);
+
 	boolean validateCookbook_name(String value);
 
 	boolean validateKnifeConfig(KnifeConfig value);

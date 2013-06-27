@@ -59,7 +59,7 @@
                <objectClass
                      name="org.eclipse.core.resources.IProject">
                </objectClass>
-              <objectState name="nature" value="org.limepepper.chefclipse.ChefProjectNature" />
+              <objectState name="nature" value="chefclipse.chefnature" />
             </and>
 
             <and>

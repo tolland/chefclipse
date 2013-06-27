@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: chefclipse.ui;singleton:=true
 Bundle-Version: 0.1.2.qualifier
-Bundle-Activator: chefclipse.ui.ChefPlugin
+Bundle-Activator: chefclipse.ui.ChefUI
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -40,6 +40,11 @@ Export-Package: chefclipse.internal.ui.navigator;
  chefclipse.ui.perspectives;uses:="org.eclipse.ui",
  chefclipse.ui.wizards,
  org.apache.commons.validator,
+ org.limepepper.chefclipse.preferences.ui,
+ org.limepepper.chefclipse.preferences.ui.actions,
+ org.limepepper.chefclipse.preferences.ui.dialogs,
+ org.limepepper.chefclipse.preferences.ui.preferences,
+ org.limepepper.chefclipse.preferences.ui.utils,
  org.limepepper.chefclipse.ui.properties
 Import-Package: org.eclipse.dltk.ruby.core,
  org.eclipse.jface.text,

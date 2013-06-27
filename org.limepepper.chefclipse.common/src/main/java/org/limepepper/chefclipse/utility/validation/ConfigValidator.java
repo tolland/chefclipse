@@ -17,10 +17,16 @@ public interface ConfigValidator {
 	boolean validate();
 
 	boolean validateChef_server_url(URL value);
+
 	boolean validateClient_key(File value);
+
 	boolean validateNode_name(String value);
+
 	boolean validateLog_level(String value);
+
 	boolean validateValidation_key(File value);
+
 	boolean validateVersion(String value);
+
 	boolean validateValidation_client_name(String value);
 }

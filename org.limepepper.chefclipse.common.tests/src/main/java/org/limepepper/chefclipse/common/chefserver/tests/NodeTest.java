@@ -43,7 +43,7 @@ public class NodeTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected Node getFixture() {
-		return (Node)fixture;
+		return (Node) fixture;
 	}
 
 	/**

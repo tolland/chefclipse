@@ -57,7 +57,7 @@ public class NamedObjectImpl extends EObjectImpl implements NamedObject {
 	 * @generated
 	 */
 	public String getName() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__NAME, true);
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class NamedObjectImpl extends EObjectImpl implements NamedObject {
 	 * @generated
 	 */
 	public String getID() {
-		return (String)eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
+		return (String) eGet(UtilityPackage.Literals.NAMED_OBJECT__ID, true);
 	}
 
 	/**

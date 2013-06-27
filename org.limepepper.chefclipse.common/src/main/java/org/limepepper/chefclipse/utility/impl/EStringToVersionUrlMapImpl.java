@@ -24,7 +24,8 @@ import org.limepepper.chefclipse.utility.VersionUrl;
  *
  * @generated
  */
-public class EStringToVersionUrlMapImpl extends EObjectImpl implements BasicEMap.Entry<String,VersionUrl> {
+public class EStringToVersionUrlMapImpl extends EObjectImpl implements
+		BasicEMap.Entry<String, VersionUrl> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,7 +61,8 @@ public class EStringToVersionUrlMapImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 */
 	public String getTypedKey() {
-		return (String)eGet(UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__KEY, true);
+		return (String) eGet(
+				UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__KEY, true);
 	}
 
 	/**
@@ -78,7 +80,8 @@ public class EStringToVersionUrlMapImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 */
 	public VersionUrl getTypedValue() {
-		return (VersionUrl)eGet(UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE, true);
+		return (VersionUrl) eGet(
+				UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE, true);
 	}
 
 	/**
@@ -87,7 +90,8 @@ public class EStringToVersionUrlMapImpl extends EObjectImpl implements BasicEMap
 	 * @generated
 	 */
 	public void setTypedValue(VersionUrl newValue) {
-		eSet(UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE, newValue);
+		eSet(UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP__VALUE,
+				newValue);
 	}
 
 	/**
@@ -165,7 +169,8 @@ public class EStringToVersionUrlMapImpl extends EObjectImpl implements BasicEMap
 	@SuppressWarnings("unchecked")
 	public EMap<String, VersionUrl> getEMap() {
 		EObject container = eContainer();
-		return container == null ? null : (EMap<String, VersionUrl>)container.eGet(eContainmentFeature());
+		return container == null ? null : (EMap<String, VersionUrl>) container
+				.eGet(eContainmentFeature());
 	}
 
 } //EStringToVersionUrlMapImpl

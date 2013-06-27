@@ -43,7 +43,7 @@ public class WorkstationFolderTest extends NamedObjectTest {
 	 */
 	@Override
 	protected WorkstationFolder getFixture() {
-		return (WorkstationFolder)fixture;
+		return (WorkstationFolder) fixture;
 	}
 
 	/**

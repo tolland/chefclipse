@@ -21,7 +21,8 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  *
  * @generated
  */
-public class CookbooksFolderImpl extends WorkstationFolderImpl implements CookbooksFolder {
+public class CookbooksFolderImpl extends WorkstationFolderImpl implements
+		CookbooksFolder {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48,7 +49,8 @@ public class CookbooksFolderImpl extends WorkstationFolderImpl implements Cookbo
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<CookbookVersion> getCookbooks() {
-		return (EList<CookbookVersion>)eGet(WorkstationPackage.Literals.COOKBOOKS_FOLDER__COOKBOOKS, true);
+		return (EList<CookbookVersion>) eGet(
+				WorkstationPackage.Literals.COOKBOOKS_FOLDER__COOKBOOKS, true);
 	}
 
 } //CookbooksFolderImpl

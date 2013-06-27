@@ -75,7 +75,8 @@ public class EStringToVersionUrlMapTest extends TestCase {
 	@Override
 	@SuppressWarnings("unchecked")
 	protected void setUp() throws Exception {
-		setFixture((Map.Entry<String, VersionUrl>)UtilityFactory.eINSTANCE.create(UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP));
+		setFixture((Map.Entry<String, VersionUrl>) UtilityFactory.eINSTANCE
+				.create(UtilityPackage.Literals.ESTRING_TO_VERSION_URL_MAP));
 	}
 
 	/**

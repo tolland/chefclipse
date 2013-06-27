@@ -13,7 +13,7 @@ import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 
 import chefclipse.internal.ui.navigator.MenuLevelHolder;
-import chefclipse.ui.ChefPlugin;
+import chefclipse.ui.ChefUI;
 
 public class CookbookFolderNode extends CookbookResourceNode {
 
@@ -62,7 +62,7 @@ public class CookbookFolderNode extends CookbookResourceNode {
 			CookbookVersion cookbookVersion = (CookbookVersion) input;
 
 			for (Root_file iterable_element : cookbookVersion.getRoot_files()) {
-				ChefPlugin.log("adding " + iterable_element.getName());
+				ChefUI.log("adding " + iterable_element.getName());
 				children.add(new CookbookFileNode(iterable_element));
 			}
 			children.add(new CookbookCollectionNode("recipes",

@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.common.chefclient.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -27,14 +26,9 @@ import org.limepepper.chefclipse.common.edit.provider.ChefclipseEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChefClientItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class ChefClientItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -69,19 +63,17 @@ public class ChefClientItemProvider
 	 * @generated
 	 */
 	protected void addServerPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ChefClient_server_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ChefClient_server_feature", "_UI_ChefClient_type"),
-				 ChefclientPackage.Literals.CHEF_CLIENT__SERVER,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(
+						((ComposeableAdapterFactory) adapterFactory)
+								.getRootAdapterFactory(),
+						getResourceLocator(),
+						getString("_UI_ChefClient_server_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_ChefClient_server_feature",
+								"_UI_ChefClient_type"),
+						ChefclientPackage.Literals.CHEF_CLIENT__SERVER, true,
+						false, true, null, null, null));
 	}
 
 	/**
@@ -92,7 +84,8 @@ public class ChefClientItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChefClient"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/ChefClient"));
 	}
 
 	/**
@@ -127,7 +120,8 @@ public class ChefClientItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

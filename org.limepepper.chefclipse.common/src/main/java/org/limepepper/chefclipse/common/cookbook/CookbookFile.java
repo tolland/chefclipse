@@ -27,8 +27,9 @@ import org.limepepper.chefclipse.utility.SandboxedObject;
  * @model abstract="true"
  * @generated
  */
-public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject {
-    /**
+public interface CookbookFile extends NamedObject, ChecksumFile,
+		SandboxedObject {
+	/**
 	 * Returns the value of the '<em><b>Bytes</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -46,7 +47,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	byte[] getBytes();
 
-				/**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getBytes <em>Bytes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,7 +59,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	void setBytes(byte[] value);
 
-				/**
+	/**
 	 * Unsets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getBytes <em>Bytes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,7 +70,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	void unsetBytes();
 
-				/**
+	/**
 	 * Returns whether the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getBytes <em>Bytes</em>}' attribute is set.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,7 +82,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	boolean isSetBytes();
 
-				/**
+	/**
 	 * Returns the value of the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -97,7 +98,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	String getPath();
 
-				/**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getPath <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -107,7 +108,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	void setPath(String value);
 
-				/**
+	/**
 	 * Returns the value of the '<em><b>Specificity</b></em>' attribute.
 	 * The default value is <code>"default"</code>.
 	 * <!-- begin-user-doc -->
@@ -124,7 +125,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	String getSpecificity();
 
-				/**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getSpecificity <em>Specificity</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,7 +135,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	void setSpecificity(String value);
 
-				/**
+	/**
 	 * Returns the value of the '<em><b>Cookbook</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -150,7 +151,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	CookbookVersion getCookbook();
 
-				/**
+	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getCookbook <em>Cookbook</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -160,7 +161,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile, SandboxedObject
 	 */
 	void setCookbook(CookbookVersion value);
 
-				/**
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" dataType="org.limepepper.chefclipse.utility.EInputStream" required="true"

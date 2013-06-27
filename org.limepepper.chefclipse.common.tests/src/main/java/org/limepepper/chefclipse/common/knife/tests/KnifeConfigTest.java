@@ -43,7 +43,7 @@ public class KnifeConfigTest extends ConfigTest {
 	 */
 	@Override
 	protected KnifeConfig getFixture() {
-		return (KnifeConfig)fixture;
+		return (KnifeConfig) fixture;
 	}
 
 	/**

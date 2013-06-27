@@ -15,23 +15,24 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  *
  * @generated
  */
-public class RolesFolderImpl extends WorkstationFolderImpl implements RolesFolder {
-    /**
+public class RolesFolderImpl extends WorkstationFolderImpl implements
+		RolesFolder {
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public RolesFolderImpl() {
+	public RolesFolderImpl() {
 		super();
 	}
 
-    /**
+	/**
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-    @Override
-    protected EClass eStaticClass() {
+	@Override
+	protected EClass eStaticClass() {
 		return WorkstationPackage.Literals.ROLES_FOLDER;
 	}
 

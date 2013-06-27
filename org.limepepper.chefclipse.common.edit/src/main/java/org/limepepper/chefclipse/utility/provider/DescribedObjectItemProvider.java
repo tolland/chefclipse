@@ -2,7 +2,6 @@
  */
 package org.limepepper.chefclipse.utility.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -30,14 +29,9 @@ import org.limepepper.chefclipse.utility.UtilityPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DescribedObjectItemProvider
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource,
+public class DescribedObjectItemProvider extends ItemProviderAdapter implements
+		IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
 		ITableItemLabelProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -72,19 +66,17 @@ public class DescribedObjectItemProvider
 	 * @generated
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DescribedObject_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DescribedObject_description_feature", "_UI_DescribedObject_type"),
-				 UtilityPackage.Literals.DESCRIBED_OBJECT__DESCRIPTION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory)
+						.getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_DescribedObject_description_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_DescribedObject_description_feature",
+						"_UI_DescribedObject_type"),
+				UtilityPackage.Literals.DESCRIBED_OBJECT__DESCRIPTION, true,
+				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+				null));
 	}
 
 	/**
@@ -95,7 +87,8 @@ public class DescribedObjectItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/DescribedObject"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/DescribedObject"));
 	}
 
 	/**
@@ -106,10 +99,9 @@ public class DescribedObjectItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DescribedObject)object).getDescription();
-		return label == null || label.length() == 0 ?
-			getString("_UI_DescribedObject_type") :
-			getString("_UI_DescribedObject_type") + " " + label;
+		String label = ((DescribedObject) object).getDescription();
+		return label == null || label.length() == 0 ? getString("_UI_DescribedObject_type")
+				: getString("_UI_DescribedObject_type") + " " + label;
 	}
 
 	/**
@@ -124,9 +116,10 @@ public class DescribedObjectItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(DescribedObject.class)) {
-			case UtilityPackage.DESCRIBED_OBJECT__DESCRIPTION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case UtilityPackage.DESCRIBED_OBJECT__DESCRIPTION:
+			fireNotifyChanged(new ViewerNotification(notification,
+					notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -139,7 +132,8 @@ public class DescribedObjectItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(
+			Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
