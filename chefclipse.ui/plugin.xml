@@ -247,16 +247,12 @@
                     </adapt>
                     <instanceof value="org.eclipse.core.resources.IResource" />
                     <instanceof value="chefclipse.core.ChefResource" />
-                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
-                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
                 </or>
       </triggerPoints>
                   <possibleChildren>
                 <or>
                     <instanceof value="org.eclipse.core.resources.IResource" />
                     <instanceof value="chefclipse.core.ChefResource" />
-                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
-                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
                 </or>
             </possibleChildren>
 

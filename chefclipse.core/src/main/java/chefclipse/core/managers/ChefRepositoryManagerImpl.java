@@ -61,6 +61,7 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.utility.ChecksumFile;
+import org.limepepper.chefclipse.utility.IdentObject;
 import org.limepepper.chefclipse.utility.NamedObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -405,7 +406,7 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 	public EObject createDataBagItem(IFile resource) {
 		DataBagItem eObject = ChefserverFactory.eINSTANCE.createDataBagItem();
 		eObject.setId(eObject.eClass().getInstanceTypeName().toLowerCase()
-				+ "-" + ((NamedObject) eObject).getName() + "-");
+				+ "-" + ((IdentObject) eObject).getId() + "-");
 		eObject.setId(resource.getName());
 		eObject.setJsonResource(resource);
 		IContainer parent = resource.getParent();

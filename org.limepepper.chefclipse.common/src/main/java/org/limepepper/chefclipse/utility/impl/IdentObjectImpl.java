@@ -3,9 +3,7 @@
 package org.limepepper.chefclipse.utility.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.limepepper.chefclipse.utility.IdentObject;
 import org.limepepper.chefclipse.utility.UtilityPackage;
 

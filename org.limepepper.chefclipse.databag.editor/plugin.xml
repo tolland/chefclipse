@@ -66,7 +66,7 @@
               id="chefclipse.ui.databag.editor.navigatorContent"
               labelProvider="org.limepepper.chefclipse.databag.providers.DatabagEditorLabelProvider"
               name="commonNavigatorContentForDataBagEditor"
-              priority="high">
+              priority="highest">
             <triggerPoints>
                 <or>
                     <adapt type="org.eclipse.core.resources.IProject" >
