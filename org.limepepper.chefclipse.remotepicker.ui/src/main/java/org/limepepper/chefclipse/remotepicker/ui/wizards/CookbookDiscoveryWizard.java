@@ -25,6 +25,7 @@ import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryWizard;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -36,6 +37,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WizardNewProjectReferencePage;
+import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -111,6 +113,37 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 				});
 				setPageComplete(false);
 			}
+
+			protected IStructuredContentProvider getContentProvider() {
+				return new WorkbenchContentProvider() {
+					public Object[] getChildren(Object element) {
+						if (!(element instanceof IWorkspace)) {
+							return new Object[0];
+						}
+						IProject[] projects = ((IWorkspace) element).getRoot()
+								.getProjects();
+
+						ArrayList<IProject> chefProjects = new ArrayList<IProject>();
+						for (IProject iProject : projects) {
+							try {
+								if (iProject
+										.hasNature(chefclipse.core.builders.ChefProjectNature.NATURE_ID)) {
+									chefProjects.add(iProject);
+								}
+							} catch (CoreException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+
+						projects = chefProjects
+								.toArray(new IProject[chefProjects.size()]);
+
+						return projects == null ? new Object[0] : projects;
+					}
+				};
+			}
+
 		};
 		secondPage.setTitle("Project Selection");
 		secondPage.setDescription(PROJECT_SELECTION_MESSAGE_DIALOG);

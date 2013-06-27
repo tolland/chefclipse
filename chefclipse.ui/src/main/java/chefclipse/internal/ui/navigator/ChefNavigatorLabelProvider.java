@@ -43,5 +43,4 @@ public class ChefNavigatorLabelProvider extends AdapterFactoryLabelProvider {
 		}
 		return null;
 	}
-
 }
