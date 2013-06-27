@@ -25,19 +25,31 @@ import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryWizard;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ViewerComparator;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.FontData;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISelectionService;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WizardNewProjectReferencePage;
+import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
+import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
 import org.eclipse.ui.model.WorkbenchContentProvider;
+import org.eclipse.ui.model.WorkbenchLabelProvider;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -67,7 +79,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 
 	private WizardNewProjectReferencePage secondPage;
 
-	private List<IProject> selectedProjects;
+	private List<IProject> selectedProjects = new ArrayList<IProject>();
 
 	public CookbookDiscoveryWizard(Catalog catalog,
 			CookbookCatalogConfiguration configuration) {
@@ -84,15 +96,71 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 		return new CookbookCatalogPage(getCatalog(), getConfiguration());
 	}
 
+	public void init(IWorkbench workbench, IStructuredSelection selection) {
+		// this.selection = selection;
+
+		for (Object sel : selection.toArray()) {
+			if (sel instanceof IProject) {
+				selectedProjects.add((IProject) sel);
+			}
+
+		}
+
+	}
+
 	@Override
 	public void addPages() {
 		doDefaultCatalogSelection();
 		super.addPages();
 		secondPage = new WizardNewProjectReferencePage("Project Selection") {
+		    // widgets
+		    private CheckboxTableViewer referenceProjectsViewer;
+
+		    private final String REFERENCED_PROJECTS_TITLE = IDEWorkbenchMessages.WizardNewProjectReferences_title;
+
+		    private static final int PROJECT_LIST_MULTIPLIER = 15;
 
 			@Override
 			public void createControl(Composite parent) {
-				super.createControl(parent);
+				Font font = parent.getFont();
+
+				Composite composite = new Composite(parent, SWT.NONE);
+				composite.setLayout(new GridLayout());
+				composite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+				composite.setFont(font);
+
+				PlatformUI
+						.getWorkbench()
+						.getHelpSystem()
+						.setHelp(
+								composite,
+								IIDEHelpContextIds.NEW_PROJECT_REFERENCE_WIZARD_PAGE);
+
+				Label referenceLabel = new Label(composite, SWT.NONE);
+				referenceLabel.setText(REFERENCED_PROJECTS_TITLE);
+				referenceLabel.setFont(font);
+
+				referenceProjectsViewer = CheckboxTableViewer.newCheckList(
+						composite, SWT.BORDER);
+				referenceProjectsViewer.getTable().setFont(composite.getFont());
+				GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
+
+				data.heightHint = getDefaultFontHeight(
+						referenceProjectsViewer.getTable(),
+						PROJECT_LIST_MULTIPLIER);
+				referenceProjectsViewer.getTable().setLayoutData(data);
+				referenceProjectsViewer.setLabelProvider(WorkbenchLabelProvider
+						.getDecoratingWorkbenchLabelProvider());
+				referenceProjectsViewer
+						.setContentProvider(getContentProvider());
+				referenceProjectsViewer.setComparator(new ViewerComparator());
+				referenceProjectsViewer
+						.setInput(ResourcesPlugin.getWorkspace());
+
+				setControl(composite);
+
+				referenceProjectsViewer.setCheckedElements(selectedProjects.toArray());
+
 				Control[] children = ((Composite) getControl()).getChildren();
 				final Table checkboxTable = (Table) children[1];
 				setPageComplete(false);
@@ -111,8 +179,23 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 					}
 
 				});
+
+
+
 				setPageComplete(false);
 			}
+
+		    private int getDefaultFontHeight(Control control, int lines) {
+		        FontData[] viewerFontData = control.getFont().getFontData();
+		        int fontHeight = 10;
+
+		        //If we have no font data use our guess
+		        if (viewerFontData.length > 0) {
+					fontHeight = viewerFontData[0].getHeight();
+				}
+		        return lines * fontHeight;
+
+		    }
 
 			protected IStructuredContentProvider getContentProvider() {
 				return new WorkbenchContentProvider() {
@@ -144,10 +227,30 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 				};
 			}
 
+		    public IProject[] getReferencedProjects() {
+		        Object[] elements = referenceProjectsViewer.getCheckedElements();
+		        IProject[] projects = new IProject[elements.length];
+		        System.arraycopy(elements, 0, projects, 0, elements.length);
+		        return projects;
+		    }
+
+			/*
+			 * public IProject[] setReferencedProjects() { Object[] elements =
+			 * referenceProjectsViewer.getCheckedElements(); IProject[] projects
+			 * = new IProject[elements.length]; System.arraycopy(elements, 0,
+			 * projects, 0, elements.length); return projects; }
+			 */
+
 		};
 		secondPage.setTitle("Project Selection");
 		secondPage.setDescription(PROJECT_SELECTION_MESSAGE_DIALOG);
+
 		addPage(secondPage);
+
+		if (selectedProjects.size() == 1) {
+			// secondPage.setPageComplete(true);
+
+		}
 	}
 
 	/**
