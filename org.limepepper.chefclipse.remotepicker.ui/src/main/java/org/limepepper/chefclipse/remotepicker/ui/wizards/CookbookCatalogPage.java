@@ -185,13 +185,13 @@ public class CookbookCatalogPage extends CatalogPage {
 		    super.modifySelection(connector, selected);
 		}
 
-		private final class CoookbookControlListViewer extends ControlListViewer {
+		private final class CookbookControlListViewer extends ControlListViewer {
 
 			private int pageSize = 100;
 
 			private int pagesLoaded = 0;
 			
-			private CoookbookControlListViewer(Composite parent, int style) {
+			private CookbookControlListViewer(Composite parent, int style) {
 				super(parent, style);
 				final ScrollBar vBar = getControl().getVerticalBar();
 				vBar.addListener(SWT.Selection, new Listener() {
@@ -388,7 +388,7 @@ public class CookbookCatalogPage extends CatalogPage {
 	
 		@Override
 		protected StructuredViewer doCreateViewer(Composite container) {
-			StructuredViewer viewer = new CoookbookControlListViewer(container, SWT.BORDER);
+			StructuredViewer viewer = new CookbookControlListViewer(container, SWT.BORDER);
 			viewer.setUseHashlookup(true);
 			CatalogContentProvider contentProvider = doCreateContentProvider();
 			contentProvider.setHasCategories(isShowCategories());

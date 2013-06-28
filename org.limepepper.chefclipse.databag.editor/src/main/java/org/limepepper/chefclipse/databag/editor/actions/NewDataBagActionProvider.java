@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.limepepper.chefclipse.databag.editor.actions;
 
@@ -14,12 +14,12 @@ import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 
 /**
- * Allows to configure the NEW action and programmatically configure the context menu. 
- * This action provider does some computation before allowing creating a {@link DataBag}. 
+ * Allows to configure the NEW action and programmatically configure the context menu.
+ * This action provider does some computation before allowing creating a {@link DataBag}.
  * That is; if the current selected resource is the folder "data_bags" it allows to create
- * a {@link DataBag} and a menu item to create the DataBag is added to the context menu, 
+ * a {@link DataBag} and a menu item to create the DataBag is added to the context menu,
  * otherwise, not menu item will be added.
- *  
+ *
  * @author Sebastian Sampaoli
  *
  */
@@ -29,12 +29,12 @@ public class NewDataBagActionProvider extends CommonActionProvider {
     private CreateNewDataBagAction createDataBagAction;
 
     /**
-     * 
+     *
      */
     public NewDataBagActionProvider() {
 
     }
-    
+
     @Override
     public void init(ICommonActionExtensionSite aSite) {
         ICommonViewerSite viewSite = aSite.getViewSite();
@@ -43,7 +43,7 @@ public class NewDataBagActionProvider extends CommonActionProvider {
             createDataBagAction = new CreateNewDataBagAction(workbenchSite.getPage(), workbenchSite.getSelectionProvider());
         }
     }
-    
+
     @Override
     public void fillContextMenu(IMenuManager menu) {
         IContributionItem newMenu = menu.find(NEW_MENU_ID);

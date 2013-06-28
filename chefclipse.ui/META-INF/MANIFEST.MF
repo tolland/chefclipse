@@ -31,6 +31,7 @@ Export-Package: chefclipse.internal.ui.navigator;
    org.eclipse.swt.graphics,
    org.eclipse.jface.viewers",
  chefclipse.ui;uses:="org.eclipse.jface.resource,org.eclipse.ui.plugin,org.osgi.framework",
+ chefclipse.ui.actions,
  chefclipse.ui.compare,
  chefclipse.ui.decorators,
  chefclipse.ui.handlers,

@@ -232,13 +232,17 @@
   <!--   -->
   <!-- =================================================================================== -->
 
+
+
   <extension point="org.eclipse.ui.navigator.navigatorContent">
     <navigatorContent
-      activeByDefault="true"
-      contentProvider="chefclipse.internal.ui.navigator.ChefNavigatorContentProvider"
-      id="chefclipse.navigatorContent"
-      labelProvider="chefclipse.internal.ui.navigator.ChefNavigatorLabelProvider"
-      name="%navigatorContent.name" priority="higher">
+          activeByDefault="true"
+          contentProvider="chefclipse.internal.ui.navigator.ChefNavigatorContentProvider"
+          icon="icons/48x48.xpm"
+          id="chefclipse.navigatorContent"
+          labelProvider="chefclipse.internal.ui.navigator.ChefNavigatorLabelProvider"
+          name="%navigatorContent.name"
+          priority="highest">
       <triggerPoints>
                 <or>
                     <adapt type="org.eclipse.core.resources.IProject" >
@@ -273,9 +277,18 @@
           </or>
         </enablement>
       </actionProvider>
-	  	<!--actionProvider
-	         class="org.limepepper.chefclipse.databag.editor.actions.DataBagActionProvider">
-	  	</actionProvider-->
+	  	<actionProvider
+          class="chefclipse.ui.actions.CookbookActionProvider"
+          id="chefclipse.ui.actions.CookbookActionProvider"
+          priority="higher">
+	  	</actionProvider>
+    <commonWizard
+          menuGroupId="chefclipse.menugroup"
+          type="new"
+          wizardId="chefclipse.ui.wizards.NewRecipeWizard">
+        <enablement>
+        </enablement>
+    </commonWizard>
     </navigatorContent>
 
 
@@ -310,7 +323,7 @@
     <view
           allowMultiple="false"
           class="chefclipse.internal.ui.navigator.ChefNavigator"
-          icon="icons/16x16.png"
+          icon="icons/eview16/ruby_persp.gif"
           id="chefclipse.navigatorview"
           name="%view.name"/>
   </extension>
@@ -342,8 +355,6 @@
        <dragAssistant
              class="org.eclipse.ui.navigator.resources.ResourceDragAdapterAssistant"
              viewerId="chefclipse.navigatorview"/>
-
-
   </extension>
 
 
@@ -390,14 +401,6 @@
     id="chefclipse.decorators.projectdecorator"
     label="%ChefProjectDecorator.name" lightweight="true" location="REPLACE"
     state="true">
-      <enablement>
-        <and>
-          <objectClass name="org.eclipse.core.resources.IProject" />
-          <objectState name="nature" value="chefclipse.chefnature">
-          </objectState>
-          <objectState name="name" value="badger"></objectState>
-        </and>
-      </enablement>
     </decorator>
   </extension>
 
@@ -438,11 +441,15 @@
           name="%category.name.1">
     </category>
     <wizard
-          category="chefclipse.ui"
+          category="org.limepepper.chefclipse.ui.wizards.category"
           class="chefclipse.ui.wizards.NewRecipeWizard"
-          icon="icons/sample.gif"
+          finalPerspective="chefclipse.perspective"
+          hasPages="true"
+          helpHref="http://www.page3.com"
+          icon="icons/eview16/ruby_persp.gif"
           id="chefclipse.ui.wizards.NewRecipeWizard"
-          name="%wizard.name.1">
+          name="Recipe"
+          project="false">
     </wizard>
   </extension>
 
@@ -501,11 +508,11 @@
       <wizard
             category="chefclipse.ui.importWizards.sampleCategory"
             class="chefclipse.ui.importWizards.ImportRepositoryToProjectWizard"
-            icon="icons/cc1.ico"
+            icon="icons/eview16/ruby_persp.gif"
             id="chefclipse.ui.importWizards.ImportRepositoryToProjectWizard"
-            name="%wizard.name.2">
+            name="Existing Chef Repository">
          <description>
-            %wizard.description
+            This wizard imports the configuration from an existing chef repository, linking to the original cookbooks and making them available for editing in chefclipse
          </description>
       </wizard>
    </extension>
@@ -522,10 +529,13 @@
             category="org.eclipse.ui.Examples/org.limepepper.chefclipse.category"
             class="chefclipse.ui.wizards.NewExampleChefProjectWizard"
             hasPages="true"
-            icon="icons/cc1.ico"
+            icon="icons/eview16/ruby_persp.gif"
             id="wChefProjectWizard"
             name="%wizard.name.3"
             project="true">
+         <description>
+            This wizard imports an example workstation repository containing a demo knife.rb configuration and some cookbooks. This is the option that is most suitable to follow the tutorials on take-your-vitamins
+         </description>
       </wizard>
       <category
             id="org.limepepper.chefclipse.category"

@@ -27,6 +27,7 @@ import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
 /**
  * This is a sample new wizard. Its role is to create a new file resource in the
@@ -41,9 +42,17 @@ public class NewRecipeWizard extends Wizard implements INewWizard {
 	private NewRecipeWizardPage page;
 	private ISelection selection;
 
+	private CookbookVersion cookbookVersion;
+
 	/**
 	 * Constructor for NewRecipeWizard.
 	 */
+	public NewRecipeWizard(CookbookVersion cookbookVersion) {
+		super();
+		setNeedsProgressMonitor(true);
+		this.cookbookVersion = cookbookVersion;
+	}
+
 	public NewRecipeWizard() {
 		super();
 		setNeedsProgressMonitor(true);

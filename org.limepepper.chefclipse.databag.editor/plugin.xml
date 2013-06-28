@@ -32,7 +32,7 @@
             hasPages="true"
             icon="icons/data_bag_editor.png"
             id="org.limepepper.chefclipse.databag.editor.createdatabag"
-            name="New Data Bag">
+            name="Data Bag">
       </wizard>
    </extension>
 
