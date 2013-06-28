@@ -19,8 +19,12 @@ public interface KnifeFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	KnifeFactory eINSTANCE = org.limepepper.chefclipse.common.knife.impl.KnifeFactoryImpl
 			.init();
+=======
+	KnifeFactory eINSTANCE = org.limepepper.chefclipse.common.knife.impl.KnifeFactoryImpl.init();
+>>>>>>> origin/tomhodder
 
 	/**
 	 * Returns a new object of class '<em>Config</em>'.

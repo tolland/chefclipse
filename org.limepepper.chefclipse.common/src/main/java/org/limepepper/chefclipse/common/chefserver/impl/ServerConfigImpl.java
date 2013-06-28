@@ -17,6 +17,7 @@ import org.limepepper.chefclipse.common.chefserver.ServerConfig;
  * @generated
  */
 public class ServerConfigImpl extends EObjectImpl implements ServerConfig {
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -43,6 +44,34 @@ public class ServerConfigImpl extends EObjectImpl implements ServerConfig {
 	 */
 	@Override
 	protected int eStaticFeatureCount() {
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public ServerConfigImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefserverPackage.Literals.SERVER_CONFIG;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected int eStaticFeatureCount() {
+>>>>>>> origin/tomhodder
 		return 0;
 	}
 

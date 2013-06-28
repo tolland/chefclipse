@@ -4,6 +4,11 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+<<<<<<< HEAD
+=======
+import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.NamedObject;
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Role;
@@ -37,6 +42,7 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  * @generated
  */
 public class RoleImpl extends DescribedObjectImpl implements Role {
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,10 +194,116 @@ public class RoleImpl extends DescribedObjectImpl implements Role {
 				return UtilityPackage.NAMED_OBJECT__ID;
 			default:
 				return -1;
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public RoleImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefserverPackage.Literals.ROLE;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public String getName() {
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setName(String newName) {
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public String getID() {
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setID(String newID) {
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public RunList getRun_list() {
+		return (RunList)eGet(ChefserverPackage.Literals.ROLE__RUN_LIST, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setRun_list(RunList newRun_list) {
+		eSet(ChefserverPackage.Literals.ROLE__RUN_LIST, newRun_list);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public Environment getEnvironment() {
+		return (Environment)eGet(ChefserverPackage.Literals.ROLE__ENVIRONMENT, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setEnvironment(Environment newEnvironment) {
+		eSet(ChefserverPackage.Literals.ROLE__ENVIRONMENT, newEnvironment);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == NamedObject.class) {
+			switch (derivedFeatureID) {
+				case ChefserverPackage.ROLE__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+				case ChefserverPackage.ROLE__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				default: return -1;
+>>>>>>> origin/tomhodder
 			}
 		}
 		if (baseClass == RunListItem.class) {
 			switch (derivedFeatureID) {
+<<<<<<< HEAD
 			default:
 				return -1;
 			}
@@ -210,11 +322,15 @@ public class RoleImpl extends DescribedObjectImpl implements Role {
 				return ChefserverPackage.RUN_LIST__SERVER;
 			default:
 				return -1;
+=======
+				default: return -1;
+>>>>>>> origin/tomhodder
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -230,10 +346,25 @@ public class RoleImpl extends DescribedObjectImpl implements Role {
 				return ChefserverPackage.ROLE__ID;
 			default:
 				return -1;
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == NamedObject.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.NAMED_OBJECT__NAME: return ChefserverPackage.ROLE__NAME;
+				case ChefclipsePackage.NAMED_OBJECT__ID: return ChefserverPackage.ROLE__ID;
+				default: return -1;
+>>>>>>> origin/tomhodder
 			}
 		}
 		if (baseClass == RunListItem.class) {
 			switch (baseFeatureID) {
+<<<<<<< HEAD
 			default:
 				return -1;
 			}
@@ -252,6 +383,9 @@ public class RoleImpl extends DescribedObjectImpl implements Role {
 				return ChefserverPackage.ROLE__SERVER;
 			default:
 				return -1;
+=======
+				default: return -1;
+>>>>>>> origin/tomhodder
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

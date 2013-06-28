@@ -42,7 +42,11 @@ public class RolesFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected RolesFolder getFixture() {
+<<<<<<< HEAD
 		return (RolesFolder) fixture;
+=======
+		return (RolesFolder)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

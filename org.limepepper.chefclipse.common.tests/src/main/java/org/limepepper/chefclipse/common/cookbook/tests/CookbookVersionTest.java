@@ -6,7 +6,11 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.tests.DescribedObjectTest;
+=======
+import org.limepepper.chefclipse.tests.DescribedObjectTest;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +47,11 @@ public class CookbookVersionTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected CookbookVersion getFixture() {
+<<<<<<< HEAD
 		return (CookbookVersion) fixture;
+=======
+		return (CookbookVersion)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

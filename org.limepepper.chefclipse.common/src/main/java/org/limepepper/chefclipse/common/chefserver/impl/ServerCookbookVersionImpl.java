@@ -6,7 +6,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.impl.CookbookVersionImpl;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
+=======
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +26,12 @@ import org.limepepper.chefclipse.common.knife.KnifeConfig;
  *
  * @generated
  */
+<<<<<<< HEAD
 public class ServerCookbookVersionImpl extends CookbookVersionImpl implements
 		ServerCookbookVersion {
+=======
+public class ServerCookbookVersionImpl extends CookbookVersionImpl implements ServerCookbookVersion {
+>>>>>>> origin/tomhodder
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -50,9 +57,13 @@ public class ServerCookbookVersionImpl extends CookbookVersionImpl implements
 	 * @generated
 	 */
 	public String getVersion() {
+<<<<<<< HEAD
 		return (String) eGet(
 				ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION,
 				true);
+=======
+		return (String)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -61,8 +72,12 @@ public class ServerCookbookVersionImpl extends CookbookVersionImpl implements
 	 * @generated
 	 */
 	public void setVersion(String newVersion) {
+<<<<<<< HEAD
 		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION,
 				newVersion);
+=======
+		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__VERSION, newVersion);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -71,9 +86,13 @@ public class ServerCookbookVersionImpl extends CookbookVersionImpl implements
 	 * @generated
 	 */
 	public String getCookbook_name() {
+<<<<<<< HEAD
 		return (String) eGet(
 				ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME,
 				true);
+=======
+		return (String)eGet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -82,6 +101,7 @@ public class ServerCookbookVersionImpl extends CookbookVersionImpl implements
 	 * @generated
 	 */
 	public void setCookbook_name(String newCookbook_name) {
+<<<<<<< HEAD
 		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME,
 				newCookbook_name);
 	}
@@ -105,6 +125,9 @@ public class ServerCookbookVersionImpl extends CookbookVersionImpl implements
 	public void setKnifeConfig(KnifeConfig newKnifeConfig) {
 		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__KNIFE_CONFIG,
 				newKnifeConfig);
+=======
+		eSet(ChefserverPackage.Literals.SERVER_COOKBOOK_VERSION__COOKBOOK_NAME, newCookbook_name);
+>>>>>>> origin/tomhodder
 	}
 
 } //ServerCookbookVersionImpl

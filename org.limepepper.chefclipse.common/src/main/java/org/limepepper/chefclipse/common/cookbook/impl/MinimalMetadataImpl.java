@@ -15,8 +15,12 @@ import org.limepepper.chefclipse.common.cookbook.MinimalMetadata;
  *
  * @generated
  */
+<<<<<<< HEAD
 public class MinimalMetadataImpl extends MetadataImpl implements
 		MinimalMetadata {
+=======
+public class MinimalMetadataImpl extends MetadataImpl implements MinimalMetadata {
+>>>>>>> origin/tomhodder
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

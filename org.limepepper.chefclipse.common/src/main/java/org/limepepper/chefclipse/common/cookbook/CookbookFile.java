@@ -4,9 +4,14 @@ package org.limepepper.chefclipse.common.cookbook;
 
 import java.io.InputStream;
 
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.ChecksumFile;
 import org.limepepper.chefclipse.utility.NamedObject;
 import org.limepepper.chefclipse.utility.SandboxedObject;
+=======
+import org.limepepper.chefclipse.ChecksumFile;
+import org.limepepper.chefclipse.NamedObject;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -20,6 +25,7 @@ import org.limepepper.chefclipse.utility.SandboxedObject;
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getPath <em>Path</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getSpecificity <em>Specificity</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getCookbook <em>Cookbook</em>}</li>
+ *   <li>{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getBytes <em>Bytes</em>}</li>
  * </ul>
  * </p>
  *
@@ -27,8 +33,38 @@ import org.limepepper.chefclipse.utility.SandboxedObject;
  * @model abstract="true"
  * @generated
  */
+<<<<<<< HEAD
 public interface CookbookFile extends NamedObject, ChecksumFile,
 		SandboxedObject {
+=======
+public interface CookbookFile extends NamedObject, ChecksumFile {
+	/**
+	 * Returns the value of the '<em><b>Cookbook</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cookbook</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cookbook</em>' reference.
+	 * @see #setCookbook(CookbookVersion)
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookFile_Cookbook()
+	 * @model required="true"
+	 * @generated
+	 */
+	CookbookVersion getCookbook();
+
+	/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.CookbookFile#getCookbook <em>Cookbook</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cookbook</em>' reference.
+	 * @see #getCookbook()
+	 * @generated
+	 */
+	void setCookbook(CookbookVersion value);
+
+>>>>>>> origin/tomhodder
 	/**
 	 * Returns the value of the '<em><b>Bytes</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -83,6 +119,7 @@ public interface CookbookFile extends NamedObject, ChecksumFile,
 	boolean isSetBytes();
 
 	/**
+<<<<<<< HEAD
 	 * Returns the value of the '<em><b>Path</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -165,6 +202,15 @@ public interface CookbookFile extends NamedObject, ChecksumFile,
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" dataType="org.limepepper.chefclipse.utility.EInputStream" required="true"
+=======
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Content Stream</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @model kind="operation" dataType="org.limepepper.chefclipse.EInputStream" required="true"
+>>>>>>> origin/tomhodder
 	 * @generated
 	 */
 	InputStream getContentStream();

@@ -42,7 +42,11 @@ public class EnvironmentsFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected EnvironmentsFolder getFixture() {
+<<<<<<< HEAD
 		return (EnvironmentsFolder) fixture;
+=======
+		return (EnvironmentsFolder)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

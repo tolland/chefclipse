@@ -6,7 +6,11 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
 import org.limepepper.chefclipse.common.workstation.WorkstationFolder;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.tests.NamedObjectTest;
+=======
+import org.limepepper.chefclipse.tests.NamedObjectTest;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +47,11 @@ public class WorkstationFolderTest extends NamedObjectTest {
 	 */
 	@Override
 	protected WorkstationFolder getFixture() {
+<<<<<<< HEAD
 		return (WorkstationFolder) fixture;
+=======
+		return (WorkstationFolder)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

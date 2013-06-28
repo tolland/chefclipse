@@ -6,7 +6,11 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.RecipeDescription;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.tests.DescribedObjectTest;
+=======
+import org.limepepper.chefclipse.tests.DescribedObjectTest;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +47,11 @@ public class RecipeDescriptionTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected RecipeDescription getFixture() {
+<<<<<<< HEAD
 		return (RecipeDescription) fixture;
+=======
+		return (RecipeDescription)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

@@ -19,8 +19,12 @@ public interface WorkstationFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	WorkstationFactory eINSTANCE = org.limepepper.chefclipse.common.workstation.impl.WorkstationFactoryImpl
 			.init();
+=======
+	WorkstationFactory eINSTANCE = org.limepepper.chefclipse.common.workstation.impl.WorkstationFactoryImpl.init();
+>>>>>>> origin/tomhodder
 
 	/**
 	 * Returns a new object of class '<em>Repository</em>'.
@@ -86,6 +90,7 @@ public interface WorkstationFactory extends EFactory {
 	Rakefile createRakefile();
 
 	/**
+<<<<<<< HEAD
 	 * Returns a new object of class '<em>Folder</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,6 +107,24 @@ public interface WorkstationFactory extends EFactory {
 	 * @generated
 	 */
 	CookbooksFolder createCookbooksFolder();
+=======
+	 * Returns a new object of class '<em>Cookbooks Folder</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cookbooks Folder</em>'.
+	 * @generated
+	 */
+	CookbooksFolder createCookbooksFolder();
+
+	/**
+	 * Returns a new object of class '<em>Folder</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Folder</em>'.
+	 * @generated
+	 */
+	WorkstationFolder createWorkstationFolder();
+>>>>>>> origin/tomhodder
 
 	/**
 	 * Returns the package supported by this factory.

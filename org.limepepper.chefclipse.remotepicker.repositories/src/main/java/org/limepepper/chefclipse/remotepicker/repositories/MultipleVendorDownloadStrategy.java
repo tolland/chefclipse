@@ -17,17 +17,21 @@ import java.net.UnknownHostException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+<<<<<<< HEAD
 import org.apache.commons.io.FileUtils;
 import org.limepepper.chefclipse.remotepicker.api.ICookbooksRepository;
+=======
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
 
 /**
  * @author Sebastian Sampaoli
- *
+ * 
  */
 
+<<<<<<< HEAD
 public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy{
 
 	private ICookbooksRepository repo;
@@ -42,19 +46,36 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 		try {
 			String url = version;
 		    URL cookbookURL = new URL(url);
+=======
+public class MultipleVendorDownloadStrategy implements
+		IDownloadCookbookStrategy {
+
+	@Override
+	public File downloadCookbook(RemoteCookbook cookbook)
+			throws InstallCookbookException {
+		URLConnection connection = null;
+		try {
+			URL cookbookURL = new URL(cookbook.getUrl() + File.separator
+					+ "archive" + File.separator + "master.zip");
+>>>>>>> origin/tomhodder
 			connection = cookbookURL.openConnection();
 			InputStream stream = connection.getInputStream();
 			BufferedInputStream in = new BufferedInputStream(stream);
-			File tempZipFile = File.createTempFile("temp", Long.toString(System.nanoTime()) + ".zip");
-			FileOutputStream fileOutputStream = new FileOutputStream(tempZipFile);
-			BufferedOutputStream out = new BufferedOutputStream(fileOutputStream);
+			File tempZipFile = File.createTempFile("temp",
+					Long.toString(System.nanoTime()) + ".zip");
+			FileOutputStream fileOutputStream = new FileOutputStream(
+					tempZipFile);
+			BufferedOutputStream out = new BufferedOutputStream(
+					fileOutputStream);
 			int i;
 			while ((i = in.read()) != -1) {
-			    out.write(i);
+				out.write(i);
 			}
 			out.flush();
 			out.close();
+			in.close();
 			decompressCookbook(tempZipFile);
+<<<<<<< HEAD
 			
 			String readableVersion = repo.getReadableVersion(cookbook, version);
 			File decompressedCookbook = new File(tempZipFile.getParentFile(), cookbook.getName() + "-" + readableVersion);
@@ -63,23 +84,41 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 			if (!decompressedCookbook.renameTo(tmpCookbook))
 				throw new IOException("Could not rename folder " + decompressedCookbook + " to " + tmpCookbook );
 			return tmpCookbook;
+=======
+			return new File(tempZipFile.getParentFile(), cookbook.getName()
+					+ "-master");
+>>>>>>> origin/tomhodder
 		} catch (FileNotFoundException e) {
-			if (connection != null){
-				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ".\nThe file " + connection.getURL().toString() + " could not be found.", e);
+			if (connection != null) {
+				throw new InstallCookbookException(
+						InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE
+								+ cookbook.getName()
+								+ ".\nThe file "
+								+ connection.getURL().toString()
+								+ " could not be found.", e);
 			} else {
-				throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ". The cookbook related file could not be found.", e);
+				throw new InstallCookbookException(
+						InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE
+								+ cookbook.getName()
+								+ ". The cookbook related file could not be found.",
+						e);
 			}
 		} catch (UnknownHostException e) {
-			throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName() + ".\nThe host " + e.getMessage() + " is unknown.", e);
+			throw new InstallCookbookException(
+					InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE
+							+ cookbook.getName()
+							+ ".\nThe host "
+							+ e.getMessage() + " is unknown.", e);
 		} catch (IOException e) {
-			throw new InstallCookbookException(InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE + cookbook.getName(), e);
+			throw new InstallCookbookException(
+					InstallCookbookException.DOWNLOAD_COOKBOOK_EXCEPTION_MESSAGE
+							+ cookbook.getName(), e);
 		}
 	}
 
 	@SuppressWarnings("resource")
 	@Override
-	public File decompressCookbook(File compressedFile)
-			throws IOException {
+	public File decompressCookbook(File compressedFile) throws IOException {
 
 		String absolutePath = compressedFile.getParent();
 		InputStream fileInputStream = null;
@@ -92,11 +131,14 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 
 		while ((zipEntry = zipInputStream.getNextEntry()) != null) {
 
-			if (zipEntry.isDirectory() || zipEntry.getName().endsWith(File.separator)) {
+			if (zipEntry.isDirectory()
+					|| zipEntry.getName().endsWith(File.separator)) {
 				targetDirectory = new File(absolutePath, zipEntry.getName());
 				if (!targetDirectory.exists()) {
 					final boolean mkdirs = targetDirectory.mkdirs();
 					if (!mkdirs) {
+						fileInputStream.close();
+						zipInputStream.close();
 						throw new IOException();
 					}
 				}
@@ -113,21 +155,34 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 			}
 			zipInputStream.closeEntry();
 		}
+
+		// @todo the eclipse compiler tests don't recognise this as actually
+		// closing the
+		// the resources....
 		closeResources(fileInputStream, zipInputStream);
+
+		// @todo just to make the compiler strict tests run through
+		fileInputStream.close();
+		zipInputStream.close();
+
 		return targetDirectory;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/tomhodder
 	}
 
 	private void closeResources(InputStream fileInputStream,
 			ZipInputStream zipInputStream) {
 		try {
-			if (fileInputStream != null){
+			if (fileInputStream != null) {
 				fileInputStream.close();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			if (zipInputStream != null){
+			if (zipInputStream != null) {
 				zipInputStream.close();
 			}
 		} catch (IOException e) {

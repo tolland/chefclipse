@@ -6,7 +6,11 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.WorkstationFactory;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.tests.DescribedObjectTest;
+=======
+import org.limepepper.chefclipse.tests.DescribedObjectTest;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +47,11 @@ public class RepositoryTest extends DescribedObjectTest {
 	 */
 	@Override
 	protected Repository getFixture() {
+<<<<<<< HEAD
 		return (Repository) fixture;
+=======
+		return (Repository)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

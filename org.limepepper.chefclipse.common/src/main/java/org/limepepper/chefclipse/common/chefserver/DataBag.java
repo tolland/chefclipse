@@ -4,7 +4,11 @@ package org.limepepper.chefclipse.common.chefserver;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.EList;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.NamedDescribedObject;
+=======
+import org.limepepper.chefclipse.NamedDescribedObject;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +29,7 @@ import org.limepepper.chefclipse.utility.NamedDescribedObject;
  * @generated
  */
 public interface DataBag extends NamedDescribedObject {
+<<<<<<< HEAD
 	/**
 	 * Returns the value of the '<em><b>Server</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.chefserver.Server#getDatabags <em>Databags</em>}'.
@@ -34,6 +39,17 @@ public interface DataBag extends NamedDescribedObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+=======
+    /**
+	 * Returns the value of the '<em><b>Server</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.chefserver.Server#getDatabags <em>Databags</em>}'.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Server</em>' container reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+>>>>>>> origin/tomhodder
 	 * @return the value of the '<em>Server</em>' container reference.
 	 * @see #setServer(Server)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBag_Server()
@@ -41,6 +57,7 @@ public interface DataBag extends NamedDescribedObject {
 	 * @model opposite="databags" transient="false"
 	 * @generated
 	 */
+<<<<<<< HEAD
 	Server getServer();
 
 	/**
@@ -95,5 +112,34 @@ public interface DataBag extends NamedDescribedObject {
 	 * @generated
 	 */
 	void setResource(IResource value);
+=======
+    Server getServer();
+
+    /**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBag#getServer <em>Server</em>}' container reference.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Server</em>' container reference.
+	 * @see #getServer()
+	 * @generated
+	 */
+    void setServer(Server value);
+
+    /**
+	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
+	 * The list contents are of type {@link org.limepepper.chefclipse.common.chefserver.DataBagItem}.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+	 * @return the value of the '<em>Items</em>' containment reference list.
+	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBag_Items()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+    EList<DataBagItem> getItems();
+>>>>>>> origin/tomhodder
 
 } // DataBag

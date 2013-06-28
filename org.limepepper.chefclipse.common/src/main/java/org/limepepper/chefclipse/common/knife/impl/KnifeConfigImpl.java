@@ -7,12 +7,19 @@ import java.io.File;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.common.chefserver.Server;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.Plugin;
 import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.utility.impl.ConfigImpl;
+=======
+import org.limepepper.chefclipse.common.knife.KnifeConfig;
+import org.limepepper.chefclipse.common.knife.KnifePackage;
+import org.limepepper.chefclipse.common.knife.Plugin;
+import org.limepepper.chefclipse.impl.ConfigImpl;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -64,8 +71,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 */
 	@SuppressWarnings("unchecked")
 	public EList<Plugin> getPlugins() {
+<<<<<<< HEAD
 		return (EList<Plugin>) eGet(
 				KnifePackage.Literals.KNIFE_CONFIG__PLUGINS, true);
+=======
+		return (EList<Plugin>)eGet(KnifePackage.Literals.KNIFE_CONFIG__PLUGINS, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -74,8 +85,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public String getCache_type() {
+<<<<<<< HEAD
 		return (String) eGet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_TYPE,
 				true);
+=======
+		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_TYPE, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -93,8 +108,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public String getCache_option() {
+<<<<<<< HEAD
 		return (String) eGet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_OPTION,
 				true);
+=======
+		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__CACHE_OPTION, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -112,8 +131,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public File getCookbook_path() {
+<<<<<<< HEAD
 		return (File) eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_PATH,
 				true);
+=======
+		return (File)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_PATH, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -122,8 +145,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public void setCookbook_path(File newCookbook_path) {
+<<<<<<< HEAD
 		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_PATH,
 				newCookbook_path);
+=======
+		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_PATH, newCookbook_path);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -132,8 +159,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public String getCookbook_copyright() {
+<<<<<<< HEAD
 		return (String) eGet(
 				KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_COPYRIGHT, true);
+=======
+		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_COPYRIGHT, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -142,8 +173,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public void setCookbook_copyright(String newCookbook_copyright) {
+<<<<<<< HEAD
 		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_COPYRIGHT,
 				newCookbook_copyright);
+=======
+		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_COPYRIGHT, newCookbook_copyright);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -152,8 +187,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public String getCookbook_email() {
+<<<<<<< HEAD
 		return (String) eGet(
 				KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_EMAIL, true);
+=======
+		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_EMAIL, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -162,8 +201,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public void setCookbook_email(String newCookbook_email) {
+<<<<<<< HEAD
 		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_EMAIL,
 				newCookbook_email);
+=======
+		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_EMAIL, newCookbook_email);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -172,8 +215,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public String getCookbook_license() {
+<<<<<<< HEAD
 		return (String) eGet(
 				KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_LICENSE, true);
+=======
+		return (String)eGet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_LICENSE, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -182,8 +229,12 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public void setCookbook_license(String newCookbook_license) {
+<<<<<<< HEAD
 		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_LICENSE,
 				newCookbook_license);
+=======
+		eSet(KnifePackage.Literals.KNIFE_CONFIG__COOKBOOK_LICENSE, newCookbook_license);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -192,7 +243,11 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public File getPath() {
+<<<<<<< HEAD
 		return (File) eGet(KnifePackage.Literals.KNIFE_CONFIG__PATH, true);
+=======
+		return (File)eGet(KnifePackage.Literals.KNIFE_CONFIG__PATH, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -210,7 +265,11 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	 * @generated
 	 */
 	public Server getServer() {
+<<<<<<< HEAD
 		return (Server) eGet(KnifePackage.Literals.KNIFE_CONFIG__SERVER, true);
+=======
+		return (Server)eGet(KnifePackage.Literals.KNIFE_CONFIG__SERVER, true);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -221,6 +280,7 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	public void setServer(Server newServer) {
 		eSet(KnifePackage.Literals.KNIFE_CONFIG__SERVER, newServer);
 	}
+<<<<<<< HEAD
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -252,5 +312,7 @@ public class KnifeConfigImpl extends ConfigImpl implements KnifeConfig {
 	public void setRepository(Repository newRepository) {
 		eSet(KnifePackage.Literals.KNIFE_CONFIG__REPOSITORY, newRepository);
 	}
+=======
+>>>>>>> origin/tomhodder
 
 } //KnifeConfigImpl

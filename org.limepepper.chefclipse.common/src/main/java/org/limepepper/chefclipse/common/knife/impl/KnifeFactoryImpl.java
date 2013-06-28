@@ -7,7 +7,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.knife.*;
+=======
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
@@ -29,12 +32,21 @@ public class KnifeFactoryImpl extends EFactoryImpl implements KnifeFactory {
 	 */
 	public static KnifeFactory init() {
 		try {
+<<<<<<< HEAD
 			KnifeFactory theKnifeFactory = (KnifeFactory) EPackage.Registry.INSTANCE
 					.getEFactory("http://limepepper.org/v1/chefclipse/knife");
 			if (theKnifeFactory != null) {
 				return theKnifeFactory;
 			}
 		} catch (Exception exception) {
+=======
+			KnifeFactory theKnifeFactory = (KnifeFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/knife"); 
+			if (theKnifeFactory != null) {
+				return theKnifeFactory;
+			}
+		}
+		catch (Exception exception) {
+>>>>>>> origin/tomhodder
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new KnifeFactoryImpl();
@@ -58,6 +70,7 @@ public class KnifeFactoryImpl extends EFactoryImpl implements KnifeFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+<<<<<<< HEAD
 		case KnifePackage.KNIFE_CONFIG:
 			return createKnifeConfig();
 		case KnifePackage.PLUGIN:
@@ -67,6 +80,13 @@ public class KnifeFactoryImpl extends EFactoryImpl implements KnifeFactory {
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
+=======
+			case KnifePackage.KNIFE_CONFIG: return createKnifeConfig();
+			case KnifePackage.PLUGIN: return createPlugin();
+			case KnifePackage.KNIFE_SEARCH: return createKnifeSearch();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+>>>>>>> origin/tomhodder
 		}
 	}
 
@@ -106,7 +126,11 @@ public class KnifeFactoryImpl extends EFactoryImpl implements KnifeFactory {
 	 * @generated
 	 */
 	public KnifePackage getKnifePackage() {
+<<<<<<< HEAD
 		return (KnifePackage) getEPackage();
+=======
+		return (KnifePackage)getEPackage();
+>>>>>>> origin/tomhodder
 	}
 
 	/**

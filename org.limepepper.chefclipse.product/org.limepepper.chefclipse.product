@@ -14,7 +14,14 @@
    </configIni>
 
    <launcherArgs>
+<<<<<<< HEAD
    <!--programArgs>-data @user.home/workspace-chefclipse-${branch}</programArgs-->
+=======
+      <programArgsLin>-data @user.home/workspace-chefclipse</programArgsLin>
+      <programArgsMac>-data @user.home/workspace-chefclipse</programArgsMac>
+      <programArgsSol>-data @user.home/workspace-chefclipse</programArgsSol>
+      <programArgsWin>-data @user.home\workspace-chefclipse</programArgsWin>
+>>>>>>> origin/tomhodder
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
@@ -22,7 +29,11 @@
 
    <splash
       location="org.limepepper.chefclipse.app" />
+<<<<<<< HEAD
    <launcher name="eclipse">
+=======
+   <launcher>
+>>>>>>> origin/tomhodder
       <linux icon="icons/48x48.xpm"/>
       <solaris/>
       <win useIco="true">
@@ -113,13 +124,22 @@ END OF TERMS AND CONDITIONS
       <feature id="org.limepepper.chefclipse.devel.feature"/>
       <feature id="org.eclipse.platform" version="4.2.1.v20130118-173121-9MF7GHYdG0B5kx4E_SkfZV-1mNjVATf67ZAb7"/>
       <feature id="org.eclipse.rcp" version="4.2.2.v20130129-152330-7IARAABrMQkGSvMgQnUlz-DQz00h"/>
+      <feature id="org.eclipse.equinox.p2.discovery.feature"/>
+      <feature id="org.eclipse.equinox.p2.sdk"/>
+      <feature id="org.eclipse.e4.rcp"/>
    </features>
 
    <configurations>
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="3" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="3" />
+<<<<<<< HEAD
       <property name="osgi.instance.area" value="@user.home/workspace-chefclipse-${branch}" />
+=======
+      <plugin id="org.eclipse.equinox.simpleconfigurator.manipulator" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.pde.runtime" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
+>>>>>>> origin/tomhodder
    </configurations>
 
 </product>

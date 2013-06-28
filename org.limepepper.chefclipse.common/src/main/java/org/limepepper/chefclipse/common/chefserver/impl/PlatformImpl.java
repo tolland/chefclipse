@@ -21,6 +21,7 @@ import org.limepepper.chefclipse.common.chefserver.Platform;
  * @generated
  */
 public class PlatformImpl extends EObjectImpl implements Platform {
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -66,6 +67,52 @@ public class PlatformImpl extends EObjectImpl implements Platform {
 	 * @generated
 	 */
 	public void setTestVal(int newTestVal) {
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public PlatformImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefserverPackage.Literals.PLATFORM;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected int eStaticFeatureCount() {
+		return 0;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public int getTestVal() {
+		return (Integer)eGet(ChefserverPackage.Literals.PLATFORM__TEST_VAL, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setTestVal(int newTestVal) {
+>>>>>>> origin/tomhodder
 		eSet(ChefserverPackage.Literals.PLATFORM__TEST_VAL, newTestVal);
 	}
 

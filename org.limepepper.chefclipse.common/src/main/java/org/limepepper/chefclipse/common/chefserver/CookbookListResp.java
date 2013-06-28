@@ -2,7 +2,10 @@
  */
 package org.limepepper.chefclipse.common.chefserver;
 
+<<<<<<< HEAD
 import org.eclipse.emf.common.util.EList;
+=======
+>>>>>>> origin/tomhodder
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getName <em>Name</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getVersions <em>Versions</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getUrl <em>Url</em>}</li>
  * </ul>
  * </p>
@@ -24,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface CookbookListResp extends EObject {
+<<<<<<< HEAD
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -32,22 +35,42 @@ public interface CookbookListResp extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+=======
+    /**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Name</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+>>>>>>> origin/tomhodder
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getCookbookListResp_Name()
 	 * @model required="true"
 	 * @generated
 	 */
+<<<<<<< HEAD
 	String getName();
 
 	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+=======
+    String getName();
+
+    /**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+>>>>>>> origin/tomhodder
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
 	 */
+<<<<<<< HEAD
 	void setName(String value);
 
 	/**
@@ -74,22 +97,47 @@ public interface CookbookListResp extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+=======
+    void setName(String value);
+
+    /**
+	 * Returns the value of the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Url</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+>>>>>>> origin/tomhodder
 	 * @return the value of the '<em>Url</em>' attribute.
 	 * @see #setUrl(String)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getCookbookListResp_Url()
 	 * @model required="true"
 	 * @generated
 	 */
+<<<<<<< HEAD
 	String getUrl();
 
 	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getUrl <em>Url</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+=======
+    String getUrl();
+
+    /**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.CookbookListResp#getUrl <em>Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+>>>>>>> origin/tomhodder
 	 * @param value the new value of the '<em>Url</em>' attribute.
 	 * @see #getUrl()
 	 * @generated
 	 */
+<<<<<<< HEAD
 	void setUrl(String value);
+=======
+    void setUrl(String value);
+>>>>>>> origin/tomhodder
 
 } // CookbookListResp

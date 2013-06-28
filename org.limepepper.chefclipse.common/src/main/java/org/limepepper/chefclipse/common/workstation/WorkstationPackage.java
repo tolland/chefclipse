@@ -6,7 +6,11 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.UtilityPackage;
+=======
+import org.limepepper.chefclipse.ChefclipsePackage;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -54,8 +58,12 @@ public interface WorkstationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	WorkstationPackage eINSTANCE = org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl
 			.init();
+=======
+	WorkstationPackage eINSTANCE = org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl.init();
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.RepositoryImpl <em>Repository</em>}' class.
@@ -74,7 +82,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY__DESCRIPTION = UtilityPackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+=======
+	int REPOSITORY__DESCRIPTION = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__DESCRIPTION;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -83,7 +95,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY__NAME = UtilityPackage.NAMED_DESCRIBED_OBJECT__NAME;
+=======
+	int REPOSITORY__NAME = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__NAME;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -92,7 +108,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY__ID = UtilityPackage.NAMED_DESCRIBED_OBJECT__ID;
+=======
+	int REPOSITORY__ID = ChefclipsePackage.NAMED_DESCRIBED_OBJECT__ID;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>OS</b></em>' attribute.
@@ -101,7 +121,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY__OS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+=======
+	int REPOSITORY__OS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 0;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>Basepath</b></em>' attribute.
@@ -110,7 +134,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY__BASEPATH = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+=======
+	int REPOSITORY__BASEPATH = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 1;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>Cookbooks</b></em>' containment reference list.
@@ -119,16 +147,27 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY__COOKBOOKS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Knives</b></em>' reference list.
+=======
+	int REPOSITORY__COOKBOOKS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Knife</b></em>' reference list.
+>>>>>>> origin/tomhodder
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY__KNIVES = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+=======
+	int REPOSITORY__KNIFE = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 3;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>Cookbook Folders</b></em>' reference list.
@@ -137,7 +176,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY__COOKBOOK_FOLDERS = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
+=======
+	int REPOSITORY__COOKBOOK_FOLDERS = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 4;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The number of structural features of the '<em>Repository</em>' class.
@@ -146,7 +189,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int REPOSITORY_FEATURE_COUNT = UtilityPackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
+=======
+	int REPOSITORY_FEATURE_COUNT = ChefclipsePackage.NAMED_DESCRIBED_OBJECT_FEATURE_COUNT + 5;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.WorkstationFolderImpl <em>Folder</em>}' class.
@@ -156,7 +203,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getWorkstationFolder()
 	 * @generated
 	 */
+<<<<<<< HEAD
 	int WORKSTATION_FOLDER = 7;
+=======
+	int WORKSTATION_FOLDER = 8;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -165,7 +216,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int WORKSTATION_FOLDER__NAME = UtilityPackage.NAMED_OBJECT__NAME;
+=======
+	int WORKSTATION_FOLDER__NAME = ChefclipsePackage.NAMED_OBJECT__NAME;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>ID</b></em>' attribute.
@@ -174,7 +229,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int WORKSTATION_FOLDER__ID = UtilityPackage.NAMED_OBJECT__ID;
+=======
+	int WORKSTATION_FOLDER__ID = ChefclipsePackage.NAMED_OBJECT__ID;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The number of structural features of the '<em>Folder</em>' class.
@@ -183,7 +242,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
+<<<<<<< HEAD
 	int WORKSTATION_FOLDER_FEATURE_COUNT = UtilityPackage.NAMED_OBJECT_FEATURE_COUNT + 0;
+=======
+	int WORKSTATION_FOLDER_FEATURE_COUNT = ChefclipsePackage.NAMED_OBJECT_FEATURE_COUNT + 0;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The meta object id for the '{@link org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl <em>Config Folder</em>}' class.
@@ -397,7 +460,11 @@ public interface WorkstationPackage extends EPackage {
 	 * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getCookbooksFolder()
 	 * @generated
 	 */
+<<<<<<< HEAD
 	int COOKBOOKS_FOLDER = 8;
+=======
+	int COOKBOOKS_FOLDER = 7;
+>>>>>>> origin/tomhodder
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -435,6 +502,10 @@ public interface WorkstationPackage extends EPackage {
 	 */
 	int COOKBOOKS_FOLDER_FEATURE_COUNT = WORKSTATION_FOLDER_FEATURE_COUNT + 1;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/tomhodder
 	/**
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.Repository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
@@ -479,6 +550,7 @@ public interface WorkstationPackage extends EPackage {
 	EReference getRepository_Cookbooks();
 
 	/**
+<<<<<<< HEAD
 	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getKnives <em>Knives</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -488,6 +560,17 @@ public interface WorkstationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRepository_Knives();
+=======
+	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getKnife <em>Knife</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Knife</em>'.
+	 * @see org.limepepper.chefclipse.common.workstation.Repository#getKnife()
+	 * @see #getRepository()
+	 * @generated
+	 */
+	EReference getRepository_Knife();
+>>>>>>> origin/tomhodder
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.limepepper.chefclipse.common.workstation.Repository#getCookbookFolders <em>Cookbook Folders</em>}'.
@@ -561,6 +644,7 @@ public interface WorkstationPackage extends EPackage {
 	EClass getRakefile();
 
 	/**
+<<<<<<< HEAD
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.WorkstationFolder <em>Folder</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -571,6 +655,8 @@ public interface WorkstationPackage extends EPackage {
 	EClass getWorkstationFolder();
 
 	/**
+=======
+>>>>>>> origin/tomhodder
 	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.CookbooksFolder <em>Cookbooks Folder</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -592,6 +678,19 @@ public interface WorkstationPackage extends EPackage {
 	EReference getCookbooksFolder_Cookbooks();
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Returns the meta object for class '{@link org.limepepper.chefclipse.common.workstation.WorkstationFolder <em>Folder</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Folder</em>'.
+	 * @see org.limepepper.chefclipse.common.workstation.WorkstationFolder
+	 * @generated
+	 */
+	EClass getWorkstationFolder();
+
+	/**
+>>>>>>> origin/tomhodder
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -648,12 +747,20 @@ public interface WorkstationPackage extends EPackage {
 		EReference REPOSITORY__COOKBOOKS = eINSTANCE.getRepository_Cookbooks();
 
 		/**
+<<<<<<< HEAD
 		 * The meta object literal for the '<em><b>Knives</b></em>' reference list feature.
+=======
+		 * The meta object literal for the '<em><b>Knife</b></em>' reference list feature.
+>>>>>>> origin/tomhodder
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+<<<<<<< HEAD
 		EReference REPOSITORY__KNIVES = eINSTANCE.getRepository_Knives();
+=======
+		EReference REPOSITORY__KNIFE = eINSTANCE.getRepository_Knife();
+>>>>>>> origin/tomhodder
 
 		/**
 		 * The meta object literal for the '<em><b>Cookbook Folders</b></em>' reference list feature.
@@ -661,8 +768,12 @@ public interface WorkstationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+<<<<<<< HEAD
 		EReference REPOSITORY__COOKBOOK_FOLDERS = eINSTANCE
 				.getRepository_CookbookFolders();
+=======
+		EReference REPOSITORY__COOKBOOK_FOLDERS = eINSTANCE.getRepository_CookbookFolders();
+>>>>>>> origin/tomhodder
 
 		/**
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.ConfigFolderImpl <em>Config Folder</em>}' class.
@@ -725,6 +836,7 @@ public interface WorkstationPackage extends EPackage {
 		EClass RAKEFILE = eINSTANCE.getRakefile();
 
 		/**
+<<<<<<< HEAD
 		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.WorkstationFolderImpl <em>Folder</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -752,6 +864,34 @@ public interface WorkstationPackage extends EPackage {
 		 */
 		EReference COOKBOOKS_FOLDER__COOKBOOKS = eINSTANCE
 				.getCookbooksFolder_Cookbooks();
+=======
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.CookbooksFolderImpl <em>Cookbooks Folder</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.common.workstation.impl.CookbooksFolderImpl
+		 * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getCookbooksFolder()
+		 * @generated
+		 */
+		EClass COOKBOOKS_FOLDER = eINSTANCE.getCookbooksFolder();
+
+		/**
+		 * The meta object literal for the '<em><b>Cookbooks</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COOKBOOKS_FOLDER__COOKBOOKS = eINSTANCE.getCookbooksFolder_Cookbooks();
+
+		/**
+		 * The meta object literal for the '{@link org.limepepper.chefclipse.common.workstation.impl.WorkstationFolderImpl <em>Folder</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationFolderImpl
+		 * @see org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl#getWorkstationFolder()
+		 * @generated
+		 */
+		EClass WORKSTATION_FOLDER = eINSTANCE.getWorkstationFolder();
+>>>>>>> origin/tomhodder
 
 	}
 

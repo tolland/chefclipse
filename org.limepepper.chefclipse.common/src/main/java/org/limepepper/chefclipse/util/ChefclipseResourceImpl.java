@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  * @generated
  */
 public class ChefclipseResourceImpl extends XMIResourceImpl {
+<<<<<<< HEAD
 	/**
 	 * Creates an instance of the resource.
 	 * <!-- begin-user-doc -->
@@ -21,6 +22,16 @@ public class ChefclipseResourceImpl extends XMIResourceImpl {
 	 * @generated
 	 */
 	public ChefclipseResourceImpl(URI uri) {
+=======
+    /**
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @param uri the URI of the new resource.
+	 * @generated
+	 */
+    public ChefclipseResourceImpl(URI uri) {
+>>>>>>> origin/tomhodder
 		super(uri);
 	}
 

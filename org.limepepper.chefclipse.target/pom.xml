@@ -9,12 +9,30 @@
     <groupId>org.limepepper.chefclipse</groupId>
     <artifactId>org.limepepper.chefclipse</artifactId>
     <version>0.1.0-SNAPSHOT</version>
+<<<<<<< HEAD
     <relativePath>../pom.xml</relativePath>
+=======
+    <relativePath>../</relativePath>
+>>>>>>> origin/tomhodder
   </parent>
 
   <artifactId>juno42</artifactId>
   <name>eclipse-target-definition</name>
   <packaging>eclipse-target-definition</packaging>
+<<<<<<< HEAD
   <version>0.1.0-SNAPSHOT</version>
+=======
+ 
+    <build>
+>>>>>>> origin/tomhodder
 
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho.extras</groupId>
+        <artifactId>target-platform-validation-plugin</artifactId>
+        <version>0.17.0</version>
+      </plugin>
+    </plugins>
+  </build>
+  
 </project>

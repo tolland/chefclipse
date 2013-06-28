@@ -7,7 +7,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.workstation.*;
+=======
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
 import org.limepepper.chefclipse.common.workstation.ConfigFolder;
 import org.limepepper.chefclipse.common.workstation.CookbooksFolder;
@@ -26,8 +29,12 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  * <!-- end-user-doc -->
  * @generated
  */
+<<<<<<< HEAD
 public class WorkstationFactoryImpl extends EFactoryImpl implements
 		WorkstationFactory {
+=======
+public class WorkstationFactoryImpl extends EFactoryImpl implements WorkstationFactory {
+>>>>>>> origin/tomhodder
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
@@ -36,12 +43,21 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements
 	 */
 	public static WorkstationFactory init() {
 		try {
+<<<<<<< HEAD
 			WorkstationFactory theWorkstationFactory = (WorkstationFactory) EPackage.Registry.INSTANCE
 					.getEFactory("http://limepepper.org/v1/chefclipse/workstation");
 			if (theWorkstationFactory != null) {
 				return theWorkstationFactory;
 			}
 		} catch (Exception exception) {
+=======
+			WorkstationFactory theWorkstationFactory = (WorkstationFactory)EPackage.Registry.INSTANCE.getEFactory("http://limepepper.org/v1/chefclipse/workstation"); 
+			if (theWorkstationFactory != null) {
+				return theWorkstationFactory;
+			}
+		}
+		catch (Exception exception) {
+>>>>>>> origin/tomhodder
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new WorkstationFactoryImpl();
@@ -65,6 +81,7 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+<<<<<<< HEAD
 		case WorkstationPackage.REPOSITORY:
 			return createRepository();
 		case WorkstationPackage.CONFIG_FOLDER:
@@ -86,6 +103,19 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName()
 					+ "' is not a valid classifier");
+=======
+			case WorkstationPackage.REPOSITORY: return createRepository();
+			case WorkstationPackage.CONFIG_FOLDER: return createConfigFolder();
+			case WorkstationPackage.CERTIFICATES_FOLDER: return createCertificatesFolder();
+			case WorkstationPackage.DATA_BAGS_FOLDER: return createDataBagsFolder();
+			case WorkstationPackage.ENVIRONMENTS_FOLDER: return createEnvironmentsFolder();
+			case WorkstationPackage.ROLES_FOLDER: return createRolesFolder();
+			case WorkstationPackage.RAKEFILE: return createRakefile();
+			case WorkstationPackage.COOKBOOKS_FOLDER: return createCookbooksFolder();
+			case WorkstationPackage.WORKSTATION_FOLDER: return createWorkstationFolder();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+>>>>>>> origin/tomhodder
 		}
 	}
 
@@ -164,9 +194,15 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	public WorkstationFolder createWorkstationFolder() {
 		WorkstationFolderImpl workstationFolder = new WorkstationFolderImpl();
 		return workstationFolder;
+=======
+	public CookbooksFolder createCookbooksFolder() {
+		CookbooksFolderImpl cookbooksFolder = new CookbooksFolderImpl();
+		return cookbooksFolder;
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -174,9 +210,15 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	public CookbooksFolder createCookbooksFolder() {
 		CookbooksFolderImpl cookbooksFolder = new CookbooksFolderImpl();
 		return cookbooksFolder;
+=======
+	public WorkstationFolder createWorkstationFolder() {
+		WorkstationFolderImpl workstationFolder = new WorkstationFolderImpl();
+		return workstationFolder;
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -185,7 +227,11 @@ public class WorkstationFactoryImpl extends EFactoryImpl implements
 	 * @generated
 	 */
 	public WorkstationPackage getWorkstationPackage() {
+<<<<<<< HEAD
 		return (WorkstationPackage) getEPackage();
+=======
+		return (WorkstationPackage)getEPackage();
+>>>>>>> origin/tomhodder
 	}
 
 	/**

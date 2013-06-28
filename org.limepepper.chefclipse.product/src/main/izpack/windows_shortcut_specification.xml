@@ -2,7 +2,7 @@
 <shortcuts>
     <skipIfNotSupported />
     <programGroup defaultName="Chefclipse" location="applications"/>
-    
+
     <shortcut
         name="Chefclipse"
         programGroup="yes"
@@ -18,10 +18,10 @@
         type="Application"
         encoding="UTF-8"
         description="Run Chefclipse Application">
-    
+
         <createForPack name="Chefclipse Application"/>
     </shortcut>
-    
+
     <shortcut
         name="Chefclipse Uninstaller"
         programGroup="yes"
@@ -37,7 +37,7 @@
         type="Application"
         encoding="UTF-8"
         description="Unistall the chefclipse application">
-    
+
         <createForPack name="Chefclipse Application"/>
     </shortcut>
 

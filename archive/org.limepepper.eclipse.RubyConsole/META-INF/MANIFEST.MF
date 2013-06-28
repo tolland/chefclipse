@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RubyConsole Plug-in
+Bundle-SymbolicName: org.limepepper.eclipse.RubyConsole;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Activator: rubyconsole.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.core.resources,
+ org.eclipse.ui.console
+Eclipse-LazyStart: true
+Bundle-ClassPath: .,
+ lib/bsf-2.4.0.jar,
+ lib/jruby-complete.jar
+Export-Package: org.jruby,
+ org.jruby.ast,
+ org.jruby.demo,
+ org.jruby.demo.ext,
+ rubyconsole,
+ rubyconsole.actions
+Bundle-Vendor: %providerName

@@ -24,6 +24,7 @@ import org.limepepper.chefclipse.utility.NamedObject;
  * @model
  * @generated
  */
+<<<<<<< HEAD
 public interface DataBagItem extends IdentObject, JsonObject {
 	/**
 	 * Returns the value of the '<em><b>Data Bag</b></em>' reference.
@@ -33,22 +34,43 @@ public interface DataBagItem extends IdentObject, JsonObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+=======
+public interface DataBagItem extends NamedObject {
+    /**
+	 * Returns the value of the '<em><b>Data Bag</b></em>' reference.
+	 * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Data Bag</em>' reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+>>>>>>> origin/tomhodder
 	 * @return the value of the '<em>Data Bag</em>' reference.
 	 * @see #setDataBag(DataBag)
 	 * @see org.limepepper.chefclipse.common.chefserver.ChefserverPackage#getDataBagItem_DataBag()
 	 * @model required="true"
 	 * @generated
 	 */
+<<<<<<< HEAD
 	DataBag getDataBag();
 
 	/**
 	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getDataBag <em>Data Bag</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+=======
+    DataBag getDataBag();
+
+    /**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.chefserver.DataBagItem#getDataBag <em>Data Bag</em>}' reference.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+>>>>>>> origin/tomhodder
 	 * @param value the new value of the '<em>Data Bag</em>' reference.
 	 * @see #getDataBag()
 	 * @generated
 	 */
+<<<<<<< HEAD
 	void setDataBag(DataBag value);
 
 	/**
@@ -76,5 +98,8 @@ public interface DataBagItem extends IdentObject, JsonObject {
 	 * @generated
 	 */
 	void setJsonResource(IResource value);
+=======
+    void setDataBag(DataBag value);
+>>>>>>> origin/tomhodder
 
 } // DataBagItem

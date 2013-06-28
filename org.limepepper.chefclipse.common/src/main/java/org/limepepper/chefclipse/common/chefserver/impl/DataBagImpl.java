@@ -5,6 +5,11 @@ package org.limepepper.chefclipse.common.chefserver.impl;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+<<<<<<< HEAD
+=======
+import org.limepepper.chefclipse.ChefclipsePackage;
+import org.limepepper.chefclipse.NamedObject;
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
@@ -31,6 +36,7 @@ import org.limepepper.chefclipse.utility.impl.DescribedObjectImpl;
  * @generated
  */
 public class DataBagImpl extends DescribedObjectImpl implements DataBag {
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -149,11 +155,109 @@ public class DataBagImpl extends DescribedObjectImpl implements DataBag {
 				return UtilityPackage.NAMED_OBJECT__ID;
 			default:
 				return -1;
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public DataBagImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefserverPackage.Literals.DATA_BAG;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public String getName() {
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setName(String newName) {
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__NAME, newName);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public String getID() {
+		return (String)eGet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setID(String newID) {
+		eSet(ChefclipsePackage.Literals.NAMED_OBJECT__ID, newID);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public Server getServer() {
+		return (Server)eGet(ChefserverPackage.Literals.DATA_BAG__SERVER, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setServer(Server newServer) {
+		eSet(ChefserverPackage.Literals.DATA_BAG__SERVER, newServer);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @SuppressWarnings("unchecked")
+    public EList<DataBagItem> getItems() {
+		return (EList<DataBagItem>)eGet(ChefserverPackage.Literals.DATA_BAG__ITEMS, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == NamedObject.class) {
+			switch (derivedFeatureID) {
+				case ChefserverPackage.DATA_BAG__NAME: return ChefclipsePackage.NAMED_OBJECT__NAME;
+				case ChefserverPackage.DATA_BAG__ID: return ChefclipsePackage.NAMED_OBJECT__ID;
+				default: return -1;
+>>>>>>> origin/tomhodder
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,6 +273,20 @@ public class DataBagImpl extends DescribedObjectImpl implements DataBag {
 				return ChefserverPackage.DATA_BAG__ID;
 			default:
 				return -1;
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == NamedObject.class) {
+			switch (baseFeatureID) {
+				case ChefclipsePackage.NAMED_OBJECT__NAME: return ChefserverPackage.DATA_BAG__NAME;
+				case ChefclipsePackage.NAMED_OBJECT__ID: return ChefserverPackage.DATA_BAG__ID;
+				default: return -1;
+>>>>>>> origin/tomhodder
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

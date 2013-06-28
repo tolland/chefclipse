@@ -7,6 +7,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+<<<<<<< HEAD
+=======
+import org.limepepper.chefclipse.ChefclipsePackage;
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.chefclient.ChefclientPackage;
 import org.limepepper.chefclipse.common.chefclient.impl.ChefclientPackageImpl;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -20,8 +24,12 @@ import org.limepepper.chefclipse.common.knife.KnifeSearch;
 import org.limepepper.chefclipse.common.knife.Plugin;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
 import org.limepepper.chefclipse.common.workstation.impl.WorkstationPackageImpl;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.UtilityPackage;
 import org.limepepper.chefclipse.utility.impl.UtilityPackageImpl;
+=======
+import org.limepepper.chefclipse.impl.ChefclipsePackageImpl;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -90,6 +98,7 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public static KnifePackage init() {
+<<<<<<< HEAD
 		if (isInited)
 			return (KnifePackage) EPackage.Registry.INSTANCE
 					.getEPackage(KnifePackage.eNS_URI);
@@ -98,10 +107,17 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		KnifePackageImpl theKnifePackage = (KnifePackageImpl) (EPackage.Registry.INSTANCE
 				.get(eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE
 				.get(eNS_URI) : new KnifePackageImpl());
+=======
+		if (isInited) return (KnifePackage)EPackage.Registry.INSTANCE.getEPackage(KnifePackage.eNS_URI);
+
+		// Obtain or create and register package
+		KnifePackageImpl theKnifePackage = (KnifePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof KnifePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new KnifePackageImpl());
+>>>>>>> origin/tomhodder
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
+<<<<<<< HEAD
 		ChefserverPackageImpl theChefserverPackage = (ChefserverPackageImpl) (EPackage.Registry.INSTANCE
 				.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackageImpl ? EPackage.Registry.INSTANCE
 				.getEPackage(ChefserverPackage.eNS_URI)
@@ -124,23 +140,48 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 
 		// Create package meta-data objects
 		theKnifePackage.createPackageContents();
+=======
+		ChefclipsePackageImpl theChefclipsePackage = (ChefclipsePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI) instanceof ChefclipsePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI) : ChefclipsePackage.eINSTANCE);
+		ChefserverPackageImpl theChefserverPackage = (ChefserverPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) instanceof ChefserverPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI) : ChefserverPackage.eINSTANCE);
+		ChefclientPackageImpl theChefclientPackage = (ChefclientPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) instanceof ChefclientPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(ChefclientPackage.eNS_URI) : ChefclientPackage.eINSTANCE);
+		CookbookPackageImpl theCookbookPackage = (CookbookPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) instanceof CookbookPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(CookbookPackage.eNS_URI) : CookbookPackage.eINSTANCE);
+		WorkstationPackageImpl theWorkstationPackage = (WorkstationPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) instanceof WorkstationPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(WorkstationPackage.eNS_URI) : WorkstationPackage.eINSTANCE);
+
+		// Create package meta-data objects
+		theKnifePackage.createPackageContents();
+		theChefclipsePackage.createPackageContents();
+>>>>>>> origin/tomhodder
 		theChefserverPackage.createPackageContents();
 		theChefclientPackage.createPackageContents();
 		theCookbookPackage.createPackageContents();
 		theWorkstationPackage.createPackageContents();
+<<<<<<< HEAD
 		theUtilityPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theKnifePackage.initializePackageContents();
+=======
+
+		// Initialize created meta-data
+		theKnifePackage.initializePackageContents();
+		theChefclipsePackage.initializePackageContents();
+>>>>>>> origin/tomhodder
 		theChefserverPackage.initializePackageContents();
 		theChefclientPackage.initializePackageContents();
 		theCookbookPackage.initializePackageContents();
 		theWorkstationPackage.initializePackageContents();
+<<<<<<< HEAD
 		theUtilityPackage.initializePackageContents();
+=======
+>>>>>>> origin/tomhodder
 
 		// Mark meta-data to indicate it can't be changed
 		theKnifePackage.freeze();
 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> origin/tomhodder
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(KnifePackage.eNS_URI, theKnifePackage);
 		return theKnifePackage;
@@ -161,7 +202,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EReference getKnifeConfig_Plugins() {
+<<<<<<< HEAD
 		return (EReference) knifeConfigEClass.getEStructuralFeatures().get(0);
+=======
+		return (EReference)knifeConfigEClass.getEStructuralFeatures().get(0);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -170,7 +215,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EAttribute getKnifeConfig_Cache_type() {
+<<<<<<< HEAD
 		return (EAttribute) knifeConfigEClass.getEStructuralFeatures().get(1);
+=======
+		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(1);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -179,7 +228,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EAttribute getKnifeConfig_Cache_option() {
+<<<<<<< HEAD
 		return (EAttribute) knifeConfigEClass.getEStructuralFeatures().get(2);
+=======
+		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(2);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -188,7 +241,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EAttribute getKnifeConfig_Cookbook_path() {
+<<<<<<< HEAD
 		return (EAttribute) knifeConfigEClass.getEStructuralFeatures().get(3);
+=======
+		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(3);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -197,7 +254,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EAttribute getKnifeConfig_Cookbook_copyright() {
+<<<<<<< HEAD
 		return (EAttribute) knifeConfigEClass.getEStructuralFeatures().get(4);
+=======
+		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(4);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -206,7 +267,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EAttribute getKnifeConfig_Cookbook_email() {
+<<<<<<< HEAD
 		return (EAttribute) knifeConfigEClass.getEStructuralFeatures().get(5);
+=======
+		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(5);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -215,7 +280,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EAttribute getKnifeConfig_Cookbook_license() {
+<<<<<<< HEAD
 		return (EAttribute) knifeConfigEClass.getEStructuralFeatures().get(6);
+=======
+		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(6);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -224,7 +293,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EAttribute getKnifeConfig_Path() {
+<<<<<<< HEAD
 		return (EAttribute) knifeConfigEClass.getEStructuralFeatures().get(7);
+=======
+		return (EAttribute)knifeConfigEClass.getEStructuralFeatures().get(7);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -233,6 +306,7 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public EReference getKnifeConfig_Server() {
+<<<<<<< HEAD
 		return (EReference) knifeConfigEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -252,6 +326,9 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 */
 	public EReference getKnifeConfig_Repository() {
 		return (EReference) knifeConfigEClass.getEStructuralFeatures().get(10);
+=======
+		return (EReference)knifeConfigEClass.getEStructuralFeatures().get(8);
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -278,7 +355,11 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public KnifeFactory getKnifeFactory() {
+<<<<<<< HEAD
 		return (KnifeFactory) getEFactoryInstance();
+=======
+		return (KnifeFactory)getEFactoryInstance();
+>>>>>>> origin/tomhodder
 	}
 
 	/**
@@ -296,8 +377,12 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public void createPackageContents() {
+<<<<<<< HEAD
 		if (isCreated)
 			return;
+=======
+		if (isCreated) return;
+>>>>>>> origin/tomhodder
 		isCreated = true;
 
 		// Create classes and their features
@@ -311,9 +396,12 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		createEAttribute(knifeConfigEClass, KNIFE_CONFIG__COOKBOOK_LICENSE);
 		createEAttribute(knifeConfigEClass, KNIFE_CONFIG__PATH);
 		createEReference(knifeConfigEClass, KNIFE_CONFIG__SERVER);
+<<<<<<< HEAD
 		createEReference(knifeConfigEClass,
 				KNIFE_CONFIG__SERVER_COOKBOOK_VERSION);
 		createEReference(knifeConfigEClass, KNIFE_CONFIG__REPOSITORY);
+=======
+>>>>>>> origin/tomhodder
 
 		pluginEClass = createEClass(PLUGIN);
 
@@ -335,8 +423,12 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 	 * @generated
 	 */
 	public void initializePackageContents() {
+<<<<<<< HEAD
 		if (isInitialized)
 			return;
+=======
+		if (isInitialized) return;
+>>>>>>> origin/tomhodder
 		isInitialized = true;
 
 		// Initialize package
@@ -345,18 +437,24 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+<<<<<<< HEAD
 		UtilityPackage theUtilityPackage = (UtilityPackage) EPackage.Registry.INSTANCE
 				.getEPackage(UtilityPackage.eNS_URI);
 		ChefserverPackage theChefserverPackage = (ChefserverPackage) EPackage.Registry.INSTANCE
 				.getEPackage(ChefserverPackage.eNS_URI);
 		WorkstationPackage theWorkstationPackage = (WorkstationPackage) EPackage.Registry.INSTANCE
 				.getEPackage(WorkstationPackage.eNS_URI);
+=======
+		ChefclipsePackage theChefclipsePackage = (ChefclipsePackage)EPackage.Registry.INSTANCE.getEPackage(ChefclipsePackage.eNS_URI);
+		ChefserverPackage theChefserverPackage = (ChefserverPackage)EPackage.Registry.INSTANCE.getEPackage(ChefserverPackage.eNS_URI);
+>>>>>>> origin/tomhodder
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+<<<<<<< HEAD
 		knifeConfigEClass.getESuperTypes().add(theUtilityPackage.getConfig());
 
 		// Initialize classes and features; add operations and parameters
@@ -422,6 +520,25 @@ public class KnifePackageImpl extends EPackageImpl implements KnifePackage {
 
 		// Create resource
 		createResource(eNS_URI);
+=======
+		knifeConfigEClass.getESuperTypes().add(theChefclipsePackage.getConfig());
+
+		// Initialize classes and features; add operations and parameters
+		initEClass(knifeConfigEClass, KnifeConfig.class, "KnifeConfig", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getKnifeConfig_Plugins(), this.getPlugin(), null, "plugins", null, 0, -1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKnifeConfig_Cache_type(), ecorePackage.getEString(), "cache_type", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKnifeConfig_Cache_option(), ecorePackage.getEString(), "cache_option", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKnifeConfig_Cookbook_path(), theChefclipsePackage.getFile(), "cookbook_path", null, 1, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKnifeConfig_Cookbook_copyright(), ecorePackage.getEString(), "cookbook_copyright", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKnifeConfig_Cookbook_email(), ecorePackage.getEString(), "cookbook_email", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKnifeConfig_Cookbook_license(), ecorePackage.getEString(), "cookbook_license", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getKnifeConfig_Path(), theChefclipsePackage.getFile(), "path", null, 1, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getKnifeConfig_Server(), theChefserverPackage.getServer(), null, "server", null, 0, 1, KnifeConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pluginEClass, Plugin.class, "Plugin", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(knifeSearchEClass, KnifeSearch.class, "KnifeSearch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+>>>>>>> origin/tomhodder
 	}
 
 } //KnifePackageImpl

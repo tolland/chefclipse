@@ -66,6 +66,8 @@ import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import chefclipse.core.CookbookFolder;
 import chefclipse.core.managers.ChefRepositoryManager;
 
+import chefclipse.core.managers.ChefRepositoryManager;
+
 /**
  * A two-way compare for arbitrary IResources.
  */
@@ -256,10 +258,17 @@ public class ResourceCompareInput extends CompareEditorInput {
 		if (selected instanceof IResource) {
 			res.add(repoManager.getCookbookForResource((IResource) selected));
 		} else if (selected instanceof CookbookVersion) {
+<<<<<<< HEAD
 			res.add(repoManager.getResource((EObject) selected));
 		} else if (selected instanceof CookbookFolder) {
 			res.add(((CookbookFolder) selected).getResource());
 		}
+=======
+			res[0] = repoManager.getResource((EObject) selected);
+		} //else if (selected instanceof CookbookFolder) {
+	//		res[0] = repoManager.getResource((EObject) selected);
+		//}
+>>>>>>> origin/tomhodder
 
 		if (res.size() == 0) {
 			throw new IllegalArgumentException("Could not get cookbook from selection : " + selection);

@@ -15,8 +15,12 @@ import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
  *
  * @generated
  */
+<<<<<<< HEAD
 public class RolesFolderImpl extends WorkstationFolderImpl implements
 		RolesFolder {
+=======
+public class RolesFolderImpl extends WorkstationFolderImpl implements RolesFolder {
+>>>>>>> origin/tomhodder
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

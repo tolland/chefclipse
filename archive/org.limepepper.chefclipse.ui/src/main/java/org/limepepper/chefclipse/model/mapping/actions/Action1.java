@@ -1,0 +1,66 @@
+package org.limepepper.chefclipse.model.mapping.actions;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.IWorkbenchWindowActionDelegate;
+import org.eclipse.ui.actions.ActionDelegate;
+
+public class Action1 extends ActionDelegate implements IWorkbenchWindowActionDelegate  {
+
+    public Action1() {
+    }
+
+
+    @Override
+    public void run(IAction action) {
+
+        Job job = new Job("My Job") {
+            @Override
+            protected IStatus run(IProgressMonitor monitor) {
+                // Do something long running
+                // ...
+
+/*                System.setProperty("jruby.script", "jruby");
+                System.setProperty("jruby.shell", "/bin/bash");
+                System.setProperty("jruby.home", "/usr/share/jruby");
+                System.setProperty("jruby.version", "1.8");
+                System.setProperty("jruby.lib", "/usr/share/jruby/lib");
+
+                List pathsLoad = new ArrayList();
+                pathsLoad.add("/usr/share/jruby/lib/ruby/1.8");
+                pathsLoad.add("/usr/share/jruby/lib/ruby/site_ruby/1.8");
+                pathsLoad.add("/usr/share/jruby/lib/ruby/site_ruby/shared");
+
+                Ruby rubyRuntime = JavaEmbedUtils.initialize(pathsLoad);*/
+
+                // org.jruby.Main.main(new String[] { "-S", "jirb_swing" });
+
+              //  System.setSecurityManager(new NoExitSecurityManager());
+                //try {
+                  //  IRBConsole irb = new IRBConsole("Chefclipse IRB console");
+
+                  //  IRBConsole.main(new String[] {});
+                System.err.println("rgjrghruihi!!");
+              //  } catch (ExitException e) {
+             //       System.out.println("Exit status: "+ 42 +" :"+ e.status);
+            //    }
+              //  System.setSecurityManager(null);
+
+                return Status.OK_STATUS;
+            }
+        };
+
+        // Start the Job
+        job.schedule();
+
+    }
+
+    @Override
+    public void init(IWorkbenchWindow window) {
+    }
+
+}

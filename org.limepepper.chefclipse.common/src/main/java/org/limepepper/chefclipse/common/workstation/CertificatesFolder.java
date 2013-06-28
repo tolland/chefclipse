@@ -2,6 +2,10 @@
  */
 package org.limepepper.chefclipse.common.workstation;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/tomhodder
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Certificates Folder</b></em>'.

@@ -17,6 +17,7 @@ import org.limepepper.chefclipse.common.chefclient.Search;
  * @generated
  */
 public class SearchImpl extends EObjectImpl implements Search {
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -43,6 +44,34 @@ public class SearchImpl extends EObjectImpl implements Search {
 	 */
 	@Override
 	protected int eStaticFeatureCount() {
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public SearchImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefclientPackage.Literals.SEARCH;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected int eStaticFeatureCount() {
+>>>>>>> origin/tomhodder
 		return 0;
 	}
 

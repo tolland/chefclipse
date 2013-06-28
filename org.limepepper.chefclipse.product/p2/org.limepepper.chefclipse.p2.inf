@@ -10,5 +10,8 @@ instructions.configure=\
   requires.3.namespace = org.eclipse.equinox.p2.iu
   requires.3.name = org.limepepper.chefclipse.devel.feature.feature.group
   requires.3.range = (0.0.0, 2.0.0)
+<<<<<<< HEAD
   setProgramProperty(propName:osgi.instance.area.default,propValue:@user.home/workspace-chefclipse-${mvngit.branch});
   setProgramProperty(propName:osgi.instance.area,propValue:@user.home/workspace-chefclipse-${mvngit.branch});
+=======
+>>>>>>> origin/tomhodder

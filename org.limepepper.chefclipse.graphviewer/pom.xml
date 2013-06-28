@@ -8,11 +8,16 @@
     <groupId>org.limepepper.chefclipse</groupId>
     <artifactId>org.limepepper.chefclipse</artifactId>
     <version>0.1.0-SNAPSHOT</version>
+<<<<<<< HEAD
     <relativePath>../pom.xml</relativePath>
+=======
+    <relativePath>../</relativePath>
+>>>>>>> origin/tomhodder
   </parent>
   <groupId>org.limepepper</groupId>
   <name>org.limepepper.chefclipse.graphviewer</name>
   <artifactId>org.limepepper.chefclipse.graphviewer</artifactId>
+<<<<<<< HEAD
   <version>0.1.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
   <!--repositories>
@@ -22,4 +27,14 @@
     <url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>
     </repository>
     </repositories -->
+=======
+  <packaging>eclipse-plugin</packaging>
+  	<!--repositories>
+		<repository>
+			<id>zest2.0</id>
+			<layout>p2</layout>
+			<url>https://hudson.eclipse.org/hudson/job/gef-zest-integration/lastSuccessfulBuild/artifact/targetPlatform/</url>
+		</repository>
+	</repositories-->
+>>>>>>> origin/tomhodder
 </project>

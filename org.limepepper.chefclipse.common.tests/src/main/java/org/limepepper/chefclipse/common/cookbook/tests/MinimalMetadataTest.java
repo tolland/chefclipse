@@ -42,7 +42,11 @@ public class MinimalMetadataTest extends MetadataTest {
 	 */
 	@Override
 	protected MinimalMetadata getFixture() {
+<<<<<<< HEAD
 		return (MinimalMetadata) fixture;
+=======
+		return (MinimalMetadata)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

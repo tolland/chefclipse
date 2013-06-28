@@ -4,8 +4,13 @@ Bundle-Name: Chefclipse Utils
 Bundle-SymbolicName: org.limepepper.chefclipse.utils
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.utils.Activator
+<<<<<<< HEAD
 Bundle-Vendor: Lime Pepper Ltd
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+=======
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+>>>>>>> origin/tomhodder
 Import-Package: org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.limepepper.chefclipse.tools,

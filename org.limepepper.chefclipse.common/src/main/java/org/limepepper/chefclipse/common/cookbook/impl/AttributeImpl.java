@@ -3,9 +3,15 @@
 package org.limepepper.chefclipse.common.cookbook.impl;
 
 import org.eclipse.emf.ecore.EClass;
+<<<<<<< HEAD
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.limepepper.chefclipse.common.cookbook.Attribute;
 import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+=======
+import org.limepepper.chefclipse.common.cookbook.Attribute;
+import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
+import org.limepepper.chefclipse.impl.NamedObjectImpl;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +27,11 @@ import org.limepepper.chefclipse.common.cookbook.CookbookPackage;
  *
  * @generated
  */
+<<<<<<< HEAD
 public class AttributeImpl extends EObjectImpl implements Attribute {
+=======
+public class AttributeImpl extends NamedObjectImpl implements Attribute {
+>>>>>>> origin/tomhodder
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40,6 +50,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	protected EClass eStaticClass() {
 		return CookbookPackage.Literals.ATTRIBUTE;
 	}
+<<<<<<< HEAD
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,5 +97,7 @@ public class AttributeImpl extends EObjectImpl implements Attribute {
 	public void setValue(String newValue) {
 		eSet(CookbookPackage.Literals.ATTRIBUTE__VALUE, newValue);
 	}
+=======
+>>>>>>> origin/tomhodder
 
 } //AttributeImpl

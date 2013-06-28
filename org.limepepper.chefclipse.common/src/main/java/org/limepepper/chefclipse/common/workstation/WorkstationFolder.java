@@ -2,7 +2,11 @@
  */
 package org.limepepper.chefclipse.common.workstation;
 
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.NamedObject;
+=======
+import org.limepepper.chefclipse.NamedObject;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->

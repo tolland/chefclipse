@@ -42,7 +42,11 @@ public class DataBagsFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected DataBagsFolder getFixture() {
+<<<<<<< HEAD
 		return (DataBagsFolder) fixture;
+=======
+		return (DataBagsFolder)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

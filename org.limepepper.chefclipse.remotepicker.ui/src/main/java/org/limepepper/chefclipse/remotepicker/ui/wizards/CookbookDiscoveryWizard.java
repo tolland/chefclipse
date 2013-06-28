@@ -22,7 +22,6 @@ import org.eclipse.equinox.internal.p2.discovery.AbstractDiscoveryStrategy;
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
 import org.eclipse.equinox.internal.p2.discovery.model.CatalogItem;
 import org.eclipse.equinox.internal.p2.ui.discovery.wizards.DiscoveryWizard;
-import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
@@ -46,10 +45,13 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.WizardNewProjectReferencePage;
+<<<<<<< HEAD
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
 import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
+=======
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookbook;
@@ -62,7 +64,7 @@ import chefclipse.core.builders.ChefProjectNature;
 
 /**
  * A wizard for interacting with cookbooks repositories.
- *
+ * 
  * @author Sebastian Sampaoli
  */
 @SuppressWarnings("restriction")
@@ -85,7 +87,10 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 			CookbookCatalogConfiguration configuration) {
 		super(catalog, configuration);
 		setWindowTitle(INSTALL_COOKBOOKS);
+<<<<<<< HEAD
 		setNeedsProgressMonitor(true);
+=======
+>>>>>>> origin/tomhodder
 		CookbookRepositoryManager repoManager = CookbookRepositoryManager
 				.getInstance();
 		setRepoManager(repoManager);
@@ -122,6 +127,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 
 			@Override
 			public void createControl(Composite parent) {
+<<<<<<< HEAD
 				Font font = parent.getFont();
 
 				Composite composite = new Composite(parent, SWT.NONE);
@@ -161,6 +167,9 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 
 				referenceProjectsViewer.setCheckedElements(selectedProjects.toArray());
 
+=======
+				super.createControl(parent);
+>>>>>>> origin/tomhodder
 				Control[] children = ((Composite) getControl()).getChildren();
 				final Table checkboxTable = (Table) children[1];
 				setPageComplete(false);
@@ -256,7 +265,11 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 	/**
 	 * Select the default repository to be shown in the wizard. This default
 	 * repository is chosen from a preference page.
+<<<<<<< HEAD
 	 *
+=======
+	 * 
+>>>>>>> origin/tomhodder
 	 */
 	private void doDefaultCatalogSelection() {
 
@@ -302,6 +315,7 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 		final Shell activeShell = Display.getCurrent().getActiveShell();
 		final List<IProject> selectedProjects = getSelectedProjects();
 
+<<<<<<< HEAD
 		List<CatalogItem> installableCookbooks = getCatalogPage()
 				.getInstallableCookbooks();
 
@@ -331,6 +345,30 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 												.getLocation().toString());
 							} catch (InstallCookbookException e) {
 								e.printStackTrace();
+=======
+		try {
+			getContainer().run(true, true, new IRunnableWithProgress() {
+
+				@Override
+				public void run(IProgressMonitor monitor)
+						throws InvocationTargetException, InterruptedException {
+					monitor.beginTask("Installing cookbooks...",
+							IProgressMonitor.UNKNOWN);
+					List<CatalogItem> installableCookbooks = getCatalogPage()
+							.getInstallableCookbooks();
+
+					for (CatalogItem catalogItem : installableCookbooks) {
+						try {
+							RemoteCookbook remoteCookbook = (RemoteCookbook) catalogItem
+									.getData();
+							File downloadCookbook = repoManager
+									.downloadCookbook(remoteCookbook,
+											remoteCookbook.getRepositoryId());
+							for (IProject iProject : selectedProjects) {
+								repoManager.installCookbook(remoteCookbook,
+										downloadCookbook, iProject
+												.getLocation().toString());
+>>>>>>> origin/tomhodder
 							}
 
 							monitor.done();
@@ -355,7 +393,11 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 	/**
 	 * Refresh the selected workspace projects after the installation of
 	 * cookbooks to them.
+<<<<<<< HEAD
 	 *
+=======
+	 * 
+>>>>>>> origin/tomhodder
 	 * @param selectedProjects
 	 */
 	private void refreshProjects(List<IProject> selectedProjects) {
@@ -483,9 +525,17 @@ public class CookbookDiscoveryWizard extends DiscoveryWizard {
 				return null;
 			}
 			IProject project = null;
+<<<<<<< HEAD
 			if (firstElement instanceof IJavaProject) {
 				project = ((IJavaProject) firstElement).getProject();
 			} else if (firstElement instanceof IProject) {
+=======
+			/*
+			 * if (firstElement instanceof IJavaProject){ project =
+			 * ((IJavaProject) firstElement).getProject(); } else
+			 */
+			if (firstElement instanceof IProject) {
+>>>>>>> origin/tomhodder
 				project = (IProject) firstElement;
 			} else {
 				return null;

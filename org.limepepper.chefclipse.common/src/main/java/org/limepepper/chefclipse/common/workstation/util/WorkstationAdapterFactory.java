@@ -6,7 +6,13 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.workstation.*;
+=======
+import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.NamedObject;
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.workstation.CertificatesFolder;
 import org.limepepper.chefclipse.common.workstation.ConfigFolder;
 import org.limepepper.chefclipse.common.workstation.CookbooksFolder;
@@ -17,9 +23,12 @@ import org.limepepper.chefclipse.common.workstation.Repository;
 import org.limepepper.chefclipse.common.workstation.RolesFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationFolder;
 import org.limepepper.chefclipse.common.workstation.WorkstationPackage;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.DescribedObject;
 import org.limepepper.chefclipse.utility.NamedDescribedObject;
 import org.limepepper.chefclipse.utility.NamedObject;
+=======
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +73,11 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
+<<<<<<< HEAD
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
+=======
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
+>>>>>>> origin/tomhodder
 		}
 		return false;
 	}
@@ -75,6 +88,7 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	protected WorkstationSwitch<Adapter> modelSwitch = new WorkstationSwitch<Adapter>() {
 		@Override
 		public Adapter caseRepository(Repository object) {
@@ -141,6 +155,63 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
 			return createEObjectAdapter();
 		}
 	};
+=======
+	protected WorkstationSwitch<Adapter> modelSwitch =
+		new WorkstationSwitch<Adapter>() {
+			@Override
+			public Adapter caseRepository(Repository object) {
+				return createRepositoryAdapter();
+			}
+			@Override
+			public Adapter caseConfigFolder(ConfigFolder object) {
+				return createConfigFolderAdapter();
+			}
+			@Override
+			public Adapter caseCertificatesFolder(CertificatesFolder object) {
+				return createCertificatesFolderAdapter();
+			}
+			@Override
+			public Adapter caseDataBagsFolder(DataBagsFolder object) {
+				return createDataBagsFolderAdapter();
+			}
+			@Override
+			public Adapter caseEnvironmentsFolder(EnvironmentsFolder object) {
+				return createEnvironmentsFolderAdapter();
+			}
+			@Override
+			public Adapter caseRolesFolder(RolesFolder object) {
+				return createRolesFolderAdapter();
+			}
+			@Override
+			public Adapter caseRakefile(Rakefile object) {
+				return createRakefileAdapter();
+			}
+			@Override
+			public Adapter caseCookbooksFolder(CookbooksFolder object) {
+				return createCookbooksFolderAdapter();
+			}
+			@Override
+			public Adapter caseWorkstationFolder(WorkstationFolder object) {
+				return createWorkstationFolderAdapter();
+			}
+			@Override
+			public Adapter caseDescribedObject(DescribedObject object) {
+				return createDescribedObjectAdapter();
+			}
+			@Override
+			public Adapter caseNamedObject(NamedObject object) {
+				return createNamedObjectAdapter();
+			}
+			@Override
+			public Adapter caseNamedDescribedObject(NamedDescribedObject object) {
+				return createNamedDescribedObjectAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
+>>>>>>> origin/tomhodder
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -152,9 +223,16 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
+<<<<<<< HEAD
 		return modelSwitch.doSwitch((EObject) target);
 	}
 
+=======
+		return modelSwitch.doSwitch((EObject)target);
+	}
+
+
+>>>>>>> origin/tomhodder
 	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.Repository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
@@ -254,41 +332,71 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.WorkstationFolder <em>Folder</em>}'.
+=======
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.CookbooksFolder <em>Cookbooks Folder</em>}'.
+>>>>>>> origin/tomhodder
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
+<<<<<<< HEAD
 	 * @see org.limepepper.chefclipse.common.workstation.WorkstationFolder
 	 * @generated
 	 */
 	public Adapter createWorkstationFolderAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.CookbooksFolder <em>Cookbooks Folder</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
+=======
 	 * @see org.limepepper.chefclipse.common.workstation.CookbooksFolder
 	 * @generated
 	 */
 	public Adapter createCookbooksFolderAdapter() {
+>>>>>>> origin/tomhodder
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.DescribedObject <em>Described Object</em>}'.
+<<<<<<< HEAD
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.CookbooksFolder <em>Cookbooks Folder</em>}'.
+=======
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.workstation.WorkstationFolder <em>Folder</em>}'.
+>>>>>>> origin/tomhodder
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
+<<<<<<< HEAD
+	 * @see org.limepepper.chefclipse.common.workstation.CookbooksFolder
+	 * @generated
+	 */
+	public Adapter createCookbooksFolderAdapter() {
+=======
+	 * @see org.limepepper.chefclipse.common.workstation.WorkstationFolder
+	 * @generated
+	 */
+	public Adapter createWorkstationFolderAdapter() {
+>>>>>>> origin/tomhodder
+		return null;
+	}
+
+	/**
+<<<<<<< HEAD
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.DescribedObject <em>Described Object</em>}'.
+=======
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.DescribedObject <em>Described Object</em>}'.
+>>>>>>> origin/tomhodder
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+<<<<<<< HEAD
 	 * @see org.limepepper.chefclipse.utility.DescribedObject
+=======
+	 * @see org.limepepper.chefclipse.DescribedObject
+>>>>>>> origin/tomhodder
 	 * @generated
 	 */
 	public Adapter createDescribedObjectAdapter() {
@@ -296,13 +404,21 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.NamedObject <em>Named Object</em>}'.
+=======
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedObject <em>Named Object</em>}'.
+>>>>>>> origin/tomhodder
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
+<<<<<<< HEAD
 	 * @see org.limepepper.chefclipse.utility.NamedObject
+=======
+	 * @see org.limepepper.chefclipse.NamedObject
+>>>>>>> origin/tomhodder
 	 * @generated
 	 */
 	public Adapter createNamedObjectAdapter() {
@@ -310,13 +426,21 @@ public class WorkstationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.NamedDescribedObject <em>Named Described Object</em>}'.
+=======
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.NamedDescribedObject <em>Named Described Object</em>}'.
+>>>>>>> origin/tomhodder
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
+<<<<<<< HEAD
 	 * @see org.limepepper.chefclipse.utility.NamedDescribedObject
+=======
+	 * @see org.limepepper.chefclipse.NamedDescribedObject
+>>>>>>> origin/tomhodder
 	 * @generated
 	 */
 	public Adapter createNamedDescribedObjectAdapter() {

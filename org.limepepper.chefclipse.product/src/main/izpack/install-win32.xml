@@ -1,75 +1,149 @@
 <?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
 
-<installation version="5.0"
-	xmlns="http://izpack.org/schema/installation">
-	<!-- Ant properties in this file can be referenced with @{}, otherwise use 
-		variables below in installer files with ${} -->
-	<info>
-		<appname>@{product.name}</appname>
-		<appversion>@{product.version}</appversion>
-		<uninstaller name="uninstaller.jar" path="${INSTALL_PATH}/Uninstall"
-			write="yes" />
-	</info>
+<installation
+  version="5.0"
+  xmlns="http://izpack.org/schema/installation">
+  <!-- Ant properties in this file can be referenced with @{}, otherwise 
+    use variables below in installer files with ${} -->
+  <info>
+    <appname>@{product.name}</appname>
+    <appversion>@{product.version}</appversion>
+    <uninstaller
+      name="uninstaller.jar"
+      path="${INSTALL_PATH}/Uninstall"
+      write="yes" />
+  </info>
 
-	<guiprefs width="800" height="600" resizable="no">
-		<laf name="substance">
-			<os family="windows" />
-			<os family="unix" />
-			<param name="variant" value="mist-silver" />
-		</laf>
-		<laf name="substance">
-			<os family="mac" />
-			<param name="variant" value="mist-aqua" />
-		</laf>
-		<modifier key="useHeadingPanel" value="yes" />
-		<modifier key="useHeadingForSummary" value="yes" />
-		<modifier key="headingImageOnLeft" value="yes" />
-		<modifier key="headingLineCount" value="2" />
-		<modifier key="headingFontSize" value="1.5" />
-		<modifier key="headingBackgroundColor" value="0x00ffffff" />
-		<modifier key="headingPanelCounter" value="text" />
-		<modifier key="headingPanelCounterPos" value="inHeading" />
-	</guiprefs>
+  <variables>
+    <variable
+      name="DEFAULT_INSTALL_PATH"
+      value="$USER_HOME\Chefclipse" />
+  </variables>
 
-	<locale>
-		<langpack iso3="eng" />
-	</locale>
 
-	<resources>
-		<res id="box-out-32.png" src="@{icons.dir}/32x32.png" />
-		<res id="HTMLInfoPanel.info" src="@{izpack.staging.dir}/linux/gtk/x86_64/epl-v10.html" />
-		<res id="Heading.image" src="@{icons.dir}/16x16.png" />
-		<res id="Installer.image" src="@{icons.dir}/about_vert.gif" />
-		<res id="shortcutSpec.xml"
-			src="@{izpack.staging.dir}/../../../src/main/izpack/windows_shortcut_specification.xml" />
-	</resources>
+  <guiprefs
+    width="800"
+    height="600"
+    resizable="no">
+    <laf name="substance">
+      <os family="windows" />
+      <os family="unix" />
+      <param
+        name="variant"
+        value="mist-silver" />
+    </laf>
+    <laf name="substance">
+      <os family="mac" />
+      <param
+        name="variant"
+        value="mist-aqua" />
+    </laf>
+    <modifier
+      key="useHeadingPanel"
+      value="yes" />
+    <modifier
+      key="useHeadingForSummary"
+      value="yes" />
+    <modifier
+      key="headingImageOnLeft"
+      value="yes" />
+    <modifier
+      key="headingLineCount"
+      value="2" />
+    <modifier
+      key="headingFontSize"
+      value="1.5" />
+    <modifier
+      key="headingBackgroundColor"
+      value="0x00ffffff" />
+    <modifier
+      key="headingPanelCounter"
+      value="text" />
+    <modifier
+      key="headingPanelCounterPos"
+      value="inHeading" />
+  </guiprefs>
 
-	<panels>
-		<!-- panel classname="HelloPanel" / -->
-		<!-- panel classname="HTMLInfoPanel" / -->
-		<panel classname="TargetPanel" id="targetpanel" />
-		<panel classname="PacksPanel" id="packspanel" />
-		<panel classname="ShortcutPanel" id="shortcutpanel" />
-		<panel classname="InstallPanel" id="installpanel" />
-		<panel classname="SimpleFinishPanel" id="simplefinishpanel" />
-	</panels>
+  <locale>
+    <langpack iso3="eng" />
+  </locale>
 
-	<packs>
-		<pack name="Chefclipse Application" required="yes" installGroups="Chefclipse">
-			<description>Chefclipse Reality-Based automation for the Cloud.
-			</description>
-			<fileset dir="@{izpack.staging.dir}/win32/win32/@{product.arch}"
-				targetdir="$INSTALL_PATH" />
-		</pack>
-	</packs>
-	<!-- NOTE - the following stage attributes are only applicable for testing 
-		purposes -->
-	<natives>
-		<native type="izpack" name="ShellLink.dll" stage="both" />
-		<native type="izpack" name="ShellLink_x64.dll" stage="both" />
-		<native type="izpack" name="WinSetupAPI.dll" stage="both" />
-		<native type="izpack" name="WinSetupAPI_x64.dll" stage="both" />
-		<native type="3rdparty" name="COIOSHelper.dll" stage="uninstall" />
-		<native type="3rdparty" name="COIOSHelper_x64.dll" stage="uninstall" />
-	</natives>
+  <resources>
+    <res
+      id="box-out-32.png"
+      src="@{icons.dir}/32x32.png" />
+    <res
+      id="HTMLInfoPanel.info"
+      src="@{izpack.staging.dir}/linux/gtk/x86_64/epl-v10.html" />
+    <res
+      id="Heading.image"
+      src="@{icons.dir}/16x16.png" />
+    <res
+      id="Installer.image"
+      src="@{icons.dir}/about_vert.gif" />
+    <res
+      id="shortcutSpec.xml"
+      src="@{izpack.staging.dir}/../../../src/main/izpack/windows_shortcut_specification.xml" />
+  </resources>
+
+  <panels>
+    <!-- panel classname="HelloPanel" / -->
+    <!-- panel classname="HTMLInfoPanel" / -->
+    <panel
+      classname="TargetPanel"
+      id="targetpanel" />
+    <panel
+      classname="PacksPanel"
+      id="packspanel" />
+    <panel
+      classname="ShortcutPanel"
+      id="shortcutpanel" />
+    <panel
+      classname="InstallPanel"
+      id="installpanel" />
+    <panel
+      classname="SimpleFinishPanel"
+      id="simplefinishpanel" />
+  </panels>
+
+  <packs>
+    <pack
+      name="Chefclipse Application"
+      required="yes"
+      installGroups="Chefclipse">
+      <description>Chefclipse Reality-Based automation for the Cloud.
+      </description>
+      <fileset
+        dir="@{izpack.staging.dir}/win32/win32/@{product.arch}"
+        targetdir="$INSTALL_PATH" />
+    </pack>
+  </packs>
+  <!-- NOTE - the following stage attributes are only applicable for testing 
+    purposes -->
+  <natives>
+    <native
+      type="izpack"
+      name="ShellLink.dll"
+      stage="both" />
+    <native
+      type="izpack"
+      name="ShellLink_x64.dll"
+      stage="both" />
+    <native
+      type="izpack"
+      name="WinSetupAPI.dll"
+      stage="both" />
+    <native
+      type="izpack"
+      name="WinSetupAPI_x64.dll"
+      stage="both" />
+    <native
+      type="3rdparty"
+      name="COIOSHelper.dll"
+      stage="uninstall" />
+    <native
+      type="3rdparty"
+      name="COIOSHelper_x64.dll"
+      stage="uninstall" />
+  </natives>
 </installation>

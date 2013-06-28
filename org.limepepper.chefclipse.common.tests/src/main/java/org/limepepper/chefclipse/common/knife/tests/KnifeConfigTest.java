@@ -6,7 +6,11 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.tests.ConfigTest;
+=======
+import org.limepepper.chefclipse.tests.ConfigTest;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +47,11 @@ public class KnifeConfigTest extends ConfigTest {
 	 */
 	@Override
 	protected KnifeConfig getFixture() {
+<<<<<<< HEAD
 		return (KnifeConfig) fixture;
+=======
+		return (KnifeConfig)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

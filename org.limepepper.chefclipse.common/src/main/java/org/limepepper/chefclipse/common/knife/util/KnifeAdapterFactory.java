@@ -6,12 +6,19 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.knife.*;
+=======
+import org.limepepper.chefclipse.Config;
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
 import org.limepepper.chefclipse.common.knife.Plugin;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.Config;
+=======
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -56,7 +63,11 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
+<<<<<<< HEAD
 			return ((EObject) object).eClass().getEPackage() == modelPackage;
+=======
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
+>>>>>>> origin/tomhodder
 		}
 		return false;
 	}
@@ -67,6 +78,7 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	protected KnifeSwitch<Adapter> modelSwitch = new KnifeSwitch<Adapter>() {
 		@Override
 		public Adapter caseKnifeConfig(KnifeConfig object) {
@@ -93,6 +105,31 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 			return createEObjectAdapter();
 		}
 	};
+=======
+	protected KnifeSwitch<Adapter> modelSwitch =
+		new KnifeSwitch<Adapter>() {
+			@Override
+			public Adapter caseKnifeConfig(KnifeConfig object) {
+				return createKnifeConfigAdapter();
+			}
+			@Override
+			public Adapter casePlugin(Plugin object) {
+				return createPluginAdapter();
+			}
+			@Override
+			public Adapter caseKnifeSearch(KnifeSearch object) {
+				return createKnifeSearchAdapter();
+			}
+			@Override
+			public Adapter caseConfig(Config object) {
+				return createConfigAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object) {
+				return createEObjectAdapter();
+			}
+		};
+>>>>>>> origin/tomhodder
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -104,9 +141,16 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
+<<<<<<< HEAD
 		return modelSwitch.doSwitch((EObject) target);
 	}
 
+=======
+		return modelSwitch.doSwitch((EObject)target);
+	}
+
+
+>>>>>>> origin/tomhodder
 	/**
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.common.knife.KnifeConfig <em>Config</em>}'.
 	 * <!-- begin-user-doc -->
@@ -150,13 +194,21 @@ public class KnifeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.utility.Config <em>Config</em>}'.
+=======
+	 * Creates a new adapter for an object of class '{@link org.limepepper.chefclipse.Config <em>Config</em>}'.
+>>>>>>> origin/tomhodder
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
+<<<<<<< HEAD
 	 * @see org.limepepper.chefclipse.utility.Config
+=======
+	 * @see org.limepepper.chefclipse.Config
+>>>>>>> origin/tomhodder
 	 * @generated
 	 */
 	public Adapter createConfigAdapter() {

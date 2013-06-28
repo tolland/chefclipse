@@ -19,8 +19,12 @@ public interface CookbookFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+<<<<<<< HEAD
 	CookbookFactory eINSTANCE = org.limepepper.chefclipse.common.cookbook.impl.CookbookFactoryImpl
 			.init();
+=======
+	CookbookFactory eINSTANCE = org.limepepper.chefclipse.common.cookbook.impl.CookbookFactoryImpl.init();
+>>>>>>> origin/tomhodder
 
 	/**
 	 * Returns a new object of class '<em>Version</em>'.
@@ -158,6 +162,18 @@ public interface CookbookFactory extends EFactory {
 	MinimalMetadata createMinimalMetadata();
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Returns a new object of class '<em>Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Name</em>'.
+	 * @generated
+	 */
+	Name createName();
+
+	/**
+>>>>>>> origin/tomhodder
 	 * Returns a new object of class '<em>Cookbook</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

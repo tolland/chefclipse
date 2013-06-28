@@ -6,27 +6,30 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/tomhodder
 import chefclipse.core.managers.ChefRepositoryManager;
 
 public class CookbookGraphEditorInput implements IEditorInput {
 
     private final IResource resource;
     private CookbookVersion cookbook;
-    
+
     public CookbookGraphEditorInput(@NonNull IResource resource)
     {
         this.resource=resource;
         cookbook = (CookbookVersion) ChefRepositoryManager
                 .INSTANCE.getElement(resource);
     }
-    
+
     public IResource getResource()
     {
         return resource;
     }
-    
-    
+
+
     @Override
     public Object getAdapter(Class adapter) {
         return null;

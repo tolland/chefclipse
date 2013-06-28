@@ -5,16 +5,29 @@ package org.limepepper.chefclipse.common.chefserver.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.chefserver.*;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.Client;
 import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
 import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
+=======
+import org.limepepper.chefclipse.ChecksumFile;
+import org.limepepper.chefclipse.DescribedObject;
+import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.NamedObject;
+import org.limepepper.chefclipse.SandboxedObject;
+import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
+import org.limepepper.chefclipse.common.chefserver.CookbookListResp;
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.chefserver.Organization;
+=======
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.chefserver.Platform;
 import org.limepepper.chefclipse.common.chefserver.Role;
 import org.limepepper.chefclipse.common.chefserver.RunList;
@@ -25,6 +38,7 @@ import org.limepepper.chefclipse.common.chefserver.ServerConfig;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookFile;
 import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Cookbook;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.cookbook.CookbookFile;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.utility.ChecksumFile;
@@ -34,6 +48,9 @@ import org.limepepper.chefclipse.utility.JsonObject;
 import org.limepepper.chefclipse.utility.NamedDescribedObject;
 import org.limepepper.chefclipse.utility.NamedObject;
 import org.limepepper.chefclipse.utility.SandboxedObject;
+=======
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -92,6 +109,7 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+<<<<<<< HEAD
 		case ChefserverPackage.ENVIRONMENT: {
 			Environment environment = (Environment) theEObject;
 			T result = caseEnvironment(environment);
@@ -277,6 +295,115 @@ public class ChefserverSwitch<T> extends Switch<T> {
 		}
 		default:
 			return defaultCase(theEObject);
+=======
+			case ChefserverPackage.ENVIRONMENT: {
+				Environment environment = (Environment)theEObject;
+				T result = caseEnvironment(environment);
+				if (result == null) result = caseNamedDescribedObject(environment);
+				if (result == null) result = caseDescribedObject(environment);
+				if (result == null) result = caseNamedObject(environment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.DATA_BAG: {
+				DataBag dataBag = (DataBag)theEObject;
+				T result = caseDataBag(dataBag);
+				if (result == null) result = caseNamedDescribedObject(dataBag);
+				if (result == null) result = caseDescribedObject(dataBag);
+				if (result == null) result = caseNamedObject(dataBag);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.ROLE: {
+				Role role = (Role)theEObject;
+				T result = caseRole(role);
+				if (result == null) result = caseNamedDescribedObject(role);
+				if (result == null) result = caseRunListItem(role);
+				if (result == null) result = caseDescribedObject(role);
+				if (result == null) result = caseNamedObject(role);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.NODE: {
+				Node node = (Node)theEObject;
+				T result = caseNode(node);
+				if (result == null) result = caseNamedDescribedObject(node);
+				if (result == null) result = caseDescribedObject(node);
+				if (result == null) result = caseNamedObject(node);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.SERVER: {
+				Server server = (Server)theEObject;
+				T result = caseServer(server);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.PLATFORM: {
+				Platform platform = (Platform)theEObject;
+				T result = casePlatform(platform);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.RUN_LIST: {
+				RunList runList = (RunList)theEObject;
+				T result = caseRunList(runList);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.SERVER_CONFIG: {
+				ServerConfig serverConfig = (ServerConfig)theEObject;
+				T result = caseServerConfig(serverConfig);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.DATA_BAG_ITEM: {
+				DataBagItem dataBagItem = (DataBagItem)theEObject;
+				T result = caseDataBagItem(dataBagItem);
+				if (result == null) result = caseNamedObject(dataBagItem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.SANDBOX: {
+				Sandbox sandbox = (Sandbox)theEObject;
+				T result = caseSandbox(sandbox);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.COOKBOOK_LIST_RESP: {
+				CookbookListResp cookbookListResp = (CookbookListResp)theEObject;
+				T result = caseCookbookListResp(cookbookListResp);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.SERVER_COOKBOOK_FILE: {
+				ServerCookbookFile serverCookbookFile = (ServerCookbookFile)theEObject;
+				T result = caseServerCookbookFile(serverCookbookFile);
+				if (result == null) result = caseNamedObject(serverCookbookFile);
+				if (result == null) result = caseChecksumFile(serverCookbookFile);
+				if (result == null) result = caseSandboxedObject(serverCookbookFile);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.SERVER_COOKBOOK_VERSION: {
+				ServerCookbookVersion serverCookbookVersion = (ServerCookbookVersion)theEObject;
+				T result = caseServerCookbookVersion(serverCookbookVersion);
+				if (result == null) result = caseCookbookVersion(serverCookbookVersion);
+				if (result == null) result = caseNamedDescribedObject(serverCookbookVersion);
+				if (result == null) result = caseCookbook(serverCookbookVersion);
+				if (result == null) result = caseDescribedObject(serverCookbookVersion);
+				if (result == null) result = caseNamedObject(serverCookbookVersion);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ChefserverPackage.RUN_LIST_ITEM: {
+				RunListItem runListItem = (RunListItem)theEObject;
+				T result = caseRunListItem(runListItem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
+>>>>>>> origin/tomhodder
 		}
 	}
 
@@ -431,6 +558,7 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Returns the result of interpreting the object as an instance of '<em>Cookbook List Version Resp</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -446,6 +574,8 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
 	/**
+=======
+>>>>>>> origin/tomhodder
 	 * Returns the result of interpreting the object as an instance of '<em>Cookbook List Resp</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -506,6 +636,7 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Returns the result of interpreting the object as an instance of '<em>Client</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -536,6 +667,8 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
 	/**
+=======
+>>>>>>> origin/tomhodder
 	 * Returns the result of interpreting the object as an instance of '<em>Described Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -581,6 +714,7 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Returns the result of interpreting the object as an instance of '<em>Ident Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -626,6 +760,8 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
 	/**
+=======
+>>>>>>> origin/tomhodder
 	 * Returns the result of interpreting the object as an instance of '<em>Checksum File</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -641,17 +777,29 @@ public class ChefserverSwitch<T> extends Switch<T> {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Returns the result of interpreting the object as an instance of '<em>File</em>'.
+=======
+	 * Returns the result of interpreting the object as an instance of '<em>Sandboxed Object</em>'.
+>>>>>>> origin/tomhodder
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
+<<<<<<< HEAD
 	 * @return the result of interpreting the object as an instance of '<em>File</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseCookbookFile(CookbookFile object) {
+=======
+	 * @return the result of interpreting the object as an instance of '<em>Sandboxed Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSandboxedObject(SandboxedObject object) {
+>>>>>>> origin/tomhodder
 		return null;
 	}
 

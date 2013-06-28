@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  * @generated
  */
 public class ChefclipseResourceFactoryImpl extends ResourceFactoryImpl {
+<<<<<<< HEAD
 	/**
 	 * Creates an instance of the resource factory.
 	 * <!-- begin-user-doc -->
@@ -32,6 +33,26 @@ public class ChefclipseResourceFactoryImpl extends ResourceFactoryImpl {
 	 */
 	@Override
 	public Resource createResource(URI uri) {
+=======
+    /**
+	 * Creates an instance of the resource factory.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public ChefclipseResourceFactoryImpl() {
+		super();
+	}
+
+    /**
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    public Resource createResource(URI uri) {
+>>>>>>> origin/tomhodder
 		Resource result = new ChefclipseResourceImpl(uri);
 		return result;
 	}

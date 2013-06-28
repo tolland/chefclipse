@@ -42,7 +42,11 @@ public class ConfigFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected ConfigFolder getFixture() {
+<<<<<<< HEAD
 		return (ConfigFolder) fixture;
+=======
+		return (ConfigFolder)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

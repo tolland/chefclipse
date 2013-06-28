@@ -34,34 +34,51 @@ import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteCookb
 
 /**
  * @author Sebastian Sampaoli
- *
+ * 
  */
 public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 
 	private String repositoryURI;
 	private ICookbooksRepository repo;
 
+<<<<<<< HEAD
 	public CookbookSiteDownloadStrategy(String repositoryURI,
 			ICookbooksRepository repo) {
 		this.repo = repo;
+=======
+	public CookbookSiteDownloadStrategy(String repositoryURI) {
+
+>>>>>>> origin/tomhodder
 		this.repositoryURI = repositoryURI;
 	}
 
 	/*
 	 * (non-Javadoc)
+<<<<<<< HEAD
 	 *
+=======
+	 * 
+>>>>>>> origin/tomhodder
 	 * @see
 	 * org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy#
 	 * downloadCookbook
 	 * (org.limepepper.chefclipse.common.cookbookrepository.RemoteCookbook)
 	 */
 	@Override
+<<<<<<< HEAD
 	public File downloadCookbook(RemoteCookbook cookbook, String version)
+=======
+	public File downloadCookbook(RemoteCookbook cookbook)
+>>>>>>> origin/tomhodder
 			throws InstallCookbookException {
 
 		URLConnection connection = null;
 		try {
+<<<<<<< HEAD
 			String latestVersion = version;
+=======
+			String latestVersion = cookbook.getLatestVersion();
+>>>>>>> origin/tomhodder
 			String lastVersion = latestVersion.substring(latestVersion
 					.lastIndexOf("/") + 1);
 			String url = UriBuilder.fromUri(repositoryURI).path("cookbooks")
@@ -84,6 +101,7 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 			out.flush();
 			out.close();
 			File decompressedCookbook = decompressCookbook(tempZipFile);
+<<<<<<< HEAD
 			File tmpCookbook = new File(decompressedCookbook.getParentFile(),
 					cookbook.getName() + "_"
 							+ repo.getReadableVersion(cookbook, version));
@@ -94,6 +112,10 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 						+ decompressedCookbook + " to " + tmpCookbook);
 
 			return tmpCookbook;
+=======
+			in.close();
+			return new File(decompressedCookbook, cookbook.getName());
+>>>>>>> origin/tomhodder
 		} catch (FileNotFoundException e) {
 			if (connection != null) {
 				throw new InstallCookbookException(
@@ -124,7 +146,11 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 
 	/*
 	 * (non-Javadoc)
+<<<<<<< HEAD
 	 *
+=======
+	 * 
+>>>>>>> origin/tomhodder
 	 * @see
 	 * org.limepepper.chefclipse.remotepicker.api.IDownloadCookbookStrategy#
 	 * decompressCookbook(java.io.File)
@@ -145,17 +171,28 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 
 	/**
 	 * Untar an input file into an output file.
+<<<<<<< HEAD
 	 *
 	 * The output file is created in the output folder, having the same name as
 	 * the input file, minus the '.tar' extension.
 	 *
+=======
+	 * 
+	 * The output file is created in the output folder, having the same name as
+	 * the input file, minus the '.tar' extension.
+	 * 
+>>>>>>> origin/tomhodder
 	 * @param inputFile
 	 *            the input .tar file
 	 * @param outputDir
 	 *            the output directory file.
 	 * @throws IOException
 	 * @throws FileNotFoundException
+<<<<<<< HEAD
 	 *
+=======
+	 * 
+>>>>>>> origin/tomhodder
 	 * @return The {@link List} of {@link File}s with the untared content.
 	 * @throws ArchiveException
 	 */
@@ -181,6 +218,11 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 					// LOG.info(String.format("Attempting to create output directory %s.",
 					// outputFile.getAbsolutePath()));
 					if (!outputFile.mkdirs()) {
+<<<<<<< HEAD
+=======
+						is.close();
+						debInputStream.close();
+>>>>>>> origin/tomhodder
 						throw new IllegalStateException(String.format(
 								"Couldn't create directory %s.",
 								outputFile.getAbsolutePath()));
@@ -191,6 +233,11 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 				// outputFile.getAbsolutePath()));
 				if (!outputFile.getParentFile().exists()) {
 					if (!outputFile.getParentFile().mkdirs()) {
+<<<<<<< HEAD
+=======
+						is.close();
+						debInputStream.close();
+>>>>>>> origin/tomhodder
 						throw new IllegalStateException(String.format(
 								"Couldn't create directory %s.",
 								outputFile.getAbsolutePath()));
@@ -204,7 +251,11 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 			untaredFiles.add(outputFile);
 		}
 		debInputStream.close();
+<<<<<<< HEAD
 
+=======
+		is.close();
+>>>>>>> origin/tomhodder
 		return untaredFiles;
 	}
 
@@ -213,18 +264,27 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 	 * <p>
 	 * The output file is created in the output folder, having the same name as
 	 * the input file, minus the '.gz' extension.
+<<<<<<< HEAD
 	 *
+=======
+	 * 
+>>>>>>> origin/tomhodder
 	 * @param inputFile
 	 *            the input .gz file
 	 * @param outputDir
 	 *            the output directory file.
 	 * @throws IOException
 	 * @throws FileNotFoundException
+<<<<<<< HEAD
 	 *
+=======
+	 * 
+>>>>>>> origin/tomhodder
 	 * @return The {@File} with the ungzipped content.
 	 */
 	private File unGzip(final File inputFile) throws FileNotFoundException,
 			IOException {
+<<<<<<< HEAD
 
 		// System.out.println("Ungzipping %s to dir %s." + inputFile.getParent()
 		// + inputFile.getName().substring(0, inputFile.getName().length() -
@@ -239,6 +299,22 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 				inputFile));
 		final FileOutputStream out = new FileOutputStream(outputFile);
 
+=======
+
+		// System.out.println("Ungzipping %s to dir %s." + inputFile.getParent()
+		// + inputFile.getName().substring(0, inputFile.getName().length() -
+		// 3));
+		// LOG.info(String.format("Ungzipping %s to dir %s.",
+		// inputFile.getAbsolutePath(), outputDir.getAbsolutePath()));
+
+		final File outputFile = new File(inputFile.getParent(), inputFile
+				.getName().substring(0, inputFile.getName().length() - 3));
+
+		final GZIPInputStream in = new GZIPInputStream(new FileInputStream(
+				inputFile));
+		final FileOutputStream out = new FileOutputStream(outputFile);
+
+>>>>>>> origin/tomhodder
 		for (int c = in.read(); c != -1; c = in.read()) {
 			out.write(c);
 		}

@@ -42,7 +42,11 @@ public class CertificatesFolderTest extends WorkstationFolderTest {
 	 */
 	@Override
 	protected CertificatesFolder getFixture() {
+<<<<<<< HEAD
 		return (CertificatesFolder) fixture;
+=======
+		return (CertificatesFolder)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

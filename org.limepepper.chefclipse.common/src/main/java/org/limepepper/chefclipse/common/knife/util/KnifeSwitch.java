@@ -5,12 +5,19 @@ package org.limepepper.chefclipse.common.knife.util;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.common.knife.*;
+=======
+import org.limepepper.chefclipse.Config;
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifePackage;
 import org.limepepper.chefclipse.common.knife.KnifeSearch;
 import org.limepepper.chefclipse.common.knife.Plugin;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.Config;
+=======
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -69,6 +76,7 @@ public class KnifeSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+<<<<<<< HEAD
 		case KnifePackage.KNIFE_CONFIG: {
 			KnifeConfig knifeConfig = (KnifeConfig) theEObject;
 			T result = caseKnifeConfig(knifeConfig);
@@ -94,6 +102,28 @@ public class KnifeSwitch<T> extends Switch<T> {
 		}
 		default:
 			return defaultCase(theEObject);
+=======
+			case KnifePackage.KNIFE_CONFIG: {
+				KnifeConfig knifeConfig = (KnifeConfig)theEObject;
+				T result = caseKnifeConfig(knifeConfig);
+				if (result == null) result = caseConfig(knifeConfig);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case KnifePackage.PLUGIN: {
+				Plugin plugin = (Plugin)theEObject;
+				T result = casePlugin(plugin);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case KnifePackage.KNIFE_SEARCH: {
+				KnifeSearch knifeSearch = (KnifeSearch)theEObject;
+				T result = caseKnifeSearch(knifeSearch);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
+>>>>>>> origin/tomhodder
 		}
 	}
 

@@ -17,6 +17,7 @@ import org.limepepper.chefclipse.common.chefserver.RunListItem;
  * @generated
  */
 public class RunListItemImpl extends EObjectImpl implements RunListItem {
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -43,6 +44,34 @@ public class RunListItemImpl extends EObjectImpl implements RunListItem {
 	 */
 	@Override
 	protected int eStaticFeatureCount() {
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public RunListItemImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefserverPackage.Literals.RUN_LIST_ITEM;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected int eStaticFeatureCount() {
+>>>>>>> origin/tomhodder
 		return 0;
 	}
 

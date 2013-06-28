@@ -6,6 +6,10 @@ import junit.textui.TestRunner;
 
 import org.limepepper.chefclipse.common.cookbook.CookbookFactory;
 import org.limepepper.chefclipse.common.cookbook.Metadata;
+<<<<<<< HEAD
+=======
+import org.limepepper.chefclipse.tests.RubyFileTest;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +46,11 @@ public class MetadataTest extends CookbookFileTest {
 	 */
 	@Override
 	protected Metadata getFixture() {
+<<<<<<< HEAD
 		return (Metadata) fixture;
+=======
+		return (Metadata)fixture;
+>>>>>>> origin/tomhodder
 	}
 
 	/**

@@ -3,9 +3,15 @@
 package org.limepepper.chefclipse.common.cookbook;
 
 import org.eclipse.emf.common.util.EMap;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.MaintainedObject;
 import org.limepepper.chefclipse.utility.NamedDescribedObject;
 import org.limepepper.chefclipse.utility.RubyFile;
+=======
+import org.limepepper.chefclipse.MaintainedObject;
+import org.limepepper.chefclipse.NamedDescribedObject;
+import org.limepepper.chefclipse.RubyFile;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -32,8 +38,40 @@ import org.limepepper.chefclipse.utility.RubyFile;
  * @model
  * @generated
  */
+<<<<<<< HEAD
 public interface Metadata extends CookbookFile, RubyFile, MaintainedObject,
 		NamedDescribedObject {
+=======
+public interface Metadata extends RubyFile, MaintainedObject, NamedDescribedObject {
+	/**
+	 * Returns the value of the '<em><b>Cookbook Version</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMetadata <em>Metadata</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cookbook Version</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cookbook Version</em>' container reference.
+	 * @see #setCookbookVersion(CookbookVersion)
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getMetadata_CookbookVersion()
+	 * @see org.limepepper.chefclipse.common.cookbook.CookbookVersion#getMetadata
+	 * @model opposite="metadata" required="true" transient="false"
+	 * @generated
+	 */
+	CookbookVersion getCookbookVersion();
+
+	/**
+	 * Sets the value of the '{@link org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion <em>Cookbook Version</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cookbook Version</em>' container reference.
+	 * @see #getCookbookVersion()
+	 * @generated
+	 */
+	void setCookbookVersion(CookbookVersion value);
+
+>>>>>>> origin/tomhodder
 	/**
 	 * Returns the value of the '<em><b>Long description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -45,7 +83,11 @@ public interface Metadata extends CookbookFile, RubyFile, MaintainedObject,
 	 * @return the value of the '<em>Long description</em>' attribute.
 	 * @see #setLong_description(String)
 	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getMetadata_Long_description()
+<<<<<<< HEAD
 	 * @model dataType="org.limepepper.chefclipse.utility.Text"
+=======
+	 * @model dataType="org.limepepper.chefclipse.Text"
+>>>>>>> origin/tomhodder
 	 * @generated
 	 */
 	String getLong_description();
@@ -72,7 +114,11 @@ public interface Metadata extends CookbookFile, RubyFile, MaintainedObject,
 	 * @return the value of the '<em>Version</em>' attribute.
 	 * @see #setVersion(String)
 	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getMetadata_Version()
+<<<<<<< HEAD
 	 * @model default="0.0.0" dataType="org.limepepper.chefclipse.utility.Version" required="true"
+=======
+	 * @model default="0.0.0" dataType="org.limepepper.chefclipse.Version" required="true"
+>>>>>>> origin/tomhodder
 	 * @generated
 	 */
 	String getVersion();
@@ -205,6 +251,7 @@ public interface Metadata extends CookbookFile, RubyFile, MaintainedObject,
 	 * @generated
 	 */
 	EMap<String, String> getRecipes();
+<<<<<<< HEAD
 
 	/**
 	 * Returns the value of the '<em><b>Replacing</b></em>' attribute.
@@ -231,5 +278,7 @@ public interface Metadata extends CookbookFile, RubyFile, MaintainedObject,
 	 * @generated
 	 */
 	void setReplacing(String value);
+=======
+>>>>>>> origin/tomhodder
 
 } // Metadata

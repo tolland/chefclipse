@@ -5,6 +5,10 @@ package org.limepepper.chefclipse.common.cookbook;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
+<<<<<<< HEAD
+=======
+import org.limepepper.chefclipse.NamedDescribedObject;
+>>>>>>> origin/tomhodder
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.utility.NamedDescribedObject;
 
@@ -162,6 +166,10 @@ public interface CookbookVersion extends NamedDescribedObject, Cookbook {
 
 	/**
 	 * Returns the value of the '<em><b>Metadata</b></em>' containment reference.
+<<<<<<< HEAD
+=======
+	 * It is bidirectional and its opposite is '{@link org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion <em>Cookbook Version</em>}'.
+>>>>>>> origin/tomhodder
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Metadata</em>' containment reference isn't clear,
@@ -171,7 +179,12 @@ public interface CookbookVersion extends NamedDescribedObject, Cookbook {
 	 * @return the value of the '<em>Metadata</em>' containment reference.
 	 * @see #setMetadata(Metadata)
 	 * @see org.limepepper.chefclipse.common.cookbook.CookbookPackage#getCookbookVersion_Metadata()
+<<<<<<< HEAD
 	 * @model containment="true" resolveProxies="true" required="true"
+=======
+	 * @see org.limepepper.chefclipse.common.cookbook.Metadata#getCookbookVersion
+	 * @model opposite="cookbookVersion" containment="true" resolveProxies="true" required="true"
+>>>>>>> origin/tomhodder
 	 * @generated
 	 */
 	Metadata getMetadata();
@@ -207,7 +220,11 @@ public interface CookbookVersion extends NamedDescribedObject, Cookbook {
 	 * The list contents are of type {@link org.limepepper.chefclipse.common.cookbook.Root_file}.
 	 * <!-- begin-user-doc -->
 	 * <p>
+<<<<<<< HEAD
 	 * If the meaning of the '<em>Root files</em>' reference list isn't clear,
+=======
+	 * If the meaning of the '<em>Root files</em>' containment reference list isn't clear,
+>>>>>>> origin/tomhodder
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

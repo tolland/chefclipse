@@ -16,8 +16,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.zest.jface;bundle-version="2.0.0",
  org.eclipse.zest.layouts;bundle-version="2.0.0",
  org.junit;bundle-version="4.10.0",
+<<<<<<< HEAD
  chefclipse.core;bundle-version="0.1.0",
  org.limepepper.chefclipse.logger;bundle-version="0.1.0"
+=======
+ chefclipse.core;bundle-version="0.1.0"
+>>>>>>> origin/tomhodder
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse.graphviewer,

@@ -7,8 +7,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.impl.IdentObjectImpl;
 import org.limepepper.chefclipse.utility.impl.NamedObjectImpl;
+=======
+import org.limepepper.chefclipse.impl.NamedObjectImpl;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +28,7 @@ import org.limepepper.chefclipse.utility.impl.NamedObjectImpl;
  *
  * @generated
  */
+<<<<<<< HEAD
 public class DataBagItemImpl extends IdentObjectImpl implements DataBagItem {
 	/**
 	 * <!-- begin-user-doc -->
@@ -81,6 +86,44 @@ public class DataBagItemImpl extends IdentObjectImpl implements DataBagItem {
 	public void setJsonResource(IResource newJsonResource) {
 		eSet(ChefserverPackage.Literals.DATA_BAG_ITEM__JSON_RESOURCE,
 				newJsonResource);
+=======
+public class DataBagItemImpl extends NamedObjectImpl implements DataBagItem {
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public DataBagItemImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefserverPackage.Literals.DATA_BAG_ITEM;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public DataBag getDataBag() {
+		return (DataBag)eGet(ChefserverPackage.Literals.DATA_BAG_ITEM__DATA_BAG, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setDataBag(DataBag newDataBag) {
+		eSet(ChefserverPackage.Literals.DATA_BAG_ITEM__DATA_BAG, newDataBag);
+>>>>>>> origin/tomhodder
 	}
 
 } //DataBagItemImpl

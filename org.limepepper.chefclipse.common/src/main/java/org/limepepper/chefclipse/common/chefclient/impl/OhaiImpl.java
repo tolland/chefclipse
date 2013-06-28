@@ -17,6 +17,7 @@ import org.limepepper.chefclipse.common.chefclient.Ohai;
  * @generated
  */
 public class OhaiImpl extends EObjectImpl implements Ohai {
+<<<<<<< HEAD
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -43,6 +44,34 @@ public class OhaiImpl extends EObjectImpl implements Ohai {
 	 */
 	@Override
 	protected int eStaticFeatureCount() {
+=======
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public OhaiImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefclientPackage.Literals.OHAI;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected int eStaticFeatureCount() {
+>>>>>>> origin/tomhodder
 		return 0;
 	}
 

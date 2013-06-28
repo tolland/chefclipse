@@ -2,7 +2,10 @@
  */
 package org.limepepper.chefclipse.common.chefserver.impl;
 
+<<<<<<< HEAD
 import org.eclipse.emf.common.util.EList;
+=======
+>>>>>>> origin/tomhodder
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.limepepper.chefclipse.common.chefserver.ChefserverPackage;
@@ -17,13 +20,13 @@ import org.limepepper.chefclipse.common.chefserver.CookbookListVersionResp;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl#getVersions <em>Versions</em>}</li>
  *   <li>{@link org.limepepper.chefclipse.common.chefserver.impl.CookbookListRespImpl#getUrl <em>Url</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
+<<<<<<< HEAD
 public class CookbookListRespImpl extends EObjectImpl implements
 		CookbookListResp {
 	/**
@@ -101,6 +104,71 @@ public class CookbookListRespImpl extends EObjectImpl implements
 	 * @generated
 	 */
 	public void setUrl(String newUrl) {
+=======
+public class CookbookListRespImpl extends EObjectImpl implements CookbookListResp {
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public CookbookListRespImpl() {
+		super();
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected EClass eStaticClass() {
+		return ChefserverPackage.Literals.COOKBOOK_LIST_RESP;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    @Override
+    protected int eStaticFeatureCount() {
+		return 0;
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public String getName() {
+		return (String)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__NAME, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setName(String newName) {
+		eSet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__NAME, newName);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public String getUrl() {
+		return (String)eGet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__URL, true);
+	}
+
+    /**
+	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+    public void setUrl(String newUrl) {
+>>>>>>> origin/tomhodder
 		eSet(ChefserverPackage.Literals.COOKBOOK_LIST_RESP__URL, newUrl);
 	}
 

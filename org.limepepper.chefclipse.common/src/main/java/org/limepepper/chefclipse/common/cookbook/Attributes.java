@@ -2,7 +2,11 @@
  */
 package org.limepepper.chefclipse.common.cookbook;
 
+<<<<<<< HEAD
 import org.limepepper.chefclipse.utility.RubyFile;
+=======
+import org.limepepper.chefclipse.SandboxedObject;
+>>>>>>> origin/tomhodder
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +18,9 @@ import org.limepepper.chefclipse.utility.RubyFile;
  * @model
  * @generated
  */
+<<<<<<< HEAD
 public interface Attributes extends CookbookFile, RubyFile {
+=======
+public interface Attributes extends SandboxedObject, CookbookFile {
+>>>>>>> origin/tomhodder
 } // Attributes

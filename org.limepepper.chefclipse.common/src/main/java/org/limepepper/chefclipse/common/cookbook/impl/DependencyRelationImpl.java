@@ -16,8 +16,12 @@ import org.limepepper.chefclipse.common.cookbook.DependencyRelation;
  *
  * @generated
  */
+<<<<<<< HEAD
 public class DependencyRelationImpl extends EObjectImpl implements
 		DependencyRelation {
+=======
+public class DependencyRelationImpl extends EObjectImpl implements DependencyRelation {
+>>>>>>> origin/tomhodder
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

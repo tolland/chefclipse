@@ -8,7 +8,10 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/tomhodder
 import chefclipse.core.managers.ChefRepositoryManager;
 
 public class DependencyModel implements IResourceChangeListener {

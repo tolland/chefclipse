@@ -13,7 +13,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/tomhodder
 import chefclipse.core.testers.ChefTester;
 
 public class DynamicMenu extends CompoundContributionItem {
