@@ -29,9 +29,9 @@ import org.limepepper.chefclipse.dltk.model.Resource;
  * implementation to the real ruby script file and we override the
  * {@link #getSourceRange()} method in order to link the selection to the source
  * range of the ruby call expression representing the chef resource.
- * 
+ *
  */
-public class ChefResourceOutlineElement implements ISourceModule {
+public class ChefResourceOutlineElement extends SourceModule {
 
 	private final ISourceModule sourceModule;
 

@@ -60,7 +60,7 @@
                         type="org.limepepper.chefclipse.common.cookbook.CookbookVersion">
                   </adapt>
                   <adapt
-                        type="org.limepepper.chefclipse.model.CookbookFolder">
+                        type="chefclipse.core.CookbookFolder">
                   </adapt>
                   <adapt
                         type="org.eclipse.core.resources.mapping.ResourceMapping">

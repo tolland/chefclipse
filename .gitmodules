@@ -1,3 +1,6 @@
 [submodule "org.eclipse.dltk.ruby"]
 	path = org.eclipse.dltk.ruby
 	url = http://git.eclipse.org/gitroot/dltk/org.eclipse.dltk.ruby.git
+[submodule "org.eclipse.dltk.core"]
+	path = org.eclipse.dltk.core
+	url = git://git.eclipse.org/gitroot/dltk/org.eclipse.dltk.core.git

@@ -189,6 +189,9 @@
         <module>plugins/libs/com.sun.jersey.bundle</module>
 
 
+        <!-- dltk language stuff -->
+        <module>plugins/org.limepepper.chefclipse.dltk</module>
+        <module>plugins/org.limepepper.chefclipse.dltk.tests</module>
 
 
         <!--module>../chefclipse.site</module -->

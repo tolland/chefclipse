@@ -24,7 +24,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.progress.IProgressConstants;
@@ -105,8 +107,38 @@ public class RemotePickerHandler extends AbstractHandler {
 		wizard.getCatalogPage().setTitle(CHEFCLIPSE_COOKBOOK_DISCOVERY);
 		wizard.getCatalogPage().setDescription(DISCOVERY_DESCRIPTION);
 
-		WizardDialog dialog = new WizardDialog(Display.getCurrent()
-				.getActiveShell(), wizard);
+		Shell shell = Display.getCurrent().getActiveShell();
+
+		final int newHeight = (int) Math.round(shell.getSize().y * 0.8);
+
+		final Rectangle bounds = shell.getBounds();
+
+		// bounds.x
+		// bounds.y
+
+		System.out.println(newHeight);
+		System.out.println(bounds.y);
+
+		WizardDialog dialog = new WizardDialog(shell, wizard) {
+
+			protected void configureShell(Shell shell) {
+				super.configureShell(shell);
+
+				System.out.println(bounds);
+				System.out.println(shell.getBounds());
+
+				Rectangle newBounds = new Rectangle(bounds.x
+						+ ((int) Math.round(bounds.width * 0.15)), bounds.y
+						+ ((int) Math.round(bounds.height * 0.1)),
+						(int) Math.round(bounds.width * 0.7),
+						(int) Math.round(bounds.height * 0.8));
+
+				shell.setBounds(newBounds);
+				// shell.setSize(500, newHeight);
+				System.out.println(shell.getBounds().y);
+			}
+
+		};
 		dialog.open();
 
 		return null;
