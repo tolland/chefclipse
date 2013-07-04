@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.limepepper.chefclipse.common.editor" modificationStamp="794" version="1.2">
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.editor/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.presentation"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.editor/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.presentation"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.editor/src\/main\/java&lt;org.limepepper.chefclipse.common.editor.presentation"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.editor/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.presentation"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.editor/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.presentation"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.editor/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.presentation"/>
+    </package>
+</component>

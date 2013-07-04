@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.limepepper.chefclipse.chefserver.api.ui" modificationStamp="871" version="1.2">
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.chefserver.api.ui/src\/main\/java&lt;org.limepepper.chefclipse.chefserver.api.ui"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.chefserver.api.ui/src\/main\/java&lt;org.limepepper.chefclipse.chefserver.api.ui.handler"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.chefserver.api.ui/src\/main\/java&lt;org.limepepper.chefclipse.chefserver.api.ui.editors"/>
+        <type handle="=org.limepepper.chefclipse.chefserver.api.ui/src\/main\/java&lt;org.limepepper.chefclipse.chefserver.api.ui.editors{MultiPageEditor.java[MultiPageEditor" modificationStamp="13077" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.chefserver.api.ui/src\/main\/java&lt;org.limepepper.chefclipse.chefserver.api.ui.editors{MultiPageEditorContributor.java[MultiPageEditorContributor" modificationStamp="13078" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.chefserver.api.ui/src\/main\/java&lt;org.limepepper.chefclipse.chefserver.api.ui.editors{RunListEditorInput.java[RunListEditorInput" modificationStamp="13080" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.chefserver.api.ui/src\/main\/java&lt;org.limepepper.chefclipse.chefserver.api.ui.editors{RunListEditor.java[RunListEditor" modificationStamp="13079" restrictions="0" visibility="0"/>
+    </package>
+</component>

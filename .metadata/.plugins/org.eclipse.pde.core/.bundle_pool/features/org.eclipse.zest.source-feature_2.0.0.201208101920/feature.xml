@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.zest.source-feature"
+      label="%featureName"
+      version="2.0.0.201208101920"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+   
+   <plugin
+         id="org.eclipse.zest.cloudio.source"
+         download-size="27"
+         install-size="90"
+         version="2.0.0.201208101920"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.zest.core.source"
+         download-size="88"
+         install-size="300"
+         version="2.0.0.201208101920"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.zest.dot.core.source"
+         download-size="107"
+         install-size="698"
+         version="2.0.0.201208101920"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.zest.dot.export.source"
+         download-size="14"
+         install-size="35"
+         version="2.0.0.201208101920"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.zest.dot.ui.source"
+         download-size="68"
+         install-size="536"
+         version="2.0.0.201208101920"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.zest.jface.source"
+         download-size="36"
+         install-size="110"
+         version="2.0.0.201208101920"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.zest.layouts.source"
+         download-size="49"
+         install-size="163"
+         version="2.0.0.201208101920"
+         unpack="false"/>
+
+</feature>

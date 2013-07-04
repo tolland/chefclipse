@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.limepepper.chefclipse.common" modificationStamp="842" version="1.2">
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{RakefileImpl.java[RakefileImpl" modificationStamp="11357" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{CertificatesFolderImpl.java[CertificatesFolderImpl" modificationStamp="11352" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{RolesFolderImpl.java[RolesFolderImpl" modificationStamp="11359" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{ConfigFolderImpl.java[ConfigFolderImpl" modificationStamp="11353" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{RepositoryImpl.java[RepositoryImpl" modificationStamp="11358" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{WorkstationPackageImpl.java[WorkstationPackageImpl" modificationStamp="11362" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{DataBagsFolderImpl.java[DataBagsFolderImpl" modificationStamp="11355" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{EnvironmentsFolderImpl.java[EnvironmentsFolderImpl" modificationStamp="11356" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{CookbooksFolderImpl.java[CookbooksFolderImpl" modificationStamp="11354" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{WorkstationFolderImpl.java[WorkstationFolderImpl" modificationStamp="11361" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.impl{WorkstationFactoryImpl.java[WorkstationFactoryImpl" modificationStamp="11360" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{NamedDescribedObject.java[NamedDescribedObject" modificationStamp="7071" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{IdentObject.java[IdentObject" modificationStamp="7065" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{VersionUrl.java[VersionUrl" modificationStamp="7078" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{NamedObject.java[NamedObject" modificationStamp="7072" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{NameVersionMap.java[NameVersionMap" modificationStamp="7070" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{UtilityPackage.java[UtilityPackage" modificationStamp="7077" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{URLEntryTest.java[URLEntryTest" modificationStamp="7075" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{RubyFile.java[RubyFile" modificationStamp="7073" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{ChecksumFile.java[ChecksumFile" modificationStamp="7062" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{UtilityFactory.java[UtilityFactory" modificationStamp="7076" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{JsonObject.java[JsonObject" modificationStamp="7066" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{MapTestContainer.java[MapTestContainer" modificationStamp="7068" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{Config.java[Config" modificationStamp="7063" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{NameUrlMap.java[NameUrlMap" modificationStamp="7069" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{DescribedObject.java[DescribedObject" modificationStamp="7064" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{SandboxedObject.java[SandboxedObject" modificationStamp="7074" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{MaintainedObject.java[MaintainedObject" modificationStamp="7067" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility{VersionedObject.java[VersionedObject" modificationStamp="7079" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{ServerCookbookFileImpl.java[ServerCookbookFileImpl" modificationStamp="11499" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{ChefserverFactoryImpl.java[ChefserverFactoryImpl" modificationStamp="11483" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{ClientImpl.java[ClientImpl" modificationStamp="11485" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{NodeImpl.java[NodeImpl" modificationStamp="11491" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{CookbookListVersionRespImpl.java[CookbookListVersionRespImpl" modificationStamp="11487" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{ChefserverPackageImpl.java[ChefserverPackageImpl" modificationStamp="11484" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{EnvironmentImpl.java[EnvironmentImpl" modificationStamp="11490" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{PlatformImpl.java[PlatformImpl" modificationStamp="11493" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{RunListImpl.java[RunListImpl" modificationStamp="11495" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{ServerCookbookVersionImpl.java[ServerCookbookVersionImpl" modificationStamp="11500" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{RoleImpl.java[RoleImpl" modificationStamp="11494" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{DataBagItemImpl.java[DataBagItemImpl" modificationStamp="11489" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{OrganizationImpl.java[OrganizationImpl" modificationStamp="11492" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{DataBagImpl.java[DataBagImpl" modificationStamp="11488" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{ServerImpl.java[ServerImpl" modificationStamp="11501" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{RunListItemImpl.java[RunListItemImpl" modificationStamp="11496" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{CookbookListRespImpl.java[CookbookListRespImpl" modificationStamp="11486" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{SandboxImpl.java[SandboxImpl" modificationStamp="11497" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.impl{ServerConfigImpl.java[ServerConfigImpl" modificationStamp="11498" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{ProviderImpl.java[ProviderImpl" modificationStamp="11432" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{Root_fileImpl.java[Root_fileImpl" modificationStamp="11436" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{RecipeDescriptionImpl.java[RecipeDescriptionImpl" modificationStamp="11433" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{MinimalMetadataImpl.java[MinimalMetadataImpl" modificationStamp="11431" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{CookbookVersionImpl.java[CookbookVersionImpl" modificationStamp="11425" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{CookbookFileImpl.java[CookbookFileImpl" modificationStamp="11422" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{RecipeImpl.java[RecipeImpl" modificationStamp="11434" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{AttributesImpl.java[AttributesImpl" modificationStamp="11420" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{ResourceImpl.java[ResourceImpl" modificationStamp="11435" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{FileImpl.java[FileImpl" modificationStamp="11428" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{DefinitionImpl.java[DefinitionImpl" modificationStamp="11426" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{TemplateImpl.java[TemplateImpl" modificationStamp="11437" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{MetadataImpl.java[MetadataImpl" modificationStamp="11430" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{AttributeImpl.java[AttributeImpl" modificationStamp="11419" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{CookbookPackageImpl.java[CookbookPackageImpl" modificationStamp="11424" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{CookbookImpl.java[CookbookImpl" modificationStamp="11423" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{LibraryImpl.java[LibraryImpl" modificationStamp="11429" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{CookbookFactoryImpl.java[CookbookFactoryImpl" modificationStamp="11421" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.impl{DependencyRelationImpl.java[DependencyRelationImpl" modificationStamp="11427" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.impl"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.impl{PluginImpl.java[PluginImpl" modificationStamp="11388" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.impl{KnifePackageImpl.java[KnifePackageImpl" modificationStamp="11386" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.impl{KnifeSearchImpl.java[KnifeSearchImpl" modificationStamp="11387" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.impl{KnifeFactoryImpl.java[KnifeFactoryImpl" modificationStamp="11385" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.impl{KnifeConfigImpl.java[KnifeConfigImpl" modificationStamp="11384" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{RepositoryValidator.java[RepositoryValidator" modificationStamp="11373" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{ConfigFolderValidator.java[ConfigFolderValidator" modificationStamp="11368" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{CookbooksFolderValidator.java[CookbooksFolderValidator" modificationStamp="11369" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{RakefileValidator.java[RakefileValidator" modificationStamp="11372" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{WorkstationFolderValidator.java[WorkstationFolderValidator" modificationStamp="11375" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{CertificatesFolderValidator.java[CertificatesFolderValidator" modificationStamp="11367" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{RolesFolderValidator.java[RolesFolderValidator" modificationStamp="11374" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{DataBagsFolderValidator.java[DataBagsFolderValidator" modificationStamp="11370" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.validation{EnvironmentsFolderValidator.java[EnvironmentsFolderValidator" modificationStamp="11371" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.util"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.util{ChefclientResourceImpl.java[ChefclientResourceImpl" modificationStamp="11540" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.util{ChefclientSwitch.java[ChefclientSwitch" modificationStamp="11541" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.util{ChefclientResourceFactoryImpl.java[ChefclientResourceFactoryImpl" modificationStamp="11539" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.util{ChefclientAdapterFactory.java[ChefclientAdapterFactory" modificationStamp="11538" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{MapTestContainerImpl.java[MapTestContainerImpl" modificationStamp="11327" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{ConfigImpl.java[ConfigImpl" modificationStamp="11321" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{VersionUrlImpl.java[VersionUrlImpl" modificationStamp="11336" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{MaintainedObjectImpl.java[MaintainedObjectImpl" modificationStamp="11326" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{NameUrlMapImpl.java[NameUrlMapImpl" modificationStamp="11328" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{IdentObjectImpl.java[IdentObjectImpl" modificationStamp="11324" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{RubyFileImpl.java[RubyFileImpl" modificationStamp="11331" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{NamedObjectImpl.java[NamedObjectImpl" modificationStamp="11330" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{SandboxedObjectImpl.java[SandboxedObjectImpl" modificationStamp="11332" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{DescribedObjectImpl.java[DescribedObjectImpl" modificationStamp="11322" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{UtilityPackageImpl.java[UtilityPackageImpl" modificationStamp="11335" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{URLEntryTestImpl.java[URLEntryTestImpl" modificationStamp="11333" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{JsonObjectImpl.java[JsonObjectImpl" modificationStamp="11325" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{NameVersionMapImpl.java[NameVersionMapImpl" modificationStamp="11329" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{VersionedObjectImpl.java[VersionedObjectImpl" modificationStamp="11337" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{ChecksumFileImpl.java[ChecksumFileImpl" modificationStamp="11320" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{EStringToVersionUrlMapImpl.java[EStringToVersionUrlMapImpl" modificationStamp="11323" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.impl{UtilityFactoryImpl.java[UtilityFactoryImpl" modificationStamp="11334" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Root_file.java[Root_file" modificationStamp="11414" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{CookbookPackage.java[CookbookPackage" modificationStamp="11401" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Resource.java[Resource" modificationStamp="11413" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{CookbookFactory.java[CookbookFactory" modificationStamp="11399" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Library.java[Library" modificationStamp="11406" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Definition.java[Definition" modificationStamp="11403" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{MinimalMetadata.java[MinimalMetadata" modificationStamp="11408" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Provider.java[Provider" modificationStamp="11410" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{CookbookFile.java[CookbookFile" modificationStamp="11400" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Name.java[Name" modificationStamp="11409" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Cookbook.java[Cookbook" modificationStamp="11398" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{File.java[File" modificationStamp="11405" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Recipe.java[Recipe" modificationStamp="11411" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{CookbookVersion.java[CookbookVersion" modificationStamp="11402" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{RecipeDescription.java[RecipeDescription" modificationStamp="11412" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Template.java[Template" modificationStamp="11415" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Attribute.java[Attribute" modificationStamp="11396" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{DependencyRelation.java[DependencyRelation" modificationStamp="11404" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Metadata.java[Metadata" modificationStamp="11407" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook{Attributes.java[Attributes" modificationStamp="11397" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.util"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.util{KnifeSwitch.java[KnifeSwitch" modificationStamp="11392" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.util{KnifeResourceFactoryImpl.java[KnifeResourceFactoryImpl" modificationStamp="11390" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.util{KnifeAdapterFactory.java[KnifeAdapterFactory" modificationStamp="11389" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.util{KnifeResourceImpl.java[KnifeResourceImpl" modificationStamp="11391" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.util"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.util{ChefserverSwitch.java[ChefserverSwitch" modificationStamp="11505" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.util{ChefserverResourceImpl.java[ChefserverResourceImpl" modificationStamp="11504" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.util{ChefserverResourceFactoryImpl.java[ChefserverResourceFactoryImpl" modificationStamp="11503" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.util{ChefserverAdapterFactory.java[ChefserverAdapterFactory" modificationStamp="11502" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.util"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.util{CookbookResourceImpl.java[CookbookResourceImpl" modificationStamp="11440" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.util{CookbookSwitch.java[CookbookSwitch" modificationStamp="11441" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.util{CookbookAdapterFactory.java[CookbookAdapterFactory" modificationStamp="11438" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.util{CookbookResourceFactoryImpl.java[CookbookResourceFactoryImpl" modificationStamp="11439" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{MapTestContainerValidator.java[MapTestContainerValidator" modificationStamp="11308" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{URLEntryTestValidator.java[URLEntryTestValidator" modificationStamp="11315" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{VersionUrlValidator.java[VersionUrlValidator" modificationStamp="11316" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{NamedObjectValidator.java[NamedObjectValidator" modificationStamp="11312" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{VersionedObjectValidator.java[VersionedObjectValidator" modificationStamp="11317" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{DescribedObjectValidator.java[DescribedObjectValidator" modificationStamp="11303" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{NameVersionMapValidator.java[NameVersionMapValidator" modificationStamp="11310" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{MaintainedObjectValidator.java[MaintainedObjectValidator" modificationStamp="11307" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{IdentObjectValidator.java[IdentObjectValidator" modificationStamp="11305" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{RubyFileValidator.java[RubyFileValidator" modificationStamp="11313" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{NamedDescribedObjectValidator.java[NamedDescribedObjectValidator" modificationStamp="11311" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{EStringToVersionUrlMapValidator.java[EStringToVersionUrlMapValidator" modificationStamp="11304" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{JsonObjectValidator.java[JsonObjectValidator" modificationStamp="11306" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{ConfigValidator.java[ConfigValidator" modificationStamp="11302" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{NameUrlMapValidator.java[NameUrlMapValidator" modificationStamp="11309" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{ChecksumFileValidator.java[ChecksumFileValidator" modificationStamp="11301" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.validation{SandboxedObjectValidator.java[SandboxedObjectValidator" modificationStamp="11314" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.validation"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.validation{PluginValidator.java[PluginValidator" modificationStamp="11395" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.validation{KnifeConfigValidator.java[KnifeConfigValidator" modificationStamp="11393" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.validation{KnifeSearchValidator.java[KnifeSearchValidator" modificationStamp="11394" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common{Activator.java[Activator" modificationStamp="7054" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.util"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.util{ChefclipseResourceFactoryImpl.java[ChefclipseResourceFactoryImpl" modificationStamp="7060" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.util{ChefclipseResourceImpl.java[ChefclipseResourceImpl" modificationStamp="7061" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{Repository.java[Repository" modificationStamp="11344" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{WorkstationFolder.java[WorkstationFolder" modificationStamp="11347" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{EnvironmentsFolder.java[EnvironmentsFolder" modificationStamp="11342" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{DataBagsFolder.java[DataBagsFolder" modificationStamp="11341" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{CertificatesFolder.java[CertificatesFolder" modificationStamp="11338" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{RolesFolder.java[RolesFolder" modificationStamp="11345" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{WorkstationFactory.java[WorkstationFactory" modificationStamp="11346" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{Rakefile.java[Rakefile" modificationStamp="11343" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{WorkstationPackage.java[WorkstationPackage" modificationStamp="11348" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{CookbooksFolder.java[CookbooksFolder" modificationStamp="11340" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation{ConfigFolder.java[ConfigFolder" modificationStamp="11339" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{ServerCookbookFileValidator.java[ServerCookbookFileValidator" modificationStamp="11520" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{SandboxValidator.java[SandboxValidator" modificationStamp="11518" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{ServerValidator.java[ServerValidator" modificationStamp="11522" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{CookbookListVersionRespValidator.java[CookbookListVersionRespValidator" modificationStamp="11508" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{ServerConfigValidator.java[ServerConfigValidator" modificationStamp="11519" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{DataBagValidator.java[DataBagValidator" modificationStamp="11510" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{CookbookListRespValidator.java[CookbookListRespValidator" modificationStamp="11507" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{PlatformValidator.java[PlatformValidator" modificationStamp="11514" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{RoleValidator.java[RoleValidator" modificationStamp="11515" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{EnvironmentValidator.java[EnvironmentValidator" modificationStamp="11511" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{RunListItemValidator.java[RunListItemValidator" modificationStamp="11516" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{ServerCookbookVersionValidator.java[ServerCookbookVersionValidator" modificationStamp="11521" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{OrganizationValidator.java[OrganizationValidator" modificationStamp="11513" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{ClientValidator.java[ClientValidator" modificationStamp="11506" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{NodeValidator.java[NodeValidator" modificationStamp="11512" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{DataBagItemValidator.java[DataBagItemValidator" modificationStamp="11509" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.validation{RunListValidator.java[RunListValidator" modificationStamp="11517" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient{ChefclientFactory.java[ChefclientFactory" modificationStamp="11524" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient{ChefclientPackage.java[ChefclientPackage" modificationStamp="11525" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient{Ohai.java[Ohai" modificationStamp="11527" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient{Search.java[Search" modificationStamp="11528" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient{ClientConfig.java[ClientConfig" modificationStamp="11526" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient{ChefClient.java[ChefClient" modificationStamp="11523" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife{KnifeConfig.java[KnifeConfig" modificationStamp="11376" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife{KnifePackage.java[KnifePackage" modificationStamp="11378" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife{KnifeFactory.java[KnifeFactory" modificationStamp="11377" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife{KnifeSearch.java[KnifeSearch" modificationStamp="11379" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.knife{Plugin.java[Plugin" modificationStamp="11380" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{AttributeValidator.java[AttributeValidator" modificationStamp="11442" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{MetadataValidator.java[MetadataValidator" modificationStamp="11451" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{CookbookVersionValidator.java[CookbookVersionValidator" modificationStamp="11446" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{DefinitionValidator.java[DefinitionValidator" modificationStamp="11447" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{RecipeDescriptionValidator.java[RecipeDescriptionValidator" modificationStamp="11455" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{Root_fileValidator.java[Root_fileValidator" modificationStamp="11458" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{CookbookFileValidator.java[CookbookFileValidator" modificationStamp="11444" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{LibraryValidator.java[LibraryValidator" modificationStamp="11450" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{MinimalMetadataValidator.java[MinimalMetadataValidator" modificationStamp="11452" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{TemplateValidator.java[TemplateValidator" modificationStamp="11459" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{CookbookValidator.java[CookbookValidator" modificationStamp="11445" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{AttributesValidator.java[AttributesValidator" modificationStamp="11443" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{ResourceValidator.java[ResourceValidator" modificationStamp="11457" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{RecipeValidator.java[RecipeValidator" modificationStamp="11456" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{DependencyRelationValidator.java[DependencyRelationValidator" modificationStamp="11448" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{NameValidator.java[NameValidator" modificationStamp="11453" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{FileValidator.java[FileValidator" modificationStamp="11449" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.validation{ProviderValidator.java[ProviderValidator" modificationStamp="11454" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.util"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.util{WorkstationAdapterFactory.java[WorkstationAdapterFactory" modificationStamp="11363" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.util{WorkstationResourceImpl.java[WorkstationResourceImpl" modificationStamp="11365" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.util{WorkstationSwitch.java[WorkstationSwitch" modificationStamp="11366" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.util{WorkstationResourceFactoryImpl.java[WorkstationResourceFactoryImpl" modificationStamp="11364" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.util"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.util{UtilitySwitch.java[UtilitySwitch" modificationStamp="11319" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.utility.util{UtilityAdapterFactory.java[UtilityAdapterFactory" modificationStamp="11318" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{Organization.java[Organization" modificationStamp="11470" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{ServerCookbookVersion.java[ServerCookbookVersion" modificationStamp="11479" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{Node.java[Node" modificationStamp="11469" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{ChefserverFactory.java[ChefserverFactory" modificationStamp="11460" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{Environment.java[Environment" modificationStamp="11468" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{Client.java[Client" modificationStamp="11462" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{RunListItem.java[RunListItem" modificationStamp="11474" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{CookbookInfo.java[CookbookInfo" modificationStamp="11463" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{CookbookListVersionResp.java[CookbookListVersionResp" modificationStamp="11465" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{ChefserverPackage.java[ChefserverPackage" modificationStamp="11461" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{Sandbox.java[Sandbox" modificationStamp="11475" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{DataBag.java[DataBag" modificationStamp="11466" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{Role.java[Role" modificationStamp="11472" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{ServerConfig.java[ServerConfig" modificationStamp="11477" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{ServerCookbookFile.java[ServerCookbookFile" modificationStamp="11478" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{Server.java[Server" modificationStamp="11476" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{Platform.java[Platform" modificationStamp="11471" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{DataBagItem.java[DataBagItem" modificationStamp="11467" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{RunList.java[RunList" modificationStamp="11473" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver{CookbookListResp.java[CookbookListResp" modificationStamp="11464" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.impl"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.impl{ClientConfigImpl.java[ClientConfigImpl" modificationStamp="11535" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.impl{SearchImpl.java[SearchImpl" modificationStamp="11537" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.impl{ChefClientImpl.java[ChefClientImpl" modificationStamp="11532" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.impl{ChefclientPackageImpl.java[ChefclientPackageImpl" modificationStamp="11534" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.impl{OhaiImpl.java[OhaiImpl" modificationStamp="11536" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.impl{ChefclientFactoryImpl.java[ChefclientFactoryImpl" modificationStamp="11533" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.validation"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.validation{ClientValidator.java[ClientValidator" modificationStamp="11544" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.validation{OhaiValidator.java[OhaiValidator" modificationStamp="11545" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.validation{ChefClientValidator.java[ChefClientValidator" modificationStamp="11542" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.validation{SearchValidator.java[SearchValidator" modificationStamp="11546" restrictions="0" visibility="0"/>
+        <type handle="=org.limepepper.chefclipse.common/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.validation{ClientConfigValidator.java[ClientConfigValidator" modificationStamp="11543" restrictions="0" visibility="0"/>
+    </package>
+</component>

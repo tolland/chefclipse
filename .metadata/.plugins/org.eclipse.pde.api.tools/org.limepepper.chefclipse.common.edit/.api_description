@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.limepepper.chefclipse.common.edit" modificationStamp="816" version="1.2">
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.edit/src\/main\/java&lt;org.limepepper.chefclipse.common.chefclient.provider"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.edit/src\/main\/java&lt;org.limepepper.chefclipse.common.cookbook.provider"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.edit/src\/main\/java&lt;org.limepepper.chefclipse.common.chefserver.provider"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.edit/src\/main\/java&lt;org.limepepper.chefclipse.utility.provider"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.edit/src\/main\/java&lt;org.limepepper.chefclipse.common.workstation.provider"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.edit/src\/main\/java&lt;org.limepepper.chefclipse.common.knife.provider"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.limepepper.chefclipse.common.edit/src\/main\/java&lt;org.limepepper.chefclipse.common.edit.provider"/>
+    </package>
+</component>

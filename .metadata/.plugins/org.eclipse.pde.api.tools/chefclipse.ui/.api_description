@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="chefclipse.ui" modificationStamp="1165" version="1.2">
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{ResourceCompareInput.java[ResourceCompareInput" modificationStamp="7743" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{CookbookStructureCreator.java[CookbookStructureCreator" modificationStamp="7741" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{TextMergeViewerCreator.java[TextMergeViewerCreator" modificationStamp="7745" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{CookbookCollectionNode.java[CookbookCollectionNode" modificationStamp="7736" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{CookbookFolderNode.java[CookbookFolderNode" modificationStamp="7739" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{CookbookFileNode.java[CookbookFileNode" modificationStamp="7738" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{NewActionPopupTest.java[NewActionPopupTest" modificationStamp="7742" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{ServerCookbookStructureCreator.java[ServerCookbookStructureCreator" modificationStamp="7744" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.compare{CookbookResourceNode.java[CookbookResourceNode" modificationStamp="7740" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.handlers"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.handlers{UiHandler.java[UiHandler" modificationStamp="7733" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.handlers{CompareWithHandler.java[CompareWithHandler" modificationStamp="7732" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.dialogs"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.dialogs{AddChefConfigurationPreferenceContainer.java[AddChefConfigurationPreferenceContainer" modificationStamp="11964" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.messages"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.messages{Messages.java[Messages" modificationStamp="7720" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.decorators"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.decorators{DeclarativeLightweightLabelDecorator.java[DeclarativeLightweightLabelDecorator" modificationStamp="7734" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.actions"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.actions{SearchKnifeConfigAction.java[SearchKnifeConfigAction" modificationStamp="11963" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.menu"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.menu{ContributionItemDynamic.java[ContributionItemDynamic" modificationStamp="7722" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.menu{DynamicContributionItemsCompareWith.java[DynamicContributionItemsCompareWith" modificationStamp="7723" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.preferences"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.preferences{PreferenceInitializer.java[PreferenceInitializer" modificationStamp="11970" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.preferences{ChefServerConfigurationsPreferencePage.java[ChefServerConfigurationsPreferencePage" modificationStamp="11967" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.preferences{ChefclipseRootPreferencePage.java[ChefclipseRootPreferencePage" modificationStamp="11968" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.preferences{ChefConfigurationPreferenceStore.java[ChefConfigurationPreferenceStore" modificationStamp="11966" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.preferences{PreferenceConstants.java[PreferenceConstants" modificationStamp="11969" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.preferences{AddChefConfigurationPreferencePage.java[AddChefConfigurationPreferencePage" modificationStamp="11965" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui{OpscodeChefDocumentationProvider.java[OpscodeChefDocumentationProvider" modificationStamp="3175" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui{ChefUI.java[ChefUI" modificationStamp="3174" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui{PreferencesActivator.java[PreferencesActivator" modificationStamp="11958" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.ui.properties"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.ui.properties{ChefConfigurationsViewer.java[ChefConfigurationsViewer" modificationStamp="11957" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.ui.properties{ChefConfigurationPropertyPage.java[ChefConfigurationPropertyPage" modificationStamp="11956" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.perspectives"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.perspectives{ChefPerspectiveFactory.java[ChefPerspectiveFactory" modificationStamp="7719" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{NewExampleChefProjectWizard.java[NewExampleChefProjectWizard" modificationStamp="7714" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{ChefRepositoryWizardPage.java[ChefRepositoryWizardPage" modificationStamp="7712" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{ChefConfigSelectionWizard.java[ChefConfigSelectionWizard" modificationStamp="7708" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{ChefProjectWizardPage.java[ChefProjectWizardPage" modificationStamp="7711" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{NewRecipeWizardPage.java[NewRecipeWizardPage" modificationStamp="7718" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{NewProjectNewRepositoryWizardPageConfirm.java[NewProjectNewRepositoryWizardPageConfirm" modificationStamp="7716" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{ChefProjectWizard.java[ChefProjectWizard" modificationStamp="7710" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{NewChefProjectWizard.java[NewChefProjectWizard" modificationStamp="7713" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{NewRecipeWizard.java[NewRecipeWizard" modificationStamp="7717" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{ChefConfigSelectionWizardPage.java[ChefConfigSelectionWizardPage" modificationStamp="7709" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.wizards{NewProjectNewRepositoryWizard.java[NewProjectNewRepositoryWizard" modificationStamp="7715" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.importWizards"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.importWizards{NewProjectExistingChefRepoWizardPage.java[NewProjectExistingChefRepoWizardPage" modificationStamp="7730" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.importWizards{ImportRepositoryToProjectWizard.java[ImportRepositoryToProjectWizard" modificationStamp="7729" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.importWizards{SearchChefReposAction.java[SearchChefReposAction" modificationStamp="7731" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.importWizards{ImportRepositoryToProjectPage.java[ImportRepositoryToProjectPage" modificationStamp="7728" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.internal.ui.navigator"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.internal.ui.navigator{ChefResourceExtensionSorter.java[ChefResourceExtensionSorter" modificationStamp="7752" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.internal.ui.navigator{ChefNavigatorLabelProvider.java[ChefNavigatorLabelProvider" modificationStamp="7751" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.internal.ui.navigator{MenuLevelHolder.java[MenuLevelHolder" modificationStamp="7753" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.internal.ui.navigator{ChefNavigator.java[ChefNavigator" modificationStamp="7749" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.internal.ui.navigator{ChefNavigatorContentProvider.java[ChefNavigatorContentProvider" modificationStamp="7750" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.utils"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;org.limepepper.chefclipse.preferences.ui.utils{SWTFactory.java[SWTFactory" modificationStamp="11971" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.actions"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.actions{CookbookActionProvider.java[CookbookActionProvider" modificationStamp="7746" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/src\/main\/java&lt;chefclipse.ui.actions{CreateNewRecipeAction.java[CreateNewRecipeAction" modificationStamp="7747" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(Var.class[Var" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(ValidatorAction.class[ValidatorAction" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(ValidatorResults.class[ValidatorResults" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(Arg.class[Arg" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(ValidatorException.class[ValidatorException" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(CreditCardValidator.class[CreditCardValidator" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(UrlValidator.class[UrlValidator" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(GenericValidator.class[GenericValidator" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(FormSet.class[FormSet" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(FormSetFactory.class[FormSetFactory" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(DateValidator.class[DateValidator" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(ValidatorResult.class[ValidatorResult" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(Validator.class[Validator" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(Form.class[Form" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(Field.class[Field" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(GenericTypeValidator.class[GenericTypeValidator" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(ValidatorResources.class[ValidatorResources" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(Msg.class[Msg" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(ISBNValidator.class[ISBNValidator" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.ui/lib\/commons-validator.jar&lt;org.apache.commons.validator(EmailValidator.class[EmailValidator" modificationStamp="-1" restrictions="0" visibility="0"/>
+    </package>
+</component>

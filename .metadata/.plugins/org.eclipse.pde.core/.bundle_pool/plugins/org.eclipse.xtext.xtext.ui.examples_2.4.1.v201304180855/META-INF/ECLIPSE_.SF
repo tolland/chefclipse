@@ -1,0 +1,60 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: 5zNNxIAqh68St9BHpAtWrsVBX5c=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: RPkSs+GJHsKxgGM5crZEGv2ZQ0o=
+
+Name: contents/org.eclipse.xtext.example.domainmodel.ui.zip
+SHA1-Digest: zE+cRd6ZWa09wgdNN9FvNRRXBUo=
+
+Name: contents/org.eclipse.xtext.example.tutorial.zip
+SHA1-Digest: 7mwlm6zh8gnHPjJcpGTN6nl6Jy8=
+
+Name: contents/org.eclipse.xtext.example.tutorial.ui.zip
+SHA1-Digest: 9qDIP09rGtLoT6YyNrTPS4NZcC0=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: SAqY+5ITAL0mkdYeijlSRhyIaZk=
+
+Name: contents/org.eclipse.xtext.example.domainmodel.zip
+SHA1-Digest: PJmFO2qsQmkDt9jYu/L8ZTlggrE=
+
+Name: org/eclipse/xtext/xtext/ui/examples/ExternalEditorAwareExampleIn
+ stallerWizard.class
+SHA1-Digest: C7kkQFTcnxpheRrU6ozbdTJL694=
+
+Name: contents/org.eclipse.xtext.example.arithmetics.zip
+SHA1-Digest: KofqBwClKaggAqd/X7IKFaD2OlU=
+
+Name: contents/xbase.tutorial.zip
+SHA1-Digest: URFUbeg50QEOiHiB88374GiXTaM=
+
+Name: about.html
+SHA1-Digest: ndvVw5+urNOEMhFEsasUKrpQYII=
+
+Name: plugin.properties
+SHA1-Digest: INgSMUt24aryHdXKKWZG5bWxkeA=
+
+Name: contents/org.eclipse.xtext.example.fowlerdsl.zip
+SHA1-Digest: FF396EsLm76dhocPpDNLtj1bTno=
+
+Name: icons/genproject.gif
+SHA1-Digest: SPEb+m5buGEc7dcLjOv5+BWOb9M=
+
+Name: contents/org.eclipse.xtext.example.fowlerdsl.ui.zip
+SHA1-Digest: m1XtX3VsmweHaDN0/daytegTxww=
+
+Name: contents/org.eclipse.xtext.example.tutorial.tests.zip
+SHA1-Digest: Lfwnl+mSggTWgtfQixOsRjnLFJs=
+
+Name: contents/org.eclipse.xtext.example.domainmodel.tests.zip
+SHA1-Digest: u5vZgkTeuLDYVndQlGi7ieAv/y0=
+
+Name: contents/org.eclipse.xtext.example.arithmetics.tests.zip
+SHA1-Digest: KYRjFXXudNx2QjmhVgHzPI620WM=
+
+Name: plugin.xml
+SHA1-Digest: 3KQERkIr49tmdSK1HDNgJCqk7oo=
+
+Name: contents/org.eclipse.xtext.example.arithmetics.ui.zip
+SHA1-Digest: gSKsgoZUOne5kkLtEQEXxT6Te/Y=
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.dltk.ruby.ui" modificationStamp="1096" version="1.2">
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui.templates"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui.text"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui.preferences"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui.text.hyperlink"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui.text.rules"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui.text.completion"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui.text.folding"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.internal.ui.editor"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=org.eclipse.dltk.ruby.ui/src&lt;org.eclipse.dltk.ruby.ui.preferences"/>
+    </package>
+</component>

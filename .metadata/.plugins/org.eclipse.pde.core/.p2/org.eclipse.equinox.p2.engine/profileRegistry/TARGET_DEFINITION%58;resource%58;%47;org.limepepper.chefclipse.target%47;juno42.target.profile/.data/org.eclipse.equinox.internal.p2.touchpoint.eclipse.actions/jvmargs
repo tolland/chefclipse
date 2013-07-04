@@ -1,0 +1,4 @@
+#Thu Jul 04 05:01:30 BST 2013
+-Xms=40m,40m,40m,40m,40m,40m
+-XX\:MaxPermSize\==256m,256m
+-Xmx=512m,512m,384m,384m,384m,512m

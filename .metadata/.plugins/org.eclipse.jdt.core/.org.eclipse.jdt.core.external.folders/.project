@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>.org.eclipse.jdt.core.external.folders</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.link1</name>
+			<type>2</type>
+			<location>/home/tomhodder/git/chefclipse-tomhodder2/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins/org.junit_4.10.0.v4_10_0_v20120426-0900</location>
+		</link>
+	</linkedResources>
+</projectDescription>

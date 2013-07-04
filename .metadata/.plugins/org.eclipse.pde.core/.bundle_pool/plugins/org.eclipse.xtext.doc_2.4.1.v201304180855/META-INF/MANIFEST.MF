@@ -1,0 +1,223 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.8.3
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.xtext.doc;singleton:=true
+Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.help;bundle-version="[3.4.0,4.0.0)"
+Created-By: 1.6.0_21-b06 (Sun Microsystems Inc.)
+Bundle-Version: 2.4.1.v201304180855
+Bundle-ManifestVersion: 2
+
+Name: contents/images/mwe2/component.png
+SHA1-Digest: tvPE9UVzdPo6dIrD9E+GJDSlyLs=
+
+Name: about.ini
+SHA1-Digest: So6w3BOLjDxdL3xtKUBiKuOB/Gc=
+
+Name: contents/050-heading-runtime.html
+SHA1-Digest: EVrfNFFx3u9leGWkrOh7Cb4xAXI=
+
+Name: contents/xtext_16.html
+SHA1-Digest: gTX5pKwrjkQ+drQGX6ejJevch7w=
+
+Name: contents/210-emf-integration.html
+SHA1-Digest: hcJ9XhiVq5DMHAiP1rXBloN4hi8=
+
+Name: contents/images/mwe2/property.png
+SHA1-Digest: ueXuDlY3XzAaqzSH0PtYzqOPEyo=
+
+Name: contents/020-grammar-language.html
+SHA1-Digest: h1y0Mw95r5rZlAJEHB7eieB+pNs=
+
+Name: contents/images/preferences_syntax.png
+SHA1-Digest: sBtWsEi0ZFKaofME0a/2yBHgUEQ=
+
+Name: contents/images/index_container.png
+SHA1-Digest: se9Z83O/RN1+3X9Tx6WKs4DGpzs=
+
+Name: contents/images/30min_wizard.png
+SHA1-Digest: eQI2a+GZUE6z/3D5rRZXtgYuYY0=
+
+Name: contents/images/30min_editor.png
+SHA1-Digest: rPfDfnAlsDf0QD5jqXqY4UwkJAA=
+
+Name: contents/images/templates_crossref.png
+SHA1-Digest: HONfEPlcCH8erJz4qYGY0U6Ol6o=
+
+Name: contents/images/mwe2/module.png
+SHA1-Digest: a6Z/XeJ8GAHFdufGCFCZFlWDyPE=
+
+Name: contents/118-mwe-in-depth.html
+SHA1-Digest: esZXSmq/jQzULbg4UtRsYF4pqvo=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 09gN05tobgS/MdtqyTNQhOhB73M=
+
+Name: about.mappings
+SHA1-Digest: 26G+faYuGC0kY6qyQUcYpvUmD68=
+
+Name: contents/199-xtext-and-java.html
+SHA1-Digest: 2k5LGlcs6tNmZZUrfcPoB1yaW9k=
+
+Name: contents/images/FiveMinTutorial_FreshProject.png
+SHA1-Digest: a3cULRAggcd4iV74BA9okE1Spqg=
+
+Name: contents/images/tutorial/JvmTutorial_LaunchEditor.png
+SHA1-Digest: kG3DnMAt8sM/yiMl9xS7hEY/Wfs=
+
+Name: contents/images/sample_outline.png
+SHA1-Digest: LLFGo9yaF85Baj0PKKE8ysRhe/o=
+
+Name: contents/images/highlighting.png
+SHA1-Digest: G0LW/EofA02LGIpjN9FTed+yu2A=
+
+Name: contents/images/tutorial/JvmTutorial_RunGenerator.png
+SHA1-Digest: KYx1jx1pQYktJSfJmaHTWdUlylI=
+
+Name: contents/images/generator-structure.png
+SHA1-Digest: lidP3KXJuZ2ggu6aCC8DLsz2rYw=
+
+Name: about.properties
+SHA1-Digest: CfZUhkNmpXBmDHE5OdhiuL3obBM=
+
+Name: contents/images/tutorial/30min_multipleeditors.png
+SHA1-Digest: xh86N0brAKCzIC2/TQoYJL1UJYI=
+
+Name: contents/030-generator.html
+SHA1-Digest: /O5mdOdSkOmFnOKb0ylfFprJZFg=
+
+Name: contents/images/ast.png
+SHA1-Digest: IBbCyehE9TkvfhvzbuEax+3nzDA=
+
+Name: contents/020-domainmodel-step-by-step.html
+SHA1-Digest: AOFNqhzQKq9g4YWA5n2IXBVHWEI=
+
+Name: contents/images/ecore.png
+SHA1-Digest: ODBZMO+bxO1pGeWxkXdJ4+FIjzk=
+
+Name: contents/images/tutorial/FiveMinTutorial_LaunchConfig.png
+SHA1-Digest: co/WlkENvemH3wC1fPWij2MpuxU=
+
+Name: contents/images/tutorial/30min_launchconfiguration.png
+SHA1-Digest: KMqVC9HbNHmrmBkUVjfhPfhNf7c=
+
+Name: contents/xtext_14.html
+SHA1-Digest: k14YGeqCliZ9t4PmhmFUtOcuiEk=
+
+Name: contents/images/JvmTutorial_Editor.png
+SHA1-Digest: 08Neo/SrOsIFZ3voKRSikeZpThg=
+
+Name: contents/images/FiveMinTutorial_Editor.png
+SHA1-Digest: 2TeBg5DZ74noJ+XHLG8o+3UWlRo=
+
+Name: contents/images/index_datamodel.png
+SHA1-Digest: +5M6h3AUBw78IzDhHkEbBgpDgQI=
+
+Name: plugin.properties
+SHA1-Digest: pmuJd6w7NubSTcVPtbRg/rzyDQI=
+
+Name: contents/images/30min_rungenerator.png
+SHA1-Digest: 42uKXyqX0Ff9yAoJVJQn1E2MsGM=
+
+Name: contents/030-tutorial-next-steps.html
+SHA1-Digest: Xko82D+1vfF4qyfoa8gGZmTy8HE=
+
+Name: contents/images/family_tree.png
+SHA1-Digest: oqla/hEh27HexxiWJvbHFSqa71E=
+
+Name: contents/book.css
+SHA1-Digest: cp8tW7kfcjwkSIrA0Em3k+GyoBU=
+
+Name: contents/images/tutorial/JvmTutorial_Editor.png
+SHA1-Digest: 08Neo/SrOsIFZ3voKRSikeZpThg=
+
+Name: contents/code.css
+SHA1-Digest: P1Q6E2vwXDd2HqvW00cMDXWV9wQ=
+
+Name: contents/images/tutorial/FiveMinTutorial_Editor.png
+SHA1-Digest: 2TeBg5DZ74noJ+XHLG8o+3UWlRo=
+
+Name: plugin.xml
+SHA1-Digest: kWq2kop7SbB6yscXG0pj48DOGPI=
+
+Name: contents/images/tutorial/30min_rungenerator.png
+SHA1-Digest: 42uKXyqX0Ff9yAoJVJQn1E2MsGM=
+
+Name: contents/images/JvmTutorial_LaunchEditor.png
+SHA1-Digest: kG3DnMAt8sM/yiMl9xS7hEY/Wfs=
+
+Name: contents/images/tutorial/30min_wizard.png
+SHA1-Digest: eQI2a+GZUE6z/3D5rRZXtgYuYY0=
+
+Name: contents/035-domainmodel-java.html
+SHA1-Digest: 9bn7USiFjOiZbaysTu8fmeecrrk=
+
+Name: contents/images/tutorial/30min_editor.png
+SHA1-Digest: rPfDfnAlsDf0QD5jqXqY4UwkJAA=
+
+Name: contents/images/30min_multipleeditors.png
+SHA1-Digest: xh86N0brAKCzIC2/TQoYJL1UJYI=
+
+Name: contents/images/JvmTutorial_RunGenerator.png
+SHA1-Digest: KYx1jx1pQYktJSfJmaHTWdUlylI=
+
+Name: contents/xtext_15.html
+SHA1-Digest: 9Qs8xrqzPxgqrpYBSTOEv8wYx84=
+
+Name: contents/images/30min_initialprojectlayout.png
+SHA1-Digest: gu6BBwZhZ4ZwZDR2/xN4w9ZuVQc=
+
+Name: contents/120-heading-UI.html
+SHA1-Digest: p6JFd/UyvlQhqyyG5BwJ1rOxaI0=
+
+Name: contents/xtext.html
+SHA1-Digest: QwoIlHLJR4Lv7F1AVOrN0BmSmzA=
+
+Name: contents/images/preferences_templates.png
+SHA1-Digest: NiW4NtzFg4h4Q3UJ/1Po2NR2jrU=
+
+Name: about.html
+SHA1-Digest: mLkmRLtG3amkcY0I7KSYZX6qKhs=
+
+Name: contents/000-introduction.html
+SHA1-Digest: Sl0riAmWMTwJNMj3yKzYVSXKTu0=
+
+Name: contents/images/30min_launchconfiguration.png
+SHA1-Digest: KMqVC9HbNHmrmBkUVjfhPfhNf7c=
+
+Name: contents/215-migrating-from-0.7.html
+SHA1-Digest: 8zjcxMGcResQAhNJY/9FLPGjuWA=
+
+Name: modeling32.png
+SHA1-Digest: ADlLWFV0eQ74YnLvHnPFkYLeLrs=
+
+Name: contents/images/tutorial/30min_initialprojectlayout.png
+SHA1-Digest: gu6BBwZhZ4ZwZDR2/xN4w9ZuVQc=
+
+Name: contents/images/FiveMinTutorial_LaunchConfig.png
+SHA1-Digest: co/WlkENvemH3wC1fPWij2MpuxU=
+
+Name: contents/images/tutorial/FiveMinTutorial_FreshProject.png
+SHA1-Digest: a3cULRAggcd4iV74BA9okE1Spqg=
+
+Name: contents/213-migrating-from-1.0.html
+SHA1-Digest: bOuK884PKb0CdwvS7ymfkAuxb9A=
+
+Name: contents/toc.xml
+SHA1-Digest: /RCSMDeDlL6UBHA5LiG8GOk6CUM=
+
+Name: contents/images/metamodel.png
+SHA1-Digest: JfcJ7BKdZAxTVtMPRu1UmWBh5q8=
+
+Name: contents/images/emf-integration.png
+SHA1-Digest: HviBOEuZaX/BnD2RAAEsgJD/UrQ=
+
+Name: contents/images/mwe2/assignment.png
+SHA1-Digest: PM/OylSI3CJzASETWzbkWWN7p4Y=
+
+Name: contents/010-xtext-in-5-minutes.html
+SHA1-Digest: lpdHoaT1EnL52nWWvIHwI1S4im4=
+

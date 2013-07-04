@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1367721298700_5" label="chefclipse" name="chefclipse">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.json.edit" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.target" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common.tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.repositories.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chefclipse.parent" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.extpoint" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.doc" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chefclipse.izpacker" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.graphviewer" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.dltk" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.chefserver.api.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.databag.editor" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.devel.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.logger.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.editors.cookbook" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.product" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.databag.editor.test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common.utils" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common.editor" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.preferences.test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.app" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.chefserver.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chefclipse.core" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.json.tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.ui.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.testing" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chefclipse.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.dltk.tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.spy" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.logger" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.json.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.app.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.api" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.chefserver.api.tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.json" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common.edit" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.repositories" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1367721306551_6" label="features" name="features">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.devel.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.app.feature" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.ui.feature" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1367722244147_9" label="libs" name="libs">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/com.sun.jersey.bundle" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common.utils" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common.edit" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common.editor" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.dltk.tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.dltk" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.dltk.ruby.ui" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1367791383633_22" label="tests" name="tests">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.common.tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.chefserver.api.tests" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.testing" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.preferences.test" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1367801635305_24" label="chefclipse.ui" name="chefclipse.ui">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.chefserver.api.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.remotepicker.repositories.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chefclipse.ui" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1368077399378_12" label="releng" name="releng">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.target" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chefclipse.parent" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.product" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.doc" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chefclipse.izpacker" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1369486585125_19" label="preferences" name="preferences">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/chefclipse.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.preferences.test" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1369913301020_30" label="experimental" name="experimental">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.limepepper.chefclipse.spy" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1372910002401_0" label="Window Working Set" name="Aggregate for window 1372910002400"/>
+</workingSetManager>

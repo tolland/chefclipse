@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="chefclipse.core" modificationStamp="1259" version="1.2">
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.managers"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.managers{ChefRepositoryManagerImpl.java[ChefRepositoryManagerImpl" modificationStamp="8634" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.managers{IKnifeManager.java[IKnifeManager" modificationStamp="8636" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.managers{ChefModelManager.java[ChefModelManager" modificationStamp="8631" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.managers{ChefRepositoryManager.java[ChefRepositoryManager" modificationStamp="8633" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.managers{ChefProjectManager.java[ChefProjectManager" modificationStamp="8632" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.managers{IChefProjectManager.java[IChefProjectManager" modificationStamp="8635" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.behaviours"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.behaviours{DownloadBehaviour.java[DownloadBehaviour" modificationStamp="8641" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.factories"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.factories{ChefModelItemProviderAdapterFactory.java[ChefModelItemProviderAdapterFactory" modificationStamp="8637" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.adapters"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.adapters{ChefAdapterFactory.java[ChefAdapterFactory" modificationStamp="8642" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.adapters{ResourceAdapterFactory.java[ResourceAdapterFactory" modificationStamp="8643" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.providers"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.providers{ChefProjectAdapterFactory.java[ChefProjectAdapterFactory" modificationStamp="8630" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.providers{ChefModelProvider.java[ChefModelProvider" modificationStamp="8629" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson"/>
+        <fragment handle="=chefclipse.core/lib\/jackson-mapper-asl.jar&lt;org.codehaus.jackson"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonParseException.class[JsonParseException" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonStreamContext.class[JsonStreamContext" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonProcessingException.class[JsonProcessingException" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(ObjectCodec.class[ObjectCodec" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonFactory.class[JsonFactory" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(Versioned.class[Versioned" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonEncoding.class[JsonEncoding" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(Version.class[Version" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(FormatSchema.class[FormatSchema" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonGenerator.class[JsonGenerator" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(SerializableString.class[SerializableString" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonGenerationException.class[JsonGenerationException" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonLocation.class[JsonLocation" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(PrettyPrinter.class[PrettyPrinter" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(Base64Variant.class[Base64Variant" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonToken.class[JsonToken" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonNode.class[JsonNode" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(Base64Variants.class[Base64Variants" modificationStamp="-1" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/lib\/jackson-core-asl.jar&lt;org.codehaus.jackson(JsonParser.class[JsonParser" modificationStamp="-1" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.utils"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.utils{BundleUtils.java[BundleUtils" modificationStamp="8624" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.utils{ChefUtils.java[ChefUtils" modificationStamp="8625" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.utils{EMFUtils.java[EMFUtils" modificationStamp="8626" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.utils{Utilities.java[Utilities" modificationStamp="8627" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.testers"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.testers{ChefTester.java[ChefTester" modificationStamp="8628" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.builders"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.builders{ChefProjectNature.java[ChefProjectNature" modificationStamp="8639" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.builders{ChefProjectBuilder.java[ChefProjectBuilder" modificationStamp="8638" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core.builders{ToggleNatureAction.java[ToggleNatureAction" modificationStamp="8640" restrictions="0" visibility="0"/>
+    </package>
+    <package visibility="1">
+        <fragment handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{IChefModel.java[IChefModel" modificationStamp="3808" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{DeltaProcessingState.java[DeltaProcessingState" modificationStamp="3806" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{ChefFile.java[ChefFile" modificationStamp="3798" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{IChefResource.java[IChefResource" modificationStamp="3810" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{OpenableElementInfo.java[OpenableElementInfo" modificationStamp="3813" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{ChefContainer.java[ChefContainer" modificationStamp="3796" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{ChefModelException.java[ChefModelException" modificationStamp="3801" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{IOpenable.java[IOpenable" modificationStamp="3811" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{IChefElement.java[IChefElement" modificationStamp="3807" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{Openable.java[Openable" modificationStamp="3812" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{ChefModel.java[ChefModel" modificationStamp="3800" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{CookbookFolder.java[CookbookFolder" modificationStamp="3804" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{DataBagsFolder.java[DataBagsFolder" modificationStamp="3805" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{IChefProject.java[IChefProject" modificationStamp="3809" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{ChefFolder.java[ChefFolder" modificationStamp="3799" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{ChefCore.java[ChefCore" modificationStamp="3797" restrictions="4" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{ChefResource.java[ChefResource" modificationStamp="3803" restrictions="0" visibility="0"/>
+        <type handle="=chefclipse.core/src\/main\/java&lt;chefclipse.core{ChefProject.java[ChefProject" modificationStamp="3802" restrictions="0" visibility="0"/>
+    </package>
+</component>

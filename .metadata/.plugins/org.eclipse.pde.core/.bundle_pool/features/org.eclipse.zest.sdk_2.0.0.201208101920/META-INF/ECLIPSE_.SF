@@ -1,0 +1,20 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest: RQd5A5GW5rlAga4P9VYLfIMtURs=
+Created-By: 1.6.0 (IBM Corporation)
+SHA1-Digest-Manifest-Main-Attributes: ofgHCuMzh9XF5aPhQMIbNJsn5DA=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: QdryQvJlVywlE0MGLuwYCkmkyWk=
+
+Name: feature.properties
+SHA1-Digest: meBNDMDkdw5HmpMUjI8LV3jKFpM=
+
+Name: META-INF/maven/org.eclipse/org.eclipse.zest.sdk/pom.xml
+SHA1-Digest: xMRGPlas4gMgJ1xPnwxfiZsYwXI=
+
+Name: META-INF/maven/org.eclipse/org.eclipse.zest.sdk/pom.properties
+SHA1-Digest: FLStInpd4fjMb6HMpKBVojJWJKg=
+
+Name: feature.xml
+SHA1-Digest: HvB2kBTGMW5b5TcYU/IDqz0JLnw=
+
