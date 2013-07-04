@@ -192,6 +192,7 @@
         <!-- dltk language stuff -->
         <module>plugins/org.limepepper.chefclipse.dltk</module>
         <module>plugins/org.limepepper.chefclipse.dltk.tests</module>
+        <module>plugins/libs/org.eclipse.dltk.ruby.ui</module>
 
 
         <!--module>../chefclipse.site</module -->

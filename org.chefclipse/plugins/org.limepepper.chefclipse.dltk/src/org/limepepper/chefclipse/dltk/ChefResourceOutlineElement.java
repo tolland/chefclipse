@@ -31,7 +31,7 @@ import org.limepepper.chefclipse.dltk.model.Resource;
  * range of the ruby call expression representing the chef resource.
  *
  */
-public class ChefResourceOutlineElement extends SourceModule {
+public class ChefResourceOutlineElement implements ISourceModule {
 
 	private final ISourceModule sourceModule;
 
