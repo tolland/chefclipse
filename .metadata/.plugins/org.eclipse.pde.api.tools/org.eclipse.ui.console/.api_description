@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<component id="org.eclipse.ui.console" modificationStamp="1067" version="1.2">
-    <package visibility="1">
-        <fragment handle="=org.eclipse.ui.console/src&lt;org.eclipse.ui.console.actions"/>
-    </package>
-    <package visibility="1">
-        <fragment handle="=org.eclipse.ui.console/src&lt;org.eclipse.ui.console"/>
-    </package>
-</component>

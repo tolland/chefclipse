@@ -7,14 +7,16 @@
   <groupId>org.limepepper.chefclipse</groupId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+
   <properties>
-    <tycho-version>0.17.0</tycho-version>
-    <tycho.version>0.17.0</tycho.version>
-    <tycho-extras-version>0.17.0</tycho-extras-version>
-    <tycho-extras.version>0.17.0</tycho-extras.version>
+    <tycho-version>0.18.0</tycho-version>
+    <tycho.version>0.18.0</tycho.version>
+    <tycho-extras-version>0.18.0</tycho-extras-version>
+    <tycho-extras.version>0.18.0</tycho-extras.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <github.global.server>github</github.global.server>
   </properties>
+
 
   <description>chefclipse.parent - This is the description of the thing </description>
 
@@ -84,12 +86,12 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
-        <module>org.limepepper.chefclipse.target</module>
-        <module>org.limepepper.chefclipse.common</module>
-        <module>org.limepepper.chefclipse.common.edit</module>
-        <module>org.limepepper.chefclipse.common.editor</module>
-        <module>org.limepepper.chefclipse.logger</module>
-        <module>org.limepepper.chefclipse.doc</module>
+        <module>plugins/org.limepepper.chefclipse.target</module>
+        <module>plugins/org.limepepper.chefclipse.common</module>
+        <module>plugins/org.limepepper.chefclipse.common.edit</module>
+        <module>plugins/org.limepepper.chefclipse.common.editor</module>
+        <module>plugins/org.limepepper.chefclipse.logger</module>
+        <module>plugins/org.limepepper.chefclipse.doc</module>
         <module>features/org.limepepper.chefclipse.doc.feature</module>
       </modules>
     </profile>
@@ -103,10 +105,10 @@
       <modules>
 
         <!--module>org.limepepper.chefclipse.releng</module -->
-        <module>org.limepepper.chefclipse.target</module>
+        <module>plugins/org.limepepper.chefclipse.target</module>
 
         <!-- product -->
-        <module>org.limepepper.chefclipse.product</module>
+        <module>plugins/org.limepepper.chefclipse.product</module>
         <!-- module>../org.limepepper.chefclipse.p2</module -->
 
         <!-- features bundles -->
@@ -116,47 +118,47 @@
         <module>features/org.limepepper.chefclipse.doc.feature</module>
 
         <!-- app & ui bundles -->
-        <module>chefclipse.core</module>
-        <module>chefclipse.ui</module>
+        <module>plugins/chefclipse.core</module>
+        <module>plugins/chefclipse.ui</module>
 
         <!-- docs bundles -->
         <!-- not used, this is just legacy vanilla wizard generated stuff -->
         <!-- however the build broken when I tried to remove it -->
-        <module>org.limepepper.chefclipse.doc</module>
+        <module>plugins/org.limepepper.chefclipse.doc</module>
 
         <!-- generated model stuff -->
-        <module>org.limepepper.chefclipse.common</module>
-        <module>org.limepepper.chefclipse.common.edit</module>
-        <module>org.limepepper.chefclipse.common.editor</module>
+        <module>plugins/org.limepepper.chefclipse.common</module>
+        <module>plugins/org.limepepper.chefclipse.common.edit</module>
+        <module>plugins/org.limepepper.chefclipse.common.editor</module>
 
         <!-- merged the api object with core -->
         <!--module>org.limepepper.chefclipse.api</module -->
-        <module>org.limepepper.chefclipse.app</module>
-        <module>org.limepepper.chefclipse.chefserver.api</module>
-        <module>org.limepepper.chefclipse.chefserver.api.ui</module>
+        <module>plugins/org.limepepper.chefclipse.app</module>
+        <module>plugins/org.limepepper.chefclipse.chefserver.api</module>
+        <module>plugins/org.limepepper.chefclipse.chefserver.api.ui</module>
 
         <!-- merged into chefclipse.ui -->
         <!-- module>org.limepepper.chefclipse.common.ui</module -->
 
-        <module>org.limepepper.chefclipse.spy</module>
-        <module>org.limepepper.chefclipse.graphviewer</module>
+        <module>plugins/org.limepepper.chefclipse.spy</module>
+        <module>plugins/org.limepepper.chefclipse.graphviewer</module>
 
 
         <!-- logger -->
-        <module>org.limepepper.chefclipse.logger</module>
-        <module>org.limepepper.chefclipse.logger.ui</module>
+        <module>plugins/org.limepepper.chefclipse.logger</module>
+        <module>plugins/org.limepepper.chefclipse.logger.ui</module>
 
         <!-- merged into chefclipse.core as non generated -->
         <!--module>org.limepepper.chefclipse.model</module -->
 
         <!-- object editors -->
-        <module>org.limepepper.chefclipse.databag.editor</module>
+        <module>plugins/org.limepepper.chefclipse.databag.editor</module>
         <!--module>org.limepepper.chefclipse.databag.editor.test</module-->
 
         <!-- json stuff -->
-        <module>org.limepepper.chefclipse.json</module>
-        <module>org.limepepper.chefclipse.json.ui</module>
-        <module>org.limepepper.chefclipse.json.edit</module>
+        <module>plugins/org.limepepper.chefclipse.json</module>
+        <module>plugins/org.limepepper.chefclipse.json.ui</module>
+        <module>plugins/org.limepepper.chefclipse.json.edit</module>
         <!--module>org.limepepper.chefclipse.json.tests</module-->
 
         <!-- module>org.limepepper.chefclipse.navigator</module -->
@@ -164,11 +166,11 @@
         <!--module>org.limepepper.chefclipse.ui</module -->
 
         <!-- remotepicker -->
-        <module>org.limepepper.chefclipse.remotepicker.api</module>
-        <module>org.limepepper.chefclipse.remotepicker.repositories</module>
-        <module>org.limepepper.chefclipse.remotepicker.repositories.ui</module>
-        <module>org.limepepper.chefclipse.remotepicker.extpoint</module>
-        <module>org.limepepper.chefclipse.remotepicker.ui</module>
+        <module>plugins/org.limepepper.chefclipse.remotepicker.api</module>
+        <module>plugins/org.limepepper.chefclipse.remotepicker.repositories</module>
+        <module>plugins/org.limepepper.chefclipse.remotepicker.repositories.ui</module>
+        <module>plugins/org.limepepper.chefclipse.remotepicker.extpoint</module>
+        <module>plugins/org.limepepper.chefclipse.remotepicker.ui</module>
         <!-- disabled because its breaking the build -->
         <!-- module>../org.limepepper.chefclipse.remotepicker.test</module -->
 
@@ -178,13 +180,13 @@
         <!--module>org.limepepper.chefclipse.preferences.test</module-->
 
         <!-- test bundles -->
-        <module>org.limepepper.chefclipse.testing</module>
+        <module>plugins/org.limepepper.chefclipse.testing</module>
 
         <!-- experimental - @todo put these plugins in separate profile -->
         <!--module>org.limepepper.eclipse.RubyConsole</module -->
 
         <!-- missing form orbit bundles -->
-        <module>libs/com.sun.jersey.bundle</module>
+        <module>plugins/libs/com.sun.jersey.bundle</module>
 
 
 
@@ -209,7 +211,7 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
-        <module>org.limepepper.chefclipse.p2</module>
+        <module>plugins/org.limepepper.chefclipse.p2</module>
       </modules>
       <build>
         <plugins>
@@ -274,7 +276,7 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
-        <module>chefclipse.izpacker</module>
+        <module>plugins/chefclipse.izpacker</module>
       </modules>
 
     </profile>
@@ -362,7 +364,7 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
-        <module>org.limepepper.chefclipse.releng</module>
+        <module>plugins/org.limepepper.chefclipse.releng</module>
       </modules>
       <build>
         <plugins>
@@ -388,7 +390,7 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <modules>
-        <module>org.limepepper.chefclipse.releng</module>
+        <module>plugins/org.limepepper.chefclipse.releng</module>
       </modules>
       <build>
         <plugins>
