@@ -80,6 +80,13 @@
                </command>
             </menu>
         </menuContribution>
+
+        <!-- using command core expressions -->
+        <!-- http://wiki.eclipse.org/Command_Core_Expressions -->
+        <!-- http://blog.eclipse-tips.com/2009/01/commands-part-2-selection-and.html -->
+
+        <!-- http://www.vogella.com/articles/EclipseCommandsAdvanced/article.html#commands_restrictions -->
+
       	<menuContribution locationURI="popup:org.eclipse.ui.popup.any?before=additions">
             <command
                 label="Open Remote Picker Wizard"
@@ -88,10 +95,8 @@
                	<visibleWhen>
 					<with variable="selection">
 			   		    <iterate operator="and" ifEmpty="false">
-			      			<adapt type="org.eclipse.core.resources.IProject">
-			                	<test property="org.eclipse.core.resources.projectNature"
-			           	   			value="chefclipse.chefnature"/>
-			      			</adapt>
+			      <test property="org.eclipse.core.resources.projectNature" value="chefclipse.chefnature" />
+
 			   		    </iterate>
 					</with>
         		</visibleWhen>

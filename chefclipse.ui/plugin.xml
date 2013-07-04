@@ -134,6 +134,7 @@
   <!-- =================================================================================== -->
   <!-- This is the org.eclipse.ui.menus section  -->
   <!-- apparently support for dynamic menus is only new to e4 as of 8/Apr -->
+  <!-- http://wiki.eclipse.org/Menu_Contributions#menu%3A  -->
   <!-- =================================================================================== -->
 
   <extension point="org.eclipse.ui.menus">
@@ -460,10 +461,20 @@
   <!-- =================================================================================== -->
 
   <extension point="org.eclipse.dltk.ui.scriptDocumentationProviders">
-    <provider class="chefclipse.ui.OpscodeChefDocumentationProvider"
-    id="chefclipse.ui.OpscodeChefDocumentationProvider"
-    nature="chefclipse.chefnature" />
+    <provider
+          class="chefclipse.ui.OpscodeChefDocumentationProvider"
+          id="chefclipse.ui.OpscodeChefDocumentationProvider"
+          nature="chefclipse.chefnature"
+          priority="1"/>
   </extension>
+
+<extension point="org.eclipse.dltk.core.selectionEngine">
+   <selectionEngine
+         class="chefclipse.ui.internal.selection.ExamplePythonSelectionEngine"
+         nature="chefclipse.chefnature"
+         priority="1">
+   </selectionEngine>
+</extension>
 
   <!-- =================================================================================== -->
   <!-- org.eclipse.ui.propertyPages stuff -->

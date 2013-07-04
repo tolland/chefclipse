@@ -29,6 +29,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 
+import chefclipse.core.utils.ChefUtils;
+
 /**
  * This is a sample new wizard. Its role is to create a new file resource in the
  * provided container. If the container resource (a folder or a project) is
@@ -118,7 +120,7 @@ public class NewRecipeWizard extends Wizard implements INewWizard {
 		IContainer container = (IContainer) resource;
 		final IFile file = container.getFile(new Path(fileName));
 		try {
-			InputStream stream = openContentStream();
+			InputStream stream = openContentStream(fileName, containerName);
 			if (file.exists()) {
 				file.setContents(stream, true, true, monitor);
 			} else {
@@ -146,10 +148,12 @@ public class NewRecipeWizard extends Wizard implements INewWizard {
 	 * We will initialize file contents with a sample text.
 	 */
 
-	private InputStream openContentStream() {
-		String contents = "#\n" + "# Cookbook Name:: geany\n"
-				+ "# Recipe:: default\n" + "#\n"
-				+ "# Copyright 2013, ACME ltd\n" + "#\n" + "\n" + "\n";
+	private InputStream openContentStream(String filename, String cookbookName) {
+		// int dotIndex = page.getFileName().lastIndexOf(".");
+
+		String contents = "#\n" + "# Cookbook Name:: " + cookbookName + "\n"
+				+ "# Recipe:: " + filename + "\n" + "#\n"
+				+ "# Copyright 2013\n" + "#\n" + "\n" + "\n";
 		return new ByteArrayInputStream(contents.getBytes());
 	}
 
@@ -167,5 +171,11 @@ public class NewRecipeWizard extends Wizard implements INewWizard {
 	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.selection = selection;
+
+		if (selection instanceof IResource) {
+			cookbookVersion = ChefUtils
+					.getCookbookVersionForResource((IResource) selection);
+		}
 	}
+
 }

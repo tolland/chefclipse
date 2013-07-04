@@ -14,7 +14,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 
 /**
- * 
+ *
  * @author Dinko Ivanov
  *
  */
@@ -24,7 +24,7 @@ public class Activator extends AbstractUIPlugin {
 	public static final String PLUGIN_ID = "org.limepepper.chefclipse.dltk"; //$NON-NLS-1$
 
 	public static final String CHEFCLIPSE_ICON = "CHEFCLIPSE_ICON"; //$NON-NLS-1$
-	
+
 	// The shared instance
 	private static Activator plugin;
 
@@ -36,7 +36,7 @@ public class Activator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
 	 * )
@@ -56,7 +56,7 @@ public class Activator extends AbstractUIPlugin {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
 	 * )
@@ -68,7 +68,7 @@ public class Activator extends AbstractUIPlugin {
 
 	/**
 	 * Returns the shared instance
-	 * 
+	 *
 	 * @return the shared instance
 	 */
 	public static Activator getDefault() {
@@ -81,7 +81,7 @@ public class Activator extends AbstractUIPlugin {
 		Bundle bundle = Platform.getBundle(PLUGIN_ID);
 
 		ImageDescriptor myImage = ImageDescriptor.createFromURL(FileLocator
-				.find(bundle, new Path("icons/16x16.png"), null));
+				.find(bundle, new Path("icons/segment_edit.gif"), null));
 		registry.put(CHEFCLIPSE_ICON, myImage);
 	}
 }

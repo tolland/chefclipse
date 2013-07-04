@@ -20,7 +20,6 @@ Require-Bundle: org.eclipse.ui,
  org.junit;bundle-version="4.8.0",
  org.limepepper.chefclipse.common.edit;bundle-version="0.1.0",
  org.limepepper.chefclipse.chefserver.api;bundle-version="0.1.0",
- org.limepepper.chefclipse.utils;bundle-version="0.1.0",
  chefclipse.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

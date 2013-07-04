@@ -139,7 +139,6 @@
         <!-- module>org.limepepper.chefclipse.common.ui</module -->
 
         <module>org.limepepper.chefclipse.spy</module>
-        <module>org.limepepper.chefclipse.utils</module>
         <module>org.limepepper.chefclipse.graphviewer</module>
 
 

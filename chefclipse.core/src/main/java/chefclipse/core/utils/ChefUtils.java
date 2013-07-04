@@ -6,6 +6,13 @@ import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.eclipse.core.resources.IResource;
+import org.eclipse.emf.ecore.EObject;
+import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
+
+import chefclipse.core.managers.ChefRepositoryManager;
+import chefclipse.core.managers.ChefRepositoryManagerImpl;
+
 public class ChefUtils {
 
 	public static String hexMd5Sum(InputStream is) {
@@ -56,4 +63,31 @@ public class ChefUtils {
 		return returnString;
 	}
 
+	/**
+	 * do a search up the file tree to see if any of the containers are a
+	 * cookbookVersion
+	 *
+	 * @param selection
+	 * @return
+	 */
+	public static CookbookVersion getCookbookVersionForResource(
+			IResource selection) {
+
+		if (selection == null) {
+			return null;
+		}
+
+		EObject element = ChefRepositoryManager.INSTANCE.getElement(selection);
+
+		if (element instanceof CookbookVersion) {
+			return (CookbookVersion) element;
+		}
+
+		/**
+		 * either the getParent will return null, and hence the recursive call
+		 * will return null or it will recurse up the IContainers
+		 */
+		return getCookbookVersionForResource(selection.getParent());
+
+	}
 }

@@ -16,8 +16,11 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.DirectoryDialog;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
+import org.limepepper.chefclipse.preferences.ui.utils.SWTFactory;
 
 import chefclipse.ui.messages.Messages;
 import chefclipse.ui.wizards.ChefConfigSelectionWizardPage;
@@ -25,15 +28,23 @@ import chefclipse.ui.wizards.ChefConfigSelectionWizardPage;
 public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 
 	private Text locationText;
+	private Button searchButton;
+	@SuppressWarnings("unused")
 	private ChefConfigSelectionWizardPage chefConfigPage = new ChefConfigSelectionWizardPage(
 			getWizard());
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	protected NewProjectExistingChefRepoWizardPage() {
 		super("ExistingRepoNewChefWizardPage1"); //$NON-NLS-1$
 		setTitle(Messages.ChefRepositoryWizardPage_AddChefRepo);
 		setDescription(Messages.ChefRepositoryWizardPage_ChefRepo);
 	}
 
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public NewProjectExistingChefRepoWizardPage(String string) {
 		super(string); //$NON-NLS-1$
 		setTitle(Messages.ChefRepositoryWizardPage_AddChefRepo);
@@ -72,17 +83,14 @@ public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 	@Override
 	public void createControl(Composite parent) {
 		Composite container = new Composite(parent, SWT.NULL);
-		GridLayout layout = new GridLayout();
-		container.setLayout(layout);
-		layout.numColumns = 3;
-		layout.verticalSpacing = 9;
+		container.setLayout(new GridLayout(3, false));
 
 		Label label = new Label(container, SWT.NULL);
 		label.setText("&Repository location:");
 
 		locationText = new Text(container, SWT.BORDER | SWT.SINGLE);
-		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-		locationText.setLayoutData(gd);
+		locationText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true,
+				false, 1, 1));
 		locationText.addModifyListener(new ModifyListener() {
 			public void modifyText(ModifyEvent e) {
 				dialogChanged();
@@ -97,30 +105,45 @@ public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 			}
 		});
 
-/*		Label iconLabel = new Label(container, SWT.NONE);
+		// Create a new label that will spam two columns
+		label = new Label(container, SWT.BORDER);
+		label.setText("Search for a local chef respository");
+		// Create new layout data
+		GridData data = new GridData(SWT.FILL, SWT.LEFT, true, false, 2, 1);
+		label.setLayoutData(data);
 
-		final Button checkbox;
-		checkbox = new Button(container, SWT.CHECK | SWT.INHERIT_FORCE);
-		checkbox.setSelection(false);
-		checkbox.setText("Configure Server Settings for this Repository"); //$NON-NLS-1$
-		// help UI tests
-		checkbox.setData("connectorId", "test"); //$NON-NLS-1$
-		GridDataFactory.swtDefaults().align(SWT.CENTER, SWT.CENTER)
-				.applyTo(checkbox);
-
-		checkbox.addSelectionListener(new SelectionListener() {
-			public void widgetDefaultSelected(SelectionEvent e) {
-				widgetSelected(e);
-			}
-
-			public void widgetSelected(SelectionEvent e) {
-				boolean selected = checkbox.getSelection();
-				maybeModifySelection(selected);
+/*		searchButton = SWTFactory.createPushButton(container,
+				Messages.ChefConfigurationPreferencePage_SearchButton, null);
+		searchButton.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false,
+				false, 1, 1));
+		searchButton.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event evt) {
+				search();
 			}
 		});*/
 
+		/*
+		 * Label iconLabel = new Label(container, SWT.NONE);
+		 *
+		 * final Button checkbox; checkbox = new Button(container, SWT.CHECK |
+		 * SWT.INHERIT_FORCE); checkbox.setSelection(false);
+		 * checkbox.setText("Configure Server Settings for this Repository");
+		 * //$NON-NLS-1$ // help UI tests checkbox.setData("connectorId",
+		 * "test"); //$NON-NLS-1$
+		 * GridDataFactory.swtDefaults().align(SWT.CENTER, SWT.CENTER)
+		 * .applyTo(checkbox);
+		 *
+		 * checkbox.addSelectionListener(new SelectionListener() { public void
+		 * widgetDefaultSelected(SelectionEvent e) { widgetSelected(e); }
+		 *
+		 * public void widgetSelected(SelectionEvent e) { boolean selected =
+		 * checkbox.getSelection(); maybeModifySelection(selected); } });
+		 */
+
 		dialogChanged();
 		setControl(container);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
 
 	}
 
@@ -168,6 +191,17 @@ public class NewProjectExistingChefRepoWizardPage extends WizardPage {
 
 	public String getLocationPath() {
 		return locationText.getText();
+	}
+
+	/**
+	 * Search for chef-repo in local filesystem.
+	 *
+	 */
+	private void search() {
+
+		SearchChefReposAction searchAction = new SearchChefReposAction(
+				getShell());
+		searchAction.run();
 	}
 
 }

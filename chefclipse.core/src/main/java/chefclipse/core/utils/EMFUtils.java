@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.tools;
+package chefclipse.core.utils;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;

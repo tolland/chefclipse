@@ -31,11 +31,11 @@ import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
-import org.limepepper.chefclipse.tools.EMFUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import chefclipse.core.managers.ChefRepositoryManager;
+import chefclipse.core.utils.EMFUtils;
 import chefclipse.core.utils.Utilities;
 import chefclipse.ui.compare.NewActionPopupTest.FilteredBufferedResourceNode;
 

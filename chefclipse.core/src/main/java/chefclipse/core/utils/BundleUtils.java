@@ -1,4 +1,4 @@
-package org.limepepper.chefclipse.tools;
+package chefclipse.core.utils;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.osgi.util.ManifestElement;

@@ -17,7 +17,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.limepepper.chefclipse.chefserver.api.ChefServerApi;
 import org.limepepper.chefclipse.chefserver.api.KnifeConfigController;
-import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.common.chefserver.Environment;
 import org.limepepper.chefclipse.common.chefserver.Node;
@@ -27,10 +26,11 @@ import org.limepepper.chefclipse.common.chefserver.ServerCookbookVersion;
 import org.limepepper.chefclipse.common.cookbook.Root_file;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.knife.KnifeFactory;
-import org.limepepper.chefclipse.tools.ChefUtils;
 import org.limepepper.chefclipse.utility.VersionUrl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import chefclipse.core.utils.ChefUtils;
 
 public class ServerAPITests {
 
