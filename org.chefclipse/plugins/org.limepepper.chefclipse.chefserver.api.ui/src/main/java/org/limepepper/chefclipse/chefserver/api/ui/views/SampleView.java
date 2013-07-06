@@ -73,8 +73,8 @@ public class SampleView extends ViewPart {
 
     private TableViewer        viewer;
     private Action             action1;
-    private Action             action2;
-    private Action             doubleClickAction;
+	private Action action2;
+	private Action doubleClickAction;
 
     /*
      * The content provider class is responsible for

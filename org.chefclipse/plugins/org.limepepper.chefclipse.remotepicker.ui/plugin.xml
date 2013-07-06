@@ -89,7 +89,7 @@
 
       	<menuContribution locationURI="popup:org.eclipse.ui.popup.any?before=additions">
             <command
-                label="Open Remote Picker Wizard"
+                label="Open Remote Picker"
                 commandId="org.limepepper.chefclipse.remotepicker.ui.commands.pickcookbook"
                 icon="icons/opscode_16.png">
                	<visibleWhen>

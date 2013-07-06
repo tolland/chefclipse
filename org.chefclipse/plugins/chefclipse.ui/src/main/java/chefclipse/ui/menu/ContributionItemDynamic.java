@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- *
  * @author tomhodder
  *
  *
@@ -47,23 +46,30 @@ public class ContributionItemDynamic extends CompoundContributionItem {
 		IStructuredSelection selection = (IStructuredSelection) PlatformUI
 				.getWorkbench().getActiveWorkbenchWindow()
 				.getSelectionService().getSelection();
-		if (selection == null)
+
+		if (selection == null) {
+
 			return new IContributionItem[] {};
 
-		Object item = selection.getFirstElement();
+		} else if (selection.getFirstElement() == null) {
+			menuItems.put("import.repository.defaults", "Repo Search...");
 
-		if (Platform.getAdapterManager()
-				.getAdapter(item, CookbookVersion.class) != null) {
-			System.out.println("here:" + item.getClass());
-			System.out.println("here:" + item.toString());
-			menuItems.put("refresh.cookbookVersion",
-					"update model for this cookbook");
+		} else {
+
+			Object item = selection.getFirstElement();
+
+			if (Platform.getAdapterManager().getAdapter(item,
+					CookbookVersion.class) != null) {
+				menuItems.put("refresh.cookbookVersion",
+						"update model for this cookbook");
+			}
+
+			log.debug("here si the message");
+
+			menuItems.put("compare.cookbook", "1Compare with ... ");
+			menuItems.put("debug.show.listeners", "Show listeners");
+
 		}
-
-		log.debug("here si the message");
-
-		menuItems.put("compare.cookbook", "1Compare with ... ");
-		menuItems.put("debug.show.listeners", "Show listeners");
 
 		return fillMenu();
 	}

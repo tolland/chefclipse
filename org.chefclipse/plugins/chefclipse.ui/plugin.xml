@@ -171,7 +171,7 @@
     <menuContribution
     	allPopups="true"
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
-      	 <menu label="Chefclipse Menu"
+      	 <menu label="Chefclipse"
                mnemonic="C"
                id="org.limepepper.chefclipse.menus.contextgroup">
         <dynamic class="chefclipse.ui.menu.ContributionItemDynamic"

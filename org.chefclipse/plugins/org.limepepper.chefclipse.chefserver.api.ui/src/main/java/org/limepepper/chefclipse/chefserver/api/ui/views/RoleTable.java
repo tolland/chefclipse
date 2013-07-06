@@ -11,6 +11,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -21,72 +22,79 @@ import chefclipse.core.providers.ChefProjectAdapterFactory;
 
 public class RoleTable extends Composite {
 
-	private TableViewer tableViewer;
+	private TableViewer viewer;
 	private Table table;
 	private ChefServerApi api;
-	
-    public RoleTable(Composite parent, ChefServerApi api)
-    {
-    	super(parent,SWT.NONE);
-        setLayout(new FillLayout());
-        
-    	this.api=api;
-        
-        tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
-                | SWT.V_SCROLL);
 
-        tableViewer.setContentProvider(new RoleContentProvider());
-        tableViewer.setLabelProvider(new RoleLabelProvider());
-        tableViewer.setSorter(new NameSorter());
-        tableViewer.getTable().setLinesVisible(true);
-        tableViewer.setInput(api.getRoles());
-    }
-    
-    class NameSorter extends ViewerSorter {
-    }
-    
-    class RoleLabelProvider extends AdapterFactoryLabelProvider {
+	public RoleTable(Composite parent, ChefServerApi api) {
+		super(parent, SWT.NONE);
+		setLayout(new FillLayout());
 
-        public RoleLabelProvider() {
-            super(ChefProjectAdapterFactory.getAdapterFactory());
-        }
+		this.api = api;
 
-        public String getText(Object element) {
+		viewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
+				| SWT.V_SCROLL);
 
-            return super.getText(element);
-        }
+		viewer.setContentProvider(new RoleContentProvider());
+		viewer.setLabelProvider(new RoleLabelProvider());
+		viewer.setSorter(new NameSorter());
+		viewer.getTable().setLinesVisible(true);
+		viewer.setInput(api.getRoles());
+	}
 
-        public String getColumnText(Object obj, int index) {
-            return getText(obj);
-        }
+	@Override
+	public void setMenu(Menu menu) {
+		super.setMenu(menu);
 
-        public Image getColumnImage(Object obj, int index) {
-            return getImage(obj);
-        }
-        public Image getImage(Object obj) {
-            return PlatformUI.getWorkbench().getSharedImages()
-                    .getImage(ISharedImages.IMG_OBJ_ELEMENT);
-        }
-    }
-    
-    class RoleContentProvider extends AdapterFactoryContentProvider {
-    	RoleContentProvider() {
-            super(ChefProjectAdapterFactory.getAdapterFactory());
-        }
+		viewer.getTable().setMenu(menu);
+	}
 
-        @Override
-        public void dispose() {
-        }
+	class NameSorter extends ViewerSorter {
+	}
 
-        @Override
-        public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
-        }
+	class RoleLabelProvider extends AdapterFactoryLabelProvider {
 
-        @Override
-        public Object[] getElements(Object inputElement) {
-        	List<Role> roles = (List<Role>)inputElement;
-        	return roles.toArray(new Role[roles.size()]);
-        }
-    }
-    
+		public RoleLabelProvider() {
+			super(ChefProjectAdapterFactory.getAdapterFactory());
+		}
+
+		public String getText(Object element) {
+
+			return super.getText(element);
+		}
+
+		public String getColumnText(Object obj, int index) {
+			return getText(obj);
+		}
+
+		public Image getColumnImage(Object obj, int index) {
+			return getImage(obj);
+		}
+
+		public Image getImage(Object obj) {
+			return PlatformUI.getWorkbench().getSharedImages()
+					.getImage(ISharedImages.IMG_OBJ_ELEMENT);
+		}
+	}
+
+	class RoleContentProvider extends AdapterFactoryContentProvider {
+		RoleContentProvider() {
+			super(ChefProjectAdapterFactory.getAdapterFactory());
+		}
+
+		@Override
+		public void dispose() {
+		}
+
+		@Override
+		public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		}
+
+		@Override
+		public Object[] getElements(Object inputElement) {
+			List<Role> roles = (List<Role>) inputElement;
+			return roles.toArray(new Role[roles.size()]);
+		}
+	}
+
 }

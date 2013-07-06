@@ -11,6 +11,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -21,7 +22,7 @@ import chefclipse.core.providers.ChefProjectAdapterFactory;
 
 public class EnvironmentTable extends Composite {
 
-	private TableViewer tableViewer;
+	private TableViewer viewer;
 	private Table table;
 	private ChefServerApi api;
 
@@ -31,14 +32,21 @@ public class EnvironmentTable extends Composite {
 
 		this.api = api;
 
-		tableViewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
+		viewer = new TableViewer(this, SWT.MULTI | SWT.H_SCROLL
 				| SWT.V_SCROLL);
 
-		tableViewer.setContentProvider(new EnvironmentContentProvider());
-		tableViewer.setLabelProvider(new EnvironmentLabelProvider());
-		tableViewer.setSorter(new NameSorter());
-		tableViewer.getTable().setLinesVisible(true);
-		tableViewer.setInput(api.getEnvironments());
+		viewer.setContentProvider(new EnvironmentContentProvider());
+		viewer.setLabelProvider(new EnvironmentLabelProvider());
+		viewer.setSorter(new NameSorter());
+		viewer.getTable().setLinesVisible(true);
+		viewer.setInput(api.getEnvironments());
+	}
+
+	@Override
+	public void setMenu(Menu menu) {
+		super.setMenu(menu);
+
+		viewer.getTable().setMenu(menu);
 	}
 
 	class NameSorter extends ViewerSorter {

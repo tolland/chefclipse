@@ -71,6 +71,20 @@ We are working towards an [open source][reflow-github] release under [Apache lic
 
 If this project is something that you would like to support then we would be happy to [suggest a small donation to something worthwhile][donate].
 
+<iframe id="forum_embed"
+  src="javascript:void(0)"
+  scrolling="no"
+  frameborder="0"
+  width="900"
+  height="700">
+</iframe>
+<script type="text/javascript">
+  document.getElementById('forum_embed').src =
+     'https://groups.google.com/a/limepepper.co.uk/forum/embed/?place=forum/chefclipse-users'
+     + '&showsearch=true&showpopout=true&showtabs=false'
+     + '&parenturl=' + encodeURIComponent(window.location.href);
+</script> 
+
 [donate]: http://www.amnesty.org.uk/
 [mvn-site]: http://maven.apache.org/guides/mini/guide-site.html
 [eclipse-e4]: http://vimeo.com/59644991
