@@ -306,6 +306,7 @@ public class ChefConfigManager {
 		return ""; //$NON-NLS-1$
 	}
 
+	// @todo fix this to use the plugin prefs hierarchy
 	private String getConfigListFile() {
 		String tempFolderPath = System.getProperty("java.io.tmpdir");//$NON-NLS-1$
 		return new StringBuilder(tempFolderPath).append(CHEF_CONFIGS_LIST)
