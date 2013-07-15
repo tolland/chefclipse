@@ -25,6 +25,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.progress.IProgressConstants;
 import org.eclipse.ui.progress.IProgressConstants2;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
+import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
@@ -105,7 +106,11 @@ public class RemotePickerHandler extends AbstractHandler {
 				ExecutorService ex = Executors.newSingleThreadExecutor();
 				ex.execute(new Runnable() {
 					@Override public void run() {
-						repoManager.loadRepository(repo.getId());
+						try {
+							repoManager.loadRepository(repo.getId());
+						} catch (InstallCookbookException e) {
+							// error already logged
+						}
 					}
 				});
 				ex.shutdown();

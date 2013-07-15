@@ -31,14 +31,14 @@ public interface ICookbooksRepository {
 	 * This can be a long execution task.
 	 * @return a {@link Collection} of {@link RemoteCookbook}
 	 */
-	Collection<RemoteCookbook> getCookbooks();
+	Collection<RemoteCookbook> getCookbooks() throws InstallCookbookException;
 
 	/**
 	 * Returns a single cookbook from the repository.
 	 * @param name The name of the cookbook to retrieve
 	 * @return a {@link RemoteCookbook}
 	 */
-	RemoteCookbook getCookbook(String name);
+	RemoteCookbook getCookbook(String name) throws InstallCookbookException;
 	
 	/**
 	 * Checks if the given {@link RemoteRepository} for this {@link ICookbooksRepository} is updated on the origin.

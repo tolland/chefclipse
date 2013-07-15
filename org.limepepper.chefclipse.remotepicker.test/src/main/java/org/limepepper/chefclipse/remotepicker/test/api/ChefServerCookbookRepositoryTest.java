@@ -63,7 +63,7 @@ public class ChefServerCookbookRepositoryTest {
 	}
 	
 	@Test
-	public void testGetCookbooks() {
+	public void testGetCookbooks() throws InstallCookbookException {
 		long t1 = System.currentTimeMillis();
 		
 		List<RemoteCookbook> results = (List<RemoteCookbook>) repo.getCookbooks();

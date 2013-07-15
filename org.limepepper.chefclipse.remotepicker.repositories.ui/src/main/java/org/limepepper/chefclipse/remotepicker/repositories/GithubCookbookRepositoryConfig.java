@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -110,19 +111,22 @@ public class GithubCookbookRepositoryConfig implements
 								+ avatar_id
 								+ "?s=32&d="
 								+ URLEncoder
-										.encode("http://raw.github.com/limepepper/chefclipse/gh-pages/css/images/github.png",
+									.encode("http://raw.github.com/PhenotypeFoundation/GSCF/master/web-app/images/github-logo.png",
 												"UTF-8"));
+					} catch (UniformInterfaceException e) {
+						logger.error("Cannot fetch github organization info", e);
+						JSONObject json = e.getResponse().getEntity(JSONObject.class);
+						String error = json.optString("message", "");
+						throw new InvocationTargetException(e, "Cannot fetch Github information: \"" + error + "\".");
 					} catch (Exception e) {
 						logger.error("Cannot fetch github organization info", e);
-						throw new InvocationTargetException(e);
+						throw new InvocationTargetException(e, "Cannot fetch Github organization information for user \""+ githubUser + "\".");
 					}
 				}
 			});
 		} catch (InvocationTargetException e) {
-			return "Cannot fetch Github organization information for user \""
-					+ githubUser + "\".";
+			return e.getMessage();
 		} catch (InterruptedException e) {
-
 			return "Cannot fetch Github organization information for user \""
 					+ githubUser + "\".";
 		}

@@ -29,7 +29,7 @@ public class MultipleVendorCookbookRepositoryTest {
 	private GitHubCookbookRepository repo = new GitHubCookbookRepository("cookbooks");
 	
 	@Test
-	public void testGetCookbooks() {
+	public void testGetCookbooks() throws InstallCookbookException {
 		long t1 = System.currentTimeMillis();
 		
 		List<RemoteCookbook> results = (List<RemoteCookbook>) repo.getCookbooks();
@@ -41,7 +41,7 @@ public class MultipleVendorCookbookRepositoryTest {
 	}
 	
 	@Test
-	public void testGetCookbook() {
+	public void testGetCookbook() throws InstallCookbookException {
 		
 		RemoteCookbook result = repo.getCookbook("ap-cookbook-oracle");
 	

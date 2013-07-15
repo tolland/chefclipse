@@ -6,8 +6,7 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .,
- lib/hamcrest-all.jar,
- lib/mockito-all.jar
+ lib/hamcrest-all.jar
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,
@@ -15,5 +14,6 @@ Require-Bundle: org.eclipse.ui,
  org.limepepper.chefclipse.preferences.ui;bundle-version="0.1.0",
  org.junit;bundle-version="4.10.0",
  chefclipse.core;bundle-version="0.1.0",
- org.limepepper.chefclipse.chefserver.api;bundle-version="0.1.0"
+ org.limepepper.chefclipse.chefserver.api;bundle-version="0.1.0",
+ org.limepepper.chefclipse.testing;bundle-version="0.1.0"
 Import-Package: org.junit;version="4.10.0"
