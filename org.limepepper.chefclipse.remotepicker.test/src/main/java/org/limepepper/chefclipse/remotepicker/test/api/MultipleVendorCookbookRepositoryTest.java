@@ -29,19 +29,19 @@ public class MultipleVendorCookbookRepositoryTest {
 	private GitHubCookbookRepository repo = new GitHubCookbookRepository("cookbooks");
 	
 	@Test
-	public void testGetCookbooks() {
+	public void testGetCookbooks() throws InstallCookbookException {
 		long t1 = System.currentTimeMillis();
 		
 		List<RemoteCookbook> results = (List<RemoteCookbook>) repo.getCookbooks();
 		assertThat(results).isNotNull();
 		logger.info("get {} Cookbooks in {}ms", results.size(), System.currentTimeMillis() - t1);
-		assertThat(results.size()).isGreaterThan(600);
+		assertThat(results.size()).isGreaterThan(400);
 		assertThat(results.get(0).getName()).isNotEmpty();
 		assertThat(results.get(500).getName()).isNotEmpty();
 	}
 	
 	@Test
-	public void testGetCookbook() {
+	public void testGetCookbook() throws InstallCookbookException {
 		
 		RemoteCookbook result = repo.getCookbook("ap-cookbook-oracle");
 	

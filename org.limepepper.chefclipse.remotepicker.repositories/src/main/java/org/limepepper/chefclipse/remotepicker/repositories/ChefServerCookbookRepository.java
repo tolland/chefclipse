@@ -116,14 +116,15 @@ public class ChefServerCookbookRepository implements ICookbooksRepository {
 
 	/**
 	 * Gets avalilable cookbooks on this chef server.
+	 * @throws InstallCookbookException 
 	 */
 	@Override
-	public Collection<RemoteCookbook> getCookbooks() {
+	public Collection<RemoteCookbook> getCookbooks() throws InstallCookbookException {
 		Collection<RemoteCookbook> remotes = new ArrayList<RemoteCookbook>();
 
 		Map<String, VersionUrl> list = chefServerApi.getCookbookList();
 		if (list == null) {
-			throw new RuntimeException("Could not download cookbooks");
+			throw new InstallCookbookException("Could not download cookbooks");
 		}
 
 		for (Entry<String, VersionUrl> entry : list.entrySet()) {

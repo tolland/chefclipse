@@ -262,7 +262,7 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 				refreshSelection();
 				fireSelectionChanged();
 			}
-		} catch (Throwable e) {
+		} catch (Exception e) {
 			MessageDialog.openError(getShell(), "Could not create repository", "There was an issue creating the repository. Check the error log.");
 		}
 	}

@@ -248,7 +248,7 @@ public class CookbookRepositoryManager {
 		new File(getCacheFile(repo.getId())).delete();
 	}
 
-	private void cacheRepository(final RemoteRepository repo) {
+	private void cacheRepository(final RemoteRepository repo) throws InstallCookbookException {
 		try {
 			ICookbooksRepository cookbookRepository = retrievers.get(repo.getId());
 			Collection<RemoteCookbook> cookbooks = cookbookRepository
@@ -282,12 +282,13 @@ public class CookbookRepositoryManager {
 			}
 			saveCacheModel(repo);
 			errors.put(repo.getId(), null);
-		} catch (Throwable e) {
+		} catch (InstallCookbookException e) {
 			logger.error("Could not cache repository " + repo.getUri(), e);
 			errors.put(repo.getId(), e);
 			if (listeners.containsKey(repo.getId())) {
 				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, e); //$NON-NLS-1$
 			}
+			throw e;
 		}
 	}
 
@@ -356,8 +357,9 @@ public class CookbookRepositoryManager {
 	 * If the repository is already cached, it will return immediately. Cookbooks can be accesed with
 	 * {@link RemoteRepository#getCookbooks()} after this method returns.
 	 * @param repoId the repository Id to load.
+	 * @throws InstallCookbookException 
 	 */
-	public void loadRepository(final String repoId) {
+	public void loadRepository(final String repoId) throws InstallCookbookException {
 		RemoteRepository repo = repositories.get(repoId);
 		ICookbooksRepository cookbookRepository = retrievers.get(repoId);
 
@@ -480,11 +482,15 @@ public class CookbookRepositoryManager {
 	 */
 	public void addRepositoryListener(final String repoId, final PropertyChangeListener listener) {
 		listeners.get(repoId).addPropertyChangeListener(listener);
+		RemoteRepository repo = repositories.get(repoId);
 		if (isRepositoryReady(repoId)) {
-			RemoteRepository repo = repositories.get(repoId);
 			listeners.get(repoId).firePropertyChange("cookbooks", null, repo.getCookbooks()); //$NON-NLS-1$
-		} else if (errors.get(repoId) != null) { // try to reload failed repo
-			loadRepository(repoId);
+		} else if (errors.get(repoId) != null || repo.getCookbooks().isEmpty()) { // try to reload failed repo
+			try {
+				loadRepository(repoId);
+			} catch (InstallCookbookException e) {
+				// handled by cacheRepository
+			}
 		}
 	}
 

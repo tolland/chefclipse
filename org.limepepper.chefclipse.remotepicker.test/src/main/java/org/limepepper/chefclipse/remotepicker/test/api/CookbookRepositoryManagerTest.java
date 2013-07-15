@@ -95,7 +95,7 @@ public class CookbookRepositoryManagerTest {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testLoadTemplateRepository() {
+	public void testLoadTemplateRepository() throws InstallCookbookException {
 		Builder<String> builder = mock(BuilderOfString.class);
 		RemoteRepository repoMock = factory.createRemoteRepository();
 		repoMock.setId("repoParamTest");
@@ -126,7 +126,7 @@ public class CookbookRepositoryManagerTest {
 	}
 	
 	@Test
-	public void testCacheParamRepository() {
+	public void testCacheParamRepository() throws InstallCookbookException {
 		ICookbooksRepository remote = mockCookbooksResp();
 		
 		Builder<String> builder = mock(BuilderOfString.class);
@@ -178,7 +178,7 @@ public class CookbookRepositoryManagerTest {
 	}
 
 	@Test
-	public void testLoadParamRepository() {
+	public void testLoadParamRepository() throws InstallCookbookException {
 		ICookbooksRepository remote = mockCookbooksResp();
 		
 		Builder<String> builder = mock(BuilderOfString.class);
@@ -200,10 +200,7 @@ public class CookbookRepositoryManagerTest {
 		assertThat(repository.getCookbooks().size()).isEqualTo(2);
 	}
 	
-	/**
-	 * @return
-	 */
-	protected ICookbooksRepository mockCookbooksResp() {
+	protected ICookbooksRepository mockCookbooksResp() throws InstallCookbookException {
 		ICookbooksRepository remote = mock(ICookbooksRepository.class);
 		Collection<RemoteCookbook> cookbooks = new ArrayList<RemoteCookbook>();
 		cookbooks.add(createCookbook("c1"));
@@ -233,7 +230,7 @@ public class CookbookRepositoryManagerTest {
 	}
 
 	@Test
-	public void testRepositoryCookbooks() {
+	public void testRepositoryCookbooks() throws InstallCookbookException {
 		RemoteRepository repoMock = factory.createRemoteRepository();
 		repoMock.setId("repoCookbooks");
 		ICookbooksRepository remote = mockCookbooksResp();

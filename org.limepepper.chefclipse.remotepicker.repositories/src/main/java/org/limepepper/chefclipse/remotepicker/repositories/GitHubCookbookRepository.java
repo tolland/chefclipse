@@ -4,6 +4,7 @@
 package org.limepepper.chefclipse.remotepicker.repositories;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -40,7 +41,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.ClientResponse.Status;
 import com.sun.jersey.api.client.UniformInterfaceException;
@@ -95,7 +95,7 @@ public class GitHubCookbookRepository implements ICookbooksRepository {
 				}
 				pool.shutdown();
 				pool.awaitTermination(20, TimeUnit.MINUTES);
-			} catch (Exception e) {
+			} catch (InterruptedException e) {
 				logger.error("Error getting cookbooks", e);
 			}
 		}
@@ -158,8 +158,10 @@ public class GitHubCookbookRepository implements ICookbooksRepository {
 		Properties prop = new Properties();
 		try {
 			InputStream is = GitHubCookbookRepository.class.getClassLoader()
-					.getResourceAsStream("/github.properties");
-
+					.getResourceAsStream("github.properties");
+			if (is == null) {
+				throw new FileNotFoundException("github.properties");
+			}
 			prop.load(is);
 			fromUri.queryParam("client_id", prop.getProperty("client_id"))
 					.queryParam("client_secret",
@@ -179,16 +181,16 @@ public class GitHubCookbookRepository implements ICookbooksRepository {
 	 * (org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	@Override
-	public Collection<RemoteCookbook> getCookbooks() {
+	public Collection<RemoteCookbook> getCookbooks() throws InstallCookbookException {
 		ExecutorService pool = Executors.newFixedThreadPool(THREADS);
 		List<RemoteCookbook> list = new ArrayList<RemoteCookbook>();
 		final List<RemoteCookbook> cookbooks = Collections
 				.synchronizedList(list);
 
-		int lastPage = getRestCookbooksLast(100);
-		int page = 1;
-
 		try {
+			int lastPage = getRestCookbooksLast(100);
+			int page = 1;
+
 			long t1 = System.currentTimeMillis();
 			while (page <= lastPage) {
 				pool.execute(new GetTask(page++, cookbooks));
@@ -197,16 +199,17 @@ public class GitHubCookbookRepository implements ICookbooksRepository {
 					System.currentTimeMillis() - t1);
 			pool.shutdown();
 			pool.awaitTermination(20, TimeUnit.MINUTES);
-			// } catch (InterruptedException | ClientHandlerException |
-			// UniformInterfaceException e) {
-			// @todo just a hack to get it working under 1.6
+		} catch (UniformInterfaceException e) {
+			logger.error("Error getting cookbooks", e);
+			throwException(e);
 		} catch (Exception e) {
 			logger.error("Error getting cookbooks", e);
+			throwException(e);
 		}
 		return list;
 	}
 
-	private RemoteCookbook createCookbook(final JSONObject cookbookJson) {
+	private RemoteCookbook createCookbook(final JSONObject cookbookJson) throws UniformInterfaceException {
 
 		RemoteCookbook cookbook = CookbookrepositoryFactory.eINSTANCE
 				.createRemoteCookbook();
@@ -231,57 +234,54 @@ public class GitHubCookbookRepository implements ICookbooksRepository {
 			logger.error("Error getting cookbooks", e);
 		} catch (ParseException e) {
 			logger.error("Error getting cookbooks", e);
-
 		}
 		return cookbook;
 	}
 
 	protected void fillVersions(RemoteCookbook cookbook, JSONObject cookbookJson)
-			throws JSONException {
+			throws JSONException, UniformInterfaceException {
 		String tags_url = cookbookJson.getString("tags_url");
 		tags_url = tags_url.replace(REPOSITORY_URI, "").replace("{/tag}", "");
 
 		String latest = cookbook.getUrl() + "/archive/"
-				+ cookbookJson.getString("default_branch") + ".zip";
+				+ cookbookJson.optString("default_branch", "master") + ".zip";
 		cookbook.setLatestVersion(latest);
 
-		try {
-			JSONArray tags = getService().path(tags_url)
-					.accept(MediaType.APPLICATION_JSON_TYPE)
-					.get(JSONArray.class);
+		JSONArray tags = getService().path(tags_url)
+				.accept(MediaType.APPLICATION_JSON_TYPE)
+				.get(JSONArray.class);
 
-			String[] versions = new String[tags.length() + 1];
-			versions[0] = latest;
-			for (int i = 0; i < tags.length(); i++) {
-				try {
-					JSONObject tagJson = tags.getJSONObject(i);
-					versions[i + 1] = tagJson.getString("zipball_url");
-				} catch (JSONException e) {
-					logger.error("Error getting cookbooks", e);
-				}
+		String[] versions = new String[tags.length() + 1];
+		versions[0] = latest;
+		for (int i = 0; i < tags.length(); i++) {
+			try {
+				JSONObject tagJson = tags.getJSONObject(i);
+				versions[i + 1] = tagJson.getString("zipball_url");
+			} catch (JSONException e) {
+				logger.error("Error getting cookbooks", e);
 			}
-			cookbook.getVersions().addAll(Arrays.asList(versions));
-		} catch (ClientHandlerException e) {
-			logger.error("Error checking isUpdated", e);
-		} catch (UniformInterfaceException e) {
-			logger.error("Error checking isUpdated", e);
-
 		}
-
+		cookbook.getVersions().addAll(Arrays.asList(versions));
 	}
 
-	private JSONArray getRestCookbooks(int page, int items) {
+	private JSONArray getRestCookbooks(int page, int items) throws UniformInterfaceException {
 		return getService().path("users").path(githubUser).path("repos")
 				.queryParam("page", String.valueOf(page))
 				.queryParam("per_page", String.valueOf(items))
 				.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONArray.class);
 	}
 
-	protected int getRestCookbooksLast(int items) {
+	protected int getRestCookbooksLast(int items) throws UniformInterfaceException {
 		ClientResponse r = getService().path("users").path(githubUser)
 				.path("repos").queryParam("page", String.valueOf(1))
 				.queryParam("per_page", String.valueOf(items))
 				.accept(MediaType.APPLICATION_JSON_TYPE).head();
+		if (ClientResponse.Status.OK != r.getClientResponseStatus()) {
+			throw new UniformInterfaceException(r);
+		}
+		if (r.getHeaders().get("Link") == null) {
+			return 1;
+		}
 		String link = r.getHeaders().get("Link").get(0);
 		String[] links = link.split(",");
 		String lastPage = "10";
@@ -334,19 +334,41 @@ public class GitHubCookbookRepository implements ICookbooksRepository {
 	}
 
 	@Override
-	public RemoteCookbook getCookbook(String name) {
-		JSONObject cookbookJson = restCookbook(name);
-		RemoteCookbook cookbook = createCookbook(cookbookJson);
-		return cookbook;
+	public RemoteCookbook getCookbook(String name) throws InstallCookbookException {
+		try {
+			JSONObject cookbookJson = restCookbook(name);
+			RemoteCookbook cookbook = createCookbook(cookbookJson);
+			return cookbook;
+		} catch (UniformInterfaceException e) {
+			return throwException(e);
+		}
 	}
 
+	public <T> T throwException(Exception e) throws InstallCookbookException {
+		String error = "";
+		if (e instanceof UniformInterfaceException) {
+			try {
+				JSONObject json = ((UniformInterfaceException) e).getResponse()
+					.getEntity(JSONObject.class);
+				error = json.optString("message", "");
+			} catch (Exception ex) {}
+		}
+		throw new InstallCookbookException(error, e);
+	}
+
+	public <T> T throwException(ClientResponse response) throws InstallCookbookException {
+		JSONObject json = response.getEntity(JSONObject.class);
+		String error = json.optString("message", "");
+		throw new InstallCookbookException(error);
+	}
+	
 	/**
 	 * /cookbooks/{cookbook} Gets a cookbook.
 	 *
 	 * @param cookbook
 	 * @return
 	 */
-	private JSONObject restCookbook(String name) {
+	private JSONObject restCookbook(String name) throws UniformInterfaceException {
 		return getService().path("repos").path(githubUser).path(name)
 				.accept(MediaType.APPLICATION_JSON_TYPE).get(JSONObject.class);
 	}
