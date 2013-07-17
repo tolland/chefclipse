@@ -5,6 +5,8 @@ package org.limepepper.chefclipse.json.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+import chefclipse.core.builders.XTextNatureAddingEditorCallback;
+
 /**
  * Use this class to register components to be used within the IDE.
  */
@@ -13,6 +15,10 @@ public class JsonUiModule extends org.limepepper.chefclipse.json.ui.AbstractJson
 		super(plugin);
 	}
 	
+	@Override
+	public Class<? extends org.eclipse.xtext.ui.editor.IXtextEditorCallback> bindIXtextEditorCallback() {
+		return XTextNatureAddingEditorCallback.class;
+	}
 //	public Class<? extends IFragmentProvider> bindIFragmentProvider() {
 //		return QualifiedNameFragmentProvider.class;
 //	}
