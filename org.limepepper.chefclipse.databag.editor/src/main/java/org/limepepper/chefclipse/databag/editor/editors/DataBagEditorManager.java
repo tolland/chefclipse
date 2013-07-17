@@ -32,11 +32,17 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
+import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.limepepper.chefclipse.json.json.JsonFactory;
+import org.limepepper.chefclipse.json.json.JsonObject;
 import org.limepepper.chefclipse.json.json.JsonObjectValue;
 import org.limepepper.chefclipse.json.json.Model;
+import org.limepepper.chefclipse.json.json.Pair;
+import org.limepepper.chefclipse.json.json.StringValue;
 import org.limepepper.chefclipse.json.json.Value;
 
 /**
@@ -376,4 +382,24 @@ public enum DataBagEditorManager {
         }
         return null;
     }
+    
+    public void addEmptyModelTo(final XtextResource res, IXtextDocument xtextDocument) {
+		if (xtextDocument != null) {
+			xtextDocument.modify(new IUnitOfWork.Void<XtextResource>() {
+			    @Override
+			    public void process(XtextResource state) throws Exception {
+			        res.getContents().add(JsonFactory.eINSTANCE.createModel());
+			        EObject model = res.getContents().get(0);
+			        JsonObject createdJsonObject = JsonFactory.eINSTANCE.createJsonObject();
+			        ((Model) model).getObjects().add(createdJsonObject);
+			        Pair createPair = JsonFactory.eINSTANCE.createPair();
+			        createPair.setString("id");
+			        StringValue stringValue = JsonFactory.eINSTANCE.createStringValue();
+			        stringValue.setValue("");
+			        createPair.setValue(stringValue);
+			        createdJsonObject.getPairs().add(createPair);
+			    }
+			});
+		}
+	}
 }

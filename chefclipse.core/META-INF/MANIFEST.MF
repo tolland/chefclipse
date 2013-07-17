@@ -13,7 +13,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.limepepper.chefclipse.common.edit;bundle-version="0.1.0",
  org.limepepper.chefclipse.common.editor;bundle-version="0.1.0",
  org.eclipse.core.expressions;bundle-version="3.4.401";visibility:=reexport,
- org.eclipse.dltk.ruby.core
+ org.eclipse.dltk.ruby.core,
+ org.eclipse.xtext.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.core.resources,

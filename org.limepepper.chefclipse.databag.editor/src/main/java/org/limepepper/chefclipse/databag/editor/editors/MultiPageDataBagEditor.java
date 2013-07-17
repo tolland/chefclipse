@@ -47,11 +47,6 @@ import org.limepepper.chefclipse.databag.editor.actions.AddJsonPropertyAction;
 import org.limepepper.chefclipse.databag.editor.actions.AddNewDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveDataBagItemAction;
 import org.limepepper.chefclipse.databag.editor.actions.RemoveJsonPropertyAction;
-import org.limepepper.chefclipse.json.json.JsonFactory;
-import org.limepepper.chefclipse.json.json.JsonObject;
-import org.limepepper.chefclipse.json.json.Model;
-import org.limepepper.chefclipse.json.json.Pair;
-import org.limepepper.chefclipse.json.json.StringValue;
 
 import chefclipse.core.managers.ChefRepositoryManager;
 
@@ -130,12 +125,19 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	        DataBag dataBag = (DataBag) dataBagEObject;
 	        for (DataBagItem dataBagItem : dataBag.getItems()) {
 	        	if (dataBagItem.getJsonResource().exists()) {
-	        		createJsonEditorForDataBagItem(dataBagItem/*, res.next()*/);
+//	        		createJsonEditorForDataBagItem(dataBagItem/*, res.next()*/);
+	        		createEmptyModel(dataBagItem);
 	        	}
 	        }
 	    } else if (dataBagEObject instanceof DataBagItem) {
-	        createJsonEditorForDataBagItem((DataBagItem) dataBagEObject/*, res.next()*/);
+	    	createEmptyModel((DataBagItem) dataBagEObject/*, res.next()*/);
 	    }
+	}
+	
+	private void createEmptyModel(DataBagItem dbItem) {
+		final XtextResource res = createJsonEditorForDataBagItem(dbItem);
+		IXtextDocument xtextDocument = getXtextDocument(res);
+		DataBagEditorManager.INSTANCE.addEmptyModelTo(res, xtextDocument);
 	}
 
     private XtextResource createJsonEditorForDataBagItem(DataBagItem dataBagItem/*, Resource resource*/) {
@@ -409,21 +411,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 //                                EditingDomain editingDomain = columnEditor.getEditingDomain();
 //                                Model model = DataBagEditorManager.INSTANCE.createSchemaModel(editingDomain.getResourceSet());
                                 IXtextDocument xtextDocument = getXtextDocument(res);
-                                xtextDocument.modify(new IUnitOfWork.Void<XtextResource>() {
-                                    @Override
-                                    public void process(XtextResource state) throws Exception {
-                                        res.getContents().add(JsonFactory.eINSTANCE.createModel());
-                                        EObject model = res.getContents().get(0);
-                                        JsonObject createdJsonObject = JsonFactory.eINSTANCE.createJsonObject();
-                                        ((Model) model).getObjects().add(createdJsonObject);
-                                        Pair createPair = JsonFactory.eINSTANCE.createPair();
-                                        createPair.setString("id");
-                                        StringValue stringValue = JsonFactory.eINSTANCE.createStringValue();
-                                        stringValue.setValue("");
-                                        createPair.setValue(stringValue);
-                                        createdJsonObject.getPairs().add(createPair);
-                                    }
-                                });
+                                DataBagEditorManager.INSTANCE.addEmptyModelTo(res, xtextDocument);
 
 //                                Command command = AddCommand.create(editingDomain, model,
 //                                        JsonPackage.eINSTANCE.getModel_Objects(), createdJsonObject);
@@ -455,7 +443,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 //			});
 //		}
 	}
-
+	
 	@Override
 	protected void pageChange(int newPageIndex) {
 		super.pageChange(newPageIndex);
