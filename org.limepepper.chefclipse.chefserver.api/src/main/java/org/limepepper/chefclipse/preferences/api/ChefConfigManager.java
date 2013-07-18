@@ -277,7 +277,9 @@ public class ChefConfigManager {
 				.getRepository((IProject) project);
 
 		for (KnifeConfig knifeConfig : configs) {
-			repository.getKnives().add(knifeConfig);
+			if (repository != null) {
+				repository.getKnives().add(knifeConfig);
+			}
 			if (selectedUrl.equals(serverUrl(knifeConfig))
 					&& selectedName.equals(knifeConfig.getNode_name())) {
 				return knifeConfig;

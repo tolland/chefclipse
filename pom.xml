@@ -10,6 +10,7 @@
   <properties>
     <tycho-version>0.17.0</tycho-version>
     <tycho-extras-version>0.17.0</tycho-extras-version>
+    <xtend-version>2.4.1</xtend-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <github.global.server>github</github.global.server>
   </properties>
@@ -153,10 +154,10 @@
         <module>org.limepepper.chefclipse.databag.editor.test</module>
         
         <!-- json stuff -->
-				<module>org.limepepper.chefclipse.json</module>
-				<module>org.limepepper.chefclipse.json.ui</module>
-				<module>org.limepepper.chefclipse.json.edit</module>
-				<module>org.limepepper.chefclipse.json.tests</module>
+		<module>org.limepepper.chefclipse.json</module>
+		<module>org.limepepper.chefclipse.json.ui</module>
+		<module>org.limepepper.chefclipse.json.edit</module>
+		<module>org.limepepper.chefclipse.json.tests</module>
 
         <!-- module>org.limepepper.chefclipse.navigator</module -->
         <!-- merged into chefclipse.core as non generated @todo remove -->
