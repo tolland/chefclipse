@@ -20,7 +20,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.limepepper.chefclipse.common,
  org.junit;bundle-version="4.10.0",
  org.limepepper.chefclipse.logger,
- chefclipse.ui;bundle-version="0.1.1"
+ chefclipse.ui;bundle-version="0.1.1",
+ org.eclipse.ui.forms
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: .

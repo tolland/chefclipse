@@ -360,6 +360,10 @@ public class CookbookRepositoryManager {
 	 * @throws InstallCookbookException 
 	 */
 	public void loadRepository(final String repoId) throws InstallCookbookException {
+		if (COMPOSITE_REPOSITORY_ID.equals(repoId)) {
+			return;
+		}
+		
 		RemoteRepository repo = repositories.get(repoId);
 		ICookbooksRepository cookbookRepository = retrievers.get(repoId);
 

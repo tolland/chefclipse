@@ -5,7 +5,6 @@ package org.limepepper.chefclipse.remotepicker.ui.handlers;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -19,17 +18,23 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.equinox.internal.p2.discovery.Catalog;
 import org.eclipse.equinox.internal.p2.discovery.DiscoveryCore;
+import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.events.DisposeListener;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.eclipse.ui.progress.IProgressConstants;
 import org.eclipse.ui.progress.IProgressConstants2;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.InstallCookbookException;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
 import org.limepepper.chefclipse.remotepicker.ui.Activator;
-import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogRegistry;
+import org.limepepper.chefclipse.remotepicker.ui.preferences.RemotePickerPreferencePage;
 import org.limepepper.chefclipse.remotepicker.ui.wizards.CookbookCatalogConfiguration;
 import org.limepepper.chefclipse.remotepicker.ui.wizards.CookbookDiscoveryWizard;
 
@@ -42,7 +47,7 @@ import org.limepepper.chefclipse.remotepicker.ui.wizards.CookbookDiscoveryWizard
 @SuppressWarnings("restriction")
 public class RemotePickerHandler extends AbstractHandler {
 
-	private List<CatalogDescriptor> catalogDescriptors;
+	private static WizardDialog dialog;
 		
 	private static final String DISCOVERY_DESCRIPTION = "Select cookbooks to install and press Finish to proceed with installation.\n" +
 			"Press the information button to see an overview and link to more information.";
@@ -51,11 +56,7 @@ public class RemotePickerHandler extends AbstractHandler {
 	
 	protected static final Object JOBS_FAMILY = "Cookbook Repositories";
 
-	/**
-	 * 
-	 */
 	public RemotePickerHandler() {
-
 	}
 
 	/* (non-Javadoc)
@@ -63,6 +64,18 @@ public class RemotePickerHandler extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
+		openRemotePicker();
+		
+		return null;
+	}
+
+	/**
+	 * Opens remote picker dialog and keeps track of the opened instance.
+	 */
+	public static void openRemotePicker() {
+		if (dialog != null) {
+			dialog.close();
+		}
 		
 		Catalog catalog = new Catalog();
 		catalog.setEnvironment(DiscoveryCore.createEnvironment());
@@ -77,24 +90,56 @@ public class RemotePickerHandler extends AbstractHandler {
 		
 		CatalogRegistry catalogRegistry = new CatalogRegistry();
 		
-		if (catalogDescriptors == null || catalogDescriptors.isEmpty()) {
-			catalogRegistry.installRepositories();
-			configuration.getCatalogDescriptors().addAll(catalogRegistry.getCatalogDescriptors());
-		} else {
-			configuration.getCatalogDescriptors().addAll(catalogDescriptors);
-		}
+		catalogRegistry.installRepositories();
+		configuration.getCatalogDescriptors().addAll(catalogRegistry.getCatalogDescriptors());
 
 		CookbookDiscoveryWizard wizard = new CookbookDiscoveryWizard(catalog, configuration);
 		wizard.getCatalogPage().setTitle(CHEFCLIPSE_COOKBOOK_DISCOVERY);
 		wizard.getCatalogPage().setDescription(DISCOVERY_DESCRIPTION);
 		
-		WizardDialog dialog = new WizardDialog(Display.getCurrent().getActiveShell(), wizard);
+		dialog = new WizardDialog(Display.getCurrent().getActiveShell(), wizard);
+		dialog.setBlockOnOpen(false);
 		dialog.open();
+		dialog.getShell().addDisposeListener(new DisposeListener() {
+			@Override
+			public void widgetDisposed(DisposeEvent e) {
+				dialog = null;
+			}
+		});
+	}
+	
+	static class PrefsListener implements IPropertyChangeListener {
+		boolean needsReopen = false;
 		
-		return null;
+		@Override
+		public void propertyChange(PropertyChangeEvent event) {
+			needsReopen = true;
+		}
 	}
 	
 	/**
+	 * Opens Remotepicker preference page.
+	 * After closing it, it will redraw the remotepicker if needed.
+	 * @param fromPicker if it was opened from the remotepicker itself
+	 */
+	public static void openPreferences(boolean fromPicker) {
+		PrefsListener listener = new PrefsListener();
+		Activator.getDefault().getPreferenceStore().addPropertyChangeListener(listener);
+
+		PreferenceDialog dlg = PreferencesUtil.createPreferenceDialogOn(null,
+				RemotePickerPreferencePage.ID,
+				new String[] { RemotePickerPreferencePage.ID },
+				null);
+		dlg.open();
+		
+		Activator.getDefault().getPreferenceStore().removePropertyChangeListener(listener);
+		if (fromPicker && dialog != null && listener.needsReopen) {
+			openRemotePicker();
+		}
+	}
+
+	/**
+	 * Starts loading the given repository.
 	 * @param repo
 	 */
 	public static void startRepositoryJob(final RemoteRepository repo, final CookbookRepositoryManager repoManager) {

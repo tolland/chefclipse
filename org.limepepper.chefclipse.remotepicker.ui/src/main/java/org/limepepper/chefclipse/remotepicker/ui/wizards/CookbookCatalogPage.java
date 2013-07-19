@@ -20,6 +20,7 @@ import org.eclipse.equinox.internal.p2.ui.discovery.wizards.CategoryItem;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.operation.IRunnableContext;
+import org.eclipse.jface.resource.JFaceColors;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
@@ -43,7 +44,11 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.ScrollBar;
 import org.eclipse.swt.widgets.Widget;
+import org.eclipse.ui.forms.events.HyperlinkAdapter;
+import org.eclipse.ui.forms.events.HyperlinkEvent;
+import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.limepepper.chefclipse.remotepicker.ui.CatalogDescriptor;
+import org.limepepper.chefclipse.remotepicker.ui.handlers.RemotePickerHandler;
 
 /**
  * @author Sebastian Sampaoli
@@ -183,6 +188,23 @@ public class CookbookCatalogPage extends CatalogPage {
 		@Override
 		public void modifySelection(final CatalogItem connector, boolean selected) {
 		    super.modifySelection(connector, selected);
+		}
+		
+		@Override
+		protected void doCreateHeaderControls(Composite parent) {
+			super.doCreateHeaderControls(parent);
+			
+			Hyperlink configurationHyperlink = new Hyperlink(parent, SWT.NONE);
+			configurationHyperlink.setUnderlined(true);
+			configurationHyperlink.setText("Preferences...");
+			configurationHyperlink.setForeground(JFaceColors
+					.getHyperlinkText(getShell().getDisplay()));
+			configurationHyperlink.addHyperlinkListener(new HyperlinkAdapter() {
+				@Override
+				public void linkActivated(HyperlinkEvent e) {
+					RemotePickerHandler.openPreferences(true);
+				}
+			});
 		}
 
 		private final class CoookbookControlListViewer extends ControlListViewer {
