@@ -291,10 +291,6 @@ public enum DataBagEditorManager {
 		
 		trimValues(schemaRes.getAllContents());
 		
-		if (schemaRes.getContents().isEmpty()) {
-			schemaRes.getContents().add(JsonFactory.eINSTANCE.createModel());
-		}
-		
 		return (Model) schemaRes.getContents().get(0);
 	}
 
@@ -383,23 +379,33 @@ public enum DataBagEditorManager {
         return null;
     }
     
-    public void addEmptyModelTo(final XtextResource res, IXtextDocument xtextDocument) {
+    public void addEmptyModelTo(final XtextResource res, IXtextDocument xtextDocument, final DataBagItem dataBagItem) {
 		if (xtextDocument != null) {
 			xtextDocument.modify(new IUnitOfWork.Void<XtextResource>() {
 			    @Override
 			    public void process(XtextResource state) throws Exception {
-			        res.getContents().add(JsonFactory.eINSTANCE.createModel());
-			        EObject model = res.getContents().get(0);
-			        JsonObject createdJsonObject = JsonFactory.eINSTANCE.createJsonObject();
-			        ((Model) model).getObjects().add(createdJsonObject);
-			        Pair createPair = JsonFactory.eINSTANCE.createPair();
-			        createPair.setString("id");
-			        StringValue stringValue = JsonFactory.eINSTANCE.createStringValue();
-			        stringValue.setValue("");
-			        createPair.setValue(stringValue);
-			        createdJsonObject.getPairs().add(createPair);
+			    	Pair emptyIdElement = addEmptyModel(res);
+			    	StringValue stringValue = JsonFactory.eINSTANCE.createStringValue();
+			    	String dbItemName = dataBagItem.getName();
+		            int lastDot = dbItemName.lastIndexOf(".");
+		            if (lastDot != -1) {
+		                dbItemName = dbItemName.substring(0, lastDot);
+		            }
+			        stringValue.setValue(dbItemName);
+			        emptyIdElement.setValue(stringValue);
 			    }
 			});
 		}
+	}
+    
+    private Pair addEmptyModel(Resource schemaRes) {
+    	schemaRes.getContents().add(JsonFactory.eINSTANCE.createModel());
+        EObject model = schemaRes.getContents().get(0);
+        JsonObject createdJsonObject = JsonFactory.eINSTANCE.createJsonObject();
+        ((Model) model).getObjects().add(createdJsonObject);
+        Pair createPair = JsonFactory.eINSTANCE.createPair();
+        createPair.setString("id");
+        createdJsonObject.getPairs().add(createPair);
+        return createPair;
 	}
 }

@@ -70,7 +70,7 @@ public class AddJsonPropertyAction extends CommandActionHandler implements
                             JsonObjectValue jsonObjectValue = (JsonObjectValue) key.getValue();
                             JsonObject jsonObject = jsonObjectValue.getValue();
                             createAddCommand(addCompoundCommand, jsonObject);
-                        } else if (key.getValue() == null) {
+                        } else if (key.getValue() == null || (key.getValue() instanceof StringValue && ((StringValue)key.getValue()).getValue().isEmpty())) {
                             JsonObject jsonObject = createJsonObjectParent(addCompoundCommand, key);
                             createAddCommand(addCompoundCommand, jsonObject);
                         }

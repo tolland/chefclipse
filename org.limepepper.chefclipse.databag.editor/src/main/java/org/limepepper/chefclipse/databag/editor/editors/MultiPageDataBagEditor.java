@@ -125,21 +125,22 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 	        DataBag dataBag = (DataBag) dataBagEObject;
 	        for (DataBagItem dataBagItem : dataBag.getItems()) {
 	        	if (dataBagItem.getJsonResource().exists()) {
-//	        		createJsonEditorForDataBagItem(dataBagItem/*, res.next()*/);
-	        		createEmptyModel(dataBagItem);
+	        		XtextResource res = createJsonEditorForDataBagItem(dataBagItem/*, res.next()*/);
+	        		if (res.getContents().isEmpty()) {
+	        			IXtextDocument xtextDocument = getXtextDocument(res);
+	                    DataBagEditorManager.INSTANCE.addEmptyModelTo(res, xtextDocument, dataBagItem);
+	        		}
 	        	}
 	        }
 	    } else if (dataBagEObject instanceof DataBagItem) {
-	    	createEmptyModel((DataBagItem) dataBagEObject/*, res.next()*/);
+	        XtextResource res = createJsonEditorForDataBagItem((DataBagItem) dataBagEObject/*, res.next()*/);
+	        if (res.getContents().isEmpty()) {
+    			IXtextDocument xtextDocument = getXtextDocument(res);
+                DataBagEditorManager.INSTANCE.addEmptyModelTo(res, xtextDocument, (DataBagItem) dataBagEObject);
+    		}
 	    }
 	}
 	
-	private void createEmptyModel(DataBagItem dbItem) {
-		final XtextResource res = createJsonEditorForDataBagItem(dbItem);
-		IXtextDocument xtextDocument = getXtextDocument(res);
-		DataBagEditorManager.INSTANCE.addEmptyModelTo(res, xtextDocument);
-	}
-
     private XtextResource createJsonEditorForDataBagItem(DataBagItem dataBagItem/*, Resource resource*/) {
         try {
         	XtextEditor xtext = editorProvider.get();
@@ -411,8 +412,8 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 //                                EditingDomain editingDomain = columnEditor.getEditingDomain();
 //                                Model model = DataBagEditorManager.INSTANCE.createSchemaModel(editingDomain.getResourceSet());
                                 IXtextDocument xtextDocument = getXtextDocument(res);
-                                DataBagEditorManager.INSTANCE.addEmptyModelTo(res, xtextDocument);
-
+                                DataBagEditorManager.INSTANCE.addEmptyModelTo(res, xtextDocument, dataBagItem);
+                                
 //                                Command command = AddCommand.create(editingDomain, model,
 //                                        JsonPackage.eINSTANCE.getModel_Objects(), createdJsonObject);
 //                                command.execute();
