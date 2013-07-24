@@ -143,6 +143,7 @@ public class DataBagActionContributor extends
                 AddNewDataBagItemAction.ID);
         addJsonPropertyAction = (AddJsonPropertyAction) editor.getActionRegistry().get(
                 AddJsonPropertyAction.ID);
+        addJsonPropertyAction.setEnabled(false);
         undoAction = createUndoAction();
         undoAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_UNDO));
         redoAction = createRedoAction();

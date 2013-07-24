@@ -291,7 +291,10 @@ public enum DataBagEditorManager {
 		
 		trimValues(schemaRes.getAllContents());
 		
-		return (Model) schemaRes.getContents().get(0);
+		if (schemaRes.getContents().size() > 0) {
+			return (Model) schemaRes.getContents().get(0);
+		}
+		return JsonFactory.eINSTANCE.createModel();
 	}
 
 	public void trimValues(final TreeIterator<EObject> it) {

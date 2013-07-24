@@ -449,8 +449,11 @@ public class DataBagColumnEditor extends EditorPart implements
                     ((RemoveDataBagItemAction) listener).setEnabled(false);
                 }
             } else if (listener instanceof AddJsonPropertyAction || listener instanceof RemoveJsonPropertyAction) {
-                ((Action) listener).setEnabled(columnNumber == 0);
-                listener.selectionChanged(new SelectionChangedEvent(this, selection));
+                Action jsonPropertyAction = (Action) listener;
+				jsonPropertyAction.setEnabled(columnNumber == 0);
+                if (jsonPropertyAction.isEnabled()) {
+                	listener.selectionChanged(new SelectionChangedEvent(this, selection));
+                }
             } else {
                 listener.selectionChanged(new SelectionChangedEvent(this, selection));
             }
