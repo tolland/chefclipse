@@ -25,8 +25,12 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.PreferencesUtil;
+import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.progress.IProgressConstants;
 import org.eclipse.ui.progress.IProgressConstants2;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
@@ -64,15 +68,18 @@ public class RemotePickerHandler extends AbstractHandler {
 	 */
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		openRemotePicker();
+		Shell shell = HandlerUtil.getActiveShell(event);
+		
+		openRemotePicker(shell);
 		
 		return null;
 	}
 
 	/**
 	 * Opens remote picker dialog and keeps track of the opened instance.
+	 * @param shell 
 	 */
-	public static void openRemotePicker() {
+	public static void openRemotePicker(Shell shell) {
 		if (dialog != null) {
 			dialog.close();
 		}
@@ -97,7 +104,21 @@ public class RemotePickerHandler extends AbstractHandler {
 		wizard.getCatalogPage().setTitle(CHEFCLIPSE_COOKBOOK_DISCOVERY);
 		wizard.getCatalogPage().setDescription(DISCOVERY_DESCRIPTION);
 		
-		dialog = new WizardDialog(Display.getCurrent().getActiveShell(), wizard);
+		if (shell == null) {
+			shell = Display.getCurrent().getActiveShell();
+		}
+		
+		dialog = new WizardDialog(shell, wizard) {
+			@Override
+			protected Point getInitialSize() {
+				Point size = super.getInitialSize();
+				Rectangle parent = getParentShell().getBounds();
+				if (size.y > parent.height) {
+					size.y = parent.height;
+				}
+				return size;
+			}
+		};
 		dialog.setBlockOnOpen(false);
 		dialog.open();
 		dialog.getShell().addDisposeListener(new DisposeListener() {
@@ -134,7 +155,7 @@ public class RemotePickerHandler extends AbstractHandler {
 		
 		Activator.getDefault().getPreferenceStore().removePropertyChangeListener(listener);
 		if (fromPicker && dialog != null && listener.needsReopen) {
-			openRemotePicker();
+			openRemotePicker(null);
 		}
 	}
 
