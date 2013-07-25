@@ -245,7 +245,9 @@ public class CookbookRepositoryManager {
 	 * @param repo
 	 */
 	protected void deleteCache(RemoteRepository repo) {
-		new File(getCacheFile(repo.getId())).delete();
+		if (!COMPOSITE_REPOSITORY_ID.equals(repo.getId())) {
+			new File(getCacheFile(repo.getId())).delete();
+		}
 	}
 
 	private void cacheRepository(final RemoteRepository repo) throws InstallCookbookException {
@@ -260,7 +262,6 @@ public class CookbookRepositoryManager {
 					installed.put(cookbook.getName(), cookbook.getInstalledAt());
 				}
 			}
-			repo.getCookbooks().clear();
 
 			// restore installed date
 			for (RemoteCookbook cookbook : cookbooks) {
@@ -271,6 +272,7 @@ public class CookbookRepositoryManager {
 			}
 			lock.lock();
 			try {
+				repo.getCookbooks().clear();
 				repo.getCookbooks().addAll(cookbooks);
 				addRepositoryIds(repo);
 			} finally {
@@ -705,5 +707,13 @@ public class CookbookRepositoryManager {
 		repositories.remove(repoId);
 		retrievers.remove(repoId);
 		listeners.remove(repoId);
+		if (!COMPOSITE_REPOSITORY_ID.equals(repoId)) { // rebuild composite
+			rebuildComposite();
+		}
+	}
+
+	private void rebuildComposite() {
+		removeRepository(COMPOSITE_REPOSITORY_ID);
+		createCompositeRepository();
 	}
 }

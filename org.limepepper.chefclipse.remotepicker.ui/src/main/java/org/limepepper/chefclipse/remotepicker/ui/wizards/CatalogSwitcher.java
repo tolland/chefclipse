@@ -7,6 +7,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -116,7 +119,7 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 		if ( !Activator.getDefault().getPreferenceStore().getBoolean(catalogDescriptor.getId()) )
 			return;
 		
-		Composite container = new Composite(composite, SWT.NONE);
+		final Composite container = new Composite(composite, SWT.NONE);
 		Color listBackground = getDisplay().getSystemColor(SWT.COLOR_LIST_BACKGROUND);
 		container.setBackground(listBackground);
 		container.setData(catalogDescriptor);
@@ -132,16 +135,61 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 		label.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseUp(MouseEvent e) {
+				if (e.button != 1)
+					return;
 				if (catalogDescriptor.isTemplate()) {
 					configureRepo(composite, catalogDescriptor);
 				} else {
-					selection = catalogDescriptor;
-					refreshSelection();
-					fireSelectionChanged();
+					setSelection(catalogDescriptor);
 				}
 			}
 		});
 		CatalogToolTip.attachCatalogToolTip(label, catalogDescriptor);
+		
+		registerMenu(composite, catalogDescriptor, container, label);
+	}
+
+	protected void registerMenu(final Composite composite,
+			final CatalogDescriptor catalogDescriptor,
+			final Composite container, final Label label) {
+		final CookbookRepositoryManager manager = CookbookRepositoryManager.getInstance();
+		final RemoteRepository repo = manager.getRepository(catalogDescriptor.getId());
+		
+		MenuManager mgr = new MenuManager();
+		if (!catalogDescriptor.isTemplate()) {
+			mgr.add(new Action("Check for updates") {
+				@Override
+				public void run() {
+					RemotePickerHandler.startRepositoryJob(repo, manager);
+					setSelection(catalogDescriptor);
+				}
+			});
+			
+			if (repo.getRetriever() != null) {
+				mgr.add(new Action("Remove Cookbook Repository") {
+					@Override
+					public void run() {
+						manager.removeRepository(catalogDescriptor.getId());
+						container.dispose();
+						composite.layout();
+						if (selection == catalogDescriptor) {
+							setSelection((CatalogDescriptor) composite.getChildren()[0].getData());
+						} else if (selection.getId().equals(CookbookRepositoryManager.COMPOSITE_REPOSITORY_ID)) {
+							setSelection(selection);
+						}
+					}
+				});
+			}
+			mgr.add(new Separator());
+		}
+		
+		mgr.add(new Action("Remotepicker Preferences...") {
+			@Override
+			public void run() {
+				RemotePickerHandler.openPreferences(true);
+			}
+		});
+		label.setMenu(mgr.createContextMenu(label));
 	}
 
 	private void retrieveCatalogImage(final CatalogDescriptor catalogDescriptor, final Label label) {
@@ -258,12 +306,21 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 				CatalogDescriptor newDescriptor = CatalogRegistry.createCatalogDescriptor(newRepo);
 				createCookbookRepositories(composite, newDescriptor);
 				composite.layout();
-				selection = newDescriptor;
-				refreshSelection();
-				fireSelectionChanged();
+				setSelection(newDescriptor);
 			}
 		} catch (Exception e) {
 			MessageDialog.openError(getShell(), "Could not create repository", "There was an issue creating the repository. Check the error log.");
+		}
+	}
+
+	/**
+	 * @param catalogDescriptor
+	 */
+	public void setSelection(final CatalogDescriptor catalogDescriptor) {
+		selection = catalogDescriptor;
+		refreshSelection();
+		if (catalogDescriptor != null) {
+			fireSelectionChanged();
 		}
 	}
 }
