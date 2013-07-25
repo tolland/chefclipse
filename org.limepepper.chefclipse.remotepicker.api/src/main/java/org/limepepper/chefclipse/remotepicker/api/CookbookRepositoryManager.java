@@ -61,6 +61,7 @@ public class CookbookRepositoryManager {
 	public static final String COMPOSITE_REPOSITORY_ID = "composite.repository"; //$NON-NLS-1$
 	private static final String CACHE_EXT = "cookbookrepository"; //$NON-NLS-1$
 	private static final String COOKBOOKS_PROJECT_DIRECTORY = "cookbooks"; //$NON-NLS-1$
+	private static final Throwable LOADING = new IllegalStateException("loading");
 
 	private static CookbookRepositoryManager instance;
 
@@ -373,8 +374,14 @@ public class CookbookRepositoryManager {
 			throw new IllegalArgumentException(Messages.CookbookRepositoryManager_InvalidRepo + repoId);
 		}
 
+		errors.put(repoId, LOADING);
 		if (!isCached(repo) || cookbookRepository.isUpdated(repo)) {
 			cacheRepository(repo);
+		} else {
+			errors.put(repoId, null);
+			if (listeners.containsKey(repo.getId())) {
+				listeners.get(repo.getId()).firePropertyChange("cookbooks", null, repo.getCookbooks()); //$NON-NLS-1$
+			}
 		}
 	}
 
@@ -491,13 +498,21 @@ public class CookbookRepositoryManager {
 		RemoteRepository repo = repositories.get(repoId);
 		if (isRepositoryReady(repoId)) {
 			listeners.get(repoId).firePropertyChange("cookbooks", null, repo.getCookbooks()); //$NON-NLS-1$
-		} else if (errors.get(repoId) != null || repo.getCookbooks().isEmpty()) { // try to reload failed repo
+		} else if (isError(repoId) || repo.getCookbooks().isEmpty()) { // try to reload failed repo
 			try {
 				loadRepository(repoId);
 			} catch (InstallCookbookException e) {
 				// handled by cacheRepository
 			}
 		}
+	}
+
+	/**
+	 * @param repoId
+	 * @return
+	 */
+	protected boolean isError(final String repoId) {
+		return errors.get(repoId) != null && errors.get(repoId) != LOADING;
 	}
 
 	/**
@@ -518,7 +533,7 @@ public class CookbookRepositoryManager {
 	public boolean isRepositoryReady(final String repoId) {
 		lock.lock();
 		try {
-			return !repositories.get(repoId).getCookbooks().isEmpty();
+			return errors.get(repoId) != LOADING && !repositories.get(repoId).getCookbooks().isEmpty();
 		} finally {
 			lock.unlock();
 		}
@@ -712,7 +727,7 @@ public class CookbookRepositoryManager {
 		}
 	}
 
-	private void rebuildComposite() {
+	public void rebuildComposite() {
 		removeRepository(COMPOSITE_REPOSITORY_ID);
 		createCompositeRepository();
 	}

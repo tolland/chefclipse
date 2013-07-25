@@ -162,8 +162,9 @@ public class RemotePickerHandler extends AbstractHandler {
 	/**
 	 * Starts loading the given repository.
 	 * @param repo
+	 * @return the scheduled job
 	 */
-	public static void startRepositoryJob(final RemoteRepository repo, final CookbookRepositoryManager repoManager) {
+	public static Job startRepositoryJob(final RemoteRepository repo, final CookbookRepositoryManager repoManager) {
 		enableRepository(repo);
 		Job job = new Job("Retrieving Cookbooks from respository \"" + repo.getName()+ "\"") {
 			@Override
@@ -205,6 +206,7 @@ public class RemotePickerHandler extends AbstractHandler {
 		} catch (MalformedURLException e) {}
 		job.setProperty(IProgressConstants2.SHOW_IN_TASKBAR_ICON_PROPERTY, Boolean.TRUE);
 		job.schedule();
+		return job;
 	}
 
 	/**

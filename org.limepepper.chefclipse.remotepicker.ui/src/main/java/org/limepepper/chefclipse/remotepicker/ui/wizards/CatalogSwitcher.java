@@ -6,7 +6,9 @@ import java.util.List;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.IJobChangeEvent;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.core.runtime.jobs.JobChangeAdapter;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
@@ -36,6 +38,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.limepepper.chefclipse.remotepicker.api.CookbookRepositoryManager;
 import org.limepepper.chefclipse.remotepicker.api.cookbookrepository.RemoteRepository;
@@ -160,8 +163,34 @@ public class CatalogSwitcher extends Composite implements ISelectionProvider {
 			mgr.add(new Action("Check for updates") {
 				@Override
 				public void run() {
-					RemotePickerHandler.startRepositoryJob(repo, manager);
-					setSelection(catalogDescriptor);
+					final Job job = RemotePickerHandler.startRepositoryJob(repo, manager);
+					if (CookbookRepositoryManager.COMPOSITE_REPOSITORY_ID.equals(repo.getId())) {
+						manager.rebuildComposite();
+						setSelection(catalogDescriptor);
+					}
+					job.addJobChangeListener(new JobChangeAdapter() {
+						@Override
+						public void running(IJobChangeEvent event) {
+							Display.getDefault().asyncExec(new Runnable() {
+								@Override
+								public void run() {
+									setSelection(catalogDescriptor);
+								}
+							});
+						}
+						@Override
+						public void done(IJobChangeEvent event) {
+							job.removeJobChangeListener(this);
+							Display.getDefault().asyncExec(new Runnable() {
+								@Override
+								public void run() {
+									if (selection != catalogDescriptor) {
+										setSelection(catalogDescriptor);
+									}
+								}
+							});
+						}
+					});
 				}
 			});
 			

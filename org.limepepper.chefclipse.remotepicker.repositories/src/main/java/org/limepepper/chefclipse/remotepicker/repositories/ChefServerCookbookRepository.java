@@ -103,6 +103,11 @@ public class ChefServerCookbookRepository implements ICookbooksRepository {
 	 */
 	protected void getVersions(String cookbookName, RemoteCookbook cookbook) {
 		CookbookListResp info = chefServerApi.getCookbookInfo(cookbookName);
+		if (info == null) {
+			String error = "Cannot get versions information. ChefServerApi.getCookbookInfo() was null";
+			logger.error(error, new NullPointerException(error));
+			return;
+		}
 		cookbook.setUrl(info.getUrl());
 		EList<CookbookListVersionResp> versions = info.getVersions();
 		for (CookbookListVersionResp cookbookListVersionResp : versions) {
