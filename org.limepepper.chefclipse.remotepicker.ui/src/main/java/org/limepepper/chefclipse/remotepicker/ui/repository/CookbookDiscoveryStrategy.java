@@ -132,7 +132,7 @@ public class CookbookDiscoveryStrategy extends AbstractDiscoveryStrategy {
 		});
 		
 		if (!ready.get())
-			mon.beginTask("Getting cookbooks...", 1000);
+			mon.beginTask("Getting cookbooks...", 500);
 			
 		while (!mon.isCanceled() && !ready.get()) {
 			try {
