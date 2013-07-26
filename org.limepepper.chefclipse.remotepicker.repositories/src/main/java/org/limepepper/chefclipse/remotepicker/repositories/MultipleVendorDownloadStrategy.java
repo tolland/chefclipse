@@ -45,7 +45,7 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 			connection = cookbookURL.openConnection();
 			InputStream stream = connection.getInputStream();
 			BufferedInputStream in = new BufferedInputStream(stream);
-			File tempZipFile = File.createTempFile("temp", Long.toString(System.nanoTime()) + ".zip");
+			File tempZipFile = File.createTempFile("temp", Long.toString(System.currentTimeMillis()) + ".zip");
 			FileOutputStream fileOutputStream = new FileOutputStream(tempZipFile);
 			BufferedOutputStream out = new BufferedOutputStream(fileOutputStream);
 			int i;
@@ -54,11 +54,11 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 			}
 			out.flush();
 			out.close();
-			decompressCookbook(tempZipFile);
+			File root = decompressCookbook(tempZipFile);
 			
 			String readableVersion = repo.getReadableVersion(cookbook, version);
-			File decompressedCookbook = new File(tempZipFile.getParentFile(), cookbook.getName() + "-" + readableVersion);
-			File tmpCookbook = new File(decompressedCookbook.getParentFile(), cookbook.getName() + "_" + readableVersion);
+			File decompressedCookbook = new File(root, cookbook.getName() + "-" + readableVersion);
+			File tmpCookbook = new File(root, cookbook.getName() + "_" + readableVersion);
 			FileUtils.deleteDirectory(tmpCookbook);
 			if (!decompressedCookbook.renameTo(tmpCookbook))
 				throw new IOException("Could not rename folder " + decompressedCookbook + " to " + tmpCookbook );
@@ -80,20 +80,17 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 	@Override
 	public File decompressCookbook(File compressedFile)
 			throws IOException {
-
-		String absolutePath = compressedFile.getParent();
-		InputStream fileInputStream = null;
-		ZipInputStream zipInputStream = null;
-
-		fileInputStream = new FileInputStream(compressedFile);
-		zipInputStream = new ZipInputStream(fileInputStream);
+ 
+		String rootPath = compressedFile.getParent() + File.separator + System.currentTimeMillis();
+		FileInputStream fileInputStream = new FileInputStream(compressedFile);
+		ZipInputStream zipInputStream = new ZipInputStream(fileInputStream);
 		ZipEntry zipEntry = null;
 		File targetDirectory = null;
 
 		while ((zipEntry = zipInputStream.getNextEntry()) != null) {
 
 			if (zipEntry.isDirectory() || zipEntry.getName().endsWith(File.separator)) {
-				targetDirectory = new File(absolutePath, zipEntry.getName());
+				targetDirectory = new File(rootPath, zipEntry.getName());
 				if (!targetDirectory.exists()) {
 					final boolean mkdirs = targetDirectory.mkdirs();
 					if (!mkdirs) {
@@ -101,7 +98,7 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 					}
 				}
 			} else {// the zip entry is a file
-				String targetPath = absolutePath + File.separator
+				String targetPath = rootPath + File.separator
 						+ zipEntry.getName();
 				FileOutputStream fileOutputStream = new FileOutputStream(
 						targetPath);
@@ -114,7 +111,7 @@ public class MultipleVendorDownloadStrategy implements IDownloadCookbookStrategy
 			zipInputStream.closeEntry();
 		}
 		closeResources(fileInputStream, zipInputStream);
-		return targetDirectory;
+		return new File(rootPath);
 	}
 
 	private void closeResources(InputStream fileInputStream,

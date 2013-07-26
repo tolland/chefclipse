@@ -1,9 +1,8 @@
 package org.limepepper.chefclipse.remotepicker.test.api;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.*;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.Calendar;
 import java.util.List;
 
@@ -65,9 +64,7 @@ public class MultipleVendorCookbookRepositoryTest {
 		c.setName("ap-cookbook-oracle");
 		File downloadCookbook = repo.downloadCookbook(c, c.getLatestVersion());
 		
-		String tmpDirectory = System.getProperty("java.io.tmpdir");
-		
-		assertThat(downloadCookbook.getPath()).isEqualTo(Paths.get(tmpDirectory, "ap-cookbook-oracle_master").toString());
+		assertThat(downloadCookbook.getPath()).contains("ap-cookbook-oracle_master");
 	}
 
 	@Test

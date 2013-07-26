@@ -3,11 +3,10 @@
  */
 package org.limepepper.chefclipse.remotepicker.test.api;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -88,11 +87,8 @@ public class ChefServerCookbookRepositoryTest {
 		RemoteCookbook c = repo.getCookbook("apache2");
 		File downloadCookbook = repo.downloadCookbook(c, c.getLatestVersion());
 
-		String tmpDirectory = System.getProperty("java.io.tmpdir");
-		
 		assertThat(downloadCookbook).isNotNull();
-		assertThat(downloadCookbook.getPath()).isEqualTo(
-				Paths.get(tmpDirectory, "apache2_" + repo.getReadableVersion(c, c.getLatestVersion())).toString());
+		assertThat(downloadCookbook.getPath()).contains("apache2_" + repo.getReadableVersion(c, c.getLatestVersion()));
 		assertThat(FileUtils.sizeOfDirectory(new File(downloadCookbook.getPath()))).isGreaterThan(10000L);
 	}
 	

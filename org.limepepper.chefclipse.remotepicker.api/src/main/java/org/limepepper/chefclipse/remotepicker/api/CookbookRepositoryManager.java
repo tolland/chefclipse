@@ -437,6 +437,7 @@ public class CookbookRepositoryManager {
 			File dest = new File(downloadCookbook.getParentFile(), cookbook.getName());
 			downloadCookbook.renameTo(dest);
 			FileUtils.copyDirectoryToDirectory(dest, targetDirectory);
+			FileUtils.deleteQuietly(dest);
 			updateInstalledDate(cookbook);
 
 			createSourceFile(cookbook, dest, targetDirectory);
@@ -728,7 +729,9 @@ public class CookbookRepositoryManager {
 	}
 
 	public void rebuildComposite() {
-		removeRepository(COMPOSITE_REPOSITORY_ID);
-		createCompositeRepository();
+		if (getRepository(COMPOSITE_REPOSITORY_ID) != null) {
+			removeRepository(COMPOSITE_REPOSITORY_ID);
+			createCompositeRepository();
+		}
 	}
 }

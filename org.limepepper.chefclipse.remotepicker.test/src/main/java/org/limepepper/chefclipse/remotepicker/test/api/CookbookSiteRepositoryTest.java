@@ -1,9 +1,8 @@
 package org.limepepper.chefclipse.remotepicker.test.api;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.*;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.util.List;
 
 import org.junit.Test;
@@ -54,9 +53,7 @@ public class CookbookSiteRepositoryTest {
 	public void testDownloadCookbook() throws InstallCookbookException {
 		RemoteCookbook result = repo.getCookbook("apache");
 		File downloadCookbook = repo.downloadCookbook(result, result.getLatestVersion());
-		String tmpDirectory = System.getProperty("java.io.tmpdir");
-		assertThat(downloadCookbook.getPath()).isEqualTo(
-				Paths.get(tmpDirectory, "apache" + "_" + repo.getReadableVersion(result, result.getLatestVersion())).toString());
+		assertThat(downloadCookbook.getPath()).contains("apache" + "_" + repo.getReadableVersion(result, result.getLatestVersion()));
 	}
 
 	@Test

@@ -72,7 +72,7 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 			InputStream stream = connection.getInputStream();
 			BufferedInputStream in = new BufferedInputStream(stream);
 			File tempZipFile = File.createTempFile("temp",
-					Long.toString(System.nanoTime()) + ".gz");
+					Long.toString(System.currentTimeMillis()) + ".gz");
 			FileOutputStream fileOutputStream = new FileOutputStream(
 					tempZipFile);
 			BufferedOutputStream out = new BufferedOutputStream(
@@ -132,7 +132,7 @@ public class CookbookSiteDownloadStrategy implements IDownloadCookbookStrategy {
 	@Override
 	public File decompressCookbook(File compressedFile) throws IOException {
 
-		String absolutePath = compressedFile.getParent() + File.separator;
+		String absolutePath = compressedFile.getParent() + File.separator + System.currentTimeMillis() + File.separator;
 		try {
 			File unGzip = unGzip(compressedFile);
 			File outputDir = new File(absolutePath);
