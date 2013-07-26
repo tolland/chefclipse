@@ -24,10 +24,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.StyledText;
-import org.eclipse.swt.layout.FillLayout;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -79,10 +75,7 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 //	@Inject
 //	private XtextResourceFactory resourceFactory;
 
-	private StyledText text;
-
     private EObject dataBagEObject;
-
 
 	private Map<String, IAction> actionRegistry;
 
@@ -183,22 +176,6 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		});
 		return res;
 	}
-	/**
-	 * Creates last page of this editor. This page shows an editor which manages
-	 * all data bag items as rows in the viewer. The JSON properties are showed in a
-	 * left column.
-	 */
-	void createRowEditorPage() {
-		Composite composite = new Composite(getContainer(), SWT.NONE);
-		FillLayout layout = new FillLayout();
-		composite.setLayout(layout);
-		text = new StyledText(composite, SWT.H_SCROLL | SWT.V_SCROLL);
-		text.setEditable(false);
-
-		int index = addPage(composite);
-		setPageText(index, "Row Editor");
-		setPageImage(index, DatabagEditorActivator.getDefault().getImageRegistry().getDescriptor(DatabagEditorActivator.ROW_PAGE).createImage());
-	}
 
 	/**
 	 * Creates the pages of the multi-page data bag editor.
@@ -207,7 +184,6 @@ public class MultiPageDataBagEditor extends MultiPageEditorPart implements IReso
 		columnEditor = new DataBagColumnEditor(dataBagActionContributor, this);
 		super.addPageChangedListener(columnEditor);
 
-		createRowEditorPage();
 		createJsonEditorPages();
 		createColumnEditorPage();
 	}
