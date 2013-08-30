@@ -270,7 +270,8 @@ public class DeltaProcessingState implements IResourceChangeListener,
 		if (resource.getName().endsWith(".workstation")
 				|| resource.getName().equals(".cookbook")
 				|| resource.getName().endsWith(".knife")
-				|| resource.getName().equals("metadata.json"))
+				|| resource.getName().equals("metadata.json")
+				|| resource.getName().endsWith(".json"))
 			return true;
 		return false;
 	}
