@@ -351,6 +351,9 @@ public enum DataBagEditorManager {
 	}
 	
 	public EObject getEObjectOfKey(EObject entryElement, Resource resource) {
+		if (entryElement.eResource() == null) {
+			throw new IllegalArgumentException("Object is not contained in a resource: "+entryElement);
+		}
 		String uriFragment = entryElement.eResource().getURIFragment(entryElement);
 		EObject value = null;
 		try {

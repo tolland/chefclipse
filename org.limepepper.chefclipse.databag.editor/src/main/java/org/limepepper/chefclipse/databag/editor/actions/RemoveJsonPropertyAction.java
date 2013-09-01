@@ -47,6 +47,9 @@ public class RemoveJsonPropertyAction extends CommandActionHandler implements Mo
 
     @Override
     public Command createCommand(Collection<?> selection) {
+    	if (selection.isEmpty()) {
+    		return super.createCommand(selection);
+    	}
         CompoundCommand deleteCompoundCommand = new XTextCompoundCommand(this);
         for (Object object: selection) {
             EObject entryElement = (EObject) object;

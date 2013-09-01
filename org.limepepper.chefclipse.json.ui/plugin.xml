@@ -393,6 +393,12 @@
             extensions="json" label="Json Compare">
      </viewer>
   </extension>
+  <extension
+        point="org.eclipse.xtext.ui.shared.overridingGuiceModule">
+     <module
+           class="org.limepepper.chefclipse.json.JsonRuntimeModule">
+     </module>
+  </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
     <provider id="org.limepepper.chefclipse.json.Json.editors.documentProviders"
             class="org.limepepper.chefclipse.json.ui.JsonExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"

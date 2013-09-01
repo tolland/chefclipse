@@ -3,9 +3,16 @@
  */
 package org.limepepper.chefclipse.json;
 
+import org.eclipse.xtext.resource.XtextResourceSet;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class JsonRuntimeModule extends org.limepepper.chefclipse.json.AbstractJsonRuntimeModule {
 
+	@Override
+	public Class<? extends XtextResourceSet> bindXtextResourceSet() {
+		return JsonXtextResourceSet.class;
+	}
+	
 }

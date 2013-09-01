@@ -4,6 +4,8 @@
 package org.limepepper.chefclipse.json.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.resource.XtextResourceSet;
+import org.limepepper.chefclipse.json.JsonXtextResourceSet;
 
 import chefclipse.core.builders.XTextNatureAddingEditorCallback;
 
@@ -19,8 +21,9 @@ public class JsonUiModule extends org.limepepper.chefclipse.json.ui.AbstractJson
 	public Class<? extends org.eclipse.xtext.ui.editor.IXtextEditorCallback> bindIXtextEditorCallback() {
 		return XTextNatureAddingEditorCallback.class;
 	}
-//	public Class<? extends IFragmentProvider> bindIFragmentProvider() {
-//		return QualifiedNameFragmentProvider.class;
-//	}
+	
+	public Class<? extends XtextResourceSet> bindXtextResourceSet() {
+		return JsonXtextResourceSet.class;
+	}
 
 }
