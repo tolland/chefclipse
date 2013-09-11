@@ -17,7 +17,7 @@ import org.codehaus.jackson.node.ArrayNode;
 import org.codehaus.jackson.node.ObjectNode;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
+import org.limepepper.chefclipse.structured.json.editor.editors.StructuredJsonEditorManager;
 
 /**
  * @author Sebastian Sampaoli
@@ -25,13 +25,13 @@ import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
  */
 public class DataBagEditorManagerTest extends AbstractDataBagEditorTest{
 
-	private DataBagEditorManager managerInstance;
+	private StructuredJsonEditorManager managerInstance;
     private ObjectMapper mapper;
 	
 	@Before
     public void setUp() {
 	    mapper = new ObjectMapper();
-	    managerInstance = DataBagEditorManager.INSTANCE;
+	    managerInstance = StructuredJsonEditorManager.INSTANCE;
 	    super.setUp();
 	}
 	

@@ -150,7 +150,8 @@
         <!--module>org.limepepper.chefclipse.model</module -->
 
         <!-- object editors -->
-        <module>org.limepepper.chefclipse.databag.editor</module>
+        <module>org.limepepper.chefclipse.structured.json.editor</module>
+        <module>org.limepepper.chefclipse.databag</module>
         <module>org.limepepper.chefclipse.databag.editor.test</module>
         
         <!-- json stuff -->

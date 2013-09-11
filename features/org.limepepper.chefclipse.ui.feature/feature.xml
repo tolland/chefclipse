@@ -264,7 +264,13 @@
          unpack="false"/>
 
    <plugin
-         id="org.limepepper.chefclipse.databag.editor"
+         id="org.limepepper.chefclipse.structured.json.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
+         id="org.limepepper.chefclipse.databag"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -14,7 +14,7 @@ public class XTextNatureAddingEditorCallback extends
 
 	@Override
 	public void afterCreatePartControl(XtextEditor editor) {
-		super.afterCreatePartControl(editor);
+//		super.afterCreatePartControl(editor);
 		IResource resource = editor.getResource();
 		IProject project = resource.getProject();
 		if (resource != null

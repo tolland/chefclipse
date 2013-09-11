@@ -10,8 +10,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.node.ObjectNode;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
 import org.limepepper.chefclipse.databag.editor.test.AbstractDataBagEditorTest;
+import org.limepepper.chefclipse.structured.json.editor.editors.StructuredJsonEditorManager;
 
 /**
  * @author Sebastian Sampaoli
@@ -19,14 +19,14 @@ import org.limepepper.chefclipse.databag.editor.test.AbstractDataBagEditorTest;
  */
 public class AddNewDataBagItemActionTest extends AbstractDataBagEditorTest{
     
-    private DataBagEditorManager managerInstance;
+    private StructuredJsonEditorManager managerInstance;
     private JsonNode allKeysNode;
     private HashMap<String, JsonNode> nodesMap;
 
     @Before
     public void setUp() {
         super.setUp();
-        managerInstance = DataBagEditorManager.INSTANCE;
+        managerInstance = StructuredJsonEditorManager.INSTANCE;
         nodesMap = new HashMap<String, JsonNode>();
         nodesMap.put("jsonFile1", firstKeysNode);
         nodesMap.put("jsonFile2", secondKeysNode);

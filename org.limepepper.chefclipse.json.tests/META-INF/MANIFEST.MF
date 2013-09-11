@@ -11,7 +11,7 @@ Require-Bundle: org.limepepper.chefclipse.json,
  org.eclipse.xtext.junit4,
  org.eclipse.ui.workbench;resolution:=optional,
  org.limepepper.chefclipse.testing,
- org.limepepper.chefclipse.databag.editor
+ org.limepepper.chefclipse.structured.json.editor
 Import-Package: org.hamcrest.core,
  org.junit;version="4.5.0",
  org.junit.runner;version="4.5.0",

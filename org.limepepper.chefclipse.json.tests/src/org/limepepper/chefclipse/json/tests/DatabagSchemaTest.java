@@ -16,11 +16,11 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
 import org.limepepper.chefclipse.json.JsonInjectorProvider;
 import org.limepepper.chefclipse.json.json.JsonObjectValue;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.Value;
+import org.limepepper.chefclipse.structured.json.editor.editors.StructuredJsonEditorManager;
 
 /**
  * @author Guillermo Zunino
@@ -34,7 +34,7 @@ public class DatabagSchemaTest {
 	private Resource res1;
 	private Resource res2;
 	private Resource res3;
-	private DataBagEditorManager manager;
+	private StructuredJsonEditorManager manager;
 
 	@Before
 	public void setUp() throws Exception {
@@ -45,7 +45,7 @@ public class DatabagSchemaTest {
 		assertThat(res2).isNotNull();
 		res3 = resSet.getResource(URI.createFileURI("resources/databagItem3.json"), true);
 		assertThat(res3).isNotNull();
-		manager = DataBagEditorManager.INSTANCE;
+		manager = StructuredJsonEditorManager.INSTANCE;
 	}
 	
 	@Test

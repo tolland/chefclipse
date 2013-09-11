@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Sample Wizards"
+            id="org.limepepper.chefclipse.databag.editor">
+      </category>
+      <wizard
+            category="org.limepepper.chefclipse.ui.wizards.category"
+            class="org.limepepper.chefclipse.structured.json.editor.wizards.BasicNewDataBagWizard"
+            hasPages="true"
+            icon="icons/structured_editor.png"
+            id="org.limepepper.chefclipse.databag.editor.createdatabag"
+            name="New Data Bag">
+      </wizard>
+   </extension>
+   <!-- =================================================================================== -->
+  <!-- the viewer  -->
+  <!-- =================================================================================== -->
+
+  <extension point="org.eclipse.ui.navigator.viewer">
+    <viewerContentBinding viewerId="chefclipse.navigatorview">
+      <includes>
+        <contentExtension
+              isRoot="false"
+              pattern="chefclipse.ui.databag.editor.navigatorContent"/>
+      </includes>
+    </viewerContentBinding>
+  </extension>
+
+     <extension
+            point="org.eclipse.ui.navigator.navigatorContent">
+        <navigatorContent
+              activeByDefault="true"
+              contentProvider="org.limepepper.chefclipse.databag.providers.DatabagEditorContentProvider"
+              icon="icons/packagefolder_obj.png"
+              id="chefclipse.ui.databag.editor.navigatorContent"
+              labelProvider="org.limepepper.chefclipse.databag.providers.DatabagEditorLabelProvider"
+              name="commonNavigatorContentForDataBagEditor"
+              priority="high">
+            <triggerPoints>
+                <or>
+                    <adapt type="org.eclipse.core.resources.IProject" >
+                        <test property="org.eclipse.core.resources.projectNature"
+                        value="chefclipse.core.builders.ChefProjectNature"/>
+                    </adapt>
+                    <instanceof value="org.eclipse.core.resources.IResource" />
+                    <instanceof value="chefclipse.core.ChefResource" />
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
+
+                </or>
+            </triggerPoints>
+            <possibleChildren>
+                <or>
+                    <instanceof value="org.eclipse.core.resources.IResource" />
+                    <instanceof value="chefclipse.core.ChefResource" />
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBag"/>
+                    <instanceof value="org.limepepper.chefclipse.common.chefserver.DataBagItem"/>
+                </or>
+            </possibleChildren>
+            <override
+                  policy="InvokeAlwaysRegardlessOfSuppressedExt"
+                  suppressedExtensionId="org.eclipse.ui.navigator.resourceContent">
+            </override>
+          	<actionProvider
+                 class="org.limepepper.chefclipse.structured.json.editor.actions.OpenJsonFilesActionProvider">
+          	</actionProvider>
+           <actionProvider
+                 class="org.limepepper.chefclipse.databag.actions.NewDataBagActionProvider">
+           </actionProvider>
+        </navigatorContent>
+
+   </extension>
+</plugin>

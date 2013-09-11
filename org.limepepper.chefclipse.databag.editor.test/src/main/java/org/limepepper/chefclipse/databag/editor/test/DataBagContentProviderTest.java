@@ -18,8 +18,8 @@ import org.codehaus.jackson.node.ArrayNode;
 import org.codehaus.jackson.node.ObjectNode;
 import org.junit.Before;
 import org.junit.Test;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagContentProvider;
-import org.limepepper.chefclipse.databag.editor.editors.DataBagEditorManager;
+import org.limepepper.chefclipse.structured.json.editor.editors.DataBagContentProvider;
+import org.limepepper.chefclipse.structured.json.editor.editors.StructuredJsonEditorManager;
 
 /**
  * @author Sebastian Sampaoli
@@ -29,12 +29,12 @@ public class DataBagContentProviderTest extends AbstractDataBagEditorTest {
     private DataBagContentProvider contentProvider;
     private JsonNode allKeysNode;
     private ObjectMapper mapper;
-    private DataBagEditorManager managerInstance;
+    private StructuredJsonEditorManager managerInstance;
 
     @Before
     public void setUp() {
         super.setUp();
-        managerInstance = DataBagEditorManager.INSTANCE;
+        managerInstance = StructuredJsonEditorManager.INSTANCE;
         Map<String, JsonNode> nodesMap = new HashMap<String, JsonNode>();
         nodesMap.put("jsonFile1", firstKeysNode);
         nodesMap.put("jsonFile2", secondKeysNode);

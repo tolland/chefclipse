@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.limepepper.chefclipse.structured.json.editor.JsonFileExecutableExtensionFactory:org.limepepper.chefclipse.structured.json.editor.editors.MultiPageStructuredJsonEditor"
+            contributorClass="org.limepepper.chefclipse.structured.json.editor.editors.JsonFileActionContributor"
+            icon="icons/structured_editor.png"
+            id="org.limepepper.chefclipse.structured.json.editor.editors.MultiPageStructuredJsonEditor"
+            name="Multi-page Structured JSON Editor">
+      </editor>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.limepepper.chefclipse.structured.json.editor.editing.ActiveEditorTracker">
+      </startup>
+   </extension>
+   
+</plugin>
