@@ -72,6 +72,47 @@
                  class="org.limepepper.chefclipse.databag.actions.NewDataBagActionProvider">
            </actionProvider>
         </navigatorContent>
-
    </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.limepepper.chefclipse.databag.handlers.OpenStructuredJsonEditorHandler"
+            commandId="chefclipse.chefserver.databag.ui.open.structured.editor">
+      </handler>
+   </extension>
+
+      <extension
+         point="org.eclipse.ui.menus">
+   <menuContribution
+            allPopups="true"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+        <menu label="Chefclipse Menu"
+               mnemonic="C"
+               id="org.limepepper.chefclipse.menus.contextgroup">
+         <dynamic
+               class="org.limepepper.chefclipse.databag.handlers.ContributionItemDynamic"
+               id="chefclipse.chefserver.databag.ui.open.structured.editor">
+         </dynamic>
+         </menu>
+      </menuContribution>
+   </extension>
+   
+   <extension
+       point="org.eclipse.ui.commands">
+		<category
+		      id="org.limepepper.chefclipse.commands.category"
+		      name="Chefclipse Commands Category">
+		</category>
+		<command
+		      categoryId="org.limepepper.chefclipse.commands.category"
+		      id="chefclipse.chefserver.databag.ui.open.structured.editor"
+		      name="Dynamic Command Label Placeholder">
+		   <commandParameter
+		     id="commandParameter1"
+		     name="parameter to select dynamic handler"
+		     optional="false">
+		   </commandParameter>
+		</command>
+ 	</extension>
 </plugin>

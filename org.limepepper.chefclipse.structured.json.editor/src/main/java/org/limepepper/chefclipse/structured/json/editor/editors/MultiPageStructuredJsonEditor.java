@@ -2,25 +2,20 @@ package org.limepepper.chefclipse.structured.json.editor.editors;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
-import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.IEditorInput;
@@ -283,46 +278,6 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
         return -1;
 	}
 
-	class ResourceDeltaVisitor implements IResourceDeltaVisitor {
-        protected Collection<IFile> changedResources = new ArrayList<IFile>();
-        protected Collection<IFile> removedResources = new ArrayList<IFile>();
-        protected Collection<IFile> addedResources = new ArrayList<IFile>();
-
-        public ResourceDeltaVisitor(ResourceSet resourceSet) {
-        }
-
-        public boolean visit(IResourceDelta delta) {
-            StructuredJsonEditorInput editorInput = (StructuredJsonEditorInput) getEditorInput();
-            if (delta.getResource().getType() == IResource.FILE && delta.getFlags() != IResourceDelta.MARKERS) {
-                IFile resource = (IFile) delta.getResource();
-                if (!editorInput.contains(resource)) {
-                	return false;
-                }
-                if (delta.getKind() == IResourceDelta.REMOVED ||
-                        delta.getKind() == IResourceDelta.CHANGED) {
-                    if (delta.getKind() == IResourceDelta.REMOVED) {
-                        removedResources.add((IFile)resource);
-                    }
-                } else if (delta.getKind() == IResourceDelta.ADDED) {
-                    addedResources.add((IFile)resource);
-                }
-            }
-            return true;
-        }
-
-        public Collection<IFile> getChangedResources() {
-            return changedResources;
-        }
-
-        public Collection<IFile> getRemovedResources() {
-            return removedResources;
-        }
-
-        public Collection<IFile> getAddedResources() {
-            return addedResources;
-        }
-    }
-
 	/**
 	 * Closes all project files on project close.
 	 */
@@ -330,8 +285,7 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 	    final IResourceDelta delta = event.getDelta();
         try {
         	if (columnEditor != null) {
-        		final ResourceSet resourceSet = columnEditor.getEditingDomain().getResourceSet();
-                final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor(resourceSet);
+                final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor(this);
                 delta.accept(visitor);
 
                 if (!visitor.getRemovedResources().isEmpty()) {

@@ -33,14 +33,20 @@ public class OpenStructuredJSONEditorAction extends Action {
     private ISelectionProvider selectionProvider;
     private IWorkbenchPage page;
 	private List<?> elements;
+	private MultiPageStructuredJsonEditor openEditor;
 
-    public OpenStructuredJSONEditorAction(IWorkbenchPage page, ISelectionProvider selectionProvider) {
+    public OpenStructuredJSONEditorAction(IWorkbenchPage iWorkbenchPage, List<?> elements) {
+    	this.elements = elements;
+    	this.page = iWorkbenchPage;
+    }
+	
+	public OpenStructuredJSONEditorAction(IWorkbenchPage page, ISelectionProvider selectionProvider) {
         setText("Open with Structured JSON Editor");
         this.selectionProvider = selectionProvider;
         this.page = page;
     }
 
-    @Override
+	@Override
     public boolean isEnabled() {
         ISelection sel = selectionProvider.getSelection();
         if (!sel.isEmpty()) {
@@ -78,10 +84,14 @@ public class OpenStructuredJSONEditorAction extends Action {
     	StructuredJsonEditorInput editorInput;
 		try {
 			editorInput = StructuredEditorFactory.INSTANCE.createEditorInput(elements);
-			page.openEditor(editorInput, MultiPageStructuredJsonEditor.ID);
+			openEditor = (MultiPageStructuredJsonEditor) page.openEditor(editorInput, MultiPageStructuredJsonEditor.ID);
 		} catch (CoreException e) {
 			MessageDialog.open(MessageDialog.ERROR, page.getActivePart().getSite().getShell(), "Error while trying to read JSON file", e.getMessage(), SWT.NONE);
             e.printStackTrace();
 		}
     }
+
+	public MultiPageStructuredJsonEditor getActiveStructureJsonEditor() {
+		return openEditor;
+	}
 }

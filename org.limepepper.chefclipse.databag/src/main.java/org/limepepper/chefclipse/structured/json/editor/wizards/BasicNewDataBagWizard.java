@@ -164,7 +164,7 @@ public class BasicNewDataBagWizard extends Wizard implements INewWizard {
                                                  new NullProgressMonitor());
                                     }
                                 };
-                        workspace.run(createDataBagOperation, null);
+                        workspace.run(createDataBagOperation, new NullProgressMonitor());
                     }
                 }
             } catch (CoreException e) {
