@@ -25,7 +25,6 @@ import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.cookbook.CookbookVersion;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
 import org.limepepper.chefclipse.common.workstation.Repository;
-import org.limepepper.chefclipse.preferences.api.ChefConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -59,8 +59,10 @@ public class DeltaProcessingState implements IResourceChangeListener,
 						logger.debug("processing added");
 						for (IResource iterable_element : fAdded) {
 							logger.debug(iterable_element.getName());
-							ChefRepositoryManager.INSTANCE
-									.add(iterable_element);
+							if (ChefRepositoryManager.INSTANCE.getElement(iterable_element) == null) {
+								ChefRepositoryManager.INSTANCE
+								.add(iterable_element);
+							}
 						}
 
 					}
@@ -270,8 +272,7 @@ public class DeltaProcessingState implements IResourceChangeListener,
 		if (resource.getName().endsWith(".workstation")
 				|| resource.getName().equals(".cookbook")
 				|| resource.getName().endsWith(".knife")
-				|| resource.getName().equals("metadata.json")
-				|| resource.getName().endsWith(".json"))
+				|| resource.getName().equals("metadata.json"))
 			return true;
 		return false;
 	}

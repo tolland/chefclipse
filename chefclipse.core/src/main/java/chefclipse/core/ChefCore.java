@@ -8,6 +8,8 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.emf.ecore.EObject;
+import org.limepepper.chefclipse.common.chefserver.DataBag;
+import org.limepepper.chefclipse.common.chefserver.DataBagItem;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
@@ -153,6 +155,17 @@ public class ChefCore extends Plugin implements BundleActivator {
 		ChefRepositoryManager instance = ChefRepositoryManager.INSTANCE;
 		EObject element = instance.getElement(resource);
 		if (element != null) {
+			DataBag dataBag = (DataBag) element;
+			try {
+				for (IResource res : resource.members()) {
+					if (res instanceof IFile
+							&& ((IFile) res).getName().endsWith("json")) {
+						dataBag.getItems().add((DataBagItem) createDataBagItem((IFile) res));
+					}
+				}
+			} catch (CoreException e) {
+				logger.error("There was an error trying to create data bag items", e);
+			}
 			return element;
 		} else {
 			try {
