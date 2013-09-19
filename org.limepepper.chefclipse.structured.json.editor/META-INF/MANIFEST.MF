@@ -26,4 +26,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.limepepper.chefclipse.structured.json.editor,
  org.limepepper.chefclipse.structured.json.editor.actions,
- org.limepepper.chefclipse.structured.json.editor.editors
+ org.limepepper.chefclipse.structured.json.editor.editors,
+ org.limepepper.chefclipse.structured.json.editor.utils

@@ -34,11 +34,6 @@ public class OpenStructuredJSONEditorAction extends Action {
     private IWorkbenchPage page;
 	private List<?> elements;
 	private MultiPageStructuredJsonEditor openEditor;
-
-    public OpenStructuredJSONEditorAction(IWorkbenchPage iWorkbenchPage, List<?> elements) {
-    	this.elements = elements;
-    	this.page = iWorkbenchPage;
-    }
 	
 	public OpenStructuredJSONEditorAction(IWorkbenchPage page, ISelectionProvider selectionProvider) {
         setText("Open with Structured JSON Editor");

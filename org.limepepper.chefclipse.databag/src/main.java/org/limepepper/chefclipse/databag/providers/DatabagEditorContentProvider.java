@@ -21,10 +21,7 @@ import org.eclipse.ui.navigator.PipelinedShapeModification;
 import org.eclipse.ui.navigator.PipelinedViewerUpdate;
 import org.limepepper.chefclipse.common.chefserver.DataBag;
 import org.limepepper.chefclipse.common.knife.KnifeConfig;
-import org.limepepper.chefclipse.databag.handlers.ContributionItemDynamic;
 import org.limepepper.chefclipse.structured.json.editor.StructuredJsonEditorActivator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import chefclipse.core.ChefCore;
 import chefclipse.core.CookbookFolder;
@@ -36,8 +33,6 @@ public class DatabagEditorContentProvider extends AdapterFactoryContentProvider
 		implements IPipelinedTreeContentProvider,
 		IPipelinedTreeContentProvider2 {
 
-	private static Logger log = LoggerFactory
-			.getLogger(ContributionItemDynamic.class);
 	
 	public DatabagEditorContentProvider() {
 		super(ChefProjectAdapterFactory.getAdapterFactory());
