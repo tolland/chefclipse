@@ -159,7 +159,7 @@ public class ChefCore extends Plugin implements BundleActivator {
 			try {
 				for (IResource res : resource.members()) {
 					if (res instanceof IFile
-							&& ((IFile) res).getName().endsWith("json")) {
+							&& ((IFile) res).getName().toLowerCase().endsWith("json")) {
 						dataBag.getItems().add((DataBagItem) createDataBagItem((IFile) res));
 					}
 				}

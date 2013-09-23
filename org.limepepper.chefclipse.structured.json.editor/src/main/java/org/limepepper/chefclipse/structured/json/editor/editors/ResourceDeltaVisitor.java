@@ -23,7 +23,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 
     public boolean visit(IResourceDelta delta) {
         StructuredJsonEditorInput editorInput = (StructuredJsonEditorInput) this.multiPageStructuredJsonEditor.getEditorInput();
-        if (delta.getResource().getType() == IResource.FILE && delta.getFlags() != IResourceDelta.MARKERS) {
+        if (delta.getResource().getType() == IResource.FILE) {
             IFile resource = (IFile) delta.getResource();
             if (!editorInput.contains(resource)) {
             	return false;

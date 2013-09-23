@@ -131,6 +131,9 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 					getRepository(resource.getProject()).getCookbooks().remove(
 							(eObject));
 
+				} else if (eObject instanceof DataBagItem) {
+					DataBag dataBag = ((DataBagItem)eObject).getDataBag();
+					dataBag.getItems().remove(eObject);
 				}
 			} catch (Exception e) {
 				// e.printStackTrace();
@@ -410,8 +413,10 @@ public class ChefRepositoryManagerImpl implements ChefRepositoryManager {
 		eObject.setJsonResource(resource);
 		IContainer parent = resource.getParent();
 		DataBag dataBag = (DataBag) getElement(parent);
-		eObject.setDataBag(dataBag);
-		dataBag.getItems().add(eObject);
+		if (dataBag != null) {
+			eObject.setDataBag(dataBag);
+			dataBag.getItems().add(eObject);
+		}
 		addMapping(resource, eObject);
 		return eObject;
 	}
