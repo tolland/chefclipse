@@ -4,12 +4,9 @@
 
 package org.limepepper.chefclipse.structured.json.editor.editors;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.EventObject;
 import java.util.Iterator;
 import java.util.List;
 
@@ -18,11 +15,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
@@ -80,6 +73,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
@@ -97,6 +91,7 @@ import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.views.contentoutline.ContentOutlinePage;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.limepepper.chefclipse.json.json.Model;
 import org.limepepper.chefclipse.json.json.provider.JsonItemProviderAdapterFactory;
 import org.limepepper.chefclipse.structured.json.editor.actions.AddJsonPropertyAction;
@@ -104,6 +99,8 @@ import org.limepepper.chefclipse.structured.json.editor.actions.RemoveJsonFileAc
 import org.limepepper.chefclipse.structured.json.editor.actions.RemoveJsonPropertyAction;
 import org.limepepper.chefclipse.structured.json.editor.editing.FieldEditingSupport;
 import org.limepepper.chefclipse.structured.json.editor.editing.ValueEditingSupport;
+
+import com.google.inject.Provider;
 
 /**
  * Column editor for editing JSON files.
@@ -210,23 +207,25 @@ public class StructuredColumnJsonEditor extends EditorPart implements
     /**
      * @param resourceFactory
      * @param jsonFileActionContributor
+     * @param resourceSetProvider 
      * @param multiPageStructuredJsonEditor
      */
     public StructuredColumnJsonEditor(JsonFileActionContributor jsonFileActionContributor,
-            MultiPageStructuredJsonEditor multiPageStructuredJsonEditor) {
+            Provider<XtextResourceSet> resourceSetProvider, MultiPageStructuredJsonEditor multiPageStructuredJsonEditor) {
         this.multiPageStructuredJsonEditor = multiPageStructuredJsonEditor;
         this.actionContributor = jsonFileActionContributor;
         this.selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
-        initializeEditingDomain();
+        initializeEditingDomain(resourceSetProvider.get());
     }
 
     /**
      * This sets up the editing domain for the model editor. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
+     * @param xtextResourceSet 
      * 
      * @generated
      */
-    protected void initializeEditingDomain() {
+    protected void initializeEditingDomain(XtextResourceSet resourceSet) {
         // Create an adapter factory that yields item providers.
         //
         adapterFactory = new ComposedAdapterFactory(
@@ -240,7 +239,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         // executed.
         //
         BasicCommandStack commandStack = new BasicCommandStack();
-
+/*
         // Add a listener to set the most recent command's affected objects to
         // be the selection of the viewer with focus.
         //
@@ -267,7 +266,8 @@ public class StructuredColumnJsonEditor extends EditorPart implements
 
         // Create the editing domain with a special command stack.
         //
-        XtextResourceSet resourceSet = new XtextResourceSet();
+        editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet);*/
+        //XtextResourceSet resourceSet = new JsonXtextResourceSet();
         editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet);
     }
 
@@ -372,11 +372,30 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         // IResourceChangeEvent.POST_CHANGE);
 
         try {
+        	loadResourceSet();
         } catch (Exception e) {
             MessageDialog.open(MessageDialog.ERROR, getSite().getShell(),
                     "Error while trying to load JSON file", e.getMessage(), SWT.NONE);
         }
     }
+
+	/**
+	 * 
+	 */
+	private void loadResourceSet() {
+		for (IFile json : jsonFiles) {
+			addResource(json);
+		}
+	}
+
+	/**
+	 * @param json
+	 * @return 
+	 */
+	public Resource addResource(IFile json) {
+		URI uri = URI.createPlatformResourceURI(json.getFullPath().toString(), true);
+		return editingDomain.getResourceSet().getResource(uri, true);
+	}
 
     /*
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -575,7 +594,8 @@ public class StructuredColumnJsonEditor extends EditorPart implements
      */
     @Override
     public boolean isDirty() {
-        return ((BasicCommandStack) editingDomain.getCommandStack()).isSaveNeeded();
+//        return ((BasicCommandStack) editingDomain.getCommandStack()).isSaveNeeded();
+    	return false;
     }
 
     /**
@@ -587,7 +607,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
     @Override
     public void doSave(IProgressMonitor progressMonitor) {
         pendingNotification = null;
-        changeAdapter.unsetTarget(editingDomain.getResourceSet());
+        //changeAdapter.unsetTarget(editingDomain.getResourceSet());
 
         // Save only resources that have actually changed.
         //
@@ -638,7 +658,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
 
             // Refresh the necessary state.
             //
-            ((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
+            //((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
             firePropertyChange(IEditorPart.PROP_DIRTY);
         } catch (Exception exception) {
             // Something went wrong that shouldn't.
@@ -648,7 +668,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         }
         // updateProblemIndication = true;
         // updateProblemIndication();
-        changeAdapter.setTarget(editingDomain.getResourceSet());
+        //changeAdapter.setTarget(editingDomain.getResourceSet());
     }
 
     /**
@@ -659,7 +679,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
      * 
      * @generated
      */
-    protected boolean isPersisted(Resource resource) {
+    /*protected boolean isPersisted(Resource resource) {
         boolean result = false;
         try {
             InputStream stream = editingDomain.getResourceSet().getURIConverter()
@@ -672,7 +692,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
             // Ignore
         }
         return result;
-    }
+    }*/
 
     /**
      * This always returns true because it is not currently supported. <!--
@@ -710,7 +730,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
      * 
      * @generated
      */
-    protected void doSaveAs(URI uri, IEditorInput editorInput) {
+   /* protected void doSaveAs(URI uri, IEditorInput editorInput) {
         // (editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
         setInputWithNotify(editorInput);
         setPartName(editorInput.getName());
@@ -719,7 +739,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
                         getActionBars().getStatusLineManager().getProgressMonitor() :
                         new NullProgressMonitor();
         doSave(progressMonitor);
-    }
+    }*/
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -761,7 +781,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
 
         setViewerInput();
 
-        changeAdapter.setTarget(editingDomain.getResourceSet());
+        //changeAdapter.setTarget(editingDomain.getResourceSet());
 
         new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 
@@ -774,10 +794,25 @@ public class StructuredColumnJsonEditor extends EditorPart implements
 
     public void setViewerInput() {
         // if (getResourceSet().getResources().size() > 0) {
-        Model model = StructuredJsonEditorManager.INSTANCE.createSchemaModel(editingDomain
+        final Model model = StructuredJsonEditorManager.INSTANCE.createSchemaModel(editingDomain
                 .getResourceSet());
-        viewer.setInput(model);
-        viewer.expandAll();
+        Display display = getSite().getShell().getDisplay();
+        if (Thread.currentThread() != display.getThread()) {
+        	display.syncExec(new Runnable() {
+        		@Override
+        		public void run() {
+        			if (viewer.getTree() != null && !viewer.getTree().isDisposed()) {
+        				viewer.setInput(model);
+        				viewer.expandAll();
+        			}
+        		}
+        	});
+        } else {
+        	if (viewer.getTree() != null && !viewer.getTree().isDisposed()) {
+        		viewer.setInput(model);
+        		viewer.expandAll();
+        	}
+        }
         // } else {
         // viewer.setInput(null);
         // }
@@ -932,6 +967,10 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         // urisToColumns.put(res.getURI().toString(), uriSize);
         return columnWeight;
     }
+    
+	public IXtextDocument getXtextDocument(Resource resource) {
+		return multiPageStructuredJsonEditor.getXtextDocument(resource);
+	}
 
     @Override
     public void resourceChanged(IResourceChangeEvent event) {
@@ -1190,7 +1229,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
 
     public void processPendingNotification() {
         if (shouldUpdate && pendingNotification != null) {
-            changeAdapter.notifyChanged(pendingNotification);
+            //changeAdapter.notifyChanged(pendingNotification);
             pendingNotification = null;
         }
     }

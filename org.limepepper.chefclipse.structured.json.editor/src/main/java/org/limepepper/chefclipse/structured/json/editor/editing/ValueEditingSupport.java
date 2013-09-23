@@ -131,13 +131,13 @@ public class ValueEditingSupport extends EditingSupport {
     		if (newValue.equals(origText))
     			return;
     		modifyXtext(newValue, node);
-    		editor.setViewerInput();
+    		//editor.setViewerInput();
 //        	return adapterProvider.getText(((Pair) pair).getValue());
         }
     }
 
 	public EObject addPair(final EObject eObject) {
-		EObject pair = xTextDocument.modify(new IUnitOfWork<EObject, XtextResource>() {
+		EObject pair = getxTextDocument().modify(new IUnitOfWork<EObject, XtextResource>() {
 			@Override
 			public EObject exec(XtextResource state) throws Exception {
 				EObject copy = EcoreUtil.copy(eObject);
@@ -146,7 +146,7 @@ public class ValueEditingSupport extends EditingSupport {
 					stringValue.setValue("");
 					((Pair) copy).setValue(stringValue);
 				}
-				manager.addToSchema(state, eObject, copy);
+				manager.addToSchema(resource, eObject, copy);
 				return copy;
 			}
 		});
@@ -154,12 +154,16 @@ public class ValueEditingSupport extends EditingSupport {
 	}
 
 	public void modifyXtext(final Object newValue, final INode node) {
-		xTextDocument.modify(new IUnitOfWork.Void<XtextResource>() {
+		getxTextDocument().modify(new IUnitOfWork.Void<XtextResource>() {
 			@Override
 			public void process(XtextResource state) throws Exception {
-				xTextDocument.replace(node.getOffset(), node.getLength(), (String) newValue);
+				getxTextDocument().replace(node.getOffset(), node.getLength(), (String) newValue);
 			}
 		});
+	}
+
+	public IXtextDocument getxTextDocument() {
+		return editor.getXtextDocument(resource);
 	}
 
 }

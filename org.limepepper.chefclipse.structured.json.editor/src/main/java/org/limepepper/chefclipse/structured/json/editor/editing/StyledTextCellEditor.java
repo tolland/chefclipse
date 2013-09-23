@@ -141,11 +141,11 @@ public class StyledTextCellEditor extends CellEditor {
 				checkSelectable();
 			}
 		});
-		text.addFocusListener(new FocusAdapter() {
+		/*text.addFocusListener(new FocusAdapter() {
 			public void focusLost(FocusEvent e) {
 				StyledTextCellEditor.this.focusLost();
 			}
-		});
+		});*/
 		text.setFont(parent.getFont());
 		text.setBackground(parent.getBackground());
 		text.setText("");//$NON-NLS-1$

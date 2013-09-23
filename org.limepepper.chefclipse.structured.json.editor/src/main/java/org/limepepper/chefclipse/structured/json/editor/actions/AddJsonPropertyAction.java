@@ -4,12 +4,14 @@
 
 package org.limepepper.chefclipse.structured.json.editor.actions;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -18,6 +20,8 @@ import org.eclipse.emf.edit.ui.action.CommandActionHandler;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.limepepper.chefclipse.json.json.JsonFactory;
 import org.limepepper.chefclipse.json.json.JsonObject;
 import org.limepepper.chefclipse.json.json.JsonObjectValue;
@@ -58,9 +62,21 @@ public class AddJsonPropertyAction extends CommandActionHandler implements
         CompoundCommand compoundCommand = new XTextCompoundCommand(this);
         Object[] selectionArray = selection.toArray();
         if (selectionArray.length == 1) {
-            EObject entryElement = (EObject) selectionArray[0];
-            Collection<EObject> eObjects = StructuredJsonEditorManager.INSTANCE.getEObjectsOfKey(
-                    entryElement, domain.getResourceSet().getResources());
+            final EObject entryElement = (EObject) selectionArray[0];
+            
+            Collection<EObject> eObjects = new ArrayList<EObject>();
+            for (Resource r : domain.getResourceSet().getResources()) {
+            	eObjects.add(editor.getXtextDocument(r).readOnly(new IUnitOfWork<EObject, XtextResource>() {
+					@Override
+					public EObject exec(XtextResource state)
+							throws Exception {
+						return StructuredJsonEditorManager.INSTANCE.getEObjectOfKey(entryElement, state);
+					}
+            	}));
+            }
+            
+//            Collection<EObject> eObjects = StructuredJsonEditorManager.INSTANCE.getEObjectsOfKey(
+//                    entryElement, domain.getResourceSet().getResources());
             for (EObject eObject : eObjects) {
                 if (eObject != null) {
                     CompoundCommand addCompoundCommand = new CompoundCommand();
@@ -99,9 +115,9 @@ public class AddJsonPropertyAction extends CommandActionHandler implements
         addCompoundCommand.append(setJsonObjectCommand);
         
         return jsonObject;
-    }
+   }
 
-    private void createAddCommand(CompoundCommand addCompoundCommand,
+   private void createAddCommand(CompoundCommand addCompoundCommand,
             JsonObject jsonObject) {
         Pair createdPair = JsonFactory.eINSTANCE.createPair();
         createdPair.setString("new_key");
@@ -112,7 +128,7 @@ public class AddJsonPropertyAction extends CommandActionHandler implements
         Command setNullValuecommand = createEmptyValueCommand(createdPair);
         addCompoundCommand.append(setNullValuecommand);
     }
-
+   
     private Command createEmptyValueCommand(Pair key) {
         StringValue emptyValue = JsonFactory.eINSTANCE.createStringValue();
         emptyValue.setValue("");
