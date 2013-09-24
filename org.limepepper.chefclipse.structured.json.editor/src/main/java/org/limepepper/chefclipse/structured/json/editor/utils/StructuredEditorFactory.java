@@ -47,6 +47,7 @@ public enum StructuredEditorFactory {
 		return editorInput;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private List<IFile> generateListOfJsonFiles(List<?> elements) {
 		List<IFile> jsonFiles = new ArrayList<IFile>();
 		for (Object object : elements) {
@@ -56,7 +57,7 @@ public enum StructuredEditorFactory {
 				jsonFiles.add((IFile) object);
 			} else if (elements instanceof IFolder) {
 				try {
-					jsonFiles.addAll(generateListOfJsonFiles(new ArrayList<>(
+					jsonFiles.addAll(generateListOfJsonFiles(new ArrayList(
 							Arrays.asList(((IFolder) elements).members()))));
 				} catch (CoreException e) {
 					e.printStackTrace();

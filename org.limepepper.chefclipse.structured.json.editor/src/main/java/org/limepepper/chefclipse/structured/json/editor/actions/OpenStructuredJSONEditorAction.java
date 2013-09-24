@@ -59,13 +59,14 @@ public class OpenStructuredJSONEditorAction extends Action {
     	this.elements = elements;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private boolean containsJSONFiles(List<?> elements) {
 		for (Object element : elements) {
 			if (element instanceof IFile && ((IFile)element).getName().toLowerCase().endsWith(StructuredJsonEditorActivator.JSON_EXTENSION)) {
 				return true;
 			} else if (element instanceof IFolder) {
 				try {
-					return containsJSONFiles(new ArrayList<>(Arrays.asList(((IFolder)element).members())));
+					return containsJSONFiles(new ArrayList(Arrays.asList(((IFolder)element).members())));
 				} catch (CoreException e) {
 					e.printStackTrace();
 				}
