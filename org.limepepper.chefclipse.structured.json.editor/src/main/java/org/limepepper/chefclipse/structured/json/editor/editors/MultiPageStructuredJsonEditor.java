@@ -2,6 +2,7 @@ package org.limepepper.chefclipse.structured.json.editor.editors;
 
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +22,11 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.ui.IEditorInput;
@@ -85,7 +89,7 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 
 	private ScheduledExecutorService viewerUpdater;
 
-	protected ScheduledFuture<?> scheduledUpdate;
+	protected HashMap<URI, ScheduledFuture<?>> scheduledUpdates = new HashMap<URI, ScheduledFuture<?>>();
 
 	public MultiPageStructuredJsonEditor() {
 		super();
@@ -101,7 +105,6 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
     void createColumnEditorPage() {
         try {
         	int index = 0;
-        	columnEditor = new StructuredColumnJsonEditor(StructuredJsonEditorActionContributor, resourceSetProvider, this);
             addPage(index, columnEditor, getEditorInput());
             setPageText(index, "Column Editor");
             setPageImage(index, StructuredJsonEditorActivator.getDefault().getImageRegistry().getDescriptor(StructuredJsonEditorActivator.COLUMN_PAGE).createImage());
@@ -123,15 +126,17 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 	void createJsonEditorPages() {
 		for (final IFile jsonFile : jsonFiles) {
 			if (jsonFile.exists()) {
-				final XtextResource res = createJsonEditorFor(jsonFile);
+				createJsonEditorFor(jsonFile);
 			}
 		}
 	}
 	
 	@Override
 	public void modelChanged(final XtextResource resource) {
-		if (scheduledUpdate != null)
+		ScheduledFuture<?> scheduledUpdate = scheduledUpdates.get(resource.getURI());
+		if (scheduledUpdate != null) {
 			scheduledUpdate.cancel(true);
+		}
 		scheduledUpdate = viewerUpdater.schedule(new Runnable() {
 			@Override
 			public void run() {
@@ -139,14 +144,15 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 				for (Resource res : rset.getResources()) {
 					if (res.getURI().equals(resource.getURI())) {
 						res.getContents().clear();
-//									Collection<EObject> copy = EcoreUtil.copyAll(resource.getContents());
-//									res.getContents().addAll(copy);
-						res.getContents().addAll(resource.getContents());
+						Collection<EObject> copy = EcoreUtil.copyAll(resource.getContents());
+						res.getContents().addAll(copy);
+						//res.getContents().addAll(resource.getContents());
 					}
 				}
 				columnEditor.setViewerInput();
 			}
-		}, 100, TimeUnit.MILLISECONDS);
+		}, 500, TimeUnit.MILLISECONDS);
+		scheduledUpdates.put(resource.getURI(), scheduledUpdate);
 	}
 	
     private XtextResource createJsonEditorFor(final IFile jsonFile) {
@@ -158,18 +164,9 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
         	final XtextResource res = getXtextResource(xtext);
         	
         	if (res.getContents().isEmpty()) {
-    			final IXtextDocument xtextDocument = getXtextDocument(res);
-    			xtextDocument.modify(new IUnitOfWork<Void, XtextResource>() {
-					@Override
-					public java.lang.Void exec(XtextResource state) {
-						StructuredJsonEditorManager.INSTANCE.addEmptyModelTo(res, xtextDocument, jsonFile);
-						return null;
-					}
-    			});
+				StructuredJsonEditorManager.INSTANCE.addEmptyModelTo(res, getXtextDocument(res), jsonFile);
     		}
         	
-            //XtextResource res = addXtextResource(xtext);
-//            columnEditor.getEditingDomain().getResourceSet().getResource(res.getURI(), true);
             String dbItemName = jsonFile.getName();
             int lastDot = dbItemName.lastIndexOf(".");
             if (lastDot != -1) {
@@ -190,12 +187,6 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
         return null;
     }
 
-	/*public XtextResource addXtextResource(XtextEditor xtext) {
-		XtextResource res = getXtextResource(xtext);
-		columnEditor.getEditingDomain().getResourceSet().getResources().add(res);
-		return res;
-	}*/
-
 	public XtextResource getXtextResource(XtextEditor xtext) {
 		XtextResource res = xtext.getDocument().readOnly(new IUnitOfWork<XtextResource, XtextResource>() {
 			@Override
@@ -212,8 +203,10 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 	protected void createPages() {
 		//super.addPageChangedListener(columnEditor);
 
-		createColumnEditorPage();
+    	columnEditor = new StructuredColumnJsonEditor(StructuredJsonEditorActionContributor, resourceSetProvider, this);
+
 		createJsonEditorPages();
+		createColumnEditorPage();
 	}
 
 	/**
@@ -240,27 +233,21 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 	 * Saves the multi-page editor's document.
 	 */
 	public void doSave(IProgressMonitor monitor) {
-		//columnEditor.setShouldUpdate(false);
-		//columnEditor.getEditingDomain().getResourceSet().getResources().clear();
 		for (int i = getPageCount()-1 ; i >= 0; i--) {
 			IEditorPart editor = getEditor(i);
 			if (editor != null) {
 				editor.doSave(monitor);
-//				if (isXtextEditor(editor)) {
-//					addXtextResource((XtextEditor) editor);
-//				}
-//				setPageText(i, editor.getTitle());
-//				setInput(getEditorInput());
 			}
 		}
 
-		/*for (int i = 0 ; i < getPageCount(); i++) {
+		for (int i = 0 ; i < getPageCount(); i++) {
 			IEditorPart editor = getEditor(i);
 			if (isXtextEditor(editor)) {
-				addXtextResource((XtextEditor) editor);
+				modelChanged(getXtextResource((XtextEditor) editor));
 			}
 		}
-		columnEditor.setShouldUpdate(true);*/
+		columnEditor.setShouldUpdate(true);
+		columnEditor.setViewerInput();
 	}
 
 	/**
@@ -355,7 +342,7 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
     								removePage(xTextEditorIndex);
     								Resource res = getResource(resource.getFullPath());
                                     try {
-                                    	columnEditor.removeDBItemColumn(xtextRes);
+                                    	columnEditor.removeDBItemColumn(res);
                                         xtextRes.delete(Collections.emptyMap());
                                         res.delete(Collections.emptyMap());
                                     } catch (IOException e) {
@@ -372,8 +359,8 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
                             public void run() {
                             	columnEditor.setShouldUpdate(false);
                                 for (IFile resource : visitor.getAddedResources()) {
+                                	Resource res = columnEditor.addResource(resource);
                                     createJsonEditorFor(resource);
-                                    Resource res = columnEditor.addResource(resource);
                                     columnEditor.addJsonFileColumn(res);
                                 }
                                 columnEditor.setShouldUpdate(true);

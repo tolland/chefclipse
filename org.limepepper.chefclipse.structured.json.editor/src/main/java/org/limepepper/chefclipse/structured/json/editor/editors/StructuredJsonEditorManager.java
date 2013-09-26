@@ -203,7 +203,7 @@ public enum StructuredJsonEditorManager {
 			xtextDocument.modify(new IUnitOfWork.Void<XtextResource>() {
 			    @Override
 			    public void process(XtextResource state) throws Exception {
-			    	Pair emptyIdElement = addEmptyModel(res);
+			    	Pair emptyIdElement = addEmptyModel(state);
 			    	StringValue stringValue = JsonFactory.eINSTANCE.createStringValue();
 			    	String dbItemName = jsonFile.getName();
 		            int lastDot = dbItemName.lastIndexOf(".");

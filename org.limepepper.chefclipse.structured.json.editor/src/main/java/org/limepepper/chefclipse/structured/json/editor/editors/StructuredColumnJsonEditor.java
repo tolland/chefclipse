@@ -22,7 +22,6 @@ import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -167,38 +166,9 @@ public class StructuredColumnJsonEditor extends EditorPart implements
      */
     protected ISelection editorSelection = StructuredSelection.EMPTY;
 
-    private EContentAdapter changeAdapter = new EContentAdapter() {
-        @Override
-        public void notifyChanged(Notification notification) {
-            super.notifyChanged(notification);
-            // handles all changes except adapter updates
-            if (isChangeNotification(notification)) {
-                if (shouldUpdate) {
-                    processChange();
-                } else {
-                    pendingNotification = notification;
-                }
-            }
-        }
-
-        public void processChange() {
-            getSite().getShell().getDisplay().asyncExec(new Runnable() {
-                @Override
-                public void run() {
-                    if (viewer != null && !viewer.getTree().isDisposed()) {
-                        setViewerInput();
-                        // viewer.refresh();
-                    }
-                }
-            });
-        }
-    };
-
     private List<ISelectionChangedListener> selectionChangedListeners;
     private TreeViewerFocusCellManager focusCellManager;
     private List<URI> columnsToUris = new ArrayList<URI>();
-    // private Map<String, Integer> urisToColumns = new HashMap<String,
-    // Integer>();
     private boolean shouldUpdate;
     private Notification pendingNotification;
     private MultiPageStructuredJsonEditor multiPageStructuredJsonEditor;
@@ -262,12 +232,9 @@ public class StructuredColumnJsonEditor extends EditorPart implements
                                     }
                                 });
                     }
-                });
+                });*/
 
         // Create the editing domain with a special command stack.
-        //
-        editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet);*/
-        //XtextResourceSet resourceSet = new JsonXtextResourceSet();
         editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, resourceSet);
     }
 
@@ -367,9 +334,6 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         setPartName(input.getName());
         site.setSelectionProvider(this);
         actionContributor.setActiveEditor(this);
-        // site.getPage().addPartListener(partListener);
-        // ResourcesPlugin.getWorkspace().addResourceChangeListener(resourceChangeListener,
-        // IResourceChangeEvent.POST_CHANGE);
 
         try {
         	loadResourceSet();
@@ -379,21 +343,15 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         }
     }
 
-	/**
-	 * 
-	 */
 	private void loadResourceSet() {
 		for (IFile json : jsonFiles) {
 			addResource(json);
 		}
 	}
 
-	/**
-	 * @param json
-	 * @return 
-	 */
 	public Resource addResource(IFile json) {
 		URI uri = URI.createPlatformResourceURI(json.getFullPath().toString(), true);
+		
 		return editingDomain.getResourceSet().getResource(uri, true);
 	}
 
@@ -713,33 +671,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
      */
     @Override
     public void doSaveAs() {
-        // SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
-        // saveAsDialog.open();
-        // IPath path = saveAsDialog.getResult();
-        // if (path != null) {
-        // IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
-        // if (file != null) {
-        // doSaveAs(URI.createPlatformResourceURI(file.getFullPath().toString(),
-        // true), new FileEditorInput(file));
-        // }
-        // }
     }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-   /* protected void doSaveAs(URI uri, IEditorInput editorInput) {
-        // (editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
-        setInputWithNotify(editorInput);
-        setPartName(editorInput.getName());
-        IProgressMonitor progressMonitor =
-                getActionBars().getStatusLineManager() != null ?
-                        getActionBars().getStatusLineManager().getProgressMonitor() :
-                        new NullProgressMonitor();
-        doSave(progressMonitor);
-    }*/
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -762,14 +694,7 @@ public class StructuredColumnJsonEditor extends EditorPart implements
      */
     @Override
     public void createPartControl(Composite parent) {
-        // Only creates the other pages if there is something that can be edited
-        // if (!getEditingDomain().getResourceSet().getResources().isEmpty()) {
-        // Group editorGroup = new Group(parent, SWT.NONE);
-        // GridLayoutFactory.swtDefaults().numColumns(2).equalWidth(false).applyTo(editorGroup);
-        // GridDataFactory.fillDefaults().align(SWT.FILL,
-        // SWT.FILL).grab(true, true).applyTo(editorGroup);
         createViewer(parent);
-        // }
     }
 
     private void createViewer(Composite parent) {
@@ -777,11 +702,8 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         viewer.setContentProvider(new AdapterFactoryContentProvider(
                 adapterFactory));
         getEditorSite().setSelectionProvider(viewer);
-        // JsonItemProviderAdapterFactory()));
 
         setViewerInput();
-
-        //changeAdapter.setTarget(editingDomain.getResourceSet());
 
         new AdapterFactoryTreeEditor(viewer.getTree(), adapterFactory);
 
@@ -793,7 +715,6 @@ public class StructuredColumnJsonEditor extends EditorPart implements
     }
 
     public void setViewerInput() {
-        // if (getResourceSet().getResources().size() > 0) {
         final Model model = StructuredJsonEditorManager.INSTANCE.createSchemaModel(editingDomain
                 .getResourceSet());
         Display display = getSite().getShell().getDisplay();
@@ -813,9 +734,6 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         		viewer.expandAll();
         	}
         }
-        // } else {
-        // viewer.setInput(null);
-        // }
     }
 
     private TreeViewer doCreateViewer(Composite parent) {
@@ -852,20 +770,6 @@ public class StructuredColumnJsonEditor extends EditorPart implements
                         .grab(true, false).applyTo(emptyLabel);
                 createJsonFilesToolBar(bar);
                 return bar;
-
-                // final Composite filterParent = new Composite(parent,
-                // SWT.NULL);
-                // filterParent.setLayout(new GridLayout(2, false));
-                // new Label(bar, SWT.NULL).setText("Filter:");
-                // addAditionalActions(bar);
-                // final Composite createFilterControls =
-                // super.createFilterControls(filterParent);
-                // createToolBar(bar);
-                // GridDataFactory.fillDefaults().align(SWT.BEGINNING,
-                // SWT.FILL).grab(false, false).applyTo(createFilterControls);
-                // createFilterControls.setLayoutData(new
-                // GridData(GridData.BEGINNING));
-                // return filterParent;
             }
 
         };
@@ -877,7 +781,6 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         treeViewer.setUseHashlookup(true);
         treeViewer.getTree().setHeaderVisible(true);
         treeViewer.getTree().setLinesVisible(true);
-        // viewer.setSorter(new NameSorter());
 
         focusCellManager = new TreeViewerFocusCellManager(treeViewer,
                 new FocusCellOwnerDrawHighlighter(treeViewer));
@@ -953,18 +856,9 @@ public class StructuredColumnJsonEditor extends EditorPart implements
         valueColumn.getColumn().setText(
                 "JSON file: " + res.getURI().trimFileExtension().lastSegment());
         valueColumn.getColumn().setWidth(150);
-        // final TextCellEditor textCellEditor = new
-        // TextCellEditor(treeViewer.getTree());;
-        valueColumn.setEditingSupport(new ValueEditingSupport(this, treeViewer, res,
-                multiPageStructuredJsonEditor.getXtextDocument(res)));
+        valueColumn.setEditingSupport(new ValueEditingSupport(this, treeViewer, res));
         valueColumn.setLabelProvider(new JsonFileLabelProvider(res));
-        // columnLayout.setColumnData(valueColumn.getColumn(), new
-        // ColumnWeightData(
-        // columnWeight, 150));
-        // int columnSize = columnsToUris.values().size() + 1;
         columnsToUris.add(res.getURI());
-        // int uriSize = urisToColumns.values().size() + 1;
-        // urisToColumns.put(res.getURI().toString(), uriSize);
         return columnWeight;
     }
     
@@ -1205,16 +1099,12 @@ public class StructuredColumnJsonEditor extends EditorPart implements
     public void addJsonFileColumn(Resource resource) {
         TreeColumnLayout treeLayout = new TreeColumnLayout();
         createColumn(viewer, treeLayout, 0, resource);
-        setViewerInput();
         viewer.getTree().setRedraw(true);
         viewer.expandAll();
     }
 
     public void removeDBItemColumn(Resource resource) {
-        // Integer column = urisToColumns.get(resource.getURI().toString());
-        // urisToColumns.remove(resource.getURI().toString());
         int column = columnsToUris.indexOf(resource.getURI()) + 1;
-        // columnsToUris.remove(resource.getURI().toString());
         viewer.getTree().getColumn(column).dispose();
         columnsToUris.remove(column - 1);
         viewer.getTree().setRedraw(true);
@@ -1229,7 +1119,6 @@ public class StructuredColumnJsonEditor extends EditorPart implements
 
     public void processPendingNotification() {
         if (shouldUpdate && pendingNotification != null) {
-            //changeAdapter.notifyChanged(pendingNotification);
             pendingNotification = null;
         }
     }

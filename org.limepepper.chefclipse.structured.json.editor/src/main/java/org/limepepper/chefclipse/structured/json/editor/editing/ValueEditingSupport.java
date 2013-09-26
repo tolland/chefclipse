@@ -6,7 +6,6 @@ package org.limepepper.chefclipse.structured.json.editor.editing;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -21,7 +20,6 @@ import org.limepepper.chefclipse.json.json.JsonFactory;
 import org.limepepper.chefclipse.json.json.Pair;
 import org.limepepper.chefclipse.json.json.StringValue;
 import org.limepepper.chefclipse.json.json.Value;
-import org.limepepper.chefclipse.json.json.provider.JsonItemProviderAdapterFactory;
 import org.limepepper.chefclipse.json.ui.internal.JsonActivator;
 import org.limepepper.chefclipse.structured.json.editor.editors.StructuredColumnJsonEditor;
 import org.limepepper.chefclipse.structured.json.editor.editors.StructuredJsonEditorManager;
@@ -32,12 +30,9 @@ import org.limepepper.chefclipse.structured.json.editor.editors.StructuredJsonEd
  */
 public class ValueEditingSupport extends EditingSupport {
 
-//    private TextCellEditor textCellEditor;
     private TreeViewer viewer;
 	private XtextStyledTextCellEditor xtextEditor;
 	private Resource resource;
-	private AdapterFactoryLabelProvider adapterProvider;
-	private IXtextDocument xTextDocument;
 	StructuredJsonEditorManager manager = StructuredJsonEditorManager.INSTANCE;
     private StructuredColumnJsonEditor editor;
     /**
@@ -45,15 +40,11 @@ public class ValueEditingSupport extends EditingSupport {
      * @param res
      * @param iXtextDocument 
      */
-    public ValueEditingSupport(StructuredColumnJsonEditor editor, TreeViewer viewer, Resource res, IXtextDocument iXtextDocument) {
+    public ValueEditingSupport(StructuredColumnJsonEditor editor, TreeViewer viewer, Resource res) {
         super(viewer);
         this.editor = editor;
-        this.xTextDocument = iXtextDocument;
         this.resource = res;
         xtextEditor = new XtextStyledTextCellEditor(SWT.SINGLE, JsonActivator.getInstance().getInjector(JsonActivator.ORG_LIMEPEPPER_CHEFCLIPSE_JSON_JSON));
-    	JsonItemProviderAdapterFactory adapterFactory = new JsonItemProviderAdapterFactory();
-		adapterProvider = new AdapterFactoryLabelProvider(adapterFactory);
-//        this.textCellEditor = textCellEditor;
         this.viewer = viewer;
     }
 
@@ -77,7 +68,7 @@ public class ValueEditingSupport extends EditingSupport {
      */
     @Override
     protected boolean canEdit(Object element) {
-    	EObject pair = StructuredJsonEditorManager.INSTANCE.getEObjectOfKey((EObject) element, resource);
+//    	EObject pair = manager.getEObjectOfKey((EObject) element, resource);
 //        return (pair != null && pair instanceof Pair);
         return true;
     }
@@ -89,19 +80,25 @@ public class ValueEditingSupport extends EditingSupport {
      */
     @Override
     protected Object getValue(Object element) {
-        EObject eObject = (EObject) element;
-		EObject pair = StructuredJsonEditorManager.INSTANCE.getEObjectOfKey(eObject, resource);
+        final EObject eObject = (EObject) element;
+		
+        EObject pair = getxTextDocument().readOnly(new IUnitOfWork<EObject, XtextResource>() {
+        	@Override
+        	public EObject exec(XtextResource state) throws Exception {
+        		return manager.getEObjectOfKey(eObject, state);
+        	}
+        });
         if (pair != null && pair instanceof Pair) {
         	Value val = ((Pair) pair).getValue();
         	INode node = NodeModelUtils.findActualNodeFor(val);
-//        	node = NodeModelUtils.getNode(val);
         	if (node != null) {
-        	    return NodeModelUtils.getTokenText(node);
+        		return NodeModelUtils.getTokenText(node);
         	}
-//        	return adapterProvider.getText(((Pair) pair).getValue());
         }
         return "";
     }
+    
+    
 
     /*
      * (non-Javadoc)
@@ -110,43 +107,55 @@ public class ValueEditingSupport extends EditingSupport {
      */
     @Override
     protected void setValue(Object element, final Object newValue) {
-    	EObject eObject = (EObject) element;
-		EObject pair = manager.getEObjectOfKey(eObject, resource);
+    	final EObject eObject = (EObject) element;
+//		EObject pair = manager.getEObjectOfKey(eObject, resource);
+		EObject pair = getxTextDocument().readOnly(new IUnitOfWork<EObject, XtextResource>() {
+	        	@Override
+	        	public EObject exec(XtextResource state) throws Exception {
+	        		return manager.getEObjectOfKey(eObject, state);
+	        	}
+	        });
     	if (!newValue.toString().trim().isEmpty()) {
 	    	if (pair == null && manager.getEObjectOfKey(eObject.eContainer(), resource) != null) {
-	    		pair = addPair(eObject);
+	    		pair = addPair(eObject, (String) newValue);
 	    	}
     	}
     	if (pair != null) {
-    		INode node = null;
-    		if (pair instanceof Pair) {
-	        	Value val = ((Pair) pair).getValue();
-	        	node = NodeModelUtils.findActualNodeFor(val);
+    		final EObject xPair = pair;
+    		INode node = getxTextDocument().readOnly(new IUnitOfWork<INode, XtextResource>() {
+    			@Override
+    			public INode exec(XtextResource state) throws Exception {
+	        		//EObject pair = manager.getEObjectOfKey(xPair, state);
+    				EObject pair = xPair;
+    				if (pair instanceof Pair) {
+    					Value val = ((Pair) pair).getValue();
+    					return NodeModelUtils.findActualNodeFor(val);
+    				} else {
+    					return NodeModelUtils.findActualNodeFor(pair);
+    				}
+    			}
+    		});
+    		if (node == null) {
     		} else {
-    			node = NodeModelUtils.findActualNodeFor(pair);
+	    		String origText = NodeModelUtils.getTokenText(node);
+	    		if (newValue.equals(origText))
+	    			return;
+	    		modifyXtext(newValue, node);
     		}
-    		if (node == null)
-    			return;
-    		String origText = NodeModelUtils.getTokenText(node);
-    		if (newValue.equals(origText))
-    			return;
-    		modifyXtext(newValue, node);
-    		//editor.setViewerInput();
-//        	return adapterProvider.getText(((Pair) pair).getValue());
         }
     }
 
-	public EObject addPair(final EObject eObject) {
+	public EObject addPair(final EObject eObject, final String newValue) {
 		EObject pair = getxTextDocument().modify(new IUnitOfWork<EObject, XtextResource>() {
 			@Override
 			public EObject exec(XtextResource state) throws Exception {
 				EObject copy = EcoreUtil.copy(eObject);
 				if (copy instanceof Pair) {
 					StringValue stringValue = JsonFactory.eINSTANCE.createStringValue();
-					stringValue.setValue("");
+					stringValue.setValue(newValue);
 					((Pair) copy).setValue(stringValue);
 				}
-				manager.addToSchema(resource, eObject, copy);
+				manager.addToSchema(state, eObject, copy);
 				return copy;
 			}
 		});

@@ -12,31 +12,26 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.edit.ui.action.CommandActionHandler;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.limepepper.chefclipse.structured.json.editor.commands.ModifyXTextDocumentCommand;
 import org.limepepper.chefclipse.structured.json.editor.commands.XTextCompoundCommand;
 import org.limepepper.chefclipse.structured.json.editor.editors.MultiPageStructuredJsonEditor;
-import org.limepepper.chefclipse.structured.json.editor.editors.StructuredJsonEditorManager;
 
 /**
  * Removes the selected JSON property for all the opened JSON files.
  * 
  * @author Sebastian Sampaoli
  */
-public class RemoveJsonPropertyAction extends CommandActionHandler implements ModifyXTextDocumentCommand{
+public class RemoveJsonPropertyAction extends JsonProperyAction implements ModifyXTextDocumentCommand{
 
     private static final String REMOVE_JSON_PROPERTY_TOOLTIP =
             "Remove the selected JSON property for all the opened JSON files";
     private static final String REMOVE_JSON_PROPERTY_ACTION = "Remove JSON property";
     public static final String ID = REMOVE_JSON_PROPERTY_ACTION;
-	private MultiPageStructuredJsonEditor editor;
-
-    public RemoveJsonPropertyAction(EditingDomain editingDomain, MultiPageStructuredJsonEditor multiPageStructuredJsonEditor) {
-        super(editingDomain, REMOVE_JSON_PROPERTY_ACTION);
-        this.editor = multiPageStructuredJsonEditor;
+	public RemoveJsonPropertyAction(EditingDomain editingDomain, MultiPageStructuredJsonEditor multiPageStructuredJsonEditor) {
+        super(editingDomain, multiPageStructuredJsonEditor, REMOVE_JSON_PROPERTY_ACTION);
         setId(ID);
         setToolTipText(REMOVE_JSON_PROPERTY_TOOLTIP);
         setText(REMOVE_JSON_PROPERTY_ACTION);
@@ -53,7 +48,9 @@ public class RemoveJsonPropertyAction extends CommandActionHandler implements Mo
         CompoundCommand deleteCompoundCommand = new XTextCompoundCommand(this);
         for (Object object: selection) {
             EObject entryElement = (EObject) object;
-            Collection<EObject> eObjects = StructuredJsonEditorManager.INSTANCE.getEObjectsOfKey(entryElement, domain.getResourceSet().getResources());
+            
+            Collection<EObject> eObjects = getXtextEObjectsOfKey(entryElement);
+            
             for (EObject value : eObjects) {
                 deleteCompoundCommand.append(DeleteCommand.create(domain, value));
             }
@@ -75,11 +72,6 @@ public class RemoveJsonPropertyAction extends CommandActionHandler implements Mo
             return (EObject) deleteCommand.getCollection().iterator().next();
         }
         return null;
-    }
-
-    @Override
-    public MultiPageStructuredJsonEditor getEditor() {
-        return editor;
     }
 
 }

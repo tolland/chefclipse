@@ -1,23 +1,16 @@
-/**
- * 
- */
 package org.limepepper.chefclipse.structured.json.editor.editing;
 
 
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.limepepper.chefclipse.json.json.JsonPackage;
+import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.limepepper.chefclipse.json.json.Pair;
-import org.limepepper.chefclipse.structured.json.editor.commands.ModifyXTextDocumentCommand;
-import org.limepepper.chefclipse.structured.json.editor.commands.XTextCompoundCommand;
 import org.limepepper.chefclipse.structured.json.editor.editors.MultiPageStructuredJsonEditor;
 import org.limepepper.chefclipse.structured.json.editor.editors.StructuredJsonEditorManager;
 
@@ -79,30 +72,21 @@ public class FieldEditingSupport extends EditingSupport {
      * @see org.eclipse.jface.viewers.EditingSupport#setValue(java.lang.Object, java.lang.Object)
      */
     @Override
-    protected void setValue(Object element, Object value) {
+    protected void setValue(final Object element, final Object value) {
     	String stringValue = ((String) value).trim();
     	if (stringValue.isEmpty() || getValue(element).equals(stringValue))
-    		return; 
-    	CompoundCommand compoundCommand = new XTextCompoundCommand(new ModifyXTextDocumentCommand() {
-			@Override
-			public MultiPageStructuredJsonEditor getEditor() {
-				return editor;
-			}
-
-            @Override
-            public EObject getAffectedEObject(Command command) {
-                return ((SetCommand) command).getOwner();
-            }
-		});
+    		return;
     	for (Resource res : editingDomain.getResourceSet().getResources()) {
-    		Object owner = StructuredJsonEditorManager.INSTANCE.getEObjectOfKey((EObject) element, res);
-    		if (owner != null) {
-    			Command command = SetCommand.create(editingDomain, owner, JsonPackage.eINSTANCE.getPair_String(), value);
-    			compoundCommand.append(command);
-    		}
+    		editor.getXtextDocument(res).modify(new IUnitOfWork.Void<XtextResource>() {
+				@Override
+				public void process(XtextResource state) throws Exception {
+					Object owner = StructuredJsonEditorManager.INSTANCE.getEObjectOfKey((EObject) element, state);
+					if (owner instanceof Pair) {
+						((Pair) owner).setString((String) value);
+					}
+				}
+			});
 		}
-    	editingDomain.getCommandStack().execute(compoundCommand);
-//        viewer.update(element, null);
     }
 
 }
