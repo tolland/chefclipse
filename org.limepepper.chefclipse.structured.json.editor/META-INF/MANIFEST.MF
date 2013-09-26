@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Multi page Data Bag Editor
+Bundle-Name: Multi page structured JSON Editor
 Bundle-SymbolicName: org.limepepper.chefclipse.structured.json.editor;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.limepepper.chefclipse.structured.json.editor.StructuredJsonEditorActivator
@@ -23,8 +23,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.limepepper.chefclipse.json.edit,
  org.eclipse.ui.ide
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.limepepper.chefclipse.structured.json.editor,
  org.limepepper.chefclipse.structured.json.editor.actions,
  org.limepepper.chefclipse.structured.json.editor.editors,
  org.limepepper.chefclipse.structured.json.editor.utils
+Bundle-ClassPath: .

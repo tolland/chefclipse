@@ -21,6 +21,8 @@
 		<project>org.limepepper.chefclipse.remotepicker.extpoint</project>
 		<project>org.limepepper.chefclipse.remotepicker.repositories</project>
 		<project>org.limepepper.chefclipse.remotepicker.ui</project>
+		<project>org.limepepper.chefclipse.structured.json.editor</project>
+		<project>org.limepepper.chefclipse.databag</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

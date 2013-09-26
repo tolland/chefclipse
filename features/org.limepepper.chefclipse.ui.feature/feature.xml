@@ -44,6 +44,8 @@
       <import plugin="org.eclipse.ui" version="3.103.0" match="greaterOrEqual"/>
       <import plugin="org.limepepper.chefclipse.remotepicker.api" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.limepepper.chefclipse.remotepicker.ui" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="org.limepepper.chefclipse.structured.json.editor" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="org.limepepper.chefclipse.databag" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.workbench"/>
       <import plugin="org.eclipse.ui.ide" version="3.8.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.equinox.p2.ui"/>
