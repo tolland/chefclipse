@@ -31,5 +31,4 @@ Export-Package: org.limepepper.chefclipse.json,
  org.limepepper.chefclipse.json.scoping,
  org.limepepper.chefclipse.json.generator,
  org.limepepper.chefclipse.json.formatting
-Import-Package: org.apache.log4j,
- org.eclipse.xtext.xbase.lib
+Import-Package: org.eclipse.xtext.xbase.lib

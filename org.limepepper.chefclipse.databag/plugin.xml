@@ -68,12 +68,9 @@
           	<actionProvider
                  class="org.limepepper.chefclipse.databag.actions.OpenJsonFilesActionProvider">
           	</actionProvider>
-          	<actionProvider
-                 class="org.limepepper.chefclipse.structured.json.editor.actions.OpenJsonFilesActionProvider">
-          	</actionProvider>
-           <actionProvider
+            <actionProvider
                  class="org.limepepper.chefclipse.databag.actions.NewDataBagActionProvider">
-           </actionProvider>
+            </actionProvider>
         </navigatorContent>
    </extension>
 </plugin>
