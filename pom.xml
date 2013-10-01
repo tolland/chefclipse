@@ -157,7 +157,7 @@
 		<module>org.limepepper.chefclipse.json</module>
 		<module>org.limepepper.chefclipse.json.ui</module>
 		<module>org.limepepper.chefclipse.json.edit</module>
-		<!--module>org.limepepper.chefclipse.json.tests</module-->
+		<module>org.limepepper.chefclipse.json.tests</module>
 
         <!-- module>org.limepepper.chefclipse.navigator</module -->
         <!-- merged into chefclipse.core as non generated @todo remove -->
