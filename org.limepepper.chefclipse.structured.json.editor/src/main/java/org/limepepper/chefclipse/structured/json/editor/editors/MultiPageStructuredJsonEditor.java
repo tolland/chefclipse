@@ -2,6 +2,7 @@ package org.limepepper.chefclipse.structured.json.editor.editors;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -12,12 +13,16 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.eclipse.core.commands.operations.IUndoContext;
+import org.eclipse.core.commands.operations.ObjectUndoContext;
+import org.eclipse.core.commands.operations.UndoContext;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -29,13 +34,22 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
+import org.eclipse.ui.IWorkbenchCommandConstants;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.eclipse.ui.operations.OperationHistoryActionHandler;
+import org.eclipse.ui.operations.RedoActionHandler;
+import org.eclipse.ui.operations.UndoActionHandler;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.MultiPageEditorPart;
+import org.eclipse.ui.texteditor.IAbstractTextEditorHelpContextIds;
+import org.eclipse.ui.texteditor.ITextEditorActionConstants;
+import org.eclipse.ui.texteditor.IUpdate;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -67,7 +81,28 @@ import com.google.inject.Provider;
  */
 public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implements IResourceChangeListener, IXtextModelListener {
 
-    public static final String ID = "org.limepepper.chefclipse.structured.json.editor.editors.MultiPageStructuredJsonEditor";
+    private class MultiUndoContext extends UndoContext {
+		private List<IXtextDocument> resources = new ArrayList<IXtextDocument>();
+
+		@Override
+		public String getLabel() {
+			return "Multi Undo";
+		}
+		
+		public void addDocument(IXtextDocument doc) {
+			resources.add(doc);
+		}
+
+		@Override
+		public boolean matches(IUndoContext context) {
+			if (context instanceof ObjectUndoContext) {
+				return resources.contains(((ObjectUndoContext) context).getObject());
+			}
+			return super.matches(context);
+		}
+	}
+
+	public static final String ID = "org.limepepper.chefclipse.structured.json.editor.editors.MultiPageStructuredJsonEditor";
 
 	/** The column editor used in page 0. */
 	private StructuredColumnJsonEditor columnEditor;
@@ -83,7 +118,7 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 
 	private Map<String, IAction> actionRegistry;
 
-    private JsonFileActionContributor StructuredJsonEditorActionContributor;
+    private JsonFileActionContributor structuredJsonEditorActionContributor;
 
 	private List<IFile> jsonFiles;
 
@@ -91,6 +126,11 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 
 	protected HashMap<URI, ScheduledFuture<?>> scheduledUpdates = new HashMap<URI, ScheduledFuture<?>>();
 
+	private MultiUndoContext undoContext;
+
+	/** The actions registered with the editor. */
+	private Map<String, IAction> fActions = new HashMap<String, IAction>(10);
+	
 	public MultiPageStructuredJsonEditor() {
 		super();
 		actionRegistry = new HashMap<String, IAction>();
@@ -108,6 +148,8 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
             addPage(index, columnEditor, getEditorInput());
             setPageText(index, "Column Editor");
             setPageImage(index, StructuredJsonEditorActivator.getDefault().getImageRegistry().getDescriptor(StructuredJsonEditorActivator.COLUMN_PAGE).createImage());
+            
+            columnEditor.setViewerInput();
         } catch (PartInitException e) {
             ErrorDialog.openError(
                     getSite().getShell(),
@@ -151,8 +193,10 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 				}
 				columnEditor.setViewerInput();
 			}
-		}, 500, TimeUnit.MILLISECONDS);
+		}, 200, TimeUnit.MILLISECONDS);
 		scheduledUpdates.put(resource.getURI(), scheduledUpdate);
+		updateAction(ITextEditorActionConstants.UNDO);
+		updateAction(ITextEditorActionConstants.REDO);
 	}
 	
     private XtextResource createJsonEditorFor(final IFile jsonFile) {
@@ -162,6 +206,8 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 
         	xtext.getDocument().addModelListener(this);
         	final XtextResource res = getXtextResource(xtext);
+        	
+        	undoContext.addDocument(xtext.getDocument());
         	
         	if (res.getContents().isEmpty()) {
 				StructuredJsonEditorManager.INSTANCE.addEmptyModelTo(res, getXtextDocument(res), jsonFile);
@@ -203,12 +249,98 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 	protected void createPages() {
 		//super.addPageChangedListener(columnEditor);
 
-    	columnEditor = new StructuredColumnJsonEditor(StructuredJsonEditorActionContributor, resourceSetProvider, this);
+    	columnEditor = new StructuredColumnJsonEditor(structuredJsonEditorActionContributor, resourceSetProvider, this);
 
 		createJsonEditorPages();
 		createColumnEditorPage();
+		createUndoRedoActions();
+	}
+	
+	/**
+	 * Creates this editor's undo/redo actions.
+	 * <p>
+	 * Subclasses may override or extend.</p>
+	 *
+	 * @since 3.1
+	 */
+	protected void createUndoRedoActions() {
+		if (undoContext != null) {
+			// Use actions provided by global undo/redo
+
+			// Create the undo action
+			OperationHistoryActionHandler undoAction= new UndoActionHandler(getEditorSite(), undoContext);
+			PlatformUI.getWorkbench().getHelpSystem().setHelp(undoAction, IAbstractTextEditorHelpContextIds.UNDO_ACTION);
+			undoAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_UNDO);
+			registerUndoRedoAction(ITextEditorActionConstants.UNDO, undoAction);
+
+			// Create the redo action.
+			OperationHistoryActionHandler redoAction= new RedoActionHandler(getEditorSite(), undoContext);
+			PlatformUI.getWorkbench().getHelpSystem().setHelp(redoAction, IAbstractTextEditorHelpContextIds.REDO_ACTION);
+			redoAction.setActionDefinitionId(IWorkbenchCommandConstants.EDIT_REDO);
+			registerUndoRedoAction(ITextEditorActionConstants.REDO, redoAction);
+
+			// Install operation approvers
+//			IOperationHistory history= OperationHistoryFactory.getOperationHistory();
+		}
+	}
+	
+	/**
+	 * Updates the specified action by calling <code>IUpdate.update</code>
+	 * if applicable.
+	 *
+	 * @param actionId the action id
+	 */
+	private void updateAction(String actionId) {
+		Assert.isNotNull(actionId);
+		if (fActions != null) {
+			IAction action= (IAction) fActions.get(actionId);
+			if (action instanceof IUpdate)
+				((IUpdate) action).update();
+			if (action instanceof OperationHistoryActionHandler)
+				((OperationHistoryActionHandler) action).update();
+		}
+	}
+	
+	/**
+	 * Registers the given undo/redo action under the given ID and ensures that previously installed
+	 * actions get disposed. It also takes care of re-registering the new action with the global
+	 * action handler.
+	 * 
+	 * @param actionId the action id under which to register the action
+	 * @param action the action to register or <code>null</code> to dispose them
+	 * @since 3.1
+	 */
+	private void registerUndoRedoAction(String actionId, OperationHistoryActionHandler action) {
+//		IAction oldAction= getAction(actionId);
+//		if (oldAction instanceof OperationHistoryActionHandler)
+//			((OperationHistoryActionHandler)oldAction).dispose();
+
+		if (action == null)
+			return;
+
+		setAction(actionId, action);
+
+		IActionBars actionBars= getEditorSite().getActionBars();
+		if (actionBars != null)
+			actionBars.setGlobalActionHandler(actionId, action);
 	}
 
+	/*
+	 * @see ITextEditor#setAction(String, IAction)
+	 */
+	public void setAction(String actionID, IAction action) {
+		Assert.isNotNull(actionID);
+		if (action == null) {
+			action= (IAction) fActions.remove(actionID);
+//			if (action != null)
+//				fActivationCodeTrigger.unregisterActionFromKeyActivation(action);
+		} else {
+			if (action.getId() == null)
+				action.setId(actionID); // make sure the action ID has been set
+			fActions.put(actionID, action);
+//			fActivationCodeTrigger.registerActionForKeyActivation(action);
+		}
+	}
 	/**
 	 * The <code>MultiPageEditorPart</code> implementation of this
 	 * <code>IWorkbenchPart</code> method disposes all nested editors.
@@ -216,6 +348,13 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 	 */
 	public void dispose() {
 		//super.removePageChangedListener(columnEditor);
+		if (fActions != null) {
+			registerUndoRedoAction(ITextEditorActionConstants.UNDO, null);
+			registerUndoRedoAction(ITextEditorActionConstants.REDO, null);
+			fActions.clear();
+			fActions= null;
+		}
+		
 		ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
 		if (getSite() != null) {
 		    super.dispose();
@@ -275,9 +414,11 @@ public class MultiPageStructuredJsonEditor extends MultiPageEditorPart implement
 			throw new PartInitException("Invalid Input: Must be StructuredEditorInput");
 		}
 		jsonFiles = ((StructuredJsonEditorInput) editorInput).getJSONFiles();
+		undoContext = new MultiUndoContext();
+		
 		super.init(site, editorInput);
 		initActionRegistry();
-        StructuredJsonEditorActionContributor = new JsonFileActionContributor(this);
+        structuredJsonEditorActionContributor = new JsonFileActionContributor(this);
 		setPartName(editorInput.getName());
 	}
 
